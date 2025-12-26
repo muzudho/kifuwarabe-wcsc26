@@ -129,7 +129,7 @@ bool Evaluation09::calcDifference(Position& pos, Flashlight* ss) {
 		return false;
 
 	const Move lastMove = (ss - 1)->m_currentMove;
-	assert(lastMove != Move::m_NULL);
+	assert(lastMove.GetValue() != Move::m_NULL);
 
 	if (lastMove.GetPieceTypeFrom() == N08_King) {
 		EvalSum diff = (ss - 1)->m_staticEvalRaw; // 本当は diff ではないので名前が良くない。

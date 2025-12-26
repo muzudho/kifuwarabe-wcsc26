@@ -535,7 +535,7 @@ public:
 			assert(!((*ppFlashlight) - 1)->m_currentMove.IsNone());
 			assert(((*ppFlashlight) - 1)->m_currentMove != g_MOVE_NULL);
 
-			assert(move == (ppFlashlight - 1)->m_currentMove);
+			assert(move == (*((ppFlashlight) - 1))->m_currentMove);
 			// move.cap() は前回(一手前)の指し手で取った駒の種類
 			NextmoveEvent mp(pos, ttMove, rucksack.m_history, move.GetCap());
 			const CheckInfo ci(pos);
@@ -872,7 +872,7 @@ public:
 		Move movesSearched[64]
 		)const = 0;
 
-	// 非スプリットポイントのみ実行☆（＾ｑ＾）
+	// 非スプリットポイントでだけ実行するぜ☆（＾ｑ＾）
 	virtual inline void DoStep13d(
 		bool& captureOrPawnPromotion,
 		int& playedMoveCount,

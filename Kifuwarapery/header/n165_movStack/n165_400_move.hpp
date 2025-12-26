@@ -24,18 +24,18 @@ public:
 
 	Move();
 
-	explicit Move(const u32 u) : m_value_(u) {}
+	explicit Move(const u32 u) : m_value(u) {}
 
-	Move& operator = (const Move& m) { m_value_ = m.m_value_; return *this; }
+	Move& operator = (const Move& m) { m_value = m.m_value; return *this; }
 
-	Move& operator = (const volatile Move& m) { m_value_ = m.m_value_; return *this; }
+	Move& operator = (const volatile Move& m) { m_value = m.m_value; return *this; }
 
 	// volatile Move& 型の *this を返すとなぜか警告が出るので、const Move& 型の m を返すことにする。
-	const Move& operator = (const Move& m) volatile { m_value_ = m.m_value_; return m; }
+	const Move& operator = (const Move& m) volatile { m_value = m.m_value; return m; }
 
-	Move(const Move& m) { m_value_ = m.m_value_; }
+	Move(const Move& m) { m_value = m.m_value; }
 
-	Move(const volatile Move& m) { m_value_ = m.m_value_; }
+	Move(const volatile Move& m) { m_value = m.m_value; }
 
 	// 移動先
 	Square To() const;
@@ -118,7 +118,7 @@ public:
 	static const u32 m_PVS_END = 1 << 15; // for learn
 
 private:
-	u32 m_value_;
+	u32 m_value;
 };
 
 

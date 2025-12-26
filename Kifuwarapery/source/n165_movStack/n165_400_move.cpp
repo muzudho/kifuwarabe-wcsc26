@@ -107,12 +107,12 @@ bool Move::IsNone() const
 
 u32 Move::GetValue() const
 {
-	return this->m_value_;
+	return this->m_value;
 }
 
 Move Move::operator|=(const Move rhs)
 {
-	this->m_value_ |= rhs.GetValue();
+	this->m_value |= rhs.GetValue();
 	return *this;
 }
 
