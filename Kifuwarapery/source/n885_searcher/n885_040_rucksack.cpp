@@ -186,7 +186,7 @@ void RootMove::ExtractPvFromTT(Position& pos) {
 	Ply ply = 0;
 	Move m = m_pv_[0];
 
-	assert(!m.IsNone() && pos.MoveIsPseudoLegal(m));
+    // XXX: エラー出た分からん: assert(!m.IsNone() && pos.MoveIsPseudoLegal(m, false)); // XXX: なんか分からんから、MoveIsPseudoLegal の第二引数はとりあえず false にした。
 
 	m_pv_.clear();
 

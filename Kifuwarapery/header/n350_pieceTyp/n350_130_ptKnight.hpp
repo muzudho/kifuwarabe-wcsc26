@@ -12,7 +12,7 @@
 #include "../n165_movStack/n165_500_moveStack.hpp"
 #include "../n165_movStack/n165_600_convMove.hpp"
 #include "../n220_position/n220_650_position.hpp"
-#include "n350_030_makePromoteMove.hpp""
+#include "n350_030_makePromoteMove.hpp"
 #include "n350_040_ptEvent.hpp"
 #include "n350_045_pieceTypeSeeEvent.hpp"
 #include "n350_070_ptAbstract.hpp"
@@ -22,7 +22,7 @@ const static Move g_PTKNIGHT_ONBOARD_AS_MOVE = ConvMove::FROM_PIECETYPE_ONBOARD1
 const static Move g_PTKNIGHT_DA_AS_MOVE = ConvMove::FROM_PIECETYPE_DA10(PieceType::N03_Knight);
 
 
-// ‚o‚‰‚…‚ƒ‚…‚s‚™‚‚…FF‚m‚O‚RQ‚j‚‚‰‚‡‚ˆ‚”
+// ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Fï¿½Fï¿½mï¿½Oï¿½Rï¿½Qï¿½jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 class PtKnight : public PtAbstract {
 public:
 
@@ -34,7 +34,7 @@ public:
 		return g_knightAttackBb.GetControllBb(ptEvent.m_c, ptEvent.m_sq);
 	}
 
-	// pin ‚ÍÈ‚©‚È‚¢B//FORCE_INLINE
+	// pin ï¿½ÍÈ‚ï¿½ï¿½È‚ï¿½ï¿½B//FORCE_INLINE
 	void Generate2RecaptureMoves_usWhite(
 		MoveStack* moveStackList,
 		const Position& pos,
