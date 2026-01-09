@@ -14,11 +14,23 @@
 extern NodetypeAbstract* g_NODETYPE_PROGRAMS[];
 
 
-// 深い反復ループ☆？（iterative deepening loop）
-// 反復深化探索のことなのかだぜ☆（＾ｑ＾）？
+/// <summary>
+///		<pre>
+/// 深い反復ループ☆？（iterative deepening loop）
+/// 反復深化探索のことなのかだぜ☆（＾ｑ＾）？
+///		</pre>
+/// </summary>
 class IterativeDeepeningLoop {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="rucksack"></param>
+	/// <param name="pos"></param>
 	static inline void Execute885_500(Rucksack& rucksack, Position& pos)
 	{
 		Flashlight flashlight[g_maxPlyPlus2];
@@ -157,14 +169,8 @@ public:
 					break;
 #endif
 
-					if (rucksack.m_signals.m_stop) {
-						break;
-					}
-
-					if (alpha < bestScore && bestScore < beta) {
-						break;
-					}
-
+					if (rucksack.m_signals.m_stop) { break; }
+					if (alpha < bestScore && bestScore < beta) { break; }
 
 					if (
 						// 思考時間が3秒経過するまで、読み筋を出力しないぜ☆！（＾ｑ＾）
@@ -288,5 +294,4 @@ public:
 		skill.swapIfEnabled(&rucksack);
 		SYNCCOUT << rucksack.PvInfoToUSI(pos, depth - 1, alpha, beta) << SYNCENDL;
 	}
-
 };

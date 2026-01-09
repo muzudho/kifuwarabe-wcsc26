@@ -6,16 +6,33 @@
 #include "../../header/n885_searcher/n885_040_rucksack.hpp"
 
 
-// 何がスキルなのか☆？（＾ｑ＾）
+/// <summary>
+/// 何がスキルなのか☆？（＾ｑ＾）
+/// </summary>
 struct Skill {
 
+
+	/// <summary>
+	/// 生成。
+	/// </summary>
+	/// <param name="l"></param>
+	/// <param name="mr"></param>
 	Skill(const int l, const int mr)
 		: m_level(l),
 		m_maxRandomScoreDiff(static_cast<ScoreIndex>(mr)),
 		m_best(g_MOVE_NONE) {}
 
+
+	/// <summary>
+	/// 破棄。
+	/// </summary>
 	~Skill() {}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="s"></param>
 	void swapIfEnabled(Rucksack* s) {
 		if (enabled()) {
 			auto it = std::find(s->m_rootMoves.begin(),
@@ -27,17 +44,33 @@ struct Skill {
 		}
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	bool enabled() const { return m_level < 20 || m_maxRandomScoreDiff != ScoreZero; }
 
+
+	/// <summary>
+	///
+	/// </summary>
+	/// <param name="depth"></param>
+	/// <returns></returns>
 	bool timeToPick(const int depth) const { return depth == 1 + m_level; }
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="s"></param>
+	/// <returns></returns>
 	Move pickMove(Rucksack* s) {
 		// level については未対応。max_random_score_diff についてのみ対応する。
 		if (m_maxRandomScoreDiff != ScoreZero) {
 			size_t i = 1;
 			for (; i < s->m_pvSize; ++i) {
-				if (m_maxRandomScoreDiff < s->m_rootMoves[0].m_score_ - s->m_rootMoves[i].m_score_)
-					break;
+				if (m_maxRandomScoreDiff < s->m_rootMoves[0].m_score_ - s->m_rootMoves[i].m_score_) { break; }
 			}
 			// 0 から i-1 までの間でランダムに選ぶ。
 			std::uniform_int_distribution<size_t> dist(0, i - 1);
@@ -48,12 +81,19 @@ struct Skill {
 		return m_best;
 	}
 
-	// レベル☆？
+
+	/// <summary>
+	/// レベル☆？
+	/// </summary>
 	int m_level;
 
-	// ランダムな評価値の差分の最大値か☆？？
+	/// <summary>
+	/// ランダムな評価値の差分の最大値か☆？？
+	/// </summary>
 	ScoreIndex m_maxRandomScoreDiff;
 
-	// ベストムーブか☆？
+	/// <summary>
+	/// ベストムーブか☆？
+	/// </summary>
 	Move m_best;
 };

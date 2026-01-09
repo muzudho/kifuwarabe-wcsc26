@@ -4,10 +4,20 @@
 #include "n885_310_hitchhikerQsearchAbstract.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 class HitchhikerQsearchNonPv : public HitchhikerQsearchAbstract {
+
+
 public:
 
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="alpha"></param>
+	/// <param name="beta"></param>
 	virtual inline void DoAssert(
 		ScoreIndex alpha,
 		ScoreIndex beta
@@ -15,6 +25,12 @@ public:
 		assert(alpha == beta - 1);
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="oldAlpha"></param>
+	/// <param name="alpha"></param>
 	virtual inline void SetOldAlpha(
 		ScoreIndex& oldAlpha,
 		ScoreIndex alpha
@@ -22,6 +38,14 @@ public:
 		//スルー☆！（＾ｑ＾）
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="ppTtEntry"></param>
+	/// <param name="beta"></param>
+	/// <param name="ttScore"></param>
+	/// <returns></returns>
 	virtual inline bool GetCondition01(
 		const TTEntry** ppTtEntry,
 		ScoreIndex beta,
@@ -34,6 +58,12 @@ public:
 			((*ppTtEntry)->GetType() & BoundUpper);
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="alpha"></param>
+	/// <param name="bestScore"></param>
 	virtual inline void SetAlpha(
 		ScoreIndex& alpha,
 		ScoreIndex bestScore
@@ -41,6 +71,21 @@ public:
 		// スルーするぜ☆！（＾ｑ＾）
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="isContinue"></param>
+	/// <param name="INCHECK"></param>
+	/// <param name="givesCheck"></param>
+	/// <param name="move"></param>
+	/// <param name="ttMove"></param>
+	/// <param name="futilityScore"></param>
+	/// <param name="futilityBase"></param>
+	/// <param name="pos"></param>
+	/// <param name="beta"></param>
+	/// <param name="bestScore"></param>
+	/// <param name="depth"></param>
 	virtual inline void DoFutilityPruning01(
 		bool& isContinue,
 		bool& INCHECK,
@@ -91,6 +136,16 @@ public:
 		}
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="isContinue"></param>
+	/// <param name="INCHECK"></param>
+	/// <param name="evasionPrunable"></param>
+	/// <param name="move"></param>
+	/// <param name="ttMove"></param>
+	/// <param name="pos"></param>
 	virtual inline void DoContinue01(
 		bool& isContinue,
 		bool& INCHECK,
@@ -111,6 +166,21 @@ public:
 		}
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="isReturnWithScore"></param>
+	/// <param name="returnScore"></param>
+	/// <param name="rucksack"></param>
+	/// <param name="score"></param>
+	/// <param name="beta"></param>
+	/// <param name="alpha"></param>
+	/// <param name="bestMove"></param>
+	/// <param name="posKey"></param>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="ttDepth"></param>
+	/// <param name="move"></param>
 	virtual inline void DoByNewScore(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
@@ -133,11 +203,17 @@ public:
 		//return score;
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="oldAlpha"></param>
+	/// <param name="bestScore"></param>
+	/// <returns></returns>
 	virtual inline Bound GetBound01(
 		ScoreIndex& oldAlpha,
 		ScoreIndex& bestScore
 		)const override {
 		return Bound::BoundUpper;
 	}
-
 };

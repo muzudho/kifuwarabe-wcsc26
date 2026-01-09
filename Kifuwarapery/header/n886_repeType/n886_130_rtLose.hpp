@@ -3,7 +3,7 @@
 
 #include "../n119_score___/n119_090_scoreIndex.hpp"
 #include "../n119_score___/n119_100_utilScore.hpp"
-#include "../n223_move____/n223_500_flashlight.hpp"// &QÆ‚Íg‚¦‚È‚¢B*QÆ‚Íg‚¦‚éB
+#include "../n223_move____/n223_500_flashlight.hpp"// &å‚ç…§ã¯ä½¿ãˆãªã„ã€‚*å‚ç…§ã¯ä½¿ãˆã‚‹ã€‚
 #include "../n885_searcher/n885_040_rucksack.hpp"
 #include "n886_070_rtAbstract.hpp"
 

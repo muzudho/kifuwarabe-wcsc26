@@ -10,11 +10,29 @@
 #include "n885_040_rucksack.hpp"	// FIXME:
 
 
+/// <summary>
+/// 
+/// </summary>
 class HitchhikerQsearchAbstract {
+
+
 public:
 
-	// Ｑサーチ？
-	// N01_PV か、N02_NonPV でだけ使うことができるぜ☆（＾ｑ＾）
+
+	/// <summary>
+	///		<pre>
+	/// Ｑサーチ？
+	/// N01_PV か、N02_NonPV でだけ使うことができるぜ☆（＾ｑ＾）
+	///		</pre>
+	/// </summary>
+	/// <param name="rucksack"></param>
+	/// <param name="INCHECK"></param>
+	/// <param name="pos"></param>
+	/// <param name="ss"></param>
+	/// <param name="alpha"></param>
+	/// <param name="beta"></param>
+	/// <param name="depth"></param>
+	/// <returns></returns>
 	virtual ScoreIndex DoQsearch(
 		Rucksack& rucksack,
 		bool INCHECK,
@@ -25,27 +43,68 @@ public:
 		const Depth depth
 		) const ;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="alpha"></param>
+	/// <param name="beta"></param>
 	virtual inline void DoAssert(
 		ScoreIndex alpha,
 		ScoreIndex beta
 		) const = 0;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="oldAlpha"></param>
+	/// <param name="alpha"></param>
 	virtual inline void SetOldAlpha(
 		ScoreIndex& oldAlpha,
 		ScoreIndex alpha
 		) const = 0;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="ppTtEntry"></param>
+	/// <param name="beta"></param>
+	/// <param name="ttScore"></param>
+	/// <returns></returns>
 	virtual inline bool GetCondition01(
 		const TTEntry** ppTtEntry,
 		ScoreIndex beta,
 		ScoreIndex ttScore
 		) const = 0;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="alpha"></param>
+	/// <param name="bestScore"></param>
 	virtual inline void SetAlpha(
 		ScoreIndex& alpha,
 		ScoreIndex bestScore
 		) const = 0;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="isContinue"></param>
+	/// <param name="INCHECK"></param>
+	/// <param name="givesCheck"></param>
+	/// <param name="move"></param>
+	/// <param name="ttMove"></param>
+	/// <param name="futilityScore"></param>
+	/// <param name="futilityBase"></param>
+	/// <param name="pos"></param>
+	/// <param name="beta"></param>
+	/// <param name="bestScore"></param>
+	/// <param name="depth"></param>
 	virtual inline void DoFutilityPruning01(
 		bool& isContinue,
 		bool& INCHECK,
@@ -60,6 +119,16 @@ public:
 		const Depth depth
 		)const = 0;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="isContinue"></param>
+	/// <param name="INCHECK"></param>
+	/// <param name="evasionPrunable"></param>
+	/// <param name="move"></param>
+	/// <param name="ttMove"></param>
+	/// <param name="pos"></param>
 	virtual inline void DoContinue01(
 		bool& isContinue,
 		bool& INCHECK,
@@ -69,6 +138,21 @@ public:
 		Position& pos
 		)const = 0;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="isReturnWithScore"></param>
+	/// <param name="returnScore"></param>
+	/// <param name="rucksack"></param>
+	/// <param name="score"></param>
+	/// <param name="beta"></param>
+	/// <param name="alpha"></param>
+	/// <param name="bestMove"></param>
+	/// <param name="posKey"></param>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="ttDepth"></param>
+	/// <param name="move"></param>
 	virtual inline void DoByNewScore(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
@@ -83,6 +167,13 @@ public:
 		Move move
 		)const = 0;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="oldAlpha"></param>
+	/// <param name="bestScore"></param>
+	/// <returns></returns>
 	virtual inline Bound GetBound01(
 		ScoreIndex& oldAlpha,
 		ScoreIndex& bestScore

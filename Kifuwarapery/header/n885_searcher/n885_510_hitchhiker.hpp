@@ -22,24 +22,41 @@
 //#include "../n885_searcher/n885_600_iterativeDeepeningLoop.hpp"
 #include "n885_040_rucksack.hpp"	// FIXME:
 
+
 using namespace std;
+
 
 using History = Stats<false>;
 using Gains = Stats<true>;
 
 
+/// <summary>
+/// 
+/// </summary>
 class Hitchhiker {
+
+
 public:
 
-	// l‚¦‚éH
-	// ƒƒCƒ“EƒXƒŒƒbƒh‚Ì@ƒAƒCƒhƒ‹Eƒ‹[ƒv‚Ì’†‚ÅŒÄ‚Ño‚³‚ê‚éB
-	// i‚Pj“ü‹ÊŸ‚¿”»’è
-	// i‚Qj”½•œ[‰»’Tõ‚ğs‚¤‚º™
+
+	/// <summary>
+	///		<pre>
+	/// è€ƒãˆã‚‹ï¼Ÿ
+	/// ãƒ¡ã‚¤ãƒ³ãƒ»ã‚¹ãƒ¬ãƒƒãƒ‰ã®ã€€ã‚¢ã‚¤ãƒ‰ãƒ«ãƒ»ãƒ«ãƒ¼ãƒ—ã®ä¸­ã§å‘¼ã³å‡ºã•ã‚Œã‚‹ã€‚
+	/// ï¼ˆï¼‘ï¼‰å…¥ç‰å‹ã¡åˆ¤å®š
+	/// ï¼ˆï¼’ï¼‰åå¾©æ·±åŒ–æ¢ç´¢ã‚’è¡Œã†ãœâ˜†
+	///		</pre>
+	/// </summary>
+	/// <param name="captainsRucksack"></param>
 	static void	Think(
-		Rucksack& captainsRucksack // ƒLƒƒƒvƒeƒ“‚Ì‚Á‚Ä‚¢‚é‚r‚…‚‚’‚ƒ‚ˆ‚…‚’™
+		Rucksack& captainsRucksack // ã‚­ãƒ£ãƒ—ãƒ†ãƒ³ã®æŒã£ã¦ã„ã‚‹ï¼³ï½…ï½ï½’ï½ƒï½ˆï½…ï½’â˜†
 	);
 
-	// “ü‹ÊŸ‚¿”»’è
-	static bool Hitchhiker::IsNyugyokuWin(const Position& pos);
 
+	/// <summary>
+	/// å…¥ç‰å‹ã¡åˆ¤å®š
+	/// </summary>
+	/// <param name="pos"></param>
+	/// <returns></returns>
+	static bool Hitchhiker::IsNyugyokuWin(const Position& pos);
 };

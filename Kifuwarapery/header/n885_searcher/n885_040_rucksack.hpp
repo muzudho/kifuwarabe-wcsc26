@@ -27,69 +27,122 @@ using History = Stats<false>;
 using Gains   = Stats<true>;
 
 
-
-// 元の名前：　Ｓｅａｒｃｈｅｒ
-// 検索のための構造体？
-//rucksack
+/// <summary>
+///		<pre>
+/// 元の名前：　Ｓｅａｒｃｈｅｒ
+/// 検索のための構造体？
+///		</pre>
+/// </summary>
 class Rucksack {
+
+
 public:
 
-	// シグナル？
+
+	/// <summary>
+	/// シグナル？
+	/// </summary>
 	volatile SignalsType	m_signals;
 
-	// 思考用の時間などの上限☆？
+	/// <summary>
+	/// 思考用の時間などの上限☆？
+	/// </summary>
 	LimitsOfThinking		m_limits;
 
-	// 元の名前：ｓｅａｒｃｈＭｏｖｅｓ
-	// 送られてきた棋譜。（現局面までの指し手のスタック）
+	/// <summary>
+	///		<pre>
+	/// 元の名前：ｓｅａｒｃｈＭｏｖｅｓ
+	/// 送られてきた棋譜。（現局面までの指し手のスタック）
+	///		</pre>
+	/// </summary>
 	std::vector<Move>		m_ourMoves;
 
-	// 検索用タイマー？
+	/// <summary>
+	/// 検索用タイマー？
+	/// </summary>
 	Stopwatch				m_stopwatch;
 
-	// ステータス？
+	/// <summary>
+	/// ステータス？
+	/// </summary>
 	StateStackPtr			m_setUpStates;
 
-	// ルート？ 前回の反復深化探索☆？（イテレーション）の結果が入っているみたいだぜ☆
+	/// <summary>
+	/// ルート？ 前回の反復深化探索☆？（イテレーション）の結果が入っているみたいだぜ☆
+	/// </summary>
 	std::vector<RootMove>	m_rootMoves;
 
 #if defined LEARN
+	/// <summary>
+	/// アルファ
+	/// </summary>
 	ScoreIndex					m_alpha;
+
+	/// <summary>
+	/// ベータ
+	/// </summary>
 	ScoreIndex					m_beta;
 #endif
 
-	// 本譜のサイズ？
+	/// <summary>
+	/// 本譜のサイズ？
+	/// </summary>
 	size_t					m_pvSize;
 
-	// インデックス？
+	/// <summary>
+	/// インデックス？
+	/// </summary>
 	size_t					m_pvIdx;
 
-	// タイム・マネージャー？
+	/// <summary>
+	/// タイム・マネージャー？
+	/// </summary>
 	TimeManager				m_timeManager;
 
-	//────────────────────────────────────────────────────────────────────────────────
-	// ベストムーブ・チェンジスって何だぜ☆？（＾ｑ＾）
-	//────────────────────────────────────────────────────────────────────────────────
+
+	/// <summary>
+	/// ベストムーブ・チェンジスって何だぜ☆？（＾ｑ＾）
+	/// </summary>
+	/// <returns></returns>
 	inline Ply GetBestMovePlyChanges()
 	{
 		return this->m_bestMovePlyChanges_;
 	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
 	inline void ZeroclearBestMovePlyChanges()
 	{
 		this->m_bestMovePlyChanges_ = 0;
 	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
 	inline void IncreaseBestMovePlyChanges()
 	{
 		++this->m_bestMovePlyChanges_;
 	}
 
-	// ヒストリー？
+
+	/// <summary>
+	/// ヒストリー？
+	/// </summary>
 	History					m_history;
 
-	// ゲインズ？
+
+	/// <summary>
+	/// ゲインズ？
+	/// </summary>
 	Gains					m_gains;
 
-	// トランジション・テーブル？
+
+	/// <summary>
+	/// トランジション・テーブル。
+	/// </summary>
 	TranspositionTable		m_tt;
 
 #if defined INANIWA_SHIFT
@@ -99,20 +152,38 @@ public:
 	BishopInDangerFlag		bishopInDangerFlag;
 #endif
 
-	// 開始局面？
+	/// <summary>
+	/// 開始局面？
+	/// </summary>
 	Position				m_rootPosition;
 
-	// スレッズ？
+	/// <summary>
+	/// スレッズ？
+	/// </summary>
 	HerosPub				m_ownerHerosPub;
 
-	// USIオプション？
+	/// <summary>
+	/// USIオプション？
+	/// </summary>
 	EngineOptionsMap		m_engineOptions;
 
-	// 初期化？
+
+	/// <summary>
+	/// 初期化？
+	/// </summary>
 	void					Init();
 
-	// 本譜の情報？
+
+	/// <summary>
+	/// 本譜の情報？
+	/// </summary>
+	/// <param name="pos"></param>
+	/// <param name="depth"></param>
+	/// <param name="alpha"></param>
+	/// <param name="beta"></param>
+	/// <returns></returns>
 	std::string				PvInfoToUSI(Position& pos, const Ply depth, const ScoreIndex alpha, const ScoreIndex beta);
+
 
 #if defined INANIWA_SHIFT
 	void					detectInaniwa(const Position& GetPos);
@@ -122,15 +193,29 @@ public:
 #endif
 
 
-	// 時間チェック？
+	/// <summary>
+	/// 時間チェック？
+	/// </summary>
 	void					CheckTime();
 
-	// エンジン・オプション設定？
+
+	/// <summary>
+	/// エンジン・オプション設定？
+	/// </summary>
+	/// <param name="ssCmd"></param>
 	void					SetOption(std::istringstream& ssCmd);
 
 
-
 	//private:
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="score"></param>
+	/// <param name="alpha"></param>
+	/// <param name="beta"></param>
+	/// <returns></returns>
 	std::string scoreToUSI(const ScoreIndex score, const ScoreIndex alpha, const ScoreIndex beta) {
 		std::stringstream ss;
 
@@ -148,65 +233,87 @@ public:
 		return ss.str();
 	}
 
+
 	//private:
+
+
 	inline std::string scoreToUSI(const ScoreIndex score) {
 		return scoreToUSI(score, -ScoreIndex::ScoreInfinite, ScoreIndex::ScoreInfinite);
 	}
 
+
 public://private:
-	   // true にすると、シングルスレッドで動作する。デバッグ用。
+
+
+	/// <summary>
+	/// true にすると、シングルスレッドで動作する。デバッグ用。
+	/// </summary>
 	static const bool FakeSplit = false;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="d"></param>
+	/// <returns></returns>
 	inline ScoreIndex razorMargin(const Depth d) {
 		return static_cast<ScoreIndex>(512 + 16 * static_cast<int>(d));
 	}
 
-	// checkTime() を呼び出す最大間隔(msec)
+
+	/// <summary>
+	/// checkTime() を呼び出す最大間隔(msec)
+	/// </summary>
 	const int TimerResolution = 5;
 
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	inline bool checkIsDangerous() {
 		// not implement
 		// 使用しないで良いかも知れない。
 		return false;
 	}
 
-	// 1 ply前の first move によって second move が合法手にするか。
+
+	/// <summary>
+	/// 1 ply前の first move によって second move が合法手にするか。
+	/// </summary>
+	/// <param name="pos"></param>
+	/// <param name="first"></param>
+	/// <param name="second"></param>
+	/// <returns></returns>
 	bool allows(const Position& pos, const Move first, const Move second) {
 		const Square m1to = first.To();
 		const Square m1from = first.From();
 		const Square m2from = second.From();
 		const Square m2to = second.To();
-		if (m1to == m2from || m2to == m1from) {
-			return true;
-		}
-
-		if (second.IsDrop() && first.IsDrop()) {
-			return false;
-		}
+		if (m1to == m2from || m2to == m1from) { return true; }
+		if (second.IsDrop() && first.IsDrop()) { return false; }
 
 		if (!second.IsDrop() && !first.IsDrop()) {
-			if (g_setMaskBb.IsSet(&g_betweenBb.GetBetweenBB(m2from, m2to), m1from)) {
-				return true;
-			}
+			if (g_setMaskBb.IsSet(&g_betweenBb.GetBetweenBB(m2from, m2to), m1from)) { return true; }
 		}
 
 		const PieceType m1pt = first.GetPieceTypeFromOrDropped();
 		const Color us = pos.GetTurn();
 		const Bitboard occ = (second.IsDrop() ? pos.GetOccupiedBB() : pos.GetOccupiedBB() ^ g_setMaskBb.GetSetMaskBb(m2from));
 		const Bitboard m1att = UtilAttack::GetAttacksFrom(m1pt, us, m1to, occ);
-		if (g_setMaskBb.IsSet(&m1att, m2to)) {
-			return true;
-		}
-
-		if (g_setMaskBb.IsSet(&m1att, pos.GetKingSquare(us))) {
-			return true;
-		}
+		if (g_setMaskBb.IsSet(&m1att, m2to)) { return true; }
+		if (g_setMaskBb.IsSet(&m1att, pos.GetKingSquare(us))) { return true; }
 
 		return false;
 	}
 
-	// トランスポジション・テーブル用にスコアを変更する？
+
+	/// <summary>
+	/// トランスポジション・テーブル用にスコアを変更する？
+	/// </summary>
+	/// <param name="score"></param>
+	/// <param name="ply"></param>
+	/// <returns></returns>
 	ScoreIndex ConvertScoreToTT(const ScoreIndex score, const Ply ply) {
 		assert(score != ScoreNone);
 
@@ -224,7 +331,13 @@ public://private:
 		);
 	}
 
-	// トランスポジション・テーブル用のスコアから、スコアを復元する？
+
+	/// <summary>
+	/// トランスポジション・テーブル用のスコアから、スコアを復元する？
+	/// </summary>
+	/// <param name="s"></param>
+	/// <param name="ply"></param>
+	/// <returns></returns>
 	ScoreIndex ConvertScoreFromTT(const ScoreIndex s, const Ply ply) {
 		return (s == ScoreNone ? ScoreNone
 			: ScoreMateInMaxPly <= s ? s - static_cast<ScoreIndex>(ply)
@@ -232,7 +345,16 @@ public://private:
 			: s);
 	}
 
-	// fitst move によって、first move の相手側の second move を違法手にするか。
+
+	/// <summary>
+	/// fitst move によって、first move の相手側の second move を違法手にするか。
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <typeparam name="THEM"></typeparam>
+	/// <param name="pos"></param>
+	/// <param name="first"></param>
+	/// <param name="second"></param>
+	/// <returns></returns>
 	template<Color US, Color THEM>
 	bool refutes(const Position& pos, const Move first, const Move second) {
 		assert(pos.IsOK());
@@ -240,9 +362,7 @@ public://private:
 		const Square m2to = second.To();
 		const Square m1from = first.From(); // 駒打でも今回はこれで良い。
 
-		if (m1from == m2to) {
-			return true;
-		}
+		if (m1from == m2to) { return true; }
 
 		const PieceType m2ptFrom = second.GetPieceTypeFrom();
 		if (
@@ -271,9 +391,7 @@ public://private:
 				occ ^= g_setMaskBb.GetSetMaskBb(m1from);
 			}
 
-			if (g_setMaskBb.IsSet(&UtilAttack::GetAttacksFrom(m1ptTo, US, m1to, occ), m2to)) {
-				return true;
-			}
+			if (g_setMaskBb.IsSet(&UtilAttack::GetAttacksFrom(m1ptTo, US, m1to, occ), m2to)) { return true; }
 
 			// first で動いた後、sq へ当たりになっている遠隔駒
 			const PieceTypeEvent ptEventL(occ, THEM, m2to);
@@ -284,33 +402,36 @@ public://private:
 				| (PiecetypePrograms::m_BISHOP.GetAttacks2From(ptEventRB) & pos.GetBbOf30<US>(N05_Bishop, N13_Horse));
 
 			// sq へ当たりになっている駒のうち、first で動くことによって新たに当たりになったものがあるなら true
-			if (xray.Exists1Bit() && (xray ^ (xray & g_queenAttackBb.GetControllBb(pos.GetOccupiedBB(), m2to))).Exists1Bit()) {
-				return true;
-			}
+			if (xray.Exists1Bit() && (xray ^ (xray & g_queenAttackBb.GetControllBb(pos.GetOccupiedBB(), m2to))).Exists1Bit()) { return true; }
 		}
 
 		if (!second.IsDrop()
 			&& ConvPieceType::IS_SLIDER10(m2ptFrom)
 			&& g_setMaskBb.IsSet(&g_betweenBb.GetBetweenBB(second.From(), m2to), first.To())
 			&& ScoreZero <= pos.GetSeeSign(first))
-		{
-			return true;
-		}
+		{ return true; }
 
 		return false;
 	}
 
 
 private:
-	//────────────────────────────────────────────────────────────────────────────────
-	// ベストムーブ・チェンジスって何だぜ☆？（＾ｑ＾）
-	//────────────────────────────────────────────────────────────────────────────────
-	// 元の名前：ｂｅｓｔＭｏｖｅＣｈａｎｇｅｓ
-	Ply						m_bestMovePlyChanges_;
 
+
+	/// <summary>
+	///		<pre>
+	/// ベストムーブ・チェンジスって何だぜ☆？（＾ｑ＾）
+	/// 
+	///		- 元の名前：ｂｅｓｔＭｏｖｅＣｈａｎｇｅｓ
+	///		</pre>
+	/// </summary>
+	Ply						m_bestMovePlyChanges_;
 };
 
-// メイン関数で１回だけ呼ばれる。
+
+/// <summary>
+/// メイン関数で１回だけ呼ばれる。
+/// </summary>
 void InitSearchTable();
 
 
@@ -318,8 +439,15 @@ void InitSearchTable();
 // 依存順の関係でここに☆（＾ｑ＾）
 //────────────────────────────────────────────────────────────────────────────────
 
-// 起きろ？
-// 一箇所でしか呼ばないので、FORCE_INLINE
+
+/// <summary>
+///		<pre>
+/// 起きろ？
+/// 一箇所でしか呼ばないので、FORCE_INLINE
+///		</pre>
+/// </summary>
+/// <param name="rucksack"></param>
+/// <returns></returns>
 FORCE_INLINE void HerosPub::WakeUp(Rucksack* rucksack) {
 	// 全員初期化☆？
 	for (size_t i = 0; i < size(); ++i) {
@@ -329,8 +457,14 @@ FORCE_INLINE void HerosPub::WakeUp(Rucksack* rucksack) {
 	this->m_isSleepWhileIdle_ = rucksack->m_engineOptions["Use_Sleeping_Threads"];
 }
 
-// 寝ろ？
-// 一箇所でしか呼ばないので、FORCE_INLINE
+
+/// <summary>
+///		<pre>
+/// 寝ろ？
+/// 一箇所でしか呼ばないので、FORCE_INLINE
+///		</pre>
+/// </summary>
+/// <returns></returns>
 FORCE_INLINE void HerosPub::Sleep() {
 	this->m_isSleepWhileIdle_ = true;
 }

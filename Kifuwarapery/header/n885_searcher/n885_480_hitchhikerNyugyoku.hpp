@@ -7,8 +7,20 @@
 #include "n885_040_rucksack.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 class HitchhikerNyugyoku {
+
+
 public:
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="rucksack"></param>
+	/// <param name="pos"></param>
 	static inline void Travel_885_480(Rucksack& rucksack, const Position& pos)
 	{
 		SYNCCOUT << "info nodes " << pos.GetNodesSearched()
