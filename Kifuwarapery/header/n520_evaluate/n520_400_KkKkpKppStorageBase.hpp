@@ -14,7 +14,14 @@
 #include "../n520_evaluate/n520_300_KPPBoardIndexStartToPiece.hpp"
 
 
-
+/// <summary>
+/// 
+/// </summary>
+/// <typeparam name="Tl"></typeparam>
+/// <typeparam name="Tr"></typeparam>
+/// <param name="lhs"></param>
+/// <param name="rhs"></param>
+/// <returns></returns>
 template <typename Tl, typename Tr>
 inline std::array<Tl, 2> operator += (std::array<Tl, 2>& lhs, const std::array<Tr, 2>& rhs) {
 	lhs[0] += rhs[0];
@@ -23,6 +30,14 @@ inline std::array<Tl, 2> operator += (std::array<Tl, 2>& lhs, const std::array<T
 }
 
 
+/// <summary>
+/// 
+/// </summary>
+/// <typeparam name="Tl"></typeparam>
+/// <typeparam name="Tr"></typeparam>
+/// <param name="lhs"></param>
+/// <param name="rhs"></param>
+/// <returns></returns>
 template <typename Tl, typename Tr>
 inline std::array<Tl, 2> operator -= (std::array<Tl, 2>& lhs, const std::array<Tr, 2>& rhs) {
 	lhs[0] -= rhs[0];
@@ -31,88 +46,273 @@ inline std::array<Tl, 2> operator -= (std::array<Tl, 2>& lhs, const std::array<T
 }
 
 
+/// <summary>
+/// 
+/// </summary>
+/// <typeparam name="KPPType"></typeparam>
+/// <typeparam name="KKPType"></typeparam>
+/// <typeparam name="KKType"></typeparam>
 template <typename KPPType, typename KKPType, typename KKType>
 struct KkKkpKppStorageBase {
 
-	static const int m_R_Mid = 8; // 相対位置の中心のindex
+	/// <summary>
+	/// 相対位置の中心のindex
+	/// </summary>
+	static const int m_R_Mid = 8;
 
-	constexpr int MaxWeight() const { return 1 << 22; } // KPE自体が1/32の寄与。更にKPEの遠隔駒の利きが1マスごとに1/2に減衰する分(最大でKEEの際に8マス離れが2枚)
-														// 更に重みを下げる場合、MaxWeightを更に大きくしておく必要がある。
-														// なぜか clang で static const int MaxWeight を使っても Undefined symbols for architecture x86_64 と言われる。
+
+	/// <summary>
+	/// KPE自体が1/32の寄与。更にKPEの遠隔駒の利きが1マスごとに1/2に減衰する分(最大でKEEの際に8マス離れが2枚)
+	/// 更に重みを下げる場合、MaxWeightを更に大きくしておく必要がある。
+	/// なぜか clang で static const int MaxWeight を使っても Undefined symbols for architecture x86_64 と言われる。
+	/// </summary>
+	/// <returns></returns>
+	constexpr int MaxWeight() const { return 1 << 22; }
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	constexpr int TurnWeight() const { return 8; }
 
-	//────────────────────────────────────────────────────────────────────────────────
-	// KPP
-	//────────────────────────────────────────────────────────────────────────────────
-	// 冗長に配列を確保しているが、対称な関係にある時は常に若いindexの方にアクセスすることにする。
-	// 例えば kpp だったら、k が優先的に小さくなるようする。左右の対称も含めてアクセス位置を決める。
-	// ただし、kkp に関する項目 (kkp, r_kkp_b, r_kkp_h) のみ、GetP は味方の駒として扱うので、k0 < k1 となるとは限らない。
-	struct KPPElements {
-		// （＾ｑ＾）ファイル名に連動しているので、頭に m_ を付けてはいけない☆！
-		KPPType dummy; // 一次元配列に変換したとき、符号で += を表すようにしているが、index = 0 の時は符号を付けられないので、ダミーを置く。
 
+	/// <summary>
+	///		<pre>
+	/// KPP
+	///
+	///		冗長に配列を確保しているが、対称な関係にある時は常に若いindexの方にアクセスすることにする。
+	///		例えば kpp だったら、k が優先的に小さくなるようする。左右の対称も含めてアクセス位置を決める。
+	///		ただし、kkp に関する項目 (kkp, r_kkp_b, r_kkp_h) のみ、GetP は味方の駒として扱うので、k0 < k1 となるとは限らない。
+	///		</pre>
+	/// </summary>
+	struct KPPElements {
+
+		/// <summary>
+		///		<pre>
+		/// （＾ｑ＾）ファイル名に連動しているので、頭に m_ を付けてはいけない☆！
+		/// 一次元配列に変換したとき、符号で += を表すようにしているが、index = 0 の時は符号を付けられないので、ダミーを置く。
+		///		</pre>
+		/// </summary>
+		KPPType dummy;
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KPPType kpp[SquareNoLeftNum][fe_end][fe_end];
-		// 相対位置は[file][rank]の順
+
+		/// <summary>
+		/// 相対位置は[file][rank]の順
+		/// </summary>
 		KPPType r_kpp_bb[N31_PieceNone][17][17][N31_PieceNone][17][17];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KPPType r_kpp_hb[fe_hand_end][N31_PieceNone][17][17];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KPPType xpp[FileNoLeftNum][fe_end][fe_end];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KPPType ypp[RankNum][fe_end][fe_end];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KPPType pp[fe_end][fe_end];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KPPType r_pp_bb[N31_PieceNone][N31_PieceNone][17][17];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KPPType r_pp_hb[fe_hand_end][N31_PieceNone];
 
-		// e は Effect の頭文字で利きを表す。(Control = 利き という説もあり。)
-		// todo: 玉の利きは全く無視しているけれど、それで良いのか？
+		/// <summary>
+		/// e は Effect の頭文字で利きを表す。(Control = 利き という説もあり。)
+		/// TODO: 玉の利きは全く無視しているけれど、それで良いのか？
+		/// </summary>
 		KPPType kpe[SquareNoLeftNum][fe_end][g_COLOR_NUM][SquareNum];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KPPType kee[SquareNoLeftNum][g_COLOR_NUM][SquareNum][g_COLOR_NUM][SquareNum];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KPPType r_kpe_b[N31_PieceNone][17][17][g_COLOR_NUM][17][17];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KPPType r_kpe_h[fe_hand_end][g_COLOR_NUM][17][17];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KPPType r_kee[g_COLOR_NUM][17][17][g_COLOR_NUM][17][17];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KPPType xpe[FileNoLeftNum][fe_end][g_COLOR_NUM][SquareNum];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KPPType xee[FileNoLeftNum][g_COLOR_NUM][SquareNum][g_COLOR_NUM][SquareNum];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KPPType ype[RankNum][fe_end][g_COLOR_NUM][SquareNum];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KPPType yee[RankNum][g_COLOR_NUM][SquareNum][g_COLOR_NUM][SquareNum];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KPPType pe[fe_end][g_COLOR_NUM][SquareNum];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KPPType ee[g_COLOR_NUM][SquareNum][g_COLOR_NUM][SquareNum];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KPPType r_pe_b[N31_PieceNone][g_COLOR_NUM][17][17];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KPPType r_pe_h[fe_hand_end][g_COLOR_NUM];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KPPType r_ee[g_COLOR_NUM][g_COLOR_NUM][17][17];
 	};
-	// （＾ｑ＾）ファイル名に連動しているので、頭に m_ を付けてはいけない☆！
+	/// <summary>
+	/// （＾ｑ＾）ファイル名に連動しているので、頭に m_ を付けてはいけない☆！
+	/// </summary>
 	KPPElements kpps;
 
-	//────────────────────────────────────────────────────────────────────────────────
-	// KKP
-	//────────────────────────────────────────────────────────────────────────────────
+
+	/// <summary>
+	/// KKP
+	/// </summary>
 	struct KKPElements {
-		// （＾ｑ＾）ファイル名に連動しているので、頭に m_ を付けてはいけない☆！
-		KKPType dummy; // 一次元配列に変換したとき、符号で += を表すようにしているが、index = 0 の時は符号を付けられないので、ダミーを置く。
+
+
+		/// <summary>
+		///		<pre>
+		/// （＾ｑ＾）ファイル名に連動しているので、頭に m_ を付けてはいけない☆！
+		/// 一次元配列に変換したとき、符号で += を表すようにしているが、index = 0 の時は符号を付けられないので、ダミーを置く。
+		///		</pre>
+		/// </summary>
+		KKPType dummy;
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KKPType kkp[SquareNoLeftNum][SquareNum][fe_end];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KKPType kp[SquareNoLeftNum][fe_end];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KKPType r_kkp_b[17][17][N31_PieceNone][17][17];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KKPType r_kkp_h[17][17][fe_hand_end];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KKPType r_kp_b[N31_PieceNone][17][17];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KKPType r_kp_h[fe_hand_end];
 
+		/// <summary>
+		/// 
+		/// </summary>
 		KKPType kke[SquareNoLeftNum][SquareNum][g_COLOR_NUM][SquareNum];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KKPType ke[SquareNoLeftNum][g_COLOR_NUM][SquareNum];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KKPType r_kke[17][17][g_COLOR_NUM][17][17];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KKPType r_ke[g_COLOR_NUM][17][17];
 	};
-	// （＾ｑ＾）ファイル名に連動しているので、頭に m_ を付けてはいけない☆！
+	/// <summary>
+	/// （＾ｑ＾）ファイル名に連動しているので、頭に m_ を付けてはいけない☆！
+	/// </summary>
 	KKPElements kkps;
 
-	//────────────────────────────────────────────────────────────────────────────────
-	// KKE
-	//────────────────────────────────────────────────────────────────────────────────
+
+	/// <summary>
+	/// KKE
+	/// </summary>
 	struct KKElements {
-		// （＾ｑ＾）ファイル名に連動しているので、頭に m_ を付けてはいけない☆！
-		KKType dummy; // 一次元配列に変換したとき、符号で += を表すようにしているが、index = 0 の時は符号を付けられないので、ダミーを置く。
+
+
+		/// <summary>
+		/// （＾ｑ＾）ファイル名に連動しているので、頭に m_ を付けてはいけない☆！
+		/// 一次元配列に変換したとき、符号で += を表すようにしているが、index = 0 の時は符号を付けられないので、ダミーを置く。
+		/// </summary>
+		KKType dummy;
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KKType kk[SquareNoLeftNum][SquareNum];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KKType k[SquareNoLeftNum];
+
+		/// <summary>
+		/// 
+		/// </summary>
 		KKType r_kk[17][17];
 	};
-	// （＾ｑ＾）ファイル名に連動しているので、頭に m_ を付けてはいけない☆！
+	/// <summary>
+	/// （＾ｑ＾）ファイル名に連動しているので、頭に m_ を付けてはいけない☆！
+	/// </summary>
 	KKElements kks;
 
 	// これらは↑のメンバ変数に一次元配列としてアクセスする為のもの。
@@ -129,14 +329,33 @@ struct KkKkpKppStorageBase {
 	constexpr size_t GetKkps_end_index() const { return sizeof(kkps) / sizeof(KKPType); }
 	constexpr size_t GetKks_end_index() const { return sizeof(kks) / sizeof(KKType); }
 
+	/// <summary>
+	/// 
+	/// </summary>
 	static const int g_KPPIndicesMax = 3000;
+
+	/// <summary>
+	/// 
+	/// </summary>
 	static const int g_KKPIndicesMax = 130;
+
+	/// <summary>
+	/// 
+	/// </summary>
 	static const int g_KKIndicesMax = 7;
 
-	// KPP に関する相対位置などの次元を落とした位置などのインデックスを全て返す。
-	// 負のインデックスは、正のインデックスに変換した位置の点数を引く事を意味する。
-	// 0 の時だけは正負が不明だが、0 は歩の持ち駒 0 枚を意味していて無効な値なので問題なし。
-	// ptrdiff_t はインデックス、int は寄与の大きさ。MaxWeight分のいくつかで表記することにする。
+	/// <summary>
+	///		<pre>
+	/// KPP に関する相対位置などの次元を落とした位置などのインデックスを全て返す。
+	/// 負のインデックスは、正のインデックスに変換した位置の点数を引く事を意味する。
+	/// 0 の時だけは正負が不明だが、0 は歩の持ち駒 0 枚を意味していて無効な値なので問題なし。
+	/// ptrdiff_t はインデックス、int は寄与の大きさ。MaxWeight分のいくつかで表記することにする。
+	///		</pre>
+	/// </summary>
+	/// <param name="ret"></param>
+	/// <param name="ksq"></param>
+	/// <param name="i"></param>
+	/// <param name="j"></param>
 	void CreateKppIndices(std::pair<ptrdiff_t, int> ret[g_KPPIndicesMax], Square ksq, int i, int j) {
 		int retIdx = 0;
 		// i == j のKP要素はKKPの方で行うので、こちらでは何も有効なindexを返さない。
@@ -509,6 +728,13 @@ struct KkKkpKppStorageBase {
 	}
 
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="ret"></param>
+	/// <param name="ksq0"></param>
+	/// <param name="ksq1"></param>
+	/// <param name="i"></param>
 	void CreateKkpIndices(std::pair<ptrdiff_t, int> ret[g_KKPIndicesMax], Square ksq0, Square ksq1, int i) {
 		int retIdx = 0;
 		if (ksq0 == ksq1) {
@@ -669,6 +895,12 @@ struct KkKkpKppStorageBase {
 	}
 
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="ret"></param>
+	/// <param name="ksq0"></param>
+	/// <param name="ksq1"></param>
 	void CreateKkIndices(std::pair<ptrdiff_t, int> ret[g_KKIndicesMax], Square ksq0, Square ksq1) {
 		int retIdx = 0;
 #if defined EVAL_PHASE1
@@ -719,8 +951,8 @@ struct KkKkpKppStorageBase {
 	}
 
 
-	void clear() { memset(this, 0, sizeof(*this)); } // float 型とかだと規格的に 0 は保証されなかった気がするが実用上問題ないだろう。
-
-
+	/// <summary>
+	/// float 型とかだと規格的に 0 は保証されなかった気がするが実用上問題ないだろう。
+	/// </summary>
+	void clear() { memset(this, 0, sizeof(*this)); }
 };
-

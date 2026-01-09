@@ -5,10 +5,14 @@
 #include "../n113_piece___/n113_200_handPiece.hpp"
 
 
-// 評価関数テーブルのオフセット。
-// f_xxx が味方の駒、e_xxx が敵の駒
-// Bonanza の影響で持ち駒 0 の場合のインデックスが存在するが、参照する事は無い。
-// todo: 持ち駒 0 の位置を詰めてテーブルを少しでも小さくする。(キャッシュに少しは乗りやすい?)
+/// <summary>
+///		<pre>
+/// 評価関数テーブルのオフセット。
+/// f_xxx が味方の駒、e_xxx が敵の駒
+/// Bonanza の影響で持ち駒 0 の場合のインデックスが存在するが、参照する事は無い。
+/// todo: 持ち駒 0 の位置を詰めてテーブルを少しでも小さくする。(キャッシュに少しは乗りやすい?)
+///		</pre>
+/// </summary>
 enum {
 	f_hand_pawn = 0, // 0
 	e_hand_pawn = f_hand_pawn + 19,
@@ -48,8 +52,14 @@ enum {
 };
 
 
+/// <summary>
+/// 
+/// </summary>
 const int g_FVScale = 32;
 
 
+/// <summary>
+/// 
+/// </summary>
 extern const int kppArray[31];//(^q^)
 extern const int kppHandArray[g_COLOR_NUM][HandPieceNum];//(^q^)

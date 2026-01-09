@@ -7,7 +7,15 @@
 #include "../n520_evaluate/n520_150_kppIndexArray.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 struct KPPBoardIndexStartToPiece : public std::unordered_map<int, Piece> {
+
+
+	/// <summary>
+	/// 生成。
+	/// </summary>
 	KPPBoardIndexStartToPiece() {
 		(*this)[f_pawn] = N01_BPawn;
 		(*this)[e_pawn] = N17_WPawn;
@@ -28,6 +36,13 @@ struct KPPBoardIndexStartToPiece : public std::unordered_map<int, Piece> {
 		(*this)[f_dragon] = N14_BDragon;
 		(*this)[e_dragon] = N30_WDragon;
 	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="i"></param>
+	/// <returns></returns>
 	Piece value(const int i) const {
 		const auto it = find(i);
 		if (it == std::end(*this))
@@ -35,5 +50,9 @@ struct KPPBoardIndexStartToPiece : public std::unordered_map<int, Piece> {
 		return it->second;
 	}
 };
-extern KPPBoardIndexStartToPiece g_kppBoardIndexStartToPiece;
 
+
+/// <summary>
+/// 
+/// </summary>
+extern KPPBoardIndexStartToPiece g_kppBoardIndexStartToPiece;

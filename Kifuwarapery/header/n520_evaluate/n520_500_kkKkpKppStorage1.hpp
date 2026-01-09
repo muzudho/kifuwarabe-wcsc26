@@ -4,8 +4,13 @@
 #include "../n520_evaluate/n520_490_KppCacheIo.hpp"
 
 
+/// <summary>
+/// KKKP KPP 評価関数の格納庫（バージョン１）
+/// </summary>
 struct KkKkpKppStorage1 : public KkKkpKppStorageBase<std::array<s16, 2>, std::array<s32, 2>, std::array<s32, 2> > {
-	// 探索時に参照する評価関数テーブル
+	/// <summary>
+	/// 探索時に参照する評価関数テーブル
+	/// </summary>
 	static std::array<s16, 2> KPP[SquareNum][fe_end][fe_end];
 	static std::array<s32, 2> KKP[SquareNum][SquareNum][fe_end];
 	static std::array<s32, 2> KK[SquareNum][SquareNum];
@@ -14,9 +19,17 @@ struct KkKkpKppStorage1 : public KkKkpKppStorageBase<std::array<s16, 2>, std::ar
 #endif
 
 
+	/// <summary>
+	/// 
+	/// </summary>
 	void Clear() { memset(this, 0, sizeof(*this)); }
 
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="str"></param>
+	/// <returns></returns>
 	static std::string AppendSlashIfNone(const std::string& str) {
 		std::string ret = str;
 		if (ret == "")
@@ -27,6 +40,11 @@ struct KkKkpKppStorage1 : public KkKkpKppStorageBase<std::array<s16, 2>, std::ar
 	}
 
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="dirName"></param>
+	/// <param name="Synthesized"></param>
 	void Init(const std::string& dirName, const bool Synthesized) {
 		// 合成された評価関数バイナリがあればそちらを使う。
 		if (Synthesized) {
@@ -55,6 +73,11 @@ struct KkKkpKppStorage1 : public KkKkpKppStorageBase<std::array<s16, 2>, std::ar
 	}
 
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="dirName"></param>
+	/// <returns></returns>
 	static bool ReadSynthesized(const std::string& dirName) {
 #define FOO(x) {														\
 			std::ifstream ifs((AppendSlashIfNone(dirName) + #x "_synthesized.bin").c_str(), std::ios::binary); \
@@ -78,6 +101,10 @@ struct KkKkpKppStorage1 : public KkKkpKppStorageBase<std::array<s16, 2>, std::ar
 	}
 
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="dirName"></param>
 	static void WriteSynthesized(const std::string& dirName) {
 #define FOO(x) {														\
 			std::ofstream ofs((AppendSlashIfNone(dirName) + #x "_synthesized.bin").c_str(), std::ios::binary); \
@@ -99,6 +126,10 @@ struct KkKkpKppStorage1 : public KkKkpKppStorageBase<std::array<s16, 2>, std::ar
 	}
 
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="dirName"></param>
 	static void ReadSomeSynthesized(const std::string& dirName) {
 #define FOO(x) {														\
 			std::ifstream ifs((AppendSlashIfNone(dirName) + #x "_some_synthesized.bin").c_str(), std::ios::binary); \
@@ -121,6 +152,10 @@ struct KkKkpKppStorage1 : public KkKkpKppStorageBase<std::array<s16, 2>, std::ar
 	}
 
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="dirName"></param>
 	static void WriteSomeSynthesized(const std::string& dirName) {
 #define FOO(x) {														\
 			std::ofstream ofs((AppendSlashIfNone(dirName) + #x "_some_synthesized.bin").c_str(), std::ios::binary); \
@@ -226,7 +261,11 @@ struct KkKkpKppStorage1 : public KkKkpKppStorageBase<std::array<s16, 2>, std::ar
 		BASE_PHASE4;							\
 	}
 
-	// .bin ファイルを読み込む。
+
+	/// <summary>
+	/// .bin ファイルを読み込む。
+	/// </summary>
+	/// <param name="dirName"></param>
 	void ReadBins(const std::string& dirName) {
 
 		// 関数定義ここから
@@ -244,6 +283,10 @@ struct KkKkpKppStorage1 : public KkKkpKppStorageBase<std::array<s16, 2>, std::ar
 	}
 
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="dirName"></param>
 	void Write(const std::string& dirName) {
 #define FOO(x) {														\
 			std::ofstream ofs((AppendSlashIfNone(dirName) + #x ".bin").c_str(), std::ios::binary); \
@@ -256,8 +299,14 @@ struct KkKkpKppStorage1 : public KkKkpKppStorageBase<std::array<s16, 2>, std::ar
 #undef READ_BASE_EVAL
 #undef WRITE_BASE_EVAL
 
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="dirName"></param>
 	void SetEvaluate(const std::string& dirName) {
 		KppCacheIo kppCacheIo;
 
@@ -401,11 +450,7 @@ public:
 								SYNCCOUT << "(^q^)KPP: p1=" << std::to_string(p1) << "/" << std::to_string(fe_end) << " writed!" << SYNCENDL;
 #endif
 							}
-							else
-							{
-								// エラー
-								goto gt_EndKPP;
-							}
+							else { goto gt_EndKPP; }// エラー
 #endif
 						}
 					}

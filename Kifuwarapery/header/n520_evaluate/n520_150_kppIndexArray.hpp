@@ -5,7 +5,9 @@
 #include "../n520_evaluate/n520_100_evaluateEnum.hpp"
 
 
-
+/// <summary>
+/// 
+/// </summary>
 const int g_arrKPPIndex[] = {
 	f_hand_pawn, e_hand_pawn, f_hand_lance, e_hand_lance, f_hand_knight,
 	e_hand_knight, f_hand_silver, e_hand_silver, f_hand_gold, e_hand_gold,
@@ -15,68 +17,130 @@ const int g_arrKPPIndex[] = {
 	f_dragon, e_dragon, fe_end
 };
 
+
+/// <summary>
+/// 
+/// </summary>
 class UtilKppIndex {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="i"></param>
+	/// <returns></returns>
 	inline static Square ToSquare(const int i) {
 		const auto it = std::upper_bound(std::begin(g_arrKPPIndex), std::end(g_arrKPPIndex), i);
 		return static_cast<Square>(i - *(it - 1));
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="i"></param>
+	/// <returns></returns>
 	inline static int GetBegin(const int i) {
 		return *(std::upper_bound(std::begin(g_arrKPPIndex), std::end(g_arrKPPIndex), i) - 1);
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="i"></param>
+	/// <returns></returns>
 	inline static bool IsBlack(const int i) {
 		// f_xxx と e_xxx が交互に配列に格納されているので、インデックスが偶数の時は Black
 		return !((std::upper_bound(std::begin(g_arrKPPIndex), std::end(g_arrKPPIndex), i) - 1) - std::begin(g_arrKPPIndex) & 1);
 	}
 
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="i"></param>
+	/// <returns></returns>
 	inline static int KppBlackIndexToWhiteBegin(const int i) {
 		assert(UtilKppIndex::IsBlack(i));
 		return *std::upper_bound(std::begin(g_arrKPPIndex), std::end(g_arrKPPIndex), i);
 	}
 
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="i"></param>
+	/// <returns></returns>
 	inline static int KppWhiteIndexToBlackBegin(const int i) {
 		return *(std::upper_bound(std::begin(g_arrKPPIndex), std::end(g_arrKPPIndex), i) - 2);
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="i"></param>
+	/// <param name="isBlack"></param>
+	/// <returns></returns>
 	inline static int ToOpponentBegin(const int i, const bool isBlack) {
 		return *(std::upper_bound(std::begin(g_arrKPPIndex), std::end(g_arrKPPIndex), i) - static_cast<int>(!isBlack) * 2);
 	}
 
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="i"></param>
+	/// <returns></returns>
 	inline static int ToOpponentBegin(const int i) {
-		// todo: 高速化
+		// TODO: 高速化
 		return ToOpponentBegin(i, UtilKppIndex::IsBlack(i));
 	}
 
 
-
-
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="index"></param>
+	/// <returns></returns>
 	inline static int InverseFileIndexIfLefterThanMiddle(const int index) {
-		if (index < fe_hand_end) return index;
+		if (index < fe_hand_end) { return index; }
+
 		const int begin = UtilKppIndex::GetBegin(index);
 		const Square sq = static_cast<Square>(index - begin);
-		if (sq <= Square::E1) return index;
+		if (sq <= Square::E1) { return index; }
+
 		return static_cast<int>(begin + ConvSquare::INVERSE_FILE40(sq));
 	};
 
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="index"></param>
+	/// <returns></returns>
 	inline static int InverseFileIndexIfOnBoard(const int index) {
-		if (index < fe_hand_end) return index;
+		if (index < fe_hand_end) { return index; }
+
 		const int begin = UtilKppIndex::GetBegin(index);
 		const Square sq = static_cast<Square>(index - begin);
 		return static_cast<int>(begin + ConvSquare::INVERSE_FILE40(sq));
 	};
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="index"></param>
+	/// <returns></returns>
 	inline static int InverseFileIndexOnBoard(const int index) {
 		assert(f_pawn <= index);
 		const int begin = UtilKppIndex::GetBegin(index);
 		const Square sq = static_cast<Square>(index - begin);
 		return static_cast<int>(begin + ConvSquare::INVERSE_FILE40(sq));
 	};
-
 };
