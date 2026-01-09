@@ -15,46 +15,101 @@ class Military;
 class SwordAbstract;
 
 
-// 元の名前は ＳｐｌｉｔＰｏｉｎｔ☆
-// ツリーノードの、分岐しているところだろうか☆（＾ｑ＾）？
+/// <summary>
+///		<pre>
+/// 元の名前は ＳｐｌｉｔＰｏｉｎｔ☆
+/// ツリーノードの、分岐しているところだろうか☆（＾ｑ＾）？
+///		</pre>
+/// </summary>
 struct SplitedNode {
 
-	// 局面か☆
+	/// <summary>
+	/// 局面か☆
+	/// </summary>
 	const Position*		m_position;
 
-	// サーチ・スタック☆
+	/// <summary>
+	/// サーチ・スタック☆
+	/// </summary>
 	const Flashlight*	m_pFlashlightBox;
 
+	/// <summary>
+	/// マスター・スレッド☆
+	/// </summary>
 	Military*				m_masterThread;
 
+	/// <summary>
+	/// 深さ。
+	/// </summary>
 	Depth				m_depth;
 
+	/// <summary>
+	/// ベータ。
+	/// </summary>
 	ScoreIndex				m_beta;
 
-	// スプリット・ポイントは　ノード・タイプを持っている☆？（＾ｑ＾）
+	/// <summary>
+	/// スプリット・ポイントは　ノード・タイプを持っている☆？（＾ｑ＾）
+	/// </summary>
 	const SwordAbstract*		m_pSword01;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	Move				m_threatMove;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	bool				m_cutNode;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	NextmoveEvent*		m_pNextmoveEvent;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	SplitedNode*		m_pParentSplitedNode;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	Mutex				m_mutex;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	volatile u64		m_slavesMask;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	volatile s64		m_nodes;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	volatile ScoreIndex		m_alpha;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	volatile ScoreIndex		m_bestScore;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	volatile Move		m_bestMove;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	volatile int		m_moveCount;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	volatile bool		m_cutoff;
 };

@@ -3,14 +3,31 @@
 #include "../n520_evaluate/n520_700_evaluation09.hpp"
 #include "../n560_timeMng_/n560_100_limitsOfThinking.hpp"
 
+
+// 依存関係の都合を解消。
 class Rucksack;
 
 
+/// <summary>
+/// 時間管理だぜ☆（＾ｑ＾）
+/// </summary>
 class TimeManager {
+
+
 public:
 
-	// 元の名前：Ｉｎｉｔ
-	// Think開始時に初期設定をするぜ☆（＾▽＾）
+
+	/// <summary>
+	///		<pre>
+	/// 元の名前：Ｉｎｉｔ
+	/// Think開始時に初期設定をするぜ☆（＾▽＾）
+	///		</pre>
+	/// </summary>
+	/// <param name="isMoveTime0Clear"></param>
+	/// <param name="limits"></param>
+	/// <param name="currentPly"></param>
+	/// <param name="us"></param>
+	/// <param name="pRucksack"></param>
 	void InitializeTimeManager_OnHitchhikerThinkStarted(
 		bool& isMoveTime0Clear,
 		const LimitsOfThinking& limits, // m_moveTimeを 0にする場合があるぜ☆（＾ｑ＾）
@@ -19,47 +36,88 @@ public:
 		Rucksack* pRucksack		
 		);
 
-	// 本譜の情勢不安定さ☆？をセットするぜ☆
+
+	/// <summary>
+	/// 本譜の情勢不安定さ☆？をセットするぜ☆
+	/// </summary>
+	/// <param name="currBestmovePlyChanges"></param>
+	/// <param name="prevBestmovePlyChanges"></param>
 	void SetPvInstability_AtIterativeDeepeningStarted(
 		const Ply currBestmovePlyChanges,
 		const Ply prevBestmovePlyChanges
 		);
 
-	// 使っていい時間をオーバーしちゃったかどうかだぜ☆（＾ｑ＾）最初の指し手のときに使うぜ☆
+
+	/// <summary>
+	/// 使っていい時間をオーバーしちゃったかどうかだぜ☆（＾ｑ＾）最初の指し手のときに使うぜ☆
+	/// </summary>
+	/// <param name="elapsed"></param>
+	/// <returns></returns>
 	inline bool CanThinking01_TimeOver_AtFirstMove(const int elapsed) { return this->GetTukatteiiTime() < elapsed; }
 
-	// まだ反復深化していいか☆？（＾ｑ＾）
+
+	/// <summary>
+	/// まだ反復深化していいか☆？（＾ｑ＾）
+	/// </summary>
+	/// <param name="elapsed"></param>
+	/// <returns></returns>
 	inline bool CanThinking02_TimeOk_ForIterativeDeepingLoop(const int elapsed) {
 		// 使っていい時間の40%が、消費時間未満の場合。
 		return this->GetTukatteiiTime() * 40 / 100 < elapsed;
 	}
 
-	// 新しく生まれてくる下級戦士の寿命☆（＾ｑ＾）
+
+	/// <summary>
+	/// 新しく生まれてくる下級戦士の寿命☆（＾ｑ＾）
+	/// </summary>
+	/// <returns></returns>
 	inline int GetWarriorLifeTime() { return this->GetTukatteiiTime() / 16; }
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="elapsed"></param>
+	/// <returns></returns>
 	inline bool CanNotNextIteration(const int elapsed) {
 		// 使っていい時間の62%が、消費時間（ミリ秒）に満たない場合。
 		return (this->GetTukatteiiTime() * 62) / 100 < elapsed;
 	}
 
-	// これ以上の時間がないか☆？（＾ｑ＾）
+
+	/// <summary>
+	/// これ以上の時間がないか☆？（＾ｑ＾）
+	/// </summary>
+	/// <param name="timerResolution"></param>
+	/// <param name="elapsed"></param>
+	/// <returns></returns>
 	inline bool IsNoMoreTime(const int timerResolution, const int elapsed) {
 		return this->GetSaidaiEnchoTime() - 2 * timerResolution < elapsed;
 	}
 
+
 private:
+
 
 	//────────────────────────────────────────────────────────────────────────────────
 	// 使っていい思考時間
 	//────────────────────────────────────────────────────────────────────────────────
-	// 元の名前：ＡｖａｉｌａｂｌｅＴｉｍｅ
-	// なんだかんだで、使っちゃうつもりの時間☆（＾ｑ＾）
+
+
+	/// <summary>
+	///		<pre>
+	/// 元の名前：ＡｖａｉｌａｂｌｅＴｉｍｅ
+	/// なんだかんだで、使っちゃうつもりの時間☆（＾ｑ＾）
+	///		</pre>
+	/// </summary>
+	/// <returns></returns>
 	int GetTukatteiiTime() const {
 		// 予定思考タイム　＋　遊びタイム
 		return this->GetYoteiBothTurnTime()
 			//+ this->GetTemeBonusTime()
 			+ this->GetSikoAsobiTime();
 	}
+
 
 	/*
 	//────────────────────────────────────────────────────────────────────────────────
@@ -76,68 +134,134 @@ private:
 	}
 	//*/
 
+
 	//────────────────────────────────────────────────────────────────────────────────
 	// 相手の手番（Oppo teban）で使おうと思っている思考時間
 	//────────────────────────────────────────────────────────────────────────────────
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	inline int GetYosouOppoTurnTime() const {
 		return this->m_yosouOppoTurnTime_;
 	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="value"></param>
 	inline void SetYosouOppoTurnTime(int value) {
 		this->m_yosouOppoTurnTime_ = value;
 	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
 	inline void ZeroclearYosouOppoTurnTime()
 	{
 		this->m_yosouOppoTurnTime_ = 0;
 	}
 
+
 	//────────────────────────────────────────────────────────────────────────────────
 	// 自分の手番と相手の手番の両方（Both turn）で使おうと思っている思考時間
 	//────────────────────────────────────────────────────────────────────────────────
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	inline int GetYoteiBothTurnTime() const {
 		return this->m_yoteiMyTurnTime_ + this->m_yosouOppoTurnTime_;
 	}
 
-	//────────────────────────────────────────────────────────────────────────────────
-	// 自分の手番（My turn）で使おうと思っている思考時間
-	//────────────────────────────────────────────────────────────────────────────────
+
+	/// <summary>
+	/// 自分の手番（My turn）で使おうと思っている思考時間
+	/// </summary>
+	/// <returns></returns>
 	inline int GetYoteiMyTurnTime() const {
 		return this->m_yoteiMyTurnTime_;
 	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="value"></param>
 	inline void SetYoteiMyTurnTime(int value) {
 		this->m_yoteiMyTurnTime_ = value;
 	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="value"></param>
 	inline void IncreaseYoteiMyTurnTime(int value) {
 		this->m_yoteiMyTurnTime_ += value;
 	}
-	// 少なくなっていた場合、更新します。
-	inline void SmallUpdate_YoteiMyTurnTime(int newValue) {
 
+
+	/// <summary>
+	/// 少なくなっていた場合、更新します。
+	/// </summary>
+	/// <param name="newValue"></param>
+	inline void SmallUpdate_YoteiMyTurnTime(int newValue) {
 		if (newValue < this->GetYoteiBothTurnTime() ) {
 			this->SetYoteiMyTurnTime( newValue - this->GetYosouOppoTurnTime() );
 		}
 	}
-	// 大きくなっていた場合、更新します。
-	inline void LargeUpdate_YoteiMyTurnTime(int newValue) {
 
+
+	/// <summary>
+	/// 大きくなっていた場合、更新します。
+	/// </summary>
+	/// <param name="newValue"></param>
+	inline void LargeUpdate_YoteiMyTurnTime(int newValue) {
 		if (this->GetYoteiBothTurnTime() < newValue)
 		{
 			this->SetYoteiMyTurnTime( newValue - this->GetYosouOppoTurnTime() );
 		}
 	}
 
-	//────────────────────────────────────────────────────────────────────────────────
-	// 思考の最大延長時間
-	//────────────────────────────────────────────────────────────────────────────────
+
+	/// <summary>
+	/// 思考の最大延長時間
+	/// </summary>
+	/// <returns></returns>
 	inline int GetSaidaiEnchoTime() const {
 		return this->m_saidaiEnchoTime_;
 	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="value"></param>
 	inline void SetSaidaiEnchoTime(int value) {
 		this->m_saidaiEnchoTime_ = value;
 	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="value"></param>
 	inline void IncreaseSaidaiEnchoTime(int value) {
 		this->m_saidaiEnchoTime_ += value;
 	}
-	// 少なくなっていた場合、更新します。
+
+
+	/// <summary>
+	/// 少なくなっていた場合、更新します。
+	/// </summary>
+	/// <param name="value"></param>
 	inline void SmallUpdate_SaidaiEnchoTime(int value) {
 		this->m_saidaiEnchoTime_ = std::min(
 			this->m_saidaiEnchoTime_, // マキシマム時間
@@ -145,47 +269,68 @@ private:
 			);
 	}
 
-	//────────────────────────────────────────────────────────────────────────────────
-	// 思考の遊び時間
-	//────────────────────────────────────────────────────────────────────────────────
+
+	/// <summary>
+	/// 思考の遊び時間
+	/// </summary>
+	/// <returns></returns>
 	inline int GetSikoAsobiTime() const {
 		return this->m_sikoAsobiTime_;
 	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="value"></param>
 	inline void SetSikoAsobiTime(int value) {
 		this->m_sikoAsobiTime_ = value;
 	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
 	inline void ZeroclearSikoAsobiTime() {
 		this->SetSikoAsobiTime( 0);
 	}
 
+
 private:
+
 
 	//────────────────────────────────────────────────────────────────────────────────
 	// 手目に応じて調整される時間☆
 	//────────────────────────────────────────────────────────────────────────────────
 	//int m_temeBonusTime_;
 
-	//────────────────────────────────────────────────────────────────────────────────
-	// 相手の手番（Oppo turn）で使おうと思っている思考時間
-	//────────────────────────────────────────────────────────────────────────────────
+	
+	/// <summary>
+	/// 相手の手番（Oppo turn）で使おうと思っている思考時間
+	/// </summary>
 	int m_yosouOppoTurnTime_;
 
-	//────────────────────────────────────────────────────────────────────────────────
-	// 自分の手番（my turn）で使おうと思っている思考時間
-	//────────────────────────────────────────────────────────────────────────────────
-	// 元の名前：ＯｐｔｉｍｕｍＳｅａｒｃｈＴｉｍｅ
+	/// <summary>
+	///		<pre>
+	/// 自分の手番（my turn）で使おうと思っている思考時間
+	/// 元の名前：ＯｐｔｉｍｕｍＳｅａｒｃｈＴｉｍｅ
+	///		</pre>
+	/// </summary>
 	int m_yoteiMyTurnTime_;
 
-	//────────────────────────────────────────────────────────────────────────────────
-	// 思考の最大延長時間
-	//────────────────────────────────────────────────────────────────────────────────
-	// 元の名前：ＭａｘｉｍｕｍＳｅａｒｃｈＴｉｍｅ
+	/// <summary>
+	///		<pre>
+	/// 思考の最大延長時間
+	/// 元の名前：ＭａｘｉｍｕｍＳｅａｒｃｈＴｉｍｅ
+	///		</pre>
+	/// </summary>
 	int m_saidaiEnchoTime_;
 
-	//────────────────────────────────────────────────────────────────────────────────
-	// 思考の遊び時間
-	//────────────────────────────────────────────────────────────────────────────────
-	// 元の名前：ｕｎｓｔａｂｌｅＰＶＥｘｔｒａＴｉｍｅ
+	/// <summary>
+	///		<pre>
+	/// 思考の遊び時間
+	/// 元の名前：ｕｎｓｔａｂｌｅＰＶＥｘｔｒａＴｉｍｅ
+	///		</pre>
+	/// </summary>
 	int m_sikoAsobiTime_;
 };
-

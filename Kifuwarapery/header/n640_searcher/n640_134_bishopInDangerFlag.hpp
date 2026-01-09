@@ -1,6 +1,9 @@
 ﻿#pragma once
 
 
+/// <summary>
+/// 角が危ないかどうかのフラグ☆（＾～＾）
+/// </summary>
 enum BishopInDangerFlag {
 	NotBishopInDanger,
 	BlackBishopInDangerIn28,
@@ -9,4 +12,3 @@ enum BishopInDangerFlag {
 	WhiteBishopInDangerIn78,
 	BishopInDangerFlagNum
 };
-

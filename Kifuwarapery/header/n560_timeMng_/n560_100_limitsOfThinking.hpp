@@ -4,18 +4,35 @@
 #include "../n105_color___/n105_100_color.hpp"
 #include "../n119_score___/n119_090_scoreIndex.hpp"	//Ply
 
-// 元の名前：ＬｉｍｉｔｓＴｙｐｅ
-// 時間や探索深さの制限を格納する為の構造体
+
+/// <summary>
+///		<pre>
+/// 元の名前：ＬｉｍｉｔｓＴｙｐｅ
+/// 時間や探索深さの制限を格納する為の構造体
+///		</pre>
+/// </summary>
 class LimitsOfThinking {
+
+
 public:
 
+
+	/// <summary>
+	/// 生成。
+	/// </summary>
 	LimitsOfThinking() {
 		//memset(this, 0, sizeof(LimitsOfThinking));
 	}
 
-	// 元の名前：　ｕｓｅＴｉｍｅＭａｎａｇｅｍｅｎｔ
-	// 時間管理が新品かどうか☆（＾ｑ＾）？
-	// 反復深化探索に潜るために真であることが必要☆
+
+	/// <summary>
+	///		<pre>
+	/// 元の名前：　ｕｓｅＴｉｍｅＭａｎａｇｅｍｅｎｔ
+	/// 時間管理が新品かどうか☆（＾ｑ＾）？
+	/// 反復深化探索に潜るために真であることが必要☆
+	///		</pre>
+	/// </summary>
+	/// <returns></returns>
 	bool IsBrandnewTimeManagement() const {
 		// 以下の全てが 0 の場合に真☆？（＾ｑ＾）
 		return !(
@@ -29,44 +46,76 @@ public:
 			);
 	}
 
-	// 深さ☆？
+
+	/// <summary>
+	/// 深さ☆？
+	/// </summary>
 	Ply m_depth = 0;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	u32 m_nodes01 = 0;
 
-
+	/// <summary>
+	/// 
+	/// </summary>
 	bool m_infinite = false;
 
-    // 相手の思考時間中に、自分も思考するか☆？（＾ｑ＾）
+	/// <summary>
+	/// 相手の思考時間中に、自分も思考するか☆？（＾ｑ＾）
+	/// </summary>
 	bool m_ponder = false;
 
 
 public:
 
 
-	//────────────────────────────────────────────────────────────────────────────────
-	// インクリメントとは何なのか☆？（＾ｑ＾）
-	//────────────────────────────────────────────────────────────────────────────────
-	// フィッシャータイムの追加時間☆？ということにしておこう☆（＾ｑ＾）
+	/// <summary>
+	/// 多分、フィッシャータイムの追加時間☆？（＾ｑ＾）
+	/// </summary>
 	int m_increment[g_COLOR_NUM] = { 0 };
+
+
+	/// <summary>
+    /// 多分、フィッシャータイムの追加時間を取得する☆？（＾ｑ＾）
+	/// </summary>
+	/// <param name="us"></param>
+	/// <returns></returns>
 	inline int GetIncrement(Color us) const {
 		return this->m_increment[us];
 	}
 
 
-	//────────────────────────────────────────────────────────────────────────────────
-	// 残り時間だぜ☆（＾ｑ＾）
-	//────────────────────────────────────────────────────────────────────────────────
-	// 元の名前：ｔｉｍｅ
-	// ミリ秒単位だぜ☆（＾ｑ＾）
+	/// <summary>
+    ///		<pre>
+	/// 残り時間だぜ☆（＾ｑ＾）
+	/// 元の名前：ｔｉｍｅ
+	/// ミリ秒単位だぜ☆（＾ｑ＾）
+	///		</pre>
+	/// </summary>
 	int m_nokoriTime[g_COLOR_NUM] = { 0 };
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="us"></param>
+	/// <returns></returns>
 	inline int GetNokoriTime(Color us)const {
 		return this->m_nokoriTime[us];
 	}
-	// btime, wtime コマンドをそのまま受け取るぜ☆（＾ｑ＾）
+
+
+	/// <summary>
+	/// btime, wtime コマンドをそのまま受け取るぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="us"></param>
+	/// <param name="ssCmd"></param>
 	inline void SetNokoriTimeByStream(Color us, std::istringstream& ssCmd) {
 		ssCmd >> this->m_nokoriTime[us];
 	}
+
 
 	//────────────────────────────────────────────────────────────────────────────────
 	// ムーブス・ツー・ゴーって何☆？（＾ｑ＾）
@@ -74,9 +123,11 @@ public:
 	// FIXME: movesToGo というプロパティを持っていたが、"movesToGo" なんていうコマンドは USI から飛んでこないと思ったので削除したぜ☆（＾ｑ＾）
 	// 時間管理の movesToGo の最大値だったみたいだぜ☆
 
-	//────────────────────────────────────────────────────────────────────────────────
-	// ムーブタイムって何☆？（＾ｑ＾）
-	//────────────────────────────────────────────────────────────────────────────────
+
+	/// <summary>
+	/// ムーブタイムって何☆？（＾ｑ＾）
+	/// </summary>
+	/// <returns></returns>
 	inline int GetMoveTime() const {
 		return this->m_moveTime_;
 	}
