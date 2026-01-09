@@ -7,6 +7,10 @@
 const HitchhikerQsearchPv HitchhikerQsearchPrograms::m_hitchhikerQsearchPv;
 const HitchhikerQsearchNonPv HitchhikerQsearchPrograms::m_hitchhikerQsearchNonPv;
 
+
+/// <summary>
+/// 静止探索プログラム配列
+/// </summary>
 const HitchhikerQsearchAbstract* HitchhikerQsearchPrograms::m_pHitchhikerQsearchPrograms[3] = {
 	nullptr,
 	&HitchhikerQsearchPrograms::m_hitchhikerQsearchPv,

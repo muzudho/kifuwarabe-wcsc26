@@ -8,8 +8,18 @@
 #include "../../header/n885_searcher/n885_310_hitchhikerQsearchAbstract.hpp"
 
 
-// N01_PV か、N02_NonPV でだけ使うことができるぜ☆（＾ｑ＾）
-// スプリット・ポイントかそうでないかは見てないぜ☆
+/// <summary>
+/// N01_PV か、N02_NonPV でだけ使うことができるぜ☆（＾ｑ＾）
+/// スプリット・ポイントかそうでないかは見てないぜ☆
+/// </summary>
+/// <param name="rucksack"></param>
+/// <param name="INCHECK"></param>
+/// <param name="pos"></param>
+/// <param name="pFlashlight"></param>
+/// <param name="alpha"></param>
+/// <param name="beta"></param>
+/// <param name="depth"></param>
+/// <returns></returns>
 ScoreIndex HitchhikerQsearchAbstract::DoQsearch(
 	Rucksack& rucksack,
 	bool INCHECK,
@@ -46,9 +56,7 @@ ScoreIndex HitchhikerQsearchAbstract::DoQsearch(
 	pFlashlight->m_currentMove = bestMove = g_MOVE_NONE;
 	pFlashlight->m_ply = (pFlashlight - 1)->m_ply + 1;
 
-	if (g_maxPly < pFlashlight->m_ply) {
-		return ScoreDraw;
-	}
+	if (g_maxPly < pFlashlight->m_ply) { return ScoreDraw; }
 
 	ttDepth = ((INCHECK || DepthQChecks <= depth) ? DepthQChecks : DepthQNoChecks);
 
@@ -145,9 +153,7 @@ ScoreIndex HitchhikerQsearchAbstract::DoQsearch(
 			bestScore,
 			depth
 			);
-		if (isContinue) {
-			continue;
-		}
+		if (isContinue) { continue; }
 
 		evasionPrunable = (INCHECK
 			&& ScoreMatedInMaxPly < bestScore
@@ -162,9 +168,7 @@ ScoreIndex HitchhikerQsearchAbstract::DoQsearch(
 			ttMove,
 			pos
 			);
-		if (isContinue) {
-			continue;
-		}
+		if (isContinue) { continue; }
 
 		if (!
 			(
@@ -214,16 +218,12 @@ ScoreIndex HitchhikerQsearchAbstract::DoQsearch(
 					ttDepth,
 					move
 					);
-				if (isReturnWithScore) {
-					return returnScore;
-				}
+				if (isReturnWithScore) { return returnScore; }
 			}
 		}
 	}
 
-	if (INCHECK && bestScore == -ScoreInfinite) {
-		return UtilScore::MatedIn(pFlashlight->m_ply);
-	}
+	if (INCHECK && bestScore == -ScoreInfinite) { return UtilScore::MatedIn(pFlashlight->m_ply); }
 
 	rucksack.m_tt.Store(
 		posKey,

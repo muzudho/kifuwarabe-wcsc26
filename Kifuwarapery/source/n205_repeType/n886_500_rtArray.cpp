@@ -11,6 +11,9 @@
 #include "../../header/n886_repeType/n886_500_rtArray.hpp"
 
 
+/// <summary>
+/// 千日手タイプ群☆
+/// </summary>
 const RepetitionTypeNot RepetitionTypeArray::m_repetitionTypeNot;
 const RepetitionTypeDraw RepetitionTypeArray::m_repetitionTypeDraw;
 const RepetitionTypeWin RepetitionTypeArray::m_repetitionTypeWin;
@@ -18,6 +21,10 @@ const RepetitionTypeLose RepetitionTypeArray::m_repetitionTypeLose;
 const RepetitionTypeSuperior RepetitionTypeArray::m_repetitionTypeSuperior;
 const RepetitionTypeInferior RepetitionTypeArray::m_repetitionTypeInferior;
 
+
+/// <summary>
+/// 
+/// </summary>
 const RepetitionTypeAbstract* RepetitionTypeArray::m_repetitionTypeArray[6] = {
 	&RepetitionTypeArray::m_repetitionTypeNot,
 	&RepetitionTypeArray::m_repetitionTypeDraw,

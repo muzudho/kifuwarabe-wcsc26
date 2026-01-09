@@ -49,8 +49,9 @@ extern NodetypeAbstract* g_NODETYPE_PROGRAMS[];
 extern RepetitionTypeArray g_repetitionTypeArray;
 
 
-
-
+/// <summary>
+/// 最初の設定（初期化）を行うぜ☆（＾▽＾）
+/// </summary>
 void Rucksack::Init() {
 	EngineOptionSetup engineOptionSetup;
 	engineOptionSetup.Initialize( &m_engineOptions, this);
@@ -60,6 +61,14 @@ void Rucksack::Init() {
 }
 
 
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pos"></param>
+/// <param name="depth"></param>
+/// <param name="alpha"></param>
+/// <param name="beta"></param>
+/// <returns></returns>
 std::string Rucksack::PvInfoToUSI(Position& pos, const Ply depth, const ScoreIndex alpha, const ScoreIndex beta) {
 
 	// 思考時間（ミリ秒。読み筋表示用）
@@ -105,7 +114,10 @@ std::string Rucksack::PvInfoToUSI(Position& pos, const Ply depth, const ScoreInd
 
 
 #if defined INANIWA_SHIFT
-// 稲庭判定
+/// <summary>
+/// 稲庭判定
+/// </summary>
+/// <param name="GetPos"></param>
 void Rucksack::detectInaniwa(const Position& GetPos) {
 	if (inaniwaFlag == NotInaniwa && 20 <= GetPos.GetGamePly()) {
 		const Rank TRank7 = (GetPos.GetTurn() == Black ? Rank7 : Rank3); // not constant
@@ -117,7 +129,13 @@ void Rucksack::detectInaniwa(const Position& GetPos) {
 	}
 }
 #endif
+
+
 #if defined BISHOP_IN_DANGER
+/// <summary>
+/// 
+/// </summary>
+/// <param name="GetPos"></param>
 void Rucksack::detectBishopInDanger(const Position& GetPos) {
 	if (bishopInDangerFlag == NotBishopInDanger && GetPos.GetGamePly() <= 50) {
 		const Color them = ConvColor::OPPOSITE_COLOR10(GetPos.GetTurn());
@@ -155,6 +173,13 @@ void Rucksack::detectBishopInDanger(const Position& GetPos) {
 	}
 }
 #endif
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="DO"></param>
+/// <param name="backUpSt"></param>
 void Position::DoNullMove(bool DO, StateInfo& backUpSt) {
 	assert(!InCheck());
 
@@ -179,6 +204,10 @@ void Position::DoNullMove(bool DO, StateInfo& backUpSt) {
 }
 
 
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pos"></param>
 void RootMove::ExtractPvFromTT(Position& pos) {
 	StateInfo state[g_maxPlyPlus2];
 	StateInfo* st = state;
@@ -230,6 +259,11 @@ void RootMove::ExtractPvFromTT(Position& pos) {
 	}
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pos"></param>
 void RootMove::InsertPvInTT(Position& pos) {
 	StateInfo state[g_maxPlyPlus2];
 	StateInfo* st = state;
@@ -261,6 +295,10 @@ void RootMove::InsertPvInTT(Position& pos) {
 	}
 }
 
+
+/// <summary>
+/// 
+/// </summary>
 void InitSearchTable() {
 	// todo: パラメータは改善の余地あり。
 
@@ -276,7 +314,9 @@ void InitSearchTable() {
 }
 
 
-
+/// <summary>
+/// 
+/// </summary>
 void Rucksack::CheckTime() {
 	if (m_limits.m_ponder)
 		return;
@@ -331,6 +371,10 @@ void Rucksack::CheckTime() {
 	}
 }
 
+
+/// <summary>
+/// 
+/// </summary>
 void Military::IdleLoop() {
 	SplitedNode* thisSp = m_splitedNodesSize ? m_activeSplitedNode : nullptr;
 	assert(!thisSp || (thisSp->m_masterThread == this && m_searching));
@@ -344,9 +388,7 @@ void Military::IdleLoop() {
 			}
 
 			std::unique_lock<Mutex> lock(m_sleepLock);
-			if (thisSp != nullptr && !thisSp->m_slavesMask) {
-				break;
-			}
+			if (thisSp != nullptr && !thisSp->m_slavesMask) { break; }
 
 			if (!m_searching && !m_exit) {
 				m_sleepCond.wait(lock);
@@ -400,15 +442,16 @@ void Military::IdleLoop() {
 			thisSp->m_mutex.lock();
 			const bool finished = !thisSp->m_slavesMask;
 			thisSp->m_mutex.unlock();
-			if (finished) {
-				return;
-			}
+			if (finished) { return; }
 		}
 	}
 }
 
 
-
+/// <summary>
+/// 
+/// </summary>
+/// <param name="ssCmd"></param>
 void Rucksack::SetOption(std::istringstream& ssCmd) {
 	std::string token;
 	std::string name;
