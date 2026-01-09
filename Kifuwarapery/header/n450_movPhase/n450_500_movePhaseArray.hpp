@@ -7,4 +7,7 @@
 #include "../n450_movPhase/n450_070_movePhaseAbstract.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 extern MovePhaseAbstract* g_movePhaseArray[GenerateMovePhase::GenerateMovePhaseNum];

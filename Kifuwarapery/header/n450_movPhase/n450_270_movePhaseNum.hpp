@@ -11,19 +11,38 @@
 class NextmoveEvent;
 
 
+/// <summary>
+/// 
+/// </summary>
 class MovePhaseNum : public MovePhaseAbstract {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="resultMove"></param>
+	/// <param name="nmEvent"></param>
+	/// <returns></returns>
 	bool GetNext2Move(Move& resultMove, NextmoveEvent& nmEvent) const override {
 		UNREACHABLE;
 		return false;
 	};
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="nmEvent"></param>
 	void GoNext2Phase(NextmoveEvent& nmEvent) override {
 		UNREACHABLE;
 	}
-
 };
 
 
+/// <summary>
+/// 
+/// </summary>
 extern MovePhaseNum g_movePhaseNum;
