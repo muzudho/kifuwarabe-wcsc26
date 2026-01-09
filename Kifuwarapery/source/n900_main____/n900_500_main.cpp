@@ -8,7 +8,12 @@
 
 
 #if defined FIND_MAGIC
-// Magic Bitboard の Magic Number を求める為のソフト
+
+
+/// <summary>
+/// Magic Bitboard の Magic Number を求める為のソフト
+/// </summary>
+/// <returns></returns>
 int main01() {
 	u64 g_rookMagic[SquareNum];
 	u64 g_bishopMagic[SquareNum];
@@ -30,14 +35,23 @@ int main01() {
 	return 0;
 }
 
+
 #else
-// 将棋を指すソフト
+
+
+/// <summary>
+/// 将棋を指すソフト
+/// </summary>
+/// <param name="argc"></param>
+/// <param name="argv"></param>
+/// <returns></returns>
 int main(int argc, char* argv[]) {
 	Main01 main01;
 	main01.Initialize();
 	main01.Body(argc, argv);
 	main01.Finalize();
 }
+
 
 #endif
 

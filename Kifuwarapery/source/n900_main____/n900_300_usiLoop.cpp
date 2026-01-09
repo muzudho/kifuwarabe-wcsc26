@@ -19,8 +19,15 @@
 
 
 #if !defined MINIMUL
-// for debug
-// 指し手生成の速度を計測
+
+
+/// <summary>
+///		<pre>
+/// for debug
+/// 指し手生成の速度を計測
+///		</pre>
+/// </summary>
+/// <param name="pos"></param>
 void measureGenerateMoves(const Position& pos) {
 	pos.Print();
 
@@ -62,6 +69,8 @@ void measureGenerateMoves(const Position& pos) {
 }
 #endif
 
+
+// 将棋エンジン表示名
 #ifdef NDEBUG
 const std::string MyName = "Kifuwarapery(Apery_Twig_SDT3)";
 #else
@@ -69,10 +78,20 @@ const std::string MyName = "Kifuwarapery(Apery) Debug Build";
 #endif
 
 
+/// <summary>
+/// 生成。
+/// </summary>
 UsiLoop::UsiLoop()
 {
 }
 
+
+/// <summary>
+/// メインループ。
+/// </summary>
+/// <param name="argc"></param>
+/// <param name="argv"></param>
+/// <param name="searcher"></param>
 void UsiLoop::Mainloop(int argc, char* argv[], Rucksack& searcher)
 {
 	Position pos(g_DefaultStartPositionSFEN, searcher.m_ownerHerosPub.GetFirstCaptain(), &searcher);

@@ -63,7 +63,17 @@ extern RepetitionTypeArray g_repetitionTypeArray;
 NodetypeSplitedNodeNonPv g_NODETYPE_SPLITEDNODE_NON_PV;
 
 
-//*
+/// <summary>
+/// 
+/// </summary>
+/// <param name="rucksack"></param>
+/// <param name="pos"></param>
+/// <param name="pFlashlight"></param>
+/// <param name="alpha"></param>
+/// <param name="beta"></param>
+/// <param name="depth"></param>
+/// <param name="cutNode"></param>
+/// <returns></returns>
 ScoreIndex NodetypeSplitedNodeNonPv::GoToTheAdventure_new(
 	Rucksack& rucksack,
 	Position& pos,
@@ -130,10 +140,7 @@ ScoreIndex NodetypeSplitedNodeNonPv::GoToTheAdventure_new(
 		excludedMove,
 		ttScore
 		);
-	if (isGotoSplitPointStart)
-	{
-		goto split_point_start;
-	}
+	if (isGotoSplitPointStart) { goto split_point_start; }
 
 	this->DoStep1b(
 		bestScore,
@@ -154,10 +161,7 @@ ScoreIndex NodetypeSplitedNodeNonPv::GoToTheAdventure_new(
 		&pFlashlight
 		);
 
-	if (isReturnWithScore)
-	{
-		return returnScore;
-	}
+	if (isReturnWithScore) { return returnScore; }
 
 	// step3
 	this->DoStep3(
@@ -167,10 +171,7 @@ ScoreIndex NodetypeSplitedNodeNonPv::GoToTheAdventure_new(
 		alpha,
 		beta
 		);
-	if (isReturnWithScore)
-	{
-		return returnScore;
-	}
+	if (isReturnWithScore) { return returnScore; }
 
 	pos.SetNodesSearched(pos.GetNodesSearched() + 1);
 
@@ -201,10 +202,8 @@ ScoreIndex NodetypeSplitedNodeNonPv::GoToTheAdventure_new(
 		&pFlashlight,
 		ttMove
 		);
-	if (isReturnWithScore)
-	{
-		return returnScore;
-	}
+	if (isReturnWithScore) { return returnScore; }
+
 	this->DoStep4z(
 		isReturnWithScore,
 		returnScore,
@@ -218,10 +217,7 @@ ScoreIndex NodetypeSplitedNodeNonPv::GoToTheAdventure_new(
 		depth,
 		bestMove
 		);
-	if (isReturnWithScore)
-	{
-		return returnScore;
-	}
+	if (isReturnWithScore) { return returnScore; }
 
 	// step5
 	bool isGotoIidStart = false;//NonPVのとき使う☆
@@ -237,9 +233,7 @@ ScoreIndex NodetypeSplitedNodeNonPv::GoToTheAdventure_new(
 		posKey,
 		move
 		);
-	if (isGotoIidStart) {
-		goto iid_start;
-	}
+	if (isGotoIidStart) { goto iid_start; }
 
 	// step6
 	this->DoStep6_NonPV(
@@ -253,10 +247,7 @@ ScoreIndex NodetypeSplitedNodeNonPv::GoToTheAdventure_new(
 		pos,
 		&pFlashlight
 		);
-	if (isReturnWithScore)
-	{
-		return returnScore;
-	}
+	if (isReturnWithScore) { return returnScore; }
 
 	// step7
 	this->DoStep7(
@@ -267,10 +258,7 @@ ScoreIndex NodetypeSplitedNodeNonPv::GoToTheAdventure_new(
 		beta,
 		eval
 		);
-	if (isReturnWithScore)
-	{
-		return returnScore;
-	}
+	if (isReturnWithScore) { return returnScore; }
 
 	// step8
 	this->DoStep8_NonPV(
@@ -287,9 +275,7 @@ ScoreIndex NodetypeSplitedNodeNonPv::GoToTheAdventure_new(
 		cutNode,
 		threatMove
 		);
-	if (isReturnWithScore) {
-		return returnScore;
-	}
+	if (isReturnWithScore) { return returnScore; }
 
 	// step9
 	this->DoStep9(
@@ -305,9 +291,7 @@ ScoreIndex NodetypeSplitedNodeNonPv::GoToTheAdventure_new(
 		score,
 		cutNode
 		);
-	if (isReturnWithScore) {
-		return score;
-	}
+	if (isReturnWithScore) { return score; }
 
 	// 内側の反復深化探索☆？（＾ｑ＾）
 iid_start:
@@ -355,10 +339,8 @@ split_point_start:
 			).IsNone()
 		) {
 
-		// DoStep11b
-		if (move == excludedMove) { // ムーブが一致していれば、次のループへ☆
-			continue;
-		}
+		// DoStep11b		 
+		if (move == excludedMove) { continue; }	// ムーブが一致していれば、次のループへ☆
 
 		bool isContinue = false;
 
@@ -370,10 +352,7 @@ split_point_start:
 			moveCount,
 			&pSplitedNode
 			);
-		if (isContinue)
-		{
-			continue;
-		}
+		if (isContinue) { continue; }
 
 		this->DoStep11f_LoopHeader(
 			extension,
@@ -424,10 +403,7 @@ split_point_start:
 			&pFlashlight,
 			beta
 			);
-		if (isContinue)
-		{
-			continue;
-		}
+		if (isContinue) { continue; }
 
 		this->DoStep13c(
 			isContinue,
@@ -451,10 +427,7 @@ split_point_start:
 			playedMoveCount,
 			movesSearched
 			);
-		if (isContinue)
-		{
-			continue;
-		}
+		if (isContinue) { continue; }
 
 		// step14
 		this->DoStep14(
@@ -518,9 +491,7 @@ split_point_start:
 			alpha
 			);
 
-		if (rucksack.m_signals.m_stop || pThisThread->CutoffOccurred()) {
-			return score;
-		}
+		if (rucksack.m_signals.m_stop || pThisThread->CutoffOccurred()) { return score; }
 
 		bool isBreak = false;
 		this->DoStep18c(
@@ -536,16 +507,10 @@ split_point_start:
 			bestMove,
 			beta
 			);
-		if (isBreak) {
-			break;
-		}
+		if (isBreak) { break; }
 	}
 
-	if (this->GetReturnBeforeStep20()) {
-		return bestScore;
-	}
+	if (this->GetReturnBeforeStep20()) { return bestScore; }
 
 	return bestScore;
-
 }
-//*/

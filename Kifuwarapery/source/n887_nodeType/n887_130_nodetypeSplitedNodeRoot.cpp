@@ -63,7 +63,17 @@ extern RepetitionTypeArray g_repetitionTypeArray;
 NodetypeSplitedNodeRoot g_NODETYPE_SPLITEDNODE_ROOT;
 
 
-//*
+/// <summary>
+/// 
+/// </summary>
+/// <param name="rucksack"></param>
+/// <param name="pos"></param>
+/// <param name="pFlashlight"></param>
+/// <param name="alpha"></param>
+/// <param name="beta"></param>
+/// <param name="depth"></param>
+/// <param name="cutNode"></param>
+/// <returns></returns>
 ScoreIndex NodetypeSplitedNodeRoot::GoToTheAdventure_new(
 	Rucksack& rucksack,
 	Position& pos,
@@ -130,10 +140,7 @@ ScoreIndex NodetypeSplitedNodeRoot::GoToTheAdventure_new(
 		excludedMove,
 		ttScore
 		);
-	if (isGotoSplitPointStart)
-	{
-		goto split_point_start;
-	}
+	if (isGotoSplitPointStart) { goto split_point_start; }
 
 	this->DoStep1b(
 		bestScore,
@@ -235,9 +242,7 @@ split_point_start:
 	) {
 
 		// DoStep11b
-		if (move == excludedMove) { // ムーブが一致していれば、次のループへ☆
-			continue;
-		}
+		if (move == excludedMove) { continue; }	// ムーブが一致していれば、次のループへ☆
 
 		bool isContinue = false;
 
@@ -249,20 +254,14 @@ split_point_start:
 			moveCount,
 			&pSplitedNode
 			);
-		if (isContinue)
-		{
-			continue;
-		}
+		if (isContinue) { continue; }
 
 		this->DoStep11d_LoopHeader(
 			isContinue,
 			rucksack,
 			move
 			);
-		if (isContinue)
-		{
-			continue;
-		}
+		if (isContinue) { continue; }
 
 		this->DoStep11e_LoopHeader(
 			rucksack,
@@ -322,10 +321,7 @@ split_point_start:
 			playedMoveCount,
 			movesSearched
 			);
-		if (isContinue)
-		{
-			continue;
-		}
+		if (isContinue) { continue; }
 
 		// step14
 		this->DoStep14(
@@ -400,9 +396,7 @@ split_point_start:
 			alpha
 			);
 
-		if (rucksack.m_signals.m_stop || pThisThread->CutoffOccurred()) {
-			return score;
-		}
+		if (rucksack.m_signals.m_stop || pThisThread->CutoffOccurred()) { return score; }
 
 		this->DoStep18b(
 			rucksack,
@@ -426,16 +420,11 @@ split_point_start:
 			bestMove,
 			beta
 			);
-		if (isBreak) {
-			break;
-		}
+
+		if (isBreak) { break; }
 	}
 
-	if (this->GetReturnBeforeStep20()) {
-		return bestScore;
-	}
+	if (this->GetReturnBeforeStep20()) { return bestScore; }
 
 	return bestScore;
-
 }
-//*/

@@ -63,7 +63,17 @@ extern RepetitionTypeArray g_repetitionTypeArray;
 NodetypePv g_NODETYPE_PV;
 
 
-//*
+/// <summary>
+/// 
+/// </summary>
+/// <param name="rucksack"></param>
+/// <param name="pos"></param>
+/// <param name="pFlashlight"></param>
+/// <param name="alpha"></param>
+/// <param name="beta"></param>
+/// <param name="depth"></param>
+/// <param name="cutNode"></param>
+/// <returns></returns>
 ScoreIndex NodetypePv::GoToTheAdventure_new(
 	Rucksack& rucksack,
 	Position& pos,
@@ -139,10 +149,7 @@ ScoreIndex NodetypePv::GoToTheAdventure_new(
 		&pFlashlight
 		);
 
-	if (isReturnWithScore)
-	{
-		return returnScore;
-	}
+	if (isReturnWithScore) { return returnScore; }
 
 	// step3
 	this->DoStep3(
@@ -152,10 +159,7 @@ ScoreIndex NodetypePv::GoToTheAdventure_new(
 		alpha,
 		beta
 		);
-	if (isReturnWithScore)
-	{
-		return returnScore;
-	}
+	if (isReturnWithScore) { return returnScore; }
 
 	pos.SetNodesSearched(pos.GetNodesSearched() + 1);
 
@@ -186,10 +190,8 @@ ScoreIndex NodetypePv::GoToTheAdventure_new(
 		&pFlashlight,
 		ttMove
 		);
-	if (isReturnWithScore)
-	{
-		return returnScore;
-	}
+	if (isReturnWithScore) { return returnScore; }
+
 	this->DoStep4z(
 		isReturnWithScore,
 		returnScore,
@@ -203,10 +205,7 @@ ScoreIndex NodetypePv::GoToTheAdventure_new(
 		depth,
 		bestMove
 		);
-	if (isReturnWithScore)
-	{
-		return returnScore;
-	}
+	if (isReturnWithScore) { return returnScore; }
 
 	// step5
 	bool isGotoIidStart = false;//NonPVのとき使う☆
@@ -276,9 +275,7 @@ ScoreIndex NodetypePv::GoToTheAdventure_new(
 		) {
 
 		// DoStep11b
-		if (move == excludedMove) { // ムーブが一致していれば、次のループへ☆
-			continue;
-		}
+		if (move == excludedMove) { continue; }// ムーブが一致していれば、次のループへ☆
 
 		bool isContinue = false;
 
@@ -290,12 +287,7 @@ ScoreIndex NodetypePv::GoToTheAdventure_new(
 			moveCount,
 			&pSplitedNode
 			);
-		if (isContinue)
-		{
-			continue;
-		}
-
-
+		if (isContinue) { continue; }
 
 		this->DoStep11f_LoopHeader(
 			extension,
@@ -333,10 +325,8 @@ ScoreIndex NodetypePv::GoToTheAdventure_new(
 			ci,
 			moveCount
 			);
-		if (isContinue)
-		{
-			continue;
-		}
+		if (isContinue) { continue; }
+
 		this->DoStep13c(
 			isContinue,
 			rucksack,
@@ -359,10 +349,8 @@ ScoreIndex NodetypePv::GoToTheAdventure_new(
 			playedMoveCount,
 			movesSearched
 			);
-		if (isContinue)
-		{
-			continue;
-		}
+		if (isContinue) { continue; }
+
 		this->DoStep13d(
 			captureOrPawnPromotion,
 			playedMoveCount,
@@ -411,9 +399,7 @@ ScoreIndex NodetypePv::GoToTheAdventure_new(
 
 		assert(-ScoreInfinite < score && score < ScoreInfinite);
 
-		if (rucksack.m_signals.m_stop || pThisThread->CutoffOccurred()) {
-			return score;
-		}
+		if (rucksack.m_signals.m_stop || pThisThread->CutoffOccurred()) { return score; }
 
 		bool isBreak = false;
 		this->DoStep18c(
@@ -429,9 +415,7 @@ ScoreIndex NodetypePv::GoToTheAdventure_new(
 			bestMove,
 			beta
 			);
-		if (isBreak) {
-			break;
-		}
+		if (isBreak) { break; }
 
 		// step19
 		this->DoStep19(
@@ -450,14 +434,10 @@ ScoreIndex NodetypePv::GoToTheAdventure_new(
 			mp,
 			cutNode
 			);
-		if (isBreak) {
-			break;
-		}
+		if (isBreak) { break; }
 	}
 
-	if (this->GetReturnBeforeStep20()) {
-		return bestScore;
-	}
+	if (this->GetReturnBeforeStep20()) { return bestScore; }
 
 	// step20
 	this->DoStep20(
@@ -478,6 +458,4 @@ ScoreIndex NodetypePv::GoToTheAdventure_new(
 		);
 
 	return bestScore;
-
 }
-//*/

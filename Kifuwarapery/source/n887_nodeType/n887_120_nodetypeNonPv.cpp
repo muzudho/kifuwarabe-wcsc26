@@ -63,7 +63,17 @@ extern RepetitionTypeArray g_repetitionTypeArray;
 NodetypeNonPv g_NODETYPE_NON_PV;
 
 
-//*
+/// <summary>
+/// 
+/// </summary>
+/// <param name="rucksack"></param>
+/// <param name="pos"></param>
+/// <param name="pFlashlight"></param>
+/// <param name="alpha"></param>
+/// <param name="beta"></param>
+/// <param name="depth"></param>
+/// <param name="cutNode"></param>
+/// <returns></returns>
 ScoreIndex NodetypeNonPv::GoToTheAdventure_new(
 	Rucksack& rucksack,
 	Position& pos,
@@ -134,11 +144,7 @@ ScoreIndex NodetypeNonPv::GoToTheAdventure_new(
 		rucksack,
 		&pFlashlight
 		);
-
-	if (isReturnWithScore)
-	{
-		return returnScore;
-	}
+	if (isReturnWithScore) { return returnScore; }
 
 	// step3
 	this->DoStep3(
@@ -148,10 +154,7 @@ ScoreIndex NodetypeNonPv::GoToTheAdventure_new(
 		alpha,
 		beta
 		);
-	if (isReturnWithScore)
-	{
-		return returnScore;
-	}
+	if (isReturnWithScore) { return returnScore; }
 
 	pos.SetNodesSearched(pos.GetNodesSearched() + 1);
 
@@ -182,10 +185,8 @@ ScoreIndex NodetypeNonPv::GoToTheAdventure_new(
 		&pFlashlight,
 		ttMove
 		);
-	if (isReturnWithScore)
-	{
-		return returnScore;
-	}
+	if (isReturnWithScore) { return returnScore; }
+
 	this->DoStep4z(
 		isReturnWithScore,
 		returnScore,
@@ -199,10 +200,7 @@ ScoreIndex NodetypeNonPv::GoToTheAdventure_new(
 		depth,
 		bestMove
 		);
-	if (isReturnWithScore)
-	{
-		return returnScore;
-	}
+	if (isReturnWithScore) { return returnScore; }
 
 	// step5
 	bool isGotoIidStart = false;//NonPVのとき使う☆
@@ -218,9 +216,7 @@ ScoreIndex NodetypeNonPv::GoToTheAdventure_new(
 		posKey,
 		move
 		);
-	if (isGotoIidStart) {
-		goto iid_start;
-	}
+	if (isGotoIidStart) { goto iid_start; }
 
 	// step6
 	this->DoStep6_NonPV(
@@ -234,10 +230,7 @@ ScoreIndex NodetypeNonPv::GoToTheAdventure_new(
 		pos,
 		&pFlashlight
 		);
-	if (isReturnWithScore)
-	{
-		return returnScore;
-	}
+	if (isReturnWithScore) { return returnScore; }
 
 	// step7
 	this->DoStep7(
@@ -248,10 +241,7 @@ ScoreIndex NodetypeNonPv::GoToTheAdventure_new(
 		beta,
 		eval
 		);
-	if (isReturnWithScore)
-	{
-		return returnScore;
-	}
+	if (isReturnWithScore) { return returnScore; }
 
 	// step8
 	this->DoStep8_NonPV(
@@ -268,9 +258,7 @@ ScoreIndex NodetypeNonPv::GoToTheAdventure_new(
 		cutNode,
 		threatMove
 		);
-	if (isReturnWithScore) {
-		return returnScore;
-	}
+	if (isReturnWithScore) { return returnScore; }
 
 	// step9
 	this->DoStep9(
@@ -286,9 +274,7 @@ ScoreIndex NodetypeNonPv::GoToTheAdventure_new(
 		score,
 		cutNode
 		);
-	if (isReturnWithScore) {
-		return score;
-	}
+	if (isReturnWithScore) { return score; }
 
 	// 内側の反復深化探索☆？（＾ｑ＾）
 iid_start:
@@ -337,9 +323,7 @@ iid_start:
 		) {
 
 		// DoStep11b
-		if (move == excludedMove) { // ムーブが一致していれば、次のループへ☆
-			continue;
-		}
+		if (move == excludedMove) { continue; }	// ムーブが一致していれば、次のループへ☆
 
 		bool isContinue = false;
 
@@ -351,10 +335,7 @@ iid_start:
 			moveCount,
 			&pSplitedNode
 			);
-		if (isContinue)
-		{
-			continue;
-		}
+		if (isContinue) { continue; }
 
 		this->DoStep11f_LoopHeader(
 			extension,
@@ -405,10 +386,8 @@ iid_start:
 			&pFlashlight,
 			beta
 			);
-		if (isContinue)
-		{
-			continue;
-		}
+		if (isContinue) { continue; }
+
 		this->DoStep13b(
 			isContinue,
 			pos,
@@ -416,10 +395,8 @@ iid_start:
 			ci,
 			moveCount
 			);
-		if (isContinue)
-		{
-			continue;
-		}
+		if (isContinue) { continue; }
+
 		this->DoStep13c(
 			isContinue,
 			rucksack,
@@ -442,10 +419,8 @@ iid_start:
 			playedMoveCount,
 			movesSearched
 			);
-		if (isContinue)
-		{
-			continue;
-		}
+		if (isContinue) { continue; }
+
 		this->DoStep13d(
 			captureOrPawnPromotion,
 			playedMoveCount,
@@ -505,9 +480,7 @@ iid_start:
 
 		// step18
 
-		if (rucksack.m_signals.m_stop || pThisThread->CutoffOccurred()) {
-			return score;
-		}
+		if (rucksack.m_signals.m_stop || pThisThread->CutoffOccurred()) { return score; }
 
 		this->DoStep18b(
 			rucksack,
@@ -531,9 +504,7 @@ iid_start:
 			bestMove,
 			beta
 			);
-		if (isBreak) {
-			break;
-		}
+		if (isBreak) { break; }
 
 		// step19
 		this->DoStep19(
@@ -552,14 +523,10 @@ iid_start:
 			mp,
 			cutNode
 			);
-		if (isBreak) {
-			break;
-		}
+		if (isBreak) { break; }
 	}
 
-	if (this->GetReturnBeforeStep20()) {
-		return bestScore;
-	}
+	if (this->GetReturnBeforeStep20()) { return bestScore; }
 
 	// step20
 	this->DoStep20(
@@ -580,6 +547,4 @@ iid_start:
 		);
 
 	return bestScore;
-
 }
-//*/

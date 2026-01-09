@@ -22,18 +22,27 @@
 #include "..\..\header\n900_main____\n900_400_main01.hpp"
 
 
-
-
+/// <summary>
+/// 生成。
+/// </summary>
 Main01::Main01()
 {
 	this->searcher = std::unique_ptr<Rucksack>(new Rucksack);
 }
 
+
+/// <summary>
+/// 破棄。
+/// </summary>
 Main01::~Main01()
 {
 	this->searcher.reset();
 }
 
+
+/// <summary>
+/// 最初の設定（初期化）。
+/// </summary>
 void Main01::Initialize()
 {
 	//────────────────────────────────────────────────────────────────────────────────
@@ -106,15 +115,24 @@ void Main01::Initialize()
 	SYNCCOUT << "(^q^)main(4/6): start Evaluater init!" << SYNCENDL;
 	std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->Init(this->searcher->m_engineOptions["Eval_Dir"], true);
 	SYNCCOUT << "(^q^)main(5/6): end Evaluater init! ----> doUSICommandLoop" << SYNCENDL;
-
 }
 
+
+/// <summary>
+/// ループ本体。
+/// </summary>
+/// <param name="argc"></param>
+/// <param name="argv"></param>
 void Main01::Body(int argc, char* argv[])
 {
 	UsiLoop usiLoop;
 	usiLoop.Mainloop(argc, argv, *this->searcher);
 }
 
+
+/// <summary>
+/// 事後処理。
+/// </summary>
 void Main01::Finalize()
 {
 	SYNCCOUT << "(^q^)main(6/6): threads.exit! ----> doUSICommandLoop" << SYNCENDL;

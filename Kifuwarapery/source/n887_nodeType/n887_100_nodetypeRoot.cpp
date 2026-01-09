@@ -63,7 +63,17 @@ extern RepetitionTypeArray g_repetitionTypeArray;
 NodetypeRoot g_NODETYPE_ROOT;
 
 
-//*
+/// <summary>
+/// 
+/// </summary>
+/// <param name="rucksack"></param>
+/// <param name="pos"></param>
+/// <param name="pFlashlight"></param>
+/// <param name="alpha"></param>
+/// <param name="beta"></param>
+/// <param name="depth"></param>
+/// <param name="cutNode"></param>
+/// <returns></returns>
 ScoreIndex NodetypeRoot::GoToTheAdventure_new(
 	Rucksack& rucksack,
 	Position& pos,
@@ -214,9 +224,7 @@ ScoreIndex NodetypeRoot::GoToTheAdventure_new(
 		) {
 
 		// DoStep11b
-		if (move == excludedMove) { // ムーブが一致していれば、次のループへ☆
-			continue;
-		}
+		if (move == excludedMove) { continue; }	// ムーブが一致していれば、次のループへ☆
 
 		bool isContinue = false;
 
@@ -228,20 +236,14 @@ ScoreIndex NodetypeRoot::GoToTheAdventure_new(
 			moveCount,
 			&pSplitedNode
 			);
-		if (isContinue)
-		{
-			continue;
-		}
+		if (isContinue) { continue; }
 
 		this->DoStep11d_LoopHeader(
 			isContinue,
 			rucksack,
 			move
 			);
-		if (isContinue)
-		{
-			continue;
-		}
+		if (isContinue) { continue; }
 
 		this->DoStep11e_LoopHeader(
 			rucksack,
@@ -299,10 +301,8 @@ ScoreIndex NodetypeRoot::GoToTheAdventure_new(
 			playedMoveCount,
 			movesSearched
 			);
-		if (isContinue)
-		{
-			continue;
-		}
+		if (isContinue) { continue; }
+
 		this->DoStep13d(
 			captureOrPawnPromotion,
 			playedMoveCount,
@@ -373,9 +373,7 @@ ScoreIndex NodetypeRoot::GoToTheAdventure_new(
 
 		// step18
 
-		if (rucksack.m_signals.m_stop || pThisThread->CutoffOccurred()) {
-			return score;
-		}
+		if (rucksack.m_signals.m_stop || pThisThread->CutoffOccurred()) { return score; }
 
 		this->DoStep18b(
 			rucksack,
@@ -420,14 +418,10 @@ ScoreIndex NodetypeRoot::GoToTheAdventure_new(
 			mp,
 			cutNode
 			);
-		if (isBreak) {
-			break;
-		}
+		if (isBreak) { break; }
 	}
 
-	if (this->GetReturnBeforeStep20()) {
-		return bestScore;
-	}
+	if (this->GetReturnBeforeStep20()) { return bestScore; }
 
 	// step20
 	this->DoStep20(
@@ -448,6 +442,4 @@ ScoreIndex NodetypeRoot::GoToTheAdventure_new(
 		);
 
 	return bestScore;
-
 }
-//*/
