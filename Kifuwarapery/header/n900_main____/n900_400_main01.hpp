@@ -8,9 +8,19 @@
 #include "../n885_searcher/n885_040_rucksack.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 class Main01 {
+
+
 public:
+
+	/// <summary>
+	/// Rucksack？ 探索者☆？（＾ｑ＾）
+	/// </summary>
 	std::unique_ptr<Rucksack> searcher;
+
 
 public:
 	Main01();

@@ -7,9 +7,24 @@
 #include "../n885_searcher/n885_040_rucksack.hpp"
 
 
+/// <summary>
+/// USIプロトコルのループ☆（＾ｑ＾）
+/// </summary>
 class UsiLoop {
 public:
+
+
+	/// <summary>
+	/// ループ開始（＾▽＾）
+	/// </summary>
 	UsiLoop();
 
+
+	/// <summary>
+    /// メインループ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="argc"></param>
+	/// <param name="argv"></param>
+	/// <param name="searcher"></param>
 	void Mainloop(int argc, char* argv[], Rucksack& searcher);
 };
