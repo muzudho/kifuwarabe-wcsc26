@@ -18,6 +18,9 @@
 #include "../../header/n450_movPhase/n450_260_phStop.hpp"
 
 
+/// <summary>
+/// 手番ごとの指し手生成フェーズ配列☆（＾ｑ＾） 
+/// </summary>
 MovePhaseAbstract* g_movePhaseArray[GenerateMovePhase::GenerateMovePhaseNum] = {
 	&g_mainSearch,
 	&g_phTacticalMoves0,

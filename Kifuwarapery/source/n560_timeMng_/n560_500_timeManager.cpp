@@ -209,8 +209,11 @@ namespace {
 }
 
 
-
-// 旧名：ＳｅｔＰｖＩｎｓｔａｂｉｌｉｔｙ
+/// <summary>
+/// 旧名：ＳｅｔＰｖＩｎｓｔａｂｉｌｉｔｙ
+/// </summary>
+/// <param name="currBestMovePlyChanges"></param>
+/// <param name="prevBestMovePlyChanges"></param>
 void TimeManager::SetPvInstability_AtIterativeDeepeningStarted(
 	const Ply currBestMovePlyChanges,
 	const Ply prevBestMovePlyChanges
@@ -223,16 +226,21 @@ void TimeManager::SetPvInstability_AtIterativeDeepeningStarted(
 }
 
 
-
-
+/// <summary>
+/// 
+/// </summary>
+/// <param name="isMoveTime0Clear"></param>
+/// <param name="limits"></param>
+/// <param name="currentPly"></param>
+/// <param name="us"></param>
+/// <param name="pRucksack"></param>
 void TimeManager::InitializeTimeManager_OnHitchhikerThinkStarted(
 	bool& isMoveTime0Clear,// false を入れてくれ☆（＾ｑ＾）
 	const LimitsOfThinking& limits, // m_moveTimeを 0にする場合があるぜ☆（＾ｑ＾）
 	const Ply currentPly,
 	const Color us,
-	Rucksack* pRucksack
-	) {
-
+	Rucksack* pRucksack)
+{
 	const Color them = ConvColor::OPPOSITE_COLOR10b(us);
 
 	const int emergencyMoveHorizon = pRucksack->m_engineOptions["Emergency_Move_Horizon"];

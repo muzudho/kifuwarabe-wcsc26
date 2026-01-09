@@ -7,6 +7,12 @@
 #include <shlwapi.h>	// ファイル／ディレクトリ操作用 shlwapi.lib へのリンクが必要。
 
 
+/// <summary>
+/// Lv3ファイル群からLv2ファイルを合成します。 
+/// </summary>
+/// <param name="dirName"></param>
+/// <param name="k1"></param>
+/// <returns></returns>
 bool KppCacheIo::SynthesizeLv3To2(const std::string & dirName, int k1)
 {
 #if !defined(SKIP_KPP_EVAL_LOOP) // KPP評価値ファイルの作成をスキップする設定なら、この関数は実行しません。
@@ -88,7 +94,15 @@ bool KppCacheIo::SynthesizeLv3To2(const std::string & dirName, int k1)
 #endif
 }
 
-// KPPのファイル分割
+
+/// <summary>
+/// KPPのファイル分割
+/// </summary>
+/// <param name="dirName"></param>
+/// <param name="k1"></param>
+/// <param name="p1"></param>
+/// <param name="kppArray"></param>
+/// <returns></returns>
 bool KppCacheIo::WriteLv3Files(const std::string & dirName, int k1, int p1, std::array<s16, 2> kppArray[SquareNum][fe_end][fe_end])
 {
 	bool isError = false;
@@ -155,6 +169,14 @@ bool KppCacheIo::WriteLv3Files(const std::string & dirName, int k1, int p1, std:
 	return !isError;
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="cache3Filepath"></param>
+/// <param name="k1"></param>
+/// <param name="p1"></param>
+/// <param name="kppArray"></param>
 void KppCacheIo::WriteLv3FilesBody(const std::string & cache3Filepath, int k1, int p1, std::array<s16, 2> kppArray[SquareNum][fe_end][fe_end])
 {
 	std::ofstream output(cache3Filepath, std::ios::binary);
@@ -187,6 +209,14 @@ void KppCacheIo::WriteLv3FilesBody(const std::string & cache3Filepath, int k1, i
 	}
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="dirName"></param>
+/// <param name="k1"></param>
+/// <param name="kppArray"></param>
+/// <returns></returns>
 bool KppCacheIo::ReadLv2Files(const std::string & dirName, int k1, std::array<s16, 2> kppArray[SquareNum][fe_end][fe_end])
 {
 #if defined(MODE_CACHE_EVAL)
@@ -239,6 +269,15 @@ bool KppCacheIo::ReadLv2Files(const std::string & dirName, int k1, std::array<s1
 #endif
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="dirName"></param>
+/// <param name="k1"></param>
+/// <param name="p1"></param>
+/// <param name="kppArray"></param>
+/// <returns></returns>
 bool KppCacheIo::ReadLv3Files(const std::string & dirName, int k1, int p1, std::array<s16, 2> kppArray[SquareNum][fe_end][fe_end])
 {
 #if defined(MODE_CACHE_EVAL)
@@ -285,6 +324,13 @@ bool KppCacheIo::ReadLv3Files(const std::string & dirName, int k1, int p1, std::
 #endif
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="dirName"></param>
+/// <param name="k1"></param>
+/// <returns></returns>
 std::string KppCacheIo::GetLv2FilePath(const std::string & dirName, int k1)
 {
 	std::string dir1 = KkKkpKppStorage1::AppendSlashIfNone(dirName) + "obj";
@@ -292,6 +338,14 @@ std::string KppCacheIo::GetLv2FilePath(const std::string & dirName, int k1)
 	return file2;
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="dirName"></param>
+/// <param name="k1"></param>
+/// <param name="p1"></param>
+/// <returns></returns>
 std::string KppCacheIo::GetLv3FilePath(const std::string & dirName, int k1, int p1)
 {
 	//SYNCCOUT << "(Write) File: dirName=[" << dirName << "]" << SYNCENDL;

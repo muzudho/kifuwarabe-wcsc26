@@ -1,18 +1,19 @@
 ﻿#include <algorithm>
 #include "../../header/n480_tt______/n480_300_tt.hpp"
 
-void TranspositionTable::SetSize(const size_t mbSize) { // Mega Byte 指定
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="mbSize">Mega Byte 指定</param>
+void TranspositionTable::SetSize(const size_t mbSize) {
 	// 確保する要素数を取得する。
 	size_t newSize = (mbSize << 20) / sizeof(TTCluster);
 	newSize = std::max(static_cast<size_t>(1024), newSize); // 最小値は 1024 としておく。
 	// 確保する要素数は 2 のべき乗である必要があるので、MSB以外を捨てる。
 	const int msbIndex = 63 - firstOneFromMSB(static_cast<u64>(newSize));
 	newSize = UINT64_C(1) << msbIndex;
-
-	if (newSize == this->GetSize()) {
-		// 現在と同じサイズなら何も変更する必要がない。
-		return;
-	}
+	if (newSize == this->GetSize()) { return; }	// 現在と同じサイズなら何も変更する必要がない。
 
 	m_size_ = newSize;
 	delete [] m_entries_;
@@ -24,10 +25,24 @@ void TranspositionTable::SetSize(const size_t mbSize) { // Mega Byte 指定
 	Clear();
 }
 
+
+/// <summary>
+/// 
+/// </summary>
 void TranspositionTable::Clear() {
 	memset(m_entries_, 0, GetSize() * sizeof(TTCluster));
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="posKey"></param>
+/// <param name="score"></param>
+/// <param name="bound"></param>
+/// <param name="depth"></param>
+/// <param name="move"></param>
+/// <param name="evalScore"></param>
 void TranspositionTable::Store(
 	const Key posKey,
 	const ScoreIndex score,
@@ -69,6 +84,12 @@ void TranspositionTable::Store(
 				  bound, this->GetGeneration(), evalScore);
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="posKey"></param>
+/// <returns></returns>
 TTEntry* TranspositionTable::Probe(const Key posKey) const {
 	const Key posKeyHigh32 = posKey >> 32;
 	TTEntry* tte = FirstEntry(posKey);
@@ -76,9 +97,8 @@ TTEntry* TranspositionTable::Probe(const Key posKey) const {
 	// firstEntry() で、posKey の下位 (size() - 1) ビットを hash key に使用した。
 	// ここでは posKey の上位 32bit が 保存されている hash key と同じか調べる。
 	for (int i = 0; i < g_clusterSize; ++i, ++tte) {
-		if (tte->GetKey() == posKeyHigh32) {
-			return tte;
-		}
+		if (tte->GetKey() == posKeyHigh32) { return tte; }
 	}
+
 	return nullptr;
 }

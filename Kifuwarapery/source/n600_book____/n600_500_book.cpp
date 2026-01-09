@@ -9,12 +9,30 @@
 #include "../../header/n885_searcher/n885_040_rucksack.hpp"
 
 
-MT64bit Book::m_mt64bit_; // 定跡のhash生成用なので、seedは固定でデフォルト値を使う。
+/// <summary>
+/// 定跡のhash生成用なので、seedは固定でデフォルト値を使う。
+/// </summary>
+MT64bit Book::m_mt64bit_;
+
+/// <summary>
+/// 
+/// </summary>
 Key Book::m_ZobPiece[N31_PieceNone][SquareNum];
-Key Book::m_ZobHand[HandPieceNum][19]; // 持ち駒の同一種類の駒の数ごと
+
+/// <summary>
+/// 持ち駒の同一種類の駒の数ごと
+/// </summary>
+Key Book::m_ZobHand[HandPieceNum][19];
+
+/// <summary>
+/// 
+/// </summary>
 Key Book::m_ZobTurn;
 
 
+/// <summary>
+/// 
+/// </summary>
 void Book::Init() {
 	for (Piece p = N00_Empty; p < N31_PieceNone; ++p) {
 		for (Square sq = I9; sq < SquareNum; ++sq) {
@@ -29,6 +47,12 @@ void Book::Init() {
 	m_ZobTurn = m_mt64bit_.GetRandom();
 }
 
+
+/// <summary>
+/// 定跡ファイルを開くぜ☆（＾▽＾） 
+/// </summary>
+/// <param name="fName"></param>
+/// <returns></returns>
 bool Book::OpenBook(const char* fName) {
 	this->m_fileName_ = "";
 
@@ -37,10 +61,7 @@ bool Book::OpenBook(const char* fName) {
 	}
 
 	std::ifstream::open(fName, std::ifstream::in | std::ifstream::binary | std::ios::ate);
-
-	if (!is_open()) {
-		return false;
-	}
+	if (!is_open()) { return false; }
 
 	this->m_size_ = tellg() / sizeof(BookEntry);
 
@@ -53,6 +74,11 @@ bool Book::OpenBook(const char* fName) {
 	return true;
 }
 
+
+/// <summary>
+/// 二分木探索を行うぜ☆（＾▽＾）
+/// </summary>
+/// <param name="key"></param>
 void Book::Binary_search(const Key key) {
 	size_t low = 0;
 	size_t high = m_size_ - 1;
@@ -82,6 +108,12 @@ void Book::Binary_search(const Key key) {
 	seekg(low * sizeof(BookEntry), std::ios_base::beg);
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pos"></param>
+/// <returns></returns>
 Key Book::GetBookKey(const Position& pos) {
 	Key key = 0;
 	Bitboard bb = pos.GetOccupiedBB();
@@ -100,6 +132,14 @@ Key Book::GetBookKey(const Position& pos) {
 	return key;
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="position"></param>
+/// <param name="fName"></param>
+/// <param name="pickBest"></param>
+/// <returns></returns>
 MoveAndScoreIndex Book::GetProbe(const Position& position, const std::string& fName, const bool pickBest) {
 	BookEntry entry;
 	u16 best = 0;
@@ -151,23 +191,37 @@ MoveAndScoreIndex Book::GetProbe(const Position& position, const std::string& fN
 	return MoveAndScoreIndex(move, score);
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="b1"></param>
+/// <param name="b2"></param>
+/// <returns></returns>
 inline bool countCompare(const BookEntry& b1, const BookEntry& b2) {
 	return b1.m_count < b2.m_count;
 }
 
+
 #if !defined MINIMUL
-// 以下のようなフォーマットが入力される。
-// <棋譜番号> <日付> <先手名> <後手名> <0:引き分け, 1:先手勝ち, 2:後手勝ち> <総手数> <棋戦名前> <戦形>
-// <CSA1行形式の指し手>
-//
-// (例)
-// 1 2003/09/08 羽生善治 谷川浩司 2 126 王位戦 その他の戦型
-// 7776FU3334FU2726FU4132KI
-//
-// 勝った方の手だけを定跡として使うこととする。
-// 出現回数がそのまま定跡として使う確率となる。
-// 基本的には棋譜を丁寧に選別した上で定跡を作る必要がある。
-// MAKE_SEARCHED_BOOK を on にしていると、定跡生成に非常に時間が掛かる。
+
+
+/// <summary>
+/// 以下のようなフォーマットが入力される。
+/// <棋譜番号> <日付> <先手名> <後手名> <0:引き分け, 1:先手勝ち, 2:後手勝ち> <総手数> <棋戦名前> <戦形>
+/// <CSA1行形式の指し手>
+///
+/// (例)
+/// 1 2003/09/08 羽生善治 谷川浩司 2 126 王位戦 その他の戦型
+/// 7776FU3334FU2726FU4132KI
+///
+/// 勝った方の手だけを定跡として使うこととする。
+/// 出現回数がそのまま定跡として使う確率となる。
+/// 基本的には棋譜を丁寧に選別した上で定跡を作る必要がある。
+/// MAKE_SEARCHED_BOOK を on にしていると、定跡生成に非常に時間が掛かる。
+/// </summary>
+/// <param name="pos"></param>
+/// <param name="ssCmd"></param>
 void MakeBook(Position& pos, std::istringstream& ssCmd) {
 	std::string fileName;
 	ssCmd >> fileName;
@@ -176,6 +230,7 @@ void MakeBook(Position& pos, std::istringstream& ssCmd) {
 		std::cout << "I cannot open " << fileName << std::endl;
 		return;
 	}
+
 	std::string line;
 	std::map<Key, std::vector<BookEntry> > bookMap;
 
@@ -198,6 +253,7 @@ void MakeBook(Position& pos, std::istringstream& ssCmd) {
 			std::cout << "!!! header only !!!" << std::endl;
 			return;
 		}
+
 		pos.Set(g_DefaultStartPositionSFEN, pos.GetRucksack()->m_ownerHerosPub.GetFirstCaptain());
 		StateStackPtr SetUpStates = StateStackPtr(new std::stack<StateInfo>());
 		UsiOperation usiOperation;
@@ -209,6 +265,7 @@ void MakeBook(Position& pos, std::istringstream& ssCmd) {
 				std::cout << "!!! Illegal move = " << moveStrCSA << " !!!" << std::endl;
 				break;
 			}
+
 			line.erase(0, 6); // 先頭から6文字削除
 			if (pos.GetTurn() == saveColor) {
 				// 先手、後手の内、片方だけを記録する。
@@ -232,7 +289,7 @@ void MakeBook(Position& pos, std::istringstream& ssCmd) {
 				if (isFind == false) {
 #if defined MAKE_SEARCHED_BOOK
 					SetUpStates->push(StateInfo());
-					pos.GetTurn()==Color::Black
+					pos.GetTurn()==Color::Black	// 自分が先手か？
 						?
 						pos.DoMove<Color::Black,Color::White>(move, SetUpStates->top())
 						:
@@ -263,16 +320,15 @@ void MakeBook(Position& pos, std::istringstream& ssCmd) {
 			}
 			SetUpStates->push(StateInfo());
 
-			pos.GetTurn() == Color::Black
+            pos.GetTurn() == Color::Black	// 自分が先手か？
 				?
 				pos.DoMove<Color::Black,Color::White>(move, SetUpStates->top())
 				:
 				pos.DoMove<Color::White,Color::Black>(move, SetUpStates->top())
 				;
-			
-
 		}
 	}
+
 
 	// BookEntry::count の値で降順にソート
 	for (auto& elem : bookMap) {

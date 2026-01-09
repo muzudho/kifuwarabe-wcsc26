@@ -8,7 +8,12 @@
 #include "../../header/n520_evaluate/n520_700_evaluation09.hpp"
 
 
-
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pos"></param>
+/// <param name="index"></param>
+/// <returns></returns>
 EvalSum Evaluation09::doapc(const Position& pos, const int index[2]) {
 	const Square sq_bk = pos.GetKingSquare(Black);
 	const Square sq_wk = pos.GetKingSquare(White);
@@ -44,8 +49,12 @@ EvalSum Evaluation09::doapc(const Position& pos, const int index[2]) {
 }
 
 
-
-
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pos"></param>
+/// <param name="index"></param>
+/// <returns></returns>
 std::array<s32, 2> Evaluation09::doablack(const Position& pos, const int index[2]) {
 	const Square sq_bk = pos.GetKingSquare(Black);
 	const int* list0 = pos.GetCplist0();
@@ -60,7 +69,12 @@ std::array<s32, 2> Evaluation09::doablack(const Position& pos, const int index[2
 }
 
 
-
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pos"></param>
+/// <param name="index"></param>
+/// <returns></returns>
 std::array<s32, 2> Evaluation09::doawhite(const Position& pos, const int index[2]) {
 	const Square sq_wk = pos.GetKingSquare(White);
 	const int* list1 = pos.GetCplist1();
@@ -75,8 +89,14 @@ std::array<s32, 2> Evaluation09::doawhite(const Position& pos, const int index[2
 }
 
 
-
 #if defined INANIWA_SHIFT
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="GetPos"></param>
+/// <returns></returns>
 ScoreIndex Evaluation09::inaniwaScoreBody(const Position& GetPos) {
 	ScoreIndex GetScore = ScoreZero;
 	if (GetPos.GetConstRucksack()->inaniwaFlag == InaniwaIsBlack) {
@@ -93,8 +113,7 @@ ScoreIndex Evaluation09::inaniwaScoreBody(const Position& GetPos) {
 		if (GetPos.GetPiece(E3) == N01_BPawn) { GetScore += 200 * g_FVScale; }
 		if (GetPos.GetPiece(E4) == N01_BPawn) { GetScore += 200 * g_FVScale; }
 		if (GetPos.GetPiece(E5) == N01_BPawn) { GetScore += 200 * g_FVScale; }
-}
-	else {
+	} else {
 		assert(GetPos.GetConstRucksack()->inaniwaFlag == InaniwaIsWhite);
 		if (GetPos.GetPiece(B1) == N03_BKnight) { GetScore -= 700 * g_FVScale; }
 		if (GetPos.GetPiece(H1) == N03_BKnight) { GetScore -= 700 * g_FVScale; }
@@ -112,21 +131,34 @@ ScoreIndex Evaluation09::inaniwaScoreBody(const Position& GetPos) {
 	}
 	return GetScore;
 }
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="GetPos"></param>
+/// <returns></returns>
 inline ScoreIndex Evaluation09::inaniwaScore(const Position& GetPos) {
 	if (GetPos.GetConstRucksack()->inaniwaFlag == NotInaniwa) return ScoreZero;
 	return inaniwaScoreBody(GetPos);
 }
+
+
 #endif
 
 
-
-
-bool Evaluation09::calcDifference(Position& pos, Flashlight* ss) {
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pos"></param>
+/// <param name="ss"></param>
+/// <returns></returns>
+bool Evaluation09::calcDifference(Position& pos, Flashlight* ss)
+{
 #if defined INANIWA_SHIFT
-	if (GetPos.GetConstRucksack()->inaniwaFlag != NotInaniwa) return false;
+	if (GetPos.GetConstRucksack()->inaniwaFlag != NotInaniwa) { return false; }
 #endif
-	if ((ss - 1)->m_staticEvalRaw.m_p[0][0] == ScoreNotEvaluated)
-		return false;
+	if ((ss - 1)->m_staticEvalRaw.m_p[0][0] == ScoreNotEvaluated) { return false; }
 
 	const Move lastMove = (ss - 1)->m_currentMove;
 	assert(lastMove.GetValue() != Move::m_NULL);
@@ -225,8 +257,14 @@ bool Evaluation09::calcDifference(Position& pos, Flashlight* ss) {
 }
 
 
-
-
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pos"></param>
+/// <param name="list0"></param>
+/// <param name="list1"></param>
+/// <param name="nlist"></param>
+/// <returns></returns>
 int Evaluation09::make_list_unUseDiff(const Position& pos, int list0[EvalList::m_ListSize], int list1[EvalList::m_ListSize], int nlist) {
 	auto func = [&](const Bitboard& posBB, const int f_pt, const int e_pt) {
 		Square sq;
@@ -259,7 +297,11 @@ int Evaluation09::make_list_unUseDiff(const Position& pos, int list0[EvalList::m
 }
 
 
-
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pos"></param>
+/// <param name="ss"></param>
 void Evaluation09::evaluateBody(Position& pos, Flashlight* ss) {
 	if (this->calcDifference(pos, ss)) {
 		assert([&] {
@@ -329,8 +371,11 @@ void Evaluation09::evaluateBody(Position& pos, Flashlight* ss) {
 }
 
 
-
-// todo: 無名名前空間に入れる。
+/// <summary>
+/// TODO: 無名名前空間に入れる。
+/// </summary>
+/// <param name="pos"></param>
+/// <returns></returns>
 ScoreIndex Evaluation09::evaluateUnUseDiff(const Position& pos) {
 	int list0[EvalList::m_ListSize];
 	int list1[EvalList::m_ListSize];
@@ -400,6 +445,12 @@ ScoreIndex Evaluation09::evaluateUnUseDiff(const Position& pos) {
 }
 
 
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pos"></param>
+/// <param name="ss"></param>
+/// <returns></returns>
 ScoreIndex Evaluation09::evaluate(Position& pos, Flashlight* ss) {
 	if (ss->m_staticEvalRaw.m_p[0][0] != ScoreNotEvaluated) {
 		const ScoreIndex score = static_cast<ScoreIndex>(ss->m_staticEvalRaw.GetSum(pos.GetTurn()));

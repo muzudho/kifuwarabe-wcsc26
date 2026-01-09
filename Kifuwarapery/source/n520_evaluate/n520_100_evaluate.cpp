@@ -26,6 +26,10 @@ const s32 KkKkpKppStorage1::K_Fix_Offset[SquareNum] = {
 
 EvaluateHashTable g_evalTable;
 
+
+/// <summary>
+/// ［玉］、［それ以外の駒１］、［それ以外の駒２］の配列。
+/// </summary>
 const int kppArray[31] = {
 	0,        f_pawn,   f_lance,  f_knight,
 	f_silver, f_bishop, f_rook,   f_gold,   
@@ -38,6 +42,9 @@ const int kppArray[31] = {
 	e_gold,   e_horse,  e_dragon
 };
 
+/// <summary>
+/// 持ち駒。
+/// </summary>
 const int kppHandArray[g_COLOR_NUM][HandPieceNum] = {
 	{f_hand_pawn, f_hand_lance, f_hand_knight, f_hand_silver,
 	 f_hand_gold, f_hand_bishop, f_hand_rook},

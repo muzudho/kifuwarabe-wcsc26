@@ -13,6 +13,9 @@
 #include "../../header/n405_moveType/n405_500_mtArray.hpp"
 
 
+/// <summary>
+/// 駒を取る手、取らない手、駒打ち、成る手、成らない手、逃げる手、逃げない手、合法手全て、何もしない手、の配列☆ 
+/// </summary>
 const MoveTypeCapture				MoveTypeArray::m_moveTypeCapture;
 const MoveTypeNonCapture			MoveTypeArray::m_moveTypeNonCapture;
 const MoveTypeDrop					MoveTypeArray::m_moveTypeDrop;

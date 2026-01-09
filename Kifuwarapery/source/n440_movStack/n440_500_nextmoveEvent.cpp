@@ -33,12 +33,24 @@
 #include "../../header/n640_searcher/n640_440_splitedNode.hpp"	// 持ち合いになっているが .cpp だからいいかだぜ☆（＾ｑ＾）
 
 
-
+/// <summary>
+/// 履歴ヒューリスティクス☆ 
+/// </summary>
 using History = Stats<false>;
 
 
-// （＾ｑ＾）元の名前は ＭｏｖｅＰｉｃｋｅｒ☆
-// 指し手を選ぶ関数の引数として使われるぜ☆（＾ｑ＾）
+/// <summary>
+///		<pre>
+/// （＾ｑ＾）元の名前は ＭｏｖｅＰｉｃｋｅｒ☆
+/// 指し手を選ぶ関数の引数として使われるぜ☆（＾ｑ＾）
+///		</pre>
+/// </summary>
+/// <param name="pos"></param>
+/// <param name="ttm"></param>
+/// <param name="depth"></param>
+/// <param name="history"></param>
+/// <param name="pFlashlightBox"></param>
+/// <param name="beta"></param>
 NextmoveEvent::NextmoveEvent(
 	const Position& pos,
 	const Move ttm,
@@ -90,7 +102,15 @@ NextmoveEvent::NextmoveEvent(
 	this->m_lastMove_ += (!this->m_ttMove_.IsNone());
 }
 
-// 静止探索で呼ばれる。
+
+/// <summary>
+/// 静止探索で呼ばれる。
+/// </summary>
+/// <param name="pos"></param>
+/// <param name="ttm"></param>
+/// <param name="depth"></param>
+/// <param name="history"></param>
+/// <param name="sq"></param>
 NextmoveEvent::NextmoveEvent(
 	const Position& pos, Move ttm, const Depth depth, const History& history, const Square sq
 )
@@ -122,6 +142,14 @@ NextmoveEvent::NextmoveEvent(
 	m_lastMove_ += !m_ttMove_.IsNone();
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pos"></param>
+/// <param name="ttm"></param>
+/// <param name="history"></param>
+/// <param name="pt"></param>
 NextmoveEvent::NextmoveEvent(
 	const Position& pos, const Move ttm, const History& history, const PieceType pt
 )
@@ -159,10 +187,21 @@ NextmoveEvent::NextmoveEvent(
 	m_lastMove_ += !m_ttMove_.IsNone();
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
 Move NextmoveEvent::GetNextMove_SplitedNode() {
 	// 分岐点の次のノード☆？（＾ｑ＾）？
 	return this->m_pFlashlightBox_->m_splitedNode->m_pNextmoveEvent->GetNextMove_NonSplitedNode();
 }
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
 Move NextmoveEvent::GetNextMove_NonSplitedNode() {
 	do {
 		// lastMove() に達したら次の phase に移る。
@@ -172,14 +211,15 @@ Move NextmoveEvent::GetNextMove_NonSplitedNode() {
 
 		Move resultMove;
 		bool isGotNext = g_movePhaseArray[GetPhase()]->GetNext2Move(resultMove, *this);
-
-		if (isGotNext) {
-			return resultMove;
-		}
+		if (isGotNext) { return resultMove; }
 
 	} while (true);
 }
 
+
+/// <summary>
+///
+/// </summary>
 const ScoreIndex LVATable[g_PIECETYPE_NUM] = {
 	ScoreIndex(0),
 	ScoreIndex(1),
@@ -199,6 +239,10 @@ const ScoreIndex LVATable[g_PIECETYPE_NUM] = {
 };
 inline ScoreIndex LVA(const PieceType pt) { return LVATable[pt]; }
 
+
+/// <summary>
+/// 
+/// </summary>
 void NextmoveEvent::ScoreCaptures() {
 	for (MoveStack* curr = GetCurrMove(); curr != GetLastMove(); ++curr) {
 		const Move move = curr->m_move;
@@ -206,6 +250,10 @@ void NextmoveEvent::ScoreCaptures() {
 	}
 }
 
+
+/// <summary>
+/// 
+/// </summary>
 void NextmoveEvent::ScoreEvasions() {
 	for (MoveStack* curr = GetCurrMove(); curr != GetLastMove(); ++curr) {
 		const Move move = curr->m_move;
@@ -226,6 +274,10 @@ void NextmoveEvent::ScoreEvasions() {
 	}
 }
 
+
+/// <summary>
+/// 
+/// </summary>
 void NextmoveEvent::GoNextPhase() {
 	m_currMove_ = GetFirstMove(); // legalMoves_[0] は番兵
 	++m_phase_;
