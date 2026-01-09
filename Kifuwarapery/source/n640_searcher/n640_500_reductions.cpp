@@ -4,6 +4,9 @@
 Reductions g_reductions;
 
 
+/// <summary>
+/// 最初の設定（初期化）を行うぜ☆（＾▽＾）
+/// </summary>
 void Reductions::Initialize()
 {
 	// Init reductions array

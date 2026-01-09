@@ -11,19 +11,40 @@
 
 
 //namespace {
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="s"></param>
+/// <returns></returns>
 template <typename T> T* newThread(Rucksack* s) {
 	T* th = new T(s);
 	th->m_handle = std::thread(&Military::IdleLoop, th); // move constructor
 	return th;
 }
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="th"></param>
 void deleteThread(Military* th) {
 	th->m_exit = true;
 	th->NotifyOne();
 	th->m_handle.join(); // Wait for thread termination
 	delete th;
 }
+
+
 //}
 
+
+/// <summary>
+/// 最初の設定（初期化）を行うぜ☆（＾▽＾）
+/// </summary>
+/// <param name="s"></param>
 void HerosPub::Init(Rucksack* s) {
 	m_isSleepWhileIdle_ = true;
 #if defined LEARN
@@ -34,6 +55,10 @@ void HerosPub::Init(Rucksack* s) {
 	ReadUSIOptions(s);
 }
 
+
+/// <summary>
+/// 
+/// </summary>
 void HerosPub::Exit() {
 #if defined LEARN
 #else
@@ -46,6 +71,11 @@ void HerosPub::Exit() {
 	}
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="searcher"></param>
 void HerosPub::ReadUSIOptions(Rucksack* searcher) {
 
 	this->m_maxThreadsPerSplitedNode_ = searcher->m_engineOptions["Max_Threads_per_Split_Point"];
@@ -73,6 +103,12 @@ void HerosPub::ReadUSIOptions(Rucksack* searcher) {
 	}
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="master"></param>
+/// <returns></returns>
 Military* HerosPub::GetAvailableSlave(Military* master) const {
 	for (auto elem : *this) {
 		if (elem->IsAvailableTo(master)) {
@@ -82,18 +118,33 @@ Military* HerosPub::GetAvailableSlave(Military* master) const {
 	return nullptr;
 }
 
-// 元の引数名はｍｓｅｃ☆
+
+/// <summary>
+/// 元の引数名はｍｓｅｃ☆
+/// </summary>
+/// <param name="maxPly"></param>
 void HerosPub::SetCurrWorrior(const int maxPly) {
 	m_pWarrior_->m_maxPly = maxPly;
 	m_pWarrior_->NotifyOne(); // Wake up and restart the timer
 }
 
+
+/// <summary>
+/// 
+/// </summary>
 void HerosPub::WaitForThinkFinished() {
 	Captain* t = GetFirstCaptain();
 	std::unique_lock<Mutex> lock(t->m_sleepLock);
 	m_sleepCond_.wait(lock, [&] { return !(t->m_isThinking); });
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="position"></param>
+/// <param name="limits"></param>
+/// <param name="searchMoves"></param>
 void HerosPub::StartThinking(
 	const Position& position,
 	const LimitsOfThinking& limits,

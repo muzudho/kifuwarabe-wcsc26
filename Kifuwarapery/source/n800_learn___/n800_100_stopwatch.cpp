@@ -1,12 +1,19 @@
 ﻿#include "../../header/n800_learn___/n800_100_stopwatch.hpp"
 
 
+/// <summary>
+/// 再スタート☆
+/// </summary>
 void Stopwatch::Restart()
 {
 	this->m_start_ = std::chrono::system_clock::now();
 }
 
-// 経過ミリ秒☆？
+
+/// <summary>
+/// 経過ミリ秒☆
+/// </summary>
+/// <returns></returns>
 int Stopwatch::GetElapsed() const
 {
 	using std::chrono::duration_cast;
@@ -18,6 +25,11 @@ int Stopwatch::GetElapsed() const
 	);
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
 Stopwatch Stopwatch::CreateStopwatchByCurrentTime()
 {
 	Stopwatch t;

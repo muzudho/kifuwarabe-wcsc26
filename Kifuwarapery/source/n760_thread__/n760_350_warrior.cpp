@@ -3,6 +3,9 @@
 #include "../../header/n885_searcher/n885_040_rucksack.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 void Warrior::IdleLoop() {
 	while (!this->m_exit) {
 		{

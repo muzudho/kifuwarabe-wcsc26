@@ -22,37 +22,61 @@ Military::Military(Rucksack* searcher) /*: ＳｐｌｉｔＰｏｉｎｔｓ()*/
 	this->m_idx = searcher->m_ownerHerosPub.size();
 }
 
+
 void Military::NotifyOne() {
 	std::unique_lock<Mutex> lock(m_sleepLock);
 	m_sleepCond.notify_one();
 }
 
+
 bool Military::CutoffOccurred() const {
 	for (SplitedNode* sp = m_activeSplitedNode; sp != nullptr; sp = sp->m_pParentSplitedNode) {
-		if (sp->m_cutoff) {
-			return true;
-		}
+		if (sp->m_cutoff) { return true; }
 	}
 	return false;
 }
 
-// master と同じ thread であるかを判定
+
+/// <summary>
+/// master と同じ thread であるかを判定
+/// </summary>
+/// <param name="master"></param>
+/// <returns></returns>
 bool Military::IsAvailableTo(Military* master) const {
-	if (m_searching) {
-		return false;
-	}
+	if (m_searching) { return false; }
 
 	// ローカルコピーし、途中で値が変わらないようにする。
 	const int spCount = m_splitedNodesSize;
 	return !spCount || (m_SplitedNodes[spCount - 1].m_slavesMask & (UINT64_C(1) << master->m_idx));
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="b"></param>
 void Military::WaitFor(volatile const bool& b) {
 	std::unique_lock<Mutex> lock(m_sleepLock);
 	m_sleepCond.wait(lock, [&] { return b; });
 }
 
 
+/// <summary>
+/// 
+/// </summary>
+/// <typeparam name="Fake"></typeparam>
+/// <param name="pos"></param>
+/// <param name="pFlashlightBox"></param>
+/// <param name="alpha"></param>
+/// <param name="beta"></param>
+/// <param name="bestScore"></param>
+/// <param name="bestMove"></param>
+/// <param name="depth"></param>
+/// <param name="threatMove"></param>
+/// <param name="moveCount"></param>
+/// <param name="mp"></param>
+/// <param name="pSword"></param>
+/// <param name="cutNode"></param>
 template <bool Fake>
 void Military::ForkNewFighter(
 	Position& pos,
@@ -140,12 +164,46 @@ void Military::ForkNewFighter(
 	splitedNode.m_mutex.unlock();
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pos"></param>
+/// <param name="ss"></param>
+/// <param name="alpha"></param>
+/// <param name="beta"></param>
+/// <param name="bestScore"></param>
+/// <param name="bestMove"></param>
+/// <param name="depth"></param>
+/// <param name="threatMove"></param>
+/// <param name="moveCount"></param>
+/// <param name="mp"></param>
+/// <param name="pSword"></param>
+/// <param name="cutNode"></param>
+/// <returns></returns>
 template void Military::ForkNewFighter<true >(
 	Position& pos, Flashlight* ss, const ScoreIndex alpha, const ScoreIndex beta, ScoreIndex& bestScore,
 	Move& bestMove, const Depth depth, const Move threatMove, const int moveCount,
 	NextmoveEvent& mp, const SwordAbstract* pSword, const bool cutNode
 );
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pos"></param>
+/// <param name="ss"></param>
+/// <param name="alpha"></param>
+/// <param name="beta"></param>
+/// <param name="bestScore"></param>
+/// <param name="bestMove"></param>
+/// <param name="depth"></param>
+/// <param name="threatMove"></param>
+/// <param name="moveCount"></param>
+/// <param name="mp"></param>
+/// <param name="pSword"></param>
+/// <param name="cutNode"></param>
+/// <returns></returns>
 template void Military::ForkNewFighter<false>(
 	Position& pos, Flashlight* ss, const ScoreIndex alpha, const ScoreIndex beta, ScoreIndex& bestScore,
 	Move& bestMove, const Depth depth, const Move threatMove, const int moveCount,

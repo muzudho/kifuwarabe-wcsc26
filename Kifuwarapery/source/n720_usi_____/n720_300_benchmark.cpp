@@ -10,7 +10,10 @@
 #include "../../header/n885_searcher/n885_040_rucksack.hpp"
 
 
-// 今はベンチマークというより、PGO ビルドの自動化の為にある。
+/// <summary>
+/// 今はベンチマークというより、PGO ビルドの自動化の為にある。
+/// </summary>
+/// <param name="pos"></param>
 void Benchmark(Position& pos) {
 	std::string token;
 	LimitsOfThinking limits;

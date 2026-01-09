@@ -8,7 +8,13 @@
 const SwordPv g_SWORD_PV;
 
 
-// 依存関係の都合上、インラインにはしないぜ☆（＾ｑ＾）
+/// <summary>
+/// 依存関係の都合上、インラインにはしないぜ☆（＾ｑ＾）
+/// </summary>
+/// <param name="ownerSplitedNode"></param>
+/// <param name="rucksack"></param>
+/// <param name="pos"></param>
+/// <param name="pFlashlight"></param>
 void SwordPv::GoSearch_AsSplitedNode(
 	SplitedNode& ownerSplitedNode, 
 	Rucksack& rucksack,

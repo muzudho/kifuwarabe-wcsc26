@@ -4,6 +4,10 @@
 //ScoreIndex g_FutilityMargins[16][64]; // [depth][moveCount]
 FutilityMargins g_futilityMargins;
 
+
+/// <summary>
+/// 最初の設定（初期化）を行うぜ☆（＾▽＾） 
+/// </summary>
 void FutilityMargins::Initialize()
 {
 	//int iDepth;  // depth (ONE_PLY == 2)

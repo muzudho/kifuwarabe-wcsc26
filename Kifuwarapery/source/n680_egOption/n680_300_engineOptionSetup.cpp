@@ -7,13 +7,46 @@
 
 // 初期化の値を取ってくるのに使います。
 namespace {
+
+
+	/// <summary>
+	/// USIエンジン用のオプションが変化したときに呼び出されるコールバック関数群☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="s"></param>
+	/// <param name="opt"></param>
 	void onHashSize(Rucksack* s, const EngineOptionable& opt) { s->m_tt.SetSize(opt); }
+
+
+	/// <summary>
+    /// USIエンジン用のオプションが変化したときに呼び出されるコールバック関数群☆（＾ｑ＾） 
+	/// </summary>
+	/// <param name="s"></param>
+	/// <param name=""></param>
 	void onClearHash(Rucksack* s, const EngineOptionable&) { s->m_tt.Clear(); }
+
+
+	/// <summary>
+    /// USIエンジン用のオプションが変化したときに呼び出されるコールバック関数群☆（＾ｑ＾） 
+	/// </summary>
+	/// <param name=""></param>
+	/// <param name="opt"></param>
 	void onEvalDir(Rucksack*, const EngineOptionable& opt) {
 		std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->Init(opt, true);
 	}
+
+
+	/// <summary>
+    /// USIエンジン用のオプションが変化したときに呼び出されるコールバック関数群☆（＾ｑ＾） 
+	/// </summary>
+	/// <param name="s"></param>
+	/// <param name=""></param>
 	void onThreads(Rucksack* s, const EngineOptionable&) { s->m_ownerHerosPub.ReadUSIOptions(s); }
-	// 論理的なコア数の取得
+
+
+	/// <summary>
+	/// 論理的なコア数の取得
+	/// </summary>
+	/// <returns></returns>
 	inline int cpuCoreCount() {
 		// todo: boost::thread::physical_concurrency() を使うこと。
 		// std::thread::hardware_concurrency() は 0 を返す可能性がある。
@@ -22,7 +55,11 @@ namespace {
 }
 
 
-// USIエンジン用のオプションを初期設定するぜ☆
+/// <summary>
+/// USIエンジン用のオプションを初期設定するぜ☆
+/// </summary>
+/// <param name="pMap"></param>
+/// <param name="pRucksack"></param>
 void EngineOptionSetup::Initialize(EngineOptionsMap* pMap, Rucksack * pRucksack)
 {
 	pMap->Put("USI_Hash"					, EngineOption(256, 1, 65536, onHashSize, pRucksack));

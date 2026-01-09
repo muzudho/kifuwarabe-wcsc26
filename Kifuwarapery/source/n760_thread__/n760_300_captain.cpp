@@ -4,6 +4,9 @@
 #include "../../header/n885_searcher/n885_040_rucksack.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 void Captain::IdleLoop() {
 	while (true) {// エグジットするまで　ずっといるぜ☆
 		{
@@ -16,9 +19,7 @@ void Captain::IdleLoop() {
 			}
 		}
 
-		if (this->m_exit) {
-			return;
-		}
+		if (this->m_exit) { return; }
 
 		this->m_searching = true;
 		Hitchhiker::Think(*this->m_pRucksack);

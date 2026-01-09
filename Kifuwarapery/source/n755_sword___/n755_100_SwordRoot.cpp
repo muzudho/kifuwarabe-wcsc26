@@ -8,7 +8,13 @@
 const SwordRoot g_SWORD_ROOT;
 
 
-// 依存関係の都合上、インラインにはしないぜ☆（＾ｑ＾）
+/// <summary>
+/// 依存関係の都合上、インラインにはしないぜ☆（＾ｑ＾）
+/// </summary>
+/// <param name="ownerSplitedNode"></param>
+/// <param name="rucksack"></param>
+/// <param name="pos"></param>
+/// <param name="pFlashlight"></param>
 void SwordRoot::GoSearch_AsSplitedNode(
 	SplitedNode& ownerSplitedNode,
 	Rucksack& rucksack,

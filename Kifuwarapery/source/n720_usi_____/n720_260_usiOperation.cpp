@@ -10,8 +10,18 @@
 #include "../../header/n885_searcher/n885_040_rucksack.hpp"
 
 
+/// <summary>
+/// CSA形式の駒種類文字列を PieceType に変換するマップ☆ 
+/// </summary>
 class StringToPieceTypeCSA : public std::map<std::string, PieceType> {
+
+
 public:
+
+
+	/// <summary>
+	/// 生成。
+	/// </summary>
 	StringToPieceTypeCSA() {
 		(*this)["FU"] = N01_Pawn;
 		(*this)["KY"] = N02_Lance;
@@ -28,9 +38,23 @@ public:
 		(*this)["UM"] = N13_Horse;
 		(*this)["RY"] = N14_Dragon;
 	}
+
+
+	/// <summary>
+    /// 文字列から PieceType を取得する。 
+	/// </summary>
+	/// <param name="str"></param>
+	/// <returns></returns>
 	PieceType value(const std::string& str) const {
 		return this->find(str)->second;
 	}
+
+
+	/// <summary>
+    /// 合法な文字列かどうか。
+	/// </summary>
+	/// <param name="str"></param>
+	/// <returns></returns>
 	bool isLegalString(const std::string& str) const {
 		return (this->find(str) != this->end());
 	}
@@ -38,7 +62,11 @@ public:
 const StringToPieceTypeCSA g_stringToPieceTypeCSA;
 
 
-// 考え始めるのはここ。
+/// <summary>
+/// 考え始めるのはここ。
+/// </summary>
+/// <param name="pos"></param>
+/// <param name="ssCmd"></param>
 void UsiOperation::Go(const Position& pos, std::istringstream& ssCmd) {
 	LimitsOfThinking limits;
 	std::vector<Move> moves;
@@ -102,8 +130,14 @@ void UsiOperation::Go(const Position& pos, std::istringstream& ssCmd) {
 	pos.GetRucksack()->m_ownerHerosPub.StartThinking(pos, limits, moves);
 }
 
+
 #if defined LEARN
-// 学習用。通常の go 呼び出しは文字列を扱って高コストなので、大量に探索の開始、終了を行う学習では別の呼び出し方にする。
+/// <summary>
+/// 学習用。通常の go 呼び出しは文字列を扱って高コストなので、大量に探索の開始、終了を行う学習では別の呼び出し方にする。
+/// </summary>
+/// <param name="GetPos"></param>
+/// <param name="GetDepth"></param>
+/// <param name="GetMove"></param>
 void UsiOperation::Go(const Position& GetPos, const Ply GetDepth, const Move GetMove) {
 	LimitsOfThinking m_limits;
 	std::vector<Move> moves;
@@ -116,7 +150,12 @@ void UsiOperation::Go(const Position& GetPos, const Ply GetDepth, const Move Get
 
 
 #if !defined NDEBUG
-// for debug
+/// <summary>
+/// for debug
+/// </summary>
+/// <param name="GetPos"></param>
+/// <param name="moveStr"></param>
+/// <returns></returns>
 Move UsiOperation::usiToMoveDebug(const Position& GetPos, const std::string& moveStr) {
 	for (MoveList<N09_LegalAll> ml(GetPos); !ml.IsEnd(); ++ml) {
 		if (moveStr == ml.GetMove().ToUSI()) {
@@ -127,6 +166,12 @@ Move UsiOperation::usiToMoveDebug(const Position& GetPos, const std::string& mov
 }
 
 
+/// <summary>
+/// for debug 
+/// </summary>
+/// <param name="GetPos"></param>
+/// <param name="moveStr"></param>
+/// <returns></returns>
 Move UsiOperation::csaToMoveDebug(const Position& GetPos, const std::string& moveStr) {
 	for (MoveList<N09_LegalAll> ml(GetPos); !ml.IsEnd(); ++ml) {
 		if (moveStr == ml.GetMove().ToCSA()) {
@@ -138,18 +183,37 @@ Move UsiOperation::csaToMoveDebug(const Position& GetPos, const std::string& mov
 #endif
 
 
+/// <summary>
+/// USI形式の指し手文字列を Move に変換する☆ 
+/// </summary>
+/// <param name="pos"></param>
+/// <param name="moveStr"></param>
+/// <returns></returns>
 Move UsiOperation::UsiToMove(const Position& pos, const std::string& moveStr) {
 	const Move move = UsiToMoveBody(pos, moveStr);
 	assert(move == this->usiToMoveDebug(pos, moveStr));
 	return move;
 }
 
+
+/// <summary>
+/// CSA形式の指し手文字列を Move に変換する☆ 
+/// </summary>
+/// <param name="pos"></param>
+/// <param name="moveStr"></param>
+/// <returns></returns>
 Move UsiOperation::CsaToMove(const Position& pos, const std::string& moveStr) {
 	const Move move = CsaToMoveBody(pos, moveStr);
 	assert(move == this->csaToMoveDebug(pos, moveStr));
 	return move;
 }
 
+
+/// <summary>
+/// position コマンドの処理だぜ（＾▽＾） 
+/// </summary>
+/// <param name="pos"></param>
+/// <param name="ssCmd"></param>
 void UsiOperation::SetPosition(Position& pos, std::istringstream& ssCmd) {
 	std::string token;
 	std::string sfen;
@@ -168,9 +232,7 @@ void UsiOperation::SetPosition(Position& pos, std::istringstream& ssCmd) {
 			sfen += token + " ";
 		}
 	}
-	else {
-		return;
-	}
+	else { return; }
 
     // 指し手リストだぜ（＾▽＾）
 	pos.Set(sfen, pos.GetRucksack()->m_ownerHerosPub.GetFirstCaptain());
@@ -183,17 +245,17 @@ void UsiOperation::SetPosition(Position& pos, std::istringstream& ssCmd) {
 	while (ssCmd >> token) {
         // 指し手文字列を Move に変換（＾▽＾）
 		const Move move = this->UsiToMove(pos, token);
-		if (move.IsNone()) break;
+		if (move.IsNone()) { break; }
 
         // 状態情報を積むぜ（＾▽＾）
 		pos.GetRucksack()->m_setUpStates->push(StateInfo());
 
         // 指し手を指すぜ（＾▽＾）
-		pos.GetTurn() == Color::Black
+		pos.GetTurn() == Color::Black	// 自分は先手か？
 			?
 			pos.DoMove<Color::Black,Color::White>(move, pos.GetRucksack()->m_setUpStates->top())
 			:
-			pos.DoMove<Color::White,Color::Black>(move, pos.GetRucksack()->m_setUpStates->top())
+			pos.DoMove<Color::White,Color::Black>(move, pos.GetRucksack()->m_setUpStates->top())	// 自分が後手のとき。
 			;
 
 		++currentPly;
@@ -204,7 +266,12 @@ void UsiOperation::SetPosition(Position& pos, std::istringstream& ssCmd) {
 }
 
 
-// moveStr は USI 形式の指し手文字列。
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pos"></param>
+/// <param name="moveStr">USI 形式の指し手文字列</param>
+/// <returns></returns>
 Move UsiOperation::UsiToMoveBody(const Position& pos, const std::string& moveStr) {
 	Move move;
 
@@ -212,29 +279,25 @@ Move UsiOperation::UsiToMoveBody(const Position& pos, const std::string& moveStr
 	if (g_charToPieceUSI.IsLegalChar(moveStr[0])) {
 		// drop
 		const PieceType ptTo = ConvPiece::TO_PIECE_TYPE10(g_charToPieceUSI.GetValue(moveStr[0]));
-		if (moveStr[1] != '*') {
-			return g_MOVE_NONE;
-		}
+		if (moveStr[1] != '*') { return g_MOVE_NONE; }
+
 		const File toFile = ConvFile::FROM_CHAR_USI10(moveStr[2]);
 		const Rank toRank = ConvRank::FROM_CHAR_USI10(moveStr[3]);
-		if (!ConvSquare::CONTAINS_OF20(toFile, toRank)) {
-			return g_MOVE_NONE;
-		}
+		if (!ConvSquare::CONTAINS_OF20(toFile, toRank)) { return g_MOVE_NONE; }
+
 		const Square to = ConvSquare::FROM_FILE_RANK10(toFile, toRank);
 		move = ConvMove::Convert30_MakeDropMove_da(ConvMove::FROM_PIECETYPE_DA10(ptTo), to);
 	}
 	else {
 		const File fromFile = ConvFile::FROM_CHAR_USI10(moveStr[0]);
 		const Rank fromRank = ConvRank::FROM_CHAR_USI10(moveStr[1]);
-		if (!ConvSquare::CONTAINS_OF20(fromFile, fromRank)) {
-			return g_MOVE_NONE;
-		}
+		if (!ConvSquare::CONTAINS_OF20(fromFile, fromRank)) { return g_MOVE_NONE; }
+
 		const Square from = ConvSquare::FROM_FILE_RANK10(fromFile, fromRank);
 		const File toFile = ConvFile::FROM_CHAR_USI10(moveStr[2]);
 		const Rank toRank = ConvRank::FROM_CHAR_USI10(moveStr[3]);
-		if (!ConvSquare::CONTAINS_OF20(toFile, toRank)) {
-			return g_MOVE_NONE;
-		}
+		if (!ConvSquare::CONTAINS_OF20(toFile, toRank)) { return g_MOVE_NONE; }
+
 		const Square to = ConvSquare::FROM_FILE_RANK10(toFile, toRank);
 		if (moveStr[4] == '\0') {
 			move = g_makePromoteMove.GetSelectedMakeMove_ExceptPromote_CaptureCategory(
@@ -242,26 +305,23 @@ Move UsiOperation::UsiToMoveBody(const Position& pos, const std::string& moveStr
 				from, to, pos);
 		}
 		else if (moveStr[4] == '+') {
-			if (moveStr[5] != '\0') {
-				return g_MOVE_NONE;
-			}
+			if (moveStr[5] != '\0') { return g_MOVE_NONE; }
+
 			move = g_makePromoteMove.GetSelectedMakeMove_ExceptPromote_CaptureCategory(
 				ConvMove::FROM_PIECETYPE_ONBOARD10( ConvPiece::TO_PIECE_TYPE10(pos.GetPiece(from))),
 				from, to, pos);
 			MakePromoteMove::APPEND_PROMOTE_FLAG(move);
 		}
-		else {
-			return g_MOVE_NONE;
-		}
+		else { return g_MOVE_NONE; }
 	}
 
 	if (
 		(
-			pos.GetTurn() == Color::Black
+            pos.GetTurn() == Color::Black	// 自分が先手か
 			?
 			pos.MoveIsPseudoLegal<Color::Black,Color::White>(move, true)
 			:
-			pos.MoveIsPseudoLegal<Color::White,Color::Black>(move, true)
+            pos.MoveIsPseudoLegal<Color::White, Color::Black>(move, true)	// 自分が後手のとき。
 		)		
 		&&
 		(
@@ -271,29 +331,30 @@ Move UsiOperation::UsiToMoveBody(const Position& pos, const std::string& moveStr
 			:
 			pos.IsPseudoLegalMoveIsLegal<false, false,Color::White,Color::Black>(move, pos.GetPinnedBB())
 		)
-	){
-		return move;
-	}
+	) { return move; }
+
+    // 非合法手（＾▽＾）
 	return g_MOVE_NONE;
 }
 
-// moveStr は CSA 形式の指し手文字列。
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pos"></param>
+/// <param name="moveStr">CSA 形式の指し手文字列。</param>
+/// <returns></returns>
 Move UsiOperation::CsaToMoveBody(const Position& pos, const std::string& moveStr) {
-	if (moveStr.size() != 6) {
-		return g_MOVE_NONE;
-	}
+	if (moveStr.size() != 6) { return g_MOVE_NONE; }
 
 	const File toFile = ConvFile::FROM_CHAR_CSA10(moveStr[2]);
 	const Rank toRank = ConvRank::FROM_CHAR_CSA10(moveStr[3]);
-	if (!ConvSquare::CONTAINS_OF20(toFile, toRank)) {
-		return g_MOVE_NONE;
-	}
+	if (!ConvSquare::CONTAINS_OF20(toFile, toRank)) { return g_MOVE_NONE; }
 
 	const Square to = ConvSquare::FROM_FILE_RANK10(toFile, toRank);
 	const std::string ptToString(moveStr.begin() + 4, moveStr.end());
-	if (!g_stringToPieceTypeCSA.isLegalString(ptToString)) {
-		return g_MOVE_NONE;
-	}
+	if (!g_stringToPieceTypeCSA.isLegalString(ptToString)) { return g_MOVE_NONE; }
+
 	const PieceType ptTo = g_stringToPieceTypeCSA.value(ptToString);
 	Move move;
 	if (moveStr[0] == '0' && moveStr[1] == '0') {
@@ -303,9 +364,8 @@ Move UsiOperation::CsaToMoveBody(const Position& pos, const std::string& moveStr
 	else {
 		const File fromFile = ConvFile::FROM_CHAR_CSA10(moveStr[0]);
 		const Rank fromRank = ConvRank::FROM_CHAR_CSA10(moveStr[1]);
-		if (!ConvSquare::CONTAINS_OF20(fromFile, fromRank)) {
-			return g_MOVE_NONE;
-		}
+		if (!ConvSquare::CONTAINS_OF20(fromFile, fromRank)) { return g_MOVE_NONE; }
+
 		const Square from = ConvSquare::FROM_FILE_RANK10(fromFile, fromRank);
 		PieceType ptFrom = ConvPiece::TO_PIECE_TYPE10(pos.GetPiece(from));
 		if (ptFrom == ptTo) {
@@ -321,10 +381,7 @@ Move UsiOperation::CsaToMoveBody(const Position& pos, const std::string& moveStr
 				from, to, pos);
 			MakePromoteMove::APPEND_PROMOTE_FLAG(move);//, N00_Capture, ptFrom
 		}
-		else {
-			// 非合法手（＾▽＾）
-			return g_MOVE_NONE;
-		}
+		else { return g_MOVE_NONE; }	// 非合法手（＾▽＾）
 	}
 
 	if (
@@ -343,12 +400,8 @@ Move UsiOperation::CsaToMoveBody(const Position& pos, const std::string& moveStr
 			:
 			pos.IsPseudoLegalMoveIsLegal<false, false,Color::White,Color::Black>(move, pos.GetPinnedBB())
 			)
-	){
-        // 合法な指し手☆
-		return move;
-	}
+	){ return move; }	// 合法な指し手☆
 
     // 不正な指し手☆
 	return g_MOVE_NONE;
 }
-
