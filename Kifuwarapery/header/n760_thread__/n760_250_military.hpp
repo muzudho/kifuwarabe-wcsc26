@@ -11,33 +11,96 @@
 #include "../n440_movStack/n440_500_nextmoveEvent.hpp"
 #include "../n640_searcher/n640_440_splitedNode.hpp" // 持ち合い
 
+
 class Rucksack;
 
 
+/// <summary>
+/// 
+/// </summary>
 const int g_MaxSplitedNodesPerThread = 8;
 
 
-
-// 元の名前：Ｔｈｒｅａｄ
-// ゲームツリーを戦線拡大していくぜ☆！（＾ｑ＾）
+/// <summary>
+///		<pre>
+/// 軍人☆（＾▽＾） わたしが名前を変えた☆（＾▽＾）
+/// 
+///		- 元の名前：Ｔｈｒｅａｄ
+///		- ゲームツリーを戦線拡大していくぜ☆！（＾ｑ＾）
+///		</pre>
+/// </summary>
 class Military {
+
+
 public:
+
+
+	/// <summary>
+	/// 生成。
+	/// </summary>
+	/// <param name="s"></param>
 	explicit Military(Rucksack* s);
 
+
+	/// <summary>
+	/// 破棄。
+	/// </summary>
 	virtual ~Military() {};
 
+
+	/// <summary>
+	/// 
+	/// </summary>
 	virtual void IdleLoop();
 
+
+	/// <summary>
+	/// 
+	/// </summary>
 	void NotifyOne();
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	bool CutoffOccurred() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="master"></param>
+	/// <returns></returns>
 	bool IsAvailableTo(Military* master) const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="b"></param>
 	void WaitFor(volatile const bool& b);
 
-	// 元の名前： Ｓｐｌｉｔ
-	// 探索を分けるのだろうか☆？兵士をどんどん増やそうぜ☆（＾ｑ＾）
+
+	/// <summary>
+	///		<pre>
+	/// 元の名前： Ｓｐｌｉｔ
+	/// 探索を分けるのだろうか☆？兵士をどんどん増やそうぜ☆（＾ｑ＾）
+	///		</pre>
+	/// </summary>
+	/// <typeparam name="Fake"></typeparam>
+	/// <param name="pos"></param>
+	/// <param name="pFlashlightBox"></param>
+	/// <param name="alpha"></param>
+	/// <param name="beta"></param>
+	/// <param name="bestScore"></param>
+	/// <param name="bestMove"></param>
+	/// <param name="depth"></param>
+	/// <param name="threatMove"></param>
+	/// <param name="moveCount"></param>
+	/// <param name="mp"></param>
+	/// <param name="pSword"></param>
+	/// <param name="cutNode"></param>
 	template <bool Fake>
 	void ForkNewFighter(
 		Position& pos,
@@ -54,28 +117,64 @@ public:
 		const bool cutNode
 	);
 
+
+	/// <summary>
+	/// 
+	/// </summary>
 	SplitedNode m_SplitedNodes[g_MaxSplitedNodesPerThread];
 
+	/// <summary>
+	/// 
+	/// </summary>
 	Position* m_activePosition;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	int m_idx;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	int m_maxPly;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	Mutex m_sleepLock;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	ConditionVariable m_sleepCond;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	std::thread m_handle;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	SplitedNode* volatile m_activeSplitedNode;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	volatile int m_splitedNodesSize;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	volatile bool m_searching;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	volatile bool m_exit;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	Rucksack* m_pRucksack;
 };
-

@@ -14,68 +14,147 @@
 
 const int g_MaxThreads = 64;
 
+
 class Rucksack;
 
 
-// 元の名前：　ＴｈｒｅａｄＰｏｏｌ
-// ベクター型。
+/// <summary>
+///		<pre>
+/// 元の名前：　ＴｈｒｅａｄＰｏｏｌ
+/// ベクター型。
+///		</pre>
+/// </summary>
 class HerosPub : public std::vector<Military*> {
+
+
 public:
-	// 初期化？
+
+
+	/// <summary>
+	/// 初期化？
+	/// </summary>
+	/// <param name="s"></param>
 	void Init(Rucksack* s);
 
-	// 終了？
+
+	/// <summary>
+	/// 終了？
+	/// </summary>
 	void Exit();
 
-	// メインスレッド？
+
+	/// <summary>
+	/// メインスレッド？
+	/// </summary>
+	/// <returns></returns>
 	Captain* GetFirstCaptain() { return static_cast<Captain*>((*this)[0]); }
 
-	// 最小の深さ？
+
+	/// <summary>
+	/// 最小の深さ？
+	/// </summary>
+	/// <returns></returns>
 	Depth GetMinSplitDepth() const { return m_minimumSplitDepth_; }
 
-	// タイマースレッド？
+
+	/// <summary>
+	/// タイマースレッド？
+	/// </summary>
+	/// <returns></returns>
 	Warrior* GetCurrWarrior() { return this->m_pWarrior_; }
 
-	// 起きろ？
+
+	/// <summary>
+	/// 起きろ？
+	/// </summary>
+	/// <param name="rucksack"></param>
 	void WakeUp(Rucksack* rucksack);
-	// 寝ろ？
+
+
+	/// <summary>
+	/// 寝ろ？
+	/// </summary>
 	void Sleep();
 
 
-	// USIオプションを読め？
+	/// <summary>
+	/// USIオプションを読め？
+	/// </summary>
+	/// <param name="s"></param>
 	void ReadUSIOptions(Rucksack* s);
 
-	// スレーブ？
+
+	/// <summary>
+	/// スレーブ？
+	/// </summary>
+	/// <param name="master"></param>
+	/// <returns></returns>
 	Military* GetAvailableSlave(Military* master) const;
 
-	// タイマー・スレッドをセット？
-	void SetCurrWorrior(const int maxPly);//ｍａｘＰｌｙ＝ｍｓｅｃ
 
-	// 考えが終わるまで待て？
+	/// <summary>
+	///		<pre>
+	/// タイマー・スレッドをセット？
+	///		</pre>
+	/// </summary>
+	/// <param name="maxPly">ｍｓｅｃ</param>
+	void SetCurrWorrior(const int maxPly);
+
+
+	/// <summary>
+	/// 考えが終わるまで待て？
+	/// </summary>
 	void WaitForThinkFinished();
 
-	// 考えを始めろ？
+
+	/// <summary>
+	/// 考えを始めろ？
+	/// </summary>
+	/// <param name="pos"></param>
+	/// <param name="limits"></param>
+	/// <param name="searchMoves"></param>
 	void StartThinking(const Position& pos, const LimitsOfThinking& limits,
 					   const std::vector<Move>& searchMoves);
 
+
 public:
-	// 寝ているか？
+
+
+	/// <summary>
+	/// 寝ているか？
+	/// </summary>
 	bool m_isSleepWhileIdle_;
 
-	// マックス・スレッド？
+
+	/// <summary>
+	/// マックス・スレッド？
+	/// </summary>
 	size_t m_maxThreadsPerSplitedNode_;
 
-	// ミューテックス？
+
+	/// <summary>
+	/// ミューテックス？
+	/// </summary>
 	Mutex m_mutex_;
 
-	// 寝ている条件？
+
+	/// <summary>
+	/// 寝ている条件？
+	/// </summary>
 	ConditionVariable m_sleepCond_;
+
 
 private:
 
-	// タイマースレッド☆
+
+	/// <summary>
+	/// タイマースレッド☆
+	/// </summary>
 	Warrior* m_pWarrior_;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
 	Depth m_minimumSplitDepth_;
 };
-

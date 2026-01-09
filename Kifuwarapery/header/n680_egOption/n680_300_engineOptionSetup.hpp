@@ -3,12 +3,23 @@
 
 #include "../n680_egOption/n680_240_engineOptionsMap.hpp"
 
+
 class Rucksack;
 
 
+/// <summary>
+/// エンジン・オプション設定
+/// </summary>
 class EngineOptionSetup {
+
+
 public:
 
-	void Initialize( EngineOptionsMap* pMap, Rucksack* s);
 
+	/// <summary>
+    /// 最初の設定（初期化）を行うぜ☆（＾▽＾）
+	/// </summary>
+	/// <param name="pMap"></param>
+	/// <param name="s"></param>
+	void Initialize( EngineOptionsMap* pMap, Rucksack* s);
 };

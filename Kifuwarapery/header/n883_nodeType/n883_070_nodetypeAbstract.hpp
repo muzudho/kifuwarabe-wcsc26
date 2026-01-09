@@ -66,15 +66,37 @@ using namespace std;
 
 extern const InFrontMaskBb g_inFrontMaskBb;
 */
-class NodetypeAbstract; // 同じファイル内の後ろの方でクラス定義があるとき☆（＾ｑ＾）
+
+
+/// <summary>
+/// 同じファイル内の後ろの方でクラス定義があるとき☆（＾ｑ＾）
+/// </summary>
+class NodetypeAbstract;
 extern NodetypeAbstract* g_NODETYPE_PROGRAMS[];
 
 extern RepetitionTypeArray g_repetitionTypeArray;
 
 
+/// <summary>
+/// 
+/// </summary>
 class NodetypeAbstract {
+
+
 public:
 
+
+	/// <summary>
+	/// 冒険に出るぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="rucksack"></param>
+	/// <param name="pos"></param>
+	/// <param name="pFlashlight"></param>
+	/// <param name="alpha"></param>
+	/// <param name="beta"></param>
+	/// <param name="depth"></param>
+	/// <param name="cutNode"></param>
+	/// <returns></returns>
 	virtual ScoreIndex GoToTheAdventure_new(
 		Rucksack& rucksack,
 		Position& pos,
@@ -86,7 +108,11 @@ public:
 		) const = 0;
 
 
-	// 非PVノードはassertをするぜ☆（＾ｑ＾）
+	/// <summary>
+	/// 非PVノードはassertをするぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="alpha"></param>
+	/// <param name="beta"></param>
 	virtual inline void AssertBeforeStep1(
 		ScoreIndex alpha,
 		ScoreIndex beta
@@ -95,7 +121,23 @@ public:
 		assert(alpha == beta - 1);
 	}
 
-	// スプリット・ポイントのみ実行☆（＾ｑ＾）
+
+	/// <summary>
+	/// スプリット・ポイントのみ実行☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="isGotoSplitPointStart"></param>
+	/// <param name="moveCount"></param>
+	/// <param name="playedMoveCount"></param>
+	/// <param name="inCheck"></param>
+	/// <param name="pos"></param>
+	/// <param name="ppSplitedNode"></param>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="bestMove"></param>
+	/// <param name="threatMove"></param>
+	/// <param name="bestScore"></param>
+	/// <param name="ttMove"></param>
+	/// <param name="excludedMove"></param>
+	/// <param name="ttScore"></param>
 	virtual inline void DoStep1a(
 		bool& isGotoSplitPointStart,
 		int& moveCount,
@@ -135,6 +177,14 @@ public:
 	}
 	//*/
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="bestScore"></param>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="threatMove"></param>
+	/// <param name="bestMove"></param>
 	virtual inline void DoStep1b(
 		ScoreIndex& bestScore,
 		Flashlight** ppFlashlight,
@@ -150,6 +200,12 @@ public:
 		((*ppFlashlight) + 2)->m_killers[0] = ((*ppFlashlight) + 2)->m_killers[1] = g_MOVE_NONE;
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="ppThisThread"></param>
+	/// <param name="pFlashlight"></param>
 	virtual inline void DoStep1c(
 		Military** ppThisThread,
 		const Flashlight* pFlashlight
@@ -160,7 +216,15 @@ public:
 		}
 	}
 
-	// ルートノード以外が実行するぜ☆（＾ｑ＾）
+
+	/// <summary>
+	/// ルートノード以外が実行するぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="isReturnWithScore"></param>
+	/// <param name="returnScore"></param>
+	/// <param name="pos"></param>
+	/// <param name="rucksack"></param>
+	/// <param name="ppFlashlight"></param>
 	virtual inline void DoStep2(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
@@ -174,7 +238,15 @@ public:
 			isReturnWithScore, returnScore, &rucksack, (*ppFlashlight));
 	}
 
-	// ルートノード以外が実行するぜ☆（＾ｑ＾）
+
+	/// <summary>
+	/// ルートノード以外が実行するぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="isReturnWithScore"></param>
+	/// <param name="returnScore"></param>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="alpha"></param>
+	/// <param name="beta"></param>
 	virtual inline void DoStep3(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
@@ -193,6 +265,17 @@ public:
 		}
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="excludedMove"></param>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="posKey"></param>
+	/// <param name="pos"></param>
+	/// <param name="ppTtEntry"></param>
+	/// <param name="rucksack"></param>
+	/// <param name="ttScore"></param>
 	virtual inline void DoStep4(
 		Move& excludedMove,
 		Flashlight** ppFlashlight,
@@ -209,7 +292,14 @@ public:
 		ttScore = ((*ppTtEntry) != nullptr ? rucksack.ConvertScoreFromTT((*ppTtEntry)->GetScore(), (*ppFlashlight)->m_ply) : ScoreNone);
 	}
 
-	// ルートノードか、それ以外かで　値が分かれるぜ☆（＾ｑ＾）
+
+	/// <summary>
+	/// ルートノードか、それ以外かで　値が分かれるぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="ttMove"></param>
+	/// <param name="rucksack"></param>
+	/// <param name="pTtEntry"></param>
+	/// <param name="pos"></param>
 	virtual inline void DoStep4x(
 		Move& ttMove,
 		Rucksack& rucksack,
@@ -217,7 +307,19 @@ public:
 		Position& pos
 		)const = 0;
 
-	// PVノードか、非PVノードかで実行条件が変わるぜ☆（＾ｑ＾）
+
+	/// <summary>
+	/// PVノードか、非PVノードかで実行条件が変わるぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="isReturnWithScore"></param>
+	/// <param name="returnScore"></param>
+	/// <param name="rucksack"></param>
+	/// <param name="pTtEntry"></param>
+	/// <param name="depth"></param>
+	/// <param name="ttScore"></param>
+	/// <param name="beta"></param>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="ttMove"></param>
 	virtual inline void DoStep4y(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
@@ -259,13 +361,35 @@ public:
 		}
 	}
 
-	// PVノードか、非PVノードかで実行条件が変わるぜ☆（＾ｑ＾）
+
+	/// <summary>
+	/// PVノードか、非PVノードかで実行条件が変わるぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="pTtEntry"></param>
+	/// <param name="beta"></param>
+	/// <param name="ttScore"></param>
+	/// <returns></returns>
 	virtual inline bool GetConditionInStep4y(
 		const TTEntry* pTtEntry,
 		ScoreIndex& beta,
 		ScoreIndex& ttScore
 		) const = 0;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="isReturnWithScore"></param>
+	/// <param name="returnScore"></param>
+	/// <param name="rucksack"></param>
+	/// <param name="inCheck"></param>
+	/// <param name="move"></param>
+	/// <param name="pos"></param>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="bestScore"></param>
+	/// <param name="posKey"></param>
+	/// <param name="depth"></param>
+	/// <param name="bestMove"></param>
 	virtual inline void DoStep4z(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
@@ -306,6 +430,20 @@ public:
 #endif
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="isGotoIidStart"></param>
+	/// <param name="rucksack"></param>
+	/// <param name="eval"></param>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="pos"></param>
+	/// <param name="inCheck"></param>
+	/// <param name="pTtEntry"></param>
+	/// <param name="ttScore"></param>
+	/// <param name="posKey"></param>
+	/// <param name="move"></param>
 	virtual inline void DoStep5(
 		bool& isGotoIidStart,
 		Rucksack& rucksack,
@@ -352,8 +490,22 @@ public:
 		}
 	}
 
-	// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
-	// N02_NonPV扱いで実行する関数があるぜ、なんだこれ☆（＾ｑ＾）Qサーチは、スプリットポイントかどうかは見てないのかだぜ☆（＾ｑ＾）
+
+	/// <summary>
+	///		<pre>
+	/// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
+	/// N02_NonPV扱いで実行する関数があるぜ、なんだこれ☆（＾ｑ＾）Qサーチは、スプリットポイントかどうかは見てないのかだぜ☆（＾ｑ＾）
+	///		</pre>
+	/// </summary>
+	/// <param name="isReturnWithScore"></param>
+	/// <param name="returnScore"></param>
+	/// <param name="rucksack"></param>
+	/// <param name="depth"></param>
+	/// <param name="eval"></param>
+	/// <param name="beta"></param>
+	/// <param name="ttMove"></param>
+	/// <param name="pos"></param>
+	/// <param name="ppFlashlight"></param>
 	virtual inline void DoStep6_NonPV(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
@@ -385,7 +537,16 @@ public:
 		}
 	}
 
-	// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
+
+	/// <summary>
+	/// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
+	/// </summary>
+	/// <param name="isReturnWithScore"></param>
+	/// <param name="returnScore"></param>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="depth"></param>
+	/// <param name="beta"></param>
+	/// <param name="eval"></param>
 	virtual inline void DoStep7(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
@@ -409,8 +570,25 @@ public:
 		}
 	}
 
-	// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
-	// N02_NonPV扱いで実行する関数があるぜ、なんだこれ☆（＾ｑ＾）
+
+	/// <summary>
+	///		<pre>
+	/// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
+	/// N02_NonPV扱いで実行する関数があるぜ、なんだこれ☆（＾ｑ＾）
+	///		</pre>
+	/// </summary>
+	/// <param name="isReturnWithScore"></param>
+	/// <param name="returnScore"></param>
+	/// <param name="rucksack"></param>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="depth"></param>
+	/// <param name="beta"></param>
+	/// <param name="eval"></param>
+	/// <param name="pos"></param>
+	/// <param name="st"></param>
+	/// <param name="alpha"></param>
+	/// <param name="cutNode"></param>
+	/// <param name="threatMove"></param>
 	virtual inline void DoStep8_NonPV(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
@@ -505,7 +683,21 @@ public:
 		}
 	}
 
-	// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
+
+	/// <summary>
+	/// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
+	/// </summary>
+	/// <param name="isReturnWithScore"></param>
+	/// <param name="rucksack"></param>
+	/// <param name="depth"></param>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="beta"></param>
+	/// <param name="move"></param>
+	/// <param name="pos"></param>
+	/// <param name="ttMove"></param>
+	/// <param name="st"></param>
+	/// <param name="score"></param>
+	/// <param name="cutNode"></param>
 	virtual inline void DoStep9(
 		bool& isReturnWithScore,
 		Rucksack& rucksack,
@@ -573,7 +765,20 @@ public:
 		}
 	}
 
-	// PVノードか、そうでないかで手続きが変わるぜ☆！（＾ｑ＾）
+
+	/// <summary>
+	/// PVノードか、そうでないかで手続きが変わるぜ☆！（＾ｑ＾）
+	/// </summary>
+	/// <param name="depth"></param>
+	/// <param name="ttMove"></param>
+	/// <param name="inCheck"></param>
+	/// <param name="beta"></param>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="rucksack"></param>
+	/// <param name="pos"></param>
+	/// <param name="alpha"></param>
+	/// <param name="ppTtEntry"></param>
+	/// <param name="posKey"></param>
 	virtual inline void DoStep10_InternalIterativeDeepening(
 		const Depth depth,
 		Move& ttMove,
@@ -587,17 +792,37 @@ public:
 		Key& posKey
 		)const = 0;
 
-	// これはベータ値☆ PVノードか、そうでないかで値が変わるぜ☆（＾ｑ＾）
+
+	/// <summary>
+	/// これはベータ値☆ PVノードか、そうでないかで値が変わるぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="beta"></param>
+	/// <returns></returns>
 	virtual inline ScoreIndex GetBetaAtStep11(
 		ScoreIndex beta
 		) const = 0;
 
-	// これはムーブ☆
+
+	/// <summary>
+	/// これはムーブ☆
+	/// </summary>
+	/// <param name="mp"></param>
+	/// <returns></returns>
 	virtual inline Move GetNextMove_AtStep11(
 		NextmoveEvent& mp
 		) const = 0;
 
-	// ルートノードか、そうでないかで分かれるぜ☆（＾ｑ＾）
+
+	/// <summary>
+	/// ルートノードか、そうでないかで分かれるぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="ttMove"></param>
+	/// <param name="depth"></param>
+	/// <param name="score"></param>
+	/// <param name="bestScore"></param>
+	/// <param name="singularExtensionNode"></param>
+	/// <param name="excludedMove"></param>
+	/// <param name="pTtEntry"></param>
 	virtual inline void DoStep11a_BeforeLoop_SplitPointStart(
 		Move& ttMove,
 		const Depth depth,
@@ -608,7 +833,16 @@ public:
 		const TTEntry* pTtEntry
 		)const = 0;
 
-	// スプリット・ポイントかどうかで変わる手続きだぜ☆！（＾ｑ＾）
+
+	/// <summary>
+	/// スプリット・ポイントかどうかで変わる手続きだぜ☆！（＾ｑ＾）
+	/// </summary>
+	/// <param name="isContinue"></param>
+	/// <param name="pos"></param>
+	/// <param name="move"></param>
+	/// <param name="ci"></param>
+	/// <param name="moveCount"></param>
+	/// <param name="ppSplitedNode"></param>
 	virtual inline void DoStep11c_LoopHeader(
 		bool& isContinue,
 		Position& pos,
@@ -618,6 +852,13 @@ public:
 		SplitedNode** ppSplitedNode
 		) const = 0;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="isContinue"></param>
+	/// <param name="rucksack"></param>
+	/// <param name="move"></param>
 	virtual inline void DoStep11d_LoopHeader(
 		bool& isContinue,
 		const Rucksack& rucksack,
@@ -633,7 +874,12 @@ public:
 		}
 	}
 
-	// ルートノードだけ実行する手続きだぜ☆（＾ｑ＾）
+
+	/// <summary>
+	/// ルートノードだけ実行する手続きだぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="rucksack"></param>
+	/// <param name="moveCount"></param>
 	virtual inline void DoStep11e_LoopHeader(
 		Rucksack& rucksack,
 		int& moveCount
@@ -648,6 +894,17 @@ public:
 #endif
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="extension"></param>
+	/// <param name="captureOrPawnPromotion"></param>
+	/// <param name="move"></param>
+	/// <param name="givesCheck"></param>
+	/// <param name="ci"></param>
+	/// <param name="pos"></param>
+	/// <param name="dangerous"></param>
 	virtual inline void DoStep11f_LoopHeader(
 		Depth& extension,
 		bool& captureOrPawnPromotion,
@@ -664,6 +921,25 @@ public:
 		dangerous = givesCheck; // todo: not implement
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="rucksack"></param>
+	/// <param name="givesCheck"></param>
+	/// <param name="pos"></param>
+	/// <param name="move"></param>
+	/// <param name="extension"></param>
+	/// <param name="singularExtensionNode"></param>
+	/// <param name="ttMove"></param>
+	/// <param name="ttScore"></param>
+	/// <param name="ci"></param>
+	/// <param name="depth"></param>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="score"></param>
+	/// <param name="cutNode"></param>
+	/// <param name="beta"></param>
+	/// <param name="newDepth"></param>
 	virtual inline void DoStep12(
 		Rucksack& rucksack,
 		bool& givesCheck,
@@ -722,8 +998,29 @@ public:
 		newDepth = depth - OnePly + extension;
 	}
 
-	// 無駄枝狩り☆（＾▽＾）
-	// 非PVノードだけ実行するぜ☆！（＾ｑ＾）
+
+	/// <summary>
+	///		<pre>
+	/// 無駄枝狩り☆（＾▽＾）
+	/// 非PVノードだけ実行するぜ☆！（＾ｑ＾）
+	///		</pre>
+	/// </summary>
+	/// <param name="isContinue"></param>
+	/// <param name="rucksack"></param>
+	/// <param name="captureOrPawnPromotion"></param>
+	/// <param name="inCheck"></param>
+	/// <param name="dangerous"></param>
+	/// <param name="bestScore"></param>
+	/// <param name="move"></param>
+	/// <param name="ttMove"></param>
+	/// <param name="depth"></param>
+	/// <param name="moveCount"></param>
+	/// <param name="threatMove"></param>
+	/// <param name="pos"></param>
+	/// <param name="ppSplitedNode"></param>
+	/// <param name="newDepth"></param>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="beta"></param>
 	virtual inline void DoStep13a_FutilityPruning(
 		bool& isContinue,
 		Rucksack& rucksack,
@@ -798,21 +1095,38 @@ public:
 		}
 	}
 
-	// PVノードか、そうでないかで変わるぜ☆！（＾ｑ＾）
+
+	/// <summary>
+	/// PVノードか、そうでないかで変わるぜ☆！（＾ｑ＾）
+	/// </summary>
+	/// <param name="newDepth"></param>
+	/// <param name="depth"></param>
+	/// <param name="moveCount"></param>
+	/// <returns></returns>
 	virtual inline const Depth GetPredictedDepthInStep13a(
 		Depth& newDepth,
 		const Depth depth,
 		int& moveCount
 		) const = 0;
 
-	// スプリット・ポイントでだけ実行☆（＾ｑ＾）！
+
+	/// <summary>
+	/// スプリット・ポイントでだけ実行☆（＾ｑ＾）！
+	/// </summary>
+	/// <param name="ppSplitedNode"></param>
 	virtual inline void LockInStep13a(
 		SplitedNode** ppSplitedNode
 		) const
 	{
 		(*ppSplitedNode)->m_mutex.lock();
 	}
-	// スプリット・ポイントでだけ実行☆（＾ｑ＾）！
+
+
+	/// <summary>
+	/// スプリット・ポイントでだけ実行☆（＾ｑ＾）！
+	/// </summary>
+	/// <param name="ppSplitedNode"></param>
+	/// <param name="bestScore"></param>
 	virtual inline void LockAndUpdateBestScoreInStep13a(
 		SplitedNode** ppSplitedNode,
 		ScoreIndex& bestScore
@@ -824,7 +1138,15 @@ public:
 		}
 	}
 
-	// ルートノード、スプリットポイントはしない手続きだぜ☆！（＾ｑ＾）
+
+	/// <summary>
+	/// ルートノード、スプリットポイントはしない手続きだぜ☆！（＾ｑ＾）
+	/// </summary>
+	/// <param name="isContinue"></param>
+	/// <param name="pos"></param>
+	/// <param name="move"></param>
+	/// <param name="ci"></param>
+	/// <param name="moveCount"></param>
 	virtual inline void DoStep13b(
 		bool& isContinue,
 		Position& pos,
@@ -848,7 +1170,30 @@ public:
 		}
 	}
 
-	// スプリット・ポイントか、PVノードかで手続きが変わるぜ☆！（＾ｑ＾）
+
+	/// <summary>
+	/// スプリット・ポイントか、PVノードかで手続きが変わるぜ☆！（＾ｑ＾）
+	/// </summary>
+	/// <param name="isContinue"></param>
+	/// <param name="rucksack"></param>
+	/// <param name="captureOrPawnPromotion"></param>
+	/// <param name="inCheck"></param>
+	/// <param name="dangerous"></param>
+	/// <param name="bestScore"></param>
+	/// <param name="move"></param>
+	/// <param name="ttMove"></param>
+	/// <param name="depth"></param>
+	/// <param name="moveCount"></param>
+	/// <param name="threatMove"></param>
+	/// <param name="pos"></param>
+	/// <param name="ppSplitedNode"></param>
+	/// <param name="newDepth"></param>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="beta"></param>
+	/// <param name="ci"></param>
+	/// <param name="isPVMove"></param>
+	/// <param name="playedMoveCount"></param>
+	/// <param name="movesSearched"></param>
 	virtual inline void DoStep13c(
 		bool& isContinue,
 		Rucksack& rucksack,
@@ -872,7 +1217,14 @@ public:
 		Move movesSearched[64]
 		)const = 0;
 
-	// 非スプリットポイントでだけ実行するぜ☆（＾ｑ＾）
+
+	/// <summary>
+	/// 非スプリットポイントでだけ実行するぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="captureOrPawnPromotion"></param>
+	/// <param name="playedMoveCount"></param>
+	/// <param name="movesSearched"></param>
+	/// <param name="move"></param>
 	virtual inline void DoStep13d(
 		bool& captureOrPawnPromotion,
 		int& playedMoveCount,
@@ -885,6 +1237,16 @@ public:
 		}
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="pos"></param>
+	/// <param name="move"></param>
+	/// <param name="st"></param>
+	/// <param name="ci"></param>
+	/// <param name="givesCheck"></param>
+	/// <param name="ppFlashlight"></param>
 	virtual inline void DoStep14(
 		Position& pos,
 		Move& move,
@@ -904,6 +1266,25 @@ public:
 		((*ppFlashlight) + 1)->m_staticEvalRaw.m_p[0][0] = ScoreIndex::ScoreNotEvaluated;
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="rucksack"></param>
+	/// <param name="depth"></param>
+	/// <param name="isPVMove"></param>
+	/// <param name="captureOrPawnPromotion"></param>
+	/// <param name="move"></param>
+	/// <param name="ttMove"></param>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="moveCount"></param>
+	/// <param name="cutNode"></param>
+	/// <param name="newDepth"></param>
+	/// <param name="alpha"></param>
+	/// <param name="ppSplitedNode"></param>
+	/// <param name="score"></param>
+	/// <param name="pos"></param>
+	/// <param name="doFullDepthSearch"></param>
 	virtual inline void DoStep15(
 		Rucksack& rucksack,
 		const Depth depth,
@@ -958,7 +1339,14 @@ public:
 		}
 	}
 
-	// Pvノードかどうかで手続きが変わるぜ☆！（＾ｑ＾）
+
+	/// <summary>
+	/// Pvノードかどうかで手続きが変わるぜ☆！（＾ｑ＾）
+	/// </summary>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="depth"></param>
+	/// <param name="moveCount"></param>
+	/// <param name="cutNode"></param>
 	virtual inline void SetReductionInStep15(
 		Flashlight** ppFlashlight,
 		const Depth depth,
@@ -966,7 +1354,12 @@ public:
 		const bool cutNode
 		) const = 0;
 
-	// スプリットノードだけが実行するぜ☆！（＾ｑ＾）
+
+	/// <summary>
+	/// スプリットノードだけが実行するぜ☆！（＾ｑ＾）
+	/// </summary>
+	/// <param name="alpha"></param>
+	/// <param name="ppSplitedNode"></param>
 	virtual inline void UpdateAlphaInStep15(
 		ScoreIndex& alpha,
 		SplitedNode** ppSplitedNode
@@ -975,7 +1368,13 @@ public:
 		alpha = (*ppSplitedNode)->m_alpha;
 	}
 
-	// スプリットノードだけが実行するぜ☆！（＾ｑ＾）
+
+	/// <summary>
+	/// スプリットノードだけが実行するぜ☆！（＾ｑ＾）
+	/// </summary>
+	/// <param name="doFullDepthSearch"></param>
+	/// <param name="alpha"></param>
+	/// <param name="ppSplitedNode"></param>
 	virtual inline void DoStep16a(
 		bool& doFullDepthSearch,
 		ScoreIndex& alpha,
@@ -989,7 +1388,19 @@ public:
 		}
 	}
 
-	// （＾ｑ＾）N02_NonPV扱いで実行するみたいなんだがなんだこれだぜ☆
+
+	/// <summary>
+	/// （＾ｑ＾）N02_NonPV扱いで実行するみたいなんだがなんだこれだぜ☆
+	/// </summary>
+	/// <param name="rucksack"></param>
+	/// <param name="doFullDepthSearch"></param>
+	/// <param name="score"></param>
+	/// <param name="newDepth"></param>
+	/// <param name="givesCheck"></param>
+	/// <param name="pos"></param>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="alpha"></param>
+	/// <param name="cutNode"></param>
 	virtual inline void DoStep16b_NonPVAtukai(
 		Rucksack& rucksack,
 		bool& doFullDepthSearch,
@@ -1015,8 +1426,22 @@ public:
 		}
 	}
 
-	// PVノードだけが実行するぜ☆！（＾ｑ＾）
-	// N01_PV扱いで実行するみたいだが……☆（＾ｑ＾）
+
+	/// <summary>
+	///		<pre>
+	/// PVノードだけが実行するぜ☆！（＾ｑ＾）
+	/// N01_PV扱いで実行するみたいだが……☆（＾ｑ＾）
+	///		</pre>
+	/// </summary>
+	/// <param name="rucksack"></param>
+	/// <param name="isPVMove"></param>
+	/// <param name="alpha"></param>
+	/// <param name="score"></param>
+	/// <param name="beta"></param>
+	/// <param name="newDepth"></param>
+	/// <param name="givesCheck"></param>
+	/// <param name="pos"></param>
+	/// <param name="ppFlashlight"></param>
 	virtual inline void DoStep16c(
 		Rucksack& rucksack,
 		bool& isPVMove,
@@ -1043,11 +1468,25 @@ public:
 				: -g_NODETYPE_PROGRAMS[N01_PV]->GoToTheAdventure_new(rucksack, pos, (*ppFlashlight) + 1, -beta, -alpha, newDepth, false));
 		}
 	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="score"></param>
+	/// <param name="beta"></param>
+	/// <returns></returns>
 	virtual inline bool IsBetaLargeAtStep16c(
 		ScoreIndex& score,
 		ScoreIndex& beta
 		) const = 0;
 		
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="pos"></param>
+	/// <param name="move"></param>
 	virtual inline void DoStep17(
 		Position& pos,
 		Move& move
@@ -1055,7 +1494,13 @@ public:
 		pos.UndoMove(move);
 	}
 
-	// スプリット・ポイントだけが実行するぜ☆！（＾ｑ＾）
+
+	/// <summary>
+	/// スプリット・ポイントだけが実行するぜ☆！（＾ｑ＾）
+	/// </summary>
+	/// <param name="ppSplitedNode"></param>
+	/// <param name="bestScore"></param>
+	/// <param name="alpha"></param>
 	virtual inline void DoStep18a(
 		SplitedNode** ppSplitedNode,
 		ScoreIndex& bestScore,
@@ -1066,7 +1511,16 @@ public:
 			alpha = (*ppSplitedNode)->m_alpha;
 	}
 
-	// ルートノードだけが実行するぜ☆！（＾ｑ＾）
+
+	/// <summary>
+	/// ルートノードだけが実行するぜ☆！（＾ｑ＾）
+	/// </summary>
+	/// <param name="rucksack"></param>
+	/// <param name="move"></param>
+	/// <param name="isPVMove"></param>
+	/// <param name="alpha"></param>
+	/// <param name="score"></param>
+	/// <param name="pos"></param>
 	virtual inline void DoStep18b(
 		Rucksack& rucksack,
 		Move& move,
@@ -1100,7 +1554,21 @@ public:
 		}
 	}
 
-	// スプリット・ポイントかどうかで分かれるぜ☆！（＾ｑ＾）
+
+	/// <summary>
+	/// スプリット・ポイントかどうかで分かれるぜ☆！（＾ｑ＾）
+	/// </summary>
+	/// <param name="isBreak"></param>
+	/// <param name="rucksack"></param>
+	/// <param name="move"></param>
+	/// <param name="isPVMove"></param>
+	/// <param name="alpha"></param>
+	/// <param name="score"></param>
+	/// <param name="pos"></param>
+	/// <param name="bestScore"></param>
+	/// <param name="ppSplitedNode"></param>
+	/// <param name="bestMove"></param>
+	/// <param name="beta"></param>
 	virtual inline void DoStep18c(
 		bool& isBreak,
 		Rucksack& rucksack,
@@ -1115,7 +1583,24 @@ public:
 		ScoreIndex& beta
 		)const = 0;
 
-	// 非スプリットポイントでだけ実行するぜ☆（＾ｑ＾）
+
+	/// <summary>
+	/// 非スプリットポイントでだけ実行するぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="isBreak"></param>
+	/// <param name="rucksack"></param>
+	/// <param name="depth"></param>
+	/// <param name="ppThisThread"></param>
+	/// <param name="bestScore"></param>
+	/// <param name="beta"></param>
+	/// <param name="pos"></param>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="alpha"></param>
+	/// <param name="bestMove"></param>
+	/// <param name="threatMove"></param>
+	/// <param name="moveCount"></param>
+	/// <param name="mp"></param>
+	/// <param name="cutNode"></param>
 	virtual inline void DoStep19(
 		bool& isBreak,
 		Rucksack& rucksack,
@@ -1134,9 +1619,30 @@ public:
 		)const = 0;
 
 
-	// スプリット・ポイントは　ステップ２０を実行する前に終了するぜ☆（＾ｑ＾）
+	/// <summary>
+	/// スプリット・ポイントは　ステップ２０を実行する前に終了するぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <returns></returns>
 	virtual inline bool GetReturnBeforeStep20() const = 0;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="moveCount"></param>
+	/// <param name="excludedMove"></param>
+	/// <param name="rucksack"></param>
+	/// <param name="alpha"></param>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="bestScore"></param>
+	/// <param name="playedMoveCount"></param>
+	/// <param name="beta"></param>
+	/// <param name="posKey"></param>
+	/// <param name="depth"></param>
+	/// <param name="bestMove"></param>
+	/// <param name="inCheck"></param>
+	/// <param name="pos"></param>
+	/// <param name="movesSearched"></param>
 	virtual inline void DoStep20(
 		int& moveCount,
 		Move& excludedMove,
@@ -1200,9 +1706,11 @@ public:
 		assert(-ScoreIndex::ScoreInfinite < bestScore && bestScore < ScoreIndex::ScoreInfinite);
 	}
 
-	// スタティック・メソッドは継承できないので、スタティックにはしないぜ☆（＾ｑ＾）
+
+	/// <summary>
+	/// スタティック・メソッドは継承できないので、スタティックにはしないぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="bestMoveExists"></param>
+	/// <returns></returns>
 	virtual inline Bound GetBoundAtStep20(bool bestMoveExists) const = 0;
-
-
 };
-

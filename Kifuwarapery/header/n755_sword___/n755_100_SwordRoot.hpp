@@ -4,19 +4,35 @@
 #include "n755_070_SwordAbstract.hpp"
 
 
+/// <summary>
+/// å‰£ãƒ«ãƒ¼ãƒˆâ˜†ï¼ˆï¼¾ï½‘ï¼¾ï¼‰
+/// </summary>
 class SwordRoot : public SwordAbstract {
+
+
 public:
 
-	// ƒXƒvƒŠƒbƒgEƒ|ƒCƒ“ƒg‚ªŒŸõ‚·‚é‚º™iO‚‘Oj
-	// ˆË‘¶ŠÖŒW‚Ì“s‡ãAƒCƒ“ƒ‰ƒCƒ“‚É‚Í‚µ‚È‚¢‚º™iO‚‘Oj
+
+	/// <summary>
+	///		<pre>
+	/// ã‚¹ãƒ—ãƒªãƒƒãƒˆãƒ»ãƒã‚¤ãƒ³ãƒˆãŒæ¤œç´¢ã™ã‚‹ãœâ˜†ï¼ˆï¼¾ï½‘ï¼¾ï¼‰
+	/// ä¾å­˜é–¢ä¿‚ã®éƒ½åˆä¸Šã€ã‚¤ãƒ³ãƒ©ã‚¤ãƒ³ã«ã¯ã—ãªã„ãœâ˜†ï¼ˆï¼¾ï½‘ï¼¾ï¼‰
+	///		</pre>
+	/// </summary>
+	/// <param name="ownerSplitedNode"></param>
+	/// <param name="searcher"></param>
+	/// <param name="pos"></param>
+	/// <param name="pFlashlight"></param>
 	virtual void GoSearch_AsSplitedNode(
 		SplitedNode& ownerSplitedNode,
 		Rucksack& searcher,
 		Position& pos,
 		Flashlight* pFlashlight
 		) const override;
-
 };
 
 
+/// <summary>
+/// 
+/// </summary>
 extern const SwordRoot g_SWORD_ROOT;
