@@ -8,6 +8,9 @@
 #include "../../header/n351_bonaDir_/n351_500_bonaDirArray.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 BonaDirAbstract* g_bonaDirArray[6] = {
 	&g_direcMisc,
 	&g_nullBonaDir,

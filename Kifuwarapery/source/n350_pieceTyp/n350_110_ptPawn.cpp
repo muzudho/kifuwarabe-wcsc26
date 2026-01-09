@@ -19,9 +19,14 @@
 #include "../../header/n350_pieceTyp/n350_500_ptPrograms.hpp"
 
 
-
-
-// Colorで縛れないか☆？（＾ｑ＾）→バーチャルの派生クラスだぜ☆
+/// <summary>
+/// Colorで縛れないか☆？（＾ｑ＾）→バーチャルの派生クラスだぜ☆
+/// </summary>
+/// <param name="occupied"></param>
+/// <param name="attackers"></param>
+/// <param name="nextPT"></param>
+/// <param name="ptsEvent"></param>
+/// <returns></returns>
 PieceType PtPawn::AppendToNextAttackerAndTryPromote(
 	Bitboard& occupied,
 	Bitboard& attackers,

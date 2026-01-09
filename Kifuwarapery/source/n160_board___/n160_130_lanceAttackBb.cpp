@@ -9,10 +9,18 @@
 #include "../../header/n160_board___/n160_400_printBb.hpp"
 
 
-// これらは一度値を設定したら二度と変更しない。
-LanceAttackBb g_lanceAttackBb;//本当はconst にしたいが、やり方がわからない☆ C2373エラーになるんだぜ☆
+/// <summary>
+///		<pre>
+/// これらは一度値を設定したら二度と変更しない。
+/// 本当はconst にしたいが、やり方がわからない☆ C2373エラーになるんだぜ☆
+///		</pre>
+/// </summary>
+LanceAttackBb g_lanceAttackBb;
 
 
+/// <summary>
+/// 
+/// </summary>
 void LanceAttackBb::Initialize()
 {
 	// LanceBlockMask, g_lanceAttack の値を設定する。
@@ -31,6 +39,9 @@ void LanceAttackBb::Initialize()
 }
 
 
+/// <summary>
+/// 
+/// </summary>
 void LanceAttackBb::InitCheckTableLance() {
 	for (Color c = Black; c < g_COLOR_NUM; ++c) {
 		const Color opp = ConvColor::OPPOSITE_COLOR10b(c);//色はループで交互になるぜ☆（＾ｑ＾）
@@ -50,6 +61,9 @@ void LanceAttackBb::InitCheckTableLance() {
 }
 
 
+/// <summary>
+/// 
+/// </summary>
 void LanceAttackBb::InitializeToEdge()
 {
 	for (Square sq = I9; sq < SquareNum; ++sq) {
@@ -59,16 +73,31 @@ void LanceAttackBb::InitializeToEdge()
 }
 
 
-// square のマスにおける、障害物を調べる必要がある場所を Bitboard で返す。
-// lance の前方だけを調べれば良さそうだけど、Rank8 ~ Rank2 の状態をそのまま index に使いたいので、
-// 縦方向全て(端を除く)の occupied を全て調べる。
+/// <summary>
+///		<pre>
+/// square のマスにおける、障害物を調べる必要がある場所を Bitboard で返す。
+/// lance の前方だけを調べれば良さそうだけど、Rank8 ~ Rank2 の状態をそのまま index に使いたいので、
+/// 縦方向全て(端を除く)の occupied を全て調べる。
+///		</pre>
+/// </summary>
+/// <param name="square"></param>
+/// <returns></returns>
 Bitboard LanceAttackBb::LanceBlockMask(const Square square) {
 	return g_fileMaskBb.GetSquareFileMask(square) & ~(g_rankMaskBb.GetRankMask<Rank1>() | g_rankMaskBb.GetRankMask<Rank9>());
 }
 
-// lance の利きを返す。
-// 香車の利きは常にこれを使っても良いけど、もう少し速くする為に、テーブル化する為だけに使う。
-// occupied  障害物があるマスが 1 の bitboard
+
+/// <summary>
+/// 	<pre>
+/// lance の利きを返す。
+/// 香車の利きは常にこれを使っても良いけど、もう少し速くする為に、テーブル化する為だけに使う。
+/// occupied  障害物があるマスが 1 の bitboard
+/// 	</pre>
+/// </summary>
+/// <param name="c"></param>
+/// <param name="square"></param>
+/// <param name="occupied"></param>
+/// <returns></returns>
 Bitboard LanceAttackBb::LanceAttackCalc(const Color c, const Square square, const Bitboard& occupied) {
 	return g_rookAttackBb.GetControllBb(occupied, square) & g_inFrontMaskBb.GetInFrontMask(c, ConvSquare::TO_RANK10(square));
 }

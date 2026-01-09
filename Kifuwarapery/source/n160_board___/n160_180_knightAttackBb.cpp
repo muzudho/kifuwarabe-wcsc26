@@ -7,12 +7,15 @@
 #include "../../header/n160_board___/n160_190_pawnAttackBb.hpp"
 
 
-KnightAttackBb g_knightAttackBb;//本当はconst にしたいが、やり方がわからない☆ C2373エラーになるんだぜ☆
+/// <summary>
+/// 本当はconst にしたいが、やり方がわからない☆ C2373エラーになるんだぜ☆
+/// </summary>
+KnightAttackBb g_knightAttackBb;
 
 
-//────────────────────────────────────────────────────────────────────────────────
-// 桂
-//────────────────────────────────────────────────────────────────────────────────
+/// <summary>
+/// 桂の利きを初期化するぜ☆（＾▽＾）
+/// </summary>
 void KnightAttackBb::Initialize()
 {
 	for (Color c = Black; c < g_COLOR_NUM; ++c) {
@@ -29,6 +32,10 @@ void KnightAttackBb::Initialize()
 	}
 }
 
+
+/// <summary>
+/// 桂の王手チェックテーブルを初期化するぜ☆（＾▽＾）
+/// </summary>
 void KnightAttackBb::InitCheckTableKnight() {
 	for (Color color = Black; color < g_COLOR_NUM; ++color) {
 		const Color opponent = ConvColor::OPPOSITE_COLOR10b(color);//色はループで交互になるぜ☆（＾ｑ＾）

@@ -7,9 +7,15 @@
 #include "../../header/n160_board___/n160_230_setMaskBb.hpp"		// TODO:これを消すのが難しい
 
 
-SilverAttackBb g_silverAttackBb;//本当はconst にしたいが、やり方がわからない☆ C2373エラーになるんだぜ☆
+/// <summary>
+/// 本当はconst にしたいが、やり方がわからない☆ C2373エラーになるんだぜ☆
+/// </summary>
+SilverAttackBb g_silverAttackBb;
 
 
+/// <summary>
+/// 
+/// </summary>
 void SilverAttackBb::Initialize()
 {
 	for (Color c = Black; c < g_COLOR_NUM; ++c)
@@ -21,6 +27,10 @@ void SilverAttackBb::Initialize()
 			g_bishopAttackBb.BishopAttack(Bitboard::CreateAllOneBB(), sq);
 }
 
+
+/// <summary>
+/// 
+/// </summary>
 void SilverAttackBb::InitCheckTableSilver() {
 	for (Color c = Black; c < g_COLOR_NUM; ++c) {
 		const Color opp = ConvColor::OPPOSITE_COLOR10b(c);//色はループで交互になるぜ☆（＾ｑ＾）

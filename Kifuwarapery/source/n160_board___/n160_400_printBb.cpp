@@ -6,11 +6,10 @@
 #include "../../header/n160_board___/n160_400_printBb.hpp"
 
 
-//────────────────────────────────────────────────────────────────────────────────
-// その他
-//────────────────────────────────────────────────────────────────────────────────
-
-
+/// <summary>
+/// 盤の出力。
+/// </summary>
+/// <param name="thisBitboard"></param>
 void PrintBb::PrintBoard(const Bitboard* thisBitboard)// const
 {
 	std::cout << "   A  B  C  D  E  F  G  H  I\n";

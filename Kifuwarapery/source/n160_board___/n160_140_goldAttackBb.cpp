@@ -6,9 +6,15 @@
 #include "../../header/n160_board___/n160_400_printBb.hpp"
 
 
-GoldAttackBb g_goldAttackBb;//本当はconst にしたいが、やり方がわからない☆ C2373エラーになるんだぜ☆
+/// <summary>
+/// 本当はconst にしたいが、やり方がわからない☆ C2373エラーになるんだぜ☆
+/// </summary>
+GoldAttackBb g_goldAttackBb;
 
 
+/// <summary>
+/// 
+/// </summary>
 void GoldAttackBb::Initialize()
 {
 	for (Color c = Black; c < g_COLOR_NUM; ++c)
@@ -21,6 +27,10 @@ void GoldAttackBb::Initialize()
 			g_rookAttackBb.GetControllBb(Bitboard::CreateAllOneBB(), sq);
 }
 
+
+/// <summary>
+/// 
+/// </summary>
 void GoldAttackBb::InitCheckTableGold() {
 	for (Color c = Black; c < g_COLOR_NUM; ++c) {
 		const Color opp = ConvColor::OPPOSITE_COLOR10b(c);//色はループで交互になるぜ☆（＾ｑ＾）

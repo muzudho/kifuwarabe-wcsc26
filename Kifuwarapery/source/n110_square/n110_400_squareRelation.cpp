@@ -2,9 +2,15 @@
 #include "../../header/n110_square__/n110_500_convSquare.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 SquareRelation g_squareRelation;
 
 
+/// <summary>
+/// 
+/// </summary>
 void SquareRelation::Initialize()
 {
 	for (Square sq1 = I9; sq1 < SquareNum; ++sq1) {
@@ -14,7 +20,7 @@ void SquareRelation::Initialize()
 			const File file2 = ConvSquare::TO_FILE10(sq2);
 			const Rank rank2 = ConvSquare::TO_RANK10(sq2);
 			this->m_squareRelation_[sq1][sq2] = N00_DirecMisc;
-			if (sq1 == sq2) continue;
+			if (sq1 == sq2) { continue; }
 
 			if (file1 == file2)
 				this->m_squareRelation_[sq1][sq2] = N02_DirecFile;

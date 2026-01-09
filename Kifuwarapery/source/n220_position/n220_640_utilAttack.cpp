@@ -8,8 +8,14 @@
 #include "../../header/n350_pieceTyp/n350_500_ptPrograms.hpp"
 
 
-
-
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pType"></param>
+/// <param name="c"></param>
+/// <param name="sq"></param>
+/// <param name="occupied"></param>
+/// <returns></returns>
 Bitboard UtilAttack::GetAttacksFrom(const PieceType pType, const Color c, const Square sq, const Bitboard& occupied) {//const
 	// FIXME: 配列の範囲チェックをしてないぜ☆（＾ｑ＾）
 	const PieceTypeEvent ptEvent1(occupied, c, sq);

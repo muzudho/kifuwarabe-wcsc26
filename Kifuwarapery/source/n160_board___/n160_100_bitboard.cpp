@@ -3,34 +3,64 @@
 #include "../../header/n110_square__/n110_500_convSquare.hpp"
 #include "../../header/n160_board___/n160_100_bitboard.hpp"
 
+
 using namespace std;
 
 
-// (^q^)追加☆
+/// <summary>
+/// (^q^)追加☆
+/// </summary>
 Bitboard g_nullBitboard;
 
 
+/// <summary>
+/// 
+/// </summary>
+/// <param name="v0"></param>
+/// <param name="v1"></param>
 Bitboard::Bitboard(const u64 v0, const u64 v1)
 {
 	this->m_p_[0] = v0;
 	this->m_p_[1] = v1;
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="index"></param>
+/// <returns></returns>
 u64 Bitboard::GetP(const int index) const
 {
 	return this->m_p_[index];
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="index"></param>
+/// <param name="val"></param>
 void Bitboard::SetP(const int index, const u64 val)
 {
 	this->m_p_[index] = val;
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
 u64 Bitboard::MergeP() const
 {
 	return this->GetP(0) | this->GetP(1);
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
 bool Bitboard::Exists1Bit() const
 {
 #ifdef HAVE_SSE4
@@ -40,6 +70,12 @@ bool Bitboard::Exists1Bit() const
 #endif
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="bb"></param>
+/// <returns></returns>
 bool Bitboard::AndIsNot0( const Bitboard & bb) const
 {
 #ifdef HAVE_SSE4
@@ -49,6 +85,11 @@ bool Bitboard::AndIsNot0( const Bitboard & bb) const
 #endif
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
 Bitboard Bitboard::operator~() const
 {
 #if defined (HAVE_SSE2) || defined (HAVE_SSE4)
@@ -60,6 +101,12 @@ Bitboard Bitboard::operator~() const
 #endif
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="rhs"></param>
+/// <returns></returns>
 Bitboard Bitboard::operator&=(const Bitboard & rhs)
 {
 #if defined (HAVE_SSE2) || defined (HAVE_SSE4)
@@ -71,6 +118,12 @@ Bitboard Bitboard::operator&=(const Bitboard & rhs)
 	return *this;
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="rhs"></param>
+/// <returns></returns>
 Bitboard Bitboard::operator|=(const Bitboard & rhs)
 {
 #if defined (HAVE_SSE2) || defined (HAVE_SSE4)
@@ -82,6 +135,12 @@ Bitboard Bitboard::operator|=(const Bitboard & rhs)
 	return *this;
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="rhs"></param>
+/// <returns></returns>
 Bitboard Bitboard::operator^=(const Bitboard & rhs)
 {
 #if defined (HAVE_SSE2) || defined (HAVE_SSE4)
@@ -93,6 +152,12 @@ Bitboard Bitboard::operator^=(const Bitboard & rhs)
 	return *this;
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="i"></param>
+/// <returns></returns>
 Bitboard Bitboard::operator<<=(const int i)
 {
 #if defined (HAVE_SSE2) || defined (HAVE_SSE4)
@@ -104,6 +169,12 @@ Bitboard Bitboard::operator<<=(const int i)
 	return *this;
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="i"></param>
+/// <returns></returns>
 Bitboard Bitboard::operator>>=(const int i)
 {
 #if defined (HAVE_SSE2) || defined (HAVE_SSE4)
@@ -115,31 +186,67 @@ Bitboard Bitboard::operator>>=(const int i)
 	return *this;
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="rhs"></param>
+/// <returns></returns>
 Bitboard Bitboard::operator&(const Bitboard & rhs) const
 {
 	return Bitboard(*this) &= rhs;
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="rhs"></param>
+/// <returns></returns>
 Bitboard Bitboard::operator|(const Bitboard & rhs) const
 {
 	return Bitboard(*this) |= rhs;
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="rhs"></param>
+/// <returns></returns>
 Bitboard Bitboard::operator^(const Bitboard & rhs) const
 {
 	return Bitboard(*this) ^= rhs;
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="i"></param>
+/// <returns></returns>
 Bitboard Bitboard::operator<<(const int i) const
 {
 	return Bitboard(*this) <<= i;
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="i"></param>
+/// <returns></returns>
 Bitboard Bitboard::operator>>(const int i) const
 {
 	return Bitboard(*this) >>= i;
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="rhs"></param>
+/// <returns></returns>
 bool Bitboard::operator==(const Bitboard & rhs) const
 {
 #ifdef HAVE_SSE4
@@ -149,11 +256,23 @@ bool Bitboard::operator==(const Bitboard & rhs) const
 #endif
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="rhs"></param>
+/// <returns></returns>
 bool Bitboard::operator!=(const Bitboard & rhs) const
 {
 	return !(*this == rhs);
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="bb"></param>
+/// <returns></returns>
 Bitboard Bitboard::AndEqualNot(const Bitboard & bb)
 {
 #if defined (HAVE_SSE2) || defined (HAVE_SSE4)
@@ -164,6 +283,12 @@ Bitboard Bitboard::AndEqualNot(const Bitboard & bb)
 	return *this;
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="bb"></param>
+/// <returns></returns>
 Bitboard Bitboard::NotThisAnd(const Bitboard & bb) const
 {
 #if defined (HAVE_SSE2) || defined (HAVE_SSE4)
@@ -175,6 +300,11 @@ Bitboard Bitboard::NotThisAnd(const Bitboard & bb) const
 #endif
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="part"></param>
 void Bitboard::PrintTable(const int part) const
 {
 	for (Rank r = Rank9; r < RankNum; ++r) {
@@ -186,6 +316,12 @@ void Bitboard::PrintTable(const int part) const
 	std::cout << std::endl;
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="sq"></param>
+/// <returns></returns>
 int Bitboard::Part(const Square sq)
 {
 	return static_cast<int>(C1 < sq);

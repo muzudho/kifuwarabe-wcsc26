@@ -9,51 +9,100 @@
 #include "../../header/n113_piece___/n113_200_handPiece.hpp"
 #include "../../header/n165_movStack/n165_400_move.hpp"
 
+
+/// <summary>
+/// デフォルト・コンストラクタは空っぽだぜ☆（＾ｑ＾）
+/// </summary>
 Move::Move()
 {
-	// デフォルト・コンストラクタは空っぽだぜ☆（＾ｑ＾）
 }
 
+
+/// <summary>
+/// 移動先マス。
+/// </summary>
+/// <returns></returns>
 Square Move::To() const
 {
 	return static_cast<Square>((this->GetValue() >> 0) & 0x7f);
 }
 
+
+/// <summary>
+/// 移動元マス。
+/// </summary>
+/// <returns></returns>
 Square Move::From() const
 {
 	return static_cast<Square>((this->GetValue() >> 7) & 0x7f);
 }
 
+
+/// <summary>
+/// 移動元、移動先
+/// </summary>
+/// <returns></returns>
 u32 Move::FromAndTo() const
 {
 	return (this->GetValue() >> 0) & 0x3fff;
 }
 
+
+/// <summary>
+/// 成り、移動元、移動先
+/// </summary>
+/// <returns></returns>
 u32 Move::ProFromAndTo() const
 {
 	return (this->GetValue() >> 0) & 0x7fff;
 }
 
+
+/// <summary>
+/// 取った駒。
+/// </summary>
+/// <returns></returns>
 PieceType Move::GetCap() const
 {
 	return static_cast<PieceType>((this->GetValue() >> 20) & 0xf);
 }
 
+
+/// <summary>
+/// 成ったか。
+/// </summary>
+/// <returns></returns>
 u32 Move::IsPromotion() const
 {
 	return this->GetValue() & m_PROMOTE_FLAG;
 }
 
+
+/// <summary>
+/// 移動元の駒種類。
+/// </summary>
+/// <returns></returns>
 PieceType Move::GetPieceTypeFrom() const
 {
 	return static_cast<PieceType>((this->GetValue() >> 16) & 0xf);
 }
 
+
+/// <summary>
+/// 移動先の駒種類。
+/// </summary>
+/// <returns></returns>
 PieceType Move::GetPieceTypeTo() const
 {
 	return (this->IsDrop() ? this->GetPieceTypeDropped() : this->GetPieceTypeTo(this->GetPieceTypeFrom()));
 }
 
+
+/// <summary>
+/// 移動先の駒種類。
+/// </summary>
+/// <param name="ptFrom"></param>
+/// <returns></returns>
 PieceType Move::GetPieceTypeTo(const PieceType ptFrom) const
 {
 	// これらは同じ意味。
@@ -64,84 +113,168 @@ PieceType Move::GetPieceTypeTo(const PieceType ptFrom) const
 #endif
 }
 
+
+/// <summary>
+/// 打か。
+/// </summary>
+/// <returns></returns>
 bool Move::IsDrop() const
 {
 	return this->From() >= 81;
 }
 
+
+/// <summary>
+/// 駒を取ったか。
+/// </summary>
+/// <returns></returns>
 bool Move::IsCapture() const
 {
 	return (this->GetValue() & 0xf00000) ? true : false;
 }
 
+
+/// <summary>
+/// 駒を取ったか、または成ったか。
+/// </summary>
+/// <returns></returns>
 bool Move::IsCaptureOrPromotion() const
 {
 	return (this->GetValue() & 0xf04000) ? true : false;
 }
 
+
+/// <summary>
+/// 駒を取ったか、または歩の成りか。
+/// </summary>
+/// <returns></returns>
 bool Move::IsCaptureOrPawnPromotion() const
 {
 	return this->IsCapture() || (this->IsPromotion() && this->GetPieceTypeFrom() == PieceType::N01_Pawn);
 }
 
+
+/// <summary>
+/// 打つ駒の種類。
+/// </summary>
+/// <returns></returns>
 PieceType Move::GetPieceTypeDropped() const
 {
 	return static_cast<PieceType>(this->From() - Square::SquareNum + 1);
 }
 
+
+/// <summary>
+/// 移動元の駒種類、または打つ駒の種類。
+/// </summary>
+/// <returns></returns>
 PieceType Move::GetPieceTypeFromOrDropped() const
 {
 	return (this->IsDrop() ? this->GetPieceTypeDropped() : this->GetPieceTypeFrom());
 }
 
+
+/// <summary>
+/// 打つ駒の種類。
+/// </summary>
+/// <returns></returns>
 HandPiece Move::GetHandPieceDropped() const
 {
 	assert(this->IsDrop());
 	return ConvHandPiece::FromPieceType(this->GetPieceTypeDropped());
 }
 
+
+/// <summary>
+/// 値が入っていないか。
+/// </summary>
+/// <returns></returns>
 bool Move::IsNone() const
 {
 	return GetValue() == Move::m_NONE;
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
 u32 Move::GetValue() const
 {
 	return this->m_value;
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="rhs"></param>
+/// <returns></returns>
 Move Move::operator|=(const Move rhs)
 {
 	this->m_value |= rhs.GetValue();
 	return *this;
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="rhs"></param>
+/// <returns></returns>
 Move Move::operator|(const Move rhs) const
 {
 	return Move(*this) |= rhs;
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="rhs"></param>
+/// <returns></returns>
 bool Move::operator==(const Move rhs) const
 {
 	return this->GetValue() == rhs.GetValue();
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="rhs"></param>
+/// <returns></returns>
 bool Move::operator!=(const Move rhs) const
 {
 	return !(*this == rhs);
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="rhs"></param>
+/// <returns></returns>
 bool Move::operator<(const Move rhs) const
 {
 	return this->GetValue() < rhs.GetValue();
 }
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
 std::string Move::GetPromoteFlagToStringUSI() const
 {
 	return (this->IsPromotion() ? "+" : "");
 }
 
-// (^q^)エイプリーはストリング型だったんだが、なのは風のキャラ配列に変えてみるぜ☆
+
+/// <summary>
+/// (^q^)エイプリーはストリング型だったんだが、なのは風のキャラ配列に変えてみるぜ☆
+/// </summary>
+/// <returns></returns>
 std::string Move::ToUSI() const {
 
 	// （Ａ）指さないとき☆（＾ｑ＾）
@@ -235,6 +368,11 @@ std::string Move::ToUSI() const {
 	}
 }
 
+
+/// <summary>
+///
+/// </summary>
+/// <returns></returns>
 std::string Move::ToCSA() const {
 
 	if (this->IsNone()) { return "None"; }

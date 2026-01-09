@@ -4,12 +4,23 @@
 #include "../../header/n160_board___/n160_106_inFrontMaskBb.hpp"
 
 
-BishopAttackBb g_bishopAttackBb;//本当はconst にしたいが、やり方がわからない☆ C2373エラーになるんだぜ☆
+/// <summary>
+/// 本当はconst にしたいが、やり方がわからない☆ C2373エラーになるんだぜ☆
+/// </summary>
+BishopAttackBb g_bishopAttackBb;
 
 
 #if defined FIND_MAGIC
-// square の位置の rook, bishop それぞれのMagic Bitboard に使用するマジックナンバーを見つける。
-// isBishop  : true なら bishop, false なら rook のマジックナンバーを見つける。
+
+
+/// <summary>
+///		<pre>
+/// square の位置の rook, bishop それぞれのMagic Bitboard に使用するマジックナンバーを見つける。
+/// isBishop  : true なら bishop, false なら rook のマジックナンバーを見つける。
+///		</pre>
+/// </summary>
+/// <param name="square"></param>
+/// <returns></returns>
 u64 BishopAttackBb::findMagicBishop(const Square square) {
 	Bitboard occupied[1 << 14];
 	Bitboard attack[1 << 14];
@@ -28,8 +39,7 @@ u64 BishopAttackBb::findMagicBishop(const Square square) {
 		bool fail = false;
 
 		// これは無くても良いけど、少しマジックナンバーが見つかるのが早くなるはず。
-		if (count1s((mask.MergeP() * magic) & UINT64_C(0xfff0000000000000)) < 6)
-			continue;
+		if (count1s((mask.MergeP() * magic) & UINT64_C(0xfff0000000000000)) < 6) { continue; }
 
 		std::fill(std::begin(attackUsed), std::IsEnd(attackUsed), CreateAllZeroBB());
 
@@ -41,8 +51,7 @@ u64 BishopAttackBb::findMagicBishop(const Square square) {
 			else if (attackUsed[index] != attack[i])
 				fail = true;
 		}
-		if (!fail)
-			return magic;
+		if (!fail) { return magic; }
 	}
 
 	std::cout << "/***Failed***/\t";
@@ -51,7 +60,11 @@ u64 BishopAttackBb::findMagicBishop(const Square square) {
 #endif // #if defined FIND_MAGIC
 
 
-// square のマスにおける、障害物を調べる必要がある場所を調べて Bitboard で返す。
+/// <summary>
+/// square のマスにおける、障害物を調べる必要がある場所を調べて Bitboard で返す。
+/// </summary>
+/// <param name="square"></param>
+/// <returns></returns>
 Bitboard BishopAttackBb::BishopBlockMaskCalc(const Square square) const {
 	const Rank rank = ConvSquare::TO_RANK10(square);
 	const File file = ConvSquare::TO_FILE10(square);
@@ -73,8 +86,16 @@ Bitboard BishopAttackBb::BishopBlockMaskCalc(const Square square) const {
 	return result;
 }
 
-// Rook or Bishop の利きの範囲を調べて bitboard で返す。
-// occupied  障害物があるマスが 1 の bitboard
+
+/// <summary>
+///		<pre>
+/// Rook or Bishop の利きの範囲を調べて bitboard で返す。
+/// occupied  障害物があるマスが 1 の bitboard
+///		</pre>
+/// </summary>
+/// <param name="square"></param>
+/// <param name="occupied"></param>
+/// <returns></returns>
 Bitboard BishopAttackBb::BishopAttackCalc(const Square square, const Bitboard& occupied) const {
 	const SquareDelta deltaArray[2][4] = { { DeltaN, DeltaS, DeltaE, DeltaW },{ DeltaNE, DeltaSE, DeltaSW, DeltaNW } };
 	Bitboard result = Bitboard::CreateAllZeroBB();
@@ -84,8 +105,7 @@ Bitboard BishopAttackBb::BishopAttackCalc(const Square square, const Bitboard& o
 			sq += delta)
 		{
 			g_setMaskBb.AddBit(&result, sq);
-			if (g_setMaskBb.IsSet(&occupied, sq))
-				break;
+			if (g_setMaskBb.IsSet(&occupied, sq)) { break; }
 		}
 	}
 
@@ -93,6 +113,9 @@ Bitboard BishopAttackBb::BishopAttackCalc(const Square square, const Bitboard& o
 }
 
 
+/// <summary>
+/// 
+/// </summary>
 void BishopAttackBb::InitBishopAttacks()
 {
 	// 角か、飛車か
@@ -127,7 +150,9 @@ void BishopAttackBb::InitBishopAttacks()
 }
 
 
-
+/// <summary>
+/// 
+/// </summary>
 void BishopAttackBb::InitializeToEdge()
 {
 	for (Square sq = I9; sq < SquareNum; ++sq) {

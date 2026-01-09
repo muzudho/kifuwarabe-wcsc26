@@ -2,6 +2,14 @@
 #include "../../header/n350_pieceTyp/n350_250_ptPieceTypeNum.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
+/// <param name="occupied"></param>
+/// <param name="attackers"></param>
+/// <param name="nextPT"></param>
+/// <param name="ptsEvent"></param>
+/// <returns></returns>
 PieceType PtPieceTypeNum::AppendToNextAttackerAndTryPromote(
 	Bitboard& occupied,
 	Bitboard& attackers,

@@ -18,7 +18,9 @@
 #include "../../header/n350_pieceTyp/n350_500_ptPrograms.hpp"
 
 
-// デフォルト・コンストラクタは代入を省略できるぜ☆（＾ｑ＾）
+/// <summary>
+/// デフォルト・コンストラクタは代入を省略できるぜ☆（＾ｑ＾）
+/// </summary>
 const PtOccupied PiecetypePrograms::m_OCCUPIED;// = PtOccupied();
 const PtPawn PiecetypePrograms::m_PAWN;
 const PtLance PiecetypePrograms::m_LANCE;
@@ -35,7 +37,10 @@ const PtProSilver PiecetypePrograms::m_PRO_SILVER;
 const PtHorse PiecetypePrograms::m_HORSE;
 const PtDragon PiecetypePrograms::m_DRAGON;
 
-// ポインタの配列にするのが正解☆（＾ｑ＾）
+
+/// <summary>
+/// ポインタの配列にするのが正解☆（＾ｑ＾）
+/// </summary>
 const PtAbstract* PiecetypePrograms::m_PIECETYPE_PROGRAMS[g_PIECETYPE_NUM] = {
 	&PiecetypePrograms::m_OCCUPIED,
 	&PiecetypePrograms::m_PAWN,

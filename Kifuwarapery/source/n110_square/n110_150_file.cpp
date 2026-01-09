@@ -2,6 +2,9 @@
 #include "../../header/n110_square__/n110_150_file.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 const File g_squareToFile[SquareNum] = {
 	FileI, FileI, FileI, FileI, FileI, FileI, FileI, FileI, FileI,
 	FileH, FileH, FileH, FileH, FileH, FileH, FileH, FileH, FileH,

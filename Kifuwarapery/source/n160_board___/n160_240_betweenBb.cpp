@@ -9,11 +9,15 @@
 BetweenBb g_betweenBb;
 
 
+/// <summary>
+/// 最初の設定（初期化）を行うぜ☆（＾▽＾）
+/// </summary>
 void BetweenBb::Initialize() {
 	for (Square sq1 = I9; sq1 < SquareNum; ++sq1) {
 		for (Square sq2 = I9; sq2 < SquareNum; ++sq2) {
 			g_betweenBb.m_betweenBB_[sq1][sq2] = Bitboard::CreateAllZeroBB();
-			if (sq1 == sq2) continue;
+			if (sq1 == sq2) { continue; }
+
 			const Direction direc = g_squareRelation.GetSquareRelation(sq1, sq2);
 			if (direc & N02_DirecCross)
 				g_betweenBb.m_betweenBB_[sq1][sq2] = g_rookAttackBb.GetControllBb(g_setMaskBb.GetSetMaskBb(sq2), sq1) & g_rookAttackBb.GetControllBb(g_setMaskBb.GetSetMaskBb(sq1), sq2);

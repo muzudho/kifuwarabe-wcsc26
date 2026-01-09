@@ -43,6 +43,9 @@ const ScoreIndex PieceScore::m_PromoteRookScore = PieceScore::m_dragon - PieceSc
 const ScoreIndex PieceScore::m_ScoreKnownWin = PieceScore::m_king;
 
 
+/// <summary>
+/// 
+/// </summary>
 const ScoreIndex PieceScore::m_PieceScore[Piece::N31_PieceNone] = {
 	ScoreZero,
 	PieceScore::m_pawn,
@@ -76,6 +79,10 @@ const ScoreIndex PieceScore::m_PieceScore[Piece::N31_PieceNone] = {
 	PieceScore::m_horse,
 	PieceScore::m_dragon,
 };
+
+/// <summary>
+/// 
+/// </summary>
 const ScoreIndex PieceScore::m_CapturePieceScore[Piece::N31_PieceNone] = {
 	ScoreZero,
 	PieceScore::m_capturePawn,
@@ -109,6 +116,10 @@ const ScoreIndex PieceScore::m_CapturePieceScore[Piece::N31_PieceNone] = {
 	PieceScore::m_CaptureHorseScore,
 	PieceScore::m_CaptureDragonScore,
 };
+
+/// <summary>
+/// 
+/// </summary>
 const ScoreIndex PieceScore::m_PromotePieceScore[7] = {
 	ScoreZero,
 	PieceScore::m_PromotePawnScore,

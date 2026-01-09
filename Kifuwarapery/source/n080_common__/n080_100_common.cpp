@@ -6,9 +6,18 @@ Eraser SYNCCOUT;
 Eraser SYNCENDL;
 #endif
 
-// 乱数の種☆？（＾ｑ＾）？
+
+/// <summary>
+/// 乱数の種☆？（＾ｑ＾）？
+/// </summary>
 std::mt19937_64 g_randomTimeSeed(std::chrono::system_clock::now().time_since_epoch().count());
 
+/// <summary>
+/// 
+/// </summary>
+/// <param name="os"></param>
+/// <param name="sc"></param>
+/// <returns></returns>
 std::ostream& operator << (std::ostream& os, SyncCout sc) {
 	static Mutex m;
 	if (sc == IOLock  ) { m.lock();   }

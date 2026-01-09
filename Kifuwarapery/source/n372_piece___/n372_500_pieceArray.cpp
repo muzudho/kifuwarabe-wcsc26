@@ -69,7 +69,10 @@ const PieceWHorse PieceArray::m_pieceWHorse;
 const PieceWDragon PieceArray::m_pieceWDragon;	//[30]
 const PieceNone PieceArray::m_pieceNone;	//[31]
 
-// 抽象クラスのインスタンスを配列にするためには、ポインタで持てばいいんだぜ☆（＾ｑ＾）
+
+/// <summary>
+/// 抽象クラスのインスタンスを配列にするためには、ポインタで持てばいいんだぜ☆（＾ｑ＾）
+/// </summary>
 const PieceAbstract* PieceArray::m_pieceAbstractArray[] = {//32
 	&PieceArray::m_pieceEmpty,	//[0]
 	&PieceArray::m_pieceBPawn,
@@ -106,7 +109,7 @@ const PieceAbstract* PieceArray::m_pieceAbstractArray[] = {//32
 };
 
 
-//────────────────────────────────────────────────────────────────────────────────
-// 実体
-//────────────────────────────────────────────────────────────────────────────────
+/// <summary>
+/// 実体 
+/// </summary>
 PieceArray g_pieceArray;

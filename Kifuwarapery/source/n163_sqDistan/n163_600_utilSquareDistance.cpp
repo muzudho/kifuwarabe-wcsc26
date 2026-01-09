@@ -8,7 +8,10 @@
 #include "../../header/n351_bonaDir_/n351_500_bonaDirArray.hpp"
 
 
-
+/// <summary>
+/// 
+/// </summary>
+/// <param name="squareDistance"></param>
 void UtilSquareDistance::InitSquareDistance(SquareDistance& squareDistance) {
 	for (Square sq0 = I9; sq0 < SquareNum; ++sq0) {
 		for (Square sq1 = I9; sq1 < SquareNum; ++sq1) {

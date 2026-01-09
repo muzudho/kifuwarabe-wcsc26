@@ -2,7 +2,14 @@
 #include "../../header/n113_piece___/n113_200_handPiece.hpp"
 
 
-
+/// <summary>
+/// 
+/// </summary>
 const HandPiece g_PIECETYPE_TO_HANDPIECE_TABLE[g_PIECETYPE_NUM] = {
-	HandPieceNum, HPawn, HLance, HKnight, HSilver, HBishop, HRook, HGold, HandPieceNum, HPawn, HLance, HKnight, HSilver, HBishop, HRook
+	HandPieceNum,
+	
+	/// <summary>
+    /// 持ち駒の種類の順番と、駒の種類の順番は、同じにしておくぜ☆（＾ｑ＾）
+	/// </summary>
+	HPawn, HLance, HKnight, HSilver, HBishop, HRook, HGold, HandPieceNum, HPawn, HLance, HKnight, HSilver, HBishop, HRook
 };

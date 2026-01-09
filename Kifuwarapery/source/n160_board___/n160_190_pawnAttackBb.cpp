@@ -4,12 +4,15 @@
 #include "../../header/n160_board___/n160_400_printBb.hpp"
 
 
-PawnAttackBb g_pawnAttackBb;//本当はconst にしたいが、やり方がわからない☆ C2373エラーになるんだぜ☆
+/// <summary>
+/// 本当はconst にしたいが、やり方がわからない☆ C2373エラーになるんだぜ☆
+/// </summary>
+PawnAttackBb g_pawnAttackBb;
 
 
-//────────────────────────────────────────────────────────────────────────────────
-// 歩
-//────────────────────────────────────────────────────────────────────────────────
+/// <summary>
+/// 歩の初期化を行うぜ☆（＾▽＾）
+/// </summary>
 void PawnAttackBb::Initialize()
 {
 	for (Color c = Black; c < g_COLOR_NUM; ++c)

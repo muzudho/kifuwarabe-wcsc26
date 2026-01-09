@@ -21,6 +21,14 @@
 #include "../../header/n350_pieceTyp/n350_500_ptPrograms.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
+/// <param name="occupied"></param>
+/// <param name="attackers"></param>
+/// <param name="nextPT"></param>
+/// <param name="ptsEvent"></param>
+/// <returns></returns>
 PieceType PtKnight::AppendToNextAttackerAndTryPromote(
 	Bitboard& occupied,
 	Bitboard& attackers,

@@ -3,11 +3,20 @@
 #include "../../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
 #include "../../header/n520_evaluate/n520_700_evaluation09.hpp"
 
+
+/// <summary>
+/// 
+/// </summary>
 const Square g_HandPieceToSquareHand[g_COLOR_NUM][HandPieceNum] = {
 	{B_hand_pawn, B_hand_lance, B_hand_knight, B_hand_silver, B_hand_gold, B_hand_bishop, B_hand_rook},
 	{W_hand_pawn, W_hand_lance, W_hand_knight, W_hand_silver, W_hand_gold, W_hand_bishop, W_hand_rook}
 };
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pos"></param>
 void EvalList::Set(const Position& pos) {
 	const Hand handB = pos.GetHand(Black);
 	const Hand handW = pos.GetHand(White);

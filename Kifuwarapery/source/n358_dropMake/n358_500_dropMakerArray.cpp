@@ -17,7 +17,10 @@ const DropMakerHand4 DropMakerArray::m_dropMakerHand4;
 const DropMakerHand5 DropMakerArray::m_dropMakerHand5;
 const DropMakerHand6 DropMakerArray::m_dropMakerHand6;
 
-// 抽象クラスのインスタンスを配列にするためには、ポインタで持てばいいんだぜ☆（＾ｑ＾）
+
+/// <summary>
+/// 抽象クラスのインスタンスを配列にするためには、ポインタで持てばいいんだぜ☆（＾ｑ＾）
+/// </summary>
 const DropMakerAbstract* DropMakerArray::m_dropMakerArray[] = {
 	&DropMakerArray::m_dropMakerHand0,
 	&DropMakerArray::m_dropMakerHand1,

@@ -3,11 +3,18 @@
 #include "..\..\header\n080_common__\n080_200_utilProgram.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 void UtilProgram::ErrorBegin()
 {
 	SetLastError(NO_ERROR);		//エラー情報をクリアする
 }
 
+
+/// <summary>
+/// 
+/// </summary>
 void UtilProgram::ErrorEnd()
 {
 	LPVOID lpMsgBuf;
@@ -23,6 +30,10 @@ void UtilProgram::ErrorEnd()
 	LocalFree(lpMsgBuf);
 }
 
+
+/// <summary>
+/// 
+/// </summary>
 void UtilProgram::ShowCurrentDirectory()
 {
 	TCHAR crDir[MAX_PATH + 1];
