@@ -30,9 +30,8 @@
 #include "../n350_pieceTyp/n350_230_ptHorse.hpp"
 #include "../n350_pieceTyp/n350_240_ptDragon.hpp"
 
-
+// 平手初期局面の SFEN 文字列☆（＾▽＾）
 const std::string g_DefaultStartPositionSFEN = "lnsgkgsnl/1r5b1/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL b - 1";
-
 
 
 class CharToPieceUSI : public std::map<char, Piece> {

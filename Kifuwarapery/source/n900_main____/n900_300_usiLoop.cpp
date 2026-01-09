@@ -112,16 +112,22 @@ void UsiLoop::Mainloop(int argc, char* argv[], Rucksack& searcher)
 			token == "ponderhit" ||
 			token == "gameover"
 		) {
+			// 終了時にポンダーヒットが来ることがある。
 			if (token != "ponderhit" ||
 				searcher.m_signals.m_stopOnPonderHit
 			) {
+                // 思考停止シグナルを立てる。
 				searcher.m_signals.m_stop = true;
+
+				// 排他的処理の何か？？
 				searcher.m_ownerHerosPub.GetFirstCaptain()->NotifyOne();
 			}
 			else {
+				// 相手の思考時間中に自分も思考するのを止める。
 				searcher.m_limits.m_ponder = false;
 			}
 
+            // ポンダーヒットのときに、ムーブタイムが０でなければ、消費した時間分、加算する。
 			if (token == "ponderhit" && searcher.m_limits.GetMoveTime() != 0) {
 				searcher.m_limits.IncreaseMoveTime( searcher.m_stopwatch.GetElapsed());
 			}

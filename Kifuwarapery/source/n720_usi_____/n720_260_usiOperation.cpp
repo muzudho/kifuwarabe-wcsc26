@@ -44,12 +44,21 @@ void UsiOperation::Go(const Position& pos, std::istringstream& ssCmd) {
 	std::vector<Move> moves;
 	std::string token;
 
-	// go にも種類がある☆
+	// go コマンドを分解（＾▽＾）
 	while (ssCmd >> token) {
+		// ポンダーしろだぜ（＾▽＾）
 		if      (token == "ponder"     ) { limits.m_ponder = true; }
+
+		// 先手の残り時間
 		else if (token == "btime"      ) { limits.SetNokoriTimeByStream( Color::Black, ssCmd); }
+
+        // 後手の残り時間
 		else if (token == "wtime"      ) { limits.SetNokoriTimeByStream( Color::White, ssCmd); }
+
+        // 無限思考だぜ（＾▽＾）
 		else if (token == "infinite"   ) { limits.m_infinite = true; }
+
+        // 秒読み、ムーブタイムだぜ（＾▽＾）
 		else if (token == "byoyomi" ||
 				 token == "movetime"   ) {
 			// btime wtime の後に byoyomi が来る前提になっているので良くない。
@@ -61,8 +70,14 @@ void UsiOperation::Go(const Position& pos, std::istringstream& ssCmd) {
 //#endif
 			}
 		}
+
+        // 深さだぜ（＾▽＾）
 		else if (token == "depth"      ) { ssCmd >> limits.m_depth; }
+
+        // ノード数だぜ（＾▽＾）
 		else if (token == "nodes"      ) { ssCmd >> limits.m_nodes01; }
+
+        // 指し手リストだぜ（＾▽＾）
 		else if (token == "searchmoves") {
 			UsiOperation usiOperation;
 			while (ssCmd >> token)
@@ -70,10 +85,12 @@ void UsiOperation::Go(const Position& pos, std::istringstream& ssCmd) {
 				moves.push_back(usiOperation.UsiToMove(pos, token));
 			}
 		}
+
 		// 追加☆（＾ｑ＾）
 		else if (token == "winc") {
 			ssCmd >> limits.m_increment[Color::White];
 		}
+
 		// 追加☆（＾ｑ＾）
 		else if (token == "binc") {
 			ssCmd >> limits.m_increment[Color::Black];
@@ -139,10 +156,13 @@ void UsiOperation::SetPosition(Position& pos, std::istringstream& ssCmd) {
 
 	ssCmd >> token;
 
+	// 平手初期局面だぜ（＾▽＾）
 	if (token == "startpos") {
 		sfen = g_DefaultStartPositionSFEN;
 		ssCmd >> token; // "moves" が入力されるはず。
 	}
+
+    // SFEN局面設定だぜ（＾▽＾）
 	else if (token == "sfen") {
 		while (ssCmd >> token && token != "moves") {
 			sfen += token + " ";
@@ -152,15 +172,23 @@ void UsiOperation::SetPosition(Position& pos, std::istringstream& ssCmd) {
 		return;
 	}
 
+    // 指し手リストだぜ（＾▽＾）
 	pos.Set(sfen, pos.GetRucksack()->m_ownerHerosPub.GetFirstCaptain());
+
+    // 指し手を進めるぜ（＾▽＾）
 	pos.GetRucksack()->m_setUpStates = StateStackPtr(new std::stack<StateInfo>());
 
 	Ply currentPly = pos.GetGamePly();
+
 	while (ssCmd >> token) {
+        // 指し手文字列を Move に変換（＾▽＾）
 		const Move move = this->UsiToMove(pos, token);
 		if (move.IsNone()) break;
+
+        // 状態情報を積むぜ（＾▽＾）
 		pos.GetRucksack()->m_setUpStates->push(StateInfo());
 
+        // 指し手を指すぜ（＾▽＾）
 		pos.GetTurn() == Color::Black
 			?
 			pos.DoMove<Color::Black,Color::White>(move, pos.GetRucksack()->m_setUpStates->top())
@@ -170,11 +198,17 @@ void UsiOperation::SetPosition(Position& pos, std::istringstream& ssCmd) {
 
 		++currentPly;
 	}
+
+    // 現在の手数を設定（＾▽＾）
 	pos.SetStartPosPly(currentPly);
 }
 
+
+// moveStr は USI 形式の指し手文字列。
 Move UsiOperation::UsiToMoveBody(const Position& pos, const std::string& moveStr) {
 	Move move;
+
+    // 指し手文字列の長さチェック
 	if (g_charToPieceUSI.IsLegalChar(moveStr[0])) {
 		// drop
 		const PieceType ptTo = ConvPiece::TO_PIECE_TYPE10(g_charToPieceUSI.GetValue(moveStr[0]));
@@ -243,15 +277,18 @@ Move UsiOperation::UsiToMoveBody(const Position& pos, const std::string& moveStr
 	return g_MOVE_NONE;
 }
 
+// moveStr は CSA 形式の指し手文字列。
 Move UsiOperation::CsaToMoveBody(const Position& pos, const std::string& moveStr) {
 	if (moveStr.size() != 6) {
 		return g_MOVE_NONE;
 	}
+
 	const File toFile = ConvFile::FROM_CHAR_CSA10(moveStr[2]);
 	const Rank toRank = ConvRank::FROM_CHAR_CSA10(moveStr[3]);
 	if (!ConvSquare::CONTAINS_OF20(toFile, toRank)) {
 		return g_MOVE_NONE;
 	}
+
 	const Square to = ConvSquare::FROM_FILE_RANK10(toFile, toRank);
 	const std::string ptToString(moveStr.begin() + 4, moveStr.end());
 	if (!g_stringToPieceTypeCSA.isLegalString(ptToString)) {
@@ -285,29 +322,33 @@ Move UsiOperation::CsaToMoveBody(const Position& pos, const std::string& moveStr
 			MakePromoteMove::APPEND_PROMOTE_FLAG(move);//, N00_Capture, ptFrom
 		}
 		else {
+			// 非合法手（＾▽＾）
 			return g_MOVE_NONE;
 		}
 	}
 
 	if (
 		(
-			pos.GetTurn() == Color::Black
+			pos.GetTurn() == Color::Black	// 自分が先手か。
 			?
-			pos.MoveIsPseudoLegal<Color::Black,Color::White>(move, true)
+            pos.MoveIsPseudoLegal<Color::Black, Color::White>(move, true) // 自分が先手のとき、疑似合法手かどうかのチェック☆
 			:
-			pos.MoveIsPseudoLegal<Color::White,Color::Black>(move, true)
+			pos.MoveIsPseudoLegal<Color::White,Color::Black>(move, true) // 自分が後手。
 		)		
 		&&
 		(
-			pos.GetTurn()==Color::Black
+            pos.GetTurn() == Color::Black	// 自分が先手か。
 			?
-			pos.IsPseudoLegalMoveIsLegal<false, false,Color::Black,Color::White>(move, pos.GetPinnedBB())
+            pos.IsPseudoLegalMoveIsLegal<false, false, Color::Black, Color::White>(move, pos.GetPinnedBB())	// 疑似合法手が合法手かどうかのチェック☆
 			:
 			pos.IsPseudoLegalMoveIsLegal<false, false,Color::White,Color::Black>(move, pos.GetPinnedBB())
 			)
 	){
+        // 合法な指し手☆
 		return move;
 	}
+
+    // 不正な指し手☆
 	return g_MOVE_NONE;
 }
 

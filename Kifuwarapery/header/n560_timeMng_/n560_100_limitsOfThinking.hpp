@@ -37,6 +37,7 @@ public:
 
 	bool m_infinite = false;
 
+    // 相手の思考時間中に、自分も思考するか☆？（＾ｑ＾）
 	bool m_ponder = false;
 
 
@@ -79,26 +80,49 @@ public:
 	inline int GetMoveTime() const {
 		return this->m_moveTime_;
 	}
-	// 思考開始時、初期化を行った際にある条件下で０クリアする☆？
+
+
+	/// <summary>
+	/// 思考開始時、初期化を行った際にある条件下で０クリアする☆？
+	/// </summary>
 	inline void ZeroClearMoveTime() {
 		this->m_moveTime_ = 0;
 	}
-	// ポンダーヒットをしたときに、ムーブタイムが０でなければ、消費した時間分、加算するのに使います。
+
+
+	/// <summary>
+	/// ポンダーヒットをしたときに、ムーブタイムが０でなければ、消費した時間分、加算するのに使います。
+	/// </summary>
+	/// <param name="value"></param>
 	inline void IncreaseMoveTime(int value) {
 		this->m_moveTime_ += value;
 	}
-	// go byoyomi 等の場合に、マージン分減らすのに使う☆？
+
+
+	/// <summary>
+	/// go byoyomi 等の場合に、マージン分減らすのに使う☆？
+	/// </summary>
+	/// <param name="value"></param>
 	inline void DecrementMoveTime(int value) {
 		this->m_moveTime_ -= value;
 	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="ssCmd"></param>
 	inline void SetMoveTimeFromStream(std::istringstream& ssCmd) {
 		ssCmd >> this->m_moveTime_;
 	}
 
+
 private:
 
-	// ☆？ ポンダー・ヒットの経過時間が足しこまれる☆？（＾ｑ＾）
-	// 秒読みマージンは引かれる☆
-	int m_moveTime_ = 0;
 
+	/// <summary>
+	/// ☆？ ポンダー・ヒットの経過時間が足しこまれる☆？（＾ｑ＾）
+	/// 秒読みマージンは引かれる☆
+	/// </summary>
+	int m_moveTime_ = 0;
 };
