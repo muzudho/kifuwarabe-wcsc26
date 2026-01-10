@@ -13,9 +13,21 @@
 class NextmoveEvent;
 
 
+/// <summary>
+/// 静的探索で駒を取る指し手を生成・返す。
+/// </summary>
 class PhQCaptures0 : public MovePhaseAbstract {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="resultMove"></param>
+	/// <param name="nmEvent"></param>
+	/// <returns></returns>
 	bool GetNext2Move(Move& resultMove, NextmoveEvent& nmEvent) const override {
 		Move move = UtilMoveStack::PickBest(nmEvent.GetCurrMove(), nmEvent.GetLastMove())->m_move;
 		nmEvent.IncrementCurMove();
@@ -26,12 +38,19 @@ public:
 		return false;
 	};
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="nmEvent"></param>
 	void GoNext2Phase(NextmoveEvent& nmEvent) override {
 		nmEvent.SetLastMove(g_moveGenerator200.GenerateMoves_2(N03_CapturePlusPro,nmEvent.GetFirstMove(), nmEvent.GetPos()));
 		nmEvent.ScoreCaptures();
 	}
-
 };
 
 
+/// <summary>
+/// 
+/// </summary>
 extern PhQCaptures0 g_phQCaptures0;

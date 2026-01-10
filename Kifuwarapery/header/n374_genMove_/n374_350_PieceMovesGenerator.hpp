@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "../n080_common__/n080_100_common.hpp"
 #include "../n105_color___/n105_100_color.hpp"
 #include "../n110_square__/n110_100_square.hpp"
@@ -22,11 +21,23 @@
 #include "n374_250_bishopRookMovesGenerator.hpp"
 
 
+/// <summary>
+/// æ­©ã‚„é¦™ã®æŒ‡ã—æ‰‹ç”Ÿæˆãªã©ã€é§’åˆ¥ã®æŒ‡ã—æ‰‹ç”Ÿæˆã‚’è¡Œã†ã€‚
+/// </summary>
 class PieceMovesGenerator {
+
+
 public:
 
 
-	// •à‚Ìê‡
+	/// <summary>
+	/// æ­©ã®å ´åˆ
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <param name="moveStackList"></param>
+	/// <param name="ptEvent"></param>
+	/// <param name="target"></param>
+	/// <returns></returns>
 	template <const Color US>
 	static FORCE_INLINE MoveStack* GeneratePieceMoves_N01_Pawn(
 		MoveStack* moveStackList,
@@ -35,7 +46,7 @@ public:
 	) {
 		static_assert(US==Color::Black | US==Color::White,"");
 
-		// Txxx ‚ÍæèAŒãè‚Ìî•ñ‚ğ‹zû‚µ‚½•Ï”B”š‚Íæè‚É‡‚í‚¹‚Ä‚¢‚éB
+		// Txxx ã¯å…ˆæ‰‹ã€å¾Œæ‰‹ã®æƒ…å ±ã‚’å¸åã—ãŸå¤‰æ•°ã€‚æ•°å­—ã¯å…ˆæ‰‹ã«åˆã‚ã›ã¦ã„ã‚‹ã€‚
 		const Rank TRank6 = (US == Black ? Rank6 : Rank4);
 		const Rank TRank9 = (US == Black ? Rank9 : Rank1);
 		const Bitboard TRank789BB = g_inFrontMaskBb.GetInFrontMask<US>(TRank6);
@@ -43,7 +54,7 @@ public:
 
 		Bitboard toBB = Bitboard::PawnAttack<US>(ptEvent.m_pos.GetBbOf20<US>(N01_Pawn)) & target;
 
-		// ¬‚è
+		// æˆã‚Š
 		if (ptEvent.m_mt != N04_NonCaptureMinusPro) {
 			Bitboard toOn789BB = toBB & TRank789BB;
 			if (toOn789BB.Exists1Bit()) {
@@ -72,8 +83,8 @@ public:
 			assert(!(target & TRank789BB).Exists1Bit());
 		}
 
-		// c‚è(•s¬)
-		// toBB ‚Í 8~4 ’i–Ú‚Ü‚ÅB
+		// æ®‹ã‚Š(ä¸æˆ)
+		// toBB ã¯ 8~4 æ®µç›®ã¾ã§ã€‚
 		Square to;
 		FOREACH_BB(toBB, to, {
 			const Square from = to + TDeltaS;
@@ -82,10 +93,17 @@ public:
 		});
 
 		return moveStackList;
-	}//‰‰Zq‚ÌƒI[ƒo[ƒ[ƒh‚Ì’è‹`H
+	}//æ¼”ç®—å­ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ­ãƒ¼ãƒ‰ã®å®šç¾©ï¼Ÿ
 
 
-	 // Ô‚Ìê‡
+	/// <summary>
+	/// é¦™è»Šã®å ´åˆ
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <param name="moveStackList"></param>
+	/// <param name="ptEvent"></param>
+	/// <param name="target"></param>
+	/// <returns></returns>
 	template <const Color US>
 	static FORCE_INLINE MoveStack* GeneratePieceMoves_N02_Lance(
 		MoveStack* moveStackList,
@@ -99,7 +117,7 @@ public:
 			Bitboard toBB = PiecetypePrograms::m_LANCE.GetAttacks2From(ptEvent1) & target;
 			do {
 				if (toBB.Exists1Bit()) {
-					// ‹îæ‚è‘ÎÛ‚Í•K‚¸ˆê‚ÂˆÈ‰º‚È‚Ì‚ÅAtoBB ‚Ìƒrƒbƒg‚ğ 0 ‚É‚·‚é•K—v‚ª‚È‚¢B
+					// é§’å–ã‚Šå¯¾è±¡ã¯å¿…ãšä¸€ã¤ä»¥ä¸‹ãªã®ã§ã€toBB ã®ãƒ“ãƒƒãƒˆã‚’ 0 ã«ã™ã‚‹å¿…è¦ãŒãªã„ã€‚
 					const Square to = (ptEvent.m_mt == N00_Capture || ptEvent.m_mt == N03_CapturePlusPro ? toBB.GetFirstOneFromI9() : toBB.PopFirstOneFromI9());
 					const bool toCanPromote = ConvSquare::CAN_PROMOTE10<US>(ConvSquare::TO_RANK10(to));
 					if (toCanPromote) {
@@ -109,14 +127,14 @@ public:
 						moveStackList++;
 
 						if (ptEvent.m_mt == N07_NonEvasion || ptEvent.m_all) {
-							if (ConvSquare::IS_BEHIND10<US>(Rank9, Rank1, ConvSquare::TO_RANK10(to))) // 1’i–Ú‚Ì•s¬‚ÍÈ‚­
+							if (ConvSquare::IS_BEHIND10<US>(Rank9, Rank1, ConvSquare::TO_RANK10(to))) // 1æ®µç›®ã®ä¸æˆã¯çœã
 							{
 								moveStackList->m_move = g_makePromoteMove.GetSelectedMakeMove_ExceptPromote_mt2(ptEvent.m_mt,g_PTLANCE_ONBOARD_AS_MOVE,	from, to, ptEvent.m_pos);
 								moveStackList++;
 							}
 						}
-						else if (ptEvent.m_mt != N01_NonCapture && ptEvent.m_mt != N04_NonCaptureMinusPro) { // ‹î‚ğæ‚ç‚È‚¢3’i–Ú‚Ì•s¬‚ğÈ‚­
-							if (ConvSquare::IS_BEHIND10<US>(Rank8, Rank2, ConvSquare::TO_RANK10(to))) // 2’i–Ú‚Ì•s¬‚ğÈ‚­
+						else if (ptEvent.m_mt != N01_NonCapture && ptEvent.m_mt != N04_NonCaptureMinusPro) { // é§’ã‚’å–ã‚‰ãªã„3æ®µç›®ã®ä¸æˆã‚’çœã
+							if (ConvSquare::IS_BEHIND10<US>(Rank8, Rank2, ConvSquare::TO_RANK10(to))) // 2æ®µç›®ã®ä¸æˆã‚’çœã
 							{
 								moveStackList->m_move = g_makePromoteMove.GetSelectedMakeMove_ExceptPromote_mt2(ptEvent.m_mt,g_PTLANCE_ONBOARD_AS_MOVE,	from, to, ptEvent.m_pos);
 								moveStackList++;
@@ -129,14 +147,21 @@ public:
 						moveStackList++;
 					}
 				}
-				// ‹îæ‚è‘ÎÛ‚Í•K‚¸ˆê‚ÂˆÈ‰º‚È‚Ì‚ÅAloop ‚Í•s—vBÅ“K‰»‚Å do while ‚ª–³‚­‚È‚é‚Æ—Ç‚¢B
+				// é§’å–ã‚Šå¯¾è±¡ã¯å¿…ãšä¸€ã¤ä»¥ä¸‹ãªã®ã§ã€loop ã¯ä¸è¦ã€‚æœ€é©åŒ–ã§ do while ãŒç„¡ããªã‚‹ã¨è‰¯ã„ã€‚
 			} while (!(ptEvent.m_mt == N00_Capture || ptEvent.m_mt == N03_CapturePlusPro) && toBB.Exists1Bit());
 		}
 		return moveStackList;
 	}
 
 
-	// Œj”n‚Ìê‡
+	/// <summary>
+	/// æ¡‚é¦¬ã®å ´åˆ
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <param name="moveStackList"></param>
+	/// <param name="ptEvent"></param>
+	/// <param name="target"></param>
+	/// <returns></returns>
 	template <const Color US>
 	static FORCE_INLINE MoveStack* GeneratePieceMoves_N03_Knight(
 		MoveStack* moveStackList,
@@ -157,7 +182,7 @@ public:
 					MakePromoteMove::APPEND_PROMOTE_FLAG(moveStackList->m_move);
 					moveStackList++;
 
-					if (ConvSquare::IS_BEHIND10<US>(Rank8, Rank2, ConvSquare::TO_RANK10(to))) // 1, 2’i–Ú‚Ì•s¬‚ÍÈ‚­
+					if (ConvSquare::IS_BEHIND10<US>(Rank8, Rank2, ConvSquare::TO_RANK10(to))) // 1, 2æ®µç›®ã®ä¸æˆã¯çœã
 					{
 						moveStackList->m_move = g_makePromoteMove.GetSelectedMakeMove_ExceptPromote_mt2(ptEvent.m_mt, g_PTKNIGHT_ONBOARD_AS_MOVE, from, to, ptEvent.m_pos);
 						moveStackList++;
@@ -174,7 +199,14 @@ public:
 	}
 
 
-	// ‹â‚Ìê‡
+	/// <summary>
+	/// éŠ€ã®å ´åˆ
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <param name="moveStackList"></param>
+	/// <param name="ptEvent"></param>
+	/// <param name="target"></param>
+	/// <returns></returns>
 	template <const Color US>
 	static FORCE_INLINE MoveStack* GeneratePieceMoves_N04_Silver(
 		MoveStack* moveStackList,
@@ -204,7 +236,14 @@ public:
 	}
 
 
-	// Šp‚Ì“®‚«™H
+	/// <summary>
+	/// è§’ã®å‹•ãâ˜†ï¼Ÿ
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <param name="moveStackList"></param>
+	/// <param name="ptEvent"></param>
+	/// <param name="target"></param>
+	/// <returns></returns>
 	template <const Color US>
 	static FORCE_INLINE MoveStack* GeneratePieceMoves_N05_Bishop(
 		MoveStack* moveStackList,
@@ -215,7 +254,14 @@ public:
 	}
 
 
-	// ”òÔ‚Ì“®‚«™H
+	/// <summary>
+	/// é£›è»Šã®å‹•ãâ˜†ï¼Ÿ
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <param name="moveStackList"></param>
+	/// <param name="ptEvent"></param>
+	/// <param name="target"></param>
+	/// <returns></returns>
 	template <const Color US>
 	static FORCE_INLINE MoveStack* GeneratePieceMoves_N06_Rook(
 		MoveStack* moveStackList,
@@ -226,25 +272,32 @@ public:
 	}
 
 
-	// ‹à, ¬‚è‹àA”nA—³‚Ìw‚µè¶¬
+	/// <summary>
+	/// é‡‘, æˆã‚Šé‡‘ã€é¦¬ã€ç«œã®æŒ‡ã—æ‰‹ç”Ÿæˆ
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <param name="moveStackList"></param>
+	/// <param name="ptEvent"></param>
+	/// <param name="target"></param>
+	/// <returns></returns>
 	template <const Color US>
 	static FORCE_INLINE MoveStack* GeneratePieceMoves_N16_GoldHorseDragon(
 		MoveStack* moveStackList,
 		const PieceMoveEvent ptEvent,
 		const Bitboard& target
 	) {
-		// ‹àA¬‹àA”nA—³‚Ìbitboard‚ğ‚Ü‚Æ‚ß‚Äˆµ‚¤B
+		// é‡‘ã€æˆé‡‘ã€é¦¬ã€ç«œã®bitboardã‚’ã¾ã¨ã‚ã¦æ‰±ã†ã€‚
 		Bitboard fromBB = (ptEvent.m_pos.GetGoldsBB() | ptEvent.m_pos.GetBbOf20(N13_Horse, N14_Dragon)) &
 			ptEvent.m_pos.GetBbOf10<US>();
 		while (fromBB.Exists1Bit()) {
 			const Square from = fromBB.PopFirstOneFromI9();
-			// from ‚É‚ ‚é‹î‚Ìí—Ş‚ğ”»•Ê
+			// from ã«ã‚ã‚‹é§’ã®ç¨®é¡ã‚’åˆ¤åˆ¥
 			const PieceType pt = ConvPiece::TO_PIECE_TYPE10(ptEvent.m_pos.GetPiece(from));
 			Bitboard toBB = UtilAttack::GetAttacksFrom<US>(pt, from, ptEvent.m_pos.GetOccupiedBB()) & target;
 			while (toBB.Exists1Bit()) {
 				const Square to = toBB.PopFirstOneFromI9();
 				moveStackList->m_move = g_makePromoteMove.GetSelectedMakeMove_ExceptPromote_goldHorseDragon(ptEvent.m_mt,
-					pt,// ‹àA¬‚è‹àA”nA—³‚Ì‚¢‚¸‚ê‚©‚¾‚º™iO‚‘Oj
+					pt,// é‡‘ã€æˆã‚Šé‡‘ã€é¦¬ã€ç«œã®ã„ãšã‚Œã‹ã ãœâ˜†ï¼ˆï¼¾ï½‘ï¼¾ï¼‰
 					from, to, ptEvent.m_pos);
 				moveStackList++;
 			}
@@ -253,8 +306,17 @@ public:
 	}
 
 
-	// ‹Ê‚Ìê‡
-	// •K‚¸”Õã‚É 1 –‡‚¾‚¯‚ ‚é‚±‚Æ‚ğ‘O’ñ‚É‚·‚é‚±‚Æ‚ÅAwhile ƒ‹[ƒv‚ğ 1 ‚Â–³‚­‚µ‚Ä‚‘¬‰»‚µ‚Ä‚¢‚éB
+	/// <summary>
+	///		<pre>
+	/// ç‰ã®å ´åˆ
+	/// å¿…ãšç›¤ä¸Šã« 1 æšã ã‘ã‚ã‚‹ã“ã¨ã‚’å‰æã«ã™ã‚‹ã“ã¨ã§ã€while ãƒ«ãƒ¼ãƒ—ã‚’ 1 ã¤ç„¡ãã—ã¦é«˜é€ŸåŒ–ã—ã¦ã„ã‚‹ã€‚
+	///		</pre>
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <param name="moveStackList"></param>
+	/// <param name="ptEvent"></param>
+	/// <param name="target"></param>
+	/// <returns></returns>
 	template <const Color US>
 	static FORCE_INLINE MoveStack* GeneratePieceMoves_N08_King(
 		MoveStack* moveStackList,
@@ -271,6 +333,4 @@ public:
 		}
 		return moveStackList;
 	}
-
 };
-

@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-
 #include "../n080_common__/n080_100_common.hpp"
 #include "../n105_color___/n105_100_color.hpp"
 #include "../n110_square__/n110_100_square.hpp"
@@ -15,10 +14,25 @@
 #include "n374_040_pieceMoveEvent.hpp"
 
 
+/// <summary>
+/// 角と飛車の指し手生成を行う。
+/// </summary>
 class BishopRookMovesGenerator {
+
+
 public:
 
-	// 角, 飛車の共通処理☆
+
+	/// <summary>
+	/// 角, 飛車の共通処理☆
+	/// </summary>
+	/// <typeparam name="isBishop"></typeparam>
+	/// <typeparam name="US"></typeparam>
+	/// <param name="moveStackList"></param>
+	/// <param name="pieceTypeAsMove"></param>
+	/// <param name="ptEvent"></param>
+	/// <param name="target"></param>
+	/// <returns></returns>
 	template<const bool isBishop,const Color US>
 	static FORCE_INLINE MoveStack* GenerateBishopOrRookMoves(
 		MoveStack* moveStackList,
@@ -60,5 +74,4 @@ public:
 		}
 		return moveStackList;
 	}
-
 };

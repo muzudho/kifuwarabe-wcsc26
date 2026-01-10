@@ -9,13 +9,26 @@
 #include "n405_070_mtAbstract.hpp"
 
 
+/// <summary>
+/// 指し手生成区分：王手回避
+/// </summary>
 class MoveTypeEvasion : public MoveTypeAbstract {
+
+
 public:
-	// 部分特殊化
-	// 王手回避生成
-	// 王手をしている駒による王手は避けるが、
-	// 玉の移動先に敵の利きがある場合と、pinされている味方の駒を動かした場合、非合法手を生成する。
-	// そのため、pseudo legal である。
+
+
+	/// <summary>
+	/// 部分特殊化
+	/// 王手回避生成
+	/// 王手をしている駒による王手は避けるが、
+	/// 玉の移動先に敵の利きがある場合と、pinされている味方の駒を動かした場合、非合法手を生成する。
+	/// そのため、pseudo legal である。
+	/// </summary>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <param name="all"></param>
+	/// <returns></returns>
 	MoveStack* GenerateMove(MoveStack* moveStackList, const Position& pos, bool all = false
 		) const override {
 
@@ -31,8 +44,19 @@ public:
 		return moveStackList;
 	}
 
+
 private:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <typeparam name="THEM"></typeparam>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <param name="all"></param>
+	/// <returns></returns>
 	template<Color US, Color THEM>
 	static inline MoveStack* GENERATE_MOVE_(MoveStack* moveStackList, const Position& pos, bool all = false
 		) {
@@ -108,7 +132,4 @@ private:
 
 		return moveStackList;
 	}
-
 };
-
-

@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-
 #include "../n113_piece___/n113_155_convPiece.hpp"
 #include "../n119_score___/n119_090_scoreIndex.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
@@ -16,9 +15,24 @@
 using History = Stats<false>;
 
 
+/// <summary>
+/// 
+/// </summary>
 class NextmoveEvent {
+
+
 public:
 
+
+	/// <summary>
+	/// 生成。
+	/// </summary>
+	/// <param name="pos"></param>
+	/// <param name="ttm"></param>
+	/// <param name="depth"></param>
+	/// <param name="history"></param>
+	/// <param name="pFlashlightBox"></param>
+	/// <param name="beta"></param>
 	NextmoveEvent(
 		const Position& pos,
 		const Move ttm,
@@ -27,52 +41,154 @@ public:
 		Flashlight* pFlashlightBox,
 		const ScoreIndex beta
 	);
-
 	NextmoveEvent(const Position& pos, Move ttm, const Depth depth, const History& history, const Square sq);
-
 	NextmoveEvent(const Position& pos, const Move ttm, const History& history, const PieceType pt);
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	Move GetNextMove_SplitedNode();
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	Move GetNextMove_NonSplitedNode();
 
+
+	/// <summary>
+	/// 
+	/// </summary>
 	inline void IncrementCurMove() {
 		++this->m_currMove_;
 	};
 
+
+	/// <summary>
+	/// 
+	/// </summary>
 	inline void DecrementCurMove() {
 		--this->m_currMove_;
 	};
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	inline Move GetTranspositionTableMove() {
 		return this->m_ttMove_;
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	MoveStack* GetCurrMove() const { return this->m_currMove_; }
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="value"></param>
 	void SetCurrMove(MoveStack* value) { this->m_currMove_ = value; }
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	MoveStack* GetLastMove() const { return this->m_lastMove_; }
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="value"></param>
 	void SetLastMove(MoveStack* value) { this->m_lastMove_ = value; }
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="value"></param>
 	void SetLastMoveAndLastNonCaputre(MoveStack* value) {
 		this->m_lastMove_ = value;
 		this->m_lastNonCapture_ = value;
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	const Position& GetPos() const { return this->m_pos_; }
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	int GetCaptureThreshold() const { return this->m_captureThreshold_; }
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	MoveStack* GetEndBadCaptures() const { return this->m_endBadCaptures_; }
+
+
+	/// <summary>
+	/// 
+	/// </summary>
 	void DecrementEndBadCaptures() { this->m_endBadCaptures_--; }
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	MoveStack* GetKillerMoves() const { return (MoveStack*)this->m_killerMoves_; }
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="index"></param>
+	/// <returns></returns>
 	MoveStack GetKillerMove(int index) const { return this->m_killerMoves_[index]; }
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	Square GetRecaptureSquare()const { return this->m_recaptureSquare_; }
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	Depth GetDepth() const { return this->m_depth_; }
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	MoveStack* GetLegalMoves() { return this->m_legalMoves_; }
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="value"></param>
 	void SetPhase(GenerateMovePhase value) { this->m_phase_ = value; }
 
 
@@ -94,56 +210,123 @@ public:// もともと本当はプライベート・メソッド☆
 		}
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
 	void ScoreCaptures();
 
-	MoveStack* GetFirstMove() { return &m_legalMoves_[1]; } // [0] は番兵
 
+	/// <summary>
+	/// [0] は番兵
+	/// </summary>
+	/// <returns></returns>
+	MoveStack* GetFirstMove() { return &m_legalMoves_[1]; }
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	MoveStack* GetLastNonCapture() const { return m_lastNonCapture_; }
 
+
+	/// <summary>
+	/// 
+	/// </summary>
 	void ScoreEvasions();
+
 
 private:
 
 
-
+	/// <summary>
+	/// 
+	/// </summary>
 	void GoNextPhase();
 
 
-
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	GenerateMovePhase GetPhase() const { return m_phase_; }
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	const History& GetHistory() const { return m_history_; }
 
 
+	/// <summary>
+	/// 
+	/// </summary>
 	const Position&		m_pos_;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	const History&		m_history_;
 
-	// サーチ・スタック☆
+	/// <summary>
+	/// サーチ・スタック☆
+	/// </summary>
 	Flashlight*			m_pFlashlightBox_;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	Depth				m_depth_;
 
-	Move				m_ttMove_; // transposition table move
+	/// <summary>
+	/// transposition table move
+	/// </summary>
+	Move				m_ttMove_;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	MoveStack			m_killerMoves_[2];
 
+	/// <summary>
+	/// 
+	/// </summary>
 	Square				m_recaptureSquare_;
 
-	int					m_captureThreshold_; // int で良いのか？
+	/// <summary>
+	/// int で良いのか？
+	/// </summary>
+	int					m_captureThreshold_;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	GenerateMovePhase	m_phase_;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	MoveStack*			m_currMove_;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	MoveStack*			m_lastMove_;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	MoveStack*			m_lastNonCapture_;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	MoveStack*			m_endBadCaptures_;
 
-	// std::array にした方が良さそう。
+	/// <summary>
+	/// std::array にした方が良さそう。
+	/// </summary>
 	MoveStack			m_legalMoves_[Move::m_MAX_LEGAL_MOVES];
-
 };
-

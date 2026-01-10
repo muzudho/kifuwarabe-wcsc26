@@ -13,9 +13,21 @@
 class NextmoveEvent;
 
 
+/// <summary>
+/// 
+/// </summary>
 class PhTacticalMoves0 : public MovePhaseAbstract {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="resultMove"></param>
+	/// <param name="nmEvent"></param>
+	/// <returns></returns>
 	bool GetNext2Move(Move& resultMove, NextmoveEvent& nmEvent) const override {
 		MoveStack* pMoveStack = UtilMoveStack::PickBest(nmEvent.GetCurrMove(), nmEvent.GetLastMove());
 		nmEvent.IncrementCurMove();
@@ -44,12 +56,19 @@ public:
 		return false;
 	};
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="nmEvent"></param>
 	void GoNext2Phase(NextmoveEvent& nmEvent) override {
 		nmEvent.SetLastMove(g_moveGenerator200.GenerateMoves_2(N03_CapturePlusPro,nmEvent.GetCurrMove(), nmEvent.GetPos()) );
 		nmEvent.ScoreCaptures();
 	}
-
 };
 
 
+/// <summary>
+/// 
+/// </summary>
 extern PhTacticalMoves0 g_phTacticalMoves0;

@@ -10,9 +10,21 @@
 class NextmoveEvent;
 
 
+/// <summary>
+/// 
+/// </summary>
 class PhNonTacticalMoves1 : public MovePhaseAbstract {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="resultMove"></param>
+	/// <param name="nmEvent"></param>
+	/// <returns></returns>
 	bool GetNext2Move(Move& resultMove, NextmoveEvent& nmEvent) const override {
 		Move move = nmEvent.GetCurrMove()->m_move;
 		nmEvent.IncrementCurMove();
@@ -27,6 +39,11 @@ public:
 		return false;
 	};
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="nmEvent"></param>
 	void GoNext2Phase(NextmoveEvent& nmEvent) override {
 		nmEvent.SetCurrMove(nmEvent.GetLastMove());
 		nmEvent.SetLastMove(nmEvent.GetLastNonCapture());
@@ -35,8 +52,10 @@ public:
 			std::sort(nmEvent.GetCurrMove(), nmEvent.GetLastMove(), std::greater<MoveStack>());
 		}
 	}
-
 };
 
 
+/// <summary>
+/// 
+/// </summary>
 extern PhNonTacticalMoves1 g_phNonTacticalMoves1;

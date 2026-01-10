@@ -10,9 +10,21 @@
 class NextmoveEvent;
 
 
+/// <summary>
+/// 
+/// </summary>
 class PhKillers : public MovePhaseAbstract {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="resultMove"></param>
+	/// <param name="nmEvent"></param>
+	/// <returns></returns>
 	bool GetNext2Move(Move& resultMove, NextmoveEvent& nmEvent) const override {
 		Move move = nmEvent.GetCurrMove()->m_move;
 		nmEvent.IncrementCurMove();
@@ -34,12 +46,19 @@ public:
 		return false;
 	};
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="nmEvent"></param>
 	void GoNext2Phase(NextmoveEvent& nmEvent) override {
 		nmEvent.SetCurrMove(nmEvent.GetKillerMoves());//m_currMove_ = m_killerMoves_;
 		nmEvent.SetLastMove(nmEvent.GetCurrMove() + 2);
 	}
-
 };
 
 
+/// <summary>
+/// 
+/// </summary>
 extern PhKillers g_phKillers;

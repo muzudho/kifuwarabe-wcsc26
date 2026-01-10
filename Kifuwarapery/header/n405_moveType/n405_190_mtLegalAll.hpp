@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-
 #include "../n165_movStack/n165_300_moveType.hpp"
 #include "../n165_movStack/n165_500_moveStack.hpp"
 #include "../n220_position/n220_650_position.hpp"
@@ -10,10 +9,25 @@
 #include "n405_170_mtNonEvasion.hpp"
 
 
+/// <summary>
+/// 指し手生成区分：合法手全生成
+/// </summary>
 class MoveTypeLegalAll : public MoveTypeAbstract {
+
+
 public:
-	// 部分特殊化
-	// Evasion のときに歩、飛、角と、香の2段目の不成も生成する。
+
+
+	/// <summary>
+	///		<pre>
+	/// 部分特殊化
+	/// Evasion のときに歩、飛、角と、香の2段目の不成も生成する。
+	///		</pre>
+	/// </summary>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <param name="all"></param>
+	/// <returns></returns>
 	MoveStack* GenerateMove(MoveStack* moveStackList, const Position& pos, bool all = false
 		) const override {
 		//Color us = pos.GetTurn();
@@ -44,7 +58,4 @@ public:
 
 		return moveStackList;
 	}
-
 };
-
-

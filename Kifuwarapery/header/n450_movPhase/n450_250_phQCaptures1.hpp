@@ -13,9 +13,21 @@
 class NextmoveEvent;
 
 
+/// <summary>
+/// 
+/// </summary>
 class PhQCaptures1 : public MovePhaseAbstract {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="resultMove"></param>
+	/// <param name="nmEvent"></param>
+	/// <returns></returns>
 	bool GetNext2Move(Move& resultMove, NextmoveEvent& nmEvent) const override {
 		Move move = UtilMoveStack::PickBest(nmEvent.GetCurrMove(), nmEvent.GetLastMove())->m_move;
 		nmEvent.IncrementCurMove();
@@ -24,7 +36,11 @@ public:
 		return true;
 	};
 
-	// virtual の派生クラスなので template化はできないぜ☆（＾ｑ＾）
+
+	/// <summary>
+	/// virtual の派生クラスなので template化はできないぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="nmEvent"></param>
 	void GoNext2Phase(NextmoveEvent& nmEvent) override {
 		const Color us = nmEvent.GetPos().GetTurn();
 
@@ -37,8 +53,10 @@ public:
 		);//<Recapture>
 		nmEvent.ScoreCaptures();
 	}
-
 };
 
 
+/// <summary>
+/// 
+/// </summary>
 extern PhQCaptures1 g_phQCaptures1;

@@ -14,9 +14,21 @@
 class NextmoveEvent;
 
 
+/// <summary>
+/// 
+/// </summary>
 class PhNonTacticalMoves0 : public MovePhaseAbstract {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="resultMove"></param>
+	/// <param name="nmEvent"></param>
+	/// <returns></returns>
 	bool GetNext2Move(Move& resultMove, NextmoveEvent& nmEvent) const override {
 		Move move = nmEvent.GetCurrMove()->m_move;
 		nmEvent.IncrementCurMove();
@@ -31,6 +43,11 @@ public:
 		return false;
 	};
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="nmEvent"></param>
 	void GoNext2Phase(NextmoveEvent& nmEvent) override {
 		nmEvent.SetLastMove(g_moveGenerator200.GenerateMoves_2(N04_NonCaptureMinusPro,nmEvent.GetCurrMove(), nmEvent.GetPos()));
 
@@ -46,8 +63,10 @@ public:
 		// 要素数は10個くらいまでであることが多い。要素数が少ないので、insertionSort() を使用する。
 		UtilMoveStack::InsertionSort<MoveStack*, true>(nmEvent.GetCurrMove(), nmEvent.GetLastMove());
 	}
-
 };
 
 
+/// <summary>
+/// 
+/// </summary>
 extern PhNonTacticalMoves0 g_phNonTacticalMoves0;

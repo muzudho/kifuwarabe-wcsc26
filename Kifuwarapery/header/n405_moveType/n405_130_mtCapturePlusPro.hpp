@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-
 #include "../n165_movStack/n165_300_moveType.hpp"
 #include "../n165_movStack/n165_500_moveStack.hpp"
 #include "../n220_position/n220_650_position.hpp"
@@ -8,11 +7,26 @@
 #include "n405_070_mtAbstract.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 class MoveTypeCapturePlusPro : public MoveTypeAbstract {
+
+
 public:
-	// 指し手生成 functor
-	// テンプレート引数が複数あり、部分特殊化したかったので、関数ではなく、struct にした。
-	// ALL == true のとき、歩、飛、角の不成、香の2段目の不成、香の3段目の駒を取らない不成も生成する。
+
+
+	/// <summary>
+	///		<pre>
+	/// 指し手生成 functor
+	/// テンプレート引数が複数あり、部分特殊化したかったので、関数ではなく、struct にした。
+	/// ALL == true のとき、歩、飛、角の不成、香の2段目の不成、香の3段目の駒を取らない不成も生成する。
+	///		</pre>
+	/// </summary>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <param name="all"></param>
+	/// <returns></returns>
 	MoveStack* GenerateMove(MoveStack* moveStackList, const Position& pos, bool all = false
 		) const override {
 
@@ -28,7 +42,19 @@ public:
 		return moveStackList;
 	}
 
+
 private:
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <typeparam name="THEM"></typeparam>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <param name="all"></param>
+	/// <returns></returns>
 	template<Color US, Color THEM>
 	static inline MoveStack* GENERATE_MOVE_(MoveStack* moveStackList, const Position& pos, bool all = false
 		) {
@@ -58,7 +84,4 @@ private:
 
 		return moveStackList;
 	}
-
 };
-
-

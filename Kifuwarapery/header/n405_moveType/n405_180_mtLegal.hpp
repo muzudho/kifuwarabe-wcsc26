@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-
 #include "../n165_movStack/n165_300_moveType.hpp"
 #include "../n165_movStack/n165_500_moveStack.hpp"
 #include "../n220_position/n220_650_position.hpp"
@@ -10,11 +9,24 @@
 #include "n405_170_mtNonEvasion.hpp"
 
 
+/// <summary>
+/// 指し手生成区分：合法手生成
+/// </summary>
 class MoveTypeLegal : public MoveTypeAbstract {
+
+
 public:
-	// 部分特殊化
-	// 連続王手の千日手以外の反則手を排除した合法手生成
-	// そんなに速度が要求されるところでは呼ばない。
+
+
+	/// <summary>
+	/// 部分特殊化
+	/// 連続王手の千日手以外の反則手を排除した合法手生成
+	/// そんなに速度が要求されるところでは呼ばない。
+	/// </summary>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <param name="all"></param>
+	/// <returns></returns>
 	MoveStack* GenerateMove(MoveStack* moveStackList, const Position& pos, bool all = false
 		) const override {
 
@@ -30,8 +42,19 @@ public:
 		return moveStackList;
 	}
 
+
 private:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <typeparam name="THEM"></typeparam>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <param name="all"></param>
+	/// <returns></returns>
 	template<Color US, Color THEM>
 	static inline MoveStack* GENERATE_MOVE_(MoveStack* moveStackList, const Position& pos, bool all = false
 		) {
@@ -56,7 +79,4 @@ private:
 
 		return moveStackList;
 	}
-
 };
-
-

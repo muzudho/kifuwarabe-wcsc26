@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-
 #include "../n165_movStack/n165_300_moveType.hpp"
 #include "../n165_movStack/n165_500_moveStack.hpp"
 #include "../n220_position/n220_650_position.hpp"
@@ -8,13 +7,24 @@
 #include "n405_070_mtAbstract.hpp"
 
 
+/// <summary>
+/// 指し手生成区分：指し手を生成しない。
+/// </summary>
 class MoveTypeNone : public MoveTypeAbstract {
+
+
 public:
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <param name="all"></param>
+	/// <returns></returns>
 	MoveStack* GenerateMove(MoveStack* moveStackList, const Position& pos, bool all = false
 		) const override {
 		return moveStackList;
 	}
-
 };
-
-

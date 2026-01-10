@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-
 #include "../n080_common__/n080_100_common.hpp"
 #include "../n113_piece___/n113_150_piece.hpp"
 #include "../n165_movStack/n165_500_moveStack.hpp"
@@ -26,10 +25,22 @@
 #include "../n405_moveType/n405_500_mtArray.hpp"
 
 
-// MoveType の全ての指し手を生成
+/// <summary>
+/// MoveType の全ての指し手を生成
+/// </summary>
 class MoveGenerator200 {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="mt"></param>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <returns></returns>
 	inline MoveStack* GenerateMoves_2(
 		MoveType mt, MoveStack* moveStackList, const Position& pos
 	) const {
@@ -37,7 +48,15 @@ public:
 	}
 
 
-	// pin は省かない。リキャプチャー専用か。
+	/// <summary>
+	/// pin は省かない。リキャプチャー専用か。
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <typeparam name="THEM"></typeparam>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <param name="to"></param>
+	/// <returns></returns>
 	template<Color US, Color THEM>
 	static inline MoveStack* GenerateMoves_recapture(
 		MoveStack* moveStackList, const Position& pos, const Square to
@@ -57,8 +76,10 @@ public:
 		}
 		return moveStackList;
 	}
-
 };
 
 
+/// <summary>
+/// 
+/// </summary>
 extern MoveGenerator200 g_moveGenerator200;

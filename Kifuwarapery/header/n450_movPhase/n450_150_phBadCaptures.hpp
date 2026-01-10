@@ -10,9 +10,21 @@
 class NextmoveEvent;
 
 
+/// <summary>
+/// 
+/// </summary>
 class PhBadCaptures : public MovePhaseAbstract {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="resultMove"></param>
+	/// <param name="nmEvent"></param>
+	/// <returns></returns>
 	bool GetNext2Move(Move& resultMove, NextmoveEvent& nmEvent) const override {
 		resultMove = nmEvent.GetCurrMove()->m_move;
 		nmEvent.DecrementCurMove();
@@ -20,12 +32,19 @@ public:
 		return true;
 	};
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="nmEvent"></param>
 	void GoNext2Phase(NextmoveEvent& nmEvent) override {
 		nmEvent.SetCurrMove(nmEvent.GetLegalMoves() + Move::m_MAX_LEGAL_MOVES - 1 );
 		nmEvent.SetLastMove(nmEvent.GetEndBadCaptures());
 	}
-
 };
 
 
+/// <summary>
+/// 
+/// </summary>
 extern PhBadCaptures g_phBadCaptures;

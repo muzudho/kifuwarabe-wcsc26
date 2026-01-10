@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-
 #include "../n372_piece___/n372_070_PieceAbstract.hpp"
 #include "../n372_piece___/n372_080_pieceNull.hpp"
 #include "../n372_piece___/n372_190_pieceBProPawn.hpp"
@@ -36,10 +35,18 @@
 #include "../n372_piece___/n372_410_pieceNone.hpp"
 
 
+/// <summary>
+/// 駒配列。
+/// </summary>
 class PieceArray {
+
+
 public:
 
-	// テンプレート関数の中で使うので、スタティックにするんだぜ☆（＾ｑ＾）
+
+	/// <summary>
+	/// テンプレート関数の中で使うので、スタティックにするんだぜ☆（＾ｑ＾）
+	/// </summary>
 	static const PieceEmpty m_pieceEmpty;	//[0]
 	static const PieceBPawn m_pieceBPawn;
 	static const PieceBLance m_pieceBLance;
@@ -73,8 +80,10 @@ public:
 	static const PieceNone m_pieceNone;//[31]
 
 	static const PieceAbstract* m_pieceAbstractArray[32];
-
 };
 
 
+/// <summary>
+/// 
+/// </summary>
 extern PieceArray g_pieceArray;

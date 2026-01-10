@@ -13,9 +13,21 @@
 class NextmoveEvent;
 
 
+/// <summary>
+/// 王手回避の指し手を生成・スコアリングする。
+/// </summary>
 class PhEvasions : public MovePhaseAbstract {
+
+
 public:
 
+
+	/// <summary>
+	///
+	/// </summary>
+	/// <param name="resultMove"></param>
+	/// <param name="nmEvent"></param>
+	/// <returns></returns>
 	bool GetNext2Move(Move& resultMove, NextmoveEvent& nmEvent) const override {
 		Move move = UtilMoveStack::PickBest(nmEvent.GetCurrMove(), nmEvent.GetLastMove())->m_move;
 		nmEvent.IncrementCurMove();
@@ -26,14 +38,21 @@ public:
 		return false;
 	};
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="nmEvent"></param>
 	void GoNext2Phase(NextmoveEvent& nmEvent) override {
 		nmEvent.SetLastMove(g_moveGenerator200.GenerateMoves_2(N06_Evasion,nmEvent.GetCurrMove(), nmEvent.GetPos()) );
 		if (nmEvent.GetCurrMove() + 1 < nmEvent.GetLastMove()) {
 			nmEvent.ScoreEvasions();
 		}
 	}
-
 };
 
 
+/// <summary>
+/// 
+/// </summary>
 extern PhEvasions g_phEvasions;

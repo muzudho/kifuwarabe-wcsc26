@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-
 #include "../n080_common__/n080_100_common.hpp"
 #include "../n105_color___/n105_100_color.hpp"
 #include "../n110_square__/n110_205_convRank.hpp"
@@ -25,10 +24,18 @@
 #include "../n358_dropMake/n358_160_dropMakerHand6.hpp"
 
 
+/// <summary>
+/// 打つ手を生成する。
+/// </summary>
 class DropMoveGenerator {
+
+
 public:
 
-	// (^q^)追加
+
+	/// <summary>
+	/// (^q^)追加
+	/// </summary>
 	DropMakerHand0 m_dropMakerHand0;
 	DropMakerHand1 m_dropMakerHand1;
 	DropMakerHand2 m_dropMakerHand2;
@@ -38,7 +45,10 @@ public:
 	DropMakerHand6 m_dropMakerHand6;
 	DropMakerAbstract* m_pDropMakerArray[7];
 
-	// (^q^)追加
+
+	/// <summary>
+	/// (^q^)追加
+	/// </summary>
 	DropMoveGenerator() {
 		this->m_pDropMakerArray[0] = &this->m_dropMakerHand0;
 		this->m_pDropMakerArray[1] = &this->m_dropMakerHand1;
@@ -50,10 +60,20 @@ public:
 	}
 
 
-	// 駒打ちの場合
-	// 歩以外の持ち駒は、loop の前に持ち駒の種類の数によって ｓｗｉｔｃｈ で展開している。
-	// ループの展開はコードが膨れ上がる事によるキャッシュヒット率の低下と、演算回数のバランスを取って決める必要がある。
-	// NPSに影響が出ないならシンプルにした方が良さそう。
+	/// <summary>
+	///		<pre>
+	/// 駒打ちの場合
+	/// 歩以外の持ち駒は、loop の前に持ち駒の種類の数によって ｓｗｉｔｃｈ で展開している。
+	/// ループの展開はコードが膨れ上がる事によるキャッシュヒット率の低下と、演算回数のバランスを取って決める必要がある。
+	/// NPSに影響が出ないならシンプルにした方が良さそう。
+	///		</pre>
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <typeparam name="THEM"></typeparam>
+	/// <param name="pMovestack"></param>
+	/// <param name="pos"></param>
+	/// <param name="target"></param>
+	/// <returns></returns>
 	template<Color US,Color THEM>
 	MoveStack* GenerateDropMoves(
 		MoveStack* pMovestack,
@@ -166,9 +186,10 @@ public:
 
 		return pMovestack;
 	}
-
 };
 
 
+/// <summary>
+/// 
+/// </summary>
 extern DropMoveGenerator g_dropMoveGenerator;
-
