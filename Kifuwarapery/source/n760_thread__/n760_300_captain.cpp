@@ -5,9 +5,9 @@
 
 
 /// <summary>
-/// 空回り開始☆（＾～＾）
+/// ワーカースレッド開始☆（＾～＾）
 /// </summary>
-void Captain::StartIdleLoop() {
+void Captain::StartWorkerThread() {
 	while (true) {// エグジットするまで　ずっといるぜ☆
 		{
 			std::unique_lock<Mutex> lock(this->m_sleepLock);

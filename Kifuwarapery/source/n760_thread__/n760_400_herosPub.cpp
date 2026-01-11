@@ -14,14 +14,14 @@
 
 
 /// <summary>
-/// 
+/// ワーカースレッド開始
 /// </summary>
 /// <typeparam name="T"></typeparam>
 /// <param name="s"></param>
 /// <returns></returns>
 template <typename T> T* newThread(Rucksack* s) {
 	T* th = new T(s);
-	th->m_handle = std::thread(&Military::StartIdleLoop, th); // move constructor
+	th->m_handle = std::thread(&Military::StartWorkerThread, th); // move constructor
 	return th;
 }
 

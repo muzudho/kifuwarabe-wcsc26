@@ -227,7 +227,11 @@ void TimeManager::SetPvInstability(
 
 
 /// <summary>
+///		<pre>
 /// 最初の設定（初期化）
+/// 
+///		- ヒッチハイカーのThink開始時に初期設定をするぜ☆（＾▽＾）
+///		</pre>
 /// </summary>
 /// <param name="isMoveTime0Clear">false を入れてくれ☆（＾ｑ＾）</param>
 /// <param name="limits">m_moveTimeを 0にする場合があるぜ☆（＾ｑ＾）</param>
@@ -294,9 +298,8 @@ void TimeManager::Initialize(
 		);
 	}
 
+	// 相手の思考中にも読み続ける設定の場合☆（＾ｑ＾）
 	if (pRucksack->m_engineOptions["USI_Ponder"]) {
-		// 相手の思考中にも読み続ける設定の場合☆（＾ｑ＾）
-
 
 		// 相手が何秒考えるかなんて分からないので☆（＾～＾）
 		// FIXME: 相手の思考タイム推測は、自分の考える時間の 4分の1 にしておくぜ☆（＾▽＾）

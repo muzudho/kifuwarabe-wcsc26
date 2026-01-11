@@ -372,9 +372,9 @@ void Rucksack::CheckTime() {
 
 
 /// <summary>
-/// 空回り開始
+/// ワーカースレッド開始
 /// </summary>
-void Military::StartIdleLoop() {
+void Military::StartWorkerThread() {
 	SplitedNode* thisSp = m_splitedNodesSize ? m_activeSplitedNode : nullptr;
 	assert(!thisSp || (thisSp->m_masterThread == this && m_searching));
 

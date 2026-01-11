@@ -57,7 +57,11 @@ extern RepetitionTypeArray g_repetitionTypeArray;
 
 
 /// <summary>
+///		<pre>
 /// 思考するぜ☆（＾ｑ＾）
+/// 
+///		- `Captain::StartWorkerThread` などから呼び出されるぜ（＾～＾）
+///		</pre>
 /// </summary>
 /// <param name="captainsRucksack">キャプテンの持っているＳｅａｒｃｈｅｒ☆</param>
 void Hitchhiker::Think(

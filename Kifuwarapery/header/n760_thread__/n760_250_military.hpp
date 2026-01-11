@@ -49,9 +49,9 @@ public:
 
 
 	/// <summary>
-	/// 空回り開始
+	/// ワーカースレッド開始
 	/// </summary>
-	virtual void StartIdleLoop();
+	virtual void StartWorkerThread();
 
 
 	/// <summary>
