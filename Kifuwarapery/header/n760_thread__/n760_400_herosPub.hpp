@@ -6,7 +6,7 @@
 #include "../n440_movStack/n440_500_nextmoveEvent.hpp"
 #include "../n480_tt______/n480_300_tt.hpp"
 #include "../n520_evaluate/n520_700_evaluation09.hpp"
-#include "../n560_timeMng_/n560_100_limitsOfThinking.hpp"
+#include "../n560_timeMgr_/n560_100_limitsOfThinking.hpp"
 #include "../n640_searcher/n640_440_splitedNode.hpp"
 #include "n760_250_military.hpp"
 #include "n760_300_captain.hpp"

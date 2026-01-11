@@ -11,7 +11,7 @@
 #include "../n223_move____/n223_060_stats.hpp"
 #include "../n350_pieceTyp/n350_040_ptEvent.hpp"
 #include "../n350_pieceTyp/n350_500_ptPrograms.hpp"
-#include "../n560_timeMng_/n560_500_timeManager.hpp"
+#include "../n560_timeMgr_/n560_500_timeManager.hpp"
 #include "../n640_searcher/n640_128_signalsType.hpp"
 #include "../n640_searcher/n640_450_rootMove.hpp"
 #include "../n680_egOption/n680_240_engineOptionsMap.hpp"

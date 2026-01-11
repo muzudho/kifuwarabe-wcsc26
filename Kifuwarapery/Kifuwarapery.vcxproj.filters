@@ -489,7 +489,7 @@
     <ClInclude Include="header\n600_book____\n600_500_book.hpp">
       <Filter>header\n600_book____</Filter>
     </ClInclude>
-    <ClInclude Include="header\n560_timeMng_\n560_500_timeManager.hpp">
+    <ClInclude Include="header\n560_timeMgr_\n560_500_timeManager.hpp">
       <Filter>header\n560_timeMng_</Filter>
     </ClInclude>
     <ClInclude Include="header\n520_evaluate\n520_100_evaluateEnum.hpp">
@@ -891,7 +891,7 @@
     <ClInclude Include="header\n640_searcher\n640_440_splitedNode.hpp">
       <Filter>header\n640_searcher</Filter>
     </ClInclude>
-    <ClInclude Include="header\n560_timeMng_\n560_100_limitsOfThinking.hpp">
+    <ClInclude Include="header\n560_timeMgr_\n560_100_limitsOfThinking.hpp">
       <Filter>header\n560_timeMng_</Filter>
     </ClInclude>
     <ClInclude Include="header\n800_learn___\n800_100_stopwatch.hpp">
@@ -1166,7 +1166,7 @@
     <ClCompile Include="source\n600_book____\n600_500_book.cpp">
       <Filter>source\n600_book____</Filter>
     </ClCompile>
-    <ClCompile Include="source\n560_timeMng_\n560_500_timeManager.cpp">
+    <ClCompile Include="source\n560_timeMgr_\n560_500_timeManager.cpp">
       <Filter>source\n560_timeMng_</Filter>
     </ClCompile>
     <ClCompile Include="source\n520_evaluate\n520_100_evaluate.cpp">

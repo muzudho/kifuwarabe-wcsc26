@@ -23,7 +23,7 @@
 #include "../../header/n350_pieceTyp/n350_500_ptPrograms.hpp"
 #include "../../header/n440_movStack/n440_500_nextmoveEvent.hpp"
 #include "../../header/n520_evaluate/n520_700_evaluation09.hpp"
-#include "../../header/n560_timeMng_/n560_500_timeManager.hpp"
+#include "../../header/n560_timeMgr_/n560_500_timeManager.hpp"
 #include "../../header/n600_book____/n600_500_book.hpp"
 #include "../../header/n640_searcher/n640_440_splitedNode.hpp"
 #include "../../header/n640_searcher/n640_500_reductions.hpp"
@@ -348,17 +348,17 @@ void Rucksack::CheckTime() {
 	const int elapsed = m_stopwatch.GetElapsed();
 
 	// まだ最初の指し手☆？（＾～＾）？
-	const bool stillAtFirstMove =
+	const bool isStillAtFirstMove =
 		// 最初の指し手で☆
 		m_signals.m_firstRootMove
 		// フェイル・ロウではなくて☆？
 		&& !m_signals.m_failedLowAtRoot
-		&& m_timeManager.CanThinking01_TimeOver_AtFirstMove( elapsed);
+		&& m_timeManager.IsTimeBudgetOver(elapsed);
 
 	// これ以上の時間がないか☆？（＾ｑ＾）？
 	const bool noMoreTime =
 		m_timeManager.IsNoMoreTime(TimerResolution , elapsed)
-		|| stillAtFirstMove;
+		|| isStillAtFirstMove;
 
 	if (
 		(m_limits.IsBrandnewTimeManagement() && noMoreTime)//反復深化探索をしたいときに、もう時間がない☆？（＾ｑ＾）

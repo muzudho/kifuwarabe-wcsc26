@@ -232,7 +232,7 @@ public:
 
 				// 深さが 5 ～ 49 で、PVサイズが 1 のとき。
 				if (4 < depth && depth < 50 && rucksack.m_pvSize == 1) {
-					rucksack.m_timeManager.SetPvInstability_AtIterativeDeepeningStarted(rucksack.GetBestMovePlyChanges(), prevBestMovePlyChanges);
+					rucksack.m_timeManager.SetPvInstability(rucksack.GetBestMovePlyChanges(), prevBestMovePlyChanges);
 				}
 
 				// 次のイテレーションを回す時間が無いなら、ストップ
@@ -258,8 +258,8 @@ public:
 					&& (
 						rucksack.m_rootMoves.size() == 1
 						||
-						// または、利用可能時間の40%が、思考経過時間未満の場合。
-						rucksack.m_timeManager.CanThinking02_TimeOk_ForIterativeDeepingLoop(rucksack.m_stopwatch.GetElapsed())
+						// または、まだ反復深化探索していい時間が残ってるなら。
+						rucksack.m_timeManager.IsTimeOk_CanIterativeDeeping(rucksack.m_stopwatch.GetElapsed())
 					)
 				) {
 					const ScoreIndex rBeta = bestScore - 2 * PieceScore::m_capturePawn;

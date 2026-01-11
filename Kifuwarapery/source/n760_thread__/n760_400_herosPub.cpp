@@ -2,7 +2,7 @@
 #include "../../header/n165_movStack/n165_300_moveType.hpp"
 #include "../../header/n220_position/n220_650_position.hpp"
 #include "../../header/n407_moveGen_/n407_900_moveList.hpp"
-#include "../../header/n560_timeMng_/n560_100_limitsOfThinking.hpp"
+#include "../../header/n560_timeMgr_/n560_100_limitsOfThinking.hpp"
 #include "../../header/n640_searcher/n640_450_rootMove.hpp"
 #include "../../header/n760_thread__/n760_250_military.hpp"
 #include "../../header/n760_thread__/n760_400_herosPub.hpp"

@@ -4,7 +4,7 @@
 #include "../../header/n080_common__/n080_100_common.hpp"
 #include "../../header/n220_position/n220_750_charToPieceUSI.hpp"
 #include "../../header/n220_position/n220_650_position.hpp"
-#include "../../header/n560_timeMng_/n560_100_limitsOfThinking.hpp"
+#include "../../header/n560_timeMgr_/n560_100_limitsOfThinking.hpp"
 #include "../../header/n720_usi_____/n720_260_usiOperation.hpp"
 #include "../../header/n720_usi_____/n720_300_benchmark.hpp"
 #include "../../header/n885_searcher/n885_040_rucksack.hpp"

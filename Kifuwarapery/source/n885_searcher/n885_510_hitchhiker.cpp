@@ -17,7 +17,7 @@
 #include "../../header/n350_pieceTyp/n350_500_ptPrograms.hpp"
 #include "../../header/n440_movStack/n440_500_nextmoveEvent.hpp"
 #include "../../header/n520_evaluate/n520_700_evaluation09.hpp"
-#include "../../header/n560_timeMng_/n560_500_timeManager.hpp"
+#include "../../header/n560_timeMgr_/n560_500_timeManager.hpp"
 #include "../../header/n600_book____/n600_500_book.hpp"
 
 #include "../../header/n640_searcher/n640_440_splitedNode.hpp"
@@ -67,7 +67,7 @@ void Hitchhiker::Think(
 	Position& pos = captainsRucksack.m_rootPosition;
 
 	bool isMoveTime0Clear = false;
-	captainsRucksack.m_timeManager.InitializeTimeManager_OnHitchhikerThinkStarted(
+	captainsRucksack.m_timeManager.Initialize(
 		isMoveTime0Clear,
 		captainsRucksack.m_limits,
 		pos.GetGamePly(),

@@ -356,8 +356,8 @@
     <ClInclude Include="header\n520_evaluate\n520_490_KppCacheIo.hpp" />
     <ClInclude Include="header\n520_evaluate\n520_500_kkKkpKppStorage1.hpp" />
     <ClInclude Include="header\n520_evaluate\n520_700_evaluation09.hpp" />
-    <ClInclude Include="header\n560_timeMng_\n560_100_limitsOfThinking.hpp" />
-    <ClInclude Include="header\n560_timeMng_\n560_500_timeManager.hpp" />
+    <ClInclude Include="header\n560_timeMgr_\n560_100_limitsOfThinking.hpp" />
+    <ClInclude Include="header\n560_timeMgr_\n560_500_timeManager.hpp" />
     <ClInclude Include="header\n600_book____\n600_100_mt64bit.hpp" />
     <ClInclude Include="header\n600_book____\n600_400_bookEntry.hpp" />
     <ClInclude Include="header\n600_book____\n600_500_book.hpp" />
@@ -579,7 +579,7 @@
     <ClCompile Include="source\n520_evaluate\n520_150_kppIndexArray.cpp" />
     <ClCompile Include="source\n520_evaluate\n520_490_KppCacheIo.cpp" />
     <ClCompile Include="source\n520_evaluate\n520_700_evaluation09.cpp" />
-    <ClCompile Include="source\n560_timeMng_\n560_500_timeManager.cpp" />
+    <ClCompile Include="source\n560_timeMgr_\n560_500_timeManager.cpp" />
     <ClCompile Include="source\n600_book____\n600_100_mt64bit.cpp" />
     <ClCompile Include="source\n600_book____\n600_500_book.cpp" />
     <ClCompile Include="source\n640_searcher\n640_500_reductions.cpp" />

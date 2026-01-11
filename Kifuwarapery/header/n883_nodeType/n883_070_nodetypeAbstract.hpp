@@ -22,7 +22,7 @@
 #include "../n350_pieceTyp/n350_500_ptPrograms.hpp"
 #include "../n440_movStack/n440_500_nextmoveEvent.hpp"
 #include "../n520_evaluate/n520_700_evaluation09.hpp"
-#include "../n560_timeMng_/n560_500_timeManager.hpp"
+#include "../n560_timeMgr_/n560_500_timeManager.hpp"
 #include "../n600_book____/n600_500_book.hpp"
 
 #include "../n640_searcher/n640_440_splitedNode.hpp" // Searcherと持ち合い

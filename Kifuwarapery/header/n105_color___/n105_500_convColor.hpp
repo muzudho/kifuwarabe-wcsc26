@@ -13,7 +13,12 @@ public:
 
 
 	/// <summary>
+	///		<pre>
 	/// 相手の色
+	/// 
+	///		- コンパイル時に評価
+	///		- XXX: 使ってない？
+	///		</pre>
 	/// </summary>
 	/// <typeparam name="CLR"></typeparam>
 	/// <returns></returns>
@@ -24,7 +29,11 @@ public:
 
 
 	/// <summary>
+	///		<pre>
 	/// 相手の色
+	/// 
+	///		- 実行時に評価
+	///		</pre>
 	/// </summary>
 	/// <param name="c"></param>
 	/// <returns></returns>
