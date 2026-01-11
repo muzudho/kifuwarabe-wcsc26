@@ -14,7 +14,7 @@
 /// 今はベンチマークというより、PGO ビルドの自動化の為にある。
 /// </summary>
 /// <param name="pos"></param>
-void Benchmark(Position& pos) {
+void Benchmark(GameStats& gameStats, Position& pos) {
 	std::string token;
 	LimitsDuringGo limits;
 
@@ -37,7 +37,7 @@ void Benchmark(Position& pos) {
 		usiOperation.SetPosition(pos, ss_sfen);
 
 		std::istringstream ss_go("byoyomi 10000");
-		usiOperation.Go(pos, ss_go);
+		usiOperation.Go(gameStats, pos, ss_go);
 		pos.GetRucksack()->m_ownerHerosPub.WaitForThinkFinished();
 	}
 }

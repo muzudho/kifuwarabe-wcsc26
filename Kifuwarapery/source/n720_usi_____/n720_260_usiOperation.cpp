@@ -2,8 +2,8 @@
 #include "../../header/n165_movStack/n165_300_moveType.hpp"
 #include "../../header/n165_movStack/n165_400_move.hpp"
 #include "../../header/n165_movStack/n165_600_convMove.hpp"
+#include "../../header/n220_position/n220_645_gameStats.hpp"
 #include "../../header/n220_position/n220_650_position.hpp"
-
 #include "../../header/n350_pieceTyp/n350_030_makePromoteMove.hpp"
 #include "../../header/n407_moveGen_/n407_900_moveList.hpp"
 #include "../../header/n720_usi_____/n720_260_usiOperation.hpp"
@@ -67,7 +67,7 @@ const StringToPieceTypeCSA g_stringToPieceTypeCSA;
 /// </summary>
 /// <param name="pos"></param>
 /// <param name="ssCmd"></param>
-void UsiOperation::Go(const Position& pos, std::istringstream& ssCmd)
+void UsiOperation::Go(GameStats& gameStats, const Position& pos, std::istringstream& ssCmd)
 {
 	LimitsDuringGo limits;
 	std::vector<Move> moves;
@@ -80,10 +80,22 @@ void UsiOperation::Go(const Position& pos, std::istringstream& ssCmd)
 
 		// TODO: 時間管理のために Positon 変数に［残り持ち時間］を記憶しておきたいぜ（＾～＾）
 		// 先手の残り時間（ミリ秒）
-		else if (token == "btime"      ) { limits.SetTimeLeftFromStream( Color::Black, ssCmd); }
+		else if (token == "btime"      )
+		{
+			long long milliseconds;
+			ssCmd >> milliseconds;
+			limits.SetTimeLeftFromStream(Color::Black, milliseconds);
+			gameStats.SetTimeLeftFromStream(Color::Black, milliseconds);
+		}
 
         // 後手の残り時間（ミリ秒）
-		else if (token == "wtime"      ) { limits.SetTimeLeftFromStream( Color::White, ssCmd); }
+		else if (token == "wtime"      )
+		{
+			long long milliseconds;
+			ssCmd >> milliseconds;
+			limits.SetTimeLeftFromStream(Color::White, milliseconds);
+			gameStats.SetTimeLeftFromStream(Color::White, milliseconds);
+		}
 
         // 時間無制限で思考だぜ（＾▽＾）
 		else if (token == "infinite"   ) { limits.m_isInfinite = true; }

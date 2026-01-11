@@ -222,7 +222,7 @@ inline bool countCompare(const BookEntry& b1, const BookEntry& b2) {
 /// </summary>
 /// <param name="pos"></param>
 /// <param name="ssCmd"></param>
-void MakeBook(Position& pos, std::istringstream& ssCmd) {
+void MakeBook(GameStats& gameStats, Position& pos, std::istringstream& ssCmd) {
 	std::string fileName;
 	ssCmd >> fileName;
 	std::ifstream ifs(fileName.c_str(), std::ios::binary);
@@ -298,7 +298,7 @@ void MakeBook(Position& pos, std::istringstream& ssCmd) {
 
 					std::istringstream ssCmd("byoyomi 1000");
 					UsiOperation usiOperation;
-					usiOperation.Go(pos, ssCmd);
+					usiOperation.Go(gameStats, pos, ssCmd);
 					pos.GetRucksack()->m_ownerHerosPub.WaitForThinkFinished();
 
 					pos.UndoMove(move);

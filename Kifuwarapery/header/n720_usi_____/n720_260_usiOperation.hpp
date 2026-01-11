@@ -3,7 +3,7 @@
 
 #include <string>
 #include <sstream>
-//#include "../n080_common__/n080_100_common.hpp"
+#include "../n220_position/n220_645_gameStats.hpp"
 #include "../n220_position/n220_650_position.hpp"
 
 
@@ -24,7 +24,9 @@ public:
 	/// </summary>
 	/// <param name="pos"></param>
 	/// <param name="ssCmd"></param>
-	void Go(const Position& pos, std::istringstream& ssCmd);
+	void Go(GameStats& gameStats, const Position& pos, std::istringstream& ssCmd);
+
+
 #if defined LEARN
 	void Go(const Position& GetPos, const Ply GetDepth, const Move GetMove);
 #endif

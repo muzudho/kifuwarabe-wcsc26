@@ -44,6 +44,33 @@ public:
 
 
 	// ========================================
+	// 軽い生成／破棄
+	// ========================================
+
+
+	/// <summary>
+	/// 生成
+	/// </summary>
+	Position();
+
+	explicit Position(Rucksack* s);
+
+	Position(const Position& pos);
+
+	Position(const Position& pos, Military* th);
+
+	Position(const std::string& sfen, Military* th, Rucksack* s);
+
+
+	// ========================================
+	// 演算子のオーバーロード
+	// ========================================
+
+
+	Position& operator = (const Position& pos);
+
+
+	// ========================================
 	// アクセッサ
 	// ========================================
 
@@ -612,27 +639,6 @@ public:
 
 
 	// ========================================
-	// 軽い生成／破棄
-	// ========================================
-
-
-	/// <summary>
-	/// 生成
-	/// </summary>
-	Position();
-
-	explicit Position(Rucksack* s);
-
-	Position(const Position& pos);
-
-	Position(const Position& pos, Military* th);
-
-	Position(const std::string& sfen, Military* th, Rucksack* s);
-
-	Position& operator = (const Position& pos);
-
-
-	// ========================================
 	// メイン・メソッド
 	// ========================================
 
@@ -843,16 +849,6 @@ private:
 	/// todo: これが必要か、要検討
 	/// </summary>
 	static Key m_ZOB_EXCLUSION_;
-
-	/// <summary>
-	///		<pre>
-	/// TODO: (2026-01-12-mon) 時間管理のために、相手の消費時間の移動平均を取りたいんで、残り時間を記憶していきたいぜ（＾～＾）
-	/// 
-	///		btime, wtime を単純に記憶していくだけでもいいと思うが……☆（＾～＾）
-	///		</pre>
-	/// </summary>
-	std::vector<long long> m_blackTimes = {};
-	std::vector<long long> m_whiteTimes = {};
 
 
 	// ========================================

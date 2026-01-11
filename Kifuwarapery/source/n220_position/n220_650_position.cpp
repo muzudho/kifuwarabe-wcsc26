@@ -2888,10 +2888,5 @@ ScoreIndex Position::ComputeMaterial() const {
 /// </summary>
 void Position::Clear() {
 	memset(this, 0, sizeof(Position));
-
 	this->m_st_ = &this->m_startState_;
-
-	// vectorを明示的にクリア（これがないとヤバいぜ）
-	this->m_blackTimes.clear();
-	this->m_whiteTimes.clear();
 }

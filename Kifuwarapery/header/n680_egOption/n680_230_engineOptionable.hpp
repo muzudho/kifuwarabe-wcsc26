@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-
 #include "../n080_common__/n080_100_common.hpp"
 
 
@@ -26,8 +25,8 @@ public:
 
 
 	EngineOptionable(												Fn* = nullptr, Rucksack* s = nullptr);
-	EngineOptionable(const char* v,								Fn* = nullptr, Rucksack* s = nullptr);
-	EngineOptionable(const bool  v,								Fn* = nullptr, Rucksack* s = nullptr);
+	EngineOptionable(const char* v,								    Fn* = nullptr, Rucksack* s = nullptr);
+	EngineOptionable(const bool  v,								    Fn* = nullptr, Rucksack* s = nullptr);
 	EngineOptionable(const int   v, const int min, const int max,	Fn* = nullptr, Rucksack* s = nullptr);
 
 

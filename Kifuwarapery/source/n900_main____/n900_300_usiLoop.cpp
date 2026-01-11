@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include "../../header/n165_movStack/n165_400_move.hpp"
 #include "../../header/n165_movStack/n165_600_convMove.hpp"
+#include "../../header/n220_position/n220_650_position.hpp"
 #include "../../header/n220_position/n220_750_charToPieceUSI.hpp"
 #include "../../header/n350_pieceTyp/n350_030_makePromoteMove.hpp"
 #include "../../header/n407_moveGen_/n407_800_moveGenerator200.hpp"
@@ -94,6 +95,7 @@ UsiLoop::UsiLoop()
 /// <param name="searcher"></param>
 void UsiLoop::Mainloop(int argc, char* argv[], Rucksack& searcher)
 {
+	GameStats gameStats{};	// こう書くと関数呼出しと思われてエラー： GameStats gameStats();
 	Position pos(g_DefaultStartPositionSFEN, searcher.m_ownerHerosPub.GetFirstCaptain(), &searcher);
 
 	std::string cmd;
@@ -165,13 +167,10 @@ void UsiLoop::Mainloop(int argc, char* argv[], Rucksack& searcher)
 			}
 		}
 		else if (token == "usi") {
-			SYNCCOUT << "id name " << MyName
-				<< "\nid author (Derivation)Takahashi Satoshi (Base)Hiraoka Takuya"
-				<< "\n" << searcher.m_engineOptions
-				<< "\nusiok" << SYNCENDL;
+			SYNCCOUT << "id name " << MyName << "\nid author (Derivation)Takahashi Satoshi (Base)Hiraoka Takuya\n" << searcher.m_engineOptions << "\nusiok" << SYNCENDL;
 		}
 		else if (token == "go") {
-			usiOperation.Go(pos, ssCmd);
+			usiOperation.Go(gameStats, pos, ssCmd);
 		}
 		else if (token == "isready") {
 			SYNCCOUT << "readyok" << SYNCENDL;
@@ -194,7 +193,7 @@ void UsiLoop::Mainloop(int argc, char* argv[], Rucksack& searcher)
 #endif
 #if !defined MINIMUL
 		// 以下、デバッグ用
-		else if (token == "bench") { Benchmark(pos); }
+		else if (token == "bench") { Benchmark(gameStats, pos); }
 		else if (token == "d") { pos.Print(); }
 		else if (token == "s") { measureGenerateMoves(pos); }
 		else if (token == "t") { std::cout <<
@@ -206,7 +205,7 @@ void UsiLoop::Mainloop(int argc, char* argv[], Rucksack& searcher)
 				pos.GetMateMoveIn1Ply<Color::White,Color::Black>().ToCSA()
 			)			
 			<< std::endl; }
-		else if (token == "b") { MakeBook(pos, ssCmd); }
+		else if (token == "b") { MakeBook(gameStats, pos, ssCmd); }
 #endif
 		else { SYNCCOUT << "unknown command: " << cmd << SYNCENDL; }
 	} while (token != "quit" && argc == 1);

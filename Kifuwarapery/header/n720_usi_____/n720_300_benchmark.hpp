@@ -9,4 +9,4 @@
 /// ベンチマーク。
 /// </summary>
 /// <param name="pos"></param>
-void Benchmark(Position& pos);
+void Benchmark(GameStats& gameStats, Position& pos);

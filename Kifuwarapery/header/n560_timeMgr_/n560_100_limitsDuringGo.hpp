@@ -92,8 +92,8 @@ public:
 	/// </summary>
 	/// <param name="us"></param>
 	/// <param name="ssCmd"></param>
-	inline void SetTimeLeftFromStream(Color us, std::istringstream& ssCmd) {
-		ssCmd >> this->m_millisecondsLeft[us];
+	inline void SetTimeLeftFromStream(Color us, long long milliseconds) {
+		this->m_millisecondsLeft[us] = milliseconds;
 	}
 
 

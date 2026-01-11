@@ -10,6 +10,8 @@
 #include "../n600_book____/n600_100_mt64bit.hpp"
 
 
+// 依存関係の回避
+class GameStats;
 class Position;
 
 
@@ -112,4 +114,4 @@ private:
 /// </summary>
 /// <param name="pos"></param>
 /// <param name="ssCmd"></param>
-void MakeBook(Position& pos, std::istringstream& ssCmd);
+void MakeBook(GameStats& gameStats, Position& pos, std::istringstream& ssCmd);

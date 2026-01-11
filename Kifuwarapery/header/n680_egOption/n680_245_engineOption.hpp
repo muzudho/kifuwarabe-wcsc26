@@ -23,7 +23,7 @@ public:
 	EngineOption(const int   v, const int min, const int max, Fn* = nullptr, Rucksack* s = nullptr);
 
 
-private:
+//private:
 	
 
 	/// <summary>

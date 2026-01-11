@@ -44,7 +44,7 @@ public:
 		const PieceMoveEvent ptEvent,
 		const Bitboard& target
 	) {
-		static_assert(US==Color::Black | US==Color::White,"");
+		static_assert((US==Color::Black) | (US==Color::White),"");
 
 		// Txxx は先手、後手の情報を吸収した変数。数字は先手に合わせている。
 		const Rank TRank6 = (US == Black ? Rank6 : Rank4);
