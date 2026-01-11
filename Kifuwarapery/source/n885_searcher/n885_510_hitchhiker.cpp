@@ -145,7 +145,7 @@ void Hitchhiker::Think(
 	// 下級戦士の寿命（ミリ秒）を設定するぜ☆
 	captainsRucksack.m_ownerHerosPub.GetCurrWarrior()->m_lifetimeMilliseconds =
 		(
-			captainsRucksack.m_limits.IsBrandnewTimeManagement() ? // 反復深化をしたい☆？（＾ｑ＾）
+			captainsRucksack.m_limits.IsBrandnewTimeMgr() ? // 反復深化をしたい☆？（＾ｑ＾）
 			// する場合
 			std::min(100,
 				std::max(
@@ -154,9 +154,9 @@ void Hitchhiker::Think(
 				))
 			:
 			// できない場合☆
-			captainsRucksack.m_limits.m_nodes01 ?
-			2 * captainsRucksack.TimerResolution :
-			100
+			captainsRucksack.m_limits.m_visitedNodesNum ?
+				2 * captainsRucksack.TimerResolution :
+				100
 			);
 
 	captainsRucksack.m_ownerHerosPub.GetCurrWarrior()->NotifyOne();
@@ -183,7 +183,7 @@ finalize:
 	SYNCCOUT << "info nodes " << pos.GetNodesSearched()
 		<< " time " << captainsRucksack.m_stopwatch.GetElapsed() << SYNCENDL;
 
-	if (!captainsRucksack.m_signals.m_stop && (captainsRucksack.m_limits.m_ponder || captainsRucksack.m_limits.m_infinite)) {
+	if (!captainsRucksack.m_signals.m_stop && (captainsRucksack.m_limits.m_canPonder || captainsRucksack.m_limits.m_isInfinite)) {
 		captainsRucksack.m_signals.m_stopOnPonderHit = true;
 		pos.GetThisThread()->WaitFor(captainsRucksack.m_signals.m_stop);
 	}

@@ -218,25 +218,25 @@ void TimeManager::SetPvInstability(
 	const Ply currBestMovePlyChanges,
 	const Ply prevBestMovePlyChanges
 ) {
-	this->SetSikoAsobiTime(
-		currBestMovePlyChanges * (this->GetYoteiBothTurnTime() / 2)
+	this->SetBufferThinkSeconds(
+		currBestMovePlyChanges * (this->GetPlanPayBothPlayersSeconds() / 2)
 		+
-		prevBestMovePlyChanges * (this->GetYoteiBothTurnTime() / 3)
+		prevBestMovePlyChanges * (this->GetPlanPayBothPlayersSeconds() / 3)
 		);
 }
 
 
 /// <summary>
-/// 
+/// 最初の設定（初期化）
 /// </summary>
-/// <param name="isMoveTime0Clear"></param>
-/// <param name="limits"></param>
+/// <param name="isMoveTime0Clear">false を入れてくれ☆（＾ｑ＾）</param>
+/// <param name="limits">m_moveTimeを 0にする場合があるぜ☆（＾ｑ＾）</param>
 /// <param name="currentPly"></param>
 /// <param name="us"></param>
 /// <param name="pRucksack"></param>
 void TimeManager::Initialize(
-	bool& isMoveTime0Clear,// false を入れてくれ☆（＾ｑ＾）
-	const LimitsOfThinking& limits, // m_moveTimeを 0にする場合があるぜ☆（＾ｑ＾）
+	bool& isMoveTime0Clear,
+	const LimitsOfThinking& limits,
 	const Ply currentPly,
 	const Color us,
 	Rucksack* pRucksack)
@@ -247,10 +247,10 @@ void TimeManager::Initialize(
 	const int nokositeokuTime      = pRucksack->m_engineOptions["Minimum_Thinking_Time"];	// 手番で、使わずに残しておく思考時間☆
 
 	//this->ZeroclearTemeBonusTime();
-	this->ZeroclearSikoAsobiTime();
-	this->ZeroclearYosouOppoTurnTime();
-	this->SetYoteiMyTurnTime( limits.GetNokoriTime(us));// 予定思考時間は、残り時間をそのまんま入れて初期化☆？（＾ｑ＾）？
-	this->SetSaidaiEnchoTime( limits.GetNokoriTime(us));// 最大延長時間も☆？（＾ｑ＾）？
+	this->ZeroclearBufferThinkSeconds();
+	this->ZeroclearPredictOpponentPaySeconds();
+	this->SetPlanPayOwnSeconds( limits.GetMillisecondsLeft(us));// 予定思考時間は、残り時間をそのまんま入れて初期化☆？（＾ｑ＾）？
+	this->SetSaidaiEnchoTime( limits.GetMillisecondsLeft(us));// 最大延長時間も☆？（＾ｑ＾）？
 
 	//────────────────────────────────────────────────────────────────────────────────
 	// 消費時間シミュレーション
@@ -271,7 +271,7 @@ void TimeManager::Initialize(
 
 		// 0秒で指し続けたとしたときの、自分の手番での持ち時間☆（＾ｑ＾）
 		int motiTime =
-			limits.GetNokoriTime(us)
+			limits.GetMillisecondsLeft(us)
 			+ limits.GetIncrement(us) * (iMovesToGo - 1)	// 今後追加されるインクリメントの累計☆
 			//- emergencyBaseTime	// 緊急時用に残しておこうというタイム（ミリ秒）か☆？
 			//- emergencyMoveTime	// 緊急時用に残しておこうというタイム（ミリ秒）か☆？
@@ -298,13 +298,14 @@ void TimeManager::Initialize(
 
 
 		// 相手が何秒考えるかなんて分からないので☆（＾～＾）
-		// 思考予定タイムには、 4分の1　のボーナスを追加しておくことにするぜ☆（＾▽＾）
-		this->SetYosouOppoTurnTime(this->GetYoteiMyTurnTime() / 4);
+		// FIXME: 相手の思考タイム推測は、自分の考える時間の 4分の1 にしておくぜ☆（＾▽＾）
+		// TODO: 相手の消費時間って見れないのかだぜ（＾～＾）？
+		this->SetPredictOpponentPaySeconds(this->GetPlanPayOwnSeconds() / 4);
 
 		// 独自実装☆（＾▽＾）：相手の残り時間より　多めに設定している場合は、相手の残り時間の最大値に合わせるんだぜ☆（＾▽＾）
-		int opponentNokoriTime = limits.GetNokoriTime(them);
-		if (opponentNokoriTime < this->GetYosouOppoTurnTime()) {
-			this->SetYosouOppoTurnTime(opponentNokoriTime);
+		int opponentNokoriTime = limits.GetMillisecondsLeft(them);
+		if (opponentNokoriTime < this->GetPredictOpponentPaySeconds()) {
+			this->SetPredictOpponentPaySeconds(opponentNokoriTime);
 		}
 	}
 
@@ -321,36 +322,37 @@ void TimeManager::Initialize(
 
 	// 独自実装☆（＾▽＾）：自分の残り時間 - 4　（4という数字は適当。大会会場の通信遅延を４秒と想定）より　予定自分手番時間を　多めに設定している場合は、
 	// 予定自分手番時間を　自分の残り時間 - 4　に合わせるぜ☆　予想相手手番時間は　いじらないぜ☆（＾ｑ＾）
-	int myNokoriTime = limits.GetNokoriTime(us);
-	if (myNokoriTime - 4 < this->GetYoteiMyTurnTime()) {
-		this->SetYoteiMyTurnTime(myNokoriTime - 4);
+	int myNokoriTime = limits.GetMillisecondsLeft(us);
+	if (myNokoriTime - 4 < this->GetPlanPayOwnSeconds()) {
+		this->SetPlanPayOwnSeconds(myNokoriTime - 4);
 	}
 
 
 	if (limits.GetMoveTime() != 0) {//（＾ｑ＾）いつも　０　な気がするぜ☆
 		// こんなとこ、実行されないんじゃないかだぜ☆？（＾ｑ＾）？
-		if (this->GetYoteiBothTurnTime() < limits.GetMoveTime()) {
-			this->SetYoteiMyTurnTime( std::min(limits.GetNokoriTime(us), limits.GetMoveTime()) - this->GetYosouOppoTurnTime() );
+		if (this->GetPlanPayBothPlayersSeconds() < limits.GetMoveTime()) {
+			this->SetPlanPayOwnSeconds( std::min(limits.GetMillisecondsLeft(us), limits.GetMoveTime()) - this->GetPredictOpponentPaySeconds() );
 		}
 		if (this->GetSaidaiEnchoTime() < limits.GetMoveTime()) {
-			this->SetSaidaiEnchoTime( std::min(limits.GetNokoriTime(us), limits.GetMoveTime()) );
+			this->SetSaidaiEnchoTime( std::min(limits.GetMillisecondsLeft(us), limits.GetMoveTime()) );
 		}
-		this->IncreaseYoteiMyTurnTime( limits.GetMoveTime());
+		this->IncreasePlanPayOwnSeconds( limits.GetMoveTime());
 		this->IncreaseSaidaiEnchoTime( limits.GetMoveTime());
-		if (limits.GetNokoriTime(us) != 0) {
+		if (limits.GetMillisecondsLeft(us) != 0) {
 			isMoveTime0Clear = true;
 		}
 	}
 
+	// ここは仕様になく、勝手に表示している情報だぜ（＾▽＾）
 	//旧表示：optimum_search_time
 	//旧表示：maximum_search_time	
 	SYNCCOUT << "info string old limits move time " << limits.GetMoveTime() << SYNCENDL;
 	// SYNCCOUT << "info string limits inc time " << limits.GetIncrement(us) << SYNCENDL; // 加算時間はちゃんと取得できていたぜ☆
-	SYNCCOUT << "info string tukatteii time " << this->GetThinkSecondsBudget()
-		<< " ( yotei my turn " << this->GetYoteiMyTurnTime()
-		<< " + yosou opponent turn " << this->GetYosouOppoTurnTime()
+	SYNCCOUT << "info string think seconds budget " << this->GetPlanThinkSeconds()
+		<< " ( plan think seconds " << this->GetPlanPayOwnSeconds()
+		<< " + predict opponent think seconds " << this->GetPredictOpponentPaySeconds()
 		//<< " + teme bonus "	<< this->GetTemeBonusTime()
-		<< " + asobi " << this->GetSikoAsobiTime()
+		<< " + asobi " << this->GetBufferThinkSeconds()
 		<< ")" << SYNCENDL;
 	SYNCCOUT << "info string saidai encho " << this->GetSaidaiEnchoTime() << SYNCENDL;
 }

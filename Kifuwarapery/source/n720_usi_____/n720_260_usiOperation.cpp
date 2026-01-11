@@ -74,17 +74,17 @@ void UsiOperation::Go(const Position& pos, std::istringstream& ssCmd) {
 
 	// go コマンドを分解（＾▽＾）
 	while (ssCmd >> token) {
-		// ポンダーしろだぜ（＾▽＾）
-		if      (token == "ponder"     ) { limits.m_ponder = true; }
+		// 相手の思考時間中にも思考（ポンダー）しろだぜ（＾▽＾）
+		if      (token == "ponder"     ) { limits.m_canPonder = true; }
 
-		// 先手の残り時間
-		else if (token == "btime"      ) { limits.SetNokoriTimeByStream( Color::Black, ssCmd); }
+		// 先手の残り時間（ミリ秒）
+		else if (token == "btime"      ) { limits.SetTimeLeftFromStream( Color::Black, ssCmd); }
 
-        // 後手の残り時間
-		else if (token == "wtime"      ) { limits.SetNokoriTimeByStream( Color::White, ssCmd); }
+        // 後手の残り時間（ミリ秒）
+		else if (token == "wtime"      ) { limits.SetTimeLeftFromStream( Color::White, ssCmd); }
 
-        // 無限思考だぜ（＾▽＾）
-		else if (token == "infinite"   ) { limits.m_infinite = true; }
+        // 時間無制限で思考だぜ（＾▽＾）
+		else if (token == "infinite"   ) { limits.m_isInfinite = true; }
 
         // 秒読み、ムーブタイムだぜ（＾▽＾）
 		else if (token == "byoyomi" ||
@@ -103,7 +103,7 @@ void UsiOperation::Go(const Position& pos, std::istringstream& ssCmd) {
 		else if (token == "depth"      ) { ssCmd >> limits.m_depth; }
 
         // ノード数だぜ（＾▽＾）
-		else if (token == "nodes"      ) { ssCmd >> limits.m_nodes01; }
+		else if (token == "nodes"      ) { ssCmd >> limits.m_visitedNodesNum; }
 
         // 指し手リストだぜ（＾▽＾）
 		else if (token == "searchmoves") {

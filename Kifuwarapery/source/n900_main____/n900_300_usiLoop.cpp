@@ -143,7 +143,7 @@ void UsiLoop::Mainloop(int argc, char* argv[], Rucksack& searcher)
 			}
 			else {
 				// 相手の思考時間中に自分も思考するのを止める。
-				searcher.m_limits.m_ponder = false;
+				searcher.m_limits.m_canPonder = false;
 			}
 
             // ポンダーヒットのときに、ムーブタイムが０でなければ、消費した時間分、加算する。

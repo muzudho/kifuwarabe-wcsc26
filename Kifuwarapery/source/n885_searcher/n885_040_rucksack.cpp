@@ -318,11 +318,10 @@ void InitSearchTable() {
 /// 
 /// </summary>
 void Rucksack::CheckTime() {
-	if (m_limits.m_ponder)
-		return;
+	if (m_limits.m_canPonder) { return; }
 
 	s64 nodes = 0;
-	if (m_limits.m_nodes01) {
+	if (m_limits.m_visitedNodesNum) {
 		std::unique_lock<Mutex> lock(m_ownerHerosPub.m_mutex_);
 
 		nodes = m_rootPosition.GetNodesSearched();
@@ -361,11 +360,11 @@ void Rucksack::CheckTime() {
 		|| isStillAtFirstMove;
 
 	if (
-		(m_limits.IsBrandnewTimeManagement() && noMoreTime)//反復深化探索をしたいときに、もう時間がない☆？（＾ｑ＾）
+		(m_limits.IsBrandnewTimeMgr() && noMoreTime)//反復深化探索をしたいときに、もう時間がない☆？（＾ｑ＾）
 		||
 		(m_limits.GetMoveTime() != 0 && m_limits.GetMoveTime() < elapsed)
 		||
-		(m_limits.m_nodes01 != 0 && m_limits.m_nodes01 < nodes)
+		(m_limits.m_visitedNodesNum != 0 && m_limits.m_visitedNodesNum < nodes)
 	){
 		m_signals.m_stop = true;
 	}

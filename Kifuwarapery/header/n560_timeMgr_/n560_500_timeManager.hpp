@@ -60,7 +60,7 @@ public:
 	/// </summary>
 	/// <param name="elapsed"></param>
 	/// <returns></returns>
-	inline bool IsTimeBudgetOver(const int elapsed) { return this->GetThinkSecondsBudget() < elapsed; }
+	inline bool IsTimeBudgetOver(const int elapsed) { return this->GetPlanThinkSeconds() < elapsed; }
 
 
 	/// <summary>
@@ -71,7 +71,7 @@ public:
 	/// <param name="elapsed"></param>
 	/// <returns></returns>
 	inline bool IsTimeOk_CanIterativeDeeping(const int elapsed) {
-		return elapsed < this->GetThinkSecondsBudget() * 60 / 100;
+		return elapsed < this->GetPlanThinkSeconds() * 60 / 100;
 	}
 
 
@@ -79,18 +79,7 @@ public:
 	/// 新しく生まれてくる下級戦士の寿命☆（＾ｑ＾）
 	/// </summary>
 	/// <returns></returns>
-	inline int GetWarriorLifeTime() { return this->GetThinkSecondsBudget() / 16; }
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="elapsed"></param>
-	/// <returns></returns>
-	inline bool CanNotNextIteration(const int elapsed) {
-		// 使っていい時間の62%が、消費時間（ミリ秒）に満たない場合。
-		return (this->GetThinkSecondsBudget() * 62) / 100 < elapsed;
-	}
+	inline int GetWarriorLifeTime() { return this->GetPlanThinkSeconds() / 16; }
 
 
 	/// <summary>
@@ -107,30 +96,70 @@ public:
 private:
 
 
-	//────────────────────────────────────────────────────────────────────────────────
-	// 使っていい思考時間
-	//────────────────────────────────────────────────────────────────────────────────
+	// ========================================
+	// フィールド
+	// ========================================
+
+
+	// 手目に応じて調整される時間☆
+	//int m_temeBonusTime_;
+
+	/// <summary>
+	/// 相手が消費するだろうと思っている時間（秒）。その間に自分も考えようと思っている（＾▽＾）
+	/// </summary>
+	int m_predictOpponentPaySeconds_;
+
+	/// <summary>
+	///		<pre>
+	/// 自分の手番で使おうと思っている、自分の残り時間（秒）
+	/// 
+	///		- 元の名前：ＯｐｔｉｍｕｍＳｅａｒｃｈＴｉｍｅ
+	///		</pre>
+	/// </summary>
+	int m_planPayOwnSeconds_;
+
+	/// <summary>
+	///		<pre>
+	/// 思考の最大延長時間
+	/// 元の名前：ＭａｘｉｍｕｍＳｅａｒｃｈＴｉｍｅ
+	///		</pre>
+	/// </summary>
+	int m_saidaiEnchoTime_;
+
+	/// <summary>
+	///		<pre>
+	/// 思考の遊び時間（秒）
+	/// 
+	///		- 元の名前：ｕｎｓｔａｂｌｅＰＶＥｘｔｒａＴｉｍｅ
+	///		</pre>
+	/// </summary>
+	int m_bufferThinkSeconds_;
+
+
+	// ========================================
+	// アクセッサ
+	// ========================================
 
 
 	/// <summary>
 	///		<pre>
-	/// 元の名前：ＡｖａｉｌａｂｌｅＴｉｍｅ
 	/// なんだかんだで、使っちゃうつもりの時間☆（＾ｑ＾）
+	/// ［相手が何秒考える］という予測も含まれているぜ（＾ｑ＾）
+	/// 
+	///		- 元の名前：ＡｖａｉｌａｂｌｅＴｉｍｅ
 	///		</pre>
 	/// </summary>
 	/// <returns></returns>
-	int GetThinkSecondsBudget() const {
-		// 予定思考タイム　＋　遊びタイム
-		return this->GetYoteiBothTurnTime()
+	int GetPlanThinkSeconds() const {
+		// 自分と相手が使うと予測したタイム　＋　遊びタイム
+		return this->GetPlanPayBothPlayersSeconds()
 			//+ this->GetTemeBonusTime()
-			+ this->GetSikoAsobiTime();
+			+ this->GetBufferThinkSeconds();
 	}
 
 
 	/*
-	//────────────────────────────────────────────────────────────────────────────────
 	// 手目に応じて調整される時間☆
-	//────────────────────────────────────────────────────────────────────────────────
 	inline int GetTemeBonusTime() const {
 		return this->m_temeBonusTime_;
 	}
@@ -143,58 +172,48 @@ private:
 	//*/
 
 
-	//────────────────────────────────────────────────────────────────────────────────
-	// 相手の手番（Oppo teban）で使おうと思っている思考時間
-	//────────────────────────────────────────────────────────────────────────────────
-
-
 	/// <summary>
-	/// 
+	/// 相手が思考に使ってくれる時間（秒）の予想値。その時間で思考しようと思っているぜ（＾▽＾）
 	/// </summary>
 	/// <returns></returns>
-	inline int GetYosouOppoTurnTime() const {
-		return this->m_yosouOppoTurnTime_;
+	inline int GetPredictOpponentPaySeconds() const {
+		return this->m_predictOpponentPaySeconds_;
 	}
 
 
 	/// <summary>
-	/// 
+	/// 相手が思考に使ってくれる時間（秒）の予想値。その時間で思考しようと思っているぜ（＾▽＾）
 	/// </summary>
 	/// <param name="value"></param>
-	inline void SetYosouOppoTurnTime(int value) {
-		this->m_yosouOppoTurnTime_ = value;
+	inline void SetPredictOpponentPaySeconds(int value) {
+		this->m_predictOpponentPaySeconds_ = value;
 	}
 
 
 	/// <summary>
-	/// 
+	/// 相手が思考に使ってくれる時間（秒）の予想値。その時間で思考しようと思っているぜ（＾▽＾）
 	/// </summary>
-	inline void ZeroclearYosouOppoTurnTime()
+	inline void ZeroclearPredictOpponentPaySeconds()
 	{
-		this->m_yosouOppoTurnTime_ = 0;
-	}
-
-
-	//────────────────────────────────────────────────────────────────────────────────
-	// 自分の手番と相手の手番の両方（Both turn）で使おうと思っている思考時間
-	//────────────────────────────────────────────────────────────────────────────────
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <returns></returns>
-	inline int GetYoteiBothTurnTime() const {
-		return this->m_yoteiMyTurnTime_ + this->m_yosouOppoTurnTime_;
+		this->m_predictOpponentPaySeconds_ = 0;
 	}
 
 
 	/// <summary>
-	/// 自分の手番（My turn）で使おうと思っている思考時間
+	/// 自分と相手の両方が消費すると思っている思考時間。その時間で思考しようと思っているぜ（＾▽＾）
 	/// </summary>
 	/// <returns></returns>
-	inline int GetYoteiMyTurnTime() const {
-		return this->m_yoteiMyTurnTime_;
+	inline int GetPlanPayBothPlayersSeconds() const {
+		return this->m_planPayOwnSeconds_ + this->m_predictOpponentPaySeconds_;
+	}
+
+
+	/// <summary>
+	/// 自分の手番で使おうと思っている、自分の持ち時間
+	/// </summary>
+	/// <returns></returns>
+	inline int GetPlanPayOwnSeconds() const {
+		return this->m_planPayOwnSeconds_;
 	}
 
 
@@ -202,8 +221,8 @@ private:
 	/// これだけ時間使って思考しよう、と思ってる設定時間。
 	/// </summary>
 	/// <param name="value"></param>
-	inline void SetYoteiMyTurnTime(int value) {
-		this->m_yoteiMyTurnTime_ = value;
+	inline void SetPlanPayOwnSeconds(int value) {
+		this->m_planPayOwnSeconds_ = value;
 	}
 
 
@@ -211,31 +230,8 @@ private:
 	/// 
 	/// </summary>
 	/// <param name="value"></param>
-	inline void IncreaseYoteiMyTurnTime(int value) {
-		this->m_yoteiMyTurnTime_ += value;
-	}
-
-
-	/// <summary>
-	/// 少なくなっていた場合、更新します。
-	/// </summary>
-	/// <param name="newValue"></param>
-	inline void SmallUpdate_YoteiMyTurnTime(int newValue) {
-		if (newValue < this->GetYoteiBothTurnTime() ) {
-			this->SetYoteiMyTurnTime( newValue - this->GetYosouOppoTurnTime() );
-		}
-	}
-
-
-	/// <summary>
-	/// 大きくなっていた場合、更新します。
-	/// </summary>
-	/// <param name="newValue"></param>
-	inline void LargeUpdate_YoteiMyTurnTime(int newValue) {
-		if (this->GetYoteiBothTurnTime() < newValue)
-		{
-			this->SetYoteiMyTurnTime( newValue - this->GetYosouOppoTurnTime() );
-		}
+	inline void IncreasePlanPayOwnSeconds(int value) {
+		this->m_planPayOwnSeconds_ += value;
 	}
 
 
@@ -267,6 +263,60 @@ private:
 
 
 	/// <summary>
+	/// 思考の遊び時間
+	/// </summary>
+	/// <returns></returns>
+	inline int GetBufferThinkSeconds() const {
+		return this->m_bufferThinkSeconds_;
+	}
+
+
+	/// <summary>
+	/// 思考の遊び時間
+	/// </summary>
+	/// <param name="value"></param>
+	inline void SetBufferThinkSeconds(int value) {
+		this->m_bufferThinkSeconds_ = value;
+	}
+
+
+	/// <summary>
+	/// 思考の遊び時間
+	/// </summary>
+	inline void ZeroclearBufferThinkSeconds() {
+		this->SetBufferThinkSeconds(0);
+	}
+
+
+	// ========================================
+	// メイン・メソッド
+	// ========================================
+
+
+	/// <summary>
+	/// 少なくなっていた場合、更新します。
+	/// </summary>
+	/// <param name="newValue"></param>
+	inline void SmallUpdate_YoteiMyTurnTime(int newValue) {
+		if (newValue < this->GetPlanPayBothPlayersSeconds() ) {
+			this->SetPlanPayOwnSeconds( newValue - this->GetPredictOpponentPaySeconds() );
+		}
+	}
+
+
+	/// <summary>
+	/// 大きくなっていた場合、更新します。
+	/// </summary>
+	/// <param name="newValue"></param>
+	inline void LargeUpdate_YoteiMyTurnTime(int newValue) {
+		if (this->GetPlanPayBothPlayersSeconds() < newValue)
+		{
+			this->SetPlanPayOwnSeconds( newValue - this->GetPredictOpponentPaySeconds() );
+		}
+	}
+
+
+	/// <summary>
 	/// 少なくなっていた場合、更新します。
 	/// </summary>
 	/// <param name="value"></param>
@@ -276,69 +326,4 @@ private:
 			value // 思考時間＋残り時間
 			);
 	}
-
-
-	/// <summary>
-	/// 思考の遊び時間
-	/// </summary>
-	/// <returns></returns>
-	inline int GetSikoAsobiTime() const {
-		return this->m_sikoAsobiTime_;
-	}
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="value"></param>
-	inline void SetSikoAsobiTime(int value) {
-		this->m_sikoAsobiTime_ = value;
-	}
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	inline void ZeroclearSikoAsobiTime() {
-		this->SetSikoAsobiTime( 0);
-	}
-
-
-private:
-
-
-	//────────────────────────────────────────────────────────────────────────────────
-	// 手目に応じて調整される時間☆
-	//────────────────────────────────────────────────────────────────────────────────
-	//int m_temeBonusTime_;
-
-	
-	/// <summary>
-	/// 相手の手番（Oppo turn）で使おうと思っている思考時間
-	/// </summary>
-	int m_yosouOppoTurnTime_;
-
-	/// <summary>
-	///		<pre>
-	/// 自分の手番（my turn）で使おうと思っている思考時間
-	/// 元の名前：ＯｐｔｉｍｕｍＳｅａｒｃｈＴｉｍｅ
-	///		</pre>
-	/// </summary>
-	int m_yoteiMyTurnTime_;
-
-	/// <summary>
-	///		<pre>
-	/// 思考の最大延長時間
-	/// 元の名前：ＭａｘｉｍｕｍＳｅａｒｃｈＴｉｍｅ
-	///		</pre>
-	/// </summary>
-	int m_saidaiEnchoTime_;
-
-	/// <summary>
-	///		<pre>
-	/// 思考の遊び時間
-	/// 元の名前：ｕｎｓｔａｂｌｅＰＶＥｘｔｒａＴｉｍｅ
-	///		</pre>
-	/// </summary>
-	int m_sikoAsobiTime_;
 };

@@ -224,7 +224,7 @@ public:
 			//}
 
 			if (
-				rucksack.m_limits.IsBrandnewTimeManagement() // 反復深化探索に潜るために真であることが必要☆
+				rucksack.m_limits.IsBrandnewTimeMgr() // 反復深化探索に潜るために真であることが必要☆
 				&&
 				!rucksack.m_signals.m_stopOnPonderHit
 			) {
@@ -237,7 +237,7 @@ public:
 
 				// 次のイテレーションを回す時間が無いなら、ストップ
 				if (
-					rucksack.m_timeManager.CanNotNextIteration(rucksack.m_stopwatch.GetElapsed())
+					!rucksack.m_timeManager.IsTimeOk_CanIterativeDeeping(rucksack.m_stopwatch.GetElapsed())
 					) {
 					stop = true;
 				}
@@ -282,7 +282,7 @@ public:
 				}
 
 				if (stop) {
-					if (rucksack.m_limits.m_ponder) {
+					if (rucksack.m_limits.m_canPonder) {
 						rucksack.m_signals.m_stopOnPonderHit = true;
 					}
 					else {

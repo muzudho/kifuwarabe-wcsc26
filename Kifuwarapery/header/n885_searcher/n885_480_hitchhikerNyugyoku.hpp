@@ -26,7 +26,7 @@ public:
 		SYNCCOUT << "info nodes " << pos.GetNodesSearched()
 			<< " time " << rucksack.m_stopwatch.GetElapsed() << SYNCENDL;
 
-		if (!rucksack.m_signals.m_stop && (rucksack.m_limits.m_ponder || rucksack.m_limits.m_infinite)) {
+		if (!rucksack.m_signals.m_stop && (rucksack.m_limits.m_canPonder || rucksack.m_limits.m_isInfinite)) {
 			rucksack.m_signals.m_stopOnPonderHit = true;
 			pos.GetThisThread()->WaitFor(rucksack.m_signals.m_stop);
 		}
