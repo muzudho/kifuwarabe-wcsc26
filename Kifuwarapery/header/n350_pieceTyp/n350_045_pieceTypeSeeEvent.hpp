@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "../n105_color___/n105_100_color.hpp"
 #include "../n110_square__/n110_100_square.hpp"
 #include "../n112_pieceTyp/n112_050_pieceType.hpp"
@@ -8,14 +7,46 @@
 #include "../n220_position/n220_650_position.hpp"
 
 
+/// <summary>
+/// 静的交換評価の駒種別イベント
+/// </summary>
 class PieceTypeSeeEvent {
-public:
-	const Position& m_pos;
-	const Square m_to;
-	const Bitboard& m_opponentAttackers;
-	const Color m_turn;
+
 
 public:
+
+
+	/// <summary>
+	/// 局面
+	/// </summary>
+	const Position& m_pos;
+
+	/// <summary>
+	/// 移動先マス
+	/// </summary>
+	const Square m_to;
+
+	/// <summary>
+    /// 相手の攻撃駒ビットボード
+	/// </summary>
+	const Bitboard& m_opponentAttackers;
+
+	/// <summary>
+	/// 手番の色
+	/// </summary>
+	const Color m_turn;
+
+
+public:
+
+
+	/// <summary>
+	/// 生成
+	/// </summary>
+	/// <param name="pos"></param>
+	/// <param name="to"></param>
+	/// <param name="opponentAttackers"></param>
+	/// <param name="turn"></param>
 	PieceTypeSeeEvent(
 		const Position& pos,
 		const Square to,
@@ -29,5 +60,4 @@ public:
 	{
 
 	}
-
 };

@@ -14,22 +14,41 @@
 #include "n350_045_pieceTypeSeeEvent.hpp"
 
 
+/// <summary>
+/// 駒の動きの抽象基底クラス
+/// </summary>
 class PtAbstract {
+
+
 public:
 
 
-	virtual Move AsMove() const = 0;//�V�����i�O���O�j
+	/// <summary>
+	/// 新方式（＾ｑ＾）
+	/// </summary>
+	virtual Move AsMove() const = 0;
 
 
+	/// <summary>
+	/// 駒種別イベントから、その駒種別の駒が動けるマスのビットボードを返す。
+	/// </summary>
 	virtual Bitboard GetAttacks2From(const PieceTypeEvent& ptEvent) const = 0;
 
-	// pin �͏Ȃ��Ȃ��B//FORCE_INLINE 
+
+	/// <summary>
+	/// pin は省かない。//FORCE_INLINE にしたいが、virtual なのでできない。
+	/// </summary>
 	virtual void Generate2RecaptureMoves_usWhite(
 		MoveStack* moveStackList,
 		const Position& pos,
 		const Square from,
 		const Square to
 	) const = 0;
+
+
+	/// <summary>
+	///
+	/// </summary>
 	virtual void Generate2RecaptureMoves_usBlack(
 		MoveStack* moveStackList,
 		const Position& pos,
@@ -38,11 +57,13 @@ public:
 		) const = 0;
 
 
+	/// <summary>
+	/// 駒種別SEEイベントから、その駒種別の駒が動けるマスのビットボードを返す。
+	/// </summary>
 	virtual PieceType AppendToNextAttackerAndTryPromote(
 		Bitboard& occupied,
 		Bitboard& attackers,
 		PieceType nextPT,
 		const PieceTypeSeeEvent ptsEvent
 		) const = 0;
-
 };

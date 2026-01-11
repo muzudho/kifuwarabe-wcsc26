@@ -17,24 +17,53 @@
 #include "n350_070_ptAbstract.hpp"
 
 
+/// <summary>
+/// 香の動き
+/// </summary>
 const static Move g_PTLANCE_ONBOARD_AS_MOVE = ConvMove::FROM_PIECETYPE_ONBOARD10(PieceType::N02_Lance);
+
+/// <summary>
+/// 香打の動き
+/// </summary>
 const static Move g_PTLANCE_DA_AS_MOVE = ConvMove::FROM_PIECETYPE_DA10(PieceType::N02_Lance);
 
 
-// PieceType::N02_Lance
+/// <summary>
+/// PieceType::N02_Lance
+/// </summary>
 class PtLance : public PtAbstract {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	virtual Move AsMove() const override {
 		return g_PTLANCE_ONBOARD_AS_MOVE;
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="ptEvent"></param>
+	/// <returns></returns>
 	Bitboard GetAttacks2From(const PieceTypeEvent& ptEvent) const override {
 		return g_lanceAttackBb.GetControllBb(ptEvent.m_occupied, ptEvent.m_c, ptEvent.m_sq);
 	}
 
-	// pin �͏Ȃ��Ȃ��B
-	void Generate2RecaptureMoves_usWhite(//FORCE_INLINE
+
+	/// <summary>
+	/// pin は省かない。	//FORCE_INLINE
+	/// </summary>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
+	void Generate2RecaptureMoves_usWhite(
 		MoveStack* moveStackList,
 		const Position& pos,
 		const Square from,
@@ -54,7 +83,15 @@ public:
 		moveStackList++;
 	}
 
-	void Generate2RecaptureMoves_usBlack(//FORCE_INLINE
+
+	/// <summary>
+	/// FORCE_INLINE
+	/// </summary>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
+	void Generate2RecaptureMoves_usBlack(
 		MoveStack* moveStackList,
 		const Position& pos,
 		const Square from,
@@ -74,11 +111,19 @@ public:
 		moveStackList++;
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="occupied"></param>
+	/// <param name="attackers"></param>
+	/// <param name="nextPT"></param>
+	/// <param name="ptsEvent"></param>
+	/// <returns></returns>
 	PieceType AppendToNextAttackerAndTryPromote(
 		Bitboard& occupied,
 		Bitboard& attackers,
 		PieceType nextPT,
 		const PieceTypeSeeEvent ptsEvent
 		) const override;
-
 };

@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "../n105_color___/n105_100_color.hpp"
 #include "../n110_square__/n110_100_square.hpp"
 #include "../n112_pieceTyp/n112_050_pieceType.hpp"
@@ -17,20 +16,39 @@
 
 
 // PieceType::N16_GoldHorseDragon
+
+
+/// <summary>
+///		<pre>
+/// （＾ｑ＾）金馬龍の動きをするプログラムだぜ☆
+///		</pre>
+/// </summary>
 class PtGoldHorseDragon : public PtAbstract {
+
+
 public:
 
+
+	/// <summary>
+	/// </summary>
 	virtual Move AsMove() const override {
 		UNREACHABLE;
-		return g_MOVE_NONE;// ����͎g���Ă͂����Ȃ��B
+        return g_MOVE_NONE;	// 使わない☆
 	}
 
 	Bitboard GetAttacks2From(const PieceTypeEvent& ptEvent) const override {
 		return g_nullBitboard;
 	}
 
-	// pin �͏Ȃ��Ȃ��B
-	void Generate2RecaptureMoves_usWhite(//FORCE_INLINE
+	/// <summary>
+	/// pin は省かない
+	/// FORCE_INLINE
+	/// </summary>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
+	void Generate2RecaptureMoves_usWhite(
 		MoveStack* moveStackList,
 		const Position& pos,
 		const Square from,
@@ -39,7 +57,15 @@ public:
 		return;
 	}
 
-	void Generate2RecaptureMoves_usBlack(//FORCE_INLINE
+
+	/// <summary>
+	/// FORCE_INLINE
+	/// </summary>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
+	void Generate2RecaptureMoves_usBlack(
 		MoveStack* moveStackList,
 		const Position& pos,
 		const Square from,
@@ -48,11 +74,19 @@ public:
 		return;
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="occupied"></param>
+	/// <param name="attackers"></param>
+	/// <param name="nextPT"></param>
+	/// <param name="ptsEvent"></param>
+	/// <returns></returns>
 	PieceType AppendToNextAttackerAndTryPromote(
 		Bitboard& occupied,
 		Bitboard& attackers,
 		PieceType nextPT,
 		const PieceTypeSeeEvent ptsEvent
 		) const override;
-
 };

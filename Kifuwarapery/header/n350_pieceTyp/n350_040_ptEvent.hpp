@@ -1,18 +1,43 @@
 ﻿#pragma once
 
-
 #include "../n105_color___/n105_100_color.hpp"
 #include "../n110_square__/n110_100_square.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 class PieceTypeEvent {
-public:
-	const Bitboard& m_occupied;
-	const Color m_c;
-	const Square m_sq;
+
 
 public:
+
+	/// <summary>
+    /// 占有しているマスのビットボード☆
+	/// </summary>
+	const Bitboard& m_occupied;
+
+	/// <summary>
+    /// 色☆
+    /// </summary>
+	const Color m_c;
+
+	/// <summary>
+	/// マス☆
+    /// </summary>
+	const Square m_sq;
+
+
+public:
+
+
+	/// <summary>
+	/// 生成
+	/// </summary>
+	/// <param name="occupied"></param>
+	/// <param name="c"></param>
+	/// <param name="sq"></param>
 	PieceTypeEvent(
 		const Bitboard& occupied,
 		const Color c,

@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-
 #include <cstdlib>	// abs()
 #include "../n105_color___/n105_100_color.hpp"
 #include "../n110_square__/n110_100_square.hpp"
@@ -13,15 +12,34 @@
 #include "../n350_pieceTyp/n350_500_ptPrograms.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 class DirecRank : public BonaDirAbstract {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="squareDistance"></param>
+	/// <param name="sq0"></param>
+	/// <param name="sq1"></param>
 	void InitializeSquareDistance(SquareDistance& squareDistance, Square sq0, Square sq1) const {
 		squareDistance.SetValue( sq0, sq1,
 			abs(static_cast<int>(sq0 - sq1) / static_cast<int>(SquareDelta::DeltaE))
 		);
 	}
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="position"></param>
+	/// <param name="from"></param>
+	/// <param name="ksq"></param>
+	/// <param name="us"></param>
 	void Do2Move(Position& position, Square from, const Square ksq, const Color us) const {
 		const PieceTypeEvent ptEvent1(position.GetOccupiedBB(), Color::Null, ksq);
 		position.GetStateInfo()->m_checkersBB |=
@@ -35,9 +53,10 @@ public:
 			)
 			;
 	}
-
 };
 
 
+/// <summary>
+/// 
+/// </summary>
 extern DirecRank g_direcRank;
-

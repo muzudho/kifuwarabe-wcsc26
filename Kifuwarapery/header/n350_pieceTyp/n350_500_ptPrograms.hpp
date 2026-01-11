@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "../n112_pieceTyp/n112_050_pieceType.hpp"
 #include "../n112_pieceTyp/n112_050_pieceType.hpp"
 #include "n350_040_ptEvent.hpp"
@@ -22,11 +21,21 @@
 #include "n350_240_ptDragon.hpp"
 
 
-// iO‚‘OjƒvƒƒOƒ‰ƒ€‚ª”z—ñ‚É“ü‚Á‚Ä‚¢‚é‚æ‚¤‚Èg‚¢•û‚ğ‚·‚é‚ñ‚¾‚º™
-// ‚±‚ê‚ÍA‹î‚Ìí—Ş•Ê‚É‚È‚Á‚Ä‚¢‚éƒvƒƒOƒ‰ƒ€‚¾‚È™iO¤Oj
+/// <summary>
+///		<pre>
+/// ï¼ˆï¼¾ï½‘ï¼¾ï¼‰ãƒ—ãƒ­ã‚°ãƒ©ãƒ ãŒé…åˆ—ã«å…¥ã£ã¦ã„ã‚‹ã‚ˆã†ãªä½¿ã„æ–¹ã‚’ã™ã‚‹ã‚“ã ãœâ˜†
+/// ã“ã‚Œã¯ã€é§’ã®ç¨®é¡åˆ¥ã«ãªã£ã¦ã„ã‚‹ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã ãªâ˜†ï¼ˆï¼¾â–½ï¼¾ï¼‰
+///		</pre>
+/// </summary>
 class PiecetypePrograms {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
 	static const PtOccupied m_OCCUPIED;
 	static const PtPawn m_PAWN;
 	static const PtLance m_LANCE;
@@ -44,5 +53,4 @@ public:
 	static const PtDragon m_DRAGON;
 
 	static const PtAbstract* m_PIECETYPE_PROGRAMS[g_PIECETYPE_NUM];
-
 };

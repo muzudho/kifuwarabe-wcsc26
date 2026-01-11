@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "../n105_color___/n105_100_color.hpp"
 #include "../n110_square__/n110_100_square.hpp"
 #include "../n112_pieceTyp/n112_050_pieceType.hpp"
@@ -15,22 +14,43 @@
 #include "n350_070_ptAbstract.hpp"
 
 
+/// <summary>
+/// ç›¤ä¸Šã®æˆã‚Šé§’ã®å‹•ã
+/// </summary>
 const static Move g_PTPROMOTE_AS_MOVE = ConvMove::FROM_PIECETYPE_ONBOARD10(PieceType::PTPromote);
 
 
-// PieceType::PTPromote;
+/// <summary>
+/// PieceType::PTPromote;
+/// </summary>
 class PtPromote : public PtAbstract {
+
+
 public:
 
+
+	/// <summary>
+	///
+	/// </summary>
+	/// <returns></returns>
 	virtual Move AsMove() const override {
 		return g_PTPROMOTE_AS_MOVE;
 	}
 
+
+	/// <summary>
+	///
+	/// </summary>
+	/// <param name="ptEvent"></param>
+	/// <returns></returns>
 	Bitboard GetAttacks2From(const PieceTypeEvent& ptEvent) const override {
 		return g_nullBitboard;
 	}
 
-	// pin ‚ÍÈ‚©‚È‚¢B//FORCE_INLINE
+	/// <summary>
+	/// pin ã¯çœã‹ãªã„ã€‚ã€€FORCE_INLINE
+	/// </summary>
+	/// <param name="moveStackList"></param>
 	void Generate2RecaptureMoves_usWhite(
 		MoveStack* moveStackList,
 		const Position& pos,
@@ -39,6 +59,12 @@ public:
 		) const override {
 		return;
 	}
+
+
+	/// <summary>
+	///
+	/// </summary>
+	/// <param name="moveStackList"></param>
 	void Generate2RecaptureMoves_usBlack(
 		MoveStack* moveStackList,
 		const Position& pos,
@@ -48,6 +74,10 @@ public:
 		return;
 	}
 
+
+	/// <summary>
+	/// </summary>
+	/// <param name="occupied"></param>
 	PieceType AppendToNextAttackerAndTryPromote(
 		Bitboard& occupied,
 		Bitboard& attackers,
@@ -58,8 +88,7 @@ public:
 
 		UNREACHABLE;
 
-		// ‚»‚êˆÈŠO‚Ì‹îí—Ş‚ÍA‚»‚Ì‚Ü‚Ü•Ô‚·™
+		// ï¿½ï¿½ï¿½ï¿½ÈŠOï¿½Ì‹ï¿½ï¿½Ş‚ÍAï¿½ï¿½ï¿½Ì‚Ü‚Ü•Ô‚ï¿½ï¿½ï¿½
 		return PT;
 	}
-
 };

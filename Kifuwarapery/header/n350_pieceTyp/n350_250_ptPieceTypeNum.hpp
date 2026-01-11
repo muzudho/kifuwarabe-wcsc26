@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "../n105_color___/n105_100_color.hpp"
 #include "../n110_square__/n110_100_square.hpp"
 #include "../n112_pieceTyp/n112_050_pieceType.hpp"
@@ -16,20 +15,41 @@
 #include "n350_070_ptAbstract.hpp"
 
 
-// ‚o‚‰‚…‚ƒ‚…‚s‚™‚‚…FF‚m‚P‚TQ‚o‚‰‚…‚ƒ‚…‚s‚™‚‚…‚m‚•‚
+/// <summary>
+/// ï¼°ï½‰ï½…ï½ƒï½…ï¼´ï½™ï½ï½…ï¼šï¼šï¼®ï¼‘ï¼•ï¼¿ï¼°ï½‰ï½…ï½ƒï½…ï¼´ï½™ï½ï½…ï¼®ï½•ï½
+/// </summary>
 class PtPieceTypeNum : public PtAbstract {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	virtual Move AsMove() const override {
 		UNREACHABLE;
-		return g_MOVE_NONE;// ‚±‚ê‚Íg‚Á‚Ä‚Í‚¢‚¯‚È‚¢B
+		return g_MOVE_NONE;// ã“ã‚Œã¯ä½¿ã£ã¦ã¯ã„ã‘ãªã„ã€‚
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="ptEvent"></param>
+	/// <returns></returns>
 	Bitboard GetAttacks2From(const PieceTypeEvent& ptEvent) const override {
 		return g_nullBitboard;
 	}
 
-	// pin ‚ÍÈ‚©‚È‚¢B//FORCE_INLINE
+	/// <summary>
+	/// pin ã¯çœã‹ãªã„ã€‚//FORCE_INLINE
+	/// </summary>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
 	void Generate2RecaptureMoves_usWhite(
 		MoveStack* moveStackList,
 		const Position& pos,
@@ -39,6 +59,14 @@ public:
 		return;
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
 	void Generate2RecaptureMoves_usBlack(
 		MoveStack* moveStackList,
 		const Position& pos,
@@ -48,12 +76,19 @@ public:
 		return;
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="occupied"></param>
+	/// <param name="attackers"></param>
+	/// <param name="nextPT"></param>
+	/// <param name="ptsEvent"></param>
+	/// <returns></returns>
 	PieceType AppendToNextAttackerAndTryPromote(
 		Bitboard& occupied,
 		Bitboard& attackers,
 		PieceType nextPT,
 		const PieceTypeSeeEvent ptsEvent
 		) const override;
-
 };
-

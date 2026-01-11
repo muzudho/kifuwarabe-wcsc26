@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-
 #include "../n162_bonaDir_/n162_070_bonaDirAbstract.hpp"
 #include "n351_100_direcMisc.hpp"
 #include "n351_120_direcFile.hpp"
@@ -10,4 +9,7 @@
 #include "n351_500_bonaDirArray.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 extern BonaDirAbstract* g_bonaDirArray[6];

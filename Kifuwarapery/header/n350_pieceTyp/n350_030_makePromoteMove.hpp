@@ -13,12 +13,28 @@
 //class Position;
 
 
+/// <summary>
+/// 駒の成る動き
+/// </summary>
 class MakePromoteMove {
+
+
 public:
 
-	//(^q^)新型2
-	// MoveType によって指し手生成関数を使い分ける。
-	// Drop, Check, Evasion, の場合は別で指し手生成を行う。
+
+	/// <summary>
+	///		<pre>
+	///(^q^)新型2
+	/// MoveType によって指し手生成関数を使い分ける。
+	/// Drop, Check, Evasion, の場合は別で指し手生成を行う。
+	///		</pre>
+	/// </summary>
+	/// <param name="mt"></param>
+	/// <param name="pieceTypeAsMove"></param>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
+	/// <param name="pos"></param>
+	/// <returns></returns>
 	static inline Move GetSelectedMakeMove_ExceptPromote_mt2(
 		MoveType mt,
 		const Move pieceTypeAsMove,
@@ -35,9 +51,21 @@ public:
 			);
 		return move;
 	}
-	//(^q^)新型1
-	// MoveType によって指し手生成関数を使い分ける。
-	// Drop, Check, Evasion, の場合は別で指し手生成を行う。
+
+
+	/// <summary>
+	///		<pre>
+	///(^q^)新型1
+	/// MoveType によって指し手生成関数を使い分ける。
+	/// Drop, Check, Evasion, の場合は別で指し手生成を行う。
+	///		</pre>
+	/// </summary>
+	/// <param name="mt"></param>
+	/// <param name="pt"></param>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
+	/// <param name="pos"></param>
+	/// <returns></returns>
 	static inline Move GetSelectedMakeMove_ExceptPromote_goldHorseDragon(
 		MoveType mt,
 		const PieceType pt, // 新型２ならここを Move にできるぜ☆（＾ｑ＾）
@@ -55,7 +83,15 @@ public:
 		return move;
 	}
 
-	// 非キャプチャー系と分かっているならこちら☆（＾ｑ＾）
+
+	/// <summary>
+	/// 非キャプチャー系と分かっているならこちら☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="pieceTypeAsMove"></param>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
+	/// <param name="pos"></param>
+	/// <returns></returns>
 	static inline Move GetSelectedMakeMove_ExceptPromote_CaptureCategory(
 		const Move pieceTypeAsMove,
 		const Square from,
@@ -66,6 +102,11 @@ public:
 		return UtilMovePos::MakeCaptureMove(pieceTypeAsMove, from, to, pos);
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="move"></param>
 	static inline void APPEND_PROMOTE_FLAG(Move& move)
 	{
 		//, MoveType mt_forAssert, const PieceType pt_forAssert
@@ -77,8 +118,10 @@ public:
 		//));
 		move |= g_MOVE_PROMOTE_FLAG;
 	}
-
 };
 
 
+/// <summary>
+/// 
+/// </summary>
 extern MakePromoteMove g_makePromoteMove;

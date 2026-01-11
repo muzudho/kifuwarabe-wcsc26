@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "../n105_color___/n105_100_color.hpp"
 #include "../n110_square__/n110_100_square.hpp"
 #include "../n110_square__/n110_500_convSquare.hpp"
@@ -19,30 +18,58 @@
 #include "n350_070_ptAbstract.hpp"
 
 
+/// <summary>
+/// ç›¤ä¸Šã®æ­©ã®å‹•ã
+/// </summary>
 const static Move g_PTPAWN_ONBOARD_AS_MOVE = ConvMove::FROM_PIECETYPE_ONBOARD10(PieceType::N01_Pawn);
+
+/// <summary>
+/// æ­©æ‰“ã®å‹•ã
+/// </summary>
 const static Move g_PTPAWN_DA_AS_MOVE = ConvMove::FROM_PIECETYPE_DA10(PieceType::N01_Pawn);
 
 
-// ‚o‚‰‚…‚ƒ‚…‚s‚™‚‚…FF‚m‚O‚PQ‚o‚‚—‚
+/// <summary>
+/// ï¼°ï½‰ï½…ï½ƒï½…ï¼´ï½™ï½ï½…ï¼šï¼šï¼®ï¼ï¼‘ï¼¿ï¼°ï½ï½—ï½
+/// </summary>
 class PtPawn : public PtAbstract {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	virtual Move AsMove() const override {
 		return g_PTPAWN_ONBOARD_AS_MOVE;
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="ptEvent"></param>
+	/// <returns></returns>
 	Bitboard GetAttacks2From(const PieceTypeEvent& ptEvent) const override {
 		return g_pawnAttackBb.GetControllBb(ptEvent.m_c, ptEvent.m_sq);
 	}
 
-	// pin ‚ÍÈ‚©‚È‚¢B
-	void Generate2RecaptureMoves_usWhite(//FORCE_INLINE
+
+	/// <summary>
+	/// pin ã¯çœã‹ãªã„ã€‚	//FORCE_INLINE
+	/// </summary>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
+	void Generate2RecaptureMoves_usWhite(
 		MoveStack* moveStackList,
 		const Position& pos,
 		const Square from,
 		const Square to
 	) const override {
-
 		moveStackList->m_move = g_makePromoteMove.GetSelectedMakeMove_ExceptPromote_CaptureCategory(
 			this->AsMove(),
 			from,
@@ -61,7 +88,15 @@ public:
 		moveStackList++;
 	}
 
-	void Generate2RecaptureMoves_usBlack(//FORCE_INLINE
+
+	/// <summary>
+	/// FORCE_INLINE
+	/// </summary>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
+	void Generate2RecaptureMoves_usBlack(
 		MoveStack* moveStackList,
 		const Position& pos,
 		const Square from,
@@ -86,11 +121,19 @@ public:
 		moveStackList++;
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="occupied"></param>
+	/// <param name="attackers"></param>
+	/// <param name="nextPT"></param>
+	/// <param name="ptsEvent"></param>
+	/// <returns></returns>
 	PieceType AppendToNextAttackerAndTryPromote(
 		Bitboard& occupied,
 		Bitboard& attackers,
 		PieceType nextPT,
 		const PieceTypeSeeEvent ptsEvent
 		) const override;
-
 };

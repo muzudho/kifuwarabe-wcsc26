@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-
 #include "../n105_color___/n105_100_color.hpp"
 #include "../n110_square__/n110_100_square.hpp"
 #include "../n160_board___/n160_180_knightAttackBb.hpp"
@@ -10,9 +9,21 @@
 #include "../n220_position/n220_650_position.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 class DirecMisc : public BonaDirAbstract {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="squareDistance"></param>
+	/// <param name="sq0"></param>
+	/// <param name="sq1"></param>
 	void InitializeSquareDistance(SquareDistance& squareDistance, Square sq0, Square sq1) const {
 		// DirecMisc な関係は全て距離 1 にしてもKPE学習には問題無いんだけれど。
 		squareDistance.SetValue(sq0,sq1, 0);
@@ -25,12 +36,20 @@ public:
 		}
 	}
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="position"></param>
+	/// <param name="from"></param>
+	/// <param name="ksq"></param>
+	/// <param name="us"></param>
 	void Do2Move(Position& position, Square from, const Square ksq, const Color us) const {
 		assert(false); // 最適化の為のダミー
 	}
-
 };
 
 
+/// <summary>
+/// 
+/// </summary>
 extern DirecMisc g_direcMisc;
-

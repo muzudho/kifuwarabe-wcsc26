@@ -15,41 +15,84 @@
 #include "n350_070_ptAbstract.hpp"
 
 
+/// <summary>
+/// 駒が存在していることを表す駒種類
+/// </summary>
 const static Move g_PTOCCUPIED_AS_MOVE = ConvMove::FROM_PIECETYPE_ONBOARD10(PieceType::N00_Occupied);
 
 
-// PieceType::N00_Occupied
+/// <summary>
+/// PieceType::N00_Occupied
+/// </summary>
 class PtOccupied : public PtAbstract {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	virtual Move AsMove() const override {
 		return g_PTOCCUPIED_AS_MOVE;
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="ptEvent"></param>
+	/// <returns></returns>
 	Bitboard GetAttacks2From(const PieceTypeEvent& ptEvent) const override {
 		return Bitboard::CreateAllZeroBB();
 	}
 
-	void Generate2RecaptureMoves_usWhite(//FORCE_INLINE
+
+	/// <summary>
+	/// FORCE_INLINE
+	/// </summary>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
+	void Generate2RecaptureMoves_usWhite(
 		MoveStack* moveStackList,
 		const Position& pos,
 		const Square from,
 		const Square to
 	) const override {
-		// �œK���ׂ̈̃_�~�[
+		// 最適化の為のダミー
 		assert(false);
 	}
 
-	void Generate2RecaptureMoves_usBlack(//FORCE_INLINE
+
+	/// <summary>
+	/// FORCE_INLINE
+	/// </summary>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
+	void Generate2RecaptureMoves_usBlack(
 		MoveStack* moveStackList,
 		const Position& pos,
 		const Square from,
 		const Square to
 		) const override {
-		// �œK���ׂ̈̃_�~�[
+		// 最適化の為のダミー
 		assert(false);
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="occupied"></param>
+	/// <param name="attackers"></param>
+	/// <param name="nextPT"></param>
+	/// <param name="ptsEvent"></param>
+	/// <returns></returns>
 	PieceType AppendToNextAttackerAndTryPromote(
 		Bitboard& occupied,
 		Bitboard& attackers,
@@ -60,8 +103,7 @@ public:
 
 		UNREACHABLE;
 
-		// ����ȊO�̋��ނ́A���̂܂ܕԂ���
+		// それ以外の駒種類は、そのまま返す☆
 		return PT;
 	}
-
 };

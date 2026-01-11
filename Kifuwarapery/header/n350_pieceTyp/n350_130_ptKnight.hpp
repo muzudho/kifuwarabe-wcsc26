@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "../n105_color___/n105_100_color.hpp"
 #include "../n110_square__/n110_100_square.hpp"
 #include "../n110_square__/n110_500_convSquare.hpp"
@@ -18,23 +17,52 @@
 #include "n350_070_ptAbstract.hpp"
 
 
+/// <summary>
+/// 盤上の桂馬
+/// </summary>
 const static Move g_PTKNIGHT_ONBOARD_AS_MOVE = ConvMove::FROM_PIECETYPE_ONBOARD10(PieceType::N03_Knight);
+
+/// <summary>
+/// 桂打
+/// </summary>
 const static Move g_PTKNIGHT_DA_AS_MOVE = ConvMove::FROM_PIECETYPE_DA10(PieceType::N03_Knight);
 
 
-// �o���������s�������F�F�m�O�R�Q�j����������
+/// <summary>
+/// 桂馬の動き
+/// </summary>
 class PtKnight : public PtAbstract {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	virtual Move AsMove() const override {
 		return g_PTKNIGHT_ONBOARD_AS_MOVE;
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="ptEvent"></param>
+	/// <returns></returns>
 	Bitboard GetAttacks2From(const PieceTypeEvent& ptEvent) const override {
 		return g_knightAttackBb.GetControllBb(ptEvent.m_c, ptEvent.m_sq);
 	}
 
-	// pin �͏Ȃ��Ȃ��B//FORCE_INLINE
+
+	/// <summary>
+	/// pin は省かない。 //FORCE_INLINE
+	/// </summary>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
 	void Generate2RecaptureMoves_usWhite(
 		MoveStack* moveStackList,
 		const Position& pos,
@@ -55,6 +83,14 @@ public:
 		moveStackList++;
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="moveStackList"></param>
+	/// <param name="pos"></param>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
 	void Generate2RecaptureMoves_usBlack(
 		MoveStack* moveStackList,
 		const Position& pos,
@@ -75,11 +111,19 @@ public:
 		moveStackList++;
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="occupied"></param>
+	/// <param name="attackers"></param>
+	/// <param name="nextPT"></param>
+	/// <param name="ptsEvent"></param>
+	/// <returns></returns>
 	PieceType AppendToNextAttackerAndTryPromote(
 		Bitboard& occupied,
 		Bitboard& attackers,
 		PieceType nextPT,
 		const PieceTypeSeeEvent ptsEvent
 		) const override;
-
 };
