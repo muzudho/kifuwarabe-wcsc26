@@ -3,7 +3,9 @@
 #include "../n080_common__/n080_150_overloadEnumOperators.hpp"
 
 
-// w‚µè¶¬ƒtƒF[ƒY™HiO‚‘Oj320_540_‚l‚‚–‚…‚o‚‰‚ƒ‚‹‚…‚’‚Æ‚©‚Åg‚¤™
+/// <summary>
+/// æŒ‡ã—æ‰‹ç”Ÿæˆãƒ•ã‚§ãƒ¼ã‚ºâ˜†ï¼Ÿï¼ˆï¼¾ï½‘ï¼¾ï¼‰320_540_ï¼­ï½ï½–ï½…ï¼°ï½‰ï½ƒï½‹ï½…ï½’ã¨ã‹ã§ä½¿ã†â˜†
+/// </summary>
 enum GenerateMovePhase {
 	N00_MainSearch,
 	N01_PH_TacticalMoves0,
@@ -22,6 +24,12 @@ enum GenerateMovePhase {
 	N14_QRecapture,
 	N15_PH_QCaptures1,
 	N16_PH_Stop,
-	GenerateMovePhaseNum	//(^q^)’Ç‰Á™
+	GenerateMovePhaseNum	//(^q^)è¿½åŠ â˜†
 };
-OverloadEnumOperators(GenerateMovePhase); // ++phase_ ‚Ìˆ×B
+
+
+/// <summary>
+/// ++phase_ ã®ç‚ºã€‚
+/// </summary>
+/// <param name=""></param>
+OverloadEnumOperators(GenerateMovePhase);

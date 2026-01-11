@@ -30,13 +30,24 @@
 #include "../n350_pieceTyp/n350_230_ptHorse.hpp"
 #include "../n350_pieceTyp/n350_240_ptDragon.hpp"
 
-// 平手初期局面の SFEN 文字列☆（＾▽＾）
+
+/// <summary>
+/// 平手初期局面の SFEN 文字列☆（＾▽＾）
+/// </summary>
 const std::string g_DefaultStartPositionSFEN = "lnsgkgsnl/1r5b1/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL b - 1";
 
 
+/// <summary>
+/// 
+/// </summary>
 class CharToPieceUSI : public std::map<char, Piece> {
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
 	CharToPieceUSI() {
 		(*this)['P'] = N01_BPawn;   (*this)['p'] = N17_WPawn;
 		(*this)['L'] = N02_BLance;  (*this)['l'] = N18_WLance;
@@ -48,12 +59,25 @@ public:
 		(*this)['K'] = N08_BKing;   (*this)['k'] = N24_WKing;
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="c"></param>
+	/// <returns></returns>
 	Piece GetValue(char c) const      { return this->find(c)->second; }
 
-	bool IsLegalChar(char c) const { return (this->find(c) != this->end()); }
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="c"></param>
+	/// <returns></returns>
+	bool IsLegalChar(char c) const { return (this->find(c) != this->end()); }
 };
 
 
+/// <summary>
+/// 
+/// </summary>
 extern const CharToPieceUSI g_charToPieceUSI;
-

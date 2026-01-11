@@ -4,21 +4,42 @@
 #include "../n165_movStack/n165_400_move.hpp"
 
 
-// 指し手と、評価値。
+/// <summary>
+/// 指し手と、評価値。
+/// </summary>
 class MoveAndScoreIndex {
+
+
 public:
 
-	// 指し手
+
+	/// <summary>
+	/// 指し手
+	/// </summary>
 	const Move m_move;
 
-	// 評価値
+
+	/// <summary>
+	/// 評価値
+	/// </summary>
 	const enum ScoreIndex m_scoreIndex;
+
 
 public:
 
+
+	/// <summary>
+	/// 生成
+	/// </summary>
+	/// <param name="move"></param>
+	/// <param name=""></param>
 	MoveAndScoreIndex(Move move, enum ScoreIndex scoreIndex);
 	
-	// 指し手
-	Move GetMove(void);
 
+	/// <summary>
+	/// 指し手
+	/// </summary>
+	/// <param name=""></param>
+	/// <returns></returns>
+	Move GetMove(void);
 };

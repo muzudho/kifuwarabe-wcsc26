@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-
 #include "../n112_pieceTyp/n112_050_pieceType.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 
@@ -8,9 +7,29 @@
 class Position;
 
 
+/// <summary>
+/// 
+/// </summary>
 struct CheckInfo {
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name=""></param>
 	explicit CheckInfo(const Position&);
-	Bitboard m_dcBB; // discoverd check candidates bitboard
+
+	/// <summary>
+	/// discoverd check candidates bitboard
+	/// </summary>
+	Bitboard m_dcBB;
+
+	/// <summary>
+	/// 
+	/// </summary>
 	Bitboard m_pinned;
+
+	/// <summary>
+	/// 
+	/// </summary>
 	Bitboard m_checkBB[g_PIECETYPE_NUM];
 };

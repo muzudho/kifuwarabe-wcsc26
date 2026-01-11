@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-
 #include <stack>
 #include "../n080_common__/n080_100_common.hpp"
 #include "../n105_color___/n105_100_color.hpp"
@@ -24,18 +23,38 @@
 #include <cassert>
 
 
+/// <summary>
+/// 
+/// </summary>
 using StateStackPtr = std::unique_ptr<std::stack<StateInfo> >;
 
 
+/// <summary>
+/// 
+/// </summary>
 class Military;
 class Rucksack;
 
 
+/// <summary>
+/// 
+/// </summary>
 class Position {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
 	Position();
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="s"></param>
 	explicit Position(Rucksack* s);
 
 	Position(const Position& pos);
@@ -46,8 +65,20 @@ public:
 
 	Position& operator = (const Position& pos);
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="sfen"></param>
+	/// <param name="th"></param>
 	void Set(const std::string& sfen, Military* th);
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <returns></returns>
 	template<const Color US>
 	Bitboard GetBbOf10() const
 	{
@@ -58,6 +89,12 @@ public:
 	Bitboard GetBbOf10(const Color c) const;
 
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <param name="pt"></param>
+	/// <returns></returns>
 	template<Color US>
 	Bitboard GetBbOf20(const PieceType pt) const {
 		return this->GetBbOf10(pt) & this->GetBbOf10(US);
@@ -72,6 +109,14 @@ public:
 
 	// template<Color CLR>
 	// Bitboard Position::GetBbOf30(const PieceType pt1, const PieceType pt2) const
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="CLR"></typeparam>
+	/// <param name="pt1"></param>
+	/// <param name="pt2"></param>
+	/// <returns></returns>
 	template<Color CLR>
 	Bitboard GetBbOf30(const PieceType pt1, const PieceType pt2) const
 	{
@@ -86,22 +131,41 @@ public:
 
 	Bitboard GetOccupiedBB() const;
 
-	// emptyBB() よりもわずかに速いはず。
-	// emptyBB() とは異なり、全く使用しない位置(0 から数えて、right の 63bit目、left の 18 ~ 63bit目)
-	// の bit が 1 になっても構わないとき、こちらを使う。
-	// todo: SSEにビット反転が無いので実はそんなに速くないはず。不要。
+
+	/// <summary>
+	/// emptyBB() よりもわずかに速いはず。
+	/// emptyBB() とは異なり、全く使用しない位置(0 から数えて、right の 63bit目、left の 18 ~ 63bit目)
+	/// の bit が 1 になっても構わないとき、こちらを使う。
+	/// todo: SSEにビット反転が無いので実はそんなに速くないはず。不要。
+	/// </summary>
+	/// <returns></returns>
 	Bitboard GetNOccupiedBB() const;
 
 	Bitboard GetEmptyBB() const;
 
-	// 金、成り金 の Bitboard
+
+	/// <summary>
+	/// 金、成り金 の Bitboard
+	/// </summary>
+	/// <returns></returns>
 	Bitboard GetGoldsBB() const;
 
 	Bitboard GetGoldsBB(const Color c) const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	Piece GetPiece(const Square sq) const;
 
-	// hand
+
+	/// <summary>
+	/// 持ち駒
+	/// </summary>
+	/// <typeparam name="CLR"></typeparam>
+	/// <returns></returns>
 	template<Color CLR>
 	Hand GetHand() const
 	{
@@ -109,14 +173,25 @@ public:
 	}
 	Hand GetHand(const Color c) const;
 
-	// turn() 側が pin されている Bitboard を返す。
-	// checkersBB が更新されている必要がある。
+
+	/// <summary>
+	/// turn() 側が pin されている Bitboard を返す。
+	/// checkersBB が更新されている必要がある。
+	/// </summary>
+	/// <returns></returns>
 	Bitboard GetPinnedBB() const;
 
-	// 間の駒を動かすことで、turn() 側が空き王手が出来る駒のBitboardを返す。
-	// checkersBB が更新されている必要はない。
-	// BetweenIsUs == true  : 間の駒が自駒。
-	// BetweenIsUs == false : 間の駒が敵駒。
+
+	/// <summary>
+	/// 間の駒を動かすことで、turn() 側が空き王手が出来る駒のBitboardを返す。
+	/// checkersBB が更新されている必要はない。
+	/// BetweenIsUs == true  : 間の駒が自駒。
+	/// BetweenIsUs == false : 間の駒が敵駒。
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <typeparam name="THEM"></typeparam>
+	/// <typeparam name="BetweenIsUs"></typeparam>
+	/// <returns></returns>
 	template <Color US, Color THEM, bool BetweenIsUs = true>
 	Bitboard DiscoveredCheckBB() const {
 
@@ -131,40 +206,101 @@ public:
 			return GetHiddenCheckers<false, BetweenIsUs,Color::White,Color::Black>();
 		}
 		*/
-
 	}
 
-	// toFile と同じ筋に us の歩がないなら true
+
+	/// <summary>
+	/// toFile と同じ筋に us の歩がないなら true
+	/// </summary>
+	/// <param name="us"></param>
+	/// <param name="toFile"></param>
+	/// <returns></returns>
 	bool NoPawns(const Color us, const File toFile) const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <typeparam name="THEM"></typeparam>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	template<Color US,Color THEM>
 	bool IsPawnDropCheckMate(const Square sq) const;
 
-	// Pinされているfromの駒がtoに移動出来なければtrueを返す。
+
+	/// <summary>
+	/// Pinされているfromの駒がtoに移動出来なければtrueを返す。
+	/// </summary>
+	/// <typeparam name="IsKnight"></typeparam>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
+	/// <param name="ksq"></param>
+	/// <param name="pinned"></param>
+	/// <returns></returns>
 	template <bool IsKnight = false>
 	bool IsPinnedIllegal(const Square from, const Square to, const Square ksq, const Bitboard& pinned) const {
 		// 桂馬ならどこに動いても駄目。
 		return g_setMaskBb.IsSet(&pinned,from) && (IsKnight || !g_squareRelation.IsAligned<true>(from, to, ksq));
 	}
 
-	// 空き王手かどうか。
+
+	/// <summary>
+	/// 空き王手かどうか。
+	/// </summary>
+	/// <typeparam name="IsKnight"></typeparam>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
+	/// <param name="ksq"></param>
+	/// <param name="dcBB"></param>
+	/// <returns></returns>
 	template <bool IsKnight = false>
 	bool IsDiscoveredCheck(const Square from, const Square to, const Square ksq, const Bitboard& dcBB) const {
 		// 桂馬ならどこに動いても空き王手になる。
 		return g_setMaskBb.IsSet(&dcBB,from) && (IsKnight || !g_squareRelation.IsAligned<true>(from, to, ksq));
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	Bitboard GetCheckersBB() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	Bitboard GetPrevCheckersBB() const;
 
-	// 王手が掛かっているか。
+
+	/// <summary>
+	/// 王手が掛かっているか。
+	/// </summary>
+	/// <returns></returns>
 	bool InCheck() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	ScoreIndex GetMaterial() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	ScoreIndex GetMaterialDiff() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="CLR"></typeparam>
+	/// <returns></returns>
 	template<const Color CLR>
 	FORCE_INLINE Square GetKingSquare() const {
 		// assert(m_kingSquare_[CLR] == this->GetBbOf<CLR>(N08_King).GetFirstOneFromI9());
@@ -177,13 +313,41 @@ public:
 		return m_kingSquare_[c];
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="m"></param>
+	/// <returns></returns>
 	bool IsMoveGivesCheck(const Move m) const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="move"></param>
+	/// <param name="ci"></param>
+	/// <returns></returns>
 	bool IsMoveGivesCheck(const Move move, const CheckInfo& ci) const;
 
-	// attacks
+
+	/// <summary>
+	/// 王手？
+	/// </summary>
+	/// <param name="sq"></param>
+	/// <param name="occupied"></param>
+	/// <returns></returns>
 	Bitboard GetAttackersTo(const Square sq, const Bitboard& occupied) const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="TURN1"></typeparam>
+	/// <typeparam name="TURN2"></typeparam>
+	/// <param name="sq"></param>
+	/// <param name="occupied"></param>
+	/// <returns></returns>
 	template<
 		Color TURN1,
 		Color TURN2//TURN1の相手の色
@@ -201,143 +365,427 @@ public:
 			& this->GetBbOf10(TURN1);
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="c"></param>
+	/// <param name="sq"></param>
+	/// <param name="occupied"></param>
+	/// <returns></returns>
 	Bitboard GetAttackersTo_clr(const Color c, const Square sq, const Bitboard& occupied) const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="c"></param>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	Bitboard GetAttackersToExceptKing(const Color c, const Square sq) const;
 
-	// todo: 利きをデータとして持ったとき、attackersToIsNot0() を高速化すること。
+
+	/// <summary>
+	/// todo: 利きをデータとして持ったとき、attackersToIsNot0() を高速化すること。
+	/// </summary>
+	/// <param name="c"></param>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	bool IsAttackersToIsNot0(const Color c, const Square sq) const;
 
 	bool IsAttackersToIsNot0(const Color c, const Square sq, const Bitboard& occupied) const;
 
-	// 移動王手が味方の利きに支えられているか。false なら相手玉で取れば詰まない。
+
+	/// <summary>
+	/// 移動王手が味方の利きに支えられているか。false なら相手玉で取れば詰まない。
+	/// </summary>
+	/// <param name="c"></param>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	bool IsUnDropCheckIsSupported(const Color c, const Square sq) const;
-	// 利きの生成
 
 
-
-
-	// 次の手番
+	/// <summary>
+	/// 次の手番
+	/// </summary>
+	/// <returns></returns>
 	Color GetTurn() const;
 
-	// pseudoLegal とは
-	// ・玉が相手駒の利きがある場所に移動する
-	// ・pin の駒を移動させる
-	// ・連続王手の千日手の手を指す
-	// これらの反則手を含めた手の事と定義する。
-	// よって、打ち歩詰めや二歩の手は pseudoLegal では無い。
+
+	/// <summary>
+	/// pseudoLegal とは
+	/// ・玉が相手駒の利きがある場所に移動する
+	/// ・pin の駒を移動させる
+	/// ・連続王手の千日手の手を指す
+	/// これらの反則手を含めた手の事と定義する。
+	/// よって、打ち歩詰めや二歩の手は pseudoLegal では無い。
+	/// </summary>
+	/// <typeparam name="MUSTNOTDROP"></typeparam>
+	/// <typeparam name="FROMMUSTNOTBEKING"></typeparam>
+	/// <typeparam name="US"></typeparam>
+	/// <typeparam name="THEM"></typeparam>
+	/// <param name="move"></param>
+	/// <param name="pinned"></param>
+	/// <returns></returns>
 	template <bool MUSTNOTDROP, bool FROMMUSTNOTBEKING, Color US, Color THEM>
 	bool IsPseudoLegalMoveIsLegal(const Move move, const Bitboard& pinned) const;
 
-	// FIXME: これ使ってないのでは☆？（＾ｑ＾）？
+
+	/// <summary>
+	/// FIXME: これ使ってないのでは☆？（＾ｑ＾）？
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <typeparam name="THEM"></typeparam>
+	/// <param name="move"></param>
+	/// <param name="pinned"></param>
+	/// <returns></returns>
 	template<Color US, Color THEM>
 	bool IsPseudoLegalMoveIsEvasion(const Move move, const Bitboard& pinned) const;
 
-	// checkPawnDrop : 二歩と打ち歩詰めも調べるなら true
+
+	/// <summary>
+	/// checkPawnDrop : 二歩と打ち歩詰めも調べるなら true
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <typeparam name="THEM"></typeparam>
+	/// <param name="move"></param>
+	/// <param name="checkPawnDrop"></param>
+	/// <returns></returns>
 	template<Color US, Color THEM>
 	bool MoveIsPseudoLegal(const Move move, const bool checkPawnDrop = false) const;
 
+
 #if !defined NDEBUG
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="GetMove"></param>
+	/// <returns></returns>
 	bool MoveIsLegal(const Move GetMove) const;
 #endif
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <typeparam name="THEM"></typeparam>
+	/// <param name="move"></param>
+	/// <param name="newSt"></param>
 	template<Color US,Color THEM>
 	void DoMove(const Move move, StateInfo& newSt);
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <typeparam name="THEM"></typeparam>
+	/// <param name="move"></param>
+	/// <param name="newSt"></param>
+	/// <param name="ci"></param>
+	/// <param name="moveIsCheck"></param>
 	template<Color US, Color THEM>
 	void DoMove(const Move move, StateInfo& newSt, const CheckInfo& ci, const bool moveIsCheck);
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="move"></param>
 	void UndoMove(const Move move);
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="DO"></param>
+	/// <param name="backUpSt"></param>
 	void DoNullMove(bool DO, StateInfo& backUpSt);
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <typeparam name="THEM"></typeparam>
+	/// <param name="move"></param>
+	/// <param name="asymmThreshold"></param>
+	/// <returns></returns>
 	template<Color US,Color THEM>
 	ScoreIndex GetSee1(const Move move, const int asymmThreshold = 0) const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="move"></param>
+	/// <returns></returns>
 	ScoreIndex GetSeeSign(const Move move) const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <typeparam name="THEM"></typeparam>
+	/// <returns></returns>
 	template <Color US,Color THEM>
 	Move GetMateMoveIn1Ply();
 	//Move GetMateMoveIn1Ply();
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	Ply GetGamePly() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	Key GetBoardKey() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	Key GetHandKey() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	Key GetKey() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	Key GetExclusionKey() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	Key GetKeyExcludeTurn() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
 	void Print() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	u64 GetNodesSearched() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="n"></param>
 	void SetNodesSearched(const u64 n);
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="checkMaxPly"></param>
+	/// <returns></returns>
 	RepetitionType IsDraw(const int checkMaxPly = std::numeric_limits<int>::max()) const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	Military* GetThisThread() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="ply"></param>
 	void SetStartPosPly(const Ply ply);
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	static constexpr int GetNlist() {
 		return EvalList::m_ListSize;
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="index"></param>
+	/// <returns></returns>
 	int GetList0(const int index) const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="index"></param>
+	/// <returns></returns>
 	int GetList1(const int index) const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	int GetSquareHandToList(const Square sq) const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="i"></param>
+	/// <returns></returns>
 	Square GetListToSquareHand(const int i) const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	int* GetPlist0();
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	int* GetPlist1();
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	const int* GetCplist0() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	const int* GetCplist1() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	const ChangedLists& GetCl() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	const Rucksack* GetConstRucksack() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	Rucksack* GetRucksack() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="s"></param>
 	void SetRucksack(Rucksack* s);
 
+
 #if !defined NDEBUG
-	// for debug
+	/// <summary>
+	/// for debug
+	/// </summary>
+	/// <returns></returns>
 	bool IsOK() const;
 #endif
 
+
+	/// <summary>
+	/// 
+	/// </summary>
 	static void InitZobrist();
 
-	// メンバーを変更するのに使われる。
+
+	/// <summary>
+	/// メンバーを変更するのに使われる。
+	/// </summary>
+	/// <returns></returns>
 	inline StateInfo* GetStateInfo() { return m_st_; }
+
 
 private:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
 	void Clear();
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="piece"></param>
+	/// <param name="sq"></param>
 	void SetPiece(const Piece piece, const Square sq);
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="hp"></param>
+	/// <param name="c"></param>
+	/// <param name="num"></param>
 	void SetHand(const HandPiece hp, const Color c, const int num);
 
 	void SetHand(const Piece piece, const int num);
 
-	// 手番側の玉へ check している駒を全て探して checkersBB_ にセットする。
-	// 最後の手が何か覚えておけば、attackersTo() を使用しなくても良いはずで、処理が軽くなる。
+
+	/// <summary>
+	/// 手番側の玉へ check している駒を全て探して checkersBB_ にセットする。
+	/// 最後の手が何か覚えておけば、attackersTo() を使用しなくても良いはずで、処理が軽くなる。
+	/// </summary>
 	void FindCheckers();
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	ScoreIndex ComputeMaterial() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="CLR"></typeparam>
+	/// <param name="pt"></param>
+	/// <param name="sq"></param>
 	template<Color CLR>
 	inline void XorBBs(const PieceType pt, const Square sq) {
 		g_setMaskBb.XorBit(&this->m_BB_ByPiecetype_[N00_Occupied], sq);
@@ -346,10 +794,18 @@ private:
 	}
 	void XorBBs(const PieceType pt, const Square sq, const Color c);
 
-	// turn() 側が
-	// pin されて(して)いる駒の Bitboard を返す。
-	// BetweenIsUs == true  : 間の駒が自駒。
-	// BetweenIsUs == false : 間の駒が敵駒。
+
+	/// <summary>
+	/// turn() 側が
+	/// pin されて(して)いる駒の Bitboard を返す。
+	/// BetweenIsUs == true  : 間の駒が自駒。
+	/// BetweenIsUs == false : 間の駒が敵駒。
+	/// </summary>
+	/// <typeparam name="FindPinned"></typeparam>
+	/// <typeparam name="BetweenIsUs"></typeparam>
+	/// <typeparam name="US"></typeparam>
+	/// <typeparam name="THEM"></typeparam>
+	/// <returns></returns>
 	template <bool FindPinned, bool BetweenIsUs, Color US, Color THEM>
 	Bitboard GetHiddenCheckers() const {
 		Bitboard result = Bitboard::CreateAllZeroBB();
@@ -390,20 +846,57 @@ private:
 		return result;
 	}
 
+
 #if !defined NDEBUG
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	int GetDebugSetEvalList() const;
 #endif
 
+
+	/// <summary>
+	/// 
+	/// </summary>
 	void SetEvalList();
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	Key GetComputeBoardKey() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	Key GetComputeHandKey() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	Key GetComputeKey() const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="c"></param>
 	void PrintHand(const Color c) const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="CLR"></typeparam>
+	/// <param name="pt"></param>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	template<Color CLR>
 	static Key GetZobrist(const PieceType pt, const Square sq)
 	{
@@ -411,8 +904,20 @@ private:
 	}
 	static Key GetZobrist(const PieceType pt, const Square sq, const Color c);
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
 	static Key GetZobTurn();
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="CLR"></typeparam>
+	/// <param name="hp"></param>
+	/// <returns></returns>
 	template<Color CLR>
 	static Key GetZobHand(const HandPiece hp)
 	{
@@ -420,46 +925,94 @@ private:
 	}
 	static Key GetZobHand(const HandPiece hp, const Color c);
 
-	// このポジションをピースタイプ毎にビットボードにしたもの。（byTypeBB は敵、味方の駒を区別しない）
+
+	/// <summary>
+	/// このポジションをピースタイプ毎にビットボードにしたもの。（byTypeBB は敵、味方の駒を区別しない）
+	/// </summary>
 	Bitboard m_BB_ByPiecetype_[g_PIECETYPE_NUM];
 
-	// このポジションを白黒毎にビットボードにしたもの。（byColorBB は駒の種類を区別しない）
+	/// <summary>
+	/// このポジションを白黒毎にビットボードにしたもの。（byColorBB は駒の種類を区別しない）
+	/// </summary>
 	Bitboard m_BB_ByColor_[g_COLOR_NUM];
 
-	// このポジションのカナゴマをビットボードにしたもの。
+	/// <summary>
+	/// このポジションのカナゴマをビットボードにしたもの。
+	/// </summary>
 	Bitboard m_goldsBB_;
 
-	// 各マスの状態
+	/// <summary>
+	/// 各マスの状態
+	/// </summary>
 	Piece m_piece_[SquareNum];
 
+	/// <summary>
+	/// 
+	/// </summary>
 	Square m_kingSquare_[g_COLOR_NUM];
 
-	// 手駒
+	/// <summary>
+	/// 手駒
+	/// </summary>
 	Hand m_hand_[g_COLOR_NUM];
 
+	/// <summary>
+	/// 
+	/// </summary>
 	Color m_turn_;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	EvalList m_evalList_;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	StateInfo m_startState_;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	StateInfo* m_st_;
 
-	// 時間管理に使用する。
+	/// <summary>
+	/// 時間管理に使用する。
+	/// </summary>
 	Ply m_gamePly_;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	Military* m_thisThread_;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	u64 m_nodes_;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	Rucksack* m_pRucksack_;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	static Key m_ZOBRIST_[g_PIECETYPE_NUM][SquareNum][g_COLOR_NUM];
 
+	/// <summary>
+	/// 
+	/// </summary>
 	static const Key m_zobTurn_ = 1;
 
+	/// <summary>
+	/// 
+	/// </summary>
 	static Key m_ZOB_HAND_[HandPieceNum][g_COLOR_NUM];
 
-	static Key m_ZOB_EXCLUSION_; // todo: これが必要か、要検討
-
+	/// <summary>
+	/// todo: これが必要か、要検討
+	/// </summary>
+	static Key m_ZOB_EXCLUSION_;
 };

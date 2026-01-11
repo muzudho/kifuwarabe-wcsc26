@@ -1,5 +1,9 @@
 ﻿#pragma once
 
+
+/// <summary>
+/// 
+/// </summary>
 enum NodeType {
 	N00_Root,
 	N01_PV,

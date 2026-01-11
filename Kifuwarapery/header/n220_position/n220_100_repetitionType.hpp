@@ -1,7 +1,9 @@
 ﻿#pragma once
 
 
-// 千日手の種類のよう。
+/// <summary>
+/// 千日手の種類のよう。
+/// </summary>
 enum RepetitionType {
 	N00_NotRepetition,
 	N01_RepetitionDraw,

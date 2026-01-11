@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-
 #include "../n110_square__/n110_100_square.hpp"
 #include "../n112_pieceTyp/n112_050_pieceType.hpp"
 #include "../n113_piece___/n113_155_convPiece.hpp"
@@ -9,11 +8,22 @@
 #include "../n220_position/n220_650_position.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 class UtilMovePos {
+
+
 public:
 
-	// 取った駒を Move書式に変換☆
-	// 駒を取らないときは、0 (MoveNone) を返す。
+
+	/// <summary>
+	/// 取った駒を Move書式に変換☆
+	/// 駒を取らないときは、0 (MoveNone) を返す。
+	/// </summary>
+	/// <param name="dst"></param>
+	/// <param name="pos"></param>
+	/// <returns></returns>
 	static inline Move GET_CAPTURED_PIECE_FROM_SQ(const Square dst, const Position& pos) {
 
 		// 盤面から計算で求めるぜ☆（＾ｑ＾）
@@ -24,8 +34,16 @@ public:
 			);
 	}
 
-	// 取った駒を判別する必要がある。
-	// この関数は駒を取らないときにも使える。
+
+	/// <summary>
+	/// 取った駒を判別する必要がある。
+	/// この関数は駒を取らないときにも使える。
+	/// </summary>
+	/// <param name="pieceTypeAsMove"></param>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
+	/// <param name="pos"></param>
+	/// <returns></returns>
 	static inline Move MakeCaptureMove(
 		const Move pieceTypeAsMove,
 		const Square from,
@@ -40,7 +58,15 @@ public:
 			;
 	}
 
-	// makeCaptureMove() かつ 成り
+
+	/// <summary>
+	/// makeCaptureMove() かつ 成り
+	/// </summary>
+	/// <param name="pieceTypeAsMove"></param>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
+	/// <param name="pos"></param>
+	/// <returns></returns>
 	static inline Move MakeCapturePromoteMove(
 		const Move pieceTypeAsMove,
 		const Square from,
@@ -53,5 +79,4 @@ public:
 			g_MOVE_PROMOTE_FLAG
 			;
 	}
-
 };

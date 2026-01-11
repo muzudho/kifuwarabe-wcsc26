@@ -11,13 +11,25 @@
 #include "../n220_position/n220_660_utilMovePos.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 class UtilMoveStack {
+
+
 public:
 
-	// 汎用的な insertion sort. 要素数が少ない時、高速にソートできる。
-	// 降順(大きいものが先頭付近に集まる)
-	// *(first - 1) に 番兵(sentinel) として MAX 値が入っていると仮定して高速化してある。
-	// T には ポインタかイテレータを使用出来る。
+
+	/// <summary>
+	/// 汎用的な insertion sort. 要素数が少ない時、高速にソートできる。
+	/// 降順(大きいものが先頭付近に集まる)
+	/// *(first - 1) に 番兵(sentinel) として MAX 値が入っていると仮定して高速化してある。
+	/// T には ポインタかイテレータを使用出来る。
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <typeparam name="UseSentinel"></typeparam>
+	/// <param name="first"></param>
+	/// <param name="last"></param>
 	template <typename T, bool UseSentinel = false>
 	static inline void InsertionSort(T first, T last) {
 		if (UseSentinel) {
@@ -38,14 +50,27 @@ public:
 		}
 	}
 
-	// 最も score の高い moveStack のポインタを返す。
-	// MoveStack の数が多いとかなり時間がかかるので、
-	// 駒打ちを含むときに使用してはならない。
+
+	/// <summary>
+	/// 最も score の高い moveStack のポインタを返す。
+	/// MoveStack の数が多いとかなり時間がかかるので、
+	/// 駒打ちを含むときに使用してはならない。
+	/// </summary>
+	/// <param name="currMove"></param>
+	/// <param name="lastMove"></param>
+	/// <returns></returns>
 	static inline MoveStack* PickBest(MoveStack* currMove, MoveStack* lastMove) {
 		std::swap(*currMove, *std::max_element(currMove, lastMove));
 		return currMove;
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="move"></param>
+	/// <param name="pos"></param>
+	/// <returns></returns>
 	static inline Move Move16toMove(const Move move, const Position& pos) {
 		if (move.IsNone()) {
 			return g_MOVE_NONE;
@@ -57,7 +82,4 @@ public:
 		const PieceType ptFrom = ConvPiece::TO_PIECE_TYPE10(pos.GetPiece(from));
 		return move | ConvMove::FROM_PIECETYPE_ONBOARD10(ptFrom) | UtilMovePos::GET_CAPTURED_PIECE_FROM_SQ(move.To(), pos);
 	}
-
-
 };
-
