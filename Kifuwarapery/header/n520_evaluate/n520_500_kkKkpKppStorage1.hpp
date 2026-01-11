@@ -334,7 +334,7 @@ public:
 
 #ifndef SKIP_LONG_LONG_TIME_EVAL_KPP
 #if defined(MODE_CACHE_EVAL)
-		SYNCCOUT << "(^q^)KPP!" << SYNCENDL;
+		SYNCCOUT << "(^q^) KPP 評価関数ファイルを読込むぜ！" << SYNCENDL;
 #endif
 		// KPP
 		{
@@ -401,18 +401,18 @@ public:
 				kppCacheIo.SynthesizeLv3To2(dirName, k1);
 
 #if defined(MODE_CACHE_EVAL)
-				SYNCCOUT << "(^q^)Go Cache2!" << SYNCENDL;
+				SYNCCOUT << "(^q^) Go Cache2!" << SYNCENDL;
 #endif
 
 #if defined(MODE_CACHE_EVAL)
 				if (kppCacheIo.ReadLv2Files(dirName, k1, KPP))
 				{
 					// 中間ファイルから読込完了。
-					SYNCCOUT << "(^q^)KPP: k1=" << std::to_string(k1) << "(" << std::to_string(o) << "/" << std::to_string(SquareNum) << ") loaded." << SYNCENDL;
+					SYNCCOUT << "(^q^) KPP: k1=" << std::to_string(k1) << "(" << std::to_string(o) << "/" << std::to_string(SquareNum) << ") loaded." << SYNCENDL;
 				}
 				else
 				{
-					SYNCCOUT << "(^q^)KPP: k1=" << std::to_string(k1) << "/" << std::to_string(SquareNum) << SYNCENDL;
+					SYNCCOUT << "(^q^) KPP: k1=" << std::to_string(k1) << "/" << std::to_string(SquareNum) << SYNCENDL;
 #endif
 
 					// indices は更に for ループの外側に置きたいが、OpenMP 使っているとアクセス競合しそうなのでループの中に置く。
@@ -423,7 +423,7 @@ public:
 						if (kppCacheIo.ReadLv3Files(dirName, k1, p1, KPP))
 						{
 #if defined(MODE_CACHE_EVAL)
-							SYNCCOUT << "(^q^)KPP: p1=" << std::to_string(p1) << "/" << std::to_string(fe_end) << " loaded." << SYNCENDL;
+							SYNCCOUT << "(^q^) KPP: p1=" << std::to_string(p1) << "/" << std::to_string(fe_end) << " loaded." << SYNCENDL;
 #endif
 							// 中間ファイルから読込完了。
 						}
@@ -447,7 +447,7 @@ public:
 							if (kppCacheIo.WriteLv3Files(dirName, k1, p1, KPP))
 							{
 #if defined(MODE_CACHE_EVAL)
-								SYNCCOUT << "(^q^)KPP: p1=" << std::to_string(p1) << "/" << std::to_string(fe_end) << " writed!" << SYNCENDL;
+								SYNCCOUT << "(^q^) KPP: p1=" << std::to_string(p1) << "/" << std::to_string(fe_end) << " writed!" << SYNCENDL;
 #endif
 							}
 							else { goto gt_EndKPP; }// エラー
@@ -465,7 +465,7 @@ public:
 
 #ifndef SKIP_LONG_LONG_TIME_EVAL_KKP
 #if defined(MODE_CACHE_EVAL)
-		SYNCCOUT << "(^q^)KKP!" << SYNCENDL;
+		SYNCCOUT << "(^q^) KKP!" << SYNCENDL;
 #endif
 		// KKP
 		{

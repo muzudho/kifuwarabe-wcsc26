@@ -32,17 +32,12 @@ void UtilProgram::ErrorEnd()
 
 
 /// <summary>
-/// 
+/// カレントディレクトリーを出力
 /// </summary>
 void UtilProgram::ShowCurrentDirectory()
 {
 	TCHAR crDir[MAX_PATH + 1];
 	GetCurrentDirectory(MAX_PATH + 1, crDir);
-	crDir[MAX_PATH] = '\0';
-	SYNCCOUT << "Current directory=[" << SYNCENDL;
-	for (int i = 0; crDir[i] != '\0'; i++)
-	{
-		SYNCCOUT << ((char)crDir[i]) << SYNCENDL;
-	}
-	SYNCCOUT << "]" << SYNCENDL;
+	crDir[MAX_PATH] = '\0';		// 念のため終端NULLを保証
+	SYNCCOUT << "Current directory=[" << crDir << "]" << SYNCENDL;
 }

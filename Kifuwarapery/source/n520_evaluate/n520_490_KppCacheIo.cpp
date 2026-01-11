@@ -24,7 +24,7 @@ bool KppCacheIo::SynthesizeLv3To2(const std::string & dirName, int k1)
 		// ファイルが見つかった場合は OK です。falseを返して正常終了します。
 		return false;
 	}
-	SYNCCOUT << "(Synthesize 1/3) Go KPP!: [" << cache2Path.c_str() << "]" << SYNCENDL;
+	SYNCCOUT << "(^q^) (Synthesize 1/3) Go KPP!: [" << cache2Path.c_str() << "]" << SYNCENDL;
 
 	// Cache3ファイルが 1548個あるか調べます。
 	for (int p1 = 0; p1 < fe_end; ++p1) {
@@ -36,7 +36,7 @@ bool KppCacheIo::SynthesizeLv3To2(const std::string & dirName, int k1)
 			return false;
 		}
 	}
-	SYNCCOUT << "(Synthesize 2/3) [" << std::to_string(fe_end) << "] files exist. ok." << SYNCENDL;
+	SYNCCOUT << "(^q^) (Synthesize 2/3) [" << std::to_string(fe_end) << "] files exist. ok." << SYNCENDL;
 
 	// 書き出し先
 	std::ofstream output(cache2Path.c_str(), std::ios::binary);
@@ -82,7 +82,7 @@ bool KppCacheIo::SynthesizeLv3To2(const std::string & dirName, int k1)
 		}
 	}
 	// (^q^)SYNCCOUT で始めたら、SYNCENDL で終わること。
-	SYNCCOUT << "(Synthesize 3/3) (^q^)File synthesized!" << SYNCENDL;
+	SYNCCOUT << "(^q^) (Synthesize 3/3) (^q^)File synthesized!" << SYNCENDL;
 	//× SYNCCOUT << "(Synthesize 3/3) (^q^)File synthesized!" << std::endl;
 
 	return true;
