@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-
 #include "../n080_common__/n080_100_common.hpp"
 #include "../n105_color___/n105_100_color.hpp"
 #include "../n110_square__/n110_100_square.hpp"
@@ -15,8 +14,22 @@
 #include "n358_070_dropMakerAbstract.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 class DropMakerHand0 : public DropMakerAbstract {
+
+
 public:
+
+
+	/// <summary>
+    /// ９段目への打ち手を生成する。ただし桂馬、香車以外。
+	/// </summary>
+	/// <param name="pMovestack"></param>
+	/// <param name="dmEvent"></param>
+	/// <param name="haveHandArr"></param>
+	/// <returns></returns>
 	MoveStack* MakeDropMovesToRank9ExceptNL(
 		MoveStack* pMovestack,
 		const DropMakerEvent& dmEvent,
@@ -26,6 +39,14 @@ public:
 		return pMovestack;
 	}
 
+
+	/// <summary>
+    /// ８段目への打ち手を生成する。ただし桂馬以外。
+	/// </summary>
+	/// <param name="pMovestack"></param>
+	/// <param name="dmEvent"></param>
+	/// <param name="haveHandArr"></param>
+	/// <returns></returns>
 	MoveStack* MakeDropMovesToRank8ExceptN(
 		MoveStack* pMovestack,
 		const DropMakerEvent& dmEvent,
@@ -35,6 +56,14 @@ public:
 		return pMovestack;
 	}
 
+
+	/// <summary>
+    /// １～７段目への打ち手を生成する。
+	/// </summary>
+	/// <param name="pMovestack"></param>
+	/// <param name="dmEvent"></param>
+	/// <param name="haveHandArr"></param>
+	/// <returns></returns>
 	MoveStack* MakeDropMovesToRank1234567(
 		MoveStack* pMovestack,
 		const DropMakerEvent& dmEvent,
@@ -43,6 +72,4 @@ public:
 		assert(false);// 最適化の為のダミー
 		return pMovestack;
 	}
-
 };
-

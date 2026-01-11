@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "../n105_color___/n105_100_color.hpp"
 #include "../n112_pieceTyp/n112_050_pieceType.hpp"
 #include "../n113_piece___/n113_500_hand.hpp"
@@ -8,25 +7,87 @@
 #include "../n160_board___/n160_100_bitboard.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 class DropMakerEvent {
-public:
-	void* m_pDontUseThisMember__;// FIXME: ^iO‚‘Oj_‚±‚ê‚ğÁ‚·‚Æ bench ƒRƒ}ƒ“ƒh‚ÌÀs‚É‹­§I—¹‚µ‚Ä‚µ‚Ü‚¤™ g‚Á‚Ä‚È‚¢‚¯‚Ç’u‚¢‚Ä‚¨‚­•K—v‚ª‚ ‚é‚º™iO`Oj
+
 
 public:
 
+
+	/// <summary>
+	/// FIXME: ï¼ï¼ˆï¼¾ï½‘ï¼¾ï¼‰ï¼¼ã“ã‚Œã‚’æ¶ˆã™ã¨ bench ã‚³ãƒãƒ³ãƒ‰ã®å®Ÿè¡Œæ™‚ã«å¼·åˆ¶çµ‚äº†ã—ã¦ã—ã¾ã†â˜† ä½¿ã£ã¦ãªã„ã‘ã©ç½®ã„ã¦ãŠãå¿…è¦ãŒã‚ã‚‹ãœâ˜†ï¼ˆï¼¾ï½ï¼¾ï¼‰
+	/// </summary>
+	void* m_pDontUseThisMember__;
+
+
+public:
+
+
+	/// <summary>
+	/// è‡ªåˆ†ã®è‰²ã€‚
+	/// </summary>
 	const Color		m_us;
+
+	/// <summary>
+	/// å±€é¢ã€‚
+	/// </summary>
 	const Position& m_pos;
+
+	/// <summary>
+	/// 
+	/// </summary>
 	const Bitboard& m_target;
+
+	/// <summary>
+	/// æŒã¡é§’
+	/// </summary>
 	const Hand&		m_hand;
+
+	/// <summary>
+	/// æŒã¡é§’ã®æ•°
+	/// </summary>
 	const int		m_haveHandNum;
+
+	/// <summary>
+	/// æ¡‚é¦¬ï¼Ÿ
+	/// </summary>
 	const int		m_noKnightIdx;
+
+	/// <summary>
+	/// æ¡‚é¦¬ã¨é¦™ï¼Ÿ
+	/// </summary>
 	const int		m_noKnightLanceIdx;
+
+	/// <summary>
+    /// ï¼˜æ®µç›®ã®ãƒ“ãƒƒãƒˆãƒœãƒ¼ãƒ‰â˜†
+	/// </summary>
 	const Bitboard& m_tRank8BB;
+
+	/// <summary>
+    /// ï¼™æ®µç›®ã®ãƒ“ãƒƒãƒˆãƒœãƒ¼ãƒ‰â˜†
+	/// </summary>
 	const Bitboard& m_tRank9BB;
-	//PieceType m_haveHandArr[6];//(^q^)”z—ñ‚ÍƒRƒ“ƒXƒgƒ‰ƒNƒ^‚É“n‚¹‚È‚¢‚º™I
+
+	//PieceType m_haveHandArr[6];//(^q^)é…åˆ—ã¯ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã«æ¸¡ã›ãªã„ãœâ˜†ï¼
+
 
 public:
 
+
+	/// <summary>
+	/// ç”Ÿæˆ
+	/// </summary>
+	/// <param name="us"></param>
+	/// <param name="pos"></param>
+	/// <param name="target"></param>
+	/// <param name="hand"></param>
+	/// <param name="haveHandNum"></param>
+	/// <param name="noKnightIdx"></param>
+	/// <param name="noKnightLanceIdx"></param>
+	/// <param name="tRank8BB"></param>
+	/// <param name="tRank9BB"></param>
 	DropMakerEvent(
 		const Color us,
 		const Position& pos,
@@ -51,5 +112,4 @@ public:
 	{
 		//m_haveHandArr = haveHandArr;
 	}
-
 };
