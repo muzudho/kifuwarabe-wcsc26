@@ -51,6 +51,13 @@ public:
 	void Clear();
 
 
+	/// <summary>
+	/// １手に何ミリ秒使うか予測します。
+	/// </summary>
+	/// <param name="c"></param>
+	long long GetPredictPayMilliseconds(Color c);
+
+
 private:
 
 
