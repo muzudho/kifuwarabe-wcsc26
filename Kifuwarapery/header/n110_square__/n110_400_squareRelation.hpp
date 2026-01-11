@@ -1,25 +1,52 @@
 ﻿#pragma once
 
-
 #include "../n110_square__/n110_100_square.hpp"
 #include "../n110_square__/n110_300_direction.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 class SquareRelation {
+
+
 private:
-	// 2つの位置関係のテーブル
+
+
+	/// <summary>
+	/// 2つの位置関係のテーブル
+	/// </summary>
 	Direction m_squareRelation_[SquareNum][SquareNum];
+
 
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
 	void Initialize();
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="sq1"></param>
+	/// <param name="sq2"></param>
+	/// <returns></returns>
 	inline Direction GetSquareRelation(const Square sq1, const Square sq2) const {
 		return this->m_squareRelation_[sq1][sq2];
 	}
 
 
-	// from, to, ksq が 縦横斜めの同一ライン上にあれば true を返す。
+	/// <summary>
+	/// from, to, ksq が 縦横斜めの同一ライン上にあれば true を返す。
+	/// </summary>
+	/// <typeparam name="FROM_KSQ_NEVER_BE_DIRECMISC"></typeparam>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
+	/// <param name="ksq"></param>
+	/// <returns></returns>
 	template <bool FROM_KSQ_NEVER_BE_DIRECMISC>
 	inline bool IsAligned(const Square from, const Square to, const Square ksq) const {
 
@@ -33,9 +60,10 @@ public:
 			return (direc != N00_DirecMisc && direc == SquareRelation::GetSquareRelation(from, to));
 		}
 	}
-
 };
 
 
-// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// <summary>
+/// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// </summary>
 extern SquareRelation g_squareRelation;

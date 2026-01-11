@@ -4,9 +4,11 @@
 #include "../n080_common__/n080_150_overloadEnumOperators.hpp"
 
 
-// 位置関係、方向
-// ボナンザそのまま
-// でもあまり使わないので普通の enum と同様に 0 から順に値を付けて行けば良いと思う。
+/// <summary>
+/// 位置関係、方向
+/// ボナンザそのまま
+/// でもあまり使わないので普通の enum と同様に 0 から順に値を付けて行けば良いと思う。
+/// </summary>
 enum Direction {
 	N00_DirecMisc		 = Binary<  0>::value, // 縦、横、斜めの位置に無い場合
 	N02_DirecFile		 = Binary< 10>::value, // 縦

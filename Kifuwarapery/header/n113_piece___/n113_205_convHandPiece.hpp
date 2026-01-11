@@ -6,28 +6,54 @@
 
 
 namespace {
+
+
 	//────────────────────────────────────────────────────────────────────────────────
 	// 非クラスメンバ 静的グローバル・オブジェクト
 	//────────────────────────────────────────────────────────────────────────────────
-	// USI用持ち駒。２文字。
+
+
+	/// <summary>
+	/// USI用持ち駒。２文字。
+	/// </summary>
 	static const std::string g_CONV_HAND_PIECE_2LEN_STRING_TABLE[HandPiece::HandPieceNum] = {
 		"P*", "L*", "N*", "S*", "G*", "B*", "R*"
 	};
+
+	/// <summary>
+	/// 
+	/// </summary>
 	static const char g_CONV_HAND_PIECE_1CHAR_TABLE[HandPiece::HandPieceNum] = {
 		'P', 'L', 'N', 'S', 'G', 'B', 'R'
 	};
 }
 
 
+/// <summary>
+/// 
+/// </summary>
 class ConvHandPiece {
+
+
 public:
-	static inline std::string GET_2CHARS_STRING(const HandPiece hp) {// 暗算表を使うぜ☆（＾ｑ＾）
+
+
+	/// <summary>
+	/// 暗算表を使うぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="hp"></param>
+	/// <returns></returns>
+	static inline std::string GET_2CHARS_STRING(const HandPiece hp) {
 		return g_CONV_HAND_PIECE_2LEN_STRING_TABLE[hp];
 	}
 
-	static inline HandPiece FromPieceType(const PieceType pt) {// 暗算表を使うぜ☆（＾ｑ＾）
+
+	/// <summary>
+	/// 暗算表を使うぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="pt"></param>
+	/// <returns></returns>
+	static inline HandPiece FromPieceType(const PieceType pt) {
 		return g_PIECETYPE_TO_HANDPIECE_TABLE[pt];
 	}
 };
-
-

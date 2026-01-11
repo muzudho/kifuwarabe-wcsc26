@@ -5,6 +5,9 @@
 #include "../n105_color___/n105_100_color.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 struct EvalSum {
 #if defined USE_AVX2_EVAL
 	EvalSum(const EvalSum& es) {
@@ -25,12 +28,31 @@ struct EvalSum {
 		return *this;
 	}
 #endif
+
+
+	/// <summary>
+	/// 
+	/// </summary>
 	EvalSum() {}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="c"></param>
+	/// <returns></returns>
 	s32 GetSum(const Color c) const {
 		const s32 scoreBoard = m_p[0][0] - m_p[1][0] + m_p[2][0];
 		const s32 scoreTurn = m_p[0][1] + m_p[1][1] + m_p[2][1];
 		return (c == Black ? scoreBoard : -scoreBoard) + scoreTurn;
 	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="rhs"></param>
+	/// <returns></returns>
 	EvalSum& operator += (const EvalSum& rhs) {
 #if defined USE_AVX2_EVAL
 		mm = _mm256_add_epi32(mm, rhs.mm);
@@ -47,6 +69,13 @@ struct EvalSum {
 #endif
 		return *this;
 	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="rhs"></param>
+	/// <returns></returns>
 	EvalSum& operator -= (const EvalSum& rhs) {
 #if defined USE_AVX2_EVAL
 		mm = _mm256_sub_epi32(mm, rhs.mm);
@@ -66,7 +95,10 @@ struct EvalSum {
 	EvalSum operator + (const EvalSum& rhs) const { return EvalSum(*this) += rhs; }
 	EvalSum operator - (const EvalSum& rhs) const { return EvalSum(*this) -= rhs; }
 
-	// ehash 用。
+
+	/// <summary>
+	/// ehash 用。
+	/// </summary>
 	void Encode() {
 #if defined USE_AVX2_EVAL
 		// EvalSum は atomic にコピーされるので key が合っていればデータも合っている。
@@ -74,6 +106,11 @@ struct EvalSum {
 		m_key ^= m_data[0] ^ m_data[1] ^ m_data[2];
 #endif
 	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
 	void Decode() {
 		// 反転するだけだからエンコードと同じ。
 		this->Encode();
@@ -93,5 +130,3 @@ struct EvalSum {
 #endif
 	};
 };
-
-

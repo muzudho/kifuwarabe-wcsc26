@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-
 #include <string>
 #include "../n080_common__/n080_100_common.hpp"
 #include "../n110_square__/n110_100_square.hpp"
@@ -10,17 +9,26 @@
 //────────────────────────────────────────────────────────────────────────────────
 // 非クラスメンバ 公開 静的グローバル・オブジェクト
 //────────────────────────────────────────────────────────────────────────────────
-// pc が遠隔駒であるかを調べるのに使います。
+
+
+/// <summary>
+/// pc が遠隔駒であるかを調べるのに使います。
+/// </summary>
 static const u32 g_CONV_PIECE_TYPE_SLIDER_VAL = 0x60646064;
 
 
 namespace {
+
+
 	//────────────────────────────────────────────────────────────────────────────────
 	// 非クラスメンバ 秘密 静的グローバル・オブジェクト
 	//────────────────────────────────────────────────────────────────────────────────
+
+
 	static const std::string g_CONV_PIECE_TYPE_STRING_TABLE[g_PIECETYPE_NUM] = {
 		"", "FU", "KY", "KE", "GI", "KA", "HI", "KI", "OU", "TO", "NY", "NK", "NG", "UM", "RY"
 	};
+
 
 	//────────────────────────────────────────────────────────────────────────────────
 	// きふわらべは 計算が苦手なので、早見表を作っておこうぜ☆（＾ｑ＾）
@@ -44,6 +52,7 @@ namespace {
 		G_IS_SLIDER10(PieceType::N13_Horse),
 		G_IS_SLIDER10(PieceType::N14_Dragon)
 	};
+
 
 	//────────────────────────────────────────────────────────────────────────────────
 	// 九九の暗算の早見表を作るようなものだぜ☆（＾ｑ＾）
@@ -137,22 +146,41 @@ namespace {
 }
 
 
-// 暗算表（＾ｑ＾）
+/// <summary>
+/// 暗算表（＾ｑ＾）
+/// </summary>
 class ConvPieceType {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="pt"></param>
+	/// <returns></returns>
 	static inline std::string GET_STRING(const PieceType pt) {
 		return g_CONV_PIECE_TYPE_STRING_TABLE[pt];
 	}
 	
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="pt"></param>
+	/// <returns></returns>
 	static inline bool IS_SLIDER10(const PieceType pt) {
 		return g_CONV_PIECE_TYPE_IS_SLIDER[pt];
 	}
 
-	// 移動元から駒打ちの駒の種類に変換（未使用のもよう☆）
+
+	/// <summary>
+	/// 移動元から駒打ちの駒の種類に変換（未使用のもよう☆）
+	/// </summary>
+	/// <param name="from"></param>
+	/// <returns></returns>
 	static inline PieceType FROM_SRC_TO_DROP10(const Square from) {
 		return g_CONV_PIECE_TYPE_FROM_SRC_TO_DROP10[from];
 	}
-
 };
-

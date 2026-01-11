@@ -1,12 +1,16 @@
 ﻿#pragma once
 
-
 #include "../n080_common__/n080_150_overloadEnumOperators.hpp"
 
 
+/// <summary>
+///		<pre>
+/// 駒
+///		B* に 16 を加算することで、W* を表す。
+///		Promoted を加算することで、成りを表す。
+///		</pre>
+/// </summary>
 enum Piece {
-	// B* に 16 を加算することで、W* を表す。
-	// Promoted を加算することで、成りを表す。
 	N00_Empty = 0,
 	UnPromoted = 0,
 	Promoted = 8,
@@ -43,5 +47,8 @@ enum Piece {
 };
 OverloadEnumOperators(Piece);
 
-static const int g_PIECE_NUM = 32;//列挙型の主に使う要素の数
 
+/// <summary>
+/// 列挙型の主に使う要素の数
+/// </summary>
+static const int g_PIECE_NUM = 32;

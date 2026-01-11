@@ -70,55 +70,105 @@ using u32 = uint32_t;
 using s64 =  int64_t;
 using u64 = uint64_t;
 
+
 //────────────────────────────────────────────────────────────────────────────────
 // 2進数表記
 //────────────────────────────────────────────────────────────────────────────────
-// Binary<11110>::value とすれば、30 となる。
-// 符合なし64bitなので19桁まで表記可能。
+
+
+/// <summary>
+/// Binary<11110>::value とすれば、30 となる。
+/// 符合なし64bitなので19桁まで表記可能。
+/// </summary>
+/// <typeparam name="n"></typeparam>
 template <u64 n> struct Binary {
 	static const u64 value = n % 10 + (Binary<n / 10>::value << 1);
 };
-// template 特殊化
+
+
+/// <summary>
+/// template 特殊化
+/// </summary>
 template <> struct Binary<0> {
 	static const u64 value = 0;
 };
 
+
 #if defined(_MSC_VER) && !defined(__INTEL_COMPILER) && defined(_WIN64)
 #include <intrin.h>
+/// <summary>
+/// 
+/// </summary>
+/// <param name="b"></param>
+/// <returns></returns>
 FORCE_INLINE int firstOneFromLSB(const u64 b) {
 	unsigned long index;
 	_BitScanForward64(&index, b);
 	return index;
 }
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="b"></param>
+/// <returns></returns>
 FORCE_INLINE int firstOneFromMSB(const u64 b) {
 	unsigned long index;
 	_BitScanReverse64(&index, b);
 	return 63 - index;
 }
 #elif defined(__GNUC__) && ( defined(__i386__) || defined(__x86_64__) )
+/// <summary>
+/// 
+/// </summary>
+/// <param name="b"></param>
+/// <returns></returns>
 FORCE_INLINE int firstOneFromLSB(const u64 b) {
 	return __builtin_ctzll(b);
 }
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="b"></param>
+/// <returns></returns>
 FORCE_INLINE int firstOneFromMSB(const u64 b) {
 	return __builtin_clzll(b);
 }
 #else
-// firstOneFromLSB() で使用する table
+
+/// <summary>
+/// firstOneFromLSB() で使用する table
+/// </summary>
 const int BitTable[64] = {
 	63, 30, 3, 32, 25, 41, 22, 33, 15, 50, 42, 13, 11, 53, 19, 34, 61, 29, 2,
 	51, 21, 43, 45, 10, 18, 47, 1, 54, 9, 57, 0, 35, 62, 31, 40, 4, 49, 5, 52,
 	26, 60, 6, 23, 44, 46, 27, 56, 16, 7, 39, 48, 24, 59, 14, 12, 55, 38, 28,
 	58, 20, 37, 17, 36, 8
 };
-// LSB から数えて初めに bit が 1 になるのは何番目の bit かを返す。
-// b = 8 だったら 3 を返す。
-// b = 0 のとき、63 を返す。
+
+
+/// <summary>
+/// LSB から数えて初めに bit が 1 になるのは何番目の bit かを返す。
+/// b = 8 だったら 3 を返す。
+/// b = 0 のとき、63 を返す。
+/// </summary>
+/// <param name="b"></param>
+/// <returns></returns>
 FORCE_INLINE int firstOneFromLSB(const u64 b) {
 	const u64 tmp = b ^ (b - 1);
 	const u32 old = static_cast<u32>((tmp & 0xffffffff) ^ (tmp >> 32));
 	return BitTable[(old * 0x783a9b23) >> 26];
 }
-// 超絶遅いコードなので後で書き換えること。
+
+
+/// <summary>
+/// 超絶遅いコードなので後で書き換えること。
+/// </summary>
+/// <param name="b"></param>
+/// <returns></returns>
 FORCE_INLINE int firstOneFromMSB(const u64 b) {
 	for (int i = 63; 0 <= i; --i) {
 		if (b >> i) {
@@ -129,13 +179,24 @@ FORCE_INLINE int firstOneFromMSB(const u64 b) {
 }
 #endif
 
+
 #if defined(HAVE_SSE42)
 #include <nmmintrin.h>
+/// <summary>
+/// 
+/// </summary>
+/// <param name="x"></param>
+/// <returns></returns>
 inline int count1s(u64 x) {
 	return _mm_popcnt_u64(x);
 }
 #else
-inline int count1s(u64 x) //任意の値の1のビットの数を数える。( x is not a const value.)
+/// <summary>
+/// 任意の値の1のビットの数を数える。( x is not a const value.)
+/// </summary>
+/// <param name="x"></param>
+/// <returns></returns>
+inline int count1s(u64 x)
 {
 	x = x - ((x >> 1) & UINT64_C(0x5555555555555555));
 	x = (x & UINT64_C(0x3333333333333333)) + ((x >> 2) & UINT64_C(0x3333333333333333));
@@ -147,9 +208,15 @@ inline int count1s(u64 x) //任意の値の1のビットの数を数える。( x
 }
 #endif
 
-//────────────────────────────────────────────────────────────────────────────────
-// (デバッグ用)2進表示
-//────────────────────────────────────────────────────────────────────────────────
+
+/// <summary>
+/// (デバッグ用)2進表示
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="value"></param>
+/// <param name="msb"></param>
+/// <param name="lsb"></param>
+/// <returns></returns>
 template <typename T>
 inline std::string putb(const T value, const int msb = sizeof(T)*8 - 1, const int lsb = 0) {
 	std::string str;
@@ -162,9 +229,10 @@ inline std::string putb(const T value, const int msb = sizeof(T)*8 - 1, const in
 	return str;
 }
 
-//────────────────────────────────────────────────────────────────────────────────
-// 同期入出力
-//────────────────────────────────────────────────────────────────────────────────
+
+/// <summary>
+/// 同期入出力
+/// </summary>
 enum SyncCout {
 	IOLock,
 	IOUnlock
@@ -176,15 +244,33 @@ std::ostream& operator << (std::ostream& os, SyncCout sc);
 #if defined LEARN
 #undef SYNCCOUT
 #undef SYNCENDL
+/// <summary>
+/// 
+/// </summary>
 class Eraser {};
+
+
 extern Eraser SYNCCOUT;
 extern Eraser SYNCENDL;
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="temp"></param>
+/// <param name=""></param>
+/// <returns></returns>
 template <typename T> Eraser& operator << (Eraser& temp, const T&) { return temp; }
 #endif
 
-// N 回ループを展開させる。t は lambda で書くと良い。
-// こんな感じに書くと、lambda がテンプレート引数の数値の分だけ繰り返し生成される。
-// Unroller<5>()([&](const int i){std::cout << i << std::endl;});
+
+/// <summary>
+/// N 回ループを展開させる。t は lambda で書くと良い。
+/// こんな感じに書くと、lambda がテンプレート引数の数値の分だけ繰り返し生成される。
+/// Unroller<5>()([&](const int i){std::cout << i << std::endl;});
+/// </summary>
+/// <typeparam name="N"></typeparam>
 template <int N> struct Unroller {
 	template <typename T> FORCE_INLINE void operator () (T t) {
 		Unroller<N-1>()(t);
@@ -195,11 +281,18 @@ template <> struct Unroller<0> {
 	template <typename T> FORCE_INLINE void operator () (T) {}
 };
 
-const size_t CacheLineSize = 64; // 64byte
+
+/// <summary>
+/// 64byte
+/// </summary>
+const size_t CacheLineSize = 64;
+
 
 //────────────────────────────────────────────────────────────────────────────────
 // Stockfish ほとんどそのまま
 //────────────────────────────────────────────────────────────────────────────────
+
+
 template <typename T> inline void prefetch(T* addr) {
 #if defined HAVE_SSE2 || defined HAVE_SSE4
 #if defined(__INTEL_COMPILER)
@@ -230,29 +323,65 @@ template <typename T> inline void prefetch(T* addr) {
 #endif
 }
 
+
+/// <summary>
+/// 
+/// </summary>
 using Key = u64;
 
-// Size は 2のべき乗であること。
+
+/// <summary>
+/// ハッシュテーブル
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <typeparam name="Size">2のべき乗であること</typeparam>
 template <typename T, size_t Size>
 struct HashTable {
+
+
+	/// <summary>
+	/// 生成
+	/// </summary>
 	HashTable() {
 		//entries_ = (T*)(boost::alignment::aligned_alloc(sizeof(T), sizeof(T)*Size));
 		clear();
 	}
+
+
+	/// <summary>
+	/// インデックス・アクセス
+	/// </summary>
+	/// <param name="k"></param>
+	/// <returns></returns>
 	T* operator [] (const Key k) { return entries_ + (static_cast<size_t>(k) & (Size-1)); }
+
+
+	/// <summary>
+	/// クリアー
+	/// </summary>
 	void clear() { memset(entries_, 0, sizeof(T)*Size); }
-	// Size が 2のべき乗であることのチェック
+
+
+	/// <summary>
+	/// Size が 2のべき乗であることのチェック
+	/// </summary>
 	static_assert((Size & (Size-1)) == 0, "");
 
+
 private:
-	//T* entries_;
+
+
+	/// <summary>
+	/// 
+	/// </summary>
 	T entries_[Size];
+	//T* entries_;
 };
 
 
-
-
-
+/// <summary>
+/// 
+/// </summary>
 extern std::mt19937_64 g_randomTimeSeed;
 
 #if defined _WIN32 && !defined _MSC_VER
@@ -265,23 +394,61 @@ extern std::mt19937_64 g_randomTimeSeed;
 #undef WIN32_LEAN_AND_MEAN
 #undef NOMINMAX
 
+
+/// <summary>
+/// ミューテックス
+/// </summary>
 struct Mutex {
+
+
+	/// <summary>
+	/// 生成
+	/// </summary>
 	Mutex() { InitializeCriticalSection(&cs); }
+
+
+	/// <summary>
+	/// 破棄
+	/// </summary>
 	~Mutex() { DeleteCriticalSection(&cs); }
+
+
+	/// <summary>
+	/// ロック
+	/// </summary>
 	void lock() { EnterCriticalSection(&cs); }
+
+
+	/// <summary>
+	/// アンロック
+	/// </summary>
 	void unlock() { LeaveCriticalSection(&cs); }
 
+
 private:
+
+
+	/// <summary>
+	/// 
+	/// </summary>
 	CRITICAL_SECTION cs;
 };
+
+
 using ConditionVariable = std::condition_variable_any;
 #else
 using Mutex = std::mutex;
 using ConditionVariable = std::condition_variable;
 #endif
 
+
 #if 0
 #include <boost/detail/endian.hpp>
+/// <summary>
+/// 
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="r"></param>
 template <typename T> inline void reverseEndian(T& r) {
 	u8* begin = reinterpret_cast<u8*>(&r);
 	u8* IsEnd = reinterpret_cast<u8*>(&r) + sizeof(T);
@@ -290,4 +457,3 @@ template <typename T> inline void reverseEndian(T& r) {
 	}
 }
 #endif
-

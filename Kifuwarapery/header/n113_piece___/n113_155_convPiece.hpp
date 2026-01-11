@@ -7,6 +7,8 @@
 
 
 namespace {
+
+
 	//────────────────────────────────────────────────────────────────────────────────
 	// 非クラスメンバ 秘密 静的グローバル・オブジェクト
 	//────────────────────────────────────────────────────────────────────────────────
@@ -56,10 +58,15 @@ namespace {
 	};
 	*/
 
+
 	//────────────────────────────────────────────────────────────────────────────────
 	// bit演算１回ケチるなんて　どうかしているぜ☆（＾ｑ＾）
 	//────────────────────────────────────────────────────────────────────────────────
 	static inline constexpr Piece G_INVERSE10(const Piece pc) { return static_cast<Piece>(pc ^ 0x10); }
+
+	/// <summary>
+	/// 
+	/// </summary>
 	static const Piece g_CONV_PIECE_INVERSE10[g_PIECE_NUM] = {
 		G_INVERSE10(Piece::N00_Empty),
 		G_INVERSE10(Piece::N01_BPawn),
@@ -136,10 +143,17 @@ namespace {
 	};
 	*/
 
+
 	//────────────────────────────────────────────────────────────────────────────────
 	// 暗算表を作るなら、複数回の演算を１回にしたいんだぜ☆ｗｗｗ（＾ｑ＾）
 	//────────────────────────────────────────────────────────────────────────────────
-	// ピース が遠隔駒であるか
+
+
+	/// <summary>
+	/// ピース が遠隔駒であるか
+	/// </summary>
+	/// <param name="pc"></param>
+	/// <returns></returns>
 	static inline constexpr bool G_IS_SLIDER10(const Piece pc) { return (g_CONV_PIECE_TYPE_SLIDER_VAL & (1 << pc)) != 0; }
 	static const bool g_CONV_PIECE_IS_SLIDER10[g_PIECE_NUM] = {
 		G_IS_SLIDER10(Piece::N00_Empty),
@@ -178,31 +192,63 @@ namespace {
 }
 
 
+/// <summary>
+/// 
+/// </summary>
 class ConvPiece {
+
+
 public:
 
-	// ピースを、ピースタイプに変換だぜ☆（＾ｑ＾）
+
+	/// <summary>
+	/// ピースを、ピースタイプに変換だぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="p"></param>
+	/// <returns></returns>
 	static inline PieceType TO_PIECE_TYPE10(const Piece p) {
 		return static_cast<PieceType>(p & 15);//ビット演算を使うぜ☆（＾ｑ＾）
 		//return g_CONV_PIECE_TO_PIECE_TYPE10[p];//暗算表を使うぜ☆（＾ｑ＾）
 	}
 
-	// ピースの白黒を反転だぜ☆（＾ｑ＾）
-	static inline Piece INVERSE10(const Piece pc) { return g_CONV_PIECE_INVERSE10[pc]; }//暗算表を使うぜ☆（＾ｑ＾）
 
-	// ピースの白黒を取得だぜ☆（＾ｑ＾）
+	/// <summary>
+	/// ピースの白黒を反転だぜ☆（＾ｑ＾）
+	/// 暗算表を使うぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="pc"></param>
+	/// <returns></returns>
+	static inline Piece INVERSE10(const Piece pc) { return g_CONV_PIECE_INVERSE10[pc]; }
+
+
+	/// <summary>
+	/// ピースの白黒を取得だぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="p"></param>
+	/// <returns></returns>
 	static inline Color TO_COLOR10(const Piece p) {
 		assert(p != N00_Empty);
 		return static_cast<Color>(p >> 4);//ビット演算を使うぜ☆（＾ｑ＾）
 		//return g_CONV_PIECE_TO_COLOR10[p];//暗算表を使うぜ☆（＾ｑ＾）
 	}
 
-	// ピース が遠隔駒であるかどうか調べるぜ☆（＾ｑ＾）
-	static inline bool IS_SLIDER10(const Piece pc) { return g_CONV_PIECE_IS_SLIDER10[pc]; }//暗算表を使うぜ☆（＾ｑ＾）
 
-	// これは計算しないとタイヘンか☆（＾ｑ＾）
+	/// <summary>
+	/// ピース が遠隔駒であるかどうか調べるぜ☆（＾ｑ＾）
+	/// 暗算表を使うぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="pc"></param>
+	/// <returns></returns>
+	static inline bool IS_SLIDER10(const Piece pc) { return g_CONV_PIECE_IS_SLIDER10[pc]; }
+
+
+	/// <summary>
+	/// これは計算しないとタイヘンか☆（＾ｑ＾）
+	/// </summary>
+	/// <typeparam name="CLR"></typeparam>
+	/// <param name="pt"></param>
+	/// <returns></returns>
 	template<Color CLR>
 	static inline Piece FROM_COLOR_AND_PIECE_TYPE10(const PieceType pt) { return static_cast<Piece>((CLR << 4) | pt); }
 	static inline Piece FROM_COLOR_AND_PIECE_TYPE10(const Color c, const PieceType pt) { return static_cast<Piece>((c << 4) | pt); }
-
 };

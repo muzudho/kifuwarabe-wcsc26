@@ -4,12 +4,24 @@
 #include "../n080_common__/n080_150_overloadEnumOperators.hpp"
 #include "n119_055_utilBound.hpp"
 
+
 using Ply = int;
 
+
+/// <summary>
+/// 
+/// </summary>
 const Ply g_maxPly = 128;
+
+/// <summary>
+/// 
+/// </summary>
 const Ply g_maxPlyPlus2 = g_maxPly + 2;
 
-// 評価値
+
+/// <summary>
+/// 評価値
+/// </summary>
 enum ScoreIndex {
 	ScoreZero = 0,
 	ScoreDraw = 0,

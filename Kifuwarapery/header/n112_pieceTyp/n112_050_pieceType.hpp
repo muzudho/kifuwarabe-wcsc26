@@ -3,12 +3,21 @@
 #include "../n080_common__/n080_150_overloadEnumOperators.hpp"
 
 
-
-
+/// <summary>
+///		<pre>
+/// 駒種類
+/// 
+///		- Pro* は 元の 駒の種類に 8 を加算したもの。
+///		</pre>
+/// </summary>
 enum PieceType {
-	// Pro* は 元の 駒の種類に 8 を加算したもの。
 	PTPromote = 8,
-	N00_Occupied = 0, // 各 PieceType の or をとったもの。
+
+	/// <summary>
+	/// 各 PieceType の or をとったもの。
+	/// </summary>
+	N00_Occupied = 0,
+
 	N01_Pawn,
 	N02_Lance,
 	N03_Knight,
@@ -25,8 +34,15 @@ enum PieceType {
 	N14_Dragon,
 	N15_PieceTypeNum,
 
-	N16_GoldHorseDragon // 単にtemnplate引数として使用
+	/// <summary>
+	/// 単にtemnplate引数として使用
+	/// </summary>
+	N16_GoldHorseDragon
 };
 OverloadEnumOperators(PieceType);
 
-static const int g_PIECETYPE_NUM = PieceType::N15_PieceTypeNum; // TODO: 列挙型のサイズは、列挙型の外に出したいぜ☆（＾ｑ＾）
+
+/// <summary>
+/// TODO: 列挙型のサイズは、列挙型の外に出したいぜ☆（＾ｑ＾）
+/// </summary>
+static const int g_PIECETYPE_NUM = PieceType::N15_PieceTypeNum;
