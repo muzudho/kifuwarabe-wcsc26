@@ -1,18 +1,21 @@
 ﻿#pragma once
 
-
 #include "n160_100_bitboard.hpp"
 #include "n160_110_silverAttackBb.hpp"
 
 
-//────────────────────────────────────────────────────────────────────────────────
-// 角
-//────────────────────────────────────────────────────────────────────────────────
+/// <summary>
+/// 角の利きビットボード
+/// </summary>
 class BishopAttackBb {
+
+
 private:
 
 
-	// 各マスのbishopが利きを調べる必要があるマスの数
+	/// <summary>
+	/// 各マスのbishopが利きを調べる必要があるマスの数
+	/// </summary>
 	const int m_bishopBlockBits[SquareNum] = {
 		7,  6,  6,  6,  6,  6,  6,  6,  7,
 		6,  6,  6,  6,  6,  6,  6,  6,  6,
@@ -25,7 +28,9 @@ private:
 		7,  6,  6,  6,  6,  6,  6,  6,  7
 	};
 
-	// Magic Bitboard で利きを求める際のシフト量
+	/// <summary>
+	/// Magic Bitboard で利きを求める際のシフト量
+	/// </summary>
 	const int m_bishopShiftBits[SquareNum] = {
 		57, 58, 58, 58, 58, 58, 58, 58, 57,
 		58, 58, 58, 58, 58, 58, 58, 58, 58,
@@ -38,8 +43,12 @@ private:
 		57, 58, 58, 58, 58, 58, 58, 58, 57
 	};
 
+
 #if defined HAVE_BMI2
 #else
+	/// <summary>
+	/// 角の利きのマジックビットボード
+	/// </summary>
 	const u64 m_bishopMagic[SquareNum] = {
 		UINT64_C(0x20101042c8200428), UINT64_C(0x840240380102),     UINT64_C(0x800800c018108251),
 		UINT64_C(0x82428010301000),   UINT64_C(0x481008201000040),  UINT64_C(0x8081020420880800),
@@ -71,40 +80,108 @@ private:
 	};
 #endif
 
+	/// <summary>
+	/// 
+	/// </summary>
 	Bitboard	m_controllBb_[20224];
+
+	/// <summary>
+	/// 
+	/// </summary>
 	int			m_controllBbIndex_[SquareNum];
+
+	/// <summary>
+	/// 
+	/// </summary>
 	Bitboard	m_bishopBlockMask_[SquareNum];
+
+	/// <summary>
+	/// 
+	/// </summary>
 	Bitboard	m_controllBbToEdge_[SquareNum];
+
 
 public:
 
+
 #if defined FIND_MAGIC
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="sqare"></param>
+	/// <returns></returns>
 	u64 findMagicBishop(const Square sqare);
 #endif // #if defined FIND_MAGIC
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="square"></param>
+	/// <returns></returns>
 	Bitboard BishopBlockMaskCalc(const Square square) const;
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="square"></param>
+	/// <param name="occupied"></param>
+	/// <returns></returns>
 	Bitboard BishopAttackCalc(const Square square, const Bitboard& occupied) const;
+
+
+	/// <summary>
+	/// 
+	/// </summary>
 	void InitBishopAttacks();
 
-	// 障害物が無いときの利きの Bitboard
-	// g_rookAttack, g_bishopAttack, g_lanceAttack を設定してから、この関数を呼ぶこと。
+
+	/// <summary>
+	/// 障害物が無いときの利きの Bitboard
+	/// g_rookAttack, g_bishopAttack, g_lanceAttack を設定してから、この関数を呼ぶこと。
+	/// </summary>
 	void InitializeToEdge();
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	inline Bitboard GetControllBbToEdge(const Square sq) const {
 		return this->m_controllBbToEdge_[sq];
 	}
 
-	// todo: テーブル引きを検討
+
+	/// <summary>
+	/// todo: テーブル引きを検討
+	/// </summary>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	inline Bitboard BishopStepAttacks(const Square sq) const {
 		return g_silverAttackBb.GetControllBb(Black, sq) & g_silverAttackBb.GetControllBb(White, sq);
 	}
 
+
 	#if defined HAVE_BMI2
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="thisBitboard"></param>
+		/// <param name="sq"></param>
+		/// <returns></returns>
 		inline Bitboard BishopAttack(const Bitboard* thisBitboard, const Square sq) const {
 			const Bitboard block((*thisBitboard) & this->m_bishopBlockMask_[sq]);
 			return this->m_controllBb_[this->m_controllBbIndex_[sq] + OccupiedToIndex(block, this->m_bishopBlockMask_[sq])];
 		}
 	#else
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="thisBitboard"></param>
+		/// <param name="sq"></param>
+		/// <returns></returns>
 		inline Bitboard BishopAttack(const Bitboard& thisBitboard, const Square sq) const {
 
 			const Bitboard block(thisBitboard & this->m_bishopBlockMask_[sq]);
@@ -115,9 +192,10 @@ public:
 			];
 		}
 	#endif
-
 };
 
 
-// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// <summary>
+/// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// </summary>
 extern BishopAttackBb g_bishopAttackBb;

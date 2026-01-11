@@ -42,9 +42,14 @@ namespace {
 	//────────────────────────────────────────────────────────────────────────────────
 	// きふわらべは 計算が苦手なので、早見表を作っておこうぜ☆（＾ｑ＾）
 	//────────────────────────────────────────────────────────────────────────────────
-	// 打とうとしている駒の種類(pt)に、盤上の升の数-1（80）を足すことで、持ち駒用の特別マス番号(from)になる☆
-	// 持ち駒用の特別マス番号は、 <<7 すると Move書式に変換できるぜ☆
-	// todo: PieceType を HandPiece に変更したい
+
+	/// <summary>
+	/// 打とうとしている駒の種類(pt)に、盤上の升の数-1（80）を足すことで、持ち駒用の特別マス番号(from)になる☆
+	/// 持ち駒用の特別マス番号は、 <<7 すると Move書式に変換できるぜ☆
+	/// todo: PieceType を HandPiece に変更したい
+	/// </summary>
+	/// <param name="handPt"></param>
+	/// <returns></returns>
 	static inline Move G_PT_TO_DA_MOVE(const PieceType handPt) { return static_cast<Move>( static_cast<Square>(Square::SquareNum - 1 + handPt) << 7); }
 	static const Move g_CONV_MOVE_PT_TO_DA_MOVE[g_PIECETYPE_NUM] = {
 		G_PT_TO_DA_MOVE(PieceType::N00_Occupied),
@@ -66,33 +71,68 @@ namespace {
 }
 
 
-// Ａ　→　指し手　変換、または
-// 指し手　→　Ａ　変換。
+/// <summary>
+/// Ａ　→　指し手　変換、または
+/// 指し手　→　Ａ　変換。
+/// </summary>
 class ConvMove {
+
+
 public:
 
-	// 移動元から指し手に変換
+
+	/// <summary>
+	/// 移動元から指し手に変換
+	/// </summary>
+	/// <param name="from"></param>
+	/// <returns></returns>
 	static inline Move FROM_SRC10(const Square from) { return static_cast<Move>(from << 7); }
 
-	// 駒の種類から MOVE表記（打ではない）に変換
+
+	/// <summary>
+	/// 駒の種類から MOVE表記（打ではない）に変換
+	/// </summary>
+	/// <param name="pt"></param>
+	/// <returns></returns>
 	static inline Move FROM_PIECETYPE_ONBOARD10(
 		const PieceType pt
 	) {
 		return static_cast<Move>(pt << 16);
 	}
 
-	// 駒の種類から MOVE表記（打）に変換
+
+	/// <summary>
+	/// 駒の種類から MOVE表記（打）に変換
+	/// </summary>
+	/// <param name="pt"></param>
+	/// <returns></returns>
 	static inline Move FROM_PIECETYPE_DA10(
 		const PieceType pt
 		) {
 		return g_CONV_MOVE_PT_TO_DA_MOVE[pt];
 	}
 
-	// 取った駒の種類から指し手に変換
+
+	/// <summary>
+	/// 取った駒の種類から指し手に変換
+	/// </summary>
+	/// <param name="captured"></param>
+	/// <returns></returns>
 	static inline Move FROM_CAPTURED_PIECE_TYPE10(const PieceType captured) { return static_cast<Move>(captured << 20); }
 
-	// 移動する駒の種類、移動元、移動先　から指し手に変換
-	static inline Move FROM_PT_SRC_DST20( //新型☆（＾ｑ＾）
+
+	/// <summary>
+	///		<pre>
+	/// 移動する駒の種類、移動元、移動先　から指し手に変換
+	/// 
+	///		- 新型☆（＾ｑ＾）
+	///		</pre>
+	/// </summary>
+	/// <param name="pieceTypeAsMove"></param>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
+	/// <returns></returns>
+	static inline Move FROM_PT_SRC_DST20(
 		const Move pieceTypeAsMove,
 		const Square from,
 		const Square to
@@ -104,8 +144,21 @@ public:
 			static_cast<Move>(to) // 移動先の Square→Move は、書式変換要らず☆（＾ｑ＾）
 			;
 	}
-	static inline Move FROM_PT_SRC_DST30( //旧型☆（＾ｑ＾）
-		const PieceType pt, // 新型なら、ここをムーブにできるぜ☆（＾ｑ＾）
+
+
+	/// <summary>
+	///		<pre>
+	/// 移動する駒の種類、移動元、移動先　から指し手に変換
+	/// 
+	///			- 旧型☆（＾ｑ＾）
+	///		</pre>
+	/// </summary>
+	/// <param name="pt">新型なら、ここをムーブにできるぜ☆（＾ｑ＾）</param>
+	/// <param name="from"></param>
+	/// <param name="to"></param>
+	/// <returns></returns>
+	static inline Move FROM_PT_SRC_DST30(
+		const PieceType pt,
 		const Square from,
 		const Square to
 	) {
@@ -118,7 +171,13 @@ public:
 			;
 	}
 
-	// 駒を打つ手の符号（Move）を作成するぜ☆（＾ｑ＾）
+
+	/// <summary>
+	/// 駒を打つ手の符号（Move）を作成するぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="pieceTypeAsDaMove"></param>
+	/// <param name="to"></param>
+	/// <returns></returns>
 	static inline Move Convert30_MakeDropMove_da(
 		const Move pieceTypeAsDaMove,
 		const Square to) {
@@ -128,5 +187,4 @@ public:
 			static_cast<Move>(to) // 移動先の Square→Move は、書式変換要らず☆（＾ｑ＾）
 			;
 	}
-
 };

@@ -5,19 +5,38 @@
 #include "n160_160_kingAttackBb.hpp"
 
 
-
+/// <summary>
+/// 馬
+/// </summary>
 class HorseAttackBb {
+
+
 public:
 
+
+	/// <summary>
+	/// 利きビットボード取得
+	/// </summary>
+	/// <param name="thisBitboard"></param>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	inline Bitboard GetControllBb(const Bitboard& thisBitboard, const Square sq) const {
 		return g_bishopAttackBb.BishopAttack(thisBitboard, sq) | g_kingAttackBb.GetControllBb(sq);
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	inline Bitboard GetControllBbToEdge(const Square sq) const {
 		return g_bishopAttackBb.GetControllBbToEdge(sq) | g_kingAttackBb.GetControllBb(sq);
 	}
 };
 
 
-// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// <summary>
+/// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// </summary>
 extern const HorseAttackBb g_horseAttackBb;

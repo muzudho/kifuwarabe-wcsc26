@@ -2,11 +2,24 @@
 
 #include "n160_100_bitboard.hpp"
 
+
 //────────────────────────────────────────────────────────────────────────────────
 // マスク
 //────────────────────────────────────────────────────────────────────────────────
+
+
+/// <summary>
+/// マスク・ビットボード☆
+/// </summary>
 class SetMaskBb {
+
+
 private:
+
+
+	/// <summary>
+	/// 
+	/// </summary>
 	const Bitboard m_setMaskBB_[SquareNum] = {
 		Bitboard(UINT64_C(1) << 0,                 0),  // 0 , I9
 		Bitboard(UINT64_C(1) << 1,                 0),  // 1 , I8
@@ -91,30 +104,75 @@ private:
 		Bitboard(0, UINT64_C(1) << 17)   // 80, A1
 	};
 
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	inline Bitboard GetSetMaskBb(const Square sq) const {
 		return this->m_setMaskBB_[sq];
 	}
 
+
 	//────────────────────────────────────────────────────────────────────────────────
 	// 論理演算
 	//────────────────────────────────────────────────────────────────────────────────
+	
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="thisBitboard"></param>
+	/// <param name="sq"></param>
 	void ClearBit(Bitboard* thisBitboard, const Square sq) const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="thisBitboard"></param>
+	/// <param name="sq"></param>
 	void XorBit(Bitboard* thisBitboard, const Square sq) const;
 
 	void XorBit(Bitboard* thisBitboard, const Square sq1, const Square sq2) const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="thisBitboard"></param>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	bool IsSet(const Bitboard* thisBitboard, const Square sq) const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="thisBitboard"></param>
+	/// <param name="sq"></param>
 	void AddBit(Bitboard* thisBitboard, const Square sq) const;
 
-public:
-	Bitboard IndexToOccupied(const int index, const int bits, const Bitboard& blockMask) const;
 
+public:
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="index"></param>
+	/// <param name="bits"></param>
+	/// <param name="blockMask"></param>
+	/// <returns></returns>
+	Bitboard IndexToOccupied(const int index, const int bits, const Bitboard& blockMask) const;
 };
 
 
-// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// <summary>
+/// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// </summary>
 extern const SetMaskBb g_setMaskBb;

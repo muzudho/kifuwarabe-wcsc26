@@ -5,14 +5,18 @@
 #include "n160_140_goldAttackBb.hpp"
 
 
-//────────────────────────────────────────────────────────────────────────────────
-// 飛
-//────────────────────────────────────────────────────────────────────────────────
+/// <summary>
+/// 飛の利きビットボード
+/// </summary>
 class RookAttackBb {
+
+
 private:
 
 
-	// 各マスのrookが利きを調べる必要があるマスの数
+	/// <summary>
+	/// 各マスのrookが利きを調べる必要があるマスの数
+	/// </summary>
 	const int m_rookBlockBits_[SquareNum] = {
 		14, 13, 13, 13, 13, 13, 13, 13, 14,
 		13, 12, 12, 12, 12, 12, 12, 12, 13,
@@ -25,11 +29,14 @@ private:
 		14, 13, 13, 13, 13, 13, 13, 13, 14
 	};
 
-	// Magic Bitboard で利きを求める際のシフト量
-	// g_rookShiftBits[17], g_rookShiftBits[53] はマジックナンバーが見つからなかったため、
-	// シフト量を 1 つ減らす。(テーブルサイズを 2 倍にする。)
-	// この方法は issei_y さんに相談したところ、教えて頂いた方法。
-	// PEXT Bitboardを使用する際はシフト量を減らす必要が無い。
+
+	/// <summary>
+	/// Magic Bitboard で利きを求める際のシフト量
+	/// g_rookShiftBits[17], g_rookShiftBits[53] はマジックナンバーが見つからなかったため、
+	/// シフト量を 1 つ減らす。(テーブルサイズを 2 倍にする。)
+	/// この方法は issei_y さんに相談したところ、教えて頂いた方法。
+	/// PEXT Bitboardを使用する際はシフト量を減らす必要が無い。
+	/// </summary>
 	const int m_rookShiftBits_[SquareNum] = {
 		50, 51, 51, 51, 51, 51, 51, 51, 50,
 #if defined HAVE_BMI2
@@ -50,8 +57,12 @@ private:
 		50, 51, 51, 51, 51, 51, 51, 51, 50
 	};
 
+
 #if defined HAVE_BMI2
 #else
+	/// <summary>
+	/// 飛車の利きのマジックビットボード
+	/// </summary>
 	const u64 m_rookMagic_[SquareNum] = {
 		UINT64_C(0x140000400809300),  UINT64_C(0x1320000902000240), UINT64_C(0x8001910c008180),
 		UINT64_C(0x40020004401040),   UINT64_C(0x40010000d01120),   UINT64_C(0x80048020084050),
@@ -83,59 +94,127 @@ private:
 };
 #endif
 
-
-	// メモリ節約の為、1次元配列にして無駄が無いようにしている。
 #if defined HAVE_BMI2
+	/// <summary>
+	/// メモリ節約の為、1次元配列にして無駄が無いようにしている。
+	/// </summary>
 	Bitboard m_controllBb_[495616];
 #else
+	/// <summary>
+	/// メモリ節約の為、1次元配列にして無駄が無いようにしている。
+	/// </summary>
 	Bitboard m_controllBb_[512000];
 #endif
 
+	/// <summary>
+	/// 
+	/// </summary>
 	int		m_rookAttackIndex[SquareNum];
-	Bitboard m_rookBlockMask_[SquareNum];
-	Bitboard m_controllBbToEdge_[SquareNum];
 
+	/// <summary>
+	/// 
+	/// </summary>
+	Bitboard m_rookBlockMask_[SquareNum];
+
+	/// <summary>
+	/// 
+	/// </summary>
+	Bitboard m_controllBbToEdge_[SquareNum];
 
 
 public:
 
+
 #if defined FIND_MAGIC
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="sqare"></param>
+	/// <returns></returns>
 	u64 findMagicRook(const Square sqare);
 #endif // #if defined FIND_MAGIC
 
-	// 初期化用
+
+	/// <summary>
+	/// 初期化用
+	/// </summary>
+	/// <param name="square"></param>
+	/// <returns></returns>
 	Bitboard RookBlockMaskCalc(const Square square) const;
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="square"></param>
+	/// <param name="occupied"></param>
+	/// <returns></returns>
 	Bitboard RookAttackCalc(const Square square, const Bitboard& occupied) const;
 
+
+	/// <summary>
+	/// 
+	/// </summary>
 	void InitRookAttacks();
 
-	// 障害物が無いときの利きの Bitboard
-	// g_rookAttack, g_bishopAttack, g_lanceAttack を設定してから、この関数を呼ぶこと。
+
+	/// <summary>
+	/// 障害物が無いときの利きの Bitboard
+	/// g_rookAttack, g_bishopAttack, g_lanceAttack を設定してから、この関数を呼ぶこと。
+	/// </summary>
 	void InitializeToEdge();
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	inline Bitboard GetControllBbToEdge(const Square sq) const {
 		return this->m_controllBbToEdge_[sq];
 	}
 
-	// 飛車の縦だけの利き。香車の利きを使い、index を共通化することで高速化している。
+
+	/// <summary>
+	/// 飛車の縦だけの利き。香車の利きを使い、index を共通化することで高速化している。
+	/// </summary>
+	/// <param name="thisBitboard"></param>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	inline Bitboard GetControllBbFile(const Bitboard* thisBitboard, const Square sq) const {
 		const int part = Bitboard::Part(sq);
 		const int index = ((*thisBitboard).GetP(part) >> g_slideBits.m_slide[sq]) & 127;
 		return g_lanceAttackBb.m_controllBb[Black][sq][index] | g_lanceAttackBb.m_controllBb[White][sq][index];
 	}
 
-	// todo: テーブル引きを検討
+
+	/// <summary>
+	/// todo: テーブル引きを検討
+	/// </summary>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	inline Bitboard RookStepAttacks(const Square sq) const {
 		return g_goldAttackBb.GetControllBb(Black, sq) & g_goldAttackBb.GetControllBb(White, sq);
 	}
 
+
 	#if defined HAVE_BMI2
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="thisBitboard"></param>
+		/// <param name="sq"></param>
+		/// <returns></returns>
 		inline Bitboard GetControllBb(Bitboard& thisBitboard, const Square sq) const {
 			const Bitboard block(thisBitboard & this->m_rookBlockMask_[sq]);
 			return this->m_controllBb_[this->m_rookAttackIndex[sq] + OccupiedToIndex(block, this->m_rookBlockMask_[sq])];
 		}
 	#else
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="thisBitboard"></param>
+		/// <param name="sq"></param>
+		/// <returns></returns>
 		inline Bitboard GetControllBb(const Bitboard& thisBitboard, const Square sq) const {
 			const Bitboard block(thisBitboard & this->m_rookBlockMask_[sq]);
 			return this->m_controllBb_[
@@ -144,9 +223,10 @@ public:
 			];
 		}
 	#endif
-
 };
 
 
-// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// <summary>
+/// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// </summary>
 extern RookAttackBb g_rookAttackBb;

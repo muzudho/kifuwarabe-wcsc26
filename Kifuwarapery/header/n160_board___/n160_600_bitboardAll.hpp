@@ -3,12 +3,14 @@
 #include "../n160_board___/n160_106_inFrontMaskBb.hpp"
 
 
-// Bitboard の全ての bit に対して同様の処理を行う際に使用するマクロ
-// xxx に処理を書く。
-// xxx には template 引数を 2 つ以上持つクラスや関数は () でくくらないと使えない。
-// これはマクロの制約。
-// 同じ処理のコードが 2 箇所で生成されるため、コードサイズが膨れ上がる。
-// その為、あまり多用すべきでないかも知れない。
+//// <summary>
+/// Bitboard の全ての bit に対して同様の処理を行う際に使用するマクロ
+/// xxx に処理を書く。
+/// xxx には template 引数を 2 つ以上持つクラスや関数は () でくくらないと使えない。
+/// これはマクロの制約。
+/// 同じ処理のコードが 2 箇所で生成されるため、コードサイズが膨れ上がる。
+/// その為、あまり多用すべきでないかも知れない。
+/// </summary>
 #define FOREACH_BB(bb, sq, xxx)					\
 	do {										\
 		while (bb.GetP(0)) {					\
@@ -21,6 +23,14 @@
 		}										\
 	} while (false)
 
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="bb"></param>
+/// <param name="sq"></param>
+/// <param name="t"></param>
+/// <returns></returns>
 template <typename T> FORCE_INLINE void foreachBB(Bitboard& bb, Square& sq, T t) {
 	while (bb.GetP(0)) {
 		sq = bb.PopFirstOneRightFromI9();

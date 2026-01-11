@@ -1,14 +1,22 @@
 ﻿#pragma once
 
-
 #include "../n110_square__/n110_150_file.hpp"
 #include "../n110_square__/n110_500_convSquare.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 
 
+/// <summary>
+/// 列を指すビットボード
+/// </summary>
 class FileMaskBb {
+
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
 	const Bitboard m_I = Bitboard(UINT64_C(0x1ff) << (9 * 0), 0);
 	const Bitboard m_H = Bitboard(UINT64_C(0x1ff) << (9 * 1), 0);
 	const Bitboard m_G = Bitboard(UINT64_C(0x1ff) << (9 * 2), 0);
@@ -19,6 +27,9 @@ public:
 	const Bitboard m_B = Bitboard(0, 0x1ff << (9 * 0));
 	const Bitboard m_A = Bitboard(0, 0x1ff << (9 * 1));
 
+	/// <summary>
+	/// 
+	/// </summary>
 	const Bitboard m_fileMask[FileNum] = {
 		this->m_I,
 		this->m_H,
@@ -31,19 +42,33 @@ public:
 		this->m_A
 	};
 
+
 public:
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="f"></param>
+	/// <returns></returns>
 	inline Bitboard GetFileMask(const File f) const {
 		return this->m_fileMask[f];
 	}
 
-	// 直接テーブル引きすべきだと思う。
+
+	/// <summary>
+	/// 直接テーブル引きすべきだと思う。
+	/// </summary>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	inline Bitboard GetSquareFileMask(const Square sq) const {
 		const File f = ConvSquare::TO_FILE10(sq);
 		return this->GetFileMask(f);
 	}
-
 };
 
 
-// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// <summary>
+/// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// </summary>
 extern const FileMaskBb g_fileMaskBb;

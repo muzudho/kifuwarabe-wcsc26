@@ -3,24 +3,43 @@
 #include "n160_100_bitboard.hpp"
 
 
-//────────────────────────────────────────────────────────────────────────────────
-// 玉の利き
-//────────────────────────────────────────────────────────────────────────────────
+/// <summary>
+/// 玉の利きビットボード
+/// </summary>
 const class KingAttackBb  {
+
+
 private:
-	// メモリ節約の為、1次元配列にして無駄が無いようにしている。
-	Bitboard m_controllBb_[SquareNum]; // TODO: const にしたい。
+
+
+	/// <summary>
+	/// メモリ節約の為、1次元配列にして無駄が無いようにしている。
+	/// TODO: const にしたい。
+	/// </summary>
+	Bitboard m_controllBb_[SquareNum];
+
 
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
 	void Initialize();
 
-	// Bitboard で直接利きを返す関数。
+
+	/// <summary>
+	/// Bitboard で直接利きを返す関数。
+	/// </summary>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	inline Bitboard GetControllBb(const Square sq) const {
 		return this->m_controllBb_[sq];
 	}
 };
 
 
-// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// <summary>
+/// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// </summary>
 extern KingAttackBb g_kingAttackBb;

@@ -6,8 +6,15 @@
 #include "../n160_board___/n160_100_bitboard.hpp"
 
 
+/// <summary>
+/// 段のマスクのビットボード
+/// </summary>
 class RankMaskBb {
+
+
 public:
+
+
 	const Bitboard m_9 = Bitboard(UINT64_C(0x40201008040201) << 0, 0x201 << 0);
 	const Bitboard m_8 = Bitboard(UINT64_C(0x40201008040201) << 1, 0x201 << 1);
 	const Bitboard m_7 = Bitboard(UINT64_C(0x40201008040201) << 2, 0x201 << 2);
@@ -30,11 +37,25 @@ public:
 		this->m_1
 	};
 
+
 public:
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="r"></param>
+	/// <returns></returns>
 	inline Bitboard GetRankMask(const Rank r) const {
 		return this->m_rankMask[r];
 	}
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="R"></typeparam>
+	/// <returns></returns>
 	template <Rank R>
 	inline Bitboard GetRankMask() const {
 		static_assert(Rank9 <= R && R <= Rank1, "");
@@ -49,14 +70,20 @@ public:
 			: /*R == Rank1 ?*/ this->m_1);
 	}
 
-	// 直接テーブル引きすべきだと思う。
+
+	/// <summary>
+	/// 直接テーブル引きすべきだと思う。
+	/// </summary>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	inline Bitboard GetSquareRankMask(const Square sq) const {
 		const Rank r = ConvSquare::TO_RANK10(sq);
 		return this->GetRankMask(r);
 	}
-
 };
 
 
-// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// <summary>
+/// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// </summary>
 extern const RankMaskBb g_rankMaskBb;

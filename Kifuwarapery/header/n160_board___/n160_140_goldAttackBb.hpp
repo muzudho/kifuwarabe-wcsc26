@@ -3,29 +3,62 @@
 #include "n160_100_bitboard.hpp"
 
 
-//────────────────────────────────────────────────────────────────────────────────
-// 金
-//────────────────────────────────────────────────────────────────────────────────
+/// <summary>
+/// 金の利きビットボード
+/// </summary>
 class GoldAttackBb {
+
+
 private:
+
+
+	/// <summary>
+	/// 
+	/// </summary>
 	Bitboard m_controllBb_[g_COLOR_NUM][SquareNum];
+
+	/// <summary>
+	/// 
+	/// </summary>
 	Bitboard m_goldCheckTable_[g_COLOR_NUM][SquareNum];
+
 
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
 	void Initialize();
+
+	/// <summary>
+	/// 
+	/// </summary>
 	void InitCheckTableGold();
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="c"></param>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	inline Bitboard GetControllBb(const Color c, const Square sq) const {
 		return this->m_controllBb_[c][sq];
 	}
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="c"></param>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	inline Bitboard GoldCheckTable(const Color c, const Square sq) const {
 		return this->m_goldCheckTable_[c][sq];
 	}
-
 };
 
 
-// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// <summary>
+/// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// </summary>
 extern GoldAttackBb g_goldAttackBb;

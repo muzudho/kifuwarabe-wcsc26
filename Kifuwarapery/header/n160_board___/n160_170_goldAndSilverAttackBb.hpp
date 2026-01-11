@@ -5,17 +5,28 @@
 #include "n160_140_goldAttackBb.hpp"
 
 
-
+/// <summary>
+/// 金と銀
+/// </summary>
 class GoldAndSilverAttackBb {
+
+
 public:
 
-	// 前方3方向の位置のBitboard
+
+	/// <summary>
+	/// 前方3方向の位置のBitboard
+	/// </summary>
+	/// <param name="c"></param>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	inline Bitboard GoldAndSilverAttacks(const Color c, const Square sq) const {
 		return g_goldAttackBb.GetControllBb(c, sq) & g_silverAttackBb.GetControllBb(c, sq);
 	}
-
 };
 
 
-// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// <summary>
+/// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// </summary>
 extern const GoldAndSilverAttackBb g_goldAndSilverAttackBb;

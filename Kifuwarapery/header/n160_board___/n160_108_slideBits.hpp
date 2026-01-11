@@ -3,10 +3,19 @@
 #include "../n110_square__/n110_500_convSquare.hpp"
 
 
+/// <summary>
+/// 
+/// </summary>
 class SlideBits {
+
+
 public:
-	// 指定した位置の属する file の bit を shift し、
-	// index を求める為に使用する。
+
+
+	/// <summary>
+	/// 指定した位置の属する file の bit を shift し、
+	/// index を求める為に使用する。
+	/// </summary>
 	const int m_slide[SquareNum] = {
 		1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 ,
 		10, 10, 10, 10, 10, 10, 10, 10, 10,
@@ -18,9 +27,10 @@ public:
 		1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 ,
 		10, 10, 10, 10, 10, 10, 10, 10, 10
 	};
-
 };
 
 
-// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// <summary>
+/// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// </summary>
 extern const SlideBits g_slideBits;

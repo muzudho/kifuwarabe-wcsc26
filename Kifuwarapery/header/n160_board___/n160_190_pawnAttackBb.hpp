@@ -3,24 +3,43 @@
 #include "n160_100_bitboard.hpp"
 
 
-//────────────────────────────────────────────────────────────────────────────────
-// 歩
-//────────────────────────────────────────────────────────────────────────────────
+/// <summary>
+/// 歩ビットボード
+/// </summary>
 class PawnAttackBb {
+
+
 private:
+
+
+	/// <summary>
+	/// 
+	/// </summary>
 	Bitboard m_controllBb_[g_COLOR_NUM][SquareNum];
+
 
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
 	void Initialize();
 
+
+	/// <summary>
+	/// 利きビットボード取得
+	/// </summary>
+	/// <param name="c"></param>
+	/// <param name="sq"></param>
+	/// <returns></returns>
 	inline Bitboard GetControllBb(const Color c, const Square sq) const {
 		return this->m_controllBb_[c][sq];
 	}
-
 };
 
 
-// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// <summary>
+/// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// </summary>
 extern PawnAttackBb g_pawnAttackBb;
-

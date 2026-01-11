@@ -1,8 +1,22 @@
 ﻿#pragma once
 
 
+/// <summary>
+/// 成りモード☆？（＾ｑ＾）
+/// </summary>
 enum PromoteMode {
-	Promote,         // 必ず成る
-	NonPromote,      // 必ず不成
+	/// <summary>
+	/// 必ず成る
+	/// </summary>
+	Promote,
+
+	/// <summary>
+	/// 必ず成らず
+	/// </summary>
+	NonPromote,
+
+	/// <summary>
+	/// 
+	/// </summary>
 	PromoteModeNone
 };

@@ -11,9 +11,15 @@
 extern const RankMaskBb g_rankMaskBb;
 
 
-
+/// <summary>
+/// 
+/// </summary>
 class InFrontMaskBb {
+
+
 public:
+
+
 	// g_InFrontOfRank9Black...
 	const Bitboard m_ofRank9Black = Bitboard::CreateAllZeroBB();
 	const Bitboard m_ofRank8Black = g_rankMaskBb.GetRankMask<Rank9>();
@@ -35,7 +41,9 @@ public:
 	const Bitboard m_ofRank8White = m_ofRank7White | g_rankMaskBb.GetRankMask<Rank7>();
 	const Bitboard m_ofRank9White = m_ofRank8White | g_rankMaskBb.GetRankMask<Rank8>();
 
-
+	/// <summary>
+	/// 
+	/// </summary>
 	const Bitboard m_inFrontMask[g_COLOR_NUM][RankNum] = {
 		{
 			this->m_ofRank9Black,
@@ -61,18 +69,35 @@ public:
 		}
 	};
 
+
 public:
 
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="US"></typeparam>
+	/// <param name="r"></param>
+	/// <returns></returns>
 	template <Color US>
 	inline Bitboard GetInFrontMask(const Rank r) const {
 		return this->m_inFrontMask[US][r];
 	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="c"></param>
+	/// <param name="r"></param>
+	/// <returns></returns>
 	inline Bitboard GetInFrontMask(const Color c, const Rank r) const {
 		return this->m_inFrontMask[c][r];
 	}
-
 };
 
 
-// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// <summary>
+/// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
+/// </summary>
 extern const InFrontMaskBb g_inFrontMaskBb;
