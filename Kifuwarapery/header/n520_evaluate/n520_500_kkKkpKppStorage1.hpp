@@ -447,7 +447,7 @@ public:
 							if (kppCacheIo.WriteLv3Files(dirName, k1, p1, KPP))
 							{
 #if defined(MODE_CACHE_EVAL)
-								SYNCCOUT << "(^q^) KPP: p1=" << std::to_string(p1) << "/" << std::to_string(fe_end) << " writed!" << SYNCENDL;
+								SYNCCOUT << "(^q^) KPP: k1=" << std::to_string(k1) << " p1=" << std::to_string(p1) << "/" << std::to_string(fe_end) << " writed!" << SYNCENDL;
 #endif
 							}
 							else { goto gt_EndKPP; }// エラー
