@@ -146,10 +146,10 @@ void HerosPub::WaitForThinkFinished() {
 /// <param name="limits"></param>
 /// <param name="searchMoves"></param>
 void HerosPub::StartThinking(
+	const GameStats& gameStats,
 	const Position& position,
 	const LimitsDuringGo& limits,
-	const std::vector<Move>& searchMoves
-)
+	const std::vector<Move>& searchMoves)
 {
 #if defined LEARN
 #else
@@ -160,6 +160,7 @@ void HerosPub::StartThinking(
 	position.GetRucksack()->m_signals.m_stopOnPonderHit = position.GetRucksack()->m_signals.m_firstRootMove = false;
 	position.GetRucksack()->m_signals.m_stop = position.GetRucksack()->m_signals.m_failedLowAtRoot = false;
 
+	position.GetRucksack()->m_gameStats = gameStats;
 	position.GetRucksack()->m_rootPosition = position;
 	position.GetRucksack()->m_limits = limits;
 	position.GetRucksack()->m_rootMoves.clear();

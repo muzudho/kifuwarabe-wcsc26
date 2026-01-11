@@ -8,6 +8,7 @@
 #include "../n160_board___/n160_150_rookAttackBb.hpp"
 #include "../n160_board___/n160_220_queenAttackBb.hpp"
 #include "../n160_board___/n160_230_setMaskBb.hpp"
+#include "../n220_position/n220_645_gameStats.hpp"
 #include "../n223_move____/n223_060_stats.hpp"
 #include "../n350_pieceTyp/n350_040_ptEvent.hpp"
 #include "../n350_pieceTyp/n350_500_ptPrograms.hpp"
@@ -18,20 +19,19 @@
 #include "../n640_searcher/n640_440_splitedNode.hpp"
 #include "../n760_thread__/n760_400_herosPub.hpp"
 #include "../n800_learn___/n800_100_stopwatch.hpp"
-//#include "../n885_searcher/n885_600_iterativeDeepeningLoop.hpp"
 #include "n885_510_hitchhiker.hpp"	// FIXME:
 
 using namespace std;
-
 using History = Stats<false>;
 using Gains   = Stats<true>;
 
 
 /// <summary>
 ///		<pre>
-/// 元の名前：　Ｓｅａｒｃｈｅｒ
+/// リュックサック
 /// 
-///		- 検索のための構造体？
+///		- 元の名前：　Ｓｅａｒｃｈｅｒ
+///		- 探索スレッドに渡されるデータのかたまり。
 ///		</pre>
 /// </summary>
 class Rucksack {
@@ -43,12 +43,12 @@ public:
 	/// <summary>
 	/// シグナル？
 	/// </summary>
-	volatile SignalsType	m_signals;
+	volatile SignalsType m_signals;
 
 	/// <summary>
 	/// 思考用の時間などの上限☆？
 	/// </summary>
-	LimitsDuringGo		m_limits;
+	LimitsDuringGo m_limits;
 
 	/// <summary>
 	///		<pre>
@@ -56,49 +56,49 @@ public:
 	/// 送られてきた棋譜。（現局面までの指し手のスタック）
 	///		</pre>
 	/// </summary>
-	std::vector<Move>		m_ourMoves;
+	std::vector<Move> m_ourMoves;
 
 	/// <summary>
 	/// 検索用タイマー？
 	/// </summary>
-	Stopwatch				m_stopwatch;
+	Stopwatch m_stopwatch;
 
 	/// <summary>
 	/// ステータス？
 	/// </summary>
-	StateStackPtr			m_setUpStates;
+	StateStackPtr m_setUpStates;
 
 	/// <summary>
 	/// ルート？ 前回の反復深化探索☆？（イテレーション）の結果が入っているみたいだぜ☆
 	/// </summary>
-	std::vector<RootMove>	m_rootMoves;
+	std::vector<RootMove> m_rootMoves;
 
 #if defined LEARN
 	/// <summary>
 	/// アルファ
 	/// </summary>
-	ScoreIndex					m_alpha;
+	ScoreIndex m_alpha;
 
 	/// <summary>
 	/// ベータ
 	/// </summary>
-	ScoreIndex					m_beta;
+	ScoreIndex m_beta;
 #endif
 
 	/// <summary>
 	/// 本譜のサイズ？
 	/// </summary>
-	size_t					m_pvSize;
+	size_t m_pvSize;
 
 	/// <summary>
 	/// インデックス？
 	/// </summary>
-	size_t					m_pvIdx;
+	size_t m_pvIdx;
 
 	/// <summary>
 	/// 時間管理
 	/// </summary>
-	TimeManager				m_timeMgr;
+	TimeManager m_timeMgr;
 
 
 	/// <summary>
@@ -132,19 +132,19 @@ public:
 	/// <summary>
 	/// ヒストリー？
 	/// </summary>
-	History					m_history;
+	History m_history;
 
 
 	/// <summary>
 	/// ゲインズ？
 	/// </summary>
-	Gains					m_gains;
+	Gains m_gains;
 
 
 	/// <summary>
 	/// トランジション・テーブル。
 	/// </summary>
-	TranspositionTable		m_tt;
+	TranspositionTable m_tt;
 
 #if defined INANIWA_SHIFT
 	InaniwaFlag				inaniwaFlag;
@@ -152,6 +152,11 @@ public:
 #if defined BISHOP_IN_DANGER
 	BishopInDangerFlag		bishopInDangerFlag;
 #endif
+
+	/// <summary>
+	/// ゲームの統計的なデータ。
+	/// </summary>
+	GameStats m_gameStats;
 
 	/// <summary>
 	/// 開始局面？

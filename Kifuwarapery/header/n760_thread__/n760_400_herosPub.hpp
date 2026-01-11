@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "../n080_common__/n080_100_common.hpp"
+#include "../n220_position/n220_645_gameStats.hpp"
 #include "../n223_move____/n223_040_nodeType.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"
 #include "../n440_movStack/n440_500_nextmoveEvent.hpp"
@@ -113,8 +114,11 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="limits"></param>
 	/// <param name="searchMoves"></param>
-	void StartThinking(const Position& pos, const LimitsDuringGo& limits,
-					   const std::vector<Move>& searchMoves);
+	void StartThinking(
+		const GameStats& gameStats,
+		const Position& pos,
+		const LimitsDuringGo& limits,
+		const std::vector<Move>& searchMoves);
 
 
 public:

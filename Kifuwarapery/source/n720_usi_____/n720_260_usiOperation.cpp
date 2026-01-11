@@ -141,7 +141,7 @@ void UsiOperation::Go(GameStats& gameStats, const Position& pos, std::istringstr
 	pos.GetRucksack()->m_ourMoves = moves;
 
 	// 思考を開始☆
-	pos.GetRucksack()->m_ownerHerosPub.StartThinking(pos, limits, moves);
+	pos.GetRucksack()->m_ownerHerosPub.StartThinking(gameStats, pos, limits, moves);
 }
 
 
@@ -157,7 +157,7 @@ void UsiOperation::Go(const Position& GetPos, const Ply GetDepth, const Move Get
 	std::vector<Move> moves;
 	m_limits.GetDepth = GetDepth;
 	moves.push_back(GetMove);
-	GetPos.GetRucksack()->m_ownerHerosPub.StartThinking(GetPos, m_limits, moves);
+	GetPos.GetRucksack()->m_ownerHerosPub.StartThinking(gameStats, GetPos, m_limits, moves);
 }
 #endif
 
