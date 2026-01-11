@@ -304,7 +304,11 @@ void TimeManager::Initialize(
 		// 相手が何秒考えるかなんて分からないので☆（＾～＾）
 		// FIXME: 相手の思考タイム推測は、自分の考える時間の 4分の1 にしておくぜ☆（＾▽＾）
 		// TODO: 相手の消費時間って見れないのかだぜ（＾～＾）？
-		this->SetPredictOpponentPaySeconds(this->GetPlanPayOwnSeconds() / 4);
+		long long seconds = pRucksack->m_gameStats.GetPredictPayMilliseconds(them) / 1000;
+		this->SetPredictOpponentPaySeconds(
+			seconds
+			//this->GetPlanPayOwnSeconds() / 4
+		);
 
 		// 独自実装☆（＾▽＾）：相手の残り時間より　多めに設定している場合は、相手の残り時間の最大値に合わせるんだぜ☆（＾▽＾）
 		int opponentNokoriTime = limits.GetMillisecondsLeft(them);

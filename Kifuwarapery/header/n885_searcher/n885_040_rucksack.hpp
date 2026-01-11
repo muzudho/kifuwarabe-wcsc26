@@ -161,7 +161,7 @@ public:
 	/// <summary>
 	/// 開始局面？
 	/// </summary>
-	Position				m_rootPosition;
+	Position m_rootPosition;
 
 	/// <summary>
 	/// スレッズ？
