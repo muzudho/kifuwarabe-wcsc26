@@ -19,6 +19,6 @@ OverloadEnumOperators(Color);
 
 
 /// <summary>
-/// 
+/// Color 列挙型の要素数
 /// </summary>
 static const int g_COLOR_NUM = 3;

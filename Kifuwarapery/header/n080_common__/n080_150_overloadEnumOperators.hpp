@@ -1,7 +1,10 @@
 ﻿#pragma once
 
 
-// 末尾の `\` は次の行に続いている。
+// enum 型に演算子を定義しています。
+// 
+//		- `T` は enum 型を渡してください。
+//		- `#define` は複数行に渡って書くものではないから、末尾に `\` を付けて、次の行に続いているとみなしている。
 #define OverloadEnumOperators(T)										\
 	inline void operator += (T& lhs, const int rhs) { lhs  = static_cast<T>(static_cast<int>(lhs) + rhs); } \
 	inline void operator += (T& lhs, const T   rhs) { lhs += static_cast<int>(rhs); } \

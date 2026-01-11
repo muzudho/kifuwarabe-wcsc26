@@ -21,6 +21,13 @@ public:
 	static inline constexpr Color OPPOSITE_COLOR10() {
 		return static_cast<Color>(static_cast<int>(CLR) ^ 1);
 	}
+
+
+	/// <summary>
+	/// 相手の色
+	/// </summary>
+	/// <param name="c"></param>
+	/// <returns></returns>
 	static inline constexpr Color OPPOSITE_COLOR10b(const Color c) {
 		return static_cast<Color>(static_cast<int>(c) ^ 1);
 	}
