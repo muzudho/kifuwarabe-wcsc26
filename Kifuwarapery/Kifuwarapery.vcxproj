@@ -412,12 +412,12 @@
     <ClInclude Include="header\n887_nodeType\n887_500_nodetypePrograms.hpp" />
     <ClInclude Include="header\n900_main____\n900_300_usiLoop.hpp" />
     <ClInclude Include="header\n900_main____\n900_400_main01.hpp" />
-    <ClInclude Include="n165_410_moveModels.hpp" />
+    <ClInclude Include="header\n165_movStack\n165_410_moveModels.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="n165_410_moveModels.cpp" />
+    <ClCompile Include="source\n165_movStack\n165_410_moveModels.cpp" />
     <ClCompile Include="source\n080_common__\n080_100_common.cpp" />
     <ClCompile Include="source\n080_common__\n080_200_utilProgram.cpp" />
     <ClCompile Include="source\n110_square\n110_150_file.cpp" />
