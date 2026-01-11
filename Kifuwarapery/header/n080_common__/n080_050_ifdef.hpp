@@ -7,21 +7,24 @@
 
 
 #if 0
-// 機械学習を行う際に使う。
-#define LEARN
-#if 0
-// MPI で複数台のPCを使って学習する。
-// todo: 実装はまだ。
-#define MPI_LEARN
-#endif
+
+	// `LEARN` が定義されていたら、機械学習を行う。
+	#define LEARN
+	
+	#if 0
+		// `MPI_LEARN` が定義されてたら、 MPI で複数台のPCを使って学習する。 TODO: 実装はまだ。
+		#define MPI_LEARN
+	#endif
+
 #endif
 
 
 //────────────────────────────────────────────────────────────────────────────────
-// (^q^)独自実装：フィーッシャールールか否か
+// (^q^)独自実装：フィッシャールールか否か
 //────────────────────────────────────────────────────────────────────────────────
 
 
+// `FISCHER_RULE` が定義されていたら、フィッシャールールに対応する（＾～＾）
 #define FISCHER_RULE
 
 
@@ -30,23 +33,24 @@
 //────────────────────────────────────────────────────────────────────────────────
 
 
-// 評価値ファイル・キャッシュ作成モードか。
+// `MODE_CACHE_EVAL` は［評価値ファイル作成モード］。これが定義されていたら、［評価値ファイル・キャッシュ］を作成する。
 #define MODE_CACHE_EVAL
 
-#if !defined(MODE_CACHE_EVAL) // 評価値ファイル作成モード以外で使用できる設定
-// 評価値ファイル・キャッシュを作成しない場合、スキップできる特典。
 
-// ただし、これでスキップしてコンパイルした場合、abort()で落ちるんだぜ☆（＾～＾）
-//#define SKIP_LONG_TIME_EVAL
-
-// これでスキップしてコンパイルしても abort()では落ちないぜ☆（＾～＾）
-//#define SKIP_LONG_LONG_TIME_EVAL_KPP
-// KKPも数十分で終わるぜ☆（＾ｑ＾）
-//#define SKIP_LONG_LONG_TIME_EVAL_KKP
-// KK は比較的早く終わるぜ☆（^q^）
-//#define SKIP_LONG_LONG_TIME_EVAL_KK
-// KPP評価値の集計をスキップするか。
-//#define SKIP_KPP_EVAL_LOOP
+#if !defined(MODE_CACHE_EVAL) // ［評価値ファイル作成モード］でなければ。
+	// 以下のスキップ用フラグを立てることができる。
+	
+	// ただし、これでスキップしてコンパイルした場合、abort()で落ちるんだぜ☆（＾～＾）
+	//#define SKIP_LONG_TIME_EVAL
+	
+	// これでスキップしてコンパイルしても abort()では落ちないぜ☆（＾～＾）
+	//#define SKIP_LONG_LONG_TIME_EVAL_KPP
+	// KKPも数十分で終わるぜ☆（＾ｑ＾）
+	//#define SKIP_LONG_LONG_TIME_EVAL_KKP
+	// KK は比較的早く終わるぜ☆（^q^）
+	//#define SKIP_LONG_LONG_TIME_EVAL_KK
+	// KPP評価値の集計をスキップするか。
+	//#define SKIP_KPP_EVAL_LOOP
 #endif
 
 
@@ -55,8 +59,13 @@
 //────────────────────────────────────────────────────────────────────────────────
 
 
+// `EVAL_PHASE1` を定義する。
 #define EVAL_PHASE1
+
+
+
 #ifndef SKIP_LONG_TIME_EVAL
+	// `EVAL_PHASE2` を定義する。フェーズが進むごとに、作成するのに時間が掛かる［評価関数］が作成される。
 	#define EVAL_PHASE2
 	#define EVAL_PHASE3
 	#define EVAL_PHASE4
@@ -68,25 +77,32 @@
 //────────────────────────────────────────────────────────────────────────────────
 
 
+// 1 なら使う。
 #if 1
-// 評価関数の SIMD 化
-#if defined HAVE_AVX2
-#define USE_AVX2_EVAL
-#elif defined HAVE_SSE4
-#define USE_SSE_EVAL
-#endif
+
+	// 評価関数の SIMD 化
+	#if defined HAVE_AVX2
+		#define USE_AVX2_EVAL
+
+	#elif defined HAVE_SSE4
+		#define USE_SSE_EVAL
+
+	#endif
+
 #endif
 
 
 //────────────────────────────────────────────────────────────────────────────────
 // 入玉ボーナス
 //────────────────────────────────────────────────────────────────────────────────
+
+
 #if 0
-// 玉の位置にボーナスを与える。
-// 入玉を狙ったり、相手の入玉を阻止したりする為に使う。
-// 評価関数は普段はこれをoffにした状態で学習する。
-// 有効にしたなら追加である程度学習して馴染ませる必要がある。
-#define USE_K_FIX_OFFSET
+	// 玉の位置にボーナスを与える。
+	// 入玉を狙ったり、相手の入玉を阻止したりする為に使う。
+	// 評価関数は普段はこれをoffにした状態で学習する。
+	// 有効にしたなら追加である程度学習して馴染ませる必要がある。
+	#define USE_K_FIX_OFFSET
 #endif
 
 
@@ -96,8 +112,8 @@
 
 
 #if 1
-// 定跡作成時に探索を用いて定跡に点数を付ける。
-#define MAKE_SEARCHED_BOOK
+	// 定跡作成時に探索を用いて定跡に点数を付ける。
+	#define MAKE_SEARCHED_BOOK
 #endif
 
 
@@ -107,9 +123,9 @@
 
 
 #if 0
-// 対局で使わない機能を全て省いたものにする。
-// todo: 現状メンテナンスされていないのでやること。
-#define MINIMUL
+	// 対局で使わない機能を全て省いたものにする。
+	// todo: 現状メンテナンスされていないのでやること。
+	#define MINIMUL
 #endif
 
 
@@ -119,8 +135,8 @@
 
 
 #if 0
-// 稲庭判定、稲庭対策を有効にする。
-#define INANIWA_SHIFT
+	// 稲庭判定、稲庭対策を有効にする。
+	#define INANIWA_SHIFT
 #endif
 
 
@@ -130,8 +146,8 @@
 
 
 #if 0
-// △２八角、△７八角 を打たないように点数を補正する。
-#define BISHOP_IN_DANGER
+	// △２八角、△７八角 を打たないように点数を補正する。
+	#define BISHOP_IN_DANGER
 #endif
 
 
@@ -141,8 +157,8 @@
 
 
 #if 0
-// 入玉を24点法にする。
-#define LAW_24
+	// 入玉を24点法にする。
+	#define LAW_24
 #endif
 
 
@@ -152,10 +168,10 @@
 
 
 #if 0
-// 探索時に片方だけが千日手を禁止して考える。
-#define BAN_BLACK_REPETITION
+	// 探索時に片方だけが千日手を禁止して考える。
+	#define BAN_BLACK_REPETITION
 #elif 0
-#define BAN_WHITE_REPETITION
+	#define BAN_WHITE_REPETITION
 #endif
 
 
@@ -165,6 +181,6 @@
 
 
 #if 0
-// Magic Bitboard で必要となるマジックナンバーを求める。
-#define FIND_MAGIC
+	// Magic Bitboard で必要となるマジックナンバーを求める。
+	#define FIND_MAGIC
 #endif

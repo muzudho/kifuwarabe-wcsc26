@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 
+// 末尾の `\` は次の行に続いている。
 #define OverloadEnumOperators(T)										\
 	inline void operator += (T& lhs, const int rhs) { lhs  = static_cast<T>(static_cast<int>(lhs) + rhs); } \
 	inline void operator += (T& lhs, const T   rhs) { lhs += static_cast<int>(rhs); } \

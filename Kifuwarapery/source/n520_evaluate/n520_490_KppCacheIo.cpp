@@ -122,9 +122,9 @@ bool KppCacheIo::WriteLv3Files(const std::string & dirName, int k1, int p1, std:
 		//SYNCCOUT << "(WriteKppCache3Files 2/9)Not found directory. ok. : dir1=[" << dir1.c_str() << "]" << SYNCENDL;
 
 		UtilProgram utilProgram;
-		utilProgram.ErrorBegin();
+		utilProgram.BeginHandleError();
 		int result = CreateDirectoryA((LPCSTR)dir1.c_str(), NULL);
-		utilProgram.ErrorEnd();
+		utilProgram.EndHandleError();
 
 		if (result != 0)
 		{

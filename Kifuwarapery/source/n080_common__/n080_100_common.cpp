@@ -2,23 +2,28 @@
 
 
 #if defined LEARN
+/// <summary>
+/// 学習時は、SYNCCOUT 変数の型を Eraser というダミークラスに変更します。
+/// </summary>
 Eraser SYNCCOUT;
 Eraser SYNCENDL;
 #endif
 
 
 /// <summary>
-/// 乱数の種☆？（＾ｑ＾）？
+/// メルセンヌツイスター乱数の種☆？（＾ｑ＾）？
 /// </summary>
 std::mt19937_64 g_randomTimeSeed(std::chrono::system_clock::now().time_since_epoch().count());
 
+
 /// <summary>
-/// 
+/// FIXME: ミューテックスのロック、アンロックを `<<` 演算子で指定できるが、こんなん、分かりずらい（＾～＾）
 /// </summary>
 /// <param name="os"></param>
 /// <param name="sc"></param>
 /// <returns></returns>
-std::ostream& operator << (std::ostream& os, SyncCout sc) {
+std::ostream& operator << (std::ostream& os, SyncCout sc)
+{
 	static Mutex m;
 	if (sc == IOLock  ) { m.lock();   }
 	if (sc == IOUnlock) { m.unlock(); }

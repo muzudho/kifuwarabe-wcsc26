@@ -1,66 +1,69 @@
 ﻿#pragma once
 
 #include "n080_050_ifdef.hpp"
-
 #include <random>				// std::mt19937_64
 #include <condition_variable>	// std::mutex, std::condition_variable
+
 using namespace std;
 
 
 #if defined HAVE_BMI2
-#include <immintrin.h>
+	#include <immintrin.h>
 #endif
 
 #if defined (HAVE_SSE4)
-#include <smmintrin.h>
+	#include <smmintrin.h>
 #elif defined (HAVE_SSE2)
-#include <emmintrin.h>
+	#include <emmintrin.h>
 #endif
 
 #if !defined(NDEBUG)
-// デバッグ時は、ここへ到達してはいけないので、assert でプログラムを止める。
-#define UNREACHABLE assert(false)
+	// デバッグ時は、ここへ到達してはいけないので、assert でプログラムを止める。
+	#define UNREACHABLE assert(false)
 #elif defined(_MSC_VER) && !defined(__INTEL_COMPILER)
-#define UNREACHABLE __assume(false)
+	#define UNREACHABLE __assume(false)
 #elif defined(__INTEL_COMPILER)
-// todo: icc も __assume(false) で良いのか？ 一応ビルド出来るけど。
-#define UNREACHABLE __assume(false)
+	// todo: icc も __assume(false) で良いのか？ 一応ビルド出来るけど。
+	#define UNREACHABLE __assume(false)
 #elif defined(__GNUC__) && (4 < __GNUC__ || (__GNUC__ == 4 && 4 < __GNUC_MINOR__))
-#define UNREACHABLE __builtin_unreachable()
+	#define UNREACHABLE __builtin_unreachable()
 #else
-#define UNREACHABLE assert(false)
+	#define UNREACHABLE assert(false)
 #endif
 
 #if defined(_MSC_VER) && !defined(__INTEL_COMPILER)
-#define FORCE_INLINE __forceinline
+	#define FORCE_INLINE __forceinline
 #elif defined(__INTEL_COMPILER)
-#define FORCE_INLINE inline
+	#define FORCE_INLINE inline
 #elif defined(__GNUC__)
-#define FORCE_INLINE __attribute__((always_inline)) inline
+	#define FORCE_INLINE __attribute__((always_inline)) inline
 #else
-#define FORCE_INLINE inline
+	#define FORCE_INLINE inline
 #endif
 
 // インラインアセンブリのコメントを使用することで、
 // C++ コードのどの部分がアセンブラのどの部分に対応するかを
 // 分り易くする。
 #if defined(_MSC_VER) && !defined(__INTEL_COMPILER)
-#define ASMCOMMENT(s)
+	#define ASMCOMMENT(s)
 #elif defined(__INTEL_COMPILER)
-#define ASMCOMMENT(s)
+	#define ASMCOMMENT(s)
 #elif defined(__clang__)
-#define ASMCOMMENT(s)
+	#define ASMCOMMENT(s)
 #elif defined(__GNUC__)
-#define ASMCOMMENT(s) __asm__("#"s)
+	#define ASMCOMMENT(s) __asm__("#"s)
 #else
-#define ASMCOMMENT(s)
+	#define ASMCOMMENT(s)
 #endif
 
 #define DEBUGCERR(x) std::cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << std::endl;
 
+
 //────────────────────────────────────────────────────────────────────────────────
 // bit幅を指定する必要があるときは、以下の型を使用する。
 //────────────────────────────────────────────────────────────────────────────────
+
+
 using s8  =  int8_t;
 using u8  = uint8_t;
 using s16 =  int16_t;
@@ -77,11 +80,13 @@ using u64 = uint64_t;
 
 
 /// <summary>
-/// Binary<11110>::value とすれば、30 となる。
+/// 例えば、Binary<11110>::value とすれば、30 となる。
 /// 符合なし64bitなので19桁まで表記可能。
 /// </summary>
 /// <typeparam name="n"></typeparam>
-template <u64 n> struct Binary {
+template <u64 n>
+struct Binary
+{
 	static const u64 value = n % 10 + (Binary<n / 10>::value << 1);
 };
 
@@ -89,123 +94,138 @@ template <u64 n> struct Binary {
 /// <summary>
 /// template 特殊化
 /// </summary>
-template <> struct Binary<0> {
+template <>
+struct Binary<0>
+{
 	static const u64 value = 0;
 };
 
 
 #if defined(_MSC_VER) && !defined(__INTEL_COMPILER) && defined(_WIN64)
-#include <intrin.h>
-/// <summary>
-/// 
-/// </summary>
-/// <param name="b"></param>
-/// <returns></returns>
-FORCE_INLINE int firstOneFromLSB(const u64 b) {
-	unsigned long index;
-	_BitScanForward64(&index, b);
-	return index;
-}
+	#include <intrin.h>
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="b"></param>
+	/// <returns></returns>
+	FORCE_INLINE int firstOneFromLSB(const u64 b)
+	{
+		unsigned long index;
+		_BitScanForward64(&index, b);
+		return index;
+	}
 
 
-/// <summary>
-/// 
-/// </summary>
-/// <param name="b"></param>
-/// <returns></returns>
-FORCE_INLINE int firstOneFromMSB(const u64 b) {
-	unsigned long index;
-	_BitScanReverse64(&index, b);
-	return 63 - index;
-}
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="b"></param>
+	/// <returns></returns>
+	FORCE_INLINE int firstOneFromMSB(const u64 b)
+	{
+		unsigned long index;
+		_BitScanReverse64(&index, b);
+		return 63 - index;
+	}
+
+
 #elif defined(__GNUC__) && ( defined(__i386__) || defined(__x86_64__) )
-/// <summary>
-/// 
-/// </summary>
-/// <param name="b"></param>
-/// <returns></returns>
-FORCE_INLINE int firstOneFromLSB(const u64 b) {
-	return __builtin_ctzll(b);
-}
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="b"></param>
+	/// <returns></returns>
+	FORCE_INLINE int firstOneFromLSB(const u64 b)
+	{
+		return __builtin_ctzll(b);
+	}
 
 
-/// <summary>
-/// 
-/// </summary>
-/// <param name="b"></param>
-/// <returns></returns>
-FORCE_INLINE int firstOneFromMSB(const u64 b) {
-	return __builtin_clzll(b);
-}
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="b"></param>
+	/// <returns></returns>
+	FORCE_INLINE int firstOneFromMSB(const u64 b)
+	{
+		return __builtin_clzll(b);
+	}
 #else
 
-/// <summary>
-/// firstOneFromLSB() で使用する table
-/// </summary>
-const int BitTable[64] = {
-	63, 30, 3, 32, 25, 41, 22, 33, 15, 50, 42, 13, 11, 53, 19, 34, 61, 29, 2,
-	51, 21, 43, 45, 10, 18, 47, 1, 54, 9, 57, 0, 35, 62, 31, 40, 4, 49, 5, 52,
-	26, 60, 6, 23, 44, 46, 27, 56, 16, 7, 39, 48, 24, 59, 14, 12, 55, 38, 28,
-	58, 20, 37, 17, 36, 8
-};
+
+	/// <summary>
+	/// firstOneFromLSB() で使用する table
+	/// </summary>
+	const int BitTable[64] =
+	{
+		63, 30, 3, 32, 25, 41, 22, 33, 15, 50, 42, 13, 11, 53, 19, 34, 61, 29, 2,
+		51, 21, 43, 45, 10, 18, 47, 1, 54, 9, 57, 0, 35, 62, 31, 40, 4, 49, 5, 52,
+		26, 60, 6, 23, 44, 46, 27, 56, 16, 7, 39, 48, 24, 59, 14, 12, 55, 38, 28,
+		58, 20, 37, 17, 36, 8
+	};
 
 
-/// <summary>
-/// LSB から数えて初めに bit が 1 になるのは何番目の bit かを返す。
-/// b = 8 だったら 3 を返す。
-/// b = 0 のとき、63 を返す。
-/// </summary>
-/// <param name="b"></param>
-/// <returns></returns>
-FORCE_INLINE int firstOneFromLSB(const u64 b) {
-	const u64 tmp = b ^ (b - 1);
-	const u32 old = static_cast<u32>((tmp & 0xffffffff) ^ (tmp >> 32));
-	return BitTable[(old * 0x783a9b23) >> 26];
-}
-
-
-/// <summary>
-/// 超絶遅いコードなので後で書き換えること。
-/// </summary>
-/// <param name="b"></param>
-/// <returns></returns>
-FORCE_INLINE int firstOneFromMSB(const u64 b) {
-	for (int i = 63; 0 <= i; --i) {
-		if (b >> i) {
-			return 63 - i;
-		}
+	/// <summary>
+	/// LSB から数えて初めに bit が 1 になるのは何番目の bit かを返す。
+	/// b = 8 だったら 3 を返す。
+	/// b = 0 のとき、63 を返す。
+	/// </summary>
+	/// <param name="b"></param>
+	/// <returns></returns>
+	FORCE_INLINE int firstOneFromLSB(const u64 b)
+	{
+		const u64 tmp = b ^ (b - 1);
+		const u32 old = static_cast<u32>((tmp & 0xffffffff) ^ (tmp >> 32));
+		return BitTable[(old * 0x783a9b23) >> 26];
 	}
-	return 0;
-}
+
+
+	/// <summary>
+	/// 超絶遅いコードなので後で書き換えること。
+	/// </summary>
+	/// <param name="b"></param>
+	/// <returns></returns>
+	FORCE_INLINE int firstOneFromMSB(const u64 b)
+	{
+		for (int i = 63; 0 <= i; --i)
+		{
+			if (b >> i) { return 63 - i; }
+		}
+
+		return 0;
+	}
 #endif
 
 
 #if defined(HAVE_SSE42)
-#include <nmmintrin.h>
-/// <summary>
-/// 
-/// </summary>
-/// <param name="x"></param>
-/// <returns></returns>
-inline int count1s(u64 x) {
-	return _mm_popcnt_u64(x);
-}
+	#include <nmmintrin.h>
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="x"></param>
+	/// <returns></returns>
+	inline int count1s(u64 x)
+	{
+		return _mm_popcnt_u64(x);
+	}
+
+
 #else
-/// <summary>
-/// 任意の値の1のビットの数を数える。( x is not a const value.)
-/// </summary>
-/// <param name="x"></param>
-/// <returns></returns>
-inline int count1s(u64 x)
-{
-	x = x - ((x >> 1) & UINT64_C(0x5555555555555555));
-	x = (x & UINT64_C(0x3333333333333333)) + ((x >> 2) & UINT64_C(0x3333333333333333));
-	x = (x + (x >> 4)) & UINT64_C(0x0f0f0f0f0f0f0f0f);
-	x = x + (x >> 8);
-	x = x + (x >> 16);
-	x = x + (x >> 32);
-	return (static_cast<int>(x)) & 0x0000007f;
-}
+		/// <summary>
+		/// 任意の値の1のビットの数を数える。( x is not a const value.)
+		/// </summary>
+		/// <param name="x"></param>
+		/// <returns></returns>
+		inline int count1s(u64 x)
+		{
+			x = x - ((x >> 1) & UINT64_C(0x5555555555555555));
+			x = (x & UINT64_C(0x3333333333333333)) + ((x >> 2) & UINT64_C(0x3333333333333333));
+			x = (x + (x >> 4)) & UINT64_C(0x0f0f0f0f0f0f0f0f);
+			x = x + (x >> 8);
+			x = x + (x >> 16);
+			x = x + (x >> 32);
+			return (static_cast<int>(x)) & 0x0000007f;
+		}
 #endif
 
 
@@ -218,11 +238,13 @@ inline int count1s(u64 x)
 /// <param name="lsb"></param>
 /// <returns></returns>
 template <typename T>
-inline std::string putb(const T value, const int msb = sizeof(T)*8 - 1, const int lsb = 0) {
+inline std::string putb(const T value, const int msb = sizeof(T)*8 - 1, const int lsb = 0)
+{
 	std::string str;
 	u64 tempValue = (static_cast<u64>(value) >> lsb);
 
-	for (int length = msb - lsb + 1; length; --length) {
+	for (int length = msb - lsb + 1; length; --length)
+	{
 		str += ((tempValue & (UINT64_C(1) << (length - 1))) ? "1" : "0");
 	}
 
@@ -242,48 +264,73 @@ std::ostream& operator << (std::ostream& os, SyncCout sc);
 #define SYNCENDL std::endl << IOUnlock
 
 #if defined LEARN
-#undef SYNCCOUT
-#undef SYNCENDL
-/// <summary>
-/// 
-/// </summary>
-class Eraser {};
+	#undef SYNCCOUT
+	#undef SYNCENDL
+	/// <summary>
+	/// 
+	/// </summary>
+	class Eraser {};
 
 
-extern Eraser SYNCCOUT;
-extern Eraser SYNCENDL;
+	extern Eraser SYNCCOUT;
+	extern Eraser SYNCENDL;
 
 
-/// <summary>
-/// 
-/// </summary>
-/// <typeparam name="T"></typeparam>
-/// <param name="temp"></param>
-/// <param name=""></param>
-/// <returns></returns>
-template <typename T> Eraser& operator << (Eraser& temp, const T&) { return temp; }
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="temp"></param>
+	/// <param name=""></param>
+	/// <returns></returns>
+	template <typename T>
+	Eraser& operator << (Eraser& temp, const T&) { return temp; }
 #endif
 
 
 /// <summary>
-/// N 回ループを展開させる。t は lambda で書くと良い。
-/// こんな感じに書くと、lambda がテンプレート引数の数値の分だけ繰り返し生成される。
-/// Unroller<5>()([&](const int i){std::cout << i << std::endl;});
+/// 	<pre>
+/// アンローラー
+/// 
+///		N 回ループを展開させる。t は lambda で書くと良い。
+///		こんな感じに書くと、lambda がテンプレート引数の数値の分だけ繰り返し生成される。
+///		Unroller<5>()([&](const int i){std::cout << i << std::endl;});
+/// 	<pre>
 /// </summary>
 /// <typeparam name="N"></typeparam>
-template <int N> struct Unroller {
-	template <typename T> FORCE_INLINE void operator () (T t) {
+template <int N>
+struct Unroller
+{
+	template <typename T>
+	FORCE_INLINE void operator () (T t)
+	{
 		Unroller<N-1>()(t);
 		t(N-1);
 	}
 };
-template <> struct Unroller<0> {
-	template <typename T> FORCE_INLINE void operator () (T) {}
+
+
+/// <summary>
+///		<pre>
+/// アンローラー
+///		</pre>
+/// </summary>
+template <>
+struct Unroller<0>
+{
+	template <typename T>
+	FORCE_INLINE void operator () (T)
+	{
+	}
 };
 
 
 /// <summary>
+///		<pre>
 /// 64byte
+/// 
+///		- トランスポジション・テーブルのクラスター・サイズを計算するのに使ってる？
+///		</pre>
 /// </summary>
 const size_t CacheLineSize = 64;
 
@@ -293,30 +340,32 @@ const size_t CacheLineSize = 64;
 //────────────────────────────────────────────────────────────────────────────────
 
 
-template <typename T> inline void prefetch(T* addr) {
+template <typename T>
+inline void prefetch(T* addr)
+{
 #if defined HAVE_SSE2 || defined HAVE_SSE4
-#if defined(__INTEL_COMPILER)
-	// これでプリフェッチが最適化で消えるのを防げるらしい。
-	__asm__("");
-#endif
+	#if defined(__INTEL_COMPILER)
+		// これでプリフェッチが最適化で消えるのを防げるらしい。
+		__asm__("");
+	#endif
 
 	// 最低でも sizeof(T) のバイト数分をプリフェッチする。
 	// Stockfish は TTCluster が 64byte なのに、なぜか 128byte 分 prefetch しているが、
 	// 必要無いと思う。
 	char* charAddr = reinterpret_cast<char*>(addr);
-#if defined(__INTEL_COMPILER) || defined(_MSC_VER)
-	Unroller<(sizeof(T) + CacheLineSize - 1)/CacheLineSize>()([&](const int) {
-			// 1キャッシュライン分(64byte)のプリフェッチ。
-			_mm_prefetch(charAddr, _MM_HINT_T0);
-			charAddr += CacheLineSize;
-		});
-#else
-	Unroller<(sizeof(T) + CacheLineSize - 1)/CacheLineSize>()([&](const int) {
-			// 1キャッシュライン分(64byte)のプリフェッチ。
-			__builtin_prefetch(charAddr);
-			charAddr += CacheLineSize;
-		});
-#endif
+	#if defined(__INTEL_COMPILER) || defined(_MSC_VER)
+		Unroller<(sizeof(T) + CacheLineSize - 1)/CacheLineSize>()([&](const int) {
+				// 1キャッシュライン分(64byte)のプリフェッチ。
+				_mm_prefetch(charAddr, _MM_HINT_T0);
+				charAddr += CacheLineSize;
+			});
+	#else
+		Unroller<(sizeof(T) + CacheLineSize - 1)/CacheLineSize>()([&](const int) {
+				// 1キャッシュライン分(64byte)のプリフェッチ。
+				__builtin_prefetch(charAddr);
+				charAddr += CacheLineSize;
+			});
+	#endif
 #else
 	// SSE が使えない時は、_mm_prefetch() とかが使えないので、prefetch無しにする。
 	addr = addr; // warning 対策
@@ -325,7 +374,7 @@ template <typename T> inline void prefetch(T* addr) {
 
 
 /// <summary>
-/// 
+/// よく使われているが何だろう？ 局面ハッシュに関係ある？
 /// </summary>
 using Key = u64;
 
@@ -359,7 +408,10 @@ struct HashTable {
 	/// <summary>
 	/// クリアー
 	/// </summary>
-	void clear() { memset(entries_, 0, sizeof(T)*Size); }
+	void clear()
+	{
+		memset(entries_, 0, sizeof(T)*Size);
+	}
 
 
 	/// <summary>
@@ -372,7 +424,7 @@ private:
 
 
 	/// <summary>
-	/// 
+	/// ハッシュテーブルの中身の各項目。
 	/// </summary>
 	T entries_[Size];
 	//T* entries_;
@@ -380,80 +432,98 @@ private:
 
 
 /// <summary>
-/// 
+/// メルセンヌツイスター乱数の種だろうか☆（＾～＾）？
 /// </summary>
 extern std::mt19937_64 g_randomTimeSeed;
 
+
 #if defined _WIN32 && !defined _MSC_VER
-#ifndef NOMINMAX
-#define NOMINMAX
-#endif
+	#ifndef NOMINMAX
+		#define NOMINMAX
+	#endif
 
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-#undef WIN32_LEAN_AND_MEAN
-#undef NOMINMAX
-
-
-/// <summary>
-/// ミューテックス
-/// </summary>
-struct Mutex {
+	#define WIN32_LEAN_AND_MEAN
+	#include <windows.h>
+	#undef WIN32_LEAN_AND_MEAN
+	#undef NOMINMAX
 
 
 	/// <summary>
-	/// 生成
+	/// ミューテックス
 	/// </summary>
-	Mutex() { InitializeCriticalSection(&cs); }
+	struct Mutex {
+
+
+		/// <summary>
+		/// 生成
+		/// </summary>
+		Mutex() { InitializeCriticalSection(&cs); }
+
+
+		/// <summary>
+		/// 破棄
+		/// </summary>
+		~Mutex() { DeleteCriticalSection(&cs); }
+
+
+		/// <summary>
+		/// ロック
+		/// </summary>
+		void lock() { EnterCriticalSection(&cs); }
+
+
+		/// <summary>
+		/// アンロック
+		/// </summary>
+		void unlock() { LeaveCriticalSection(&cs); }
+
+
+	private:
+
+
+		/// <summary>
+		/// 
+		/// </summary>
+		CRITICAL_SECTION cs;
+	};
 
 
 	/// <summary>
-	/// 破棄
+	/// 条件変数
 	/// </summary>
-	~Mutex() { DeleteCriticalSection(&cs); }
+	using ConditionVariable = std::condition_variable_any;
 
 
-	/// <summary>
-	/// ロック
-	/// </summary>
-	void lock() { EnterCriticalSection(&cs); }
-
-
-	/// <summary>
-	/// アンロック
-	/// </summary>
-	void unlock() { LeaveCriticalSection(&cs); }
-
-
-private:
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	CRITICAL_SECTION cs;
-};
-
-
-using ConditionVariable = std::condition_variable_any;
 #else
-using Mutex = std::mutex;
-using ConditionVariable = std::condition_variable;
+	/// <summary>
+	/// ミューテックス（Mutex 型）は標準のものを使う
+	/// </summary>
+	using Mutex = std::mutex;
+
+	/// <summary>
+	/// 条件変数は標準のものを使う
+	/// </summary>
+	using ConditionVariable = std::condition_variable;
 #endif
 
 
 #if 0
-#include <boost/detail/endian.hpp>
-/// <summary>
-/// 
-/// </summary>
-/// <typeparam name="T"></typeparam>
-/// <param name="r"></param>
-template <typename T> inline void reverseEndian(T& r) {
-	u8* begin = reinterpret_cast<u8*>(&r);
-	u8* IsEnd = reinterpret_cast<u8*>(&r) + sizeof(T);
-	for (; begin < IsEnd; ++begin, --IsEnd) {
-		std::swap(*begin, *(IsEnd - 1));
+	#include <boost/detail/endian.hpp>
+
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="r"></param>
+	template <typename T>
+	inline void reverseEndian(T& r)
+	{
+		u8* begin = reinterpret_cast<u8*>(&r);
+		u8* IsEnd = reinterpret_cast<u8*>(&r) + sizeof(T);
+		for (; begin < IsEnd; ++begin, --IsEnd)
+		{
+			std::swap(*begin, *(IsEnd - 1));
+		}
 	}
-}
 #endif

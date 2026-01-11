@@ -4,18 +4,18 @@
 
 
 /// <summary>
-/// 
+/// エラーが起こりそうな処理の前に書く
 /// </summary>
-void UtilProgram::ErrorBegin()
+void UtilProgram::BeginHandleError()
 {
 	SetLastError(NO_ERROR);		//エラー情報をクリアする
 }
 
 
 /// <summary>
-/// 
+/// エラーが起こりそうな処理が終わったところに書く
 /// </summary>
-void UtilProgram::ErrorEnd()
+void UtilProgram::EndHandleError()
 {
 	LPVOID lpMsgBuf;
 	FormatMessage(				//エラー表示文字列作成

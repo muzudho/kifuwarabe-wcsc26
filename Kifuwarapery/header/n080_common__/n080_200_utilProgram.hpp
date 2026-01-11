@@ -2,7 +2,8 @@
 
 
 /// <summary>
-/// 
+/// プログラム中でちょっと使うもの。
+/// ディレクトリー作成時の前後を挟んだり。
 /// </summary>
 class UtilProgram {
 
@@ -11,19 +12,19 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// エラーが起こりそうな処理の前に書く
 	/// </summary>
-	void ErrorBegin();
+	void BeginHandleError();
 
 
 	/// <summary>
-	/// 
+	/// エラーが起こりそうな処理が終わったところに書く
 	/// </summary>
-	void ErrorEnd();
+	void EndHandleError();
 
 
 	/// <summary>
-	/// 
+	/// カレントディレクトリーを出力
 	/// </summary>
 	void ShowCurrentDirectory();
 };
