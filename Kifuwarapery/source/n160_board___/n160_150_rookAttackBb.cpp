@@ -107,15 +107,14 @@ Bitboard RookAttackBb::RookAttackCalc(const Square square, const Bitboard& occup
 
 
 /// <summary>
-/// 
+/// 飛車の利きビットボードの初期化。
 /// </summary>
 void RookAttackBb::InitRookAttacks()
 {
-	// 角か、飛車か
-	auto* attacks = g_rookAttackBb.m_controllBb_;
-	auto* attackIndex = g_rookAttackBb.m_rookAttackIndex;
-	auto* blockMask = g_rookAttackBb.m_rookBlockMask_;
-	auto* shift = this->m_rookShiftBits_;
+	auto* attacks = g_rookAttackBb.m_controllBb_;			// 飛車の利き
+	auto* attackIndex = g_rookAttackBb.m_rookAttackIndex;	// 飛車の利きのインデックス
+	auto* blockMask = g_rookAttackBb.m_rookBlockMask_;		// 飛車の利きのブロック・マスか？
+	auto* shift = this->m_rookShiftBits_;					// 飛車のシフト
 #if defined HAVE_BMI2
 #else
 	auto* magic = this->m_rookMagic_;

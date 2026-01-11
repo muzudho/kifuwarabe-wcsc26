@@ -29,13 +29,15 @@ void GoldAttackBb::Initialize()
 
 
 /// <summary>
-/// 
+/// 王手？テーブル・ビットボード初期化
 /// </summary>
 void GoldAttackBb::InitCheckTableGold() {
-	for (Color c = Black; c < g_COLOR_NUM; ++c) {
-		const Color opp = ConvColor::OPPOSITE_COLOR10b(c);//色はループで交互になるぜ☆（＾ｑ＾）
+	for (Color c = Black; c < g_COLOR_NUM; ++c) {	// 手番の色
+		const Color opp = ConvColor::OPPOSITE_COLOR10b(c);	// 相手の色☆（＾ｑ＾）
 		for (Square sq = I9; sq < SquareNum; ++sq) {
-			g_goldAttackBb.m_goldCheckTable_[c][sq] = Bitboard::CreateAllZeroBB();
+
+			g_goldAttackBb.m_goldCheckTable_[c][sq] = Bitboard::CreateAllZeroBB();	// 空ビットボード
+
 			Bitboard checkBB = g_goldAttackBb.GetControllBb(opp, sq);
 			while (checkBB.Exists1Bit()) {
 				const Square checkSq = checkBB.PopFirstOneFromI9();

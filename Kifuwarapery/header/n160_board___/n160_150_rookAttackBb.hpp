@@ -112,7 +112,7 @@ private:
 	int		m_rookAttackIndex[SquareNum];
 
 	/// <summary>
-	/// 
+	/// 飛車の利きのブロック・マスか？
 	/// </summary>
 	Bitboard m_rookBlockMask_[SquareNum];
 
@@ -212,11 +212,14 @@ public:
 		/// <summary>
 		/// 
 		/// </summary>
-		/// <param name="thisBitboard"></param>
-		/// <param name="sq"></param>
+		/// <param name="thisBitboard">ビットボード</param>
+		/// <param name="sq">マス</param>
 		/// <returns></returns>
 		inline Bitboard GetControllBb(const Bitboard& thisBitboard, const Square sq) const {
+
+			// 飛車の利きのブロックマスの有無か？
 			const Bitboard block(thisBitboard & this->m_rookBlockMask_[sq]);
+
 			return this->m_controllBb_[
 				this->m_rookAttackIndex[sq] +
 					block.OccupiedToIndex(this->m_rookMagic_[sq], this->m_rookShiftBits_[sq])

@@ -49,72 +49,91 @@ void Main01::Initialize()
 	// ビットボードとテーブルの初期化☆（＾ｑ＾）
 	//────────────────────────────────────────────────────────────────────────────────
 	{
-		SYNCCOUT << "(^q^)main(1/6): initTable!" << SYNCENDL;//長い時間
+		SYNCCOUT << "(^q^) 1   . ビットボードとテーブルを初期化するぜ！" << SYNCENDL;
+
 #ifndef SKIP_LONG_TIME_EVAL
-		SYNCCOUT << "(^q^)I1: InitRookAttacks!" << SYNCENDL;//長い時間
+		// 長い時間が掛かる初期化処理をするか？
+		SYNCCOUT << "(^q^) 1- 1. 飛の利きビットボードの初期化！" << SYNCENDL;
 		g_rookAttackBb.InitRookAttacks();
 #endif
 
-		SYNCCOUT << "(^q^)I2: initAttacks!" << SYNCENDL;
+		SYNCCOUT << "(^q^) 1- 2. 角の利きビットボードの初期化！" << SYNCENDL;
 		g_bishopAttackBb.InitBishopAttacks();
 
-		SYNCCOUT << "(^q^)I3: initKingAttacks!" << SYNCENDL;
+		SYNCCOUT << "(^q^) 1- 3. 玉の利きビットボードの初期化！" << SYNCENDL;
 		g_kingAttackBb.Initialize();
 
-		SYNCCOUT << "(^q^)I4: initGoldAttacks!" << SYNCENDL;
+		SYNCCOUT << "(^q^) 1- 4. 金の利きビットボードの初期化！" << SYNCENDL;
 		g_goldAttackBb.Initialize();
 
-		SYNCCOUT << "(^q^)I5: initSilverAttacks!" << SYNCENDL;
+		SYNCCOUT << "(^q^) 1- 5. 銀の利きビットボードの初期化！" << SYNCENDL;
 		g_silverAttackBb.Initialize();
 
-		SYNCCOUT << "(^q^)I6: initPawnAttacks!" << SYNCENDL;
+		SYNCCOUT << "(^q^) 1- 6. 歩の利きビットボードの初期化！" << SYNCENDL;
 		g_pawnAttackBb.Initialize();
 
-		SYNCCOUT << "(^q^)I7: initKnightAttacks!" << SYNCENDL;
+		SYNCCOUT << "(^q^) 1- 7. 桂の利きビットボードの初期化！" << SYNCENDL;
 		g_knightAttackBb.Initialize();
 
-		SYNCCOUT << "(^q^)I8: initLanceAttacks!" << SYNCENDL;
+		SYNCCOUT << "(^q^) 1- 8. 香の利きビットボードの初期化！" << SYNCENDL;
 		g_lanceAttackBb.Initialize();
 
-		SYNCCOUT << "(^q^)I9: initSquareRelation!" << SYNCENDL;
+		SYNCCOUT << "(^q^) 1- 9. ２つのマスの位置関係が［同筋］［同段］［同右肩上がり］［同右肩下がり］［その他］かを区別するビットボードの初期化！" << SYNCENDL;
 		g_squareRelation.Initialize();
 
-		SYNCCOUT << "(^q^)I10: initAttackToEdge!" << SYNCENDL;
+
 		// 障害物が無いときの利きの Bitboard
 		// g_rookAttack, g_bishopAttack, g_lanceAttack を設定してから、この関数を呼ぶこと。
+
+
+		SYNCCOUT << "(^q^) 1-10. 障害物が無いときの飛の利きビットボードの初期化！" << SYNCENDL;
 		g_rookAttackBb.InitializeToEdge();
+
+		SYNCCOUT << "(^q^) 1-11. 障害物が無いときの角の利きビットボードの初期化！" << SYNCENDL;
 		g_bishopAttackBb.InitializeToEdge();
+
+		SYNCCOUT << "(^q^) 1-12. 障害物が無いときの香の利きビットボードの初期化！" << SYNCENDL;
 		g_lanceAttackBb.InitializeToEdge();
 
-		SYNCCOUT << "(^q^)I11: initBetweenBB!" << SYNCENDL;
+		SYNCCOUT << "(^q^) 1-13. ［飛車、角の元位置］と、［その利き］の２点のビットボード？の初期化！" << SYNCENDL;
 		g_betweenBb.Initialize();
 
-		SYNCCOUT << "(^q^)I12: initCheckTable!" << SYNCENDL;
+		SYNCCOUT << "(^q^) 1-14. 金の王手？ビットボードの初期化！" << SYNCENDL;
 		g_goldAttackBb.InitCheckTableGold();
+
+		SYNCCOUT << "(^q^) 1-15. 銀の王手？ビットボードの初期化！" << SYNCENDL;
 		g_silverAttackBb.InitCheckTableSilver();
+
+		SYNCCOUT << "(^q^) 1-16. 桂の王手？ビットボードの初期化！" << SYNCENDL;
 		g_knightAttackBb.InitCheckTableKnight();
+
+		SYNCCOUT << "(^q^) 1-17. 香の王手？ビットボードの初期化！" << SYNCENDL;
 		g_lanceAttackBb.InitCheckTableLance();
 
-		SYNCCOUT << "(^q^)I13: initSquareDistance!" << SYNCENDL;
+		SYNCCOUT << "(^q^) 1-18. ２点の距離初期化！" << SYNCENDL;
 		UtilSquareDistance::InitSquareDistance(g_squareDistance);
 
-		SYNCCOUT << "(^q^)I14: Book::init!" << SYNCENDL;
+		SYNCCOUT << "(^q^) I-19. 定跡初期化！" << SYNCENDL;
 		Book::Init();
 
-		SYNCCOUT << "(^q^)I15: initSearchTable!" << SYNCENDL;
+		SYNCCOUT << "(^q^) 1-20. 検索テーブル初期化！" << SYNCENDL;
 		InitSearchTable();
 	}
 
-	SYNCCOUT << "(^q^)main(2/6): initZobrist!" << SYNCENDL;
+	SYNCCOUT << "(^q^) 2   . 局面のゾブリストハッシュ初期化！" << SYNCENDL;
 	Position::InitZobrist();
 
-	SYNCCOUT << "(^q^)main(3/6): searcher->init!" << SYNCENDL;
+	SYNCCOUT << "(^q^) 3   . 探索部の初期化！" << SYNCENDL;
 	this->searcher->Init();
+
+
 	// 一時オブジェクトの生成と破棄
 
-	SYNCCOUT << "(^q^)main(4/6): start Evaluater init!" << SYNCENDL;
+
+	SYNCCOUT << "(^q^) 4   . 評価関数の初期化！" << SYNCENDL;
 	std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->Init(this->searcher->m_engineOptions["Eval_Dir"], true);
-	SYNCCOUT << "(^q^)main(5/6): end Evaluater init! ----> doUSICommandLoop" << SYNCENDL;
+
+	SYNCCOUT << "(^q^) 次は USIループへ！" << SYNCENDL;
 }
 
 

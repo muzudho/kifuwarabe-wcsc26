@@ -18,19 +18,19 @@ private:
 
 
 	/// <summary>
-	/// 
+	/// １マスのビットボード。２バイト使って表現。
 	/// </summary>
 	const Bitboard m_setMaskBB_[SquareNum] = {
-		Bitboard(UINT64_C(1) << 0,                 0),  // 0 , I9
-		Bitboard(UINT64_C(1) << 1,                 0),  // 1 , I8
-		Bitboard(UINT64_C(1) << 2,                 0),  // 2 , I7
-		Bitboard(UINT64_C(1) << 3,                 0),  // 3 , I6
-		Bitboard(UINT64_C(1) << 4,                 0),  // 4 , I5
-		Bitboard(UINT64_C(1) << 5,                 0),  // 5 , I4
-		Bitboard(UINT64_C(1) << 6,                 0),  // 6 , I3
-		Bitboard(UINT64_C(1) << 7,                 0),  // 7 , I2
-		Bitboard(UINT64_C(1) << 8,                 0),  // 8 , I1
-		Bitboard(UINT64_C(1) << 9,                 0),  // 9 , H9
+		Bitboard(UINT64_C(1) <<  0,                 0),  // 0 , I9
+		Bitboard(UINT64_C(1) <<  1,                 0),  // 1 , I8
+		Bitboard(UINT64_C(1) <<  2,                 0),  // 2 , I7
+		Bitboard(UINT64_C(1) <<  3,                 0),  // 3 , I6
+		Bitboard(UINT64_C(1) <<  4,                 0),  // 4 , I5
+		Bitboard(UINT64_C(1) <<  5,                 0),  // 5 , I4
+		Bitboard(UINT64_C(1) <<  6,                 0),  // 6 , I3
+		Bitboard(UINT64_C(1) <<  7,                 0),  // 7 , I2
+		Bitboard(UINT64_C(1) <<  8,                 0),  // 8 , I1
+		Bitboard(UINT64_C(1) <<  9,                 0),  // 9 , H9
 		Bitboard(UINT64_C(1) << 10,                 0),  // 10, H8
 		Bitboard(UINT64_C(1) << 11,                 0),  // 11, H7
 		Bitboard(UINT64_C(1) << 12,                 0),  // 12, H6
@@ -84,24 +84,24 @@ private:
 		Bitboard(UINT64_C(1) << 60,                 0),  // 60, C3
 		Bitboard(UINT64_C(1) << 61,                 0),  // 61, C2
 		Bitboard(UINT64_C(1) << 62,                 0),  // 62, C1
-		Bitboard(0, UINT64_C(1) << 0),  // 63, B9
-		Bitboard(0, UINT64_C(1) << 1),  // 64, B8
-		Bitboard(0, UINT64_C(1) << 2),  // 65, B7
-		Bitboard(0, UINT64_C(1) << 3),  // 66, B6
-		Bitboard(0, UINT64_C(1) << 4),  // 67, B5
-		Bitboard(0, UINT64_C(1) << 5),  // 68, B4
-		Bitboard(0, UINT64_C(1) << 6),  // 69, B3
-		Bitboard(0, UINT64_C(1) << 7),  // 70, B2
-		Bitboard(0, UINT64_C(1) << 8),  // 71, B1
-		Bitboard(0, UINT64_C(1) << 9),  // 72, A9
-		Bitboard(0, UINT64_C(1) << 10),  // 73, A8
-		Bitboard(0, UINT64_C(1) << 11),  // 74, A7
-		Bitboard(0, UINT64_C(1) << 12),  // 75, A6
-		Bitboard(0, UINT64_C(1) << 13),  // 76, A5
-		Bitboard(0, UINT64_C(1) << 14),  // 77, A4
-		Bitboard(0, UINT64_C(1) << 15),  // 78, A3
-		Bitboard(0, UINT64_C(1) << 16),  // 79, A2
-		Bitboard(0, UINT64_C(1) << 17)   // 80, A1
+		Bitboard(                0, UINT64_C(1) <<  0),  // 63, B9
+		Bitboard(                0, UINT64_C(1) <<  1),  // 64, B8
+		Bitboard(                0, UINT64_C(1) <<  2),  // 65, B7
+		Bitboard(                0, UINT64_C(1) <<  3),  // 66, B6
+		Bitboard(                0, UINT64_C(1) <<  4),  // 67, B5
+		Bitboard(                0, UINT64_C(1) <<  5),  // 68, B4
+		Bitboard(                0, UINT64_C(1) <<  6),  // 69, B3
+		Bitboard(                0, UINT64_C(1) <<  7),  // 70, B2
+		Bitboard(                0, UINT64_C(1) <<  8),  // 71, B1
+		Bitboard(                0, UINT64_C(1) <<  9),  // 72, A9
+		Bitboard(                0, UINT64_C(1) << 10),  // 73, A8
+		Bitboard(                0, UINT64_C(1) << 11),  // 74, A7
+		Bitboard(                0, UINT64_C(1) << 12),  // 75, A6
+		Bitboard(                0, UINT64_C(1) << 13),  // 76, A5
+		Bitboard(                0, UINT64_C(1) << 14),  // 77, A4
+		Bitboard(                0, UINT64_C(1) << 15),  // 78, A3
+		Bitboard(                0, UINT64_C(1) << 16),  // 79, A2
+		Bitboard(                0, UINT64_C(1) << 17)   // 80, A1
 	};
 
 
@@ -109,7 +109,7 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// １マスを表すビットボード。
 	/// </summary>
 	/// <param name="sq"></param>
 	/// <returns></returns>

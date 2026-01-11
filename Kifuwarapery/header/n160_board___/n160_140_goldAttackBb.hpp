@@ -32,12 +32,12 @@ public:
 	void Initialize();
 
 	/// <summary>
-	/// 
+	/// チェック・テーブル
 	/// </summary>
 	void InitCheckTableGold();
 
 	/// <summary>
-	/// 
+	/// 利きビットボード取得
 	/// </summary>
 	/// <param name="c"></param>
 	/// <param name="sq"></param>
@@ -47,7 +47,7 @@ public:
 	}
 
 	/// <summary>
-	/// 
+	/// チェック・テーブル・ビットボード取得
 	/// </summary>
 	/// <param name="c"></param>
 	/// <param name="sq"></param>

@@ -4,7 +4,7 @@
 
 
 /// <summary>
-/// 
+/// ［飛車、角の元位置］と、［その利き］の２点のビットボード？
 /// </summary>
 class BetweenBb {
 

@@ -41,7 +41,7 @@ struct KkKkpKppStorage1 : public KkKkpKppStorageBase<std::array<s16, 2>, std::ar
 
 
 	/// <summary>
-	/// 
+	/// 初期化
 	/// </summary>
 	/// <param name="dirName"></param>
 	/// <param name="Synthesized"></param>
@@ -50,24 +50,24 @@ struct KkKkpKppStorage1 : public KkKkpKppStorageBase<std::array<s16, 2>, std::ar
 		if (Synthesized) {
 			if (ReadSynthesized(dirName))
 			{
-				SYNCCOUT << "(init 1/4)Use synthesized file!" << SYNCENDL;
+				SYNCCOUT << "(^q^) Eval 1. Use synthesized file!" << SYNCENDL;
 				return;
 			}
 		}
 		Clear();
 
 #if defined(MODE_CACHE_EVAL)
-		SYNCCOUT << "(init 2/4) readSomeSynthesized!" << SYNCENDL;
+		SYNCCOUT << "(^q^) Eval 2. readSomeSynthesized!" << SYNCENDL;
 #endif
 		KkKkpKppStorage1::ReadSomeSynthesized(dirName);
 
 #if defined(MODE_CACHE_EVAL)
-		SYNCCOUT << "(init 3/4) (long time)read bins! dir=" << dirName << SYNCENDL;
+		SYNCCOUT << "(^q^) Eval 3. (long time)read bins! dir=" << dirName << SYNCENDL;
 #endif
 		KkKkpKppStorage1::ReadBins(dirName);
 
 #if defined(MODE_CACHE_EVAL)
-		SYNCCOUT << "(init 4/4) (long time)setEvaluate!" << SYNCENDL;
+		SYNCCOUT << "(^q^) Eval 4. (long time)setEvaluate!" << SYNCENDL;
 #endif
 		KkKkpKppStorage1::SetEvaluate(dirName);
 	}
