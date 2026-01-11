@@ -67,8 +67,9 @@ const StringToPieceTypeCSA g_stringToPieceTypeCSA;
 /// </summary>
 /// <param name="pos"></param>
 /// <param name="ssCmd"></param>
-void UsiOperation::Go(const Position& pos, std::istringstream& ssCmd) {
-	LimitsOfThinking limits;
+void UsiOperation::Go(const Position& pos, std::istringstream& ssCmd)
+{
+	LimitsDuringGo limits;
 	std::vector<Move> moves;
 	std::string token;
 
@@ -77,6 +78,7 @@ void UsiOperation::Go(const Position& pos, std::istringstream& ssCmd) {
 		// 相手の思考時間中にも思考（ポンダー）しろだぜ（＾▽＾）
 		if      (token == "ponder"     ) { limits.m_canPonder = true; }
 
+		// TODO: 時間管理のために Positon 変数に［残り持ち時間］を記憶しておきたいぜ（＾～＾）
 		// 先手の残り時間（ミリ秒）
 		else if (token == "btime"      ) { limits.SetTimeLeftFromStream( Color::Black, ssCmd); }
 
@@ -139,7 +141,7 @@ void UsiOperation::Go(const Position& pos, std::istringstream& ssCmd) {
 /// <param name="GetDepth"></param>
 /// <param name="GetMove"></param>
 void UsiOperation::Go(const Position& GetPos, const Ply GetDepth, const Move GetMove) {
-	LimitsOfThinking m_limits;
+	LimitsDuringGo m_limits;
 	std::vector<Move> moves;
 	m_limits.GetDepth = GetDepth;
 	moves.push_back(GetMove);

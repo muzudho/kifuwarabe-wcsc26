@@ -24,9 +24,9 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// 空回り開始
 	/// </summary>
-	virtual void IdleLoop()override;
+	virtual void StartIdleLoop()override;
 
 
 	/// <summary>

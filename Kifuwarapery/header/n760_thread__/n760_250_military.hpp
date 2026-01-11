@@ -49,9 +49,9 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// 空回り開始
 	/// </summary>
-	virtual void IdleLoop();
+	virtual void StartIdleLoop();
 
 
 	/// <summary>

@@ -5,14 +5,15 @@
 
 
 /// <summary>
-/// 
+/// 空回り開始☆（＾～＾）
 /// </summary>
-void Captain::IdleLoop() {
+void Captain::StartIdleLoop() {
 	while (true) {// エグジットするまで　ずっといるぜ☆
 		{
 			std::unique_lock<Mutex> lock(this->m_sleepLock);
 			this->m_isThinking = false;
-			while (!this->m_isThinking && !m_exit) {
+			while (!this->m_isThinking && !m_exit)
+			{
 				// UI 関連だから要らないのかも。
 				this->m_pRucksack->m_ownerHerosPub.m_sleepCond_.notify_one();
 				this->m_sleepCond.wait(lock);

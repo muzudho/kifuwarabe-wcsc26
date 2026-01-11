@@ -145,7 +145,7 @@ void Military::ForkNewFighter(
 	if (1 < slavesCount || Fake) {
 		splitedNode.m_mutex.unlock();
 		this->m_pRucksack->m_ownerHerosPub.m_mutex_.unlock();
-		Military::IdleLoop();
+		Military::StartIdleLoop();	// 空回り開始
 		assert(!m_searching);
 		assert(!m_activePosition);
 		this->m_pRucksack->m_ownerHerosPub.m_mutex_.lock();

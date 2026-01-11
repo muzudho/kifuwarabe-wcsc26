@@ -891,7 +891,7 @@
     <ClInclude Include="header\n640_searcher\n640_440_splitedNode.hpp">
       <Filter>header\n640_searcher</Filter>
     </ClInclude>
-    <ClInclude Include="header\n560_timeMgr_\n560_100_limitsOfThinking.hpp">
+    <ClInclude Include="header\n560_timeMgr_\n560_100_limitsDuringGo.hpp">
       <Filter>header\n560_timeMng_</Filter>
     </ClInclude>
     <ClInclude Include="header\n800_learn___\n800_100_stopwatch.hpp">

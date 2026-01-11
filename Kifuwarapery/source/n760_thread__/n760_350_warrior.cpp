@@ -4,9 +4,9 @@
 
 
 /// <summary>
-/// 
+/// 空回り開始
 /// </summary>
-void Warrior::IdleLoop() {
+void Warrior::StartIdleLoop() {
 	while (!this->m_exit) {
 		{
 			std::unique_lock<Mutex> lock(this->m_sleepLock);

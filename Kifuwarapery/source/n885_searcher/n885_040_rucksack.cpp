@@ -352,11 +352,11 @@ void Rucksack::CheckTime() {
 		m_signals.m_firstRootMove
 		// フェイル・ロウではなくて☆？
 		&& !m_signals.m_failedLowAtRoot
-		&& m_timeManager.IsTimeBudgetOver(elapsed);
+		&& m_timeMgr.IsTimeBudgetOver(elapsed);
 
 	// これ以上の時間がないか☆？（＾ｑ＾）？
 	const bool noMoreTime =
-		m_timeManager.IsNoMoreTime(TimerResolution , elapsed)
+		m_timeMgr.IsNoMoreTime(TimerResolution , elapsed)
 		|| isStillAtFirstMove;
 
 	if (
@@ -372,9 +372,9 @@ void Rucksack::CheckTime() {
 
 
 /// <summary>
-/// 
+/// 空回り開始
 /// </summary>
-void Military::IdleLoop() {
+void Military::StartIdleLoop() {
 	SplitedNode* thisSp = m_splitedNodesSize ? m_activeSplitedNode : nullptr;
 	assert(!thisSp || (thisSp->m_masterThread == this && m_searching));
 

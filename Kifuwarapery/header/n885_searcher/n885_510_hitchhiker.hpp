@@ -42,14 +42,15 @@ public:
 	/// <summary>
 	///		<pre>
 	/// 考える？
-	/// メイン・スレッドの　アイドル・ループの中で呼び出される。
-	/// （１）入玉勝ち判定
-	/// （２）反復深化探索を行うぜ☆
+	/// 
+	///		- メイン・スレッドの　アイドル・ループの中で呼び出される。
+	///		- （１）入玉勝ち判定
+	///		- （２）反復深化探索を行うぜ☆
 	///		</pre>
 	/// </summary>
-	/// <param name="captainsRucksack"></param>
+	/// <param name="captainsRucksack">キャプテンの持っているＳｅａｒｃｈｅｒ☆</param>
 	static void	Think(
-		Rucksack& captainsRucksack // キャプテンの持っているＳｅａｒｃｈｅｒ☆
+		Rucksack& captainsRucksack
 	);
 
 

@@ -232,12 +232,12 @@ public:
 
 				// 深さが 5 ～ 49 で、PVサイズが 1 のとき。
 				if (4 < depth && depth < 50 && rucksack.m_pvSize == 1) {
-					rucksack.m_timeManager.SetPvInstability(rucksack.GetBestMovePlyChanges(), prevBestMovePlyChanges);
+					rucksack.m_timeMgr.SetPvInstability(rucksack.GetBestMovePlyChanges(), prevBestMovePlyChanges);
 				}
 
 				// 次のイテレーションを回す時間が無いなら、ストップ
 				if (
-					!rucksack.m_timeManager.IsTimeOk_CanIterativeDeeping(rucksack.m_stopwatch.GetElapsed())
+					!rucksack.m_timeMgr.IsTimeOk_CanIterativeDeeping(rucksack.m_stopwatch.GetElapsed())
 					) {
 					stop = true;
 				}
@@ -259,7 +259,7 @@ public:
 						rucksack.m_rootMoves.size() == 1
 						||
 						// または、まだ反復深化探索していい時間が残ってるなら。
-						rucksack.m_timeManager.IsTimeOk_CanIterativeDeeping(rucksack.m_stopwatch.GetElapsed())
+						rucksack.m_timeMgr.IsTimeOk_CanIterativeDeeping(rucksack.m_stopwatch.GetElapsed())
 					)
 				) {
 					const ScoreIndex rBeta = bestScore - 2 * PieceScore::m_capturePawn;

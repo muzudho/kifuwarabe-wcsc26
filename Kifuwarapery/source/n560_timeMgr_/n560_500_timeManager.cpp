@@ -1,6 +1,6 @@
 ﻿#include <algorithm> // std::min
 #include "../../header/n119_score___/n119_090_scoreIndex.hpp"
-#include "../../header/n560_timeMgr_/n560_100_limitsOfThinking.hpp"
+#include "../../header/n560_timeMgr_/n560_100_limitsDuringGo.hpp"
 #include "../../header/n560_timeMgr_/n560_500_timeManager.hpp"
 #include "../../header/n885_searcher/n885_040_rucksack.hpp"
 
@@ -236,7 +236,7 @@ void TimeManager::SetPvInstability(
 /// <param name="pRucksack"></param>
 void TimeManager::Initialize(
 	bool& isMoveTime0Clear,
-	const LimitsOfThinking& limits,
+	const LimitsDuringGo& limits,
 	const Ply currentPly,
 	const Color us,
 	Rucksack* pRucksack)
@@ -251,6 +251,7 @@ void TimeManager::Initialize(
 	this->ZeroclearPredictOpponentPaySeconds();
 	this->SetPlanPayOwnSeconds( limits.GetMillisecondsLeft(us));// 予定思考時間は、残り時間をそのまんま入れて初期化☆？（＾ｑ＾）？
 	this->SetSaidaiEnchoTime( limits.GetMillisecondsLeft(us));// 最大延長時間も☆？（＾ｑ＾）？
+
 
 	//────────────────────────────────────────────────────────────────────────────────
 	// 消費時間シミュレーション

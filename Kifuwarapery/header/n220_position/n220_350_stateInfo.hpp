@@ -5,8 +5,11 @@
 
 
 /// <summary>
-/// StateInfoMin だけ memcpy でコピーすることああるので、
-/// 継承を使っている。
+///		<pre>
+/// XXX: 局面に関する何かの情報（＾～＾）？
+/// 
+///		- StateInfoMin だけ memcpy でコピーすることああるので、継承を使っている。
+///		</pre>
 /// </summary>
 struct StateInfo : public StateInfoMin {
 

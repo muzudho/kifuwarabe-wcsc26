@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "../n520_evaluate/n520_700_evaluation09.hpp"
-#include "../n560_timeMgr_/n560_100_limitsOfThinking.hpp"
+#include "../n560_timeMgr_/n560_100_limitsDuringGo.hpp"
 
 
 // 依存関係の都合を解消。
@@ -10,6 +10,8 @@ class Rucksack;
 
 /// <summary>
 /// 時間管理だぜ☆（＾ｑ＾）
+/// 
+///		- 寿命はリュックサックの内側。
 /// </summary>
 class TimeManager {
 
@@ -31,7 +33,7 @@ public:
 	/// <param name="pRucksack"></param>
 	void Initialize(
 		bool& isMoveTime0Clear,
-		const LimitsOfThinking& limits,
+		const LimitsDuringGo& limits,
 		const Ply currentPly,
 		const Color us,
 		Rucksack* pRucksack);

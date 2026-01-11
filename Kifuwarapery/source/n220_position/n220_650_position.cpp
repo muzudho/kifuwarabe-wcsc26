@@ -17,7 +17,6 @@
 #include "../../header/n220_position/n220_100_repetitionType.hpp"
 #include "../../header/n220_position/n220_640_utilAttack.hpp"
 #include "../../header/n220_position/n220_650_position.hpp"
-
 #include "../../header/n350_pieceTyp/n350_040_ptEvent.hpp"
 #include "../../header/n350_pieceTyp/n350_110_ptPawn.hpp"
 #include "../../header/n350_pieceTyp/n350_120_ptLance.hpp"
@@ -31,17 +30,21 @@
 #include "../../header/n350_pieceTyp/n350_500_ptPrograms.hpp"
 #include "../../header/n351_bonaDir_/n351_500_bonaDirArray.hpp"
 #include "../../header/n407_moveGen_/n407_900_moveList.hpp"
-
 #include "../../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
 #include "../../header/n600_book____/n600_100_mt64bit.hpp"
 #include "../../header/n885_searcher/n885_040_rucksack.hpp"
 #include <cassert>
 
 
-
+// なんだこれ☆（＾～＾）？
 Key Position::m_ZOBRIST_[g_PIECETYPE_NUM][SquareNum][g_COLOR_NUM];
 Key Position::m_ZOB_HAND_[HandPieceNum][g_COLOR_NUM];
 Key Position::m_ZOB_EXCLUSION_;
+
+
+// ========================================
+// アクセッサ
+// ========================================
 
 
 /// <summary>
@@ -54,15 +57,585 @@ Color Position::GetTurn() const
 }
 
 
+/*
+Move Position::GetMateMoveIn1Ply() {
+	return (this->GetTurn() == Black
+		?
+		GetMateMoveIn1Ply<Color::Black, Color::White>()
+		:
+		GetMateMoveIn1Ply<Color::White, Color::Black>()
+		);
+}
+*/
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+Ply Position::GetGamePly() const
+{
+	return this->m_gamePly_;
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+Key Position::GetBoardKey() const
+{
+	return this->m_st_->m_boardKey;
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+Key Position::GetHandKey() const
+{
+	return this->m_st_->m_handKey;
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+Key Position::GetKey() const
+{
+	return this->m_st_->GetKey();
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+Key Position::GetExclusionKey() const
+{
+	return this->m_st_->GetKey() ^ m_ZOB_EXCLUSION_;
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+Key Position::GetKeyExcludeTurn() const
+{
+	static_assert(this->m_zobTurn_ == 1, "");
+	return this->GetKey() >> 1;
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+u64 Position::GetNodesSearched() const
+{
+	return this->m_nodes_;
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="n"></param>
+void Position::SetNodesSearched(const u64 n)
+{
+	this->m_nodes_ = n;
+}
+
+
+#if !defined NDEBUG
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+int Position::GetDebugSetEvalList() const {
+	// not implement
+	return 0;
+}
+#endif
+
+
+/// <summary>
+/// 
+/// </summary>
+void Position::SetEvalList()
+{
+	this->m_evalList_.Set(*this);
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+Key Position::GetComputeKey() const
+{
+	return this->GetComputeBoardKey() + this->GetComputeHandKey();
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+Military* Position::GetThisThread() const
+{
+	return this->m_thisThread_;
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="ply"></param>
+void Position::SetStartPosPly(const Ply ply)
+{
+	this->m_gamePly_ = ply;
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="index"></param>
+/// <returns></returns>
+int Position::GetList0(const int index) const
+{
+	return this->m_evalList_.m_list0[index];
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="index"></param>
+/// <returns></returns>
+int Position::GetList1(const int index) const
+{
+	return this->m_evalList_.m_list1[index];
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="sq"></param>
+/// <returns></returns>
+int Position::GetSquareHandToList(const Square sq) const
+{
+	return this->m_evalList_.m_squareHandToList[sq];
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="i"></param>
+/// <returns></returns>
+Square Position::GetListToSquareHand(const int i) const
+{
+	return this->m_evalList_.m_listToSquareHand[i];
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+int* Position::GetPlist0()
+{
+	return &this->m_evalList_.m_list0[0];
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+int* Position::GetPlist1()
+{
+	return &this->m_evalList_.m_list1[0];
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+const int* Position::GetCplist0() const
+{
+	return &this->m_evalList_.m_list0[0];
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+const int* Position::GetCplist1() const
+{
+	return &this->m_evalList_.m_list1[0];
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+const ChangedLists& Position::GetCl() const
+{
+	return this->m_st_->m_cl;
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+const Rucksack* Position::GetConstRucksack() const
+{
+	return this->m_pRucksack_;
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+Rucksack* Position::GetRucksack() const
+{
+	return this->m_pRucksack_;
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="s"></param>
+void Position::SetRucksack(Rucksack* s)
+{
+	this->m_pRucksack_ = s;
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+Key Position::GetZobTurn()
+{
+	return Position::m_zobTurn_;
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="hp"></param>
+/// <param name="c"></param>
+/// <returns></returns>
+Key Position::GetZobHand(const HandPiece hp, const Color c)
+{
+	return Position::m_ZOB_HAND_[hp][c];
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pt"></param>
+/// <returns></returns>
+Bitboard Position::GetBbOf10(const PieceType pt) const
+{
+	return this->m_BB_ByPiecetype_[pt];
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="c"></param>
+/// <returns></returns>
+Bitboard Position::GetBbOf10(const Color c) const
+{
+	return this->m_BB_ByColor_[c];
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pt"></param>
+/// <param name="c"></param>
+/// <returns></returns>
+Bitboard Position::GetBbOf20(const PieceType pt, const Color c) const
+{
+	return this->GetBbOf10(pt) & this->GetBbOf10(c);
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pt1"></param>
+/// <param name="pt2"></param>
+/// <returns></returns>
+Bitboard Position::GetBbOf20(const PieceType pt1, const PieceType pt2) const
+{
+	return this->GetBbOf10(pt1) | this->GetBbOf10(pt2);
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pt1"></param>
+/// <param name="pt2"></param>
+/// <param name="pt3"></param>
+/// <returns></returns>
+Bitboard Position::GetBbOf(const PieceType pt1, const PieceType pt2, const PieceType pt3) const
+{
+	return this->GetBbOf20(pt1, pt2) | this->GetBbOf10(pt3);
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pt1"></param>
+/// <param name="pt2"></param>
+/// <param name="pt3"></param>
+/// <param name="pt4"></param>
+/// <returns></returns>
+Bitboard Position::GetBbOf(const PieceType pt1, const PieceType pt2, const PieceType pt3, const PieceType pt4) const
+{
+	return this->GetBbOf(pt1, pt2, pt3) | this->GetBbOf10(pt4);
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pt1"></param>
+/// <param name="pt2"></param>
+/// <param name="pt3"></param>
+/// <param name="pt4"></param>
+/// <param name="pt5"></param>
+/// <returns></returns>
+Bitboard Position::GetBbOf(const PieceType pt1, const PieceType pt2, const PieceType pt3, const PieceType pt4, const PieceType pt5) const
+{
+	return this->GetBbOf(pt1, pt2, pt3, pt4) | this->GetBbOf10(pt5);
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+Bitboard Position::GetOccupiedBB() const
+{
+	return this->GetBbOf10(N00_Occupied);
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+Bitboard Position::GetNOccupiedBB() const
+{
+	return ~this->GetOccupiedBB();
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+Bitboard Position::GetEmptyBB() const
+{
+	return this->GetOccupiedBB() ^ Bitboard::CreateAllOneBB();
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+Bitboard Position::GetGoldsBB() const
+{
+	return this->m_goldsBB_;
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="c"></param>
+/// <returns></returns>
+Bitboard Position::GetGoldsBB(const Color c) const
+{
+	return this->GetGoldsBB() & this->GetBbOf10(c);
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="sq"></param>
+/// <returns></returns>
+Piece Position::GetPiece(const Square sq) const
+{
+	return this->m_piece_[sq];
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="c"></param>
+/// <returns></returns>
+Hand Position::GetHand(const Color c) const
+{
+	return this->m_hand_[c];
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+Bitboard Position::GetPinnedBB() const
+{
+	if (this->GetTurn() == Color::Black)
+	{
+		return this->GetHiddenCheckers<true, true, Color::Black, Color::White>();
+	}
+	else
+	{
+		return this->GetHiddenCheckers<true, true, Color::White, Color::Black>();
+	}
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+Bitboard Position::GetCheckersBB() const
+{
+	return this->m_st_->m_checkersBB;
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+Bitboard Position::GetPrevCheckersBB() const
+{
+	return this->m_st_->m_previous->m_checkersBB;
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+bool Position::InCheck() const
+{
+	return this->GetCheckersBB().Exists1Bit();
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+ScoreIndex Position::GetMaterial() const
+{
+	return this->m_st_->m_material;
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
+ScoreIndex Position::GetMaterialDiff() const
+{
+	return this->m_st_->m_material - this->m_st_->m_previous->m_material;
+}
+
+
+/// <summary>
+/// move が王手なら true
+/// </summary>
+/// <param name="move"></param>
+/// <returns></returns>
+bool Position::IsMoveGivesCheck(const Move move) const {
+	return this->IsMoveGivesCheck(move, CheckInfo(*this));
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="c"></param>
+/// <param name="sq"></param>
+/// <returns></returns>
+bool Position::IsAttackersToIsNot0(const Color c, const Square sq) const
+{
+	return this->GetAttackersTo_clr(c, sq, this->GetOccupiedBB()).Exists1Bit();
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="c"></param>
+/// <param name="sq"></param>
+/// <param name="occupied"></param>
+/// <returns></returns>
+bool Position::IsAttackersToIsNot0(const Color c, const Square sq, const Bitboard& occupied) const
+{
+	return this->GetAttackersTo_clr(c, sq, occupied).Exists1Bit();
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="c"></param>
+/// <param name="sq"></param>
+/// <returns></returns>
+bool Position::IsUnDropCheckIsSupported(const Color c, const Square sq) const
+{
+	return this->GetAttackersTo_clr(c, sq, this->GetOccupiedBB()).Exists1Bit();
+}
+
+
+// ========================================
+// メイン・メソッド
+// ========================================
+
 
 /// <summary>
 ///		<pre>
 /// 実際に指し手が合法手かどうか判定
-/// 連続王手の千日手は排除しない。
-/// 確実に駒打ちではないときは、MUSTNOTDROP == true とする。
-/// 確実に玉の移動で無いときは、FROMMUSTNOTKING == true とする。英語として正しい？
-/// 遠隔駒で王手されているとき、その駒の利きがある場所に逃げる手を検出出来ない場合があるので、
-/// そのような手を指し手生成してはいけない。
+/// 
+///		連続王手の千日手は排除しない。
+///		確実に駒打ちではないときは、MUSTNOTDROP == true とする。
+///		確実に玉の移動で無いときは、FROMMUSTNOTKING == true とする。英語として正しい？
+///		遠隔駒で王手されているとき、その駒の利きがある場所に逃げる手を検出出来ない場合があるので、
+///		そのような手を指し手生成してはいけない。
 ///		</pre>
 /// </summary>
 /// <typeparam name="MUSTNOTDROP"></typeparam>
@@ -72,13 +645,12 @@ Color Position::GetTurn() const
 /// <param name="move"></param>
 /// <param name="pinned"></param>
 /// <returns></returns>
-template <bool MUSTNOTDROP, bool FROMMUSTNOTKING,Color US,Color THEM>
-bool Position::IsPseudoLegalMoveIsLegal(const Move move, const Bitboard& pinned) const {
+template <bool MUSTNOTDROP, bool FROMMUSTNOTKING, Color US, Color THEM>
+bool Position::IsPseudoLegalMoveIsLegal(const Move move, const Bitboard& pinned) const
+{
 	// 駒打ちは、打ち歩詰めや二歩は指し手生成時や、killerを ＭｏｖｅＰｉｃｋｅｒ::nextMove() 内で排除しているので、常に合法手
 	// (連続王手の千日手は省いていないけれど。)
-	if (!MUSTNOTDROP && move.IsDrop()) {
-		return true;
-	}
+	if (!MUSTNOTDROP && move.IsDrop()) { return true; }
 	assert(!move.IsDrop());
 
 	const Square from = move.From();
@@ -87,10 +659,11 @@ bool Position::IsPseudoLegalMoveIsLegal(const Move move, const Bitboard& pinned)
 		// 玉の移動先に相手の駒の利きがあれば、合法手でないので、false
 		return !IsAttackersToIsNot0(THEM, move.To());
 	}
+
 	// 玉以外の駒の移動
 	return !IsPinnedIllegal(from, move.To(), GetKingSquare(US), pinned);
 }
-template bool Position::IsPseudoLegalMoveIsLegal<false, false, Color::Black,Color::White>(const Move move, const Bitboard& pinned) const;
+template bool Position::IsPseudoLegalMoveIsLegal<false, false, Color::Black, Color::White>(const Move move, const Bitboard& pinned) const;
 template bool Position::IsPseudoLegalMoveIsLegal<false, false, Color::White, Color::Black>(const Move move, const Bitboard& pinned) const;
 template bool Position::IsPseudoLegalMoveIsLegal<false, true, Color::Black, Color::White>(const Move move, const Bitboard& pinned) const;
 template bool Position::IsPseudoLegalMoveIsLegal<false, true, Color::White, Color::Black>(const Move move, const Bitboard& pinned) const;
@@ -106,8 +679,9 @@ template bool Position::IsPseudoLegalMoveIsLegal<true, false, Color::White, Colo
 /// <param name="move"></param>
 /// <param name="pinned"></param>
 /// <returns></returns>
-template<Color US,Color THEM>
-bool Position::IsPseudoLegalMoveIsEvasion(const Move move, const Bitboard& pinned) const {
+template<Color US, Color THEM>
+bool Position::IsPseudoLegalMoveIsEvasion(const Move move, const Bitboard& pinned) const
+{
 	assert(IsOK());
 
 	// 玉の移動
@@ -123,16 +697,13 @@ bool Position::IsPseudoLegalMoveIsEvasion(const Move move, const Bitboard& pinne
 	Bitboard target = GetCheckersBB();
 	const Square checkSq = target.PopFirstOneFromI9();
 
-	if (target.Exists1Bit()) {
-		// 両王手のとき、玉の移動以外の手は指せない。
-		return false;
-	}
+	if (target.Exists1Bit()) { return false; } // 両王手のとき、玉の移動以外の手は指せない。
 
 	//const Color us = GetTurn();
 	const Square to = move.To();
 	// 移動、又は打った駒が、王手をさえぎるか、王手している駒を取る必要がある。
 	target = g_betweenBb.GetBetweenBB(checkSq, GetKingSquare(US)) | GetCheckersBB();
-	return g_setMaskBb.IsSet(&target, to) && IsPseudoLegalMoveIsLegal<false, true,US,THEM>(move, pinned);
+	return g_setMaskBb.IsSet(&target, to) && IsPseudoLegalMoveIsLegal<false, true, US, THEM>(move, pinned);
 }
 template bool Position::IsPseudoLegalMoveIsEvasion<Color::Black, Color::White>(const Move move, const Bitboard& pinned) const;
 template bool Position::IsPseudoLegalMoveIsEvasion<Color::White, Color::Black>(const Move move, const Bitboard& pinned) const;
@@ -147,90 +718,66 @@ template bool Position::IsPseudoLegalMoveIsEvasion<Color::White, Color::Black>(c
 /// <param name="checkPawnDrop">二歩と打ち歩詰めも調べるなら true。これが true のとき、駒打ちの場合のみ Legal であることが確定する。</param>
 /// <returns></returns>
 template<Color US, Color THEM>
-bool Position::MoveIsPseudoLegal(const Move move, const bool checkPawnDrop) const {
+bool Position::MoveIsPseudoLegal(const Move move, const bool checkPawnDrop) const
+{
 	const Square to = move.To();
 
 	if (move.IsDrop()) {
 		const PieceType ptFrom = move.GetPieceTypeDropped();
-		if (!this->GetHand<US>().Exists(ConvHandPiece::FromPieceType(ptFrom)) || GetPiece(to) != N00_Empty) {
-			return false;
-		}
+		if (!this->GetHand<US>().Exists(ConvHandPiece::FromPieceType(ptFrom)) || GetPiece(to) != N00_Empty) { return false; }
 
 		if (this->InCheck()) {
 			// 王手されているので、合駒でなければならない。
 			Bitboard target = this->GetCheckersBB();
 			const Square checksq = target.PopFirstOneFromI9();
 
-			if (target.Exists1Bit()) {
-				// 両王手は合駒出来無い。
-				return false;
-			}
+			if (target.Exists1Bit()) { return false; }	// 両王手は合駒出来無い。
 
 			target = g_betweenBb.GetBetweenBB(checksq, this->GetKingSquare<US>());
-			if (!g_setMaskBb.IsSet(&target, to)) {
-				// 玉と、王手した駒との間に駒を打っていない。
-				return false;
-			}
+			if (!g_setMaskBb.IsSet(&target, to)) { return false; }	// 玉と、王手した駒との間に駒を打っていない。
 		}
 
 		if (ptFrom == N01_Pawn && checkPawnDrop) {
-			if ((this->GetBbOf20<US>(N01_Pawn) & g_fileMaskBb.GetFileMask(ConvSquare::TO_FILE10(to))).Exists1Bit()) {
-				// 二歩
-				return false;
-			}
+			if ((this->GetBbOf20<US>(N01_Pawn) & g_fileMaskBb.GetFileMask(ConvSquare::TO_FILE10(to))).Exists1Bit()) { return false; }	// 二歩
+
 			const SquareDelta TDeltaN = (US == Black ? DeltaN : DeltaS);
-			if (to + TDeltaN == this->GetKingSquare(THEM) && this->IsPawnDropCheckMate<US,THEM>(to)) {
-				// 王手かつ打ち歩詰め
-				return false;
-			}
+			if (to + TDeltaN == this->GetKingSquare(THEM) && this->IsPawnDropCheckMate<US, THEM>(to)) { return false; }	// 王手かつ打ち歩詰め
 		}
 	}
 	else {
 		const Square from = move.From();
 		const PieceType ptFrom = move.GetPieceTypeFrom();
-		if (GetPiece(from) != ConvPiece::FROM_COLOR_AND_PIECE_TYPE10<US>(ptFrom) || g_setMaskBb.IsSet(&this->GetBbOf10<US>(), to)) {
-			return false;
-		}
+		if (GetPiece(from) != ConvPiece::FROM_COLOR_AND_PIECE_TYPE10<US>(ptFrom) || g_setMaskBb.IsSet(&this->GetBbOf10<US>(), to)) { return false; }
 
-		if (!g_setMaskBb.IsSet( &UtilAttack::GetAttacksFrom(ptFrom, US, from, this->GetOccupiedBB()), to)) {
-			return false;
-		}
+		if (!g_setMaskBb.IsSet(&UtilAttack::GetAttacksFrom(ptFrom, US, from, this->GetOccupiedBB()), to)) { return false; }
 
 		if (InCheck()) {
 			if (ptFrom == N08_King) {
 				Bitboard occ = GetOccupiedBB();
 				g_setMaskBb.ClearBit(&occ, from);
-				if (this->IsAttackersToIsNot0(THEM, to, occ)) {
-					// 王手から逃げていない。
-					return false;
-				}
+				if (this->IsAttackersToIsNot0(THEM, to, occ)) { return false; }	// 王手から逃げていない。
 			}
 			else {
 				// 玉以外の駒を移動させたとき。
 				Bitboard target = GetCheckersBB();
 				const Square checksq = target.PopFirstOneFromI9();
 
-				if (target.Exists1Bit()) {
-					// 両王手なので、玉が逃げない手は駄目
-					return false;
-				}
+				if (target.Exists1Bit()) { return false; }	// 両王手なので、玉が逃げない手は駄目
 
 				target = g_betweenBb.GetBetweenBB(checksq, this->GetKingSquare<US>()) | GetCheckersBB();
-				if (!g_setMaskBb.IsSet(&target, to)) {
-					// 玉と、王手した駒との間に移動するか、王手した駒を取る以外は駄目。
-					return false;
-				}
+				if (!g_setMaskBb.IsSet(&target, to)) { return false; }	// 玉と、王手した駒との間に移動するか、王手した駒を取る以外は駄目。
 			}
 		}
 	}
 
 	return true;
 }
-template bool Position::MoveIsPseudoLegal<Color::Black,Color::White>(const Move move, const bool checkPawnDrop) const;
+template bool Position::MoveIsPseudoLegal<Color::Black, Color::White>(const Move move, const bool checkPawnDrop) const;
 template bool Position::MoveIsPseudoLegal<Color::White, Color::Black>(const Move move, const bool checkPawnDrop) const;
 
 
 #if !defined NDEBUG
+
 
 /// <summary>
 ///		<pre>
@@ -245,7 +792,180 @@ template bool Position::MoveIsPseudoLegal<Color::White, Color::Black>(const Move
 bool Position::MoveIsLegal(const Move GetMove) const {
 	return MoveList<N09_LegalAll>(*this).Contains(GetMove);
 }
+
+
 #endif
+
+
+/// <summary>
+/// SEE1 取得
+/// </summary>
+/// <typeparam name="US"></typeparam>
+/// <typeparam name="THEM"></typeparam>
+/// <param name="move"></param>
+/// <param name="asymmThreshold"></param>
+/// <returns></returns>
+template<Color US, Color THEM>
+ScoreIndex Position::GetSee1(const Move move, const int asymmThreshold) const {
+	const Square to = move.To();
+	Square from;
+	PieceType ptCaptured;
+	Bitboard occ = GetOccupiedBB();
+	Bitboard attackers;
+	Bitboard opponentAttackers;
+
+
+	ScoreIndex swapList[32];
+	if (move.IsDrop()) {
+		opponentAttackers = this->GetAttackersTo_clr(THEM, to, occ);
+		if (!opponentAttackers.Exists1Bit()) {
+			return ScoreZero;
+		}
+		attackers = opponentAttackers | this->GetAttackersTo_clr(US, to, occ);
+		swapList[0] = ScoreZero;
+		ptCaptured = move.GetPieceTypeDropped();
+	}
+	else {
+		from = move.From();
+		g_setMaskBb.XorBit(&occ, from);
+		opponentAttackers = this->GetAttackersTo_clr(THEM, to, occ);
+		if (!opponentAttackers.Exists1Bit()) {
+			if (move.IsPromotion()) {
+				const PieceType ptFrom = move.GetPieceTypeFrom();
+				return PieceScore::GetCapturePieceScore(move.GetCap()) + PieceScore::GetPromotePieceScore(ptFrom);
+			}
+			return PieceScore::GetCapturePieceScore(move.GetCap());
+		}
+		attackers = opponentAttackers | this->GetAttackersTo_clr(US, to, occ);
+		swapList[0] = PieceScore::GetCapturePieceScore(move.GetCap());
+		ptCaptured = move.GetPieceTypeFrom();
+		if (move.IsPromotion()) {
+			const PieceType ptFrom = move.GetPieceTypeFrom();
+			swapList[0] += PieceScore::GetPromotePieceScore(ptFrom);
+			ptCaptured += PTPromote;
+		}
+	}
+
+	// 相手の駒がぶつかっている所？の数だけ回っているのかだぜ☆？（＾ｑ＾）？
+	int slIndex = 1;
+	Color iCurrTurn = THEM; // ループ中にひっくり返るぜ☆（＾ｑ＾）
+	do {
+		swapList[slIndex] = -swapList[slIndex - 1] + PieceScore::GetCapturePieceScore(ptCaptured);
+
+		// 再帰関数のスタート地点だぜ☆！（＾ｑ＾）
+		// todo: 実際に移動した方向を基にattackersを更新すれば、template, inline を使用しなくても良さそう。
+		//       その場合、キャッシュに乗りやすくなるので逆に速くなるかも。
+		const PieceTypeSeeEvent ptsEvent(
+			*this,
+			to,
+			opponentAttackers,
+			iCurrTurn
+		);
+		ptCaptured = PiecetypePrograms::m_PIECETYPE_PROGRAMS[PieceType::N01_Pawn]->AppendToNextAttackerAndTryPromote(
+			occ,
+			attackers,
+			PieceType::N02_Lance,
+			ptsEvent
+		);
+
+		attackers &= occ;
+		++slIndex;
+		iCurrTurn = ConvColor::OPPOSITE_COLOR10b(iCurrTurn); // ループ中にひっくり返すぜ☆（＾ｑ＾）
+		opponentAttackers = attackers & this->GetBbOf10(iCurrTurn);
+
+		if (ptCaptured == N08_King) {
+			if (opponentAttackers.Exists1Bit()) {
+				swapList[slIndex++] = PieceScore::m_CaptureKingScore;
+			}
+			break;
+		}
+	} while (opponentAttackers.Exists1Bit());
+
+	if (asymmThreshold) {
+		for (int i = 0; i < slIndex; i += 2) {
+			if (swapList[i] < asymmThreshold) {
+				swapList[i] = -PieceScore::m_CaptureKingScore;
+			}
+		}
+	}
+
+	// nega max 的に駒の取り合いの点数を求める。
+	while (--slIndex) {
+		swapList[slIndex - 1] = std::min(-swapList[slIndex], swapList[slIndex - 1]);
+	}
+	return swapList[0];
+}
+template ScoreIndex Position::GetSee1<Color::Black, Color::White>(const Move move, const int asymmThreshold) const;
+template ScoreIndex Position::GetSee1<Color::White, Color::Black>(const Move move, const int asymmThreshold) const;
+
+
+/// <summary>
+/// SEE符号取得
+/// </summary>
+/// <param name="move"></param>
+/// <returns></returns>
+ScoreIndex Position::GetSeeSign(const Move move) const {
+	if (move.IsCapture()) {
+		const PieceType ptFrom = move.GetPieceTypeFrom();
+		const Square to = move.To();
+		if (PieceScore::GetCapturePieceScore(ptFrom) <= PieceScore::GetCapturePieceScore(GetPiece(to))) {
+			return static_cast<ScoreIndex>(1);
+		}
+	}
+	return
+		this->GetTurn()
+		?
+		GetSee1<Color::Black, Color::White>(move)
+		:
+		GetSee1<Color::White, Color::Black>(move)
+		;
+}
+
+
+/// <summary>
+///		<pre>
+/// 打ち歩詰めの判定
+/// 
+///		us が sq へ歩を打ったとき、them の玉が詰むか。
+///		us が sq へ歩を打つのは王手であると仮定する。
+///		打ち歩詰めのとき、true を返す。
+///		</pre>
+/// </summary>
+/// <typeparam name="US"></typeparam>
+/// <typeparam name="THEM"></typeparam>
+/// <param name="sq">打たれた歩の位置</param>
+/// <returns></returns>
+template<Color US, Color THEM>
+bool Position::IsPawnDropCheckMate(const Square sq) const {
+	// 玉以外の駒で、打たれた歩が取れるなら、打ち歩詰めではない。
+	if (canPieceCapture(*this, THEM, sq)) {
+		return false;
+	}
+	// todo: ここで玉の位置を求めるのは、上位で求めたものと2重になるので無駄。後で整理すること。
+	const Square ksq = this->GetKingSquare(THEM);
+
+	// 玉以外で打った歩を取れないとき、玉が歩を取るか、玉が逃げるか。
+
+	// 利きを求める際に、occupied の歩を打った位置の bit を立てた Bitboard を使用する。
+	// ここでは歩の Bitboard は更新する必要がない。
+	// color の Bitboard も更新する必要がない。(相手玉が動くとき、こちらの打った歩で玉を取ることは無い為。)
+	const Bitboard tempOccupied = this->GetOccupiedBB() | g_setMaskBb.GetSetMaskBb(sq);
+	Bitboard kingMoveBB = this->GetBbOf10<THEM>().NotThisAnd(g_kingAttackBb.GetControllBb(ksq));
+
+	// 少なくとも歩を取る方向には玉が動けるはずなので、do while を使用。
+	assert(kingMoveBB.Exists1Bit());
+	do {
+		const Square to = kingMoveBB.PopFirstOneFromI9();
+		if (!IsAttackersToIsNot0(US, to, tempOccupied)) {
+			// 相手玉の移動先に自駒の利きがないなら、打ち歩詰めではない。
+			return false;
+		}
+	} while (kingMoveBB.Exists1Bit());
+
+	return true;
+}
+template bool Position::IsPawnDropCheckMate<Color::Black, Color::White>(const Square sq) const;
+template bool Position::IsPawnDropCheckMate<Color::White, Color::Black>(const Square sq) const;
 
 
 /// <summary>
@@ -527,131 +1247,6 @@ void Position::UndoMove(const Move move) {
 }
 
 
-/// <summary>
-/// 
-/// </summary>
-/// <typeparam name="US"></typeparam>
-/// <typeparam name="THEM"></typeparam>
-/// <param name="move"></param>
-/// <param name="asymmThreshold"></param>
-/// <returns></returns>
-template<Color US, Color THEM>
-ScoreIndex Position::GetSee1(const Move move, const int asymmThreshold) const {
-	const Square to = move.To();
-	Square from;
-	PieceType ptCaptured;
-	Bitboard occ = GetOccupiedBB();
-	Bitboard attackers;
-	Bitboard opponentAttackers;
-
-
-	ScoreIndex swapList[32];
-	if (move.IsDrop()) {
-		opponentAttackers = this->GetAttackersTo_clr(THEM, to, occ);
-		if (!opponentAttackers.Exists1Bit()) {
-			return ScoreZero;
-		}
-		attackers = opponentAttackers | this->GetAttackersTo_clr(US, to, occ);
-		swapList[0] = ScoreZero;
-		ptCaptured = move.GetPieceTypeDropped();
-	}
-	else {
-		from = move.From();
-		g_setMaskBb.XorBit(&occ, from);
-		opponentAttackers = this->GetAttackersTo_clr(THEM, to, occ);
-		if (!opponentAttackers.Exists1Bit()) {
-			if (move.IsPromotion()) {
-				const PieceType ptFrom = move.GetPieceTypeFrom();
-				return PieceScore::GetCapturePieceScore(move.GetCap()) + PieceScore::GetPromotePieceScore(ptFrom);
-			}
-			return PieceScore::GetCapturePieceScore(move.GetCap());
-		}
-		attackers = opponentAttackers | this->GetAttackersTo_clr(US, to, occ);
-		swapList[0] = PieceScore::GetCapturePieceScore(move.GetCap());
-		ptCaptured = move.GetPieceTypeFrom();
-		if (move.IsPromotion()) {
-			const PieceType ptFrom = move.GetPieceTypeFrom();
-			swapList[0] += PieceScore::GetPromotePieceScore(ptFrom);
-			ptCaptured += PTPromote;
-		}
-	}
-
-	// 相手の駒がぶつかっている所？の数だけ回っているのかだぜ☆？（＾ｑ＾）？
-	int slIndex = 1;
-	Color iCurrTurn = THEM; // ループ中にひっくり返るぜ☆（＾ｑ＾）
-	do {
-		swapList[slIndex] = -swapList[slIndex - 1] + PieceScore::GetCapturePieceScore(ptCaptured);
-
-		// 再帰関数のスタート地点だぜ☆！（＾ｑ＾）
-		// todo: 実際に移動した方向を基にattackersを更新すれば、template, inline を使用しなくても良さそう。
-		//       その場合、キャッシュに乗りやすくなるので逆に速くなるかも。
-		const PieceTypeSeeEvent ptsEvent(
-			*this,
-			to,
-			opponentAttackers,
-			iCurrTurn
-		);
-		ptCaptured = PiecetypePrograms::m_PIECETYPE_PROGRAMS[PieceType::N01_Pawn]->AppendToNextAttackerAndTryPromote(
-			occ,
-			attackers,
-			PieceType::N02_Lance,
-			ptsEvent
-		);
-
-		attackers &= occ;
-		++slIndex;
-		iCurrTurn = ConvColor::OPPOSITE_COLOR10b(iCurrTurn); // ループ中にひっくり返すぜ☆（＾ｑ＾）
-		opponentAttackers = attackers & this->GetBbOf10(iCurrTurn);
-
-		if (ptCaptured == N08_King) {
-			if (opponentAttackers.Exists1Bit()) {
-				swapList[slIndex++] = PieceScore::m_CaptureKingScore;
-			}
-			break;
-		}
-	} while (opponentAttackers.Exists1Bit());
-
-	if (asymmThreshold) {
-		for (int i = 0; i < slIndex; i += 2) {
-			if (swapList[i] < asymmThreshold) {
-				swapList[i] = -PieceScore::m_CaptureKingScore;
-			}
-		}
-	}
-
-	// nega max 的に駒の取り合いの点数を求める。
-	while (--slIndex) {
-		swapList[slIndex - 1] = std::min(-swapList[slIndex], swapList[slIndex - 1]);
-	}
-	return swapList[0];
-}
-template ScoreIndex Position::GetSee1<Color::Black, Color::White>(const Move move, const int asymmThreshold) const;
-template ScoreIndex Position::GetSee1<Color::White, Color::Black>(const Move move, const int asymmThreshold) const;
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="move"></param>
-/// <returns></returns>
-ScoreIndex Position::GetSeeSign(const Move move) const {
-	if (move.IsCapture()) {
-		const PieceType ptFrom = move.GetPieceTypeFrom();
-		const Square to = move.To();
-		if (PieceScore::GetCapturePieceScore(ptFrom) <= PieceScore::GetCapturePieceScore(GetPiece(to))) {
-			return static_cast<ScoreIndex>(1);
-		}
-	}
-	return
-		this->GetTurn()
-		?
-		GetSee1<Color::Black,Color::White>(move)
-		:
-		GetSee1<Color::White,Color::Black>(move)
-		;
-}
-
-
 namespace {
 	/// <summary>
 	///		<pre>
@@ -764,52 +1359,6 @@ bool Position::NoPawns(const Color us, const File toFile) const
 {
 	return !this->GetBbOf20(N01_Pawn, us).AndIsNot0(g_fileMaskBb.GetFileMask(toFile));
 }
-
-
-/// <summary>
-///		<pre>
-/// 打ち歩詰めの判定
-/// 
-///		us が sq へ歩を打ったとき、them の玉が詰むか。
-///		us が sq へ歩を打つのは王手であると仮定する。
-///		打ち歩詰めのとき、true を返す。
-///		</pre>
-/// </summary>
-/// <typeparam name="US"></typeparam>
-/// <typeparam name="THEM"></typeparam>
-/// <param name="sq">打たれた歩の位置</param>
-/// <returns></returns>
-template<Color US, Color THEM>
-bool Position::IsPawnDropCheckMate(const Square sq) const {
-	// 玉以外の駒で、打たれた歩が取れるなら、打ち歩詰めではない。
-	if (canPieceCapture(*this, THEM, sq)) {
-		return false;
-	}
-	// todo: ここで玉の位置を求めるのは、上位で求めたものと2重になるので無駄。後で整理すること。
-	const Square ksq = this->GetKingSquare(THEM);
-
-	// 玉以外で打った歩を取れないとき、玉が歩を取るか、玉が逃げるか。
-
-	// 利きを求める際に、occupied の歩を打った位置の bit を立てた Bitboard を使用する。
-	// ここでは歩の Bitboard は更新する必要がない。
-	// color の Bitboard も更新する必要がない。(相手玉が動くとき、こちらの打った歩で玉を取ることは無い為。)
-	const Bitboard tempOccupied = this->GetOccupiedBB() | g_setMaskBb.GetSetMaskBb(sq);
-	Bitboard kingMoveBB = this->GetBbOf10<THEM>().NotThisAnd(g_kingAttackBb.GetControllBb(ksq));
-
-	// 少なくとも歩を取る方向には玉が動けるはずなので、do while を使用。
-	assert(kingMoveBB.Exists1Bit());
-	do {
-		const Square to = kingMoveBB.PopFirstOneFromI9();
-		if (!IsAttackersToIsNot0(US, to, tempOccupied)) {
-			// 相手玉の移動先に自駒の利きがないなら、打ち歩詰めではない。
-			return false;
-		}
-	} while (kingMoveBB.Exists1Bit());
-
-	return true;
-}
-template bool Position::IsPawnDropCheckMate<Color::Black, Color::White>(const Square sq) const;
-template bool Position::IsPawnDropCheckMate<Color::White, Color::Black>(const Square sq) const;
 
 
 /// <summary>
@@ -1632,78 +2181,6 @@ silver_drop_end:
 template Move Position::GetMateMoveIn1Ply<Color::Black,Color::White>();
 template Move Position::GetMateMoveIn1Ply<Color::White,Color::Black>();
 
-/*
-Move Position::GetMateMoveIn1Ply() {
-	return (this->GetTurn() == Black
-		?
-		GetMateMoveIn1Ply<Color::Black, Color::White>()
-		:
-		GetMateMoveIn1Ply<Color::White, Color::Black>()
-		);
-}
-*/
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-Ply Position::GetGamePly() const
-{
-	return this->m_gamePly_;
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-Key Position::GetBoardKey() const
-{
-	return this->m_st_->m_boardKey;
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-Key Position::GetHandKey() const
-{
-	return this->m_st_->m_handKey;
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-Key Position::GetKey() const
-{
-	return this->m_st_->GetKey();
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-Key Position::GetExclusionKey() const
-{
-	return this->m_st_->GetKey() ^ m_ZOB_EXCLUSION_;
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-Key Position::GetKeyExcludeTurn() const
-{
-	static_assert(this->m_zobTurn_ == 1, "");
-	return this->GetKey() >> 1;
-}
-
 
 /// <summary>
 /// Zobristハッシュ用の乱数キーを初期化します。盤上の各駒タイプ・各マス・各色に対する鍵(m_ZOBRIST_)、持ち駒用の鍵(m_ZOB_HAND_)、および除外用の鍵(m_ZOB_EXCLUSION_)を擬似乱数で設定します。生成された各値は最下位ビットをクリアしており（g_mt64bit.GetRandom() & ~UINT64_C(1)）、zobTurn_などと衝突しないようにしています。
@@ -1774,26 +2251,6 @@ void Position::Print() const {
 	std::cout << (GetTurn() == Black ? "+" : "-") << std::endl;
 	std::cout << std::endl;
 	std::cout << "key = " << GetKey() << std::endl;
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-u64 Position::GetNodesSearched() const
-{
-	return this->m_nodes_;
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="n"></param>
-void Position::SetNodesSearched(const u64 n)
-{
-	this->m_nodes_ = n;
 }
 
 
@@ -1941,27 +2398,6 @@ incorrect_position:
 #endif
 
 
-#if !defined NDEBUG
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-int Position::GetDebugSetEvalList() const {
-	// not implement
-	return 0;
-}
-#endif
-
-
-/// <summary>
-/// 
-/// </summary>
-void Position::SetEvalList()
-{
-	this->m_evalList_.Set(*this);
-}
-
-
 /// <summary>
 /// 
 /// </summary>
@@ -1995,16 +2431,6 @@ Key Position::GetComputeHandKey() const {
 		}
 	}
 	return result;
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-Key Position::GetComputeKey() const
-{
-	return this->GetComputeBoardKey() + this->GetComputeHandKey();
 }
 
 
@@ -2058,150 +2484,6 @@ RepetitionType Position::IsDraw(const int checkMaxPly) const {
 }
 
 
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-Military * Position::GetThisThread() const
-{
-	return this->m_thisThread_;
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="ply"></param>
-void Position::SetStartPosPly(const Ply ply)
-{
-	this->m_gamePly_ = ply;
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="index"></param>
-/// <returns></returns>
-int Position::GetList0(const int index) const
-{
-	return this->m_evalList_.m_list0[index];
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="index"></param>
-/// <returns></returns>
-int Position::GetList1(const int index) const
-{
-	return this->m_evalList_.m_list1[index];
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="sq"></param>
-/// <returns></returns>
-int Position::GetSquareHandToList(const Square sq) const
-{
-	return this->m_evalList_.m_squareHandToList[sq];
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="i"></param>
-/// <returns></returns>
-Square Position::GetListToSquareHand(const int i) const
-{
-	return this->m_evalList_.m_listToSquareHand[i];
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-int * Position::GetPlist0()
-{
-	return &this->m_evalList_.m_list0[0];
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-int * Position::GetPlist1()
-{
-	return &this->m_evalList_.m_list1[0];
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-const int * Position::GetCplist0() const
-{
-	return &this->m_evalList_.m_list0[0];
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-const int * Position::GetCplist1() const
-{
-	return &this->m_evalList_.m_list1[0];
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-const ChangedLists & Position::GetCl() const
-{
-	return this->m_st_->m_cl;
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-const Rucksack * Position::GetConstRucksack() const
-{
-	return this->m_pRucksack_;
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-Rucksack * Position::GetRucksack() const
-{
-	return this->m_pRucksack_;
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="s"></param>
-void Position::SetRucksack(Rucksack * s)
-{
-	this->m_pRucksack_ = s;
-}
-
-
 namespace {
 	/// <summary>
 	/// 持ち駒を出力。
@@ -2248,28 +2530,6 @@ void Position::PrintHand(const Color c) const {
 Key Position::GetZobrist(const PieceType pt, const Square sq, const Color c)
 {
 	return Position::m_ZOBRIST_[pt][sq][c];
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-Key Position::GetZobTurn()
-{
-	return Position::m_zobTurn_;
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="hp"></param>
-/// <param name="c"></param>
-/// <returns></returns>
-Key Position::GetZobHand(const HandPiece hp, const Color c)
-{
-	return Position::m_ZOB_HAND_[hp][c];
 }
 
 
@@ -2439,122 +2699,6 @@ INCORRECT:
 	std::cout << "incorrect SFEN string : " << sfen << std::endl;
 }
 
-Bitboard Position::GetBbOf10(const PieceType pt) const
-{
-	return this->m_BB_ByPiecetype_[pt];
-}
-
-Bitboard Position::GetBbOf10(const Color c) const
-{
-	return this->m_BB_ByColor_[c];
-}
-
-Bitboard Position::GetBbOf20(const PieceType pt, const Color c) const
-{
-	return this->GetBbOf10(pt) & this->GetBbOf10(c);
-}
-
-Bitboard Position::GetBbOf20(const PieceType pt1, const PieceType pt2) const
-{
-	return this->GetBbOf10(pt1) | this->GetBbOf10(pt2);
-}
-
-Bitboard Position::GetBbOf(const PieceType pt1, const PieceType pt2, const PieceType pt3) const
-{
-	return this->GetBbOf20(pt1, pt2) | this->GetBbOf10(pt3);
-}
-
-Bitboard Position::GetBbOf(const PieceType pt1, const PieceType pt2, const PieceType pt3, const PieceType pt4) const
-{
-	return this->GetBbOf(pt1, pt2, pt3) | this->GetBbOf10(pt4);
-}
-
-Bitboard Position::GetBbOf(const PieceType pt1, const PieceType pt2, const PieceType pt3, const PieceType pt4, const PieceType pt5) const
-{
-	return this->GetBbOf(pt1, pt2, pt3, pt4) | this->GetBbOf10(pt5);
-}
-
-Bitboard Position::GetOccupiedBB() const
-{
-	return this->GetBbOf10(N00_Occupied);
-}
-
-Bitboard Position::GetNOccupiedBB() const
-{
-	return ~this->GetOccupiedBB();
-}
-
-Bitboard Position::GetEmptyBB() const
-{
-	return this->GetOccupiedBB() ^ Bitboard::CreateAllOneBB();
-}
-
-Bitboard Position::GetGoldsBB() const
-{
-	return this->m_goldsBB_;
-}
-
-Bitboard Position::GetGoldsBB(const Color c) const
-{
-	return this->GetGoldsBB() & this->GetBbOf10(c);
-}
-
-Piece Position::GetPiece(const Square sq) const
-{
-	return this->m_piece_[sq];
-}
-
-Hand Position::GetHand(const Color c) const
-{
-	return this->m_hand_[c];
-}
-
-Bitboard Position::GetPinnedBB() const
-{
-	if (this->GetTurn() == Color::Black)
-	{
-		return this->GetHiddenCheckers<true, true, Color::Black, Color::White>();
-	}
-	else
-	{
-		return this->GetHiddenCheckers<true, true, Color::White, Color::Black>();
-	}
-}
-
-Bitboard Position::GetCheckersBB() const
-{
-	return this->m_st_->m_checkersBB;
-}
-
-Bitboard Position::GetPrevCheckersBB() const
-{
-	return this->m_st_->m_previous->m_checkersBB;
-}
-
-bool Position::InCheck() const
-{
-	return this->GetCheckersBB().Exists1Bit();
-}
-
-ScoreIndex Position::GetMaterial() const
-{
-	return this->m_st_->m_material;
-}
-
-ScoreIndex Position::GetMaterialDiff() const
-{
-	return this->m_st_->m_material - this->m_st_->m_previous->m_material;
-}
-
-
-/// <summary>
-/// move が王手なら true
-/// </summary>
-/// <param name="move"></param>
-/// <returns></returns>
-bool Position::IsMoveGivesCheck(const Move move) const {
-	return this->IsMoveGivesCheck(move, CheckInfo(*this));
-}
 
 /// <summary>
 /// move が王手なら true
@@ -2591,15 +2735,6 @@ bool Position::IsMoveGivesCheck(const Move move, const CheckInfo& ci) const {
 	}
 
 	return false;
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-void Position::Clear() {
-	memset(this, 0, sizeof(Position));
-	this->m_st_ = &this->m_startState_;
 }
 
 
@@ -2724,43 +2859,6 @@ Bitboard Position::GetAttackersToExceptKing(const Color c, const Square sq) cons
 /// <summary>
 /// 
 /// </summary>
-/// <param name="c"></param>
-/// <param name="sq"></param>
-/// <returns></returns>
-bool Position::IsAttackersToIsNot0(const Color c, const Square sq) const
-{
-	return this->GetAttackersTo_clr(c, sq, this->GetOccupiedBB()).Exists1Bit();
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="c"></param>
-/// <param name="sq"></param>
-/// <param name="occupied"></param>
-/// <returns></returns>
-bool Position::IsAttackersToIsNot0(const Color c, const Square sq, const Bitboard & occupied) const
-{
-	return this->GetAttackersTo_clr(c, sq, occupied).Exists1Bit();
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="c"></param>
-/// <param name="sq"></param>
-/// <returns></returns>
-bool Position::IsUnDropCheckIsSupported(const Color c, const Square sq) const
-{
-	return this->GetAttackersTo_clr(c, sq, this->GetOccupiedBB()).Exists1Bit();
-}
-
-
-/// <summary>
-/// 
-/// </summary>
 void Position::FindCheckers()
 {
 	m_st_->m_checkersBB = GetAttackersToExceptKing(ConvColor::OPPOSITE_COLOR10b(GetTurn()), GetKingSquare(GetTurn()));
@@ -2782,4 +2880,18 @@ ScoreIndex Position::ComputeMaterial() const {
 		s += num * PieceScore::GetPieceScore(pt);
 	}
 	return s;
+}
+
+
+/// <summary>
+/// クリアー
+/// </summary>
+void Position::Clear() {
+	memset(this, 0, sizeof(Position));
+
+	this->m_st_ = &this->m_startState_;
+
+	// vectorを明示的にクリア（これがないとヤバいぜ）
+	this->m_blackTimes.clear();
+	this->m_whiteTimes.clear();
 }

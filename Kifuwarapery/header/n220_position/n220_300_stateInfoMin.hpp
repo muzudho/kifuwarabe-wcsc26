@@ -9,7 +9,7 @@
 
 
 /// <summary>
-/// 
+/// XXX: 局面に関する何かの情報（＾～＾）？
 /// </summary>
 struct StateInfoMin {
 

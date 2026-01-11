@@ -7,11 +7,13 @@
 
 /// <summary>
 ///		<pre>
-/// 元の名前：ＬｉｍｉｔｓＴｙｐｅ
 /// 時間や探索深さの制限を格納する為の構造体
+/// 
+///		- 元の名前：ＬｉｍｉｔｓＴｙｐｅ。
+///		- `go` コマンドが呼び出されるたびに生成されるぜ（＾～＾）
 ///		</pre>
 /// </summary>
-class LimitsOfThinking {
+class LimitsDuringGo {
 
 
 public:
@@ -84,7 +86,9 @@ public:
 
 
 	/// <summary>
+	///		<pre>
 	/// btime, wtime コマンドをそのまま受け取るぜ☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="us"></param>
 	/// <param name="ssCmd"></param>
@@ -145,8 +149,8 @@ public:
 	/// <summary>
 	/// 生成。
 	/// </summary>
-	LimitsOfThinking() {
-		//memset(this, 0, sizeof(LimitsOfThinking));
+	LimitsDuringGo() {
+		//memset(this, 0, sizeof(LimitsDuringGo));
 	}
 
 

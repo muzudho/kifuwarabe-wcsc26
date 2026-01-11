@@ -30,7 +30,8 @@ using Gains   = Stats<true>;
 /// <summary>
 ///		<pre>
 /// 元の名前：　Ｓｅａｒｃｈｅｒ
-/// 検索のための構造体？
+/// 
+///		- 検索のための構造体？
 ///		</pre>
 /// </summary>
 class Rucksack {
@@ -47,7 +48,7 @@ public:
 	/// <summary>
 	/// 思考用の時間などの上限☆？
 	/// </summary>
-	LimitsOfThinking		m_limits;
+	LimitsDuringGo		m_limits;
 
 	/// <summary>
 	///		<pre>
@@ -95,9 +96,9 @@ public:
 	size_t					m_pvIdx;
 
 	/// <summary>
-	/// タイム・マネージャー？
+	/// 時間管理
 	/// </summary>
-	TimeManager				m_timeManager;
+	TimeManager				m_timeMgr;
 
 
 	/// <summary>

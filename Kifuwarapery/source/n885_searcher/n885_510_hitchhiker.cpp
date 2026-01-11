@@ -59,15 +59,15 @@ extern RepetitionTypeArray g_repetitionTypeArray;
 /// <summary>
 /// 思考するぜ☆（＾ｑ＾）
 /// </summary>
-/// <param name="captainsRucksack"></param>
+/// <param name="captainsRucksack">キャプテンの持っているＳｅａｒｃｈｅｒ☆</param>
 void Hitchhiker::Think(
-	Rucksack& captainsRucksack // キャプテンの持っているＳｅａｒｃｈｅｒ☆
-	) {
+	Rucksack& captainsRucksack)
+{
 
 	Position& pos = captainsRucksack.m_rootPosition;
 
 	bool isMoveTime0Clear = false;
-	captainsRucksack.m_timeManager.Initialize(
+	captainsRucksack.m_timeMgr.Initialize(
 		isMoveTime0Clear,
 		captainsRucksack.m_limits,
 		pos.GetGamePly(),
@@ -149,7 +149,7 @@ void Hitchhiker::Think(
 			// する場合
 			std::min(100,
 				std::max(
-					captainsRucksack.m_timeManager.GetWarriorLifeTime(),
+					captainsRucksack.m_timeMgr.GetWarriorLifeTime(),
 					captainsRucksack.TimerResolution
 				))
 			:
