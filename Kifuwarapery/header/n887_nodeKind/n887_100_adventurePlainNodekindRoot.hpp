@@ -850,4 +850,4 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern AdventureNodekindRoot g_NODETYPE_ROOT;
+extern AdventureNodekindRoot g_NODEKIND_ROOT;

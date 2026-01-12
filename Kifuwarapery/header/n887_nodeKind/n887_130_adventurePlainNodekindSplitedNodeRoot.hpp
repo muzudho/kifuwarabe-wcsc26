@@ -825,4 +825,4 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern AdventureNodekindSplitedNodeRoot g_NODETYPE_SPLITEDNODE_ROOT;
+extern AdventureNodekindSplitedNodeRoot g_NODEKIND_SPLITEDNODE_ROOT;

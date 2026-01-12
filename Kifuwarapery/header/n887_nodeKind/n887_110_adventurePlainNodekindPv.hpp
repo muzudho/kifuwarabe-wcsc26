@@ -779,4 +779,4 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern AdventureNodekindPv g_NODETYPE_PV;
+extern AdventureNodekindPv g_NODEKIND_PV;

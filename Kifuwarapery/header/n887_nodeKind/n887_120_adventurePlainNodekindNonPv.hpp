@@ -655,4 +655,4 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern AdventureNodekindNonPv g_NODETYPE_NON_PV;
+extern AdventureNodekindNonPv g_NODEKIND_NON_PV;

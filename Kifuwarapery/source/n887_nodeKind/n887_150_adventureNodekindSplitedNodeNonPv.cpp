@@ -51,7 +51,7 @@ extern RepetitionTypeArray g_repetitionTypeArray;
 
 
 // 依存関係の回避
-AdventureNodekindSplitedNodeNonPv g_NODETYPE_SPLITEDNODE_NON_PV;
+AdventureNodekindSplitedNodeNonPv g_NODEKIND_SPLITEDNODE_NON_PV;
 
 
 /// <summary>

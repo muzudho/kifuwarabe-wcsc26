@@ -48,7 +48,7 @@ using namespace std;
 extern const InFrontMaskBb g_inFrontMaskBb;
 extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 extern RepetitionTypeArray g_repetitionTypeArray;
-AdventureNodekindNonPv g_NODETYPE_NON_PV;
+AdventureNodekindNonPv g_NODEKIND_NON_PV;
 
 
 /// <summary>

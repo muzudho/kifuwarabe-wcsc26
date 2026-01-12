@@ -654,5 +654,5 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern AdventureNodekindSplitedNodeNonPv g_NODETYPE_SPLITEDNODE_NON_PV;
+extern AdventureNodekindSplitedNodeNonPv g_NODEKIND_SPLITEDNODE_NON_PV;
 

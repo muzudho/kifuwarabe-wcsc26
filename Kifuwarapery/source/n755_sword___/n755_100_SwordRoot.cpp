@@ -2,9 +2,6 @@
 #include "../../header/n887_nodeKind/n887_130_adventurePlainNodekindSplitedNodeRoot.hpp"
 
 
-//extern const NodetypeSplitedNodeRoot g_NODETYPE_SPLITEDNODE_ROOT;
-
-
 const SwordRoot g_SWORD_ROOT;
 
 
@@ -26,7 +23,7 @@ void SwordRoot::GoSearch_AsSplitedNode(
 	// 探索☆？（＾ｑ＾）
 	//────────────────────────────────────────────────────────────────────────────────
 	// スプリットポイントは検索を開始するぜ☆（＾ｑ＾）
-	g_NODETYPE_SPLITEDNODE_ROOT.ExplorePlain(
+	g_NODEKIND_SPLITEDNODE_ROOT.ExplorePlain(
 		ourCarriage,
 		pos,
 		pFlashlight + 1,

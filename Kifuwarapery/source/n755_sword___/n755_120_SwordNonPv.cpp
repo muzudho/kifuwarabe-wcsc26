@@ -2,9 +2,6 @@
 #include "../../header/n887_nodeKind/n887_150_adventurePlainNodekindSplitedNodeNonPv.hpp"
 
 
-//extern const NodetypeSplitedNodeNonPv g_NODETYPE_SPLITEDNODE_NON_PV;
-
-
 const SwordNonPv g_SWORD_NON_PV;
 
 
@@ -25,7 +22,7 @@ void SwordNonPv::GoSearch_AsSplitedNode(
 	// 探索☆？（＾ｑ＾）
 	//────────────────────────────────────────────────────────────────────────────────
 	// スプリットポイントは検索を開始するぜ☆（＾ｑ＾）
-	g_NODETYPE_SPLITEDNODE_NON_PV.ExplorePlain(
+	g_NODEKIND_SPLITEDNODE_NON_PV.ExplorePlain(
 		ourCarriage,
 		pos,
 		pFlashlight + 1,

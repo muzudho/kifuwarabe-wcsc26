@@ -54,7 +54,7 @@ extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 extern RepetitionTypeArray g_repetitionTypeArray;
 
 
-AdventureNodekindSplitedNodePv g_NODETYPE_SPLITEDNODE_PV;
+AdventureNodekindSplitedNodePv g_NODEKIND_SPLITEDNODE_PV;
 
 
 /// <summary>

@@ -2,9 +2,6 @@
 #include "../../header/n887_nodeKind/n887_140_adventurePlainNodekindSplitedNodePv.hpp"
 
 
-//extern const NodetypeSplitedNodePv g_NODETYPE_SPLITEDNODE_PV;
-
-
 const SwordPv g_SWORD_PV;
 
 
@@ -25,7 +22,7 @@ void SwordPv::GoSearch_AsSplitedNode(
 	// 探索☆？（＾ｑ＾）
 	//────────────────────────────────────────────────────────────────────────────────
 	// スプリットポイントは検索を開始するぜ☆（＾ｑ＾）
-	g_NODETYPE_SPLITEDNODE_PV.ExplorePlain(
+	g_NODEKIND_SPLITEDNODE_PV.ExplorePlain(
 		ourCarriage,
 		pos,
 		pFlashlight + 1,
