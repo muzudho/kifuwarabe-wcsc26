@@ -128,15 +128,15 @@ ScoreIndex AdventureNodekindPv::ExplorePlain(
 	bool isReturnWithScore = false;
 	ScoreIndex returnScore = ScoreIndex::ScoreNone;
 
-	// step2
-	this->ExplorerPlainStep2(
+	// step2: 千日手による探索打切りの判断
+	//		- maxPly を更新するケースもある。
+	this->ExplorerPlainStep2_IsStopAndSetMaxPly(
 		isReturnWithScore,
 		returnScore,
 		pos,
 		ourCarriage,
 		&pFlashlight
 		);
-
 	if (isReturnWithScore) { return returnScore; }
 
 	// step3

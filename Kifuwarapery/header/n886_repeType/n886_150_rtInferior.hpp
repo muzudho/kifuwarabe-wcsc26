@@ -1,6 +1,4 @@
 #pragma once
-
-
 #include "../n119_score___/n119_090_scoreIndex.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"
 #include "../n885_searcher/n885_040_ourCarriage.hpp"
@@ -17,15 +15,18 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// 探索打切りの判断
 	/// </summary>
 	/// <param name="isReturn"></param>
 	/// <param name="resultScore"></param>
 	/// <param name="pSearcher"></param>
 	/// <param name="pFlashlightBox"></param>
-	void CheckStopAndMaxPly(
-		bool& isReturn, ScoreIndex& resultScore, const OurCarriage* pSearcher, Flashlight* pFlashlightBox
-	) const override {
+	void IsStopAndSetMaxPly(
+		bool& isReturn,
+		ScoreIndex& resultScore,
+		const OurCarriage* pSearcher,
+		const Flashlight* pFlashlightBox) const override
+	{
 		if (pFlashlightBox->m_ply != 2) {
 			isReturn = true;
 			resultScore = ScoreMatedInMaxPly;

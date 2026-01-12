@@ -143,8 +143,8 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::ExplorePlain(
 	bool isReturnWithScore = false;
 	ScoreIndex returnScore = ScoreIndex::ScoreNone;
 
-	// step2
-	this->ExplorerPlainStep2(
+	// step2: 千日手による探索打切りの判断
+	this->ExplorerPlainStep2_IsStopAndSetMaxPly(
 		isReturnWithScore,
 		returnScore,
 		pos,

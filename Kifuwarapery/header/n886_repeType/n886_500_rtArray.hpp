@@ -1,6 +1,4 @@
 #pragma once
-
-
 #include "n886_070_rtAbstract.hpp"
 #include "n886_100_rtNot.hpp"
 #include "n886_110_rtDraw.hpp"
@@ -57,6 +55,6 @@ public:
 
 
 /// <summary>
-/// 
+/// 千日手タイプの配列
 /// </summary>
 extern RepetitionTypeArray g_repetitionTypeArray;

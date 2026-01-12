@@ -154,23 +154,26 @@ public:
 
 
 	/// <summary>
-	/// ルートノード以外が実行するぜ☆（＾ｑ＾）
+	///		<pre>
+	/// 千日手による探索打切りの判断
+	/// 
+	///		- ルートノード以外が実行するぜ☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="isReturnWithScore"></param>
 	/// <param name="returnScore"></param>
 	/// <param name="pos"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void ExplorerPlainStep2(
+	virtual inline void ExplorerPlainStep2_IsStopAndSetMaxPly(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
 		Position& pos,
 		OurCarriage& ourCarriage,
-		Flashlight** ppFlashlight
-		)const
+		Flashlight** ppFlashlight) const
 	{
 		// stop と最大探索深さのチェック
-		g_repetitionTypeArray.m_repetitionTypeArray[pos.IsDraw(16)]->CheckStopAndMaxPly(
+		g_repetitionTypeArray.m_repetitionTypeArray[pos.IsDraw(16)]->IsStopAndSetMaxPly(
 			isReturnWithScore, returnScore, &ourCarriage, (*ppFlashlight));
 	}
 

@@ -105,14 +105,14 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// 千日手による探索打切りの判断
 	/// </summary>
 	/// <param name="isReturnWithScore"></param>
 	/// <param name="returnScore"></param>
 	/// <param name="pos"></param>
 	/// <param name="ourCarriage"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void ExplorerPlainStep2(
+	virtual inline void ExplorerPlainStep2_IsStopAndSetMaxPly(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
 		Position& pos,
