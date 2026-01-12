@@ -20,7 +20,7 @@ extern NodetypeAbstract* g_NODETYPE_PROGRAMS[];
 /// 反復深化探索のことなのかだぜ☆（＾ｑ＾）？
 ///		</pre>
 /// </summary>
-class IterativeDeepeningLoop {
+class MountainIterativeDeepeningLoop {
 
 
 public:
@@ -31,7 +31,7 @@ public:
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pos"></param>
-	static inline void Execute885_500(OurCarriage& ourCarriage, Position& pos)
+	static inline void ExploreMountain(OurCarriage& ourCarriage, Position& pos)
 	{
 		Flashlight flashlight[g_maxPlyPlus2];
 		Ply depth;
@@ -267,9 +267,12 @@ public:
 					(flashlight + 1)->m_excludedMove = ourCarriage.m_rootMoves[0].m_pv_[0];
 					(flashlight + 1)->m_skipNullMove = true;
 
+
 					//────────────────────────────────────────────────────────────────────────────────
 					// さあ、探索に潜るぜ～☆！（＾ｑ＾）　２回目のぐるんぐるんだぜ～☆ ノンＰＶ～☆
 					//────────────────────────────────────────────────────────────────────────────────
+
+
 					const ScoreIndex s = g_NODETYPE_PROGRAMS[NodeType::N02_NonPV]->GoToTheAdventure_new(
 						ourCarriage, pos, flashlight + 1, rBeta - 1, rBeta, (depth - 3) * OnePly, true);
 

@@ -28,7 +28,7 @@ void Captain::StartWorkerThread() {
 		if (this->m_isEndOfSearch) { return; }
 
 		this->m_isBeingSearched = true;
-		Continent::Explore(*this->m_pOurCarriage);
+		Continent::ExploreContinent(*this->m_pOurCarriage);
 		assert(this->m_isBeingSearched);
 		this->m_isBeingSearched = false;
 	}

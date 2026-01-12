@@ -54,7 +54,7 @@ extern RepetitionTypeArray g_repetitionTypeArray;
 ///		</pre>
 /// </summary>
 /// <param name="captainsRucksack">キャプテンの持っているＳｅａｒｃｈｅｒ☆</param>
-void Continent::Explore(
+void Continent::ExploreContinent(
 	OurCarriage& captainsRucksack)
 {
 	Position& pos = captainsRucksack.m_rootPosition;
@@ -167,7 +167,7 @@ void Continent::Explore(
 	// 反復深化探索を始めるぜ☆（＾ｑ＾）
 	//────────────────────────────────────────────────────────────────────────────────
 
-	IterativeDeepeningLoop::Execute885_500(captainsRucksack, pos);//ExecuteIterativeDeepeningLoop(pos);
+	MountainIterativeDeepeningLoop::ExploreMountain(captainsRucksack, pos);//ExecuteIterativeDeepeningLoop(pos);
 
 #if defined LEARN
 #else
