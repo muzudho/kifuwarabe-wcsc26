@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "../n640_searcher/n640_510_futilityMargins.hpp"
 #include "../n640_searcher/n640_520_futilityMoveCounts.hpp"
-#include "../n885_searcher/n885_340_hitchhikerQsearchPrograms.hpp"
+#include "../n885_searcher/n885_340_adventureBattlefieldQsearchPrograms.hpp"
 #include "../n886_repeType/n886_500_rtArray.hpp"//FIXME:
 
 
@@ -469,7 +469,7 @@ public:
 			&& abs(beta) < ScoreMateInMaxPly)
 		{
 			const ScoreIndex rbeta = beta - ourCarriage.razorMargin(depth);
-			const ScoreIndex s = HitchhikerQsearchPrograms::m_pHitchhikerQsearchPrograms[N02_NonPV]->ExploreAsQsearch(
+			const ScoreIndex s = AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[N02_NonPV]->ExploreAsQsearch(
 				ourCarriage, false, pos, (*ppFlashlight), rbeta - 1, rbeta, Depth0);
 			if (s < rbeta) {
 				isReturnWithScore = true;
@@ -570,7 +570,7 @@ public:
 				//────────────────────────────────────────────────────────────────────────────────
 				// 深さが２手（先後１組）以上なら　クイックな探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				-HitchhikerQsearchPrograms::m_pHitchhikerQsearchPrograms[N02_NonPV]->ExploreAsQsearch(
+				-AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[N02_NonPV]->ExploreAsQsearch(
 					ourCarriage, false, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
 				:
 				//────────────────────────────────────────────────────────────────────────────────
@@ -1360,8 +1360,8 @@ public:
 		// PVS
 		if (doFullDepthSearch) {
 			score = (newDepth < OnePly ?
-				(givesCheck ? -HitchhikerQsearchPrograms::m_pHitchhikerQsearchPrograms[N02_NonPV]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0)
-					: -HitchhikerQsearchPrograms::m_pHitchhikerQsearchPrograms[N02_NonPV]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0))
+				(givesCheck ? -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[N02_NonPV]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0)
+					: -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[N02_NonPV]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0))
 				//────────────────────────────────────────────────────────────────────────────────
 				// 探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
@@ -1403,8 +1403,8 @@ public:
 			(alpha < score && this->IsBetaLargeAtStep16c(score,beta))
 		) {
 			score = (newDepth < OnePly ?
-				(givesCheck ? -HitchhikerQsearchPrograms::m_pHitchhikerQsearchPrograms[N01_PV]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
-					: -HitchhikerQsearchPrograms::m_pHitchhikerQsearchPrograms[N01_PV]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0))
+				(givesCheck ? -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[N01_PV]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
+					: -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[N01_PV]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0))
 				//────────────────────────────────────────────────────────────────────────────────
 				// 探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────

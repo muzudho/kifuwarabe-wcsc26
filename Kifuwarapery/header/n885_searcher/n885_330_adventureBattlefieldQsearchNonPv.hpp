@@ -7,7 +7,7 @@
 /// <summary>
 /// 
 /// </summary>
-class HitchhikerQsearchNonPv : public AdventureBattlefieldQsearchAbstract {
+class AdventureBattlefieldQsearchNonPv : public AdventureBattlefieldQsearchAbstract {
 
 
 public:

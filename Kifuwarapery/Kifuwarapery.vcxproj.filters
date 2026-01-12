@@ -999,7 +999,7 @@
     <ClInclude Include="header\n885_searcher\n885_330_adventureBattlefieldQsearchNonPv.hpp">
       <Filter>header\n885_searcher</Filter>
     </ClInclude>
-    <ClInclude Include="header\n885_searcher\n885_340_hitchhikerQsearchPrograms.hpp">
+    <ClInclude Include="header\n885_searcher\n885_340_adventureBattlefieldQsearchPrograms.hpp">
       <Filter>header\n885_searcher</Filter>
     </ClInclude>
     <ClInclude Include="header\n755_sword___\n755_070_SwordAbstract.hpp">
@@ -1613,7 +1613,7 @@
     <ClCompile Include="source\n885_searcher\n885_330_adventureBattlefieldQsearchNonPv.cpp">
       <Filter>source\n885_searcher</Filter>
     </ClCompile>
-    <ClCompile Include="source\n885_searcher\n885_340_hitchhikerQsearchPrograms.cpp">
+    <ClCompile Include="source\n885_searcher\n885_340_adventureBattlefieldQsearchPrograms.cpp">
       <Filter>source\n885_searcher</Filter>
     </ClCompile>
     <ClCompile Include="source\n755_sword___\n755_070_SwordAbstract.cpp">

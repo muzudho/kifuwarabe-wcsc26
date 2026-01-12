@@ -5,7 +5,7 @@
 /// <summary>
 /// 主となる読み筋
 /// </summary>
-class HitchhikerQsearchPv : public AdventureBattlefieldQsearchAbstract {
+class AdventureBattlefieldQsearchPv : public AdventureBattlefieldQsearchAbstract {
 
 
 public:
