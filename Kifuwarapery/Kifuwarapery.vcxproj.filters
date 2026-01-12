@@ -912,7 +912,7 @@
     <ClInclude Include="header\n760_thread__\n760_250_soldier.hpp">
       <Filter>header\n760_thread__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n885_searcher\n885_600_iterativeDeepeningLoop.hpp">
+    <ClInclude Include="header\n885_searcher\n885_490_mountainIterativeDeepeningLoop.hpp">
       <Filter>header\n885_searcher</Filter>
     </ClInclude>
     <ClInclude Include="header\n885_searcher\n885_580_skill.hpp">
@@ -1556,7 +1556,7 @@
     <ClCompile Include="source\n760_thread__\n760_250_soldier.cpp">
       <Filter>source\n760_thread__</Filter>
     </ClCompile>
-    <ClCompile Include="source\n885_searcher\n885_600_iterativeDeepeningLoop.cpp">
+    <ClCompile Include="source\n885_searcher\n885_490_mountainIterativeDeepeningLoop.cpp">
       <Filter>source\n885_searcher</Filter>
     </ClCompile>
     <ClCompile Include="source\n885_searcher\n885_580_skill.cpp">

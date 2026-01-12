@@ -18,7 +18,6 @@
 #include "../../header/n220_position/n220_750_charToPieceUSI.hpp"
 #include "../../header/n223_move____/n223_040_nodeType.hpp"
 #include "../../header/n223_move____/n223_300_moveAndScoreIndex.hpp"
-
 #include "../../header/n350_pieceTyp/n350_030_makePromoteMove.hpp"
 #include "../../header/n350_pieceTyp/n350_500_ptPrograms.hpp"
 #include "../../header/n440_movStack/n440_500_nextmoveEvent.hpp"
@@ -34,12 +33,9 @@
 #include "../../header/n755_sword___/n755_070_SwordAbstract.hpp"
 #include "../../header/n760_thread__/n760_400_herosPub.hpp"
 #include "../../header/n883_nodeType/n883_070_nodetypeAbstract.hpp"
-
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
-#include "../../header/n885_searcher/n885_600_iterativeDeepeningLoop.hpp"//FIXME:
+#include "../../header/n885_searcher/n885_490_mountainIterativeDeepeningLoop.hpp"
 #include "../../header/n887_nodeType/n887_500_nodetypePrograms.hpp"//FIXME:
-//class IterativeDeepeningLoop;
-//static inline void IterativeDeepeningLoop::Execute(OurCarriage& ourCarriage, Position& pos);
 
 using namespace std;
 
