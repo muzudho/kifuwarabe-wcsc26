@@ -393,7 +393,7 @@
     <ClInclude Include="header\n885_searcher\n885_340_adventureBattlefieldQsearchPrograms.hpp" />
     <ClInclude Include="header\n885_searcher\n885_480_adventureSwampNyugyoku.hpp" />
     <ClInclude Include="header\n885_searcher\n885_510_adventureContinent.hpp" />
-    <ClInclude Include="header\n885_searcher\n885_580_skill.hpp" />
+    <ClInclude Include="header\n885_searcher\n885_580_adventurerSkill.hpp" />
     <ClInclude Include="header\n885_searcher\n885_490_adventureMountainIterativeDeepeningLoop.hpp" />
     <ClInclude Include="header\n886_repeType\n886_070_rtAbstract.hpp" />
     <ClInclude Include="header\n886_repeType\n886_100_rtNot.hpp" />
@@ -610,7 +610,7 @@
     <ClCompile Include="source\n885_searcher\n885_340_adventureBattlefieldQsearchPrograms.cpp" />
     <ClCompile Include="source\n885_searcher\n885_480_adventureSwampNyugyoku.cpp" />
     <ClCompile Include="source\n885_searcher\n885_510_adventureContinent.cpp" />
-    <ClCompile Include="source\n885_searcher\n885_580_skill.cpp" />
+    <ClCompile Include="source\n885_searcher\n885_580_adventurerSkill.cpp" />
     <ClCompile Include="source\n885_searcher\n885_490_adventureMountainIterativeDeepeningLoop.cpp" />
     <ClCompile Include="source\n887_nodeType\n887_100_nodetypeRoot.cpp" />
     <ClCompile Include="source\n887_nodeType\n887_110_nodetypePv.cpp" />

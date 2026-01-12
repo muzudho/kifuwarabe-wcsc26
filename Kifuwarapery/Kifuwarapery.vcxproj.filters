@@ -915,7 +915,7 @@
     <ClInclude Include="header\n885_searcher\n885_490_adventureMountainIterativeDeepeningLoop.hpp">
       <Filter>header\n885_searcher</Filter>
     </ClInclude>
-    <ClInclude Include="header\n885_searcher\n885_580_skill.hpp">
+    <ClInclude Include="header\n885_searcher\n885_580_adventurerSkill.hpp">
       <Filter>header\n885_searcher</Filter>
     </ClInclude>
     <ClInclude Include="header\n165_movStack\n165_600_convMove.hpp">
@@ -1559,7 +1559,7 @@
     <ClCompile Include="source\n885_searcher\n885_490_adventureMountainIterativeDeepeningLoop.cpp">
       <Filter>source\n885_searcher</Filter>
     </ClCompile>
-    <ClCompile Include="source\n885_searcher\n885_580_skill.cpp">
+    <ClCompile Include="source\n885_searcher\n885_580_adventurerSkill.cpp">
       <Filter>source\n885_searcher</Filter>
     </ClCompile>
     <ClCompile Include="source\n165_movStack\n165_600_utilMove.cpp">

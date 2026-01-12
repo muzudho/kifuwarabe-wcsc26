@@ -6,7 +6,7 @@
 #include "../n223_move____/n223_500_flashlight.hpp"
 #include "../n883_nodeType/n883_070_adventurePlainNodetypeAbstract.hpp"
 #include "n885_040_ourCarriage.hpp"
-#include "n885_580_skill.hpp"
+#include "n885_580_adventurerSkill.hpp"
 
 
 extern NodetypeAbstract* g_NODETYPE_PROGRAMS[];
@@ -60,7 +60,7 @@ public:
 
 		// マルチＰＶの数☆？
 		ourCarriage.m_pvSize = ourCarriage.m_engineOptions["MultiPV"];
-		Skill skill(ourCarriage.m_engineOptions["Skill_Level"], ourCarriage.m_engineOptions["Max_Random_Score_Diff"]);
+		AdventurerSkill skill(ourCarriage.m_engineOptions["Skill_Level"], ourCarriage.m_engineOptions["Max_Random_Score_Diff"]);
 
 		if (ourCarriage.m_engineOptions["Max_Random_Score_Diff_Ply"] < pos.GetGamePly()) {
 			skill.m_maxRandomScoreDiff = ScoreZero;
