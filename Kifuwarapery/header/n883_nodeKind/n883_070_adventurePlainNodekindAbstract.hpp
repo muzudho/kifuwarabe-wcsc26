@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <utility>  // std::pair用
 #include "../n640_searcher/n640_510_futilityMargins.hpp"
 #include "../n640_searcher/n640_520_futilityMoveCounts.hpp"
 #include "../n885_searcher/n885_340_adventureBattlefieldQsearchPrograms.hpp"
@@ -165,16 +166,19 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void ExplorerPlainStep2_IsStopByRepetetion(
-		bool& isReturnWithScore,
-		ScoreIndex& returnScore,
+	virtual inline std::pair<bool, ScoreIndex> ExplorerPlainStep2_IsStopByRepetetion(
+		//bool& isReturnWithScore,
+		//ScoreIndex& returnScore,
 		Position& pos,
 		OurCarriage& ourCarriage,
 		Flashlight** ppFlashlight) const
 	{
 		// stop と最大探索深さのチェック
-		g_repetitionTypes.m_ARRAY[pos.IsRepetition(16)]->IsStop(
-			isReturnWithScore, returnScore, &ourCarriage, (*ppFlashlight));
+		return g_repetitionTypes.m_ARRAY[pos.IsRepetition(16)]->IsStop(
+			//isReturnWithScore,
+			//returnScore,
+			&ourCarriage,
+			(*ppFlashlight));
 	}
 
 

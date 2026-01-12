@@ -121,17 +121,16 @@ ScoreIndex AdventureNodekindNonPv::ExplorePlain(
 		bestMove
 		);
 
-	bool isReturnWithScore = false;
-	ScoreIndex returnScore = ScoreIndex::ScoreNone;
-
 	// step2: 千日手による探索打切りの判断
-	this->ExplorerPlainStep2_IsStopByRepetetion(
-		isReturnWithScore,
-		returnScore,
+	auto p = this->ExplorerPlainStep2_IsStopByRepetetion(
+		//isReturnWithScore,
+		//returnScore,
 		pos,
 		ourCarriage,
 		&pFlashlight
 		);
+	bool isReturnWithScore = p.first;
+	ScoreIndex returnScore = p.second;
 	if (isReturnWithScore) { return returnScore; }
 
 	// step3

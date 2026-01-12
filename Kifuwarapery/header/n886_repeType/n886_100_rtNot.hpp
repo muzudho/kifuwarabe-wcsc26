@@ -21,9 +21,9 @@ public:
 	/// <param name="resultScore"></param>
 	/// <param name="pSearcher"></param>
 	/// <param name="pFlashlightBox"></param>
-	void IsStop(
-		bool& isReturn,
-		ScoreIndex& resultScore,
+	std::pair<bool, ScoreIndex> IsStop(
+		//bool& isReturn,
+		//ScoreIndex& resultScore,
 		const OurCarriage* pSearcher,
 		const Flashlight* pFlashlightBox) const override
 	{
@@ -33,6 +33,8 @@ public:
 		//{
 		//	// XXX: 何もしないの（＾～＾）？
 		//}
+
+		return std::make_pair(false, ScoreNone);
 	}
 };
 
