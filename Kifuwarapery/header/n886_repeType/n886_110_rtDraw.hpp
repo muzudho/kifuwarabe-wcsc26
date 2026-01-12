@@ -15,13 +15,13 @@ public:
 
 
 	/// <summary>
-	/// 停止の判断
+	/// 探索打切りの判断
 	/// </summary>
 	/// <param name="isReturn"></param>
 	/// <param name="resultScore"></param>
 	/// <param name="pSearcher"></param>
 	/// <param name="pFlashlightBox"></param>
-	void IsStopAndSetMaxPly(
+	void IsStop(
 		bool& isReturn,
 		ScoreIndex& resultScore,
 		const OurCarriage* pSearcher,
@@ -29,7 +29,6 @@ public:
 	{
 		isReturn = true;
 		resultScore = ScoreDraw;
-		return;
 	}
 };
 

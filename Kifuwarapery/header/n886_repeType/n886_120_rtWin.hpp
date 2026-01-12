@@ -22,7 +22,7 @@ public:
 	/// <param name="resultScore"></param>
 	/// <param name="pSearcher"></param>
 	/// <param name="pFlashlightBox"></param>
-	void IsStopAndSetMaxPly(
+	void IsStop(
 		bool& isReturn,
 		ScoreIndex& resultScore,
 		const OurCarriage* pSearcher,
@@ -30,7 +30,6 @@ public:
 	{
 		isReturn = true;
 		resultScore = UtilScore::MateIn(pFlashlightBox->m_ply);
-		return;
 	}
 };
 

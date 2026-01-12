@@ -130,7 +130,7 @@ ScoreIndex AdventureNodekindPv::ExplorePlain(
 
 	// step2: 千日手による探索打切りの判断
 	//		- maxPly を更新するケースもある。
-	this->ExplorerPlainStep2_IsStopAndSetMaxPly(
+	this->ExplorerPlainStep2_IsStopByRepetetion(
 		isReturnWithScore,
 		returnScore,
 		pos,

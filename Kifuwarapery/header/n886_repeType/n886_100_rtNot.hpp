@@ -21,7 +21,7 @@ public:
 	/// <param name="resultScore"></param>
 	/// <param name="pSearcher"></param>
 	/// <param name="pFlashlightBox"></param>
-	void IsStopAndSetMaxPly(
+	void IsStop(
 		bool& isReturn,
 		ScoreIndex& resultScore,
 		const OurCarriage* pSearcher,
@@ -31,7 +31,7 @@ public:
 			pFlashlightBox->m_ply <= g_maxPly
 		)
 		{
-			return;
+			// XXX: 停止しないの（＾～＾）？
 		}
 	}
 };

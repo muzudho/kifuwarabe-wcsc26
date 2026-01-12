@@ -151,7 +151,7 @@ ScoreIndex AdventureNodekindSplitedNodePv::ExplorePlain(
 	ScoreIndex returnScore = ScoreIndex::ScoreNone;
 
 	// step2: 千日手による探索打切りの判断
-	this->ExplorerPlainStep2_IsStopAndSetMaxPly(
+	this->ExplorerPlainStep2_IsStopByRepetetion(
 		isReturnWithScore,
 		returnScore,
 		pos,

@@ -20,7 +20,7 @@ public:
 	/// <param name="resultScore"></param>
 	/// <param name="pSearcher"></param>
 	/// <param name="pFlashlightBox"></param>
-	virtual void IsStopAndSetMaxPly(
+	virtual void IsStop(
 		bool& isReturn,
 		ScoreIndex& resultScore,
 		const OurCarriage* pSearcher,

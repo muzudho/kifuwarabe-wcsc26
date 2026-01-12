@@ -112,7 +112,7 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="ourCarriage"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void ExplorerPlainStep2_IsStopAndSetMaxPly(
+	virtual inline void ExplorerPlainStep2_IsStopByRepetetion(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
 		Position& pos,

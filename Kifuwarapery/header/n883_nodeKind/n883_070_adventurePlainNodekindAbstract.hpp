@@ -165,7 +165,7 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void ExplorerPlainStep2_IsStopAndSetMaxPly(
+	virtual inline void ExplorerPlainStep2_IsStopByRepetetion(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
 		Position& pos,
@@ -173,7 +173,7 @@ public:
 		Flashlight** ppFlashlight) const
 	{
 		// stop と最大探索深さのチェック
-		g_repetitionTypeArray.m_repetitionTypeArray[pos.IsDraw(16)]->IsStopAndSetMaxPly(
+		g_repetitionTypeArray.m_repetitionTypeArray[pos.IsDraw(16)]->IsStop(
 			isReturnWithScore, returnScore, &ourCarriage, (*ppFlashlight));
 	}
 

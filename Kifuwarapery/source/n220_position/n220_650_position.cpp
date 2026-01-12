@@ -2480,7 +2480,8 @@ RepetitionType Position::IsDraw(const int checkMaxPly) const {
 			i += 2;
 		} while (i <= e);
 	}
-	return N00_NotRepetition;
+
+	return N00_NotRepetition;	// 千日手ではない
 }
 
 
