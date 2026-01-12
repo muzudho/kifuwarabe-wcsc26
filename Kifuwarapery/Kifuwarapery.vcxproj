@@ -392,7 +392,7 @@
     <ClInclude Include="header\n885_searcher\n885_330_hitchhikerQsearchNonPv.hpp" />
     <ClInclude Include="header\n885_searcher\n885_340_hitchhikerQsearchPrograms.hpp" />
     <ClInclude Include="header\n885_searcher\n885_480_hitchhikerNyugyoku.hpp" />
-    <ClInclude Include="header\n885_searcher\n885_510_hitchhiker.hpp" />
+    <ClInclude Include="header\n885_searcher\n885_510_continent.hpp" />
     <ClInclude Include="header\n885_searcher\n885_580_skill.hpp" />
     <ClInclude Include="header\n885_searcher\n885_600_iterativeDeepeningLoop.hpp" />
     <ClInclude Include="header\n886_repeType\n886_070_rtAbstract.hpp" />
@@ -609,7 +609,7 @@
     <ClCompile Include="source\n885_searcher\n885_330_hitchhikerQsearchNonPv.cpp" />
     <ClCompile Include="source\n885_searcher\n885_340_hitchhikerQsearchPrograms.cpp" />
     <ClCompile Include="source\n885_searcher\n885_480_hitchhikerNyugyoku.cpp" />
-    <ClCompile Include="source\n885_searcher\n885_510_hitchhiker.cpp" />
+    <ClCompile Include="source\n885_searcher\n885_510_continent.cpp" />
     <ClCompile Include="source\n885_searcher\n885_580_skill.cpp" />
     <ClCompile Include="source\n885_searcher\n885_600_iterativeDeepeningLoop.cpp" />
     <ClCompile Include="source\n887_nodeType\n887_100_nodetypeRoot.cpp" />

@@ -11,7 +11,7 @@
 
 
 /// <summary>
-/// 
+/// 様々な探索（ノード探検）テクニックを持つクラス。道に詳しい人みたいな感じ。
 /// </summary>
 class HitchhikerQsearchAbstract {
 

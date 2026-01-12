@@ -44,7 +44,7 @@
 #include "../n885_searcher/n885_340_hitchhikerQsearchPrograms.hpp"//FIXME:
 /*
 #include "../n885_searcher/n885_480_hitchhikerNyugyoku.hpp"
-#include "../n885_searcher/n885_510_hitchhiker.hpp"
+#include "../n885_searcher/n885_510_continent.hpp"
 #include "../n885_searcher/n885_600_iterativeDeepeningLoop.hpp"//FIXME:
 
 #include "../n886_repeType/n886_100_rtNot.hpp"

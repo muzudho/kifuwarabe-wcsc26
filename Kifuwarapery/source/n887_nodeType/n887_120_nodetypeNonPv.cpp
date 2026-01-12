@@ -37,7 +37,7 @@
 #include "../../header/n885_searcher/n885_310_hitchhikerQsearchAbstract.hpp"
 #include "../../header/n885_searcher/n885_340_hitchhikerQsearchPrograms.hpp"
 #include "../../header/n885_searcher/n885_480_hitchhikerNyugyoku.hpp"
-#include "../../header/n885_searcher/n885_510_hitchhiker.hpp"
+#include "../../header/n885_searcher/n885_510_continent.hpp"
 #include "../../header/n885_searcher/n885_600_iterativeDeepeningLoop.hpp"
 
 #include "../../header/n886_repeType/n886_100_rtNot.hpp"

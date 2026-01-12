@@ -981,7 +981,7 @@
     <ClInclude Include="header\n883_nodeType\n883_070_nodetypeAbstract.hpp">
       <Filter>header\n883_nodeType</Filter>
     </ClInclude>
-    <ClInclude Include="header\n885_searcher\n885_510_hitchhiker.hpp">
+    <ClInclude Include="header\n885_searcher\n885_510_continent.hpp">
       <Filter>header\n885_searcher</Filter>
     </ClInclude>
     <ClInclude Include="header\n885_searcher\n885_040_ourCarriage.hpp">
@@ -1595,7 +1595,7 @@
     <ClCompile Include="source\n887_nodeType\n887_150_nodetypeSplitedNodeNonPv.cpp">
       <Filter>source\n887_nodeType</Filter>
     </ClCompile>
-    <ClCompile Include="source\n885_searcher\n885_510_hitchhiker.cpp">
+    <ClCompile Include="source\n885_searcher\n885_510_continent.cpp">
       <Filter>source\n885_searcher</Filter>
     </ClCompile>
     <ClCompile Include="source\n885_searcher\n885_040_ourCarriage.cpp">
