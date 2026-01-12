@@ -31,7 +31,7 @@
 #include "../../header/n760_thread__/n760_400_herosPub.hpp"
 
 #include "../../header/n800_learn___/n800_100_stopwatch.hpp"
-#include "../../header/n883_nodeType/n883_070_nodetypeAbstract.hpp"
+#include "../../header/n883_nodeType/n883_070_adventurePlainNodetypeAbstract.hpp"
 
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 #include "../../header/n885_searcher/n885_310_hitchhikerQsearchAbstract.hpp"
@@ -73,7 +73,7 @@ NodetypeSplitedNodeNonPv g_NODETYPE_SPLITEDNODE_NON_PV;
 /// <param name="depth"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-ScoreIndex NodetypeSplitedNodeNonPv::GoToTheAdventure_new(
+ScoreIndex NodetypeSplitedNodeNonPv::ExplorePlain(
 	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック

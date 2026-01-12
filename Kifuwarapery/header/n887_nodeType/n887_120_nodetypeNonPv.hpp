@@ -1,6 +1,4 @@
 ﻿#pragma once
-
-
 #include "../n220_position/n220_650_position.hpp"
 #include "../n220_position/n220_665_utilMoveStack.hpp"
 #include "../n223_move____/n223_040_nodeType.hpp"
@@ -8,7 +6,7 @@
 #include "../n640_searcher/n640_440_splitedNode.hpp"
 #include "../n640_searcher/n640_500_reductions.hpp"
 #include "../n755_sword___/n755_120_SwordNonPv.hpp"
-#include "../n883_nodeType/n883_070_nodetypeAbstract.hpp"
+#include "../n883_nodeType/n883_070_adventurePlainNodetypeAbstract.hpp"
 #include "../n885_searcher/n885_040_ourCarriage.hpp"
 
 
@@ -36,7 +34,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="cutNode"></param>
 	/// <returns></returns>
-	virtual ScoreIndex GoToTheAdventure_new(
+	virtual ScoreIndex ExplorePlain(
 		OurCarriage& ourCarriage,
 		Position& pos,
 		Flashlight* pFlashlight,//サーチスタック
@@ -182,7 +180,7 @@ public:
 			// 探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			// 非PVノードの場合☆
-			g_NODETYPE_PROGRAMS[NodeType::N02_NonPV]->GoToTheAdventure_new(
+			g_NODETYPE_PROGRAMS[NodeType::N02_NonPV]->ExplorePlain(
 				ourCarriage, pos, (*ppFlashlight), alpha, beta, d, true);
 
 			(*ppFlashlight)->m_skipNullMove = false;

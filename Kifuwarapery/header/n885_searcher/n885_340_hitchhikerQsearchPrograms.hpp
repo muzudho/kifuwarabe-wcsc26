@@ -1,6 +1,4 @@
 ﻿#pragma once
-
-
 #include "n885_310_hitchhikerQsearchAbstract.hpp"
 #include "n885_320_hitchhikerQsearchPv.hpp"
 #include "n885_330_hitchhikerQsearchNonPv.hpp"

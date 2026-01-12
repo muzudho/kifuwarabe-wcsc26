@@ -1,7 +1,5 @@
 ﻿#pragma once
-
-
-#include "../n883_nodeType/n883_070_nodetypeAbstract.hpp"
+#include "../n883_nodeType/n883_070_adventurePlainNodetypeAbstract.hpp"
 
 
 /// <summary>

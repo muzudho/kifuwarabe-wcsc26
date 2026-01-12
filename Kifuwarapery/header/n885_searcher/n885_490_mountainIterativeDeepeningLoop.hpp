@@ -1,12 +1,10 @@
 ﻿#pragma once
-
-
 #include "../n080_common__/n080_100_common.hpp"
 #include "../n119_score___/n119_090_scoreIndex.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n220_position/n220_665_utilMoveStack.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"
-#include "../n883_nodeType/n883_070_nodetypeAbstract.hpp"
+#include "../n883_nodeType/n883_070_adventurePlainNodetypeAbstract.hpp"
 #include "n885_040_ourCarriage.hpp"
 #include "n885_580_skill.hpp"
 
@@ -147,7 +145,7 @@ public:
 					//────────────────────────────────────────────────────────────────────────────────
 					// 探索☆？（＾ｑ＾）　１回目のぐるんぐるんだぜ～☆　ルート～☆
 					//────────────────────────────────────────────────────────────────────────────────
-					bestScore = g_NODETYPE_PROGRAMS[NodeType::N00_Root]->GoToTheAdventure_new(ourCarriage, pos, flashlight + 1, alpha, beta, static_cast<Depth>(depth * OnePly), false);
+					bestScore = g_NODETYPE_PROGRAMS[NodeType::N00_Root]->ExplorePlain(ourCarriage, pos, flashlight + 1, alpha, beta, static_cast<Depth>(depth * OnePly), false);
 
 					// 先頭が最善手になるようにソート
 					UtilMoveStack::InsertionSort(ourCarriage.m_rootMoves.begin() + ourCarriage.m_pvIdx, ourCarriage.m_rootMoves.end());
@@ -273,7 +271,7 @@ public:
 					//────────────────────────────────────────────────────────────────────────────────
 
 
-					const ScoreIndex s = g_NODETYPE_PROGRAMS[NodeType::N02_NonPV]->GoToTheAdventure_new(
+					const ScoreIndex s = g_NODETYPE_PROGRAMS[NodeType::N02_NonPV]->ExplorePlain(
 						ourCarriage, pos, flashlight + 1, rBeta - 1, rBeta, (depth - 3) * OnePly, true);
 
 					(flashlight + 1)->m_skipNullMove = false;

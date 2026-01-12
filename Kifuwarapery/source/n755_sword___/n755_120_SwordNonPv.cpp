@@ -25,7 +25,7 @@ void SwordNonPv::GoSearch_AsSplitedNode(
 	// 探索☆？（＾ｑ＾）
 	//────────────────────────────────────────────────────────────────────────────────
 	// スプリットポイントは検索を開始するぜ☆（＾ｑ＾）
-	g_NODETYPE_SPLITEDNODE_NON_PV.GoToTheAdventure_new(
+	g_NODETYPE_SPLITEDNODE_NON_PV.ExplorePlain(
 		ourCarriage,
 		pos,
 		pFlashlight + 1,
