@@ -130,9 +130,9 @@ public:
 		ScoreIndex& ttScore
 		) const override {
 		return  beta <= ttScore ?
-			(pTtEntry->GetType() & Bound::BoundLower)
+			(pTtEntry->GetBoundKind() & Bound::BoundLower)
 			:
-			(pTtEntry->GetType() & Bound::BoundUpper);
+			(pTtEntry->GetBoundKind() & Bound::BoundUpper);
 	}
 
 

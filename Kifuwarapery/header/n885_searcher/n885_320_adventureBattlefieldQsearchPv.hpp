@@ -1,47 +1,14 @@
 ﻿#pragma once
-
-
-#include <algorithm>	//std::max
-#include "../n119_score___/n119_090_scoreIndex.hpp"
-#include "../n220_position/n220_650_position.hpp"
-#include "../n223_move____/n223_040_nodeType.hpp"
-#include "../n223_move____/n223_200_depth.hpp"
-#include "../n223_move____/n223_500_flashlight.hpp"
-#include "n885_040_ourCarriage.hpp"	// FIXME:
+#include "n885_310_adventureBattlefieldQsearchAbstract.hpp"
 
 
 /// <summary>
-/// 静止探索の抽象クラス（＾▽＾）
+/// 主となる読み筋
 /// </summary>
-class HitchhikerQsearchAbstract {
+class HitchhikerQsearchPv : public AdventureBattlefieldQsearchAbstract {
 
 
 public:
-
-
-	/// <summary>
-	///		<pre>
-	/// Ｑサーチ？
-	/// N01_PV か、N02_NonPV でだけ使うことができるぜ☆（＾ｑ＾）
-	///		</pre>
-	/// </summary>
-	/// <param name="ourCarriage">わたしたちの馬車</param>
-	/// <param name="INCHECK"></param>
-	/// <param name="pos"></param>
-	/// <param name="ss"></param>
-	/// <param name="alpha"></param>
-	/// <param name="beta"></param>
-	/// <param name="depth"></param>
-	/// <returns></returns>
-	virtual ScoreIndex DoQsearch(
-		OurCarriage& ourCarriage,
-		bool INCHECK,
-		Position& pos,
-		Flashlight* ss,
-		ScoreIndex alpha,
-		ScoreIndex beta,
-		const Depth depth
-		) const ;
 
 
 	/// <summary>
@@ -52,7 +19,9 @@ public:
 	virtual inline void DoAssert(
 		ScoreIndex alpha,
 		ScoreIndex beta
-		) const = 0;
+		) const override {
+		//スルー☆！（＾ｑ＾）
+	}
 
 
 	/// <summary>
@@ -63,7 +32,9 @@ public:
 	virtual inline void SetOldAlpha(
 		ScoreIndex& oldAlpha,
 		ScoreIndex alpha
-		) const = 0;
+		) const override {
+		oldAlpha = alpha;
+	}
 
 
 	/// <summary>
@@ -77,7 +48,10 @@ public:
 		const TTEntry** ppTtEntry,
 		ScoreIndex beta,
 		ScoreIndex ttScore
-		) const = 0;
+		) const override {
+		// PVノードのとき☆（＾ｑ＾）
+		return (*ppTtEntry)->GetBoundKind() == Bound::BoundExact;
+	}
 
 
 	/// <summary>
@@ -88,7 +62,12 @@ public:
 	virtual inline void SetAlpha(
 		ScoreIndex& alpha,
 		ScoreIndex bestScore
-		) const = 0;
+		) const override {
+		// PVノードのとき☆（＾ｑ＾）
+		if (alpha < bestScore) {
+			alpha = bestScore;
+		}
+	}
 
 
 	/// <summary>
@@ -117,7 +96,9 @@ public:
 		ScoreIndex& beta,
 		ScoreIndex& bestScore,
 		const Depth depth
-		)const = 0;
+		)const override {
+		// スルーだぜ☆！（＾ｑ＾）
+	}
 
 
 	/// <summary>
@@ -136,7 +117,9 @@ public:
 		Move& move,
 		Move& ttMove,
 		Position& pos
-		)const = 0;
+		)const {
+		// スルーだぜ☆！（＾ｑ＾）
+	}
 
 
 	/// <summary>
@@ -144,7 +127,7 @@ public:
 	/// </summary>
 	/// <param name="isReturnWithScore"></param>
 	/// <param name="returnScore"></param>
-	/// <param name="ourCarriage">わたしたちの馬車</param>
+	/// <param name="ourCarriage"></param>
 	/// <param name="score"></param>
 	/// <param name="beta"></param>
 	/// <param name="alpha"></param>
@@ -165,7 +148,30 @@ public:
 		Flashlight** ppFlashlight,
 		Depth ttDepth,
 		Move move
-		)const = 0;
+		)const override {
+		if (
+			// PVノードのときは条件付きで別手続きがあるぜ☆（＾ｑ＾）
+			score < beta
+			) {
+			alpha = score;
+			bestMove = move;
+		}
+		else {
+			// fail high
+			ourCarriage.m_tt.Store(
+				posKey,
+				ourCarriage.ConvertScoreToTT(score, (*ppFlashlight)->m_ply),
+				Bound::BoundLower,
+				ttDepth,
+				move,
+				(*ppFlashlight)->m_staticEval
+			);
+			isReturnWithScore = true;
+			returnScore = score;
+			return;
+			//return score;
+		}
+	}
 
 
 	/// <summary>
@@ -177,5 +183,11 @@ public:
 	virtual inline Bound GetBound01(
 		ScoreIndex& oldAlpha,
 		ScoreIndex& bestScore
-		)const = 0;
+		)const override {
+		return (oldAlpha < bestScore) ?
+			Bound::BoundExact
+			:
+			Bound::BoundUpper
+			;
+	}
 };

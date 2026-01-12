@@ -46,7 +46,7 @@ Move TTEntry::GetMove() const
 /// 
 /// </summary>
 /// <returns></returns>
-Bound TTEntry::GetType() const
+Bound TTEntry::GetBoundKind() const
 {
 	return static_cast<Bound>(this->m_bound_);
 }

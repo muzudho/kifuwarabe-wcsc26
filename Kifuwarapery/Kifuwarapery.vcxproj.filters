@@ -990,10 +990,10 @@
     <ClInclude Include="header\n885_searcher\n885_480_adventureSwampNyugyoku.hpp">
       <Filter>header\n885_searcher</Filter>
     </ClInclude>
-    <ClInclude Include="header\n885_searcher\n885_310_advemtireBattlefieldQsearchAbstract.hpp">
+    <ClInclude Include="header\n885_searcher\n885_310_adventureBattlefieldQsearchAbstract.hpp">
       <Filter>header\n885_searcher</Filter>
     </ClInclude>
-    <ClInclude Include="header\n885_searcher\n885_320_hitchhikerQsearchPv.hpp">
+    <ClInclude Include="header\n885_searcher\n885_320_adventureBattlefieldQsearchPv.hpp">
       <Filter>header\n885_searcher</Filter>
     </ClInclude>
     <ClInclude Include="header\n885_searcher\n885_330_hitchhikerQsearchNonPv.hpp">
@@ -1607,7 +1607,7 @@
     <ClCompile Include="source\n885_searcher\n885_310_hitchhikerQsearchAbstract.cpp">
       <Filter>source\n885_searcher</Filter>
     </ClCompile>
-    <ClCompile Include="source\n885_searcher\n885_320_hitchhikerQsearchPv.cpp">
+    <ClCompile Include="source\n885_searcher\n885_320_adventureBattlefieldQsearchPv.cpp">
       <Filter>source\n885_searcher</Filter>
     </ClCompile>
     <ClCompile Include="source\n885_searcher\n885_330_hitchhikerQsearchNonPv.cpp">

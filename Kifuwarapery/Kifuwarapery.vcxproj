@@ -387,8 +387,8 @@
     <ClInclude Include="header\n800_learn___\n800_500_learner.hpp" />
     <ClInclude Include="header\n883_nodeType\n883_070_adventurePlainNodetypeAbstract.hpp" />
     <ClInclude Include="header\n885_searcher\n885_040_ourCarriage.hpp" />
-    <ClInclude Include="header\n885_searcher\n885_310_advemtireBattlefieldQsearchAbstract.hpp" />
-    <ClInclude Include="header\n885_searcher\n885_320_hitchhikerQsearchPv.hpp" />
+    <ClInclude Include="header\n885_searcher\n885_310_adventureBattlefieldQsearchAbstract.hpp" />
+    <ClInclude Include="header\n885_searcher\n885_320_adventureBattlefieldQsearchPv.hpp" />
     <ClInclude Include="header\n885_searcher\n885_330_hitchhikerQsearchNonPv.hpp" />
     <ClInclude Include="header\n885_searcher\n885_340_hitchhikerQsearchPrograms.hpp" />
     <ClInclude Include="header\n885_searcher\n885_480_adventureSwampNyugyoku.hpp" />
@@ -605,7 +605,7 @@
     <ClCompile Include="source\n883_nodeType\n883_070_adventurePlainNodetypeAbstract.cpp" />
     <ClCompile Include="source\n885_searcher\n885_040_ourCarriage.cpp" />
     <ClCompile Include="source\n885_searcher\n885_310_hitchhikerQsearchAbstract.cpp" />
-    <ClCompile Include="source\n885_searcher\n885_320_hitchhikerQsearchPv.cpp" />
+    <ClCompile Include="source\n885_searcher\n885_320_adventureBattlefieldQsearchPv.cpp" />
     <ClCompile Include="source\n885_searcher\n885_330_hitchhikerQsearchNonPv.cpp" />
     <ClCompile Include="source\n885_searcher\n885_340_hitchhikerQsearchPrograms.cpp" />
     <ClCompile Include="source\n885_searcher\n885_480_adventureSwampNyugyoku.cpp" />

@@ -1,13 +1,13 @@
 ﻿#pragma once
 
 
-#include "n885_310_advemtireBattlefieldQsearchAbstract.hpp"
+#include "n885_310_adventureBattlefieldQsearchAbstract.hpp"
 
 
 /// <summary>
 /// 
 /// </summary>
-class HitchhikerQsearchNonPv : public HitchhikerQsearchAbstract {
+class HitchhikerQsearchNonPv : public AdventureBattlefieldQsearchAbstract {
 
 
 public:
@@ -53,9 +53,9 @@ public:
 		) const override {
 		// NonPVノードのとき☆（＾ｑ＾）
 		return beta <= ttScore ?
-			((*ppTtEntry)->GetType() & BoundLower)
+			((*ppTtEntry)->GetBoundKind() & BoundLower)
 			:
-			((*ppTtEntry)->GetType() & BoundUpper);
+			((*ppTtEntry)->GetBoundKind() & BoundUpper);
 	}
 
 

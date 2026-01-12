@@ -5,7 +5,7 @@
 #include "../../header/n223_move____/n223_200_depth.hpp"
 #include "../../header/n223_move____/n223_500_flashlight.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"	// FIXME:
-#include "../../header/n885_searcher/n885_310_advemtireBattlefieldQsearchAbstract.hpp"
+#include "../../header/n885_searcher/n885_310_adventureBattlefieldQsearchAbstract.hpp"
 
 
 /// <summary>
@@ -20,7 +20,7 @@
 /// <param name="beta"></param>
 /// <param name="depth"></param>
 /// <returns></returns>
-ScoreIndex HitchhikerQsearchAbstract::DoQsearch(
+ScoreIndex AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 	OurCarriage& ourCarriage,
 	bool INCHECK,
 	Position& pos,
@@ -193,7 +193,7 @@ ScoreIndex HitchhikerQsearchAbstract::DoQsearch(
 
 		(pFlashlight + 1)->m_staticEvalRaw.m_p[0][0] = ScoreNotEvaluated;
 		score = // 再帰関数☆（＾ｑ＾）
-			-this->DoQsearch(ourCarriage, givesCheck, pos, pFlashlight + 1, -beta, -alpha, depth - OnePly);
+			-this->ExploreAsQsearch(ourCarriage, givesCheck, pos, pFlashlight + 1, -beta, -alpha, depth - OnePly);
 		pos.UndoMove(move);
 
 		assert(-ScoreInfinite < score && score < ScoreInfinite);

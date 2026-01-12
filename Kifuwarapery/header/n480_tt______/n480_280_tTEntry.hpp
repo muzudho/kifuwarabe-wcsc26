@@ -49,7 +49,7 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	Bound GetType() const;
+	Bound GetBoundKind() const;
 
 
 	/// <summary>

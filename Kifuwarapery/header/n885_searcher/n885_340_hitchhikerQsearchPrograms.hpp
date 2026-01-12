@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include "n885_310_advemtireBattlefieldQsearchAbstract.hpp"
-#include "n885_320_hitchhikerQsearchPv.hpp"
+#include "n885_310_adventureBattlefieldQsearchAbstract.hpp"
+#include "n885_320_adventureBattlefieldQsearchPv.hpp"
 #include "n885_330_hitchhikerQsearchNonPv.hpp"
 
 
@@ -28,7 +28,7 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	static const HitchhikerQsearchAbstract* m_pHitchhikerQsearchPrograms[3];
+	static const AdventureBattlefieldQsearchAbstract* m_pHitchhikerQsearchPrograms[3];
 };
 
 

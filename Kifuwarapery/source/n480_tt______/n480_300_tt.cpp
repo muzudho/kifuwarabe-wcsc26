@@ -73,7 +73,7 @@ void TranspositionTable::Store(
 		}
 
 		int c = (replace->GetGeneration() == this->GetGeneration() ? 2 : 0);
-		c    += (tte->GetGeneration() == this->GetGeneration() || tte->GetType() == BoundExact ? -2 : 0);
+		c    += (tte->GetGeneration() == this->GetGeneration() || tte->GetBoundKind() == BoundExact ? -2 : 0);
 		c    += (tte->GetDepth() < replace->GetDepth() ? 1 : 0);
 
 		if (0 < c) {

@@ -127,9 +127,9 @@ public:
 		ScoreIndex& ttScore
 		) const override {
 		return  beta <= ttScore ?
-			(pTtEntry->GetType() & Bound::BoundLower)
+			(pTtEntry->GetBoundKind() & Bound::BoundLower)
 			:
-			(pTtEntry->GetType() & Bound::BoundUpper);
+			(pTtEntry->GetBoundKind() & Bound::BoundUpper);
 	}
 
 
@@ -244,7 +244,7 @@ public:
 		singularExtensionNode = 8 * Depth::OnePly <= depth
 			&& !ttMove.IsNone()
 			&& excludedMove.IsNone()
-			&& (pTtEntry->GetType() & Bound::BoundLower)
+			&& (pTtEntry->GetBoundKind() & Bound::BoundLower)
 			&& depth - 3 * Depth::OnePly <= pTtEntry->GetDepth();
 	}
 

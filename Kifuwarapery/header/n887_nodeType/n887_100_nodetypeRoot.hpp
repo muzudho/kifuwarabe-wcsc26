@@ -196,7 +196,7 @@ public:
 		ScoreIndex& beta,
 		ScoreIndex& ttScore
 		) const override {
-		return pTtEntry->GetType() == Bound::BoundExact;
+		return pTtEntry->GetBoundKind() == Bound::BoundExact;
 	}
 
 
