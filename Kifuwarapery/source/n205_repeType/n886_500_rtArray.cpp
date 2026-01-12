@@ -1,6 +1,3 @@
-#include "../../header/n886_repeType/n886_500_rtArray.hpp"
-
-
 #include "../../header/n886_repeType/n886_070_rtAbstract.hpp"
 #include "../../header/n886_repeType/n886_100_rtNot.hpp"
 #include "../../header/n886_repeType/n886_110_rtDraw.hpp"
