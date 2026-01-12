@@ -185,7 +185,7 @@ Key Position::GetComputeKey() const
 /// 
 /// </summary>
 /// <returns></returns>
-Military* Position::GetThisThread() const
+Soldier* Position::GetThisThread() const
 {
 	return this->m_thisThread_;
 }
@@ -2566,7 +2566,7 @@ Position::Position(const Position & pos)
 /// </summary>
 /// <param name="pos"></param>
 /// <param name="th"></param>
-Position::Position(const Position & pos, Military * th)
+Position::Position(const Position & pos, Soldier * th)
 {
 	*this = pos;
 	this->m_thisThread_ = th;
@@ -2579,7 +2579,7 @@ Position::Position(const Position & pos, Military * th)
 /// <param name="sfen"></param>
 /// <param name="th"></param>
 /// <param name="s"></param>
-Position::Position(const std::string & sfen, Military * th, Rucksack * s)
+Position::Position(const std::string & sfen, Soldier * th, Rucksack * s)
 {
 	this->Set(sfen, th);
 	this->SetRucksack(s);
@@ -2608,7 +2608,7 @@ Position& Position::operator = (const Position& pos) {
 /// </summary>
 /// <param name="sfen"></param>
 /// <param name="th"></param>
-void Position::Set(const std::string& sfen, Military* th) {
+void Position::Set(const std::string& sfen, Soldier* th) {
 	Piece promoteFlag = UnPromoted;
 	std::istringstream ss(sfen);
 	char token;

@@ -1,16 +1,19 @@
 ﻿#pragma once
 
-
-#include "n760_250_military.hpp"
+#include "n760_250_soldier.hpp"
 
 
 class Rucksack;
 
 
 /// <summary>
-/// 元の名前：　ＴｉｍｅｒＴｈｒｅａｄ
+///		<pre>
+/// 部下
+/// 
+///		- 元の名前：　1. ＴｉｍｅｒＴｈｒｅａｄ, 2. Ｗarrior
+///		</pre>
 /// </summary>
-class Warrior : public Military {
+class Subordinate : public Soldier {
 
 
 public:
@@ -36,7 +39,7 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="s"></param>
-	explicit Warrior(Rucksack* s) : Military(s), m_lifetimeMilliseconds(0) {}
+	explicit Subordinate(Rucksack* s) : Soldier(s), m_lifetimeMilliseconds(0) {}
 
 
 	// ========================================

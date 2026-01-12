@@ -374,14 +374,14 @@ void Rucksack::CheckTime() {
 /// <summary>
 /// ワーカースレッド開始
 /// </summary>
-void Military::StartWorkerThread() {
+void Soldier::StartWorkerThread() {
 	SplitedNode* thisSp = m_splitedNodesSize ? m_activeSplitedNode : nullptr;
-	assert(!thisSp || (thisSp->m_masterThread == this && m_searching));
+	assert(!thisSp || (thisSp->m_masterThread == this && m_isBeingSearched));
 
 	while (true) {
-		while ((!m_searching && this->m_pRucksack->m_ownerHerosPub.m_isSleepWhileIdle_) || m_exit)
+		while ((!m_isBeingSearched && this->m_pRucksack->m_ownerHerosPub.m_isSleepWhileIdle_) || m_isEndOfSearch)
 		{
-			if (m_exit) {
+			if (m_isEndOfSearch) {
 				assert(thisSp == nullptr);
 				return;
 			}
@@ -389,16 +389,16 @@ void Military::StartWorkerThread() {
 			std::unique_lock<Mutex> lock(m_sleepLock);
 			if (thisSp != nullptr && !thisSp->m_slavesMask) { break; }
 
-			if (!m_searching && !m_exit) {
+			if (!m_isBeingSearched && !m_isEndOfSearch) {
 				m_sleepCond.wait(lock);
 			}
 		}
 
-		if (m_searching) {
-			assert(!m_exit);
+		if (m_isBeingSearched) {
+			assert(!m_isEndOfSearch);
 
 			this->m_pRucksack->m_ownerHerosPub.m_mutex_.lock();
-			assert(m_searching);
+			assert(m_isBeingSearched);
 			SplitedNode* pSplitedNode = m_activeSplitedNode;
 			this->m_pRucksack->m_ownerHerosPub.m_mutex_.unlock();
 
@@ -420,8 +420,8 @@ void Military::StartWorkerThread() {
 				*pSplitedNode, *this->m_pRucksack, pos, ss);
 
 
-			assert(m_searching);
-			m_searching = false;
+			assert(m_isBeingSearched);
+			m_isBeingSearched = false;
 			m_activePosition = nullptr;
 			assert(pSplitedNode->m_slavesMask & (UINT64_C(1) << m_idx));
 			pSplitedNode->m_slavesMask ^= (UINT64_C(1) << m_idx);
@@ -431,7 +431,7 @@ void Military::StartWorkerThread() {
 				&& this != pSplitedNode->m_masterThread
 				&& !pSplitedNode->m_slavesMask)
 			{
-				assert(!pSplitedNode->m_masterThread->m_searching);
+				assert(!pSplitedNode->m_masterThread->m_isBeingSearched);
 				pSplitedNode->m_masterThread->NotifyOne();
 			}
 			pSplitedNode->m_mutex.unlock();

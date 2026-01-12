@@ -9,14 +9,16 @@
 #include "../n520_evaluate/n520_700_evaluation09.hpp"
 #include "../n560_timeMgr_/n560_100_limitsDuringGo.hpp"
 #include "../n640_searcher/n640_440_splitedNode.hpp"
-#include "n760_250_military.hpp"
+#include "n760_250_soldier.hpp"
 #include "n760_300_captain.hpp"
-#include "n760_350_warrior.hpp"
+#include "n760_350_subordinate.hpp"
+
+
+// 依存関係の回避
+class Rucksack;
+
 
 const int g_MaxThreads = 64;
-
-
-class Rucksack;
 
 
 /// <summary>
@@ -25,7 +27,7 @@ class Rucksack;
 /// ベクター型。
 ///		</pre>
 /// </summary>
-class HerosPub : public std::vector<Military*> {
+class HerosPub : public std::vector<Soldier*> {
 
 
 public:
@@ -36,10 +38,16 @@ public:
 	// ========================================
 
 
+	// クエスチョン・フィールド
+
+
 	/// <summary>
 	/// 寝ているか？
 	/// </summary>
 	bool m_isSleepWhileIdle_;
+
+
+	// メイン・フィールド
 
 
 	/// <summary>
@@ -80,10 +88,10 @@ public:
 
 
 	/// <summary>
-	/// タイマースレッド？
+	/// 現在の部下スレッド
 	/// </summary>
 	/// <returns></returns>
-	Warrior* GetCurrWarrior() { return this->m_pWarrior_; }
+	Subordinate* GetCurrSubordinate() { return this->m_pSubordinate_; }
 
 
 	// ========================================
@@ -129,7 +137,7 @@ public:
 	/// </summary>
 	/// <param name="master"></param>
 	/// <returns></returns>
-	Military* GetAvailableSlave(Military* master) const;
+	Soldier* GetAvailableSlave(Soldier* master) const;
 
 
 	/// <summary>
@@ -171,7 +179,7 @@ private:
 	/// <summary>
 	/// タイマースレッド☆
 	/// </summary>
-	Warrior* m_pWarrior_;
+	Subordinate* m_pSubordinate_;
 
 
 	/// <summary>

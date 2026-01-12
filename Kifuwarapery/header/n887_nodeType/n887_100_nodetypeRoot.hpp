@@ -783,7 +783,7 @@ public:
 		bool& isBreak,
 		Rucksack& rucksack,
 		const Depth depth,
-		Military** ppThisThread,
+		Soldier** ppThisThread,
 		ScoreIndex& bestScore,
 		ScoreIndex& beta,
 		Position& pos,

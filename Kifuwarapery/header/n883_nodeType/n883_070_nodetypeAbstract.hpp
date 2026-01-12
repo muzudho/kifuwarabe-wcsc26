@@ -207,7 +207,7 @@ public:
 	/// <param name="ppThisThread"></param>
 	/// <param name="pFlashlight"></param>
 	virtual inline void DoStep1c(
-		Military** ppThisThread,
+		Soldier** ppThisThread,
 		const Flashlight* pFlashlight
 		)const {
 		// PVノードのみ、最大Plyの更新の可能性があるぜ☆（＾ｑ＾）
@@ -1605,7 +1605,7 @@ public:
 		bool& isBreak,
 		Rucksack& rucksack,
 		const Depth depth,
-		Military** ppThisThread,
+		Soldier** ppThisThread,
 		ScoreIndex& bestScore,
 		ScoreIndex& beta,
 		Position& pos,

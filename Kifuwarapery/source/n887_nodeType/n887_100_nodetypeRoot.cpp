@@ -116,7 +116,7 @@ ScoreIndex NodetypeRoot::GoToTheAdventure_new(
 
 	// step1
 	// initialize node
-	Military* pThisThread = pos.GetThisThread();
+	Soldier* pThisThread = pos.GetThisThread();
 	moveCount = playedMoveCount = 0;
 	inCheck = pos.InCheck();
 
@@ -373,7 +373,7 @@ ScoreIndex NodetypeRoot::GoToTheAdventure_new(
 
 		// step18
 
-		if (rucksack.m_signals.m_stop || pThisThread->CutoffOccurred()) { return score; }
+		if (rucksack.m_signals.m_stop || pThisThread->IsUselessNode()) { return score; }
 
 		this->DoStep18b(
 			rucksack,

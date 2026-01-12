@@ -11,7 +11,7 @@
 #include "../n440_movStack/n440_500_nextmoveEvent.hpp"
 
 
-class Military;
+class Soldier;
 class SwordAbstract;
 
 
@@ -22,6 +22,24 @@ class SwordAbstract;
 ///		</pre>
 /// </summary>
 struct SplitedNode {
+
+
+	// ========================================
+	// フィールド
+	// ========================================
+
+
+	// クエスチョン・フィールド
+
+
+	/// <summary>
+	/// これは無用なノードだ。カットオフされたノードだ。
+	/// </summary>
+	volatile bool		m_isUselessNode;
+
+
+	// メイン・フィールド
+
 
 	/// <summary>
 	/// 局面か☆
@@ -36,7 +54,7 @@ struct SplitedNode {
 	/// <summary>
 	/// マスター・スレッド☆
 	/// </summary>
-	Military*				m_masterThread;
+	Soldier*				m_masterThread;
 
 	/// <summary>
 	/// 深さ。
@@ -107,9 +125,4 @@ struct SplitedNode {
 	/// 
 	/// </summary>
 	volatile int		m_moveCount;
-
-	/// <summary>
-	/// 
-	/// </summary>
-	volatile bool		m_cutoff;
 };

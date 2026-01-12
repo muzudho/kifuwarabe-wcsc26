@@ -560,7 +560,7 @@ split_point_start:
 			alpha
 			);
 
-		if (rucksack.m_signals.m_stop || pThisThread->CutoffOccurred()) {
+		if (rucksack.m_signals.m_stop || pThisThread->IsUselessNode()) {
 			return score;
 		}
 

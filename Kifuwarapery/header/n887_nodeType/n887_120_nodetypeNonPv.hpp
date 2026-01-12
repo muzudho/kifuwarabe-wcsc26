@@ -88,7 +88,7 @@ public:
 	/// <param name="ppThisThread"></param>
 	/// <param name="pFlashlight"></param>
 	inline void DoStep1c(
-		Military** ppThisThread,
+		Soldier** ppThisThread,
 		const Flashlight* pFlashlight
 		)const override {
 		// 非PVノードはスルー☆！（＾ｑ＾）
@@ -591,7 +591,7 @@ public:
 		bool& isBreak,
 		Rucksack& rucksack,
 		const Depth depth,
-		Military** ppThisThread,
+		Soldier** ppThisThread,
 		ScoreIndex& bestScore,
 		ScoreIndex& beta,
 		Position& pos,

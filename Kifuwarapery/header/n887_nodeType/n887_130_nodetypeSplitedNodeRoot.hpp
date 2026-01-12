@@ -718,7 +718,7 @@ public:
 				}
 				else {
 					// fail high
-					(*ppSplitedNode)->m_cutoff = true;
+					(*ppSplitedNode)->m_isUselessNode = true;
 					isBreak = true;
 					return;
 				}
@@ -749,7 +749,7 @@ public:
 		bool& isBreak,
 		Rucksack& rucksack,
 		const Depth depth,
-		Military** ppThisThread,
+		Soldier** ppThisThread,
 		ScoreIndex& bestScore,
 		ScoreIndex& beta,
 		Position& pos,

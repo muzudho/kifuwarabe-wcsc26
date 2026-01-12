@@ -4,7 +4,7 @@
 #include "../../header/n407_moveGen_/n407_900_moveList.hpp"
 #include "../../header/n560_timeMgr_/n560_100_limitsDuringGo.hpp"
 #include "../../header/n640_searcher/n640_450_rootMove.hpp"
-#include "../../header/n760_thread__/n760_250_military.hpp"
+#include "../../header/n760_thread__/n760_250_soldier.hpp"
 #include "../../header/n760_thread__/n760_400_herosPub.hpp"
 #include "../../header/n885_searcher/n885_040_rucksack.hpp"
 
@@ -25,7 +25,7 @@
 /// <returns></returns>
 template <typename T> T* newThread(Rucksack* s) {
 	T* th = new T(s);
-	th->m_handle = std::thread(&Military::StartWorkerThread, th); // move constructor
+	th->m_handle = std::thread(&Soldier::StartWorkerThread, th); // move constructor
 	return th;
 }
 
@@ -34,8 +34,8 @@ template <typename T> T* newThread(Rucksack* s) {
 /// 
 /// </summary>
 /// <param name="th"></param>
-void deleteThread(Military* th) {
-	th->m_exit = true;
+void deleteThread(Soldier* th) {
+	th->m_isEndOfSearch = true;
 	th->NotifyOne();
 	th->m_handle.join(); // Wait for thread termination
 	delete th;
@@ -53,7 +53,7 @@ void HerosPub::Init(Rucksack* s) {
 	m_isSleepWhileIdle_ = true;
 #if defined LEARN
 #else
-	m_pWarrior_ = newThread<Warrior>(s);
+	m_pSubordinate_ = newThread<Subordinate>(s);
 #endif
 	push_back(newThread<Captain>(s));
 	ReadUSIOptions(s);
@@ -67,7 +67,7 @@ void HerosPub::Exit() {
 #if defined LEARN
 #else
 	// checkTime() がデータにアクセスしないよう、先に timer_ を delete
-	deleteThread(m_pWarrior_);
+	deleteThread(m_pSubordinate_);
 #endif
 
 	for (auto elem : *this) {
@@ -98,7 +98,7 @@ void HerosPub::ReadUSIOptions(Rucksack* searcher) {
 	assert(0 < numberOfThreads);
 
 	while (size() < numberOfThreads) {
-		push_back(newThread<Military>(searcher));
+		push_back(newThread<Soldier>(searcher));
 	}
 
 	while (numberOfThreads < size()) {
@@ -113,9 +113,9 @@ void HerosPub::ReadUSIOptions(Rucksack* searcher) {
 /// </summary>
 /// <param name="master"></param>
 /// <returns></returns>
-Military* HerosPub::GetAvailableSlave(Military* master) const {
+Soldier* HerosPub::GetAvailableSlave(Soldier* master) const {
 	for (auto elem : *this) {
-		if (elem->IsAvailableTo(master)) {
+		if (elem->SetLastSplitNodeSlavesMask(master)) {
 			return elem;
 		}
 	}
@@ -128,18 +128,19 @@ Military* HerosPub::GetAvailableSlave(Military* master) const {
 /// </summary>
 /// <param name="maxPly"></param>
 void HerosPub::SetCurrWorrior(const int maxPly) {
-	m_pWarrior_->m_maxPly = maxPly;
-	m_pWarrior_->NotifyOne(); // Wake up and restart the timer
+	m_pSubordinate_->m_maxPly = maxPly;
+	m_pSubordinate_->NotifyOne(); // Wake up and restart the timer
 }
 
 
 /// <summary>
 /// 
 /// </summary>
-void HerosPub::WaitForThinkFinished() {
+void HerosPub::WaitForThinkFinished()
+{
 	Captain* t = GetFirstCaptain();
 	std::unique_lock<Mutex> lock(t->m_sleepLock);
-	m_sleepCond_.wait(lock, [&] { return !(t->m_isThinking); });
+	m_sleepCond_.wait(lock, [&] { return !(t->m_isMasterThread); });
 }
 
 
@@ -159,6 +160,7 @@ void HerosPub::StartThinking(
 #else
 	WaitForThinkFinished();
 #endif
+
 	position.GetRucksack()->m_stopwatch.Restart();
 
 	position.GetRucksack()->m_signals.m_stopOnPonderHit = position.GetRucksack()->m_signals.m_firstRootMove = false;
@@ -172,6 +174,9 @@ void HerosPub::StartThinking(
 #if defined LEARN
 	// searchMoves を直接使う。
 	GetPos.GetRucksack()->m_rootMoves.push_back(RootMove(position.GetRucksack()->m_ourMoves[0]));
+
+	// 浅い探索なので、thread 生成、破棄のコストが高い。余分な thread を生成せずに直接探索を呼び出す。
+	GetPos.GetRucksack()->Think(GetPos.GetRucksack());
 #else
 	const MoveType MT = N08_Legal;
 	for (MoveList<MT> ml(position); !ml.IsEnd(); ++ml) {
@@ -181,13 +186,8 @@ void HerosPub::StartThinking(
 			position.GetRucksack()->m_rootMoves.push_back(RootMove(ml.GetMove()));
 		}
 	}
-#endif
 
-#if defined LEARN
-	// 浅い探索なので、thread 生成、破棄のコストが高い。余分な thread を生成せずに直接探索を呼び出す。
-	GetPos.GetRucksack()->Think(GetPos.GetRucksack());
-#else
-	this->GetFirstCaptain()->m_isThinking = true;
+	this->GetFirstCaptain()->m_isMasterThread = true;
 	this->GetFirstCaptain()->NotifyOne();
 #endif
 }

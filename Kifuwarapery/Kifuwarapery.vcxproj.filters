@@ -900,7 +900,7 @@
     <ClInclude Include="header\n223_move____\n223_500_flashlight.hpp">
       <Filter>header\n223_move____</Filter>
     </ClInclude>
-    <ClInclude Include="header\n760_thread__\n760_350_warrior.hpp">
+    <ClInclude Include="header\n760_thread__\n760_350_subordinate.hpp">
       <Filter>header\n760_thread__</Filter>
     </ClInclude>
     <ClInclude Include="header\n760_thread__\n760_400_herosPub.hpp">
@@ -909,7 +909,7 @@
     <ClInclude Include="header\n760_thread__\n760_300_captain.hpp">
       <Filter>header\n760_thread__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n760_thread__\n760_250_military.hpp">
+    <ClInclude Include="header\n760_thread__\n760_250_soldier.hpp">
       <Filter>header\n760_thread__</Filter>
     </ClInclude>
     <ClInclude Include="header\n885_searcher\n885_600_iterativeDeepeningLoop.hpp">
@@ -1544,7 +1544,7 @@
     <ClCompile Include="source\n800_learn___\n800_100_stopwatch.cpp">
       <Filter>source\n800_learn___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n760_thread__\n760_350_warrior.cpp">
+    <ClCompile Include="source\n760_thread__\n760_350_subordinate.cpp">
       <Filter>source\n760_thread__</Filter>
     </ClCompile>
     <ClCompile Include="source\n760_thread__\n760_400_herosPub.cpp">
@@ -1553,7 +1553,7 @@
     <ClCompile Include="source\n760_thread__\n760_300_captain.cpp">
       <Filter>source\n760_thread__</Filter>
     </ClCompile>
-    <ClCompile Include="source\n760_thread__\n760_250_military.cpp">
+    <ClCompile Include="source\n760_thread__\n760_250_soldier.cpp">
       <Filter>source\n760_thread__</Filter>
     </ClCompile>
     <ClCompile Include="source\n885_searcher\n885_600_iterativeDeepeningLoop.cpp">

@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "n760_250_military.hpp"
+#include "n760_250_soldier.hpp"
 
 
 class Rucksack;
@@ -13,7 +13,7 @@ class Rucksack;
 ///		- 元の名前：ＭａｉｎＴｈｒｅａｄ
 ///		</pre>
 /// </summary>
-class Captain : public Military {
+class Captain : public Soldier {
 
 
 public:
@@ -25,9 +25,11 @@ public:
 
 
 	/// <summary>
-	/// 
+	///		<pre>
+	/// キャプテンのマスタースレッドだ（ワーカースレッドではない）
+	///		</pre>
 	/// </summary>
-	volatile bool m_isThinking;
+	volatile bool m_isMasterThread;
 
 
 	// ========================================
@@ -39,7 +41,7 @@ public:
     /// 生成☆（＾ｑ＾）
 	/// </summary>
 	/// <param name="s"></param>
-	explicit Captain(Rucksack* s) : Military(s), m_isThinking(true) {}
+	explicit Captain(Rucksack* s) : Soldier(s), m_isMasterThread(true) {}
 
 
 	// ========================================

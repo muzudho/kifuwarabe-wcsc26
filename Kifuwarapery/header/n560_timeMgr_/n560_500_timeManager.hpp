@@ -88,10 +88,10 @@ public:
 
 
 	/// <summary>
-	/// 新しく生まれてくる下級戦士の寿命☆（＾ｑ＾）
+	/// 新しく生まれてくる部下の寿命☆（＾ｑ＾）
 	/// </summary>
 	/// <returns></returns>
-	inline int GetWarriorLifeTime() { return this->GetPlanThinkSeconds() / 16; }
+	inline int GetSubordinateLifeTime() { return this->GetPlanThinkSeconds() / 16; }
 
 
 	/// <summary>

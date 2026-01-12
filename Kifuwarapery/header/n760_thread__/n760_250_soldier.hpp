@@ -23,13 +23,13 @@ const int g_MaxSplitedNodesPerThread = 8;
 
 /// <summary>
 ///		<pre>
-/// 軍人☆（＾▽＾） わたしが名前を変えた☆（＾▽＾）
+/// 戦士☆（＾▽＾） わたしが名前を変えた☆（＾▽＾） リュックサックを持っているぜ（＾▽＾）
 /// 
-///		- 元の名前：Ｔｈｒｅａｄ
+///		- 元の名前： 1. Ｔｈｒｅａｄ, 2. Ｍilitary
 ///		- ゲームツリーを戦線拡大していくぜ☆！（＾ｑ＾）
 ///		</pre>
 /// </summary>
-class Military {
+class Soldier {
 
 
 public:
@@ -44,18 +44,35 @@ public:
 	/// 生成。
 	/// </summary>
 	/// <param name="s"></param>
-	explicit Military(Rucksack* s);
+	explicit Soldier(Rucksack* s);
 
 
 	/// <summary>
 	/// 破棄。
 	/// </summary>
-	virtual ~Military() {};
+	virtual ~Soldier() {};
 
 
 	// ========================================
 	// フィールド
 	// ========================================
+
+
+	// クエスチョン・フィールド
+
+
+	/// <summary>
+	/// 探索中だ
+	/// </summary>
+	volatile bool m_isBeingSearched;
+
+	/// <summary>
+	/// 
+	/// </summary>
+	volatile bool m_isEndOfSearch;
+
+
+	// メイン・フィールド
 
 
 	/// <summary>
@@ -69,7 +86,7 @@ public:
 	Position* m_activePosition;
 
 	/// <summary>
-	/// 
+	/// インデックス。
 	/// </summary>
 	int m_idx;
 
@@ -106,22 +123,15 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	volatile bool m_searching;
-
-	/// <summary>
-	/// 
-	/// </summary>
-	volatile bool m_exit;
-
-	/// <summary>
-	/// 
-	/// </summary>
 	Rucksack* m_pRucksack;
 
 
 	// ========================================
-	// クエスチョン・メソッド
+	// メソッド
 	// ========================================
+
+
+	// クエスチョン・メソッド
 
 
 	/// <summary>
@@ -129,12 +139,17 @@ public:
 	/// </summary>
 	/// <param name="master"></param>
 	/// <returns></returns>
-	bool IsAvailableTo(Military* master) const;
+	bool SetLastSplitNodeSlavesMask(Soldier* master) const;
 
 
-	// ========================================
+	/// <summary>
+	/// カットオフが起こったノードだ
+	/// </summary>
+	/// <returns></returns>
+	bool IsUselessNode() const;
+
+
 	// メイン・メソッド
-	// ========================================
 
 
 	/// <summary>
@@ -147,13 +162,6 @@ public:
 	/// 
 	/// </summary>
 	void NotifyOne();
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <returns></returns>
-	bool CutoffOccurred() const;
 
 
 	/// <summary>

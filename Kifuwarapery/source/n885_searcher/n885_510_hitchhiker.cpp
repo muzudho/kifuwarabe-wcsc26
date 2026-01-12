@@ -147,13 +147,13 @@ void Hitchhiker::Think(
 	captainsRucksack.m_ownerHerosPub.WakeUp(&captainsRucksack);
 
 	// 下級戦士の寿命（ミリ秒）を設定するぜ☆
-	captainsRucksack.m_ownerHerosPub.GetCurrWarrior()->m_lifetimeMilliseconds =
+	captainsRucksack.m_ownerHerosPub.GetCurrSubordinate()->m_lifetimeMilliseconds =
 		(
 			captainsRucksack.m_limits.IsBrandnewTimeMgr() ? // 反復深化をしたい☆？（＾ｑ＾）
 			// する場合
 			std::min(100,
 				std::max(
-					captainsRucksack.m_timeMgr.GetWarriorLifeTime(),
+					captainsRucksack.m_timeMgr.GetSubordinateLifeTime(),
 					captainsRucksack.TimerResolution
 				))
 			:
@@ -163,7 +163,7 @@ void Hitchhiker::Think(
 				100
 			);
 
-	captainsRucksack.m_ownerHerosPub.GetCurrWarrior()->NotifyOne();
+	captainsRucksack.m_ownerHerosPub.GetCurrSubordinate()->NotifyOne();
 
 #if defined INANIWA_SHIFT
 	detectInaniwa(GetPos);
@@ -179,7 +179,7 @@ void Hitchhiker::Think(
 
 #if defined LEARN
 #else
-	captainsRucksack.m_ownerHerosPub.GetCurrWarrior()->m_lifetimeMilliseconds = 0; // timer を止める。
+	captainsRucksack.m_ownerHerosPub.GetCurrSubordinate()->m_lifetimeMilliseconds = 0; // timer を止める。
 	captainsRucksack.m_ownerHerosPub.Sleep();
 
 finalize:

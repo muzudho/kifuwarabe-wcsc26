@@ -1,5 +1,5 @@
 ﻿#include "../../header/n350_pieceTyp/n350_030_makePromoteMove.hpp"
-#include "../../header/n760_thread__/n760_250_military.hpp"
+#include "../../header/n760_thread__/n760_250_soldier.hpp"
 #include "../../header/n760_thread__/n760_300_captain.hpp"
 #include "../../header/n885_searcher/n885_040_rucksack.hpp"
 
@@ -16,8 +16,8 @@ void Captain::StartWorkerThread() {
 	while (true) {// エグジットするまで　ずっといるぜ☆
 		{
 			std::unique_lock<Mutex> lock(this->m_sleepLock);
-			this->m_isThinking = false;
-			while (!this->m_isThinking && !m_exit)
+			this->m_isMasterThread = false;
+			while (!this->m_isMasterThread && !m_isEndOfSearch)
 			{
 				// UI 関連だから要らないのかも。
 				this->m_pRucksack->m_ownerHerosPub.m_sleepCond_.notify_one();
@@ -25,11 +25,11 @@ void Captain::StartWorkerThread() {
 			}
 		}
 
-		if (this->m_exit) { return; }
+		if (this->m_isEndOfSearch) { return; }
 
-		this->m_searching = true;
+		this->m_isBeingSearched = true;
 		Hitchhiker::Think(*this->m_pRucksack);
-		assert(this->m_searching);
-		this->m_searching = false;
+		assert(this->m_isBeingSearched);
+		this->m_isBeingSearched = false;
 	}
 }

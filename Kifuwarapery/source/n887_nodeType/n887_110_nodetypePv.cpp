@@ -120,7 +120,7 @@ ScoreIndex NodetypePv::GoToTheAdventure_new(
 
 	// step1
 	// initialize node
-	Military* pThisThread = pos.GetThisThread();
+	Soldier* pThisThread = pos.GetThisThread();
 	moveCount = playedMoveCount = 0;
 	inCheck = pos.InCheck();
 
@@ -399,7 +399,7 @@ ScoreIndex NodetypePv::GoToTheAdventure_new(
 
 		assert(-ScoreInfinite < score && score < ScoreInfinite);
 
-		if (rucksack.m_signals.m_stop || pThisThread->CutoffOccurred()) { return score; }
+		if (rucksack.m_signals.m_stop || pThisThread->IsUselessNode()) { return score; }
 
 		bool isBreak = false;
 		this->DoStep18c(
