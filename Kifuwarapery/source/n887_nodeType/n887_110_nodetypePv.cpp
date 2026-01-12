@@ -114,13 +114,13 @@ ScoreIndex NodetypePv::ExplorePlain(
 
 	bool isGotoSplitPointStart = false;
 
-	this->DoStep1b(
+	this->ExplorerPlainStep1b(
 		bestScore,
 		&pFlashlight,
 		threatMove,
 		bestMove
 		);
-	this->DoStep1c(
+	this->ExplorerPlainStep1c(
 		&pThisThread,
 		pFlashlight
 		);
@@ -129,7 +129,7 @@ ScoreIndex NodetypePv::ExplorePlain(
 	ScoreIndex returnScore = ScoreIndex::ScoreNone;
 
 	// step2
-	this->DoStep2(
+	this->ExplorerPlainStep2(
 		isReturnWithScore,
 		returnScore,
 		pos,
@@ -140,7 +140,7 @@ ScoreIndex NodetypePv::ExplorePlain(
 	if (isReturnWithScore) { return returnScore; }
 
 	// step3
-	this->DoStep3(
+	this->ExplorerPlainStep3(
 		isReturnWithScore,
 		returnScore,
 		&pFlashlight,
@@ -152,7 +152,7 @@ ScoreIndex NodetypePv::ExplorePlain(
 	pos.SetNodesSearched(pos.GetNodesSearched() + 1);
 
 	// step4
-	this->DoStep4(
+	this->ExplorerPlainStep4(
 		excludedMove,
 		&pFlashlight,
 		posKey,
@@ -161,13 +161,13 @@ ScoreIndex NodetypePv::ExplorePlain(
 		ourCarriage,
 		ttScore
 		);
-	this->DoStep4x(
+	this->ExplorerPlainStep4x(
 		ttMove,
 		ourCarriage,
 		pTtEntry,
 		pos
 		);
-	this->DoStep4y(
+	this->ExplorerPlainStep4y(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -180,7 +180,7 @@ ScoreIndex NodetypePv::ExplorePlain(
 		);
 	if (isReturnWithScore) { return returnScore; }
 
-	this->DoStep4z(
+	this->ExplorerPlainStep4z(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -197,7 +197,7 @@ ScoreIndex NodetypePv::ExplorePlain(
 
 	// step5
 	bool isGotoIidStart = false;//NonPVのとき使う☆
-	this->DoStep5(
+	this->ExplorerPlainStep5(
 		isGotoIidStart,
 		ourCarriage,
 		eval,
@@ -219,7 +219,7 @@ ScoreIndex NodetypePv::ExplorePlain(
 	// 内側の反復深化探索☆？（＾ｑ＾）
 //iid_start:
 	// step10
-	this->DoStep10_InternalIterativeDeepening(
+	this->ExplorerPlainStep10_InternalIterativeDeepening(
 		depth,
 		ttMove,
 		inCheck,
@@ -243,7 +243,7 @@ ScoreIndex NodetypePv::ExplorePlain(
 		);
 	const CheckInfo ci(pos);
 
-	this->DoStep11a_BeforeLoop_SplitPointStart(
+	this->ExplorerPlainStep11a_BeforeLoop_SplitPointStart(
 		ttMove,
 		depth,
 		score,
@@ -267,7 +267,7 @@ ScoreIndex NodetypePv::ExplorePlain(
 
 		bool isContinue = false;
 
-		this->DoStep11c_LoopHeader(
+		this->ExplorerPlainStep11c_LoopHeader(
 			isContinue,
 			pos,
 			move,
@@ -277,7 +277,7 @@ ScoreIndex NodetypePv::ExplorePlain(
 			);
 		if (isContinue) { continue; }
 
-		this->DoStep11f_LoopHeader(
+		this->ExplorerPlainStep11f_LoopHeader(
 			extension,
 			captureOrPawnPromotion,
 			move,
@@ -288,7 +288,7 @@ ScoreIndex NodetypePv::ExplorePlain(
 			);
 
 		// step12
-		this->DoStep12(
+		this->ExplorerPlainStep12(
 			ourCarriage,
 			givesCheck,
 			pos,
@@ -306,7 +306,7 @@ ScoreIndex NodetypePv::ExplorePlain(
 			newDepth
 			);
 
-		this->DoStep13b(
+		this->ExplorerPlainStep13b(
 			isContinue,
 			pos,
 			move,
@@ -315,7 +315,7 @@ ScoreIndex NodetypePv::ExplorePlain(
 			);
 		if (isContinue) { continue; }
 
-		this->DoStep13c(
+		this->ExplorerPlainStep13c(
 			isContinue,
 			ourCarriage,
 			captureOrPawnPromotion,
@@ -339,7 +339,7 @@ ScoreIndex NodetypePv::ExplorePlain(
 			);
 		if (isContinue) { continue; }
 
-		this->DoStep13d(
+		this->ExplorerPlainStep13d(
 			captureOrPawnPromotion,
 			playedMoveCount,
 			movesSearched,
@@ -347,7 +347,7 @@ ScoreIndex NodetypePv::ExplorePlain(
 			);
 
 		// step14
-		this->DoStep14(
+		this->ExplorerPlainStep14(
 			pos,
 			move,
 			st,
@@ -356,7 +356,7 @@ ScoreIndex NodetypePv::ExplorePlain(
 			&pFlashlight
 			);
 
-		this->DoStep16b_NonPVAtukai(
+		this->ExplorerPlainStep16b_NonPVAtukai(
 			ourCarriage,
 			doFullDepthSearch,
 			score,
@@ -367,7 +367,7 @@ ScoreIndex NodetypePv::ExplorePlain(
 			alpha,
 			cutNode
 			);
-		this->DoStep16c(
+		this->ExplorerPlainStep16c(
 			ourCarriage,
 			isPVMove,
 			alpha,
@@ -380,7 +380,7 @@ ScoreIndex NodetypePv::ExplorePlain(
 			);
 
 		// step17
-		this->DoStep17(
+		this->ExplorerPlainStep17(
 			pos,
 			move
 			);
@@ -390,7 +390,7 @@ ScoreIndex NodetypePv::ExplorePlain(
 		if (ourCarriage.m_signals.m_stop || pThisThread->IsUselessNode()) { return score; }
 
 		bool isBreak = false;
-		this->DoStep18c(
+		this->ExplorerPlainStep18c(
 			isBreak,
 			ourCarriage,
 			move,
@@ -406,7 +406,7 @@ ScoreIndex NodetypePv::ExplorePlain(
 		if (isBreak) { break; }
 
 		// step19
-		this->DoStep19(
+		this->ExplorerPlainStep19(
 			isBreak,
 			ourCarriage,
 			depth,
@@ -428,7 +428,7 @@ ScoreIndex NodetypePv::ExplorePlain(
 	if (this->GetReturnBeforeStep20()) { return bestScore; }
 
 	// step20
-	this->DoStep20(
+	this->ExplorerPlainStep20(
 		moveCount,
 		excludedMove,
 		ourCarriage,

@@ -116,7 +116,7 @@ ScoreIndex NodetypeSplitedNodeNonPv::ExplorePlain(
 	inCheck = pos.InCheck();
 
 	bool isGotoSplitPointStart = false;
-	this->DoStep1a(
+	this->ExplorerPlainStep1a(
 		isGotoSplitPointStart,
 		moveCount,
 		playedMoveCount,
@@ -133,7 +133,7 @@ ScoreIndex NodetypeSplitedNodeNonPv::ExplorePlain(
 		);
 	if (isGotoSplitPointStart) { goto split_point_start; }
 
-	this->DoStep1b(
+	this->ExplorerPlainStep1b(
 		bestScore,
 		&pFlashlight,
 		threatMove,
@@ -144,7 +144,7 @@ ScoreIndex NodetypeSplitedNodeNonPv::ExplorePlain(
 	ScoreIndex returnScore = ScoreIndex::ScoreNone;
 
 	// step2
-	this->DoStep2(
+	this->ExplorerPlainStep2(
 		isReturnWithScore,
 		returnScore,
 		pos,
@@ -155,7 +155,7 @@ ScoreIndex NodetypeSplitedNodeNonPv::ExplorePlain(
 	if (isReturnWithScore) { return returnScore; }
 
 	// step3
-	this->DoStep3(
+	this->ExplorerPlainStep3(
 		isReturnWithScore,
 		returnScore,
 		&pFlashlight,
@@ -167,7 +167,7 @@ ScoreIndex NodetypeSplitedNodeNonPv::ExplorePlain(
 	pos.SetNodesSearched(pos.GetNodesSearched() + 1);
 
 	// step4
-	this->DoStep4(
+	this->ExplorerPlainStep4(
 		excludedMove,
 		&pFlashlight,
 		posKey,
@@ -176,13 +176,13 @@ ScoreIndex NodetypeSplitedNodeNonPv::ExplorePlain(
 		ourCarriage,
 		ttScore
 		);
-	this->DoStep4x(
+	this->ExplorerPlainStep4x(
 		ttMove,
 		ourCarriage,
 		pTtEntry,
 		pos
 		);
-	this->DoStep4y(
+	this->ExplorerPlainStep4y(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -195,7 +195,7 @@ ScoreIndex NodetypeSplitedNodeNonPv::ExplorePlain(
 		);
 	if (isReturnWithScore) { return returnScore; }
 
-	this->DoStep4z(
+	this->ExplorerPlainStep4z(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -212,7 +212,7 @@ ScoreIndex NodetypeSplitedNodeNonPv::ExplorePlain(
 
 	// step5
 	bool isGotoIidStart = false;//NonPVのとき使う☆
-	this->DoStep5(
+	this->ExplorerPlainStep5(
 		isGotoIidStart,
 		ourCarriage,
 		eval,
@@ -227,7 +227,7 @@ ScoreIndex NodetypeSplitedNodeNonPv::ExplorePlain(
 	if (isGotoIidStart) { goto iid_start; }
 
 	// step6
-	this->DoStep6_NonPV(
+	this->ExplorerPlainStep6_NonPV(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -241,7 +241,7 @@ ScoreIndex NodetypeSplitedNodeNonPv::ExplorePlain(
 	if (isReturnWithScore) { return returnScore; }
 
 	// step7
-	this->DoStep7(
+	this->ExplorerPlainStep7(
 		isReturnWithScore,
 		returnScore,
 		&pFlashlight,
@@ -252,7 +252,7 @@ ScoreIndex NodetypeSplitedNodeNonPv::ExplorePlain(
 	if (isReturnWithScore) { return returnScore; }
 
 	// step8
-	this->DoStep8_NonPV(
+	this->ExplorerPlainStep8_NonPV(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -269,7 +269,7 @@ ScoreIndex NodetypeSplitedNodeNonPv::ExplorePlain(
 	if (isReturnWithScore) { return returnScore; }
 
 	// step9
-	this->DoStep9(
+	this->ExplorerPlainStep9(
 		isReturnWithScore,
 		ourCarriage,
 		depth,
@@ -287,7 +287,7 @@ ScoreIndex NodetypeSplitedNodeNonPv::ExplorePlain(
 	// 内側の反復深化探索☆？（＾ｑ＾）
 iid_start:
 	// step10
-	this->DoStep10_InternalIterativeDeepening(
+	this->ExplorerPlainStep10_InternalIterativeDeepening(
 		depth,
 		ttMove,
 		inCheck,
@@ -311,7 +311,7 @@ split_point_start:
 		);
 	const CheckInfo ci(pos);
 
-	this->DoStep11a_BeforeLoop_SplitPointStart(
+	this->ExplorerPlainStep11a_BeforeLoop_SplitPointStart(
 		ttMove,
 		depth,
 		score,
@@ -335,7 +335,7 @@ split_point_start:
 
 		bool isContinue = false;
 
-		this->DoStep11c_LoopHeader(
+		this->ExplorerPlainStep11c_LoopHeader(
 			isContinue,
 			pos,
 			move,
@@ -345,7 +345,7 @@ split_point_start:
 			);
 		if (isContinue) { continue; }
 
-		this->DoStep11f_LoopHeader(
+		this->ExplorerPlainStep11f_LoopHeader(
 			extension,
 			captureOrPawnPromotion,
 			move,
@@ -356,7 +356,7 @@ split_point_start:
 			);
 
 		// step12
-		this->DoStep12(
+		this->ExplorerPlainStep12(
 			ourCarriage,
 			givesCheck,
 			pos,
@@ -376,7 +376,7 @@ split_point_start:
 
 		// step13
 		// 無駄枝狩り☆（＾▽＾）非PVだけ行う☆！
-		this->DoStep13a_FutilityPruning(
+		this->ExplorerPlainStep13a_FutilityPruning(
 			isContinue,
 			ourCarriage,
 			captureOrPawnPromotion,
@@ -396,7 +396,7 @@ split_point_start:
 			);
 		if (isContinue) { continue; }
 
-		this->DoStep13c(
+		this->ExplorerPlainStep13c(
 			isContinue,
 			ourCarriage,
 			captureOrPawnPromotion,
@@ -421,7 +421,7 @@ split_point_start:
 		if (isContinue) { continue; }
 
 		// step14
-		this->DoStep14(
+		this->ExplorerPlainStep14(
 			pos,
 			move,
 			st,
@@ -431,7 +431,7 @@ split_point_start:
 			);
 
 		// step15
-		this->DoStep15(
+		this->ExplorerPlainStep15(
 			ourCarriage,
 			depth,
 			isPVMove,
@@ -450,12 +450,12 @@ split_point_start:
 			);
 
 		// step16
-		this->DoStep16a(
+		this->ExplorerPlainStep16a(
 			doFullDepthSearch,
 			alpha,
 			&pSplitedNode
 			);
-		this->DoStep16b_NonPVAtukai(
+		this->ExplorerPlainStep16b_NonPVAtukai(
 			ourCarriage,
 			doFullDepthSearch,
 			score,
@@ -468,7 +468,7 @@ split_point_start:
 			);
 
 		// step17
-		this->DoStep17(
+		this->ExplorerPlainStep17(
 			pos,
 			move
 			);
@@ -476,7 +476,7 @@ split_point_start:
 		assert(-ScoreInfinite < score && score < ScoreInfinite);
 
 		// step18
-		this->DoStep18a(
+		this->ExplorerPlainStep18a(
 			&pSplitedNode,
 			bestScore,
 			alpha
@@ -485,7 +485,7 @@ split_point_start:
 		if (ourCarriage.m_signals.m_stop || pThisThread->IsUselessNode()) { return score; }
 
 		bool isBreak = false;
-		this->DoStep18c(
+		this->ExplorerPlainStep18c(
 			isBreak,
 			ourCarriage,
 			move,

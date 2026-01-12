@@ -61,7 +61,7 @@ public:
 	/// <param name="ttMove"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="ttScore"></param>
-	virtual inline void DoStep1a(
+	virtual inline void ExplorerPlainStep1a(
 		bool& isGotoSplitPointStart,
 		int& moveCount,
 		int& playedMoveCount,
@@ -85,7 +85,7 @@ public:
 	/// </summary>
 	/// <param name="ppThisThread"></param>
 	/// <param name="pFlashlight"></param>
-	inline void DoStep1c(
+	inline void ExplorerPlainStep1c(
 		Soldier** ppThisThread,
 		const Flashlight* pFlashlight
 		)const override {
@@ -101,7 +101,7 @@ public:
 	/// <param name="ourCarriage"></param>
 	/// <param name="pTtEntry"></param>
 	/// <param name="pos"></param>
-	virtual inline void DoStep4x(
+	virtual inline void ExplorerPlainStep4x(
 		Move& ttMove,
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
@@ -146,7 +146,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="ppTtEntry"></param>
 	/// <param name="posKey"></param>
-	virtual inline void DoStep10_InternalIterativeDeepening(
+	virtual inline void ExplorerPlainStep10_InternalIterativeDeepening(
 		const Depth depth,
 		Move& ttMove,
 		bool& inCheck,
@@ -229,7 +229,7 @@ public:
 	/// <param name="singularExtensionNode"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="pTtEntry"></param>
-	virtual inline void DoStep11a_BeforeLoop_SplitPointStart(
+	virtual inline void ExplorerPlainStep11a_BeforeLoop_SplitPointStart(
 		Move& ttMove,
 		const Depth depth,
 		ScoreIndex& score,
@@ -258,7 +258,7 @@ public:
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void DoStep11c_LoopHeader(
+	virtual inline void ExplorerPlainStep11c_LoopHeader(
 		bool& isContinue,
 		Position& pos,
 		Move& move,
@@ -276,7 +276,7 @@ public:
 	/// <param name="isContinue"></param>
 	/// <param name="ourCarriage"></param>
 	/// <param name="move"></param>
-	virtual inline void DoStep11d_LoopHeader(
+	virtual inline void ExplorerPlainStep11d_LoopHeader(
 		bool& isContinue,
 		const OurCarriage& ourCarriage,
 		const Move& move
@@ -291,7 +291,7 @@ public:
 	/// </summary>
 	/// <param name="ourCarriage"></param>
 	/// <param name="moveCount"></param>
-	virtual inline void DoStep11e_LoopHeader(
+	virtual inline void ExplorerPlainStep11e_LoopHeader(
 		OurCarriage& ourCarriage,
 		int& moveCount
 		) const override {
@@ -365,7 +365,7 @@ public:
 	/// <param name="isPVMove"></param>
 	/// <param name="playedMoveCount"></param>
 	/// <param name="movesSearched"></param>
-	virtual inline void DoStep13c(
+	virtual inline void ExplorerPlainStep13c(
 		bool& isContinue,
 		OurCarriage& ourCarriage,
 		bool& captureOrPawnPromotion,
@@ -435,7 +435,7 @@ public:
 	/// <param name="doFullDepthSearch"></param>
 	/// <param name="alpha"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void DoStep16a(
+	virtual inline void ExplorerPlainStep16a(
 		bool& doFullDepthSearch,
 		ScoreIndex& alpha,
 		SplitedNode** ppSplitedNode
@@ -457,7 +457,7 @@ public:
 	/// <param name="givesCheck"></param>
 	/// <param name="pos"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void DoStep16c(
+	virtual inline void ExplorerPlainStep16c(
 		OurCarriage& ourCarriage,
 		bool& isPVMove,
 		ScoreIndex& alpha,
@@ -494,7 +494,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestScore"></param>
 	/// <param name="alpha"></param>
-	virtual inline void DoStep18a(
+	virtual inline void ExplorerPlainStep18a(
 		SplitedNode** ppSplitedNode,
 		ScoreIndex& bestScore,
 		ScoreIndex& alpha
@@ -512,7 +512,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="score"></param>
 	/// <param name="pos"></param>
-	virtual inline void DoStep18b(
+	virtual inline void ExplorerPlainStep18b(
 		OurCarriage& ourCarriage,
 		Move& move,
 		bool& isPVMove,
@@ -539,7 +539,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestMove"></param>
 	/// <param name="beta"></param>
-	virtual inline void DoStep18c(
+	virtual inline void ExplorerPlainStep18c(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		Move& move,
@@ -585,7 +585,7 @@ public:
 	/// <param name="moveCount"></param>
 	/// <param name="mp"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void DoStep19(
+	virtual inline void ExplorerPlainStep19(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		const Depth depth,

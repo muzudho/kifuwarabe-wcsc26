@@ -124,7 +124,7 @@ ScoreIndex NodetypeSplitedNodeRoot::ExplorePlain(
 	inCheck = pos.InCheck();
 
 	bool isGotoSplitPointStart = false;
-	this->DoStep1a(
+	this->ExplorerPlainStep1a(
 		isGotoSplitPointStart,
 		moveCount,
 		playedMoveCount,
@@ -141,13 +141,13 @@ ScoreIndex NodetypeSplitedNodeRoot::ExplorePlain(
 		);
 	if (isGotoSplitPointStart) { goto split_point_start; }
 
-	this->DoStep1b(
+	this->ExplorerPlainStep1b(
 		bestScore,
 		&pFlashlight,
 		threatMove,
 		bestMove
 		);
-	this->DoStep1c(
+	this->ExplorerPlainStep1c(
 		&pThisThread,
 		pFlashlight
 		);
@@ -158,7 +158,7 @@ ScoreIndex NodetypeSplitedNodeRoot::ExplorePlain(
 	pos.SetNodesSearched(pos.GetNodesSearched() + 1);
 
 	// step4
-	this->DoStep4(
+	this->ExplorerPlainStep4(
 		excludedMove,
 		&pFlashlight,
 		posKey,
@@ -167,7 +167,7 @@ ScoreIndex NodetypeSplitedNodeRoot::ExplorePlain(
 		ourCarriage,
 		ttScore
 		);
-	this->DoStep4x(
+	this->ExplorerPlainStep4x(
 		ttMove,
 		ourCarriage,
 		pTtEntry,
@@ -176,7 +176,7 @@ ScoreIndex NodetypeSplitedNodeRoot::ExplorePlain(
 
 	// step5
 	bool isGotoIidStart = false;//NonPVのとき使う☆
-	this->DoStep5(
+	this->ExplorerPlainStep5(
 		isGotoIidStart,
 		ourCarriage,
 		eval,
@@ -197,7 +197,7 @@ ScoreIndex NodetypeSplitedNodeRoot::ExplorePlain(
 	// 内側の反復深化探索☆？（＾ｑ＾）
 //iid_start:
 	// step10
-	this->DoStep10_InternalIterativeDeepening(
+	this->ExplorerPlainStep10_InternalIterativeDeepening(
 		depth,
 		ttMove,
 		inCheck,
@@ -221,7 +221,7 @@ split_point_start:
 		);
 	const CheckInfo ci(pos);
 
-	this->DoStep11a_BeforeLoop_SplitPointStart(
+	this->ExplorerPlainStep11a_BeforeLoop_SplitPointStart(
 		ttMove,
 		depth,
 		score,
@@ -245,7 +245,7 @@ split_point_start:
 
 		bool isContinue = false;
 
-		this->DoStep11c_LoopHeader(
+		this->ExplorerPlainStep11c_LoopHeader(
 			isContinue,
 			pos,
 			move,
@@ -255,19 +255,19 @@ split_point_start:
 			);
 		if (isContinue) { continue; }
 
-		this->DoStep11d_LoopHeader(
+		this->ExplorerPlainStep11d_LoopHeader(
 			isContinue,
 			ourCarriage,
 			move
 			);
 		if (isContinue) { continue; }
 
-		this->DoStep11e_LoopHeader(
+		this->ExplorerPlainStep11e_LoopHeader(
 			ourCarriage,
 			moveCount
 			);
 
-		this->DoStep11f_LoopHeader(
+		this->ExplorerPlainStep11f_LoopHeader(
 			extension,
 			captureOrPawnPromotion,
 			move,
@@ -278,7 +278,7 @@ split_point_start:
 			);
 
 		// step12
-		this->DoStep12(
+		this->ExplorerPlainStep12(
 			ourCarriage,
 			givesCheck,
 			pos,
@@ -298,7 +298,7 @@ split_point_start:
 
 		// step13
 
-		this->DoStep13c(
+		this->ExplorerPlainStep13c(
 			isContinue,
 			ourCarriage,
 			captureOrPawnPromotion,
@@ -323,7 +323,7 @@ split_point_start:
 		if (isContinue) { continue; }
 
 		// step14
-		this->DoStep14(
+		this->ExplorerPlainStep14(
 			pos,
 			move,
 			st,
@@ -333,7 +333,7 @@ split_point_start:
 			);
 
 		// step15
-		this->DoStep15(
+		this->ExplorerPlainStep15(
 			ourCarriage,
 			depth,
 			isPVMove,
@@ -352,12 +352,12 @@ split_point_start:
 			);
 
 		// step16
-		this->DoStep16a(
+		this->ExplorerPlainStep16a(
 			doFullDepthSearch,
 			alpha,
 			&pSplitedNode
 			);
-		this->DoStep16b_NonPVAtukai(
+		this->ExplorerPlainStep16b_NonPVAtukai(
 			ourCarriage,
 			doFullDepthSearch,
 			score,
@@ -368,7 +368,7 @@ split_point_start:
 			alpha,
 			cutNode
 			);
-		this->DoStep16c(
+		this->ExplorerPlainStep16c(
 			ourCarriage,
 			isPVMove,
 			alpha,
@@ -381,7 +381,7 @@ split_point_start:
 			);
 
 		// step17
-		this->DoStep17(
+		this->ExplorerPlainStep17(
 			pos,
 			move
 			);
@@ -389,7 +389,7 @@ split_point_start:
 		assert(-ScoreInfinite < score && score < ScoreInfinite);
 
 		// step18
-		this->DoStep18a(
+		this->ExplorerPlainStep18a(
 			&pSplitedNode,
 			bestScore,
 			alpha
@@ -397,7 +397,7 @@ split_point_start:
 
 		if (ourCarriage.m_signals.m_stop || pThisThread->IsUselessNode()) { return score; }
 
-		this->DoStep18b(
+		this->ExplorerPlainStep18b(
 			ourCarriage,
 			move,
 			isPVMove,
@@ -406,7 +406,7 @@ split_point_start:
 			pos
 			);
 		bool isBreak = false;
-		this->DoStep18c(
+		this->ExplorerPlainStep18c(
 			isBreak,
 			ourCarriage,
 			move,
