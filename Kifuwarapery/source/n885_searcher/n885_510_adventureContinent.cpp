@@ -53,7 +53,7 @@ extern RepetitionTypeArray g_repetitionTypeArray;
 ///		</pre>
 /// </summary>
 /// <param name="captainsRucksack">キャプテンの持っているＳｅａｒｃｈｅｒ☆</param>
-void Continent::ExploreContinent(
+void AdventureContinent::ExploreContinent(
 	OurCarriage& captainsRucksack)
 {
 	Position& pos = captainsRucksack.m_rootPosition;
@@ -76,11 +76,11 @@ void Continent::ExploreContinent(
 	// 入玉勝ちかを調べるぜ☆（＾ｑ＾）
 	//────────────────────────────────────────────────────────────────────────────────
 #if !defined(LEARN)
-	if (Continent::IsNyugyokuWin(pos)) {
+	if (AdventureContinent::IsNyugyokuWin(pos)) {
 		//────────────────────────────────────────────────────────────────────────────────
 		// 探索☆？（＾ｑ＾）
 		//────────────────────────────────────────────────────────────────────────────────
-		HitchhikerNyugyoku::Travel_885_480(captainsRucksack,pos);
+		AdventureSwampNyugyoku::ExploreSwamp(captainsRucksack,pos);
 		return;
 	}
 #endif
@@ -166,7 +166,7 @@ void Continent::ExploreContinent(
 	// 反復深化探索を始めるぜ☆（＾ｑ＾）
 	//────────────────────────────────────────────────────────────────────────────────
 
-	MountainIterativeDeepeningLoop::ExploreMountain(captainsRucksack, pos);//ExecuteIterativeDeepeningLoop(pos);
+	AdventureMountainIterativeDeepeningLoop::ExploreMountain(captainsRucksack, pos);//ExecuteIterativeDeepeningLoop(pos);
 
 #if defined LEARN
 #else
@@ -200,7 +200,7 @@ finalize:
 /// </summary>
 /// <param name="pos"></param>
 /// <returns></returns>
-bool Continent::IsNyugyokuWin(const Position& pos) {
+bool AdventureContinent::IsNyugyokuWin(const Position& pos) {
 	// CSA ルールでは、一 から 六 の条件を全て満たすとき、入玉勝ち宣言が出来る。
 
 	// 一 宣言側の手番である。

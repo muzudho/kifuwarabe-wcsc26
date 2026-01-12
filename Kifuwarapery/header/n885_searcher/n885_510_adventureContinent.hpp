@@ -32,7 +32,7 @@ using Gains = Stats<true>;
 /// <summary>
 /// 思考部。大陸を大冒険する感じ（＾▽＾）
 /// </summary>
-class Continent {
+class AdventureContinent {
 
 
 public:
@@ -57,5 +57,5 @@ public:
 	/// </summary>
 	/// <param name="pos"></param>
 	/// <returns></returns>
-	static bool Continent::IsNyugyokuWin(const Position& pos);
+	static bool AdventureContinent::IsNyugyokuWin(const Position& pos);
 };

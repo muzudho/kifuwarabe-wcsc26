@@ -6,9 +6,9 @@
 
 
 /// <summary>
-/// 
+/// 入玉の沼地を大冒険☆（＾▽＾）！
 /// </summary>
-class HitchhikerNyugyoku {
+class AdventureSwampNyugyoku {
 
 
 public:
@@ -19,7 +19,7 @@ public:
 	/// </summary>
 	/// <param name="ourCarriage"></param>
 	/// <param name="pos"></param>
-	static inline void Travel_885_480(OurCarriage& ourCarriage, const Position& pos)
+	static inline void ExploreSwamp(OurCarriage& ourCarriage, const Position& pos)
 	{
 		SYNCCOUT << "info nodes " << pos.GetNodesSearched()
 			<< " time " << ourCarriage.m_stopwatch.GetElapsed() << SYNCENDL;

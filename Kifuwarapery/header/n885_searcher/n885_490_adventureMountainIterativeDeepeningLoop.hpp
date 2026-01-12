@@ -18,14 +18,14 @@ extern NodetypeAbstract* g_NODETYPE_PROGRAMS[];
 /// 反復深化探索のことなのかだぜ☆（＾ｑ＾）？
 ///		</pre>
 /// </summary>
-class MountainIterativeDeepeningLoop {
+class AdventureMountainIterativeDeepeningLoop {
 
 
 public:
 
 
 	/// <summary>
-	/// 
+	/// 反復深化探索の山岳を大冒険☆（＾▽＾）！
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pos"></param>
