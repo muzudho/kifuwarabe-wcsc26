@@ -19,7 +19,7 @@
 #include "../n640_searcher/n640_440_splitedNode.hpp"
 #include "../n760_thread__/n760_400_herosPub.hpp"
 #include "../n800_learn___/n800_100_stopwatch.hpp"
-#include "n885_510_continent.hpp"	// FIXME:
+#include "n885_510_adventureContinent.hpp"
 
 using namespace std;
 using History = Stats<false>;
