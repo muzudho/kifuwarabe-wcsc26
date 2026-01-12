@@ -36,7 +36,7 @@
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 #include "../../header/n885_searcher/n885_310_hitchhikerQsearchAbstract.hpp"
 #include "../../header/n885_searcher/n885_340_hitchhikerQsearchPrograms.hpp"
-#include "../../header/n885_searcher/n885_480_hitchhikerNyugyoku.hpp"
+#include "../../header/n885_searcher/n885_480_adventureSwampNyugyoku.hpp"
 #include "../../header/n885_searcher/n885_490_adventureMountainIterativeDeepeningLoop.hpp"
 #include "../../header/n885_searcher/n885_510_adventureContinent.hpp"
 #include "../../header/n886_repeType/n886_100_rtNot.hpp"

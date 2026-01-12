@@ -987,7 +987,7 @@
     <ClInclude Include="header\n885_searcher\n885_040_ourCarriage.hpp">
       <Filter>header\n885_searcher</Filter>
     </ClInclude>
-    <ClInclude Include="header\n885_searcher\n885_480_hitchhikerNyugyoku.hpp">
+    <ClInclude Include="header\n885_searcher\n885_480_adventureSwampNyugyoku.hpp">
       <Filter>header\n885_searcher</Filter>
     </ClInclude>
     <ClInclude Include="header\n885_searcher\n885_310_hitchhikerQsearchAbstract.hpp">
@@ -1601,7 +1601,7 @@
     <ClCompile Include="source\n885_searcher\n885_040_ourCarriage.cpp">
       <Filter>source\n885_searcher</Filter>
     </ClCompile>
-    <ClCompile Include="source\n885_searcher\n885_480_hitchhikerNyugyoku.cpp">
+    <ClCompile Include="source\n885_searcher\n885_480_adventureSwampNyugyoku.cpp">
       <Filter>source\n885_searcher</Filter>
     </ClCompile>
     <ClCompile Include="source\n885_searcher\n885_310_hitchhikerQsearchAbstract.cpp">
