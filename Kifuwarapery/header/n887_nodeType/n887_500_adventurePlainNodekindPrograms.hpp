@@ -5,4 +5,4 @@
 /// <summary>
 /// プログラム別ノードタイプ配列☆（＾ｑ＾）
 /// </summary>
-extern NodetypeAbstract* g_NODETYPE_PROGRAMS[6];
+extern NodekindAbstract* g_NODEKIND_PROGRAMS[6];

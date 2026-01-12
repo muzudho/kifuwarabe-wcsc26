@@ -47,15 +47,15 @@
 #include "../../header/n886_repeType/n886_150_rtInferior.hpp"
 #include "../../header/n886_repeType/n886_500_rtArray.hpp"
 
-#include "../../header/n887_nodeType/n887_140_nodetypeSplitedNodePv.hpp"
-#include "../../header/n887_nodeType/n887_500_nodetypePrograms.hpp"
+#include "../../header/n887_nodeType/n887_140_adventurePlainNodekindSplitedNodePv.hpp"
+#include "../../header/n887_nodeType/n887_500_adventurePlainNodekindPrograms.hpp"
 
 
 using namespace std;
 
 
 extern const InFrontMaskBb g_inFrontMaskBb;
-extern NodetypeAbstract* g_NODETYPE_PROGRAMS[];
+extern NodekindAbstract* g_NODEKIND_PROGRAMS[];
 extern RepetitionTypeArray g_repetitionTypeArray;
 
 

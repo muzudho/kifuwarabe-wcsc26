@@ -35,12 +35,12 @@
 #include "../../header/n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 #include "../../header/n885_searcher/n885_490_adventureMountainIterativeDeepeningLoop.hpp"
-#include "../../header/n887_nodeType/n887_500_nodetypePrograms.hpp"//FIXME:
+#include "../../header/n887_nodeType/n887_500_adventurePlainNodekindPrograms.hpp"//FIXME:
 
 
 using namespace std;
 extern const InFrontMaskBb g_inFrontMaskBb;
-extern NodetypeAbstract* g_NODETYPE_PROGRAMS[];
+extern NodekindAbstract* g_NODEKIND_PROGRAMS[];
 extern RepetitionTypeArray g_repetitionTypeArray;
 
 

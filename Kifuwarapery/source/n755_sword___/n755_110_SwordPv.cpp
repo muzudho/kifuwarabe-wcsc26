@@ -1,5 +1,5 @@
 ﻿#include "../../header/n755_sword___/n755_110_SwordPv.hpp"
-#include "../../header/n887_nodeType/n887_140_nodetypeSplitedNodePv.hpp"
+#include "../../header/n887_nodeType/n887_140_adventurePlainNodekindSplitedNodePv.hpp"
 
 
 //extern const NodetypeSplitedNodePv g_NODETYPE_SPLITEDNODE_PV;

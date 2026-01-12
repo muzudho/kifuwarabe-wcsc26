@@ -8,15 +8,15 @@
 /// <summary>
 /// 同じファイル内の後ろの方でクラス定義があるとき☆（＾ｑ＾）
 /// </summary>
-class NodetypeAbstract;
-extern NodetypeAbstract* g_NODETYPE_PROGRAMS[];
+class NodekindAbstract;
+extern NodekindAbstract* g_NODEKIND_PROGRAMS[];
 extern RepetitionTypeArray g_repetitionTypeArray;
 
 
 /// <summary>
 /// 大冒険する平野だぜ（＾▽＾）！
 /// </summary>
-class NodetypeAbstract {
+class NodekindAbstract {
 
 
 public:
@@ -576,7 +576,7 @@ public:
 				//────────────────────────────────────────────────────────────────────────────────
 				// 深さが２手（先後１組）未満なら　ふつーの探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				-g_NODETYPE_PROGRAMS[NodeType::N02_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, depth - reduction, !cutNode)
+				-g_NODEKIND_PROGRAMS[NodeType::N02_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, depth - reduction, !cutNode)
 			);
 
 			((*ppFlashlight) + 1)->m_skipNullMove = false;
@@ -599,7 +599,7 @@ public:
 				//────────────────────────────────────────────────────────────────────────────────
 				// 探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				const ScoreIndex s = g_NODETYPE_PROGRAMS[NodeType::N02_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight), alpha, beta, depth - reduction, false);
+				const ScoreIndex s = g_NODEKIND_PROGRAMS[NodeType::N02_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight), alpha, beta, depth - reduction, false);
 				(*ppFlashlight)->m_skipNullMove = false;
 
 				if (beta <= s) {
@@ -696,7 +696,7 @@ public:
 					//────────────────────────────────────────────────────────────────────────────────
 					// 探索☆？（＾ｑ＾）
 					//────────────────────────────────────────────────────────────────────────────────
-					score =	-g_NODETYPE_PROGRAMS[NodeType::N02_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -rbeta, -rbeta + 1, rdepth, !cutNode);
+					score =	-g_NODEKIND_PROGRAMS[NodeType::N02_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -rbeta, -rbeta + 1, rdepth, !cutNode);
 					pos.UndoMove(move);
 					if (rbeta <= score) {
 						isReturnWithScore = true;
@@ -926,7 +926,7 @@ public:
 			//────────────────────────────────────────────────────────────────────────────────
 			// 探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
-			score =	g_NODETYPE_PROGRAMS[N02_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight), rBeta - 1, rBeta, depth / 2, cutNode);
+			score =	g_NODEKIND_PROGRAMS[N02_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight), rBeta - 1, rBeta, depth / 2, cutNode);
 			(*ppFlashlight)->m_skipNullMove = false;
 			(*ppFlashlight)->m_excludedMove = g_MOVE_NONE;
 
@@ -1269,7 +1269,7 @@ public:
 			// 探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			// PVS
-			score = -g_NODETYPE_PROGRAMS[N02_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, d, true);
+			score = -g_NODEKIND_PROGRAMS[N02_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, d, true);
 
 			doFullDepthSearch = (alpha < score && (*ppFlashlight)->m_reduction != Depth0);
 			(*ppFlashlight)->m_reduction = Depth0;
@@ -1360,7 +1360,7 @@ public:
 				//────────────────────────────────────────────────────────────────────────────────
 				// 探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				: -g_NODETYPE_PROGRAMS[N02_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, newDepth, !cutNode));
+				: -g_NODEKIND_PROGRAMS[N02_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, newDepth, !cutNode));
 		}
 	}
 
@@ -1402,7 +1402,7 @@ public:
 				//────────────────────────────────────────────────────────────────────────────────
 				// 探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				: -g_NODETYPE_PROGRAMS[N01_PV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, newDepth, false));
+				: -g_NODEKIND_PROGRAMS[N01_PV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, newDepth, false));
 		}
 	}
 
