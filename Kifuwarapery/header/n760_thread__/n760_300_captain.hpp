@@ -19,6 +19,22 @@ class Captain : public Military {
 public:
 
 
+	// ========================================
+	// フィールド
+	// ========================================
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	volatile bool m_isThinking;
+
+
+	// ========================================
+	// 軽い生成／破棄
+	// ========================================
+
+
 	/// <summary>
     /// 生成☆（＾ｑ＾）
 	/// </summary>
@@ -26,14 +42,13 @@ public:
 	explicit Captain(Rucksack* s) : Military(s), m_isThinking(true) {}
 
 
+	// ========================================
+	// メイン・メソッド
+	// ========================================
+
+
 	/// <summary>
 	/// ワーカースレッド開始
 	/// </summary>
 	virtual void StartWorkerThread() override;
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	volatile bool m_isThinking;
 };

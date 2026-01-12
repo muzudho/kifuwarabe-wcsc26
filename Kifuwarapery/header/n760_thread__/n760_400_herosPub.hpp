@@ -31,17 +31,38 @@ class HerosPub : public std::vector<Military*> {
 public:
 
 
-	/// <summary>
-	/// 初期化？
-	/// </summary>
-	/// <param name="s"></param>
-	void Init(Rucksack* s);
+	// ========================================
+	// フィールド
+	// ========================================
 
 
 	/// <summary>
-	/// 終了？
+	/// 寝ているか？
 	/// </summary>
-	void Exit();
+	bool m_isSleepWhileIdle_;
+
+
+	/// <summary>
+	/// マックス・スレッド？
+	/// </summary>
+	size_t m_maxThreadsPerSplitedNode_;
+
+
+	/// <summary>
+	/// ミューテックス？
+	/// </summary>
+	Mutex m_mutex_;
+
+
+	/// <summary>
+	/// 寝ている条件？
+	/// </summary>
+	ConditionVariable m_sleepCond_;
+
+
+	// ========================================
+	// アクセッサ
+	// ========================================
 
 
 	/// <summary>
@@ -63,6 +84,24 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	Warrior* GetCurrWarrior() { return this->m_pWarrior_; }
+
+
+	// ========================================
+	// メイン・メソッド
+	// ========================================
+
+
+	/// <summary>
+	/// 初期化？
+	/// </summary>
+	/// <param name="s"></param>
+	void Init(Rucksack* s);
+
+
+	/// <summary>
+	/// 終了？
+	/// </summary>
+	void Exit();
 
 
 	/// <summary>
@@ -121,34 +160,12 @@ public:
 		const std::vector<Move>& searchMoves);
 
 
-public:
-
-
-	/// <summary>
-	/// 寝ているか？
-	/// </summary>
-	bool m_isSleepWhileIdle_;
-
-
-	/// <summary>
-	/// マックス・スレッド？
-	/// </summary>
-	size_t m_maxThreadsPerSplitedNode_;
-
-
-	/// <summary>
-	/// ミューテックス？
-	/// </summary>
-	Mutex m_mutex_;
-
-
-	/// <summary>
-	/// 寝ている条件？
-	/// </summary>
-	ConditionVariable m_sleepCond_;
-
-
 private:
+
+
+	// ========================================
+	// フィールド
+	// ========================================
 
 
 	/// <summary>

@@ -11,6 +11,11 @@
 #include "../../header/n885_searcher/n885_040_rucksack.hpp"
 
 
+// ========================================
+// 軽い生成／破棄
+// ========================================
+
+
 Military::Military(Rucksack* searcher) /*: ＳｐｌｉｔＰｏｉｎｔｓ()*/ {
 	this->m_pRucksack = searcher;
 	this->m_exit = false;
@@ -23,18 +28,9 @@ Military::Military(Rucksack* searcher) /*: ＳｐｌｉｔＰｏｉｎｔｓ()*/
 }
 
 
-void Military::NotifyOne() {
-	std::unique_lock<Mutex> lock(m_sleepLock);
-	m_sleepCond.notify_one();
-}
-
-
-bool Military::CutoffOccurred() const {
-	for (SplitedNode* sp = m_activeSplitedNode; sp != nullptr; sp = sp->m_pParentSplitedNode) {
-		if (sp->m_cutoff) { return true; }
-	}
-	return false;
-}
+// ========================================
+// クエスチョン・メソッド
+// ========================================
 
 
 /// <summary>
@@ -48,6 +44,25 @@ bool Military::IsAvailableTo(Military* master) const {
 	// ローカルコピーし、途中で値が変わらないようにする。
 	const int spCount = m_splitedNodesSize;
 	return !spCount || (m_SplitedNodes[spCount - 1].m_slavesMask & (UINT64_C(1) << master->m_idx));
+}
+
+
+// ========================================
+// メイン・メソッド
+// ========================================
+
+
+void Military::NotifyOne() {
+	std::unique_lock<Mutex> lock(m_sleepLock);
+	m_sleepCond.notify_one();
+}
+
+
+bool Military::CutoffOccurred() const {
+	for (SplitedNode* sp = m_activeSplitedNode; sp != nullptr; sp = sp->m_pParentSplitedNode) {
+		if (sp->m_cutoff) { return true; }
+	}
+	return false;
 }
 
 
@@ -90,8 +105,7 @@ void Military::ForkNewFighter(
 	const int moveCount,
 	NextmoveEvent& mp,
 	const SwordAbstract* pSword,
-	const bool cutNode
-	)
+	const bool cutNode)
 {
 	assert(pos.IsOK());
 	assert(bestScore <= alpha && alpha < beta && beta <= ScoreInfinite);
@@ -182,10 +196,18 @@ void Military::ForkNewFighter(
 /// <param name="cutNode"></param>
 /// <returns></returns>
 template void Military::ForkNewFighter<true >(
-	Position& pos, Flashlight* ss, const ScoreIndex alpha, const ScoreIndex beta, ScoreIndex& bestScore,
-	Move& bestMove, const Depth depth, const Move threatMove, const int moveCount,
-	NextmoveEvent& mp, const SwordAbstract* pSword, const bool cutNode
-);
+	Position& pos,
+	Flashlight* ss,
+	const ScoreIndex alpha,
+	const ScoreIndex beta,
+	ScoreIndex& bestScore,
+	Move& bestMove,
+	const Depth depth,
+	const Move threatMove,
+	const int moveCount,
+	NextmoveEvent& mp,
+	const SwordAbstract* pSword,
+	const bool cutNode);
 
 
 /// <summary>
@@ -205,7 +227,15 @@ template void Military::ForkNewFighter<true >(
 /// <param name="cutNode"></param>
 /// <returns></returns>
 template void Military::ForkNewFighter<false>(
-	Position& pos, Flashlight* ss, const ScoreIndex alpha, const ScoreIndex beta, ScoreIndex& bestScore,
-	Move& bestMove, const Depth depth, const Move threatMove, const int moveCount,
-	NextmoveEvent& mp, const SwordAbstract* pSword, const bool cutNode
-);
+	Position& pos,
+	Flashlight* ss,
+	const ScoreIndex alpha,
+	const ScoreIndex beta,
+	ScoreIndex& bestScore,
+	Move& bestMove,
+	const Depth depth,
+	const Move threatMove,
+	const int moveCount,
+	NextmoveEvent& mp,
+	const SwordAbstract* pSword,
+	const bool cutNode);

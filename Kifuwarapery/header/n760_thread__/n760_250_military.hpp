@@ -35,6 +35,11 @@ class Military {
 public:
 
 
+	// ========================================
+	// 軽い生成／破棄
+	// ========================================
+
+
 	/// <summary>
 	/// 生成。
 	/// </summary>
@@ -48,74 +53,9 @@ public:
 	virtual ~Military() {};
 
 
-	/// <summary>
-	/// ワーカースレッド開始
-	/// </summary>
-	virtual void StartWorkerThread();
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	void NotifyOne();
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <returns></returns>
-	bool CutoffOccurred() const;
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="master"></param>
-	/// <returns></returns>
-	bool IsAvailableTo(Military* master) const;
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="b"></param>
-	void WaitFor(volatile const bool& b);
-
-
-	/// <summary>
-	///		<pre>
-	/// 元の名前： Ｓｐｌｉｔ
-	/// 探索を分けるのだろうか☆？兵士をどんどん増やそうぜ☆（＾ｑ＾）
-	///		</pre>
-	/// </summary>
-	/// <typeparam name="Fake"></typeparam>
-	/// <param name="pos"></param>
-	/// <param name="pFlashlightBox"></param>
-	/// <param name="alpha"></param>
-	/// <param name="beta"></param>
-	/// <param name="bestScore"></param>
-	/// <param name="bestMove"></param>
-	/// <param name="depth"></param>
-	/// <param name="threatMove"></param>
-	/// <param name="moveCount"></param>
-	/// <param name="mp"></param>
-	/// <param name="pSword"></param>
-	/// <param name="cutNode"></param>
-	template <bool Fake>
-	void ForkNewFighter(
-		Position& pos,
-		Flashlight* pFlashlightBox,
-		const ScoreIndex alpha,
-		const ScoreIndex beta,
-		ScoreIndex& bestScore,
-		Move& bestMove,
-		const Depth depth,
-		const Move threatMove,
-		const int moveCount,
-		NextmoveEvent& mp,
-		const SwordAbstract* pSword,
-		const bool cutNode
-	);
+	// ========================================
+	// フィールド
+	// ========================================
 
 
 	/// <summary>
@@ -177,4 +117,84 @@ public:
 	/// 
 	/// </summary>
 	Rucksack* m_pRucksack;
+
+
+	// ========================================
+	// クエスチョン・メソッド
+	// ========================================
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="master"></param>
+	/// <returns></returns>
+	bool IsAvailableTo(Military* master) const;
+
+
+	// ========================================
+	// メイン・メソッド
+	// ========================================
+
+
+	/// <summary>
+	/// ワーカースレッド開始
+	/// </summary>
+	virtual void StartWorkerThread();
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	void NotifyOne();
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns></returns>
+	bool CutoffOccurred() const;
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="b"></param>
+	void WaitFor(volatile const bool& b);
+
+
+	/// <summary>
+	///		<pre>
+	/// 元の名前： Ｓｐｌｉｔ
+	/// 探索を分けるのだろうか☆？兵士をどんどん増やそうぜ☆（＾ｑ＾）
+	///		</pre>
+	/// </summary>
+	/// <typeparam name="Fake"></typeparam>
+	/// <param name="pos"></param>
+	/// <param name="pFlashlightBox"></param>
+	/// <param name="alpha"></param>
+	/// <param name="beta"></param>
+	/// <param name="bestScore"></param>
+	/// <param name="bestMove"></param>
+	/// <param name="depth"></param>
+	/// <param name="threatMove"></param>
+	/// <param name="moveCount"></param>
+	/// <param name="mp"></param>
+	/// <param name="pSword"></param>
+	/// <param name="cutNode"></param>
+	template <bool Fake>
+	void ForkNewFighter(
+		Position& pos,
+		Flashlight* pFlashlightBox,
+		const ScoreIndex alpha,
+		const ScoreIndex beta,
+		ScoreIndex& bestScore,
+		Move& bestMove,
+		const Depth depth,
+		const Move threatMove,
+		const int moveCount,
+		NextmoveEvent& mp,
+		const SwordAbstract* pSword,
+		const bool cutNode
+	);
 };
