@@ -288,7 +288,7 @@ public:
 			// 探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			// PVノードの場合☆
-			g_NODEKIND_PROGRAMS[NodeKind::N01_PV]->ExplorePlain(
+			g_NODEKIND_PROGRAMS[NodeKind::No1_PV]->ExplorePlain(
 				ourCarriage, pos, (*ppFlashlight), alpha, beta, d, true);
 
 			(*ppFlashlight)->m_skipNullMove = false;

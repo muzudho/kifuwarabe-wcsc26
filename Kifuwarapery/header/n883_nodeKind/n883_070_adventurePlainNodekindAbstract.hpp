@@ -469,7 +469,7 @@ public:
 			&& abs(beta) < ScoreMateInMaxPly)
 		{
 			const ScoreIndex rbeta = beta - ourCarriage.razorMargin(depth);
-			const ScoreIndex s = AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[N02_NonPV]->ExploreAsQsearch(
+			const ScoreIndex s = AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[No2_NonPV]->ExploreAsQsearch(
 				ourCarriage, false, pos, (*ppFlashlight), rbeta - 1, rbeta, Depth0);
 			if (s < rbeta) {
 				isReturnWithScore = true;
@@ -570,13 +570,13 @@ public:
 				//────────────────────────────────────────────────────────────────────────────────
 				// 深さが２手（先後１組）以上なら　クイックな探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				-AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[N02_NonPV]->ExploreAsQsearch(
+				-AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[No2_NonPV]->ExploreAsQsearch(
 					ourCarriage, false, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
 				:
 				//────────────────────────────────────────────────────────────────────────────────
 				// 深さが２手（先後１組）未満なら　ふつーの探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				-g_NODEKIND_PROGRAMS[NodeKind::N02_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, depth - reduction, !cutNode)
+				-g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, depth - reduction, !cutNode)
 			);
 
 			((*ppFlashlight) + 1)->m_skipNullMove = false;
@@ -599,7 +599,7 @@ public:
 				//────────────────────────────────────────────────────────────────────────────────
 				// 探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				const ScoreIndex s = g_NODEKIND_PROGRAMS[NodeKind::N02_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight), alpha, beta, depth - reduction, false);
+				const ScoreIndex s = g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight), alpha, beta, depth - reduction, false);
 				(*ppFlashlight)->m_skipNullMove = false;
 
 				if (beta <= s) {
@@ -696,7 +696,7 @@ public:
 					//────────────────────────────────────────────────────────────────────────────────
 					// 探索☆？（＾ｑ＾）
 					//────────────────────────────────────────────────────────────────────────────────
-					score =	-g_NODEKIND_PROGRAMS[NodeKind::N02_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -rbeta, -rbeta + 1, rdepth, !cutNode);
+					score =	-g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -rbeta, -rbeta + 1, rdepth, !cutNode);
 					pos.UndoMove(move);
 					if (rbeta <= score) {
 						isReturnWithScore = true;
@@ -926,7 +926,7 @@ public:
 			//────────────────────────────────────────────────────────────────────────────────
 			// 探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
-			score =	g_NODEKIND_PROGRAMS[N02_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight), rBeta - 1, rBeta, depth / 2, cutNode);
+			score =	g_NODEKIND_PROGRAMS[No2_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight), rBeta - 1, rBeta, depth / 2, cutNode);
 			(*ppFlashlight)->m_skipNullMove = false;
 			(*ppFlashlight)->m_excludedMove = g_MOVE_NONE;
 
@@ -1269,7 +1269,7 @@ public:
 			// 探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			// PVS
-			score = -g_NODEKIND_PROGRAMS[N02_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, d, true);
+			score = -g_NODEKIND_PROGRAMS[No2_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, d, true);
 
 			doFullDepthSearch = (alpha < score && (*ppFlashlight)->m_reduction != Depth0);
 			(*ppFlashlight)->m_reduction = Depth0;
@@ -1355,12 +1355,12 @@ public:
 		// PVS
 		if (doFullDepthSearch) {
 			score = (newDepth < OnePly ?
-				(givesCheck ? -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[N02_NonPV]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0)
-					: -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[N02_NonPV]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0))
+				(givesCheck ? -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[No2_NonPV]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0)
+					: -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[No2_NonPV]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0))
 				//────────────────────────────────────────────────────────────────────────────────
 				// 探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				: -g_NODEKIND_PROGRAMS[N02_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, newDepth, !cutNode));
+				: -g_NODEKIND_PROGRAMS[No2_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, newDepth, !cutNode));
 		}
 	}
 
@@ -1397,12 +1397,12 @@ public:
 			(alpha < score && this->IsBetaLargeAtStep16c(score,beta))
 		) {
 			score = (newDepth < OnePly ?
-				(givesCheck ? -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[N01_PV]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
-					: -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[N01_PV]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0))
+				(givesCheck ? -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[No1_PV]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
+					: -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[No1_PV]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0))
 				//────────────────────────────────────────────────────────────────────────────────
 				// 探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				: -g_NODEKIND_PROGRAMS[N01_PV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, newDepth, false));
+				: -g_NODEKIND_PROGRAMS[No1_PV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, newDepth, false));
 		}
 	}
 

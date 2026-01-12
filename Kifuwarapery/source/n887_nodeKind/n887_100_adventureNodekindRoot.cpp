@@ -40,15 +40,15 @@
 #include "../../header/n886_repeType/n886_140_rtSuperior.hpp"
 #include "../../header/n886_repeType/n886_150_rtInferior.hpp"
 #include "../../header/n886_repeType/n886_500_rtArray.hpp"
-#include "../../header/n887_nodeType/n887_120_adventurePlainNodekindNonPv.hpp"
-#include "../../header/n887_nodeType/n887_500_adventurePlainNodekindPrograms.hpp"
+#include "../../header/n887_nodeKind/n887_100_adventurePlainNodekindRoot.hpp"
+#include "../../header/n887_nodeKind/n887_500_adventurePlainNodekindPrograms.hpp"
 
 
 using namespace std;
 extern const InFrontMaskBb g_inFrontMaskBb;
 extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 extern RepetitionTypeArray g_repetitionTypeArray;
-AdventureNodekindNonPv g_NODETYPE_NON_PV;
+AdventureNodekindRoot g_NODETYPE_ROOT;
 
 
 /// <summary>
@@ -62,7 +62,7 @@ AdventureNodekindNonPv g_NODETYPE_NON_PV;
 /// <param name="depth"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-ScoreIndex AdventureNodekindNonPv::ExplorePlain(
+ScoreIndex AdventureNodekindRoot::ExplorePlain(
 	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
@@ -73,10 +73,6 @@ ScoreIndex AdventureNodekindNonPv::ExplorePlain(
 	) const {
 
 	assert(-ScoreInfinite <= alpha && alpha < beta && beta <= ScoreInfinite);
-	this->AssertBeforeStep1(
-		alpha,
-		beta
-		);
 	assert(Depth0 < depth);
 
 	// 途中で goto を使用している為、先に全部の変数を定義しておいた方が安全。
@@ -112,7 +108,7 @@ ScoreIndex AdventureNodekindNonPv::ExplorePlain(
 	moveCount = playedMoveCount = 0;
 	inCheck = pos.InCheck();
 
-	bool isGotoSplitPointStart = false;
+	//bool isGotoSplitPointStart = false;
 
 	this->ExplorerPlainStep1b(
 		bestScore,
@@ -120,29 +116,14 @@ ScoreIndex AdventureNodekindNonPv::ExplorePlain(
 		threatMove,
 		bestMove
 		);
-
-	bool isReturnWithScore = false;
-	ScoreIndex returnScore = ScoreIndex::ScoreNone;
-
-	// step2
-	this->ExplorerPlainStep2(
-		isReturnWithScore,
-		returnScore,
-		pos,
-		ourCarriage,
-		&pFlashlight
+	this->ExplorerPlainStep1c(
+		&pThisThread,
+		pFlashlight
 		);
-	if (isReturnWithScore) { return returnScore; }
 
-	// step3
-	this->ExplorerPlainStep3(
-		isReturnWithScore,
-		returnScore,
-		&pFlashlight,
-		alpha,
-		beta
-		);
-	if (isReturnWithScore) { return returnScore; }
+	//bool isReturnWithScore = false;
+	//ScoreIndex returnScore = ScoreIndex::ScoreNone;
+
 
 	pos.SetNodesSearched(pos.GetNodesSearched() + 1);
 
@@ -162,33 +143,6 @@ ScoreIndex AdventureNodekindNonPv::ExplorePlain(
 		pTtEntry,
 		pos
 		);
-	this->ExplorerPlainStep4y(
-		isReturnWithScore,
-		returnScore,
-		ourCarriage,
-		pTtEntry,
-		depth,
-		ttScore,
-		beta,
-		&pFlashlight,
-		ttMove
-		);
-	if (isReturnWithScore) { return returnScore; }
-
-	this->ExplorerPlainStep4z(
-		isReturnWithScore,
-		returnScore,
-		ourCarriage,
-		inCheck,
-		move,
-		pos,
-		&pFlashlight,
-		bestScore,
-		posKey,
-		depth,
-		bestMove
-		);
-	if (isReturnWithScore) { return returnScore; }
 
 	// step5
 	bool isGotoIidStart = false;//NonPVのとき使う☆
@@ -204,68 +158,15 @@ ScoreIndex AdventureNodekindNonPv::ExplorePlain(
 		posKey,
 		move
 		);
-	if (isGotoIidStart) { goto iid_start; }
+	/*
+	if (isGotoIidStart) {
+		goto iid_start;
+	}
+	*/
 
-	// step6
-	this->ExplorerPlainStep6_NonPV(
-		isReturnWithScore,
-		returnScore,
-		ourCarriage,
-		depth,
-		eval,
-		beta,
-		ttMove,
-		pos,
-		&pFlashlight
-		);
-	if (isReturnWithScore) { return returnScore; }
-
-	// step7
-	this->ExplorerPlainStep7(
-		isReturnWithScore,
-		returnScore,
-		&pFlashlight,
-		depth,
-		beta,
-		eval
-		);
-	if (isReturnWithScore) { return returnScore; }
-
-	// step8
-	this->ExplorerPlainStep8_NonPV(
-		isReturnWithScore,
-		returnScore,
-		ourCarriage,
-		&pFlashlight,
-		depth,
-		beta,
-		eval,
-		pos,
-		st,
-		alpha,
-		cutNode,
-		threatMove
-		);
-	if (isReturnWithScore) { return returnScore; }
-
-	// step9
-	this->ExplorerPlainStep9(
-		isReturnWithScore,
-		ourCarriage,
-		depth,
-		&pFlashlight,
-		beta,
-		move,
-		pos,
-		ttMove,
-		st,
-		score,
-		cutNode
-		);
-	if (isReturnWithScore) { return score; }
 
 	// 内側の反復深化探索☆？（＾ｑ＾）
-iid_start:
+//iid_start:
 	// step10
 	this->ExplorerPlainStep10_InternalIterativeDeepening(
 		depth,
@@ -325,6 +226,18 @@ iid_start:
 			);
 		if (isContinue) { continue; }
 
+		this->ExplorerPlainStep11d_LoopHeader(
+			isContinue,
+			ourCarriage,
+			move
+			);
+		if (isContinue) { continue; }
+
+		this->ExplorerPlainStep11e_LoopHeader(
+			ourCarriage,
+			moveCount
+			);
+
 		this->ExplorerPlainStep11f_LoopHeader(
 			extension,
 			captureOrPawnPromotion,
@@ -353,37 +266,6 @@ iid_start:
 			beta,
 			newDepth
 			);
-
-		// step13
-		// 無駄枝狩り☆（＾▽＾）非PVだけ行う☆！
-		this->ExplorerPlainStep13a_FutilityPruning(
-			isContinue,
-			ourCarriage,
-			captureOrPawnPromotion,
-			inCheck,
-			dangerous,
-			bestScore,
-			move,
-			ttMove,
-			depth,
-			moveCount,
-			threatMove,
-			pos,
-			&pSplitedNode,
-			newDepth,
-			&pFlashlight,
-			beta
-			);
-		if (isContinue) { continue; }
-
-		this->ExplorerPlainStep13b(
-			isContinue,
-			pos,
-			move,
-			ci,
-			moveCount
-			);
-		if (isContinue) { continue; }
 
 		this->ExplorerPlainStep13c(
 			isContinue,
@@ -457,6 +339,17 @@ iid_start:
 			alpha,
 			cutNode
 			);
+		this->ExplorerPlainStep16c(
+			ourCarriage,
+			isPVMove,
+			alpha,
+			score,
+			beta,
+			newDepth,
+			givesCheck,
+			pos,
+			&pFlashlight
+			);
 
 		// step17
 		this->ExplorerPlainStep17(
@@ -492,7 +385,9 @@ iid_start:
 			bestMove,
 			beta
 			);
-		if (isBreak) { break; }
+		if (isBreak) {
+			break;
+		}
 
 		// step19
 		this->ExplorerPlainStep19(

@@ -183,7 +183,7 @@ public:
 			// 探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			// 非PVノードの場合☆
-			g_NODEKIND_PROGRAMS[NodeKind::N02_NonPV]->ExplorePlain(
+			g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->ExplorePlain(
 				ourCarriage, pos, (*ppFlashlight), alpha, beta, d, true);
 
 			(*ppFlashlight)->m_skipNullMove = false;

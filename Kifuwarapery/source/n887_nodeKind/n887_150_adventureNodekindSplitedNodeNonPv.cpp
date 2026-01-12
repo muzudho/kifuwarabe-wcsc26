@@ -25,10 +25,8 @@
 #include "../../header/n680_egOption/n680_240_engineOptionsMap.hpp"
 #include "../../header/n680_egOption/n680_300_engineOptionSetup.hpp"
 #include "../../header/n760_thread__/n760_400_herosPub.hpp"
-
 #include "../../header/n800_learn___/n800_100_stopwatch.hpp"
 #include "../../header/n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
-
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 #include "../../header/n885_searcher/n885_310_adventureBattlefieldQsearchAbstract.hpp"
 #include "../../header/n885_searcher/n885_340_adventureBattlefieldQsearchPrograms.hpp"
@@ -42,20 +40,18 @@
 #include "../../header/n886_repeType/n886_140_rtSuperior.hpp"
 #include "../../header/n886_repeType/n886_150_rtInferior.hpp"
 #include "../../header/n886_repeType/n886_500_rtArray.hpp"
-
-#include "../../header/n887_nodeType/n887_140_adventurePlainNodekindSplitedNodePv.hpp"
-#include "../../header/n887_nodeType/n887_500_adventurePlainNodekindPrograms.hpp"
+#include "../../header/n887_nodeKind/n887_150_adventurePlainNodekindSplitedNodeNonPv.hpp"
+#include "../../header/n887_nodeKind/n887_500_adventurePlainNodekindPrograms.hpp"
 
 
 using namespace std;
-
-
 extern const InFrontMaskBb g_inFrontMaskBb;
 extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 extern RepetitionTypeArray g_repetitionTypeArray;
 
 
-AdventureNodekindSplitedNodePv g_NODETYPE_SPLITEDNODE_PV;
+// 依存関係の回避
+AdventureNodekindSplitedNodeNonPv g_NODETYPE_SPLITEDNODE_NON_PV;
 
 
 /// <summary>
@@ -69,7 +65,7 @@ AdventureNodekindSplitedNodePv g_NODETYPE_SPLITEDNODE_PV;
 /// <param name="depth"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-ScoreIndex AdventureNodekindSplitedNodePv::ExplorePlain(
+ScoreIndex AdventureNodekindSplitedNodeNonPv::ExplorePlain(
 	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
@@ -142,10 +138,6 @@ ScoreIndex AdventureNodekindSplitedNodePv::ExplorePlain(
 		&pFlashlight,
 		threatMove,
 		bestMove
-		);
-	this->ExplorerPlainStep1c(
-		&pThisThread,
-		pFlashlight
 		);
 
 	bool isReturnWithScore = false;
@@ -232,14 +224,68 @@ ScoreIndex AdventureNodekindSplitedNodePv::ExplorePlain(
 		posKey,
 		move
 		);
-	/*
-	if (isGotoIidStart) {
-		goto iid_start;
-	}
-	*/
+	if (isGotoIidStart) { goto iid_start; }
+
+	// step6
+	this->ExplorerPlainStep6_NonPV(
+		isReturnWithScore,
+		returnScore,
+		ourCarriage,
+		depth,
+		eval,
+		beta,
+		ttMove,
+		pos,
+		&pFlashlight
+		);
+	if (isReturnWithScore) { return returnScore; }
+
+	// step7
+	this->ExplorerPlainStep7(
+		isReturnWithScore,
+		returnScore,
+		&pFlashlight,
+		depth,
+		beta,
+		eval
+		);
+	if (isReturnWithScore) { return returnScore; }
+
+	// step8
+	this->ExplorerPlainStep8_NonPV(
+		isReturnWithScore,
+		returnScore,
+		ourCarriage,
+		&pFlashlight,
+		depth,
+		beta,
+		eval,
+		pos,
+		st,
+		alpha,
+		cutNode,
+		threatMove
+		);
+	if (isReturnWithScore) { return returnScore; }
+
+	// step9
+	this->ExplorerPlainStep9(
+		isReturnWithScore,
+		ourCarriage,
+		depth,
+		&pFlashlight,
+		beta,
+		move,
+		pos,
+		ttMove,
+		st,
+		score,
+		cutNode
+		);
+	if (isReturnWithScore) { return score; }
 
 	// 内側の反復深化探索☆？（＾ｑ＾）
-//iid_start:
+iid_start:
 	// step10
 	this->ExplorerPlainStep10_InternalIterativeDeepening(
 		depth,
@@ -284,7 +330,7 @@ split_point_start:
 			).IsNone()
 		) {
 
-		// DoStep11b
+		// DoStep11b		 
 		if (move == excludedMove) { continue; }	// ムーブが一致していれば、次のループへ☆
 
 		bool isContinue = false;
@@ -327,6 +373,28 @@ split_point_start:
 			beta,
 			newDepth
 			);
+
+		// step13
+		// 無駄枝狩り☆（＾▽＾）非PVだけ行う☆！
+		this->ExplorerPlainStep13a_FutilityPruning(
+			isContinue,
+			ourCarriage,
+			captureOrPawnPromotion,
+			inCheck,
+			dangerous,
+			bestScore,
+			move,
+			ttMove,
+			depth,
+			moveCount,
+			threatMove,
+			pos,
+			&pSplitedNode,
+			newDepth,
+			&pFlashlight,
+			beta
+			);
+		if (isContinue) { continue; }
 
 		this->ExplorerPlainStep13c(
 			isContinue,
@@ -397,17 +465,6 @@ split_point_start:
 			&pFlashlight,
 			alpha,
 			cutNode
-			);
-		this->ExplorerPlainStep16c(
-			ourCarriage,
-			isPVMove,
-			alpha,
-			score,
-			beta,
-			newDepth,
-			givesCheck,
-			pos,
-			&pFlashlight
 			);
 
 		// step17

@@ -957,25 +957,25 @@
     <ClInclude Include="header\n350_pieceTyp\n350_500_ptPrograms.hpp">
       <Filter>header\n350_pieceTyp</Filter>
     </ClInclude>
-    <ClInclude Include="header\n887_nodeType\n887_500_adventurePlainNodekindPrograms.hpp">
+    <ClInclude Include="header\n887_nodeKind\n887_500_adventurePlainNodekindPrograms.hpp">
       <Filter>header\n887_nodeType</Filter>
     </ClInclude>
-    <ClInclude Include="header\n887_nodeType\n887_100_adventurePlainNodekindRoot.hpp">
+    <ClInclude Include="header\n887_nodeKind\n887_100_adventurePlainNodekindRoot.hpp">
       <Filter>header\n887_nodeType</Filter>
     </ClInclude>
-    <ClInclude Include="header\n887_nodeType\n887_110_adventurePlainNodekindPv.hpp">
+    <ClInclude Include="header\n887_nodeKind\n887_110_adventurePlainNodekindPv.hpp">
       <Filter>header\n887_nodeType</Filter>
     </ClInclude>
-    <ClInclude Include="header\n887_nodeType\n887_120_adventurePlainNodekindNonPv.hpp">
+    <ClInclude Include="header\n887_nodeKind\n887_120_adventurePlainNodekindNonPv.hpp">
       <Filter>header\n887_nodeType</Filter>
     </ClInclude>
-    <ClInclude Include="header\n887_nodeType\n887_130_adventurePlainNodekindSplitedNodeRoot.hpp">
+    <ClInclude Include="header\n887_nodeKind\n887_130_adventurePlainNodekindSplitedNodeRoot.hpp">
       <Filter>header\n887_nodeType</Filter>
     </ClInclude>
-    <ClInclude Include="header\n887_nodeType\n887_140_adventurePlainNodekindSplitedNodePv.hpp">
+    <ClInclude Include="header\n887_nodeKind\n887_140_adventurePlainNodekindSplitedNodePv.hpp">
       <Filter>header\n887_nodeType</Filter>
     </ClInclude>
-    <ClInclude Include="header\n887_nodeType\n887_150_adventurePlainNodekindSplitedNodeNonPv.hpp">
+    <ClInclude Include="header\n887_nodeKind\n887_150_adventurePlainNodekindSplitedNodeNonPv.hpp">
       <Filter>header\n887_nodeType</Filter>
     </ClInclude>
     <ClInclude Include="header\n883_nodeKind\n883_070_adventurePlainNodekindAbstract.hpp">
@@ -1574,25 +1574,25 @@
     <ClCompile Include="source\n350_pieceTyp\n350_500_ptPrograms.cpp">
       <Filter>source\n350_pieceTyp</Filter>
     </ClCompile>
-    <ClCompile Include="source\n887_nodeType\n887_500_adventureNodekindPrograms.cpp">
+    <ClCompile Include="source\n887_nodeKind\n887_500_adventureNodekindPrograms.cpp">
       <Filter>source\n887_nodeType</Filter>
     </ClCompile>
-    <ClCompile Include="source\n887_nodeType\n887_100_adventureNodekindRoot.cpp">
+    <ClCompile Include="source\n887_nodeKind\n887_100_adventureNodekindRoot.cpp">
       <Filter>source\n887_nodeType</Filter>
     </ClCompile>
-    <ClCompile Include="source\n887_nodeType\n887_110_adventureNodekindPv.cpp">
+    <ClCompile Include="source\n887_nodeKind\n887_110_adventureNodekindPv.cpp">
       <Filter>source\n887_nodeType</Filter>
     </ClCompile>
-    <ClCompile Include="source\n887_nodeType\n887_120_adventureNodekindNonPv.cpp">
+    <ClCompile Include="source\n887_nodeKind\n887_120_adventureNodekindNonPv.cpp">
       <Filter>source\n887_nodeType</Filter>
     </ClCompile>
-    <ClCompile Include="source\n887_nodeType\n887_130_adventureNodekindSplitedNodeRoot.cpp">
+    <ClCompile Include="source\n887_nodeKind\n887_130_adventureNodekindSplitedNodeRoot.cpp">
       <Filter>source\n887_nodeType</Filter>
     </ClCompile>
-    <ClCompile Include="source\n887_nodeType\n887_140_adventureNodekindSplitedNodePv.cpp">
+    <ClCompile Include="source\n887_nodeKind\n887_140_adventureNodekindSplitedNodePv.cpp">
       <Filter>source\n887_nodeType</Filter>
     </ClCompile>
-    <ClCompile Include="source\n887_nodeType\n887_150_adventureNodekindSplitedNodeNonPv.cpp">
+    <ClCompile Include="source\n887_nodeKind\n887_150_adventureNodekindSplitedNodeNonPv.cpp">
       <Filter>source\n887_nodeType</Filter>
     </ClCompile>
     <ClCompile Include="source\n885_searcher\n885_510_adventureContinent.cpp">

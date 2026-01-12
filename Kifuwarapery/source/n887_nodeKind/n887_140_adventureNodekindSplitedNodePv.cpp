@@ -25,8 +25,10 @@
 #include "../../header/n680_egOption/n680_240_engineOptionsMap.hpp"
 #include "../../header/n680_egOption/n680_300_engineOptionSetup.hpp"
 #include "../../header/n760_thread__/n760_400_herosPub.hpp"
+
 #include "../../header/n800_learn___/n800_100_stopwatch.hpp"
 #include "../../header/n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
+
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 #include "../../header/n885_searcher/n885_310_adventureBattlefieldQsearchAbstract.hpp"
 #include "../../header/n885_searcher/n885_340_adventureBattlefieldQsearchPrograms.hpp"
@@ -40,15 +42,19 @@
 #include "../../header/n886_repeType/n886_140_rtSuperior.hpp"
 #include "../../header/n886_repeType/n886_150_rtInferior.hpp"
 #include "../../header/n886_repeType/n886_500_rtArray.hpp"
-#include "../../header/n887_nodeType/n887_100_adventurePlainNodekindRoot.hpp"
-#include "../../header/n887_nodeType/n887_500_adventurePlainNodekindPrograms.hpp"
+#include "../../header/n887_nodeKind/n887_140_adventurePlainNodekindSplitedNodePv.hpp"
+#include "../../header/n887_nodeKind/n887_500_adventurePlainNodekindPrograms.hpp"
 
 
 using namespace std;
+
+
 extern const InFrontMaskBb g_inFrontMaskBb;
 extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 extern RepetitionTypeArray g_repetitionTypeArray;
-AdventureNodekindRoot g_NODETYPE_ROOT;
+
+
+AdventureNodekindSplitedNodePv g_NODETYPE_SPLITEDNODE_PV;
 
 
 /// <summary>
@@ -62,7 +68,7 @@ AdventureNodekindRoot g_NODETYPE_ROOT;
 /// <param name="depth"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-ScoreIndex AdventureNodekindRoot::ExplorePlain(
+ScoreIndex AdventureNodekindSplitedNodePv::ExplorePlain(
 	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
@@ -73,6 +79,10 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 	) const {
 
 	assert(-ScoreInfinite <= alpha && alpha < beta && beta <= ScoreInfinite);
+	this->AssertBeforeStep1(
+		alpha,
+		beta
+		);
 	assert(Depth0 < depth);
 
 	// 途中で goto を使用している為、先に全部の変数を定義しておいた方が安全。
@@ -108,7 +118,23 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 	moveCount = playedMoveCount = 0;
 	inCheck = pos.InCheck();
 
-	//bool isGotoSplitPointStart = false;
+	bool isGotoSplitPointStart = false;
+	this->ExplorerPlainStep1a(
+		isGotoSplitPointStart,
+		moveCount,
+		playedMoveCount,
+		inCheck,
+		pos,
+		&pSplitedNode,
+		&pFlashlight,
+		bestMove,
+		threatMove,
+		bestScore,
+		ttMove,
+		excludedMove,
+		ttScore
+		);
+	if (isGotoSplitPointStart) { goto split_point_start; }
 
 	this->ExplorerPlainStep1b(
 		bestScore,
@@ -121,9 +147,29 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 		pFlashlight
 		);
 
-	//bool isReturnWithScore = false;
-	//ScoreIndex returnScore = ScoreIndex::ScoreNone;
+	bool isReturnWithScore = false;
+	ScoreIndex returnScore = ScoreIndex::ScoreNone;
 
+	// step2
+	this->ExplorerPlainStep2(
+		isReturnWithScore,
+		returnScore,
+		pos,
+		ourCarriage,
+		&pFlashlight
+		);
+
+	if (isReturnWithScore) { return returnScore; }
+
+	// step3
+	this->ExplorerPlainStep3(
+		isReturnWithScore,
+		returnScore,
+		&pFlashlight,
+		alpha,
+		beta
+		);
+	if (isReturnWithScore) { return returnScore; }
 
 	pos.SetNodesSearched(pos.GetNodesSearched() + 1);
 
@@ -143,6 +189,33 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 		pTtEntry,
 		pos
 		);
+	this->ExplorerPlainStep4y(
+		isReturnWithScore,
+		returnScore,
+		ourCarriage,
+		pTtEntry,
+		depth,
+		ttScore,
+		beta,
+		&pFlashlight,
+		ttMove
+		);
+	if (isReturnWithScore) { return returnScore; }
+
+	this->ExplorerPlainStep4z(
+		isReturnWithScore,
+		returnScore,
+		ourCarriage,
+		inCheck,
+		move,
+		pos,
+		&pFlashlight,
+		bestScore,
+		posKey,
+		depth,
+		bestMove
+		);
+	if (isReturnWithScore) { return returnScore; }
 
 	// step5
 	bool isGotoIidStart = false;//NonPVのとき使う☆
@@ -164,7 +237,6 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 	}
 	*/
 
-
 	// 内側の反復深化探索☆？（＾ｑ＾）
 //iid_start:
 	// step10
@@ -181,7 +253,7 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 		posKey
 		);
 
-//split_point_start:
+split_point_start:
 	NextmoveEvent mp(
 		pos,
 		ttMove,
@@ -225,18 +297,6 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 			&pSplitedNode
 			);
 		if (isContinue) { continue; }
-
-		this->ExplorerPlainStep11d_LoopHeader(
-			isContinue,
-			ourCarriage,
-			move
-			);
-		if (isContinue) { continue; }
-
-		this->ExplorerPlainStep11e_LoopHeader(
-			ourCarriage,
-			moveCount
-			);
 
 		this->ExplorerPlainStep11f_LoopHeader(
 			extension,
@@ -291,13 +351,6 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 			);
 		if (isContinue) { continue; }
 
-		this->ExplorerPlainStep13d(
-			captureOrPawnPromotion,
-			playedMoveCount,
-			movesSearched,
-			move
-			);
-
 		// step14
 		this->ExplorerPlainStep14(
 			pos,
@@ -328,6 +381,11 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 			);
 
 		// step16
+		this->ExplorerPlainStep16a(
+			doFullDepthSearch,
+			alpha,
+			&pSplitedNode
+			);
 		this->ExplorerPlainStep16b_NonPVAtukai(
 			ourCarriage,
 			doFullDepthSearch,
@@ -360,17 +418,14 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 		assert(-ScoreInfinite < score && score < ScoreInfinite);
 
 		// step18
+		this->ExplorerPlainStep18a(
+			&pSplitedNode,
+			bestScore,
+			alpha
+			);
 
 		if (ourCarriage.m_signals.m_stop || pThisThread->IsUselessNode()) { return score; }
 
-		this->ExplorerPlainStep18b(
-			ourCarriage,
-			move,
-			isPVMove,
-			alpha,
-			score,
-			pos
-			);
 		bool isBreak = false;
 		this->ExplorerPlainStep18c(
 			isBreak,
@@ -385,49 +440,10 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 			bestMove,
 			beta
 			);
-		if (isBreak) {
-			break;
-		}
-
-		// step19
-		this->ExplorerPlainStep19(
-			isBreak,
-			ourCarriage,
-			depth,
-			&pThisThread,
-			bestScore,
-			beta,
-			pos,
-			&pFlashlight,
-			alpha,
-			bestMove,
-			threatMove,
-			moveCount,
-			mp,
-			cutNode
-			);
 		if (isBreak) { break; }
 	}
 
 	if (this->GetReturnBeforeStep20()) { return bestScore; }
-
-	// step20
-	this->ExplorerPlainStep20(
-		moveCount,
-		excludedMove,
-		ourCarriage,
-		alpha,
-		&pFlashlight,
-		bestScore,
-		playedMoveCount,
-		beta,
-		posKey,
-		depth,
-		bestMove,
-		inCheck,
-		pos,
-		movesSearched
-		);
 
 	return bestScore;
 }

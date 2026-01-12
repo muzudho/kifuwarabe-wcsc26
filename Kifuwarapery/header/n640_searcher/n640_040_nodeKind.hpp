@@ -9,10 +9,10 @@
 ///		</pre>
 /// </summary>
 enum NodeKind {
-	N00_Root,
-	N01_PV,
-	N02_NonPV,
-	SplitedNodeRoot,
-	SplitedNodePV,
-	SplitedNodeNonPV
+	No0_Root,
+	No1_PV,
+	No2_NonPV,
+	SplitedNodeNo0Root,
+	SplitedNodeNo1PV,
+	SplitedNodeNo2NonPV
 };

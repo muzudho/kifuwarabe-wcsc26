@@ -5,19 +5,19 @@
 #include "../n640_searcher/n640_040_nodeKind.hpp"
 #include "../n640_searcher/n640_440_splitedNode.hpp"
 #include "../n640_searcher/n640_500_reductions.hpp"
-#include "../n755_sword___/n755_110_SwordPv.hpp"
+#include "../n755_sword___/n755_120_SwordNonPv.hpp"
 #include "../n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
 #include "../n885_searcher/n885_040_ourCarriage.hpp"
 
 
-// PvNode = true
+// PvNode = false
 // SplitedNode = false
 // RootNode = false
 
 /// <summary>
 /// 
 /// </summary>
-class AdventureNodekindPv : public AdventureNodekindAbstract {
+class AdventureNodekindNonPv : public AdventureNodekindAbstract {
 
 
 public:
@@ -43,20 +43,6 @@ public:
 		const Depth depth,
 		const bool cutNode
 		) const override;
-
-
-	/// <summary>
-	/// 非PVノードはassertをするぜ☆（＾ｑ＾）
-	/// </summary>
-	/// <param name="alpha"></param>
-	/// <param name="beta"></param>
-	virtual inline void AssertBeforeStep1(
-		ScoreIndex alpha,
-		ScoreIndex beta
-		) const override {
-		// PVノードはスルー☆！（＾ｑ＾）
-		assert(alpha == beta - 1);
-	}
 
 
 	/// <summary>
@@ -95,6 +81,20 @@ public:
 
 
 	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="ppThisThread"></param>
+	/// <param name="pFlashlight"></param>
+	inline void ExplorerPlainStep1c(
+		Soldier** ppThisThread,
+		const Flashlight* pFlashlight
+		)const override {
+		// 非PVノードはスルー☆！（＾ｑ＾）
+		//UNREACHABLE;
+	}
+
+
+	/// <summary>
 	/// ルートノードか、それ以外かで　値が分かれるぜ☆（＾ｑ＾）
 	/// </summary>
 	/// <param name="ttMove"></param>
@@ -115,7 +115,7 @@ public:
 
 
 	/// <summary>
-	/// PVノードの場合☆（＾ｑ＾）
+	/// 非PVノードの場合☆（＾ｑ＾）
 	/// </summary>
 	/// <param name="pTtEntry"></param>
 	/// <param name="beta"></param>
@@ -126,119 +126,10 @@ public:
 		ScoreIndex& beta,
 		ScoreIndex& ttScore
 		) const override {
-		return pTtEntry->GetBoundKind() == Bound::BoundExact;
-	}
-
-
-	/// <summary>
-	/// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
-	/// </summary>
-	/// <param name="isReturnWithScore"></param>
-	/// <param name="returnScore"></param>
-	/// <param name="ourCarriage"></param>
-	/// <param name="depth"></param>
-	/// <param name="eval"></param>
-	/// <param name="beta"></param>
-	/// <param name="ttMove"></param>
-	/// <param name="pos"></param>
-	/// <param name="ppFlashlight"></param>
-	virtual inline void ExplorerPlainStep6_NonPV(
-		bool& isReturnWithScore,
-		ScoreIndex& returnScore,
-		OurCarriage& ourCarriage,
-		const Depth depth,
-		ScoreIndex& eval,
-		ScoreIndex& beta,
-		Move& ttMove,
-		Position& pos,
-		Flashlight** ppFlashlight
-		)const override {
-		// PVノードはスルー☆！（＾ｑ＾）
-	}
-
-
-	/// <summary>
-	/// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
-	/// </summary>
-	/// <param name="isReturnWithScore"></param>
-	/// <param name="returnScore"></param>
-	/// <param name="ppFlashlight"></param>
-	/// <param name="depth"></param>
-	/// <param name="beta"></param>
-	/// <param name="eval"></param>
-	virtual inline void ExplorerPlainStep7(
-		bool& isReturnWithScore,
-		ScoreIndex& returnScore,
-		Flashlight** ppFlashlight,
-		const Depth depth,
-		ScoreIndex& beta,
-		ScoreIndex& eval
-		)const override {
-		// PVノードはスルー☆！（＾ｑ＾）
-	}
-
-
-	/// <summary>
-	/// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
-	/// </summary>
-	/// <param name="isReturnWithScore"></param>
-	/// <param name="returnScore"></param>
-	/// <param name="ourCarriage"></param>
-	/// <param name="ppFlashlight"></param>
-	/// <param name="depth"></param>
-	/// <param name="beta"></param>
-	/// <param name="eval"></param>
-	/// <param name="pos"></param>
-	/// <param name="st"></param>
-	/// <param name="alpha"></param>
-	/// <param name="cutNode"></param>
-	/// <param name="threatMove"></param>
-	virtual inline void ExplorerPlainStep8_NonPV(
-		bool& isReturnWithScore,
-		ScoreIndex& returnScore,
-		OurCarriage& ourCarriage,
-		Flashlight** ppFlashlight,
-		const Depth depth,
-		ScoreIndex& beta,
-		ScoreIndex& eval,
-		Position& pos,
-		StateInfo& st,
-		ScoreIndex& alpha,
-		const bool cutNode,
-		Move& threatMove
-		)const override {
-		// PVノードはスルー☆！（＾ｑ＾）
-	}
-
-
-	/// <summary>
-	/// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
-	/// </summary>
-	/// <param name="isReturnWithScore"></param>
-	/// <param name="ourCarriage"></param>
-	/// <param name="depth"></param>
-	/// <param name="ppFlashlight"></param>
-	/// <param name="beta"></param>
-	/// <param name="move"></param>
-	/// <param name="pos"></param>
-	/// <param name="ttMove"></param>
-	/// <param name="st"></param>
-	/// <param name="score"></param>
-	/// <param name="cutNode"></param>
-	virtual inline void ExplorerPlainStep9(
-		bool& isReturnWithScore,
-		OurCarriage& ourCarriage,
-		const Depth& depth,
-		Flashlight** ppFlashlight,
-		ScoreIndex& beta,
-		Move& move,
-		Position& pos,
-		Move& ttMove,
-		StateInfo& st,
-		ScoreIndex& score,
-		const bool cutNode
-		)const override {
-		// 非PVノードはスルー☆！（＾ｑ＾）
+		return  beta <= ttScore ?
+			(pTtEntry->GetBoundKind() & Bound::BoundLower)
+			:
+			(pTtEntry->GetBoundKind() & Bound::BoundUpper);
 	}
 
 
@@ -270,22 +161,26 @@ public:
 	{
 		// internal iterative deepening
 		if (
-			// PVノードの場合、５倍☆
-			(5 * OnePly) <= depth
+			// 非PVノードの場合、８倍☆
+			(8 * OnePly) <= depth
 			&& ttMove.IsNone()
+			// 非PVノードの場合、さらに条件☆
+			&& (
+				!inCheck && beta <= (*ppFlashlight)->m_staticEval + static_cast<ScoreIndex>(256)
+				)
 			)
 		{
 			//const Depth d = depth - 2 * OnePly - (PVNode ? Depth0 : depth / 4);
-			// PVノードの場合☆
-			const Depth d = depth - 2 * OnePly;
+			// 非PVノードの場合☆
+			const Depth d = depth / 2;
 
 			(*ppFlashlight)->m_skipNullMove = true;
 
 			//────────────────────────────────────────────────────────────────────────────────
 			// 探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
-			// PVノードの場合☆
-			g_NODEKIND_PROGRAMS[NodeKind::N01_PV]->ExplorePlain(
+			// 非PVノードの場合☆
+			g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->ExplorePlain(
 				ourCarriage, pos, (*ppFlashlight), alpha, beta, d, true);
 
 			(*ppFlashlight)->m_skipNullMove = false;
@@ -306,8 +201,8 @@ public:
 	virtual inline ScoreIndex GetBetaAtStep11(
 		ScoreIndex beta
 		) const override {
-		// PVノードの場合☆（＾ｑ＾）
-		return -ScoreIndex::ScoreInfinite;
+		// 非PVノードの場合☆（＾ｑ＾）
+		return beta;
 	}
 
 
@@ -355,22 +250,6 @@ public:
 
 
 	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="isContinue"></param>
-	/// <param name="ourCarriage"></param>
-	/// <param name="move"></param>
-	virtual inline void ExplorerPlainStep11d_LoopHeader(
-		bool& isContinue,
-		const OurCarriage& ourCarriage,
-		const Move& move
-		)const override {
-		// 非ルートノードはスルー☆！（＾ｑ＾）
-		//UNREACHABLE;
-	}
-
-
-	/// <summary>
 	/// スプリット・ポイントかどうかで変わる手続きだぜ☆！（＾ｑ＾）
 	/// </summary>
 	/// <param name="isContinue"></param>
@@ -394,6 +273,22 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
+	/// <param name="isContinue"></param>
+	/// <param name="ourCarriage"></param>
+	/// <param name="move"></param>
+	virtual inline void ExplorerPlainStep11d_LoopHeader(
+		bool& isContinue,
+		const OurCarriage& ourCarriage,
+		const Move& move
+		)const override {
+		// 非ルートノードはスルー☆！（＾ｑ＾）
+		//UNREACHABLE;
+	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
 	/// <param name="ourCarriage"></param>
 	/// <param name="moveCount"></param>
 	virtual inline void ExplorerPlainStep11e_LoopHeader(
@@ -401,48 +296,6 @@ public:
 		int& moveCount
 		) const override {
 		// 非ルートノードはスルー☆！（＾ｑ＾）
-		//UNREACHABLE;
-	}
-
-
-	/// <summary>
-	/// 無駄枝狩り☆（＾▽＾）
-	/// </summary>
-	/// <param name="isContinue"></param>
-	/// <param name="ourCarriage"></param>
-	/// <param name="captureOrPawnPromotion"></param>
-	/// <param name="inCheck"></param>
-	/// <param name="dangerous"></param>
-	/// <param name="bestScore"></param>
-	/// <param name="move"></param>
-	/// <param name="ttMove"></param>
-	/// <param name="depth"></param>
-	/// <param name="moveCount"></param>
-	/// <param name="threatMove"></param>
-	/// <param name="pos"></param>
-	/// <param name="ppSplitedNode"></param>
-	/// <param name="newDepth"></param>
-	/// <param name="ppFlashlight"></param>
-	/// <param name="beta"></param>
-	virtual inline void ExplorerPlainStep13a_FutilityPruning(
-		bool& isContinue,
-		OurCarriage& ourCarriage,
-		bool& captureOrPawnPromotion,
-		bool& inCheck,
-		bool& dangerous,
-		ScoreIndex& bestScore,
-		Move& move,
-		Move& ttMove,
-		const Depth depth,
-		int& moveCount,
-		Move& threatMove,
-		Position& pos,
-		SplitedNode** ppSplitedNode,
-		Depth& newDepth,
-		Flashlight** ppFlashlight,
-		ScoreIndex& beta
-		) const override {
-		// PVノードはスルー☆！（＾ｑ＾）
 		//UNREACHABLE;
 	}
 
@@ -459,8 +312,8 @@ public:
 		const Depth depth,
 		int& moveCount
 		) const override {
-		// PVノードのとき
-		return newDepth - g_reductions.DoReduction_PvNode(depth, moveCount);
+		// 非PVノードのとき
+		return newDepth - g_reductions.DoReduction_NotPvNode(depth, moveCount);
 	}
 
 
@@ -535,8 +388,8 @@ public:
 		Move movesSearched[64]
 		)const override {
 
-		// PVノードだぜ☆！（＾ｑ＾）
-		isPVMove = (moveCount == 1);
+		// 非PVノードだぜ☆！（＾ｑ＾）
+		isPVMove = false;
 		(*ppFlashlight)->m_currentMove = move;
 	}
 
@@ -568,8 +421,11 @@ public:
 		int& moveCount,
 		const bool cutNode
 		) const override {
-		// Pvノードのとき☆！（＾ｑ＾）
-		(*ppFlashlight)->m_reduction = g_reductions.DoReduction_PvNode(depth, moveCount);
+		// 非Pvノードのとき☆！（＾ｑ＾）
+		(*ppFlashlight)->m_reduction = g_reductions.DoReduction_NotPvNode(depth, moveCount);
+		if (cutNode) {
+			(*ppFlashlight)->m_reduction += Depth::OnePly;
+		}
 	}
 
 
@@ -585,6 +441,34 @@ public:
 		SplitedNode** ppSplitedNode
 		)const override {
 		// 非スプリットノードはスルー☆！（＾ｑ＾）
+		//UNREACHABLE;
+	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="ourCarriage"></param>
+	/// <param name="isPVMove"></param>
+	/// <param name="alpha"></param>
+	/// <param name="score"></param>
+	/// <param name="beta"></param>
+	/// <param name="newDepth"></param>
+	/// <param name="givesCheck"></param>
+	/// <param name="pos"></param>
+	/// <param name="ppFlashlight"></param>
+	virtual inline void ExplorerPlainStep16c(
+		OurCarriage& ourCarriage,
+		bool& isPVMove,
+		ScoreIndex& alpha,
+		ScoreIndex& score,
+		ScoreIndex& beta,
+		Depth& newDepth,
+		bool& givesCheck,
+		Position& pos,
+		Flashlight** ppFlashlight
+		)const override {
+		// 非PVノードはスルー☆！（＾ｑ＾）
 		//UNREACHABLE;
 	}
 
@@ -675,14 +559,9 @@ public:
 			if (alpha < score) {
 				bestMove = move;
 
-				// （＾ｑ＾）ＰＶノードの場合☆
-				if (score < beta) {
-					alpha = score;
-				}
-				else {
-					isBreak = true;
-					return;
-				}
+				// 非PVノードの場合☆
+				isBreak = true;
+				return;
 			}
 		}
 
@@ -723,12 +602,9 @@ public:
 		const bool cutNode
 		)const override {
 
-		if (
-			ourCarriage.m_ownerHerosPub.GetMinSplitDepth() <= depth
-			&&
-			ourCarriage.m_ownerHerosPub.GetAvailableSlave(*ppThisThread)
-			&&
-			(*ppThisThread)->m_splitedNodesSize < g_MaxSplitedNodesPerThread)
+		if (ourCarriage.m_ownerHerosPub.GetMinSplitDepth() <= depth
+			&& ourCarriage.m_ownerHerosPub.GetAvailableSlave(*ppThisThread)
+			&& (*ppThisThread)->m_splitedNodesSize < g_MaxSplitedNodesPerThread)
 		{
 			assert(bestScore < beta);
 			(*ppThisThread)->ForkNewFighter<OurCarriage::FakeSplit>(
@@ -742,7 +618,7 @@ public:
 				threatMove,
 				moveCount,
 				mp,
-				&g_SWORD_PV,
+				&g_SWORD_NON_PV,
 				cutNode
 				);
 
@@ -771,7 +647,7 @@ public:
 	/// <param name="bestMoveExists"></param>
 	/// <returns></returns>
 	inline Bound GetBoundAtStep20(bool bestMoveExists) const override {
-		return bestMoveExists ? Bound::BoundExact : Bound::BoundUpper;
+		return Bound::BoundUpper;
 	}
 };
 
@@ -779,4 +655,4 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern AdventureNodekindPv g_NODETYPE_PV;
+extern AdventureNodekindNonPv g_NODETYPE_NON_PV;

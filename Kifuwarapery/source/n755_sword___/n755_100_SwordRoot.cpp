@@ -1,5 +1,5 @@
 ﻿#include "../../header/n755_sword___/n755_100_SwordRoot.hpp"
-#include "../../header/n887_nodeType/n887_130_adventurePlainNodekindSplitedNodeRoot.hpp"
+#include "../../header/n887_nodeKind/n887_130_adventurePlainNodekindSplitedNodeRoot.hpp"
 
 
 //extern const NodetypeSplitedNodeRoot g_NODETYPE_SPLITEDNODE_ROOT;

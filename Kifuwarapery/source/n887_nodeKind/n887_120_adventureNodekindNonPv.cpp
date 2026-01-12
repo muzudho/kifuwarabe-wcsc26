@@ -40,18 +40,15 @@
 #include "../../header/n886_repeType/n886_140_rtSuperior.hpp"
 #include "../../header/n886_repeType/n886_150_rtInferior.hpp"
 #include "../../header/n886_repeType/n886_500_rtArray.hpp"
-#include "../../header/n887_nodeType/n887_150_adventurePlainNodekindSplitedNodeNonPv.hpp"
-#include "../../header/n887_nodeType/n887_500_adventurePlainNodekindPrograms.hpp"
+#include "../../header/n887_nodeKind/n887_120_adventurePlainNodekindNonPv.hpp"
+#include "../../header/n887_nodeKind/n887_500_adventurePlainNodekindPrograms.hpp"
 
 
 using namespace std;
 extern const InFrontMaskBb g_inFrontMaskBb;
 extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 extern RepetitionTypeArray g_repetitionTypeArray;
-
-
-// 依存関係の回避
-AdventureNodekindSplitedNodeNonPv g_NODETYPE_SPLITEDNODE_NON_PV;
+AdventureNodekindNonPv g_NODETYPE_NON_PV;
 
 
 /// <summary>
@@ -65,7 +62,7 @@ AdventureNodekindSplitedNodeNonPv g_NODETYPE_SPLITEDNODE_NON_PV;
 /// <param name="depth"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-ScoreIndex AdventureNodekindSplitedNodeNonPv::ExplorePlain(
+ScoreIndex AdventureNodekindNonPv::ExplorePlain(
 	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
@@ -116,22 +113,6 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::ExplorePlain(
 	inCheck = pos.InCheck();
 
 	bool isGotoSplitPointStart = false;
-	this->ExplorerPlainStep1a(
-		isGotoSplitPointStart,
-		moveCount,
-		playedMoveCount,
-		inCheck,
-		pos,
-		&pSplitedNode,
-		&pFlashlight,
-		bestMove,
-		threatMove,
-		bestScore,
-		ttMove,
-		excludedMove,
-		ttScore
-		);
-	if (isGotoSplitPointStart) { goto split_point_start; }
 
 	this->ExplorerPlainStep1b(
 		bestScore,
@@ -151,7 +132,6 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::ExplorePlain(
 		ourCarriage,
 		&pFlashlight
 		);
-
 	if (isReturnWithScore) { return returnScore; }
 
 	// step3
@@ -300,7 +280,7 @@ iid_start:
 		posKey
 		);
 
-split_point_start:
+//split_point_start:
 	NextmoveEvent mp(
 		pos,
 		ttMove,
@@ -330,7 +310,7 @@ split_point_start:
 			).IsNone()
 		) {
 
-		// DoStep11b		 
+		// DoStep11b
 		if (move == excludedMove) { continue; }	// ムーブが一致していれば、次のループへ☆
 
 		bool isContinue = false;
@@ -396,6 +376,15 @@ split_point_start:
 			);
 		if (isContinue) { continue; }
 
+		this->ExplorerPlainStep13b(
+			isContinue,
+			pos,
+			move,
+			ci,
+			moveCount
+			);
+		if (isContinue) { continue; }
+
 		this->ExplorerPlainStep13c(
 			isContinue,
 			ourCarriage,
@@ -419,6 +408,13 @@ split_point_start:
 			movesSearched
 			);
 		if (isContinue) { continue; }
+
+		this->ExplorerPlainStep13d(
+			captureOrPawnPromotion,
+			playedMoveCount,
+			movesSearched,
+			move
+			);
 
 		// step14
 		this->ExplorerPlainStep14(
@@ -450,11 +446,6 @@ split_point_start:
 			);
 
 		// step16
-		this->ExplorerPlainStep16a(
-			doFullDepthSearch,
-			alpha,
-			&pSplitedNode
-			);
 		this->ExplorerPlainStep16b_NonPVAtukai(
 			ourCarriage,
 			doFullDepthSearch,
@@ -476,14 +467,17 @@ split_point_start:
 		assert(-ScoreInfinite < score && score < ScoreInfinite);
 
 		// step18
-		this->ExplorerPlainStep18a(
-			&pSplitedNode,
-			bestScore,
-			alpha
-			);
 
 		if (ourCarriage.m_signals.m_stop || pThisThread->IsUselessNode()) { return score; }
 
+		this->ExplorerPlainStep18b(
+			ourCarriage,
+			move,
+			isPVMove,
+			alpha,
+			score,
+			pos
+			);
 		bool isBreak = false;
 		this->ExplorerPlainStep18c(
 			isBreak,
@@ -499,9 +493,46 @@ split_point_start:
 			beta
 			);
 		if (isBreak) { break; }
+
+		// step19
+		this->ExplorerPlainStep19(
+			isBreak,
+			ourCarriage,
+			depth,
+			&pThisThread,
+			bestScore,
+			beta,
+			pos,
+			&pFlashlight,
+			alpha,
+			bestMove,
+			threatMove,
+			moveCount,
+			mp,
+			cutNode
+			);
+		if (isBreak) { break; }
 	}
 
 	if (this->GetReturnBeforeStep20()) { return bestScore; }
+
+	// step20
+	this->ExplorerPlainStep20(
+		moveCount,
+		excludedMove,
+		ourCarriage,
+		alpha,
+		&pFlashlight,
+		bestScore,
+		playedMoveCount,
+		beta,
+		posKey,
+		depth,
+		bestMove,
+		inCheck,
+		pos,
+		movesSearched
+		);
 
 	return bestScore;
 }
