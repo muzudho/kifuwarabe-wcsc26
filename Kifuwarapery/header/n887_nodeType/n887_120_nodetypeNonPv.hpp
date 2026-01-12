@@ -6,7 +6,7 @@
 #include "../n640_searcher/n640_440_splitedNode.hpp"
 #include "../n640_searcher/n640_500_reductions.hpp"
 #include "../n755_sword___/n755_120_SwordNonPv.hpp"
-#include "../n883_nodeType/n883_070_adventurePlainNodetypeAbstract.hpp"
+#include "../n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
 #include "../n885_searcher/n885_040_ourCarriage.hpp"
 
 

@@ -1,4 +1,4 @@
-﻿#include "../../header/n883_nodeType/n883_070_adventurePlainNodetypeAbstract.hpp"
+﻿#include "../../header/n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
 #include "../../header/n887_nodeType/n887_100_nodetypeRoot.hpp"
 #include "../../header/n887_nodeType/n887_110_nodetypePv.hpp"
 #include "../../header/n887_nodeType/n887_120_nodetypeNonPv.hpp"

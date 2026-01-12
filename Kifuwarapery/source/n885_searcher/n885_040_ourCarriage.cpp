@@ -32,7 +32,7 @@
 #include "../../header/n680_egOption/n680_300_engineOptionSetup.hpp"
 #include "../../header/n755_sword___/n755_070_SwordAbstract.hpp"
 #include "../../header/n760_thread__/n760_400_herosPub.hpp"
-#include "../../header/n883_nodeType/n883_070_adventurePlainNodetypeAbstract.hpp"
+#include "../../header/n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 #include "../../header/n885_searcher/n885_490_adventureMountainIterativeDeepeningLoop.hpp"
 #include "../../header/n887_nodeType/n887_500_nodetypePrograms.hpp"//FIXME:

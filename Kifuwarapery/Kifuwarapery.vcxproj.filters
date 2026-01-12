@@ -978,7 +978,7 @@
     <ClInclude Include="header\n887_nodeType\n887_150_nodetypeSplitedNodeNonPv.hpp">
       <Filter>header\n887_nodeType</Filter>
     </ClInclude>
-    <ClInclude Include="header\n883_nodeType\n883_070_adventurePlainNodetypeAbstract.hpp">
+    <ClInclude Include="header\n883_nodeKind\n883_070_adventurePlainNodekindAbstract.hpp">
       <Filter>header\n883_nodeType</Filter>
     </ClInclude>
     <ClInclude Include="header\n885_searcher\n885_510_adventureContinent.hpp">
@@ -1631,7 +1631,7 @@
     <ClCompile Include="source\n350_pieceTyp\n350_030_makePromoteMove.cpp">
       <Filter>source\n350_pieceTyp</Filter>
     </ClCompile>
-    <ClCompile Include="source\n883_nodeType\n883_070_adventurePlainNodetypeAbstract.cpp">
+    <ClCompile Include="source\n883_nodeKind\n883_070_adventurePlainNodekindAbstract.cpp">
       <Filter>source\n883_nodeType</Filter>
     </ClCompile>
     <ClCompile Include="source\n165_movStack\n165_410_moveModels.cpp">

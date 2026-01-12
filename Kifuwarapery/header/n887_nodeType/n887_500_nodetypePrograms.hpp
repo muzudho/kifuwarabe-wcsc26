@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../n883_nodeType/n883_070_adventurePlainNodetypeAbstract.hpp"
+#include "../n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
 
 
 /// <summary>
