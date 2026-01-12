@@ -387,7 +387,7 @@
     <ClInclude Include="header\n800_learn___\n800_500_learner.hpp" />
     <ClInclude Include="header\n883_nodeType\n883_070_adventurePlainNodetypeAbstract.hpp" />
     <ClInclude Include="header\n885_searcher\n885_040_ourCarriage.hpp" />
-    <ClInclude Include="header\n885_searcher\n885_310_hitchhikerQsearchAbstract.hpp" />
+    <ClInclude Include="header\n885_searcher\n885_310_advemtireBattlefieldQsearchAbstract.hpp" />
     <ClInclude Include="header\n885_searcher\n885_320_hitchhikerQsearchPv.hpp" />
     <ClInclude Include="header\n885_searcher\n885_330_hitchhikerQsearchNonPv.hpp" />
     <ClInclude Include="header\n885_searcher\n885_340_hitchhikerQsearchPrograms.hpp" />
