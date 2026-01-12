@@ -9,9 +9,9 @@
 
 
 /// <summary>
-/// 千日手タイプ配列☆
+/// 千日手タイプの定数（定インスタンス？）の配列☆
 /// </summary>
-class RepetitionTypeArray {
+class RepetitionTypeModels {
 
 
 public:
@@ -20,41 +20,41 @@ public:
 	/// <summary>
 	/// 千日手ではない
 	/// </summary>
-	static const RepetitionTypeNot m_repetitionTypeNot;
+	static const RepetitionTypeNot m_NOT_REPETETION;
 
 	/// <summary>
 	/// 引き分け
 	/// </summary>
-	static const RepetitionTypeDraw m_repetitionTypeDraw;
+	static const RepetitionTypeDraw m_DRAW;
 
 	/// <summary>
 	/// 勝ち
 	/// </summary>
-	static const RepetitionTypeWin m_repetitionTypeWin;
+	static const RepetitionTypeWin m_WIN;
 
 	/// <summary>
 	/// 負け
 	/// </summary>
-	static const RepetitionTypeLose m_repetitionTypeLose;
+	static const RepetitionTypeLose m_LOSE;
 
 	/// <summary>
 	/// 上の方？
 	/// </summary>
-	static const RepetitionTypeSuperior m_repetitionTypeSuperior;
+	static const RepetitionTypeSuperior m_SUPERIOR;
 
 	/// <summary>
 	/// 下の方？
 	/// </summary>
-	static const RepetitionTypeInferior m_repetitionTypeInferior;
+	static const RepetitionTypeInferior m_INFERIOR;
 
 	/// <summary>
 	/// 配列
 	/// </summary>
-	static const RepetitionTypeAbstract* m_repetitionTypeArray[6];
+	static const RepetitionTypeAbstract* m_ARRAY[6];
 };
 
 
 /// <summary>
-/// 千日手タイプの配列
+/// 千日手タイプの一覧。配列含む。
 /// </summary>
-extern RepetitionTypeArray g_repetitionTypeArray;
+extern RepetitionTypeModels g_repetitionTypes;

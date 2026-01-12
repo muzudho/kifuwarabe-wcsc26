@@ -15,7 +15,7 @@ public:
 
 
 	/// <summary>
-	/// 探索打切りの判断
+	/// 千日手による探索打切りの判断
 	/// </summary>
 	/// <param name="isReturn"></param>
 	/// <param name="resultScore"></param>

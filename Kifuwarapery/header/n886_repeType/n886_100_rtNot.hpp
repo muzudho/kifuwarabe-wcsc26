@@ -15,7 +15,7 @@ public:
 
 
 	/// <summary>
-	/// 停止の判断
+	/// 千日手による探索打切りの判断
 	/// </summary>
 	/// <param name="isReturn"></param>
 	/// <param name="resultScore"></param>
@@ -27,12 +27,12 @@ public:
 		const OurCarriage* pSearcher,
 		const Flashlight* pFlashlightBox) const override
 	{
-		if (!pSearcher->m_signals.m_stop &&
-			pFlashlightBox->m_ply <= g_maxPly
-		)
-		{
-			// XXX: 停止しないの（＾～＾）？
-		}
+		//if (!pSearcher->m_signals.m_stop &&
+		//	pFlashlightBox->m_ply <= g_maxPly
+		//)
+		//{
+		//	// XXX: 何もしないの（＾～＾）？
+		//}
 	}
 };
 

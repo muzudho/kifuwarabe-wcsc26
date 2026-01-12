@@ -41,7 +41,7 @@
 using namespace std;
 extern const InFrontMaskBb g_inFrontMaskBb;
 extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
-extern RepetitionTypeArray g_repetitionTypeArray;
+//extern RepetitionTypeModels g_repetitionTypes;
 
 
 /// <summary>
@@ -246,7 +246,7 @@ void RootMove::ExtractPvFromTT(Position& pos) {
 					pos.IsPseudoLegalMoveIsLegal<false, false,Color::White,Color::Black>(m, pos.GetPinnedBB())
 					)
 		   && ply < g_maxPly
-		   && (!pos.IsDraw(20) || ply < 6));
+		   && (!pos.IsRepetition(20) || ply < 6));
 
 	m_pv_.push_back(g_MOVE_NONE);
 	while (ply) {

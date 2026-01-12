@@ -14,25 +14,28 @@
 /// <summary>
 /// 千日手タイプ群☆
 /// </summary>
-const RepetitionTypeNot RepetitionTypeArray::m_repetitionTypeNot;
-const RepetitionTypeDraw RepetitionTypeArray::m_repetitionTypeDraw;
-const RepetitionTypeWin RepetitionTypeArray::m_repetitionTypeWin;
-const RepetitionTypeLose RepetitionTypeArray::m_repetitionTypeLose;
-const RepetitionTypeSuperior RepetitionTypeArray::m_repetitionTypeSuperior;
-const RepetitionTypeInferior RepetitionTypeArray::m_repetitionTypeInferior;
+const RepetitionTypeNot RepetitionTypeModels::m_NOT_REPETETION;
+const RepetitionTypeDraw RepetitionTypeModels::m_DRAW;
+const RepetitionTypeWin RepetitionTypeModels::m_WIN;
+const RepetitionTypeLose RepetitionTypeModels::m_LOSE;
+const RepetitionTypeSuperior RepetitionTypeModels::m_SUPERIOR;
+const RepetitionTypeInferior RepetitionTypeModels::m_INFERIOR;
 
 
 /// <summary>
 /// 
 /// </summary>
-const RepetitionTypeAbstract* RepetitionTypeArray::m_repetitionTypeArray[6] = {
-	&RepetitionTypeArray::m_repetitionTypeNot,
-	&RepetitionTypeArray::m_repetitionTypeDraw,
-	&RepetitionTypeArray::m_repetitionTypeWin,
-	&RepetitionTypeArray::m_repetitionTypeLose,
-	&RepetitionTypeArray::m_repetitionTypeSuperior,
-	&RepetitionTypeArray::m_repetitionTypeInferior,
+const RepetitionTypeAbstract* RepetitionTypeModels::m_ARRAY[6] = {
+	&RepetitionTypeModels::m_NOT_REPETETION,
+	&RepetitionTypeModels::m_DRAW,
+	&RepetitionTypeModels::m_WIN,
+	&RepetitionTypeModels::m_LOSE,
+	&RepetitionTypeModels::m_SUPERIOR,
+	&RepetitionTypeModels::m_INFERIOR,
 };
 
 
-RepetitionTypeArray g_repetitionTypeArray;
+/// <summary>
+/// 一覧。配列含む。
+/// </summary>
+RepetitionTypeModels g_repetitionTypes;

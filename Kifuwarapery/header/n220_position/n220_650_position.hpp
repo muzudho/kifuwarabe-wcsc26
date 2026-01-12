@@ -508,7 +508,7 @@ public:
 	/// </summary>
 	/// <param name="checkMaxPly"></param>
 	/// <returns></returns>
-	RepetitionType IsDraw(const int checkMaxPly = std::numeric_limits<int>::max()) const;
+	RepetitionType IsRepetition(const int checkMaxPly = std::numeric_limits<int>::max()) const;
 
 
 	/// <summary>

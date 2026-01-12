@@ -10,7 +10,7 @@
 /// </summary>
 class AdventureNodekindAbstract;
 extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
-extern RepetitionTypeArray g_repetitionTypeArray;
+extern RepetitionTypeModels g_repetitionTypes;
 
 
 /// <summary>
@@ -173,7 +173,7 @@ public:
 		Flashlight** ppFlashlight) const
 	{
 		// stop と最大探索深さのチェック
-		g_repetitionTypeArray.m_repetitionTypeArray[pos.IsDraw(16)]->IsStop(
+		g_repetitionTypes.m_ARRAY[pos.IsRepetition(16)]->IsStop(
 			isReturnWithScore, returnScore, &ourCarriage, (*ppFlashlight));
 	}
 

@@ -2438,13 +2438,12 @@ Key Position::GetComputeHandKey() const {
 ///		<pre>
 /// 千日手の判定
 /// 
-///		TODO: isRepetition() に名前変えた方が良さそう。
-///     同一局面4回をきちんと数えていないけど問題ないか。
+///     FIXME: 同一局面4回をきちんと数えていないけど問題ないか。
 ///		</pre>
 /// </summary>
 /// <param name="checkMaxPly"></param>
 /// <returns></returns>
-RepetitionType Position::IsDraw(const int checkMaxPly) const {
+RepetitionType Position::IsRepetition(const int checkMaxPly) const {
 	const int startNum = 4;
 	int i = startNum;
 	const int e = std::min(this->m_st_->m_pliesFromNull, checkMaxPly);
