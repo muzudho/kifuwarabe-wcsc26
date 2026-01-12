@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "n885_310_adventureBattlefieldQsearchAbstract.hpp"
 #include "n885_320_adventureBattlefieldQsearchPv.hpp"
-#include "n885_330_hitchhikerQsearchNonPv.hpp"
+#include "n885_330_adventureBattlefieldQsearchNonPv.hpp"
 
 
 /// <summary>
