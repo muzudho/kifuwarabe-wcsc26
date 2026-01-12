@@ -5,10 +5,10 @@
 #include "../n119_score___/n119_090_scoreIndex.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
 #include "../n220_position/n220_650_position.hpp"
-#include "../n223_move____/n223_040_nodeType.hpp"
 #include "../n223_move____/n223_200_depth.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"
 #include "../n440_movStack/n440_500_nextmoveEvent.hpp"
+#include "../n640_searcher/n640_040_nodeKind.hpp"
 #include "../n640_searcher/n640_440_splitedNode.hpp" // 持ち合い
 
 

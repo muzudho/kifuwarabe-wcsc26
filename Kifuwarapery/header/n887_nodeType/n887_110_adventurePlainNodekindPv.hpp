@@ -1,8 +1,8 @@
 ﻿#pragma once
 #include "../n220_position/n220_650_position.hpp"
 #include "../n220_position/n220_665_utilMoveStack.hpp"
-#include "../n223_move____/n223_040_nodeType.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"
+#include "../n640_searcher/n640_040_nodeKind.hpp"
 #include "../n640_searcher/n640_440_splitedNode.hpp"
 #include "../n640_searcher/n640_500_reductions.hpp"
 #include "../n755_sword___/n755_110_SwordPv.hpp"
@@ -285,7 +285,7 @@ public:
 			// 探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			// PVノードの場合☆
-			g_NODEKIND_PROGRAMS[NodeType::N01_PV]->ExplorePlain(
+			g_NODEKIND_PROGRAMS[NodeKind::N01_PV]->ExplorePlain(
 				ourCarriage, pos, (*ppFlashlight), alpha, beta, d, true);
 
 			(*ppFlashlight)->m_skipNullMove = false;

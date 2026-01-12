@@ -222,7 +222,7 @@
     <ClInclude Include="header\n220_position\n220_665_utilMoveStack.hpp" />
     <ClInclude Include="header\n220_position\n220_750_charToPieceUSI.hpp" />
     <ClInclude Include="header\n220_position\n220_400_evalList.hpp" />
-    <ClInclude Include="header\n223_move____\n223_040_nodeType.hpp" />
+    <ClInclude Include="header\n640_searcher\n640_040_nodeKind.hpp" />
     <ClInclude Include="header\n223_move____\n223_060_stats.hpp" />
     <ClInclude Include="header\n223_move____\n223_200_depth.hpp" />
     <ClInclude Include="header\n223_move____\n223_300_moveAndScoreIndex.hpp" />

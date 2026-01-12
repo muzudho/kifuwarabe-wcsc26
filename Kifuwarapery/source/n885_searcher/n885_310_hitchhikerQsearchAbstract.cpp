@@ -1,9 +1,9 @@
 ﻿#include "../../header/n119_score___/n119_090_scoreIndex.hpp"
 #include "../../header/n220_position/n220_650_position.hpp"
 #include "../../header/n220_position/n220_665_utilMoveStack.hpp"
-#include "../../header/n223_move____/n223_040_nodeType.hpp"
 #include "../../header/n223_move____/n223_200_depth.hpp"
 #include "../../header/n223_move____/n223_500_flashlight.hpp"
+#include "../../header/n640_searcher/n640_040_nodeKind.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"	// FIXME:
 #include "../../header/n885_searcher/n885_310_adventureBattlefieldQsearchAbstract.hpp"
 

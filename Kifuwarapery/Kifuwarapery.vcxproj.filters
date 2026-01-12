@@ -399,7 +399,7 @@
     <ClInclude Include="header\n119_score___\n119_500_EvalSum.hpp">
       <Filter>header\n119_score___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n223_move____\n223_040_nodeType.hpp">
+    <ClInclude Include="header\n640_searcher\n640_040_nodeKind.hpp">
       <Filter>header\n223_move____</Filter>
     </ClInclude>
     <ClInclude Include="header\n223_move____\n223_060_stats.hpp">

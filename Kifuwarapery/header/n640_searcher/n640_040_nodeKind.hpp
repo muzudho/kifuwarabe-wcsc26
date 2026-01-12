@@ -2,9 +2,13 @@
 
 
 /// <summary>
+///		<pre>
+/// ノードの探索の仕方の種類
 /// 
+///		- 探索で使う（＾～＾）
+///		</pre>
 /// </summary>
-enum NodeType {
+enum NodeKind {
 	N00_Root,
 	N01_PV,
 	N02_NonPV,

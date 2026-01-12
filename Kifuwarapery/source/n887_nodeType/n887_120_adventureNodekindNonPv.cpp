@@ -9,7 +9,6 @@
 #include "../../header/n220_position/n220_650_position.hpp"
 #include "../../header/n220_position/n220_665_utilMoveStack.hpp"
 #include "../../header/n220_position/n220_750_charToPieceUSI.hpp"
-#include "../../header/n223_move____/n223_040_nodeType.hpp"
 #include "../../header/n223_move____/n223_300_moveAndScoreIndex.hpp"
 #include "../../header/n223_move____/n223_500_flashlight.hpp"
 #include "../../header/n350_pieceTyp/n350_030_makePromoteMove.hpp"
@@ -18,6 +17,7 @@
 #include "../../header/n520_evaluate/n520_700_evaluation09.hpp"
 #include "../../header/n560_timeMgr_/n560_500_timeManager.hpp"
 #include "../../header/n600_book____/n600_500_book.hpp"
+#include "../../header/n640_searcher/n640_040_nodeKind.hpp"
 #include "../../header/n640_searcher/n640_440_splitedNode.hpp" // Searcherと持ち合い
 #include "../../header/n640_searcher/n640_500_reductions.hpp"
 #include "../../header/n640_searcher/n640_510_futilityMargins.hpp"
