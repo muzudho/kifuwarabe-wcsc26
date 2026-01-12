@@ -9,7 +9,7 @@
 #include "n885_580_adventurerSkill.hpp"
 
 
-extern NodekindAbstract* g_NODEKIND_PROGRAMS[];
+extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 
 
 /// <summary>

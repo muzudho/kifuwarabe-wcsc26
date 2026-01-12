@@ -20,7 +20,7 @@
 /// <summary>
 /// 
 /// </summary>
-class NodetypeRoot : public NodekindAbstract {
+class AdventureNodekindRoot : public AdventureNodekindAbstract {
 
 
 public:
@@ -850,4 +850,4 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern NodetypeRoot g_NODETYPE_ROOT;
+extern AdventureNodekindRoot g_NODETYPE_ROOT;

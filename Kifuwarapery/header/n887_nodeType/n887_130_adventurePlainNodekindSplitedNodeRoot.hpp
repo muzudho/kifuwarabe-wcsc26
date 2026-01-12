@@ -14,7 +14,7 @@
 /// <summary>
 /// 
 /// </summary>
-extern NodekindAbstract* g_NODEKIND_PROGRAMS[];
+extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 
 
 // PvNode = true
@@ -24,7 +24,7 @@ extern NodekindAbstract* g_NODEKIND_PROGRAMS[];
 /// <summary>
 /// 
 /// </summary>
-class NodetypeSplitedNodeRoot : public NodekindAbstract {
+class AdventureNodekindSplitedNodeRoot : public AdventureNodekindAbstract {
 
 
 public:
@@ -825,4 +825,4 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern NodetypeSplitedNodeRoot g_NODETYPE_SPLITEDNODE_ROOT;
+extern AdventureNodekindSplitedNodeRoot g_NODETYPE_SPLITEDNODE_ROOT;

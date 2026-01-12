@@ -8,15 +8,15 @@
 /// <summary>
 /// 同じファイル内の後ろの方でクラス定義があるとき☆（＾ｑ＾）
 /// </summary>
-class NodekindAbstract;
-extern NodekindAbstract* g_NODEKIND_PROGRAMS[];
+class AdventureNodekindAbstract;
+extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 extern RepetitionTypeArray g_repetitionTypeArray;
 
 
 /// <summary>
 /// 大冒険する平野だぜ（＾▽＾）！
 /// </summary>
-class NodekindAbstract {
+class AdventureNodekindAbstract {
 
 
 public:

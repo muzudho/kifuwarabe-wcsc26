@@ -16,7 +16,7 @@
 /// <summary>
 /// 
 /// </summary>
-class NodetypeSplitedNodeNonPv : public NodekindAbstract {
+class AdventureNodekindSplitedNodeNonPv : public AdventureNodekindAbstract {
 
 
 public:
@@ -654,5 +654,5 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern NodetypeSplitedNodeNonPv g_NODETYPE_SPLITEDNODE_NON_PV;
+extern AdventureNodekindSplitedNodeNonPv g_NODETYPE_SPLITEDNODE_NON_PV;
 

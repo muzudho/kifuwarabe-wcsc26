@@ -16,7 +16,7 @@
 /// <summary>
 /// 
 /// </summary>
-class NodetypeSplitedNodePv : public NodekindAbstract {
+class AdventureNodekindSplitedNodePv : public AdventureNodekindAbstract {
 
 
 public:
@@ -771,5 +771,5 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern NodetypeSplitedNodePv g_NODETYPE_SPLITEDNODE_PV;
+extern AdventureNodekindSplitedNodePv g_NODETYPE_SPLITEDNODE_PV;
 
