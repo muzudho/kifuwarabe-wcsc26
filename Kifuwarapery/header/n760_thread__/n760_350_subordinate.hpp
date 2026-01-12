@@ -3,7 +3,7 @@
 #include "n760_250_soldier.hpp"
 
 
-class Rucksack;
+class OurCarriage;
 
 
 /// <summary>
@@ -39,7 +39,7 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="s"></param>
-	explicit Subordinate(Rucksack* s) : Soldier(s), m_lifetimeMilliseconds(0) {}
+	explicit Subordinate(OurCarriage* s) : Soldier(s), m_lifetimeMilliseconds(0) {}
 
 
 	// ========================================

@@ -1,7 +1,7 @@
 ﻿#include "../../header/n350_pieceTyp/n350_030_makePromoteMove.hpp"
 #include "../../header/n760_thread__/n760_250_soldier.hpp"
 #include "../../header/n760_thread__/n760_300_captain.hpp"
-#include "../../header/n885_searcher/n885_040_rucksack.hpp"
+#include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 
 
 // ========================================
@@ -20,7 +20,7 @@ void Captain::StartWorkerThread() {
 			while (!this->m_isMasterThread && !m_isEndOfSearch)
 			{
 				// UI 関連だから要らないのかも。
-				this->m_pRucksack->m_ownerHerosPub.m_sleepCond_.notify_one();
+				this->m_pOurCarriage->m_ownerHerosPub.m_sleepCond_.notify_one();
 				this->m_sleepCond.wait(lock);
 			}
 		}
@@ -28,7 +28,7 @@ void Captain::StartWorkerThread() {
 		if (this->m_isEndOfSearch) { return; }
 
 		this->m_isBeingSearched = true;
-		Hitchhiker::Think(*this->m_pRucksack);
+		Hitchhiker::Think(*this->m_pOurCarriage);
 		assert(this->m_isBeingSearched);
 		this->m_isBeingSearched = false;
 	}

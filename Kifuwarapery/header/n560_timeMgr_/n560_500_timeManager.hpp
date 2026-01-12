@@ -5,7 +5,7 @@
 
 
 // 依存関係の都合を解消。
-class Rucksack;
+class OurCarriage;
 
 
 /// <summary>
@@ -35,13 +35,13 @@ public:
 	/// <param name="limits">m_moveTimeを 0にする場合があるぜ☆（＾ｑ＾）</param>
 	/// <param name="currentPly"></param>
 	/// <param name="us"></param>
-	/// <param name="pRucksack"></param>
+	/// <param name="pOurCarriage">わたしたちの馬車</param>
 	void Initialize(
 		bool& isMoveTime0Clear,
 		const LimitsDuringGo& limits,
 		const Ply currentPly,
 		const Color us,
-		Rucksack* pRucksack);
+		OurCarriage* pOurCarriage);
 
 
 	// ========================================

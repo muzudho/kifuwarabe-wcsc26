@@ -3,7 +3,7 @@
 #include "../n080_common__/n080_100_common.hpp"
 
 
-class Rucksack;
+class OurCarriage;
 
 
 /// <summary>
@@ -18,16 +18,16 @@ protected:
 	/// <summary>
 	/// 
 	/// </summary>
-	using Fn = void(Rucksack*, const EngineOptionable&);
+	using Fn = void(OurCarriage*, const EngineOptionable&);
 
 
 public:
 
 
-	EngineOptionable(												Fn* = nullptr, Rucksack* s = nullptr);
-	EngineOptionable(const char* v,								    Fn* = nullptr, Rucksack* s = nullptr);
-	EngineOptionable(const bool  v,								    Fn* = nullptr, Rucksack* s = nullptr);
-	EngineOptionable(const int   v, const int min, const int max,	Fn* = nullptr, Rucksack* s = nullptr);
+	EngineOptionable(												Fn* = nullptr, OurCarriage* s = nullptr);
+	EngineOptionable(const char* v,								    Fn* = nullptr, OurCarriage* s = nullptr);
+	EngineOptionable(const bool  v,								    Fn* = nullptr, OurCarriage* s = nullptr);
+	EngineOptionable(const int   v, const int min, const int max,	Fn* = nullptr, OurCarriage* s = nullptr);
 
 
 	/// <summary>
@@ -123,5 +123,5 @@ protected:
 	/// <summary>
 	/// 
 	/// </summary>
-	Rucksack* m_searcher_;
+	OurCarriage* m_searcher_;
 };

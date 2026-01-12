@@ -4,7 +4,7 @@
 #include "../n165_movStack/n165_600_convMove.hpp"
 #include "../n680_egOption/n680_230_engineOptionable.hpp"
 #include "../n680_egOption/n680_240_engineOptionsMap.hpp"
-#include "../n885_searcher/n885_040_rucksack.hpp"
+#include "../n885_searcher/n885_040_ourCarriage.hpp"
 
 
 /// <summary>
@@ -26,5 +26,5 @@ public:
 	/// <param name="argc"></param>
 	/// <param name="argv"></param>
 	/// <param name="searcher"></param>
-	void Mainloop(int argc, char* argv[], Rucksack& searcher);
+	void Mainloop(int argc, char* argv[], OurCarriage& searcher);
 };

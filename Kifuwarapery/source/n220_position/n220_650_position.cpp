@@ -32,7 +32,7 @@
 #include "../../header/n407_moveGen_/n407_900_moveList.hpp"
 #include "../../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
 #include "../../header/n600_book____/n600_100_mt64bit.hpp"
-#include "../../header/n885_searcher/n885_040_rucksack.hpp"
+#include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 #include <cassert>
 
 
@@ -299,9 +299,9 @@ const ChangedLists& Position::GetCl() const
 /// 
 /// </summary>
 /// <returns></returns>
-const Rucksack* Position::GetConstRucksack() const
+const OurCarriage* Position::GetConstOurCarriage() const
 {
-	return this->m_pRucksack_;
+	return this->m_pOurCarriage_;
 }
 
 
@@ -309,9 +309,9 @@ const Rucksack* Position::GetConstRucksack() const
 /// 
 /// </summary>
 /// <returns></returns>
-Rucksack* Position::GetRucksack() const
+OurCarriage* Position::GetOurCarriage() const
 {
-	return this->m_pRucksack_;
+	return this->m_pOurCarriage_;
 }
 
 
@@ -319,9 +319,9 @@ Rucksack* Position::GetRucksack() const
 /// 
 /// </summary>
 /// <param name="s"></param>
-void Position::SetRucksack(Rucksack* s)
+void Position::SetOurCarriage(OurCarriage* s)
 {
-	this->m_pRucksack_ = s;
+	this->m_pOurCarriage_ = s;
 }
 
 
@@ -1019,7 +1019,7 @@ void Position::DoMove(const Move move, StateInfo& newSt, const CheckInfo& ci, co
 		handKey -= this->GetZobHand<US>(hpTo);
 		boardKey += this->GetZobrist<US>(ptTo, to);
 
-		prefetch(GetConstRucksack()->m_tt.FirstEntry(boardKey + handKey));
+		prefetch(GetConstOurCarriage()->m_tt.FirstEntry(boardKey + handKey));
 
 		const int handnum = this->GetHand<US>().NumOf(hpTo);
 		const int listIndex = m_evalList_.m_squareHandToList[g_HandPieceToSquareHand[US][hpTo] + handnum];
@@ -1095,7 +1095,7 @@ void Position::DoMove(const Move move, StateInfo& newSt, const CheckInfo& ci, co
 				-PieceScore::GetCapturePieceScore(ptCaptured)
 			);
 		}
-		prefetch(GetConstRucksack()->m_tt.FirstEntry(boardKey + handKey));
+		prefetch(GetConstOurCarriage()->m_tt.FirstEntry(boardKey + handKey));
 		// Occupied は to, from の位置のビットを操作するよりも、
 		// Black と White の or を取る方が速いはず。
 		m_BB_ByPiecetype_[N00_Occupied] = this->GetBbOf10<Color::Black>() | this->GetBbOf10<Color::White>();
@@ -2546,7 +2546,7 @@ Position::Position()
 /// 
 /// </summary>
 /// <param name="s"></param>
-Position::Position(Rucksack * s) : m_pRucksack_(s)
+Position::Position(OurCarriage * s) : m_pOurCarriage_(s)
 {
 }
 
@@ -2579,10 +2579,10 @@ Position::Position(const Position & pos, Soldier * th)
 /// <param name="sfen"></param>
 /// <param name="th"></param>
 /// <param name="s"></param>
-Position::Position(const std::string & sfen, Soldier * th, Rucksack * s)
+Position::Position(const std::string & sfen, Soldier * th, OurCarriage * s)
 {
 	this->Set(sfen, th);
-	this->SetRucksack(s);
+	this->SetOurCarriage(s);
 }
 
 
@@ -2614,9 +2614,9 @@ void Position::Set(const std::string& sfen, Soldier* th) {
 	char token;
 	Square sq = A9;
 
-	Rucksack* s = std::move(m_pRucksack_);
+	OurCarriage* s = std::move(m_pOurCarriage_);
 	this->Clear();
-	this->SetRucksack(s);
+	this->SetOurCarriage(s);
 
 	// 盤上の駒
 	while (ss.get(token) && token != ' ') {

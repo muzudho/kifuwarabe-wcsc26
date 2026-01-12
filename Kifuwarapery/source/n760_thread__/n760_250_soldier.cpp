@@ -8,7 +8,7 @@
 #include "../../header/n440_movStack/n440_500_nextmoveEvent.hpp"
 #include "../../header/n640_searcher/n640_440_splitedNode.hpp"
 #include "../../header/n760_thread__/n760_250_soldier.hpp"
-#include "../../header/n885_searcher/n885_040_rucksack.hpp"
+#include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 
 
 // ========================================
@@ -16,15 +16,15 @@
 // ========================================
 
 
-Soldier::Soldier(Rucksack* rucksack) /*: ＳｐｌｉｔＰｏｉｎｔｓ()*/ {
-	this->m_pRucksack = rucksack;
+Soldier::Soldier(OurCarriage* ourCarriage) /*: ＳｐｌｉｔＰｏｉｎｔｓ()*/ {
+	this->m_pOurCarriage = ourCarriage;
 	this->m_isEndOfSearch = false;
 	this->m_isBeingSearched = false;
 	this->m_splitedNodesSize = 0;
 	this->m_maxPly = 0;
 	this->m_activeSplitedNode = nullptr;
 	this->m_activePosition = nullptr;
-	this->m_idx = rucksack->m_ownerHerosPub.size();
+	this->m_idx = ourCarriage->m_ownerHerosPub.size();
 }
 
 
@@ -121,7 +121,7 @@ void Soldier::ForkNewFighter(
 	assert(pos.IsOK());
 	assert(bestScore <= alpha && alpha < beta && beta <= ScoreInfinite);
 	assert(-ScoreInfinite < bestScore);
-	assert(this->m_pRucksack->m_ownerHerosPub.GetMinSplitDepth() <= depth);
+	assert(this->m_pOurCarriage->m_ownerHerosPub.GetMinSplitDepth() <= depth);
 
 	assert(m_isBeingSearched);
 	assert(m_splitedNodesSize < g_MaxSplitedNodesPerThread);
@@ -147,7 +147,7 @@ void Soldier::ForkNewFighter(
 	splitedNode.m_isUselessNode = false;
 	splitedNode.m_pFlashlightBox = pFlashlightBox;
 
-	this->m_pRucksack->m_ownerHerosPub.m_mutex_.lock();
+	this->m_pOurCarriage->m_ownerHerosPub.m_mutex_.lock();
 	splitedNode.m_mutex.lock();
 
 	++m_splitedNodesSize;
@@ -158,8 +158,8 @@ void Soldier::ForkNewFighter(
 	size_t slavesCount = 1;
 	Soldier* slave;
 
-	while ((slave = this->m_pRucksack->m_ownerHerosPub.GetAvailableSlave(this)) != nullptr
-		&& ++slavesCount <= this->m_pRucksack->m_ownerHerosPub.m_maxThreadsPerSplitedNode_ && !Fake)
+	while ((slave = this->m_pOurCarriage->m_ownerHerosPub.GetAvailableSlave(this)) != nullptr
+		&& ++slavesCount <= this->m_pOurCarriage->m_ownerHerosPub.m_maxThreadsPerSplitedNode_ && !Fake)
 	{
 		splitedNode.m_slavesMask |= UINT64_C(1) << slave->m_idx;
 		slave->m_activeSplitedNode = &splitedNode;
@@ -169,11 +169,11 @@ void Soldier::ForkNewFighter(
 
 	if (1 < slavesCount || Fake) {
 		splitedNode.m_mutex.unlock();
-		this->m_pRucksack->m_ownerHerosPub.m_mutex_.unlock();
+		this->m_pOurCarriage->m_ownerHerosPub.m_mutex_.unlock();
 		Soldier::StartWorkerThread();	// ワーカースレッド開始
 		assert(!m_isBeingSearched);
 		assert(!m_activePosition);
-		this->m_pRucksack->m_ownerHerosPub.m_mutex_.lock();
+		this->m_pOurCarriage->m_ownerHerosPub.m_mutex_.lock();
 		splitedNode.m_mutex.lock();
 	}
 
@@ -185,7 +185,7 @@ void Soldier::ForkNewFighter(
 	bestMove = splitedNode.m_bestMove;
 	bestScore = splitedNode.m_bestScore;
 
-	this->m_pRucksack->m_ownerHerosPub.m_mutex_.unlock();
+	this->m_pOurCarriage->m_ownerHerosPub.m_mutex_.unlock();
 	splitedNode.m_mutex.unlock();
 }
 

@@ -2,7 +2,7 @@
 #include "../../header/n119_score___/n119_090_scoreIndex.hpp"
 #include "../../header/n560_timeMgr_/n560_100_limitsDuringGo.hpp"
 #include "../../header/n560_timeMgr_/n560_500_timeManager.hpp"
-#include "../../header/n885_searcher/n885_040_rucksack.hpp"
+#include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 
 
 namespace {
@@ -243,7 +243,7 @@ void TimeManager::Initialize(
 	const LimitsDuringGo& limits,
 	const Ply currentPly,
 	const Color us,
-	Rucksack* pRucksack)
+	OurCarriage* pRucksack)
 {
 	const Color them = ConvColor::OPPOSITE_COLOR10b(us);
 

@@ -1,9 +1,8 @@
 ﻿#pragma once
 
-
 #include "../../header/n119_score___/n119_090_scoreIndex.hpp"
 #include "../../header/n165_movStack/n165_400_move.hpp"
-#include "../../header/n885_searcher/n885_040_rucksack.hpp"
+#include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 
 
 /// <summary>
@@ -33,7 +32,7 @@ struct Skill {
 	/// 
 	/// </summary>
 	/// <param name="s"></param>
-	void swapIfEnabled(Rucksack* s) {
+	void swapIfEnabled(OurCarriage* s) {
 		if (enabled()) {
 			auto it = std::find(s->m_rootMoves.begin(),
 				s->m_rootMoves.end(),
@@ -65,7 +64,7 @@ struct Skill {
 	/// </summary>
 	/// <param name="s"></param>
 	/// <returns></returns>
-	Move pickMove(Rucksack* s) {
+	Move pickMove(OurCarriage* s) {
 		// level については未対応。max_random_score_diff についてのみ対応する。
 		if (m_maxRandomScoreDiff != ScoreZero) {
 			size_t i = 1;

@@ -4,7 +4,7 @@
 #include "../../header/n223_move____/n223_040_nodeType.hpp"
 #include "../../header/n223_move____/n223_200_depth.hpp"
 #include "../../header/n223_move____/n223_500_flashlight.hpp"
-#include "../../header/n885_searcher/n885_040_rucksack.hpp"	// FIXME:
+#include "../../header/n885_searcher/n885_040_ourCarriage.hpp"	// FIXME:
 #include "../../header/n885_searcher/n885_310_hitchhikerQsearchAbstract.hpp"
 
 
@@ -12,7 +12,7 @@
 /// N01_PV か、N02_NonPV でだけ使うことができるぜ☆（＾ｑ＾）
 /// スプリット・ポイントかそうでないかは見てないぜ☆
 /// </summary>
-/// <param name="rucksack"></param>
+/// <param name="ourCarriage"></param>
 /// <param name="INCHECK"></param>
 /// <param name="pos"></param>
 /// <param name="pFlashlight"></param>
@@ -21,7 +21,7 @@
 /// <param name="depth"></param>
 /// <returns></returns>
 ScoreIndex HitchhikerQsearchAbstract::DoQsearch(
-	Rucksack& rucksack,
+	OurCarriage& ourCarriage,
 	bool INCHECK,
 	Position& pos,
 	Flashlight* pFlashlight,
@@ -61,9 +61,9 @@ ScoreIndex HitchhikerQsearchAbstract::DoQsearch(
 	ttDepth = ((INCHECK || DepthQChecks <= depth) ? DepthQChecks : DepthQNoChecks);
 
 	posKey = pos.GetKey();
-	pTtEntry = rucksack.m_tt.Probe(posKey);
+	pTtEntry = ourCarriage.m_tt.Probe(posKey);
 	ttMove = (pTtEntry != nullptr ? UtilMoveStack::Move16toMove(pTtEntry->GetMove(), pos) : g_MOVE_NONE);
-	ttScore = (pTtEntry != nullptr ? rucksack.ConvertScoreFromTT(pTtEntry->GetScore(), pFlashlight->m_ply) : ScoreNone);
+	ttScore = (pTtEntry != nullptr ? ourCarriage.ConvertScoreFromTT(pTtEntry->GetScore(), pFlashlight->m_ply) : ScoreNone);
 
 	if (pTtEntry != nullptr
 		&& ttDepth <= pTtEntry->GetDepth()
@@ -112,7 +112,7 @@ ScoreIndex HitchhikerQsearchAbstract::DoQsearch(
 
 		if (beta <= bestScore) {
 			if (pTtEntry == nullptr) {
-				rucksack.m_tt.Store(pos.GetKey(), rucksack.ConvertScoreToTT(bestScore, pFlashlight->m_ply), BoundLower,
+				ourCarriage.m_tt.Store(pos.GetKey(), ourCarriage.ConvertScoreToTT(bestScore, pFlashlight->m_ply), BoundLower,
 					DepthNone, g_MOVE_NONE, pFlashlight->m_staticEval);
 			}
 
@@ -128,7 +128,7 @@ ScoreIndex HitchhikerQsearchAbstract::DoQsearch(
 	Evaluation09 evaluation;
 	evaluation.evaluate(pos, pFlashlight);
 
-	NextmoveEvent mp(pos, ttMove, depth, rucksack.m_history, (pFlashlight - 1)->m_currentMove.To());
+	NextmoveEvent mp(pos, ttMove, depth, ourCarriage.m_history, (pFlashlight - 1)->m_currentMove.To());
 	const CheckInfo ci(pos);
 
 	while (!(move = mp.GetNextMove_NonSplitedNode()).IsNone())
@@ -193,7 +193,7 @@ ScoreIndex HitchhikerQsearchAbstract::DoQsearch(
 
 		(pFlashlight + 1)->m_staticEvalRaw.m_p[0][0] = ScoreNotEvaluated;
 		score = // 再帰関数☆（＾ｑ＾）
-			-this->DoQsearch(rucksack, givesCheck, pos, pFlashlight + 1, -beta, -alpha, depth - OnePly);
+			-this->DoQsearch(ourCarriage, givesCheck, pos, pFlashlight + 1, -beta, -alpha, depth - OnePly);
 		pos.UndoMove(move);
 
 		assert(-ScoreInfinite < score && score < ScoreInfinite);
@@ -208,7 +208,7 @@ ScoreIndex HitchhikerQsearchAbstract::DoQsearch(
 				this->DoByNewScore(
 					isReturnWithScore,
 					returnScore,
-					rucksack,
+					ourCarriage,
 					score,
 					beta,
 					alpha,
@@ -225,9 +225,9 @@ ScoreIndex HitchhikerQsearchAbstract::DoQsearch(
 
 	if (INCHECK && bestScore == -ScoreInfinite) { return UtilScore::MatedIn(pFlashlight->m_ply); }
 
-	rucksack.m_tt.Store(
+	ourCarriage.m_tt.Store(
 		posKey,
-		rucksack.ConvertScoreToTT(bestScore, pFlashlight->m_ply),
+		ourCarriage.ConvertScoreToTT(bestScore, pFlashlight->m_ply),
 		this->GetBound01( oldAlpha, bestScore),
 		ttDepth,
 		bestMove,

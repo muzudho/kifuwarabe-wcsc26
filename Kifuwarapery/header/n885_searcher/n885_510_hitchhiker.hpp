@@ -20,7 +20,7 @@
 #include "../n760_thread__/n760_400_herosPub.hpp"
 #include "../n800_learn___/n800_100_stopwatch.hpp"
 //#include "../n885_searcher/n885_600_iterativeDeepeningLoop.hpp"
-#include "n885_040_rucksack.hpp"	// FIXME:
+#include "n885_040_ourCarriage.hpp"	// FIXME:
 
 
 using namespace std;
@@ -48,9 +48,9 @@ public:
 	///		- （２）反復深化探索を行うぜ☆
 	///		</pre>
 	/// </summary>
-	/// <param name="captainsRucksack">キャプテンの持っているＳｅａｒｃｈｅｒ☆</param>
+	/// <param name="captainsOurCarriage">キャプテンの持っている、わたしたちの馬車☆</param>
 	static void	Think(
-		Rucksack& captainsRucksack
+		OurCarriage& captainsOurCarriage
 	);
 
 

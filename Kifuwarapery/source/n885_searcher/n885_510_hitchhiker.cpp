@@ -31,7 +31,7 @@
 #include "../../header/n800_learn___/n800_100_stopwatch.hpp"
 #include "../../header/n883_nodeType/n883_070_nodetypeAbstract.hpp"
 
-#include "../../header/n885_searcher/n885_040_rucksack.hpp"
+#include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 #include "../../header/n885_searcher/n885_480_hitchhikerNyugyoku.hpp"
 #include "../../header/n885_searcher/n885_510_hitchhiker.hpp"
 #include "../../header/n885_searcher/n885_600_iterativeDeepeningLoop.hpp"//FIXME:
@@ -46,7 +46,7 @@
 
 #include "../../header/n887_nodeType/n887_500_nodetypePrograms.hpp"//FIXME:
 //class IterativeDeepeningLoop;
-//static inline void IterativeDeepeningLoop::Execute(Rucksack& rucksack, Position& pos);
+//static inline void IterativeDeepeningLoop::Execute(Rucksack& ourCarriage, Position& pos);
 
 using namespace std;
 
@@ -65,7 +65,7 @@ extern RepetitionTypeArray g_repetitionTypeArray;
 /// </summary>
 /// <param name="captainsRucksack">キャプテンの持っているＳｅａｒｃｈｅｒ☆</param>
 void Hitchhiker::Think(
-	Rucksack& captainsRucksack)
+	OurCarriage& captainsRucksack)
 {
 
 	Position& pos = captainsRucksack.m_rootPosition;

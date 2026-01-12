@@ -31,7 +31,7 @@ using StateStackPtr = std::unique_ptr<std::stack<StateInfo> >;
 
 // 依存関係回避のため。
 class Soldier;
-class Rucksack;
+class OurCarriage;
 
 
 /// <summary>
@@ -53,13 +53,13 @@ public:
 	/// </summary>
 	Position();
 
-	explicit Position(Rucksack* s);
+	explicit Position(OurCarriage* s);
 
 	Position(const Position& pos);
 
 	Position(const Position& pos, Soldier* th);
 
-	Position(const std::string& sfen, Soldier* th, Rucksack* s);
+	Position(const std::string& sfen, Soldier* th, OurCarriage* s);
 
 
 	// ========================================
@@ -605,21 +605,21 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	const Rucksack* GetConstRucksack() const;
+	const OurCarriage* GetConstOurCarriage() const;
 
 
 	/// <summary>
-	/// 
+	/// わたしたちの馬車を取得
 	/// </summary>
 	/// <returns></returns>
-	Rucksack* GetRucksack() const;
+	OurCarriage* GetOurCarriage() const;
 
 
 	/// <summary>
-	/// 
+	/// わたしたちの馬車を設定
 	/// </summary>
 	/// <param name="s"></param>
-	void SetRucksack(Rucksack* s);
+	void SetOurCarriage(OurCarriage* ourCarriage);
 
 
 #if !defined NDEBUG
@@ -826,9 +826,9 @@ private:
 	u64 m_nodes_;
 
 	/// <summary>
-	/// 
+	/// わたしたちの馬車
 	/// </summary>
-	Rucksack* m_pRucksack_;
+	OurCarriage* m_pOurCarriage_;
 
 	/// <summary>
 	/// 

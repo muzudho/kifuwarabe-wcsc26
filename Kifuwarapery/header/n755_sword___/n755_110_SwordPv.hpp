@@ -25,7 +25,7 @@ public:
 	/// <param name="pFlashlight"></param>
 	virtual void GoSearch_AsSplitedNode(
 		SplitedNode& ownerSplitedNode,
-		Rucksack& searcher,
+		OurCarriage& searcher,
 		Position& pos,
 		Flashlight* pFlashlight
 		) const override;

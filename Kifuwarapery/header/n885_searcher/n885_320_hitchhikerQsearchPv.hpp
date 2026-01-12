@@ -129,7 +129,7 @@ public:
 	/// </summary>
 	/// <param name="isReturnWithScore"></param>
 	/// <param name="returnScore"></param>
-	/// <param name="rucksack"></param>
+	/// <param name="ourCarriage"></param>
 	/// <param name="score"></param>
 	/// <param name="beta"></param>
 	/// <param name="alpha"></param>
@@ -141,7 +141,7 @@ public:
 	virtual inline void DoByNewScore(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
-		Rucksack& rucksack,
+		OurCarriage& ourCarriage,
 		ScoreIndex& score,
 		ScoreIndex& beta,
 		ScoreIndex& alpha,
@@ -160,9 +160,9 @@ public:
 		}
 		else {
 			// fail high
-			rucksack.m_tt.Store(
+			ourCarriage.m_tt.Store(
 				posKey,
-				rucksack.ConvertScoreToTT(score, (*ppFlashlight)->m_ply),
+				ourCarriage.ConvertScoreToTT(score, (*ppFlashlight)->m_ply),
 				Bound::BoundLower,
 				ttDepth,
 				move,

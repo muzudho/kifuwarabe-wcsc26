@@ -12,12 +12,12 @@ const SwordRoot g_SWORD_ROOT;
 /// 依存関係の都合上、インラインにはしないぜ☆（＾ｑ＾）
 /// </summary>
 /// <param name="ownerSplitedNode"></param>
-/// <param name="rucksack"></param>
+/// <param name="ourCarriage"></param>
 /// <param name="pos"></param>
 /// <param name="pFlashlight"></param>
 void SwordRoot::GoSearch_AsSplitedNode(
 	SplitedNode& ownerSplitedNode,
-	Rucksack& rucksack,
+	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight
 	) const {
@@ -27,7 +27,7 @@ void SwordRoot::GoSearch_AsSplitedNode(
 	//────────────────────────────────────────────────────────────────────────────────
 	// スプリットポイントは検索を開始するぜ☆（＾ｑ＾）
 	g_NODETYPE_SPLITEDNODE_ROOT.GoToTheAdventure_new(
-		rucksack,
+		ourCarriage,
 		pos,
 		pFlashlight + 1,
 		ownerSplitedNode.m_alpha,

@@ -7,7 +7,7 @@
 #include "../n223_move____/n223_040_nodeType.hpp"
 #include "../n223_move____/n223_200_depth.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"
-#include "n885_040_rucksack.hpp"	// FIXME:
+#include "n885_040_ourCarriage.hpp"	// FIXME:
 
 
 /// <summary>
@@ -25,7 +25,7 @@ public:
 	/// N01_PV か、N02_NonPV でだけ使うことができるぜ☆（＾ｑ＾）
 	///		</pre>
 	/// </summary>
-	/// <param name="rucksack"></param>
+	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="INCHECK"></param>
 	/// <param name="pos"></param>
 	/// <param name="ss"></param>
@@ -34,7 +34,7 @@ public:
 	/// <param name="depth"></param>
 	/// <returns></returns>
 	virtual ScoreIndex DoQsearch(
-		Rucksack& rucksack,
+		OurCarriage& ourCarriage,
 		bool INCHECK,
 		Position& pos,
 		Flashlight* ss,
@@ -144,7 +144,7 @@ public:
 	/// </summary>
 	/// <param name="isReturnWithScore"></param>
 	/// <param name="returnScore"></param>
-	/// <param name="rucksack"></param>
+	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="score"></param>
 	/// <param name="beta"></param>
 	/// <param name="alpha"></param>
@@ -156,7 +156,7 @@ public:
 	virtual inline void DoByNewScore(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
-		Rucksack& rucksack,
+		OurCarriage& ourCarriage,
 		ScoreIndex& score,
 		ScoreIndex& beta,
 		ScoreIndex& alpha,

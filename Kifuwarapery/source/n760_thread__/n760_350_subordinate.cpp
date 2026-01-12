@@ -1,6 +1,6 @@
 ﻿#include "../../header/n080_common__/n080_100_common.hpp"
 #include "../../header/n760_thread__/n760_350_subordinate.hpp"
-#include "../../header/n885_searcher/n885_040_rucksack.hpp"
+#include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 
 
 // ========================================
@@ -23,7 +23,7 @@ void Subordinate::StartWorkerThread() {
 			}
 		}
 		if (this->m_lifetimeMilliseconds) {
-			this->m_pRucksack->CheckTime();
+			this->m_pOurCarriage->CheckTime();
 		}
 	}
 }

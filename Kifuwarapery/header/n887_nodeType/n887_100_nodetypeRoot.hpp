@@ -11,7 +11,7 @@
 #include "../n640_searcher/n640_500_reductions.hpp"
 #include "../n755_sword___/n755_100_SwordRoot.hpp"
 #include "../n883_nodeType/n883_070_nodetypeAbstract.hpp"
-#include "../n885_searcher/n885_040_rucksack.hpp"
+#include "../n885_searcher/n885_040_ourCarriage.hpp"
 #include "../n887_nodeType/n887_100_nodetypeRoot.hpp"
 
 
@@ -31,7 +31,7 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="rucksack"></param>
+	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pos"></param>
 	/// <param name="pFlashlight"></param>
 	/// <param name="alpha"></param>
@@ -40,7 +40,7 @@ public:
 	/// <param name="cutNode"></param>
 	/// <returns></returns>
 	virtual ScoreIndex GoToTheAdventure_new(
-		Rucksack& rucksack,
+		OurCarriage& ourCarriage,
 		Position& pos,
 		Flashlight* pFlashlight,//サーチスタック
 		ScoreIndex alpha,
@@ -105,13 +105,13 @@ public:
 	/// <param name="isReturnWithScore"></param>
 	/// <param name="returnScore"></param>
 	/// <param name="pos"></param>
-	/// <param name="rucksack"></param>
+	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="ppFlashlight"></param>
 	virtual inline void DoStep2(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
 		Position& pos,
-		Rucksack& rucksack,
+		OurCarriage& ourCarriage,
 		Flashlight** ppFlashlight
 		)const override
 	{
@@ -144,17 +144,17 @@ public:
 	/// ルートノードか、それ以外かで　値が分かれるぜ☆（＾ｑ＾）
 	/// </summary>
 	/// <param name="ttMove"></param>
-	/// <param name="rucksack"></param>
+	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pTtEntry"></param>
 	/// <param name="pos"></param>
 	virtual inline void DoStep4x(
 		Move& ttMove,
-		Rucksack& rucksack,
+		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
 		Position& pos
 		)const override
 	{
-		ttMove = rucksack.m_rootMoves[rucksack.m_pvIdx].m_pv_[0];
+		ttMove = ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_pv_[0];
 	}
 
 
@@ -163,7 +163,7 @@ public:
 	/// </summary>
 	/// <param name="isReturnWithScore"></param>
 	/// <param name="returnScore"></param>
-	/// <param name="rucksack"></param>
+	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pTtEntry"></param>
 	/// <param name="depth"></param>
 	/// <param name="ttScore"></param>
@@ -173,7 +173,7 @@ public:
 	virtual inline void DoStep4y(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
-		Rucksack& rucksack,
+		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
 		const Depth depth,
 		ScoreIndex& ttScore,
@@ -207,7 +207,7 @@ public:
 	/// </summary>
 	/// <param name="isReturnWithScore"></param>
 	/// <param name="returnScore"></param>
-	/// <param name="rucksack"></param>
+	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="inCheck"></param>
 	/// <param name="move"></param>
 	/// <param name="pos"></param>
@@ -219,7 +219,7 @@ public:
 	virtual inline void DoStep4z(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
-		Rucksack& rucksack,
+		OurCarriage& ourCarriage,
 		bool& inCheck,
 		Move& move,
 		Position& pos,
@@ -239,7 +239,7 @@ public:
 	/// </summary>
 	/// <param name="isReturnWithScore"></param>
 	/// <param name="returnScore"></param>
-	/// <param name="rucksack"></param>
+	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="depth"></param>
 	/// <param name="eval"></param>
 	/// <param name="beta"></param>
@@ -249,7 +249,7 @@ public:
 	virtual inline void DoStep6_NonPV(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
-		Rucksack& rucksack,
+		OurCarriage& ourCarriage,
 		const Depth depth,
 		ScoreIndex& eval,
 		ScoreIndex& beta,
@@ -287,7 +287,7 @@ public:
 	/// </summary>
 	/// <param name="isReturnWithScore"></param>
 	/// <param name="returnScore"></param>
-	/// <param name="rucksack"></param>
+	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="depth"></param>
 	/// <param name="beta"></param>
@@ -300,7 +300,7 @@ public:
 	virtual inline void DoStep8_NonPV(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
-		Rucksack& rucksack,
+		OurCarriage& ourCarriage,
 		Flashlight** ppFlashlight,
 		const Depth depth,
 		ScoreIndex& beta,
@@ -319,7 +319,7 @@ public:
 	/// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
 	/// </summary>
 	/// <param name="isReturnWithScore"></param>
-	/// <param name="rucksack"></param>
+	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="depth"></param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="beta"></param>
@@ -331,7 +331,7 @@ public:
 	/// <param name="cutNode"></param>
 	virtual inline void DoStep9(
 		bool& isReturnWithScore,
-		Rucksack& rucksack,
+		OurCarriage& ourCarriage,
 		const Depth& depth,
 		Flashlight** ppFlashlight,
 		ScoreIndex& beta,
@@ -354,7 +354,7 @@ public:
 	/// <param name="inCheck"></param>
 	/// <param name="beta"></param>
 	/// <param name="ppFlashlight"></param>
-	/// <param name="rucksack"></param>
+	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pos"></param>
 	/// <param name="alpha"></param>
 	/// <param name="ppTtEntry"></param>
@@ -365,7 +365,7 @@ public:
 		bool& inCheck,
 		ScoreIndex& beta,
 		Flashlight** ppFlashlight,
-		Rucksack& rucksack,
+		OurCarriage& ourCarriage,
 		Position& pos,
 		ScoreIndex& alpha,
 		const TTEntry** ppTtEntry,//セットされるぜ☆
@@ -391,11 +391,11 @@ public:
 			//────────────────────────────────────────────────────────────────────────────────
 			// PVノードの場合☆
 			g_NODETYPE_PROGRAMS[NodeType::N01_PV]->GoToTheAdventure_new(
-				rucksack, pos, (*ppFlashlight), alpha, beta, d, true);
+				ourCarriage, pos, (*ppFlashlight), alpha, beta, d, true);
 
 			(*ppFlashlight)->m_skipNullMove = false;
 
-			(*ppTtEntry) = rucksack.m_tt.Probe(posKey);
+			(*ppTtEntry) = ourCarriage.m_tt.Probe(posKey);
 
 			ttMove = (
 				(*ppTtEntry) != nullptr
@@ -485,7 +485,7 @@ public:
 	/// 無駄枝狩り☆（＾▽＾）
 	/// </summary>
 	/// <param name="isContinue"></param>
-	/// <param name="rucksack"></param>
+	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="captureOrPawnPromotion"></param>
 	/// <param name="inCheck"></param>
 	/// <param name="dangerous"></param>
@@ -502,7 +502,7 @@ public:
 	/// <param name="beta"></param>
 	virtual inline void DoStep13a_FutilityPruning(
 		bool& isContinue,
-		Rucksack& rucksack,
+		OurCarriage& ourCarriage,
 		bool& captureOrPawnPromotion,
 		bool& inCheck,
 		bool& dangerous,
@@ -589,7 +589,7 @@ public:
 	/// スプリット・ポイントか、PVノードかで手続きが変わるぜ☆！（＾ｑ＾）
 	/// </summary>
 	/// <param name="isContinue"></param>
-	/// <param name="rucksack"></param>
+	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="captureOrPawnPromotion"></param>
 	/// <param name="inCheck"></param>
 	/// <param name="dangerous"></param>
@@ -610,7 +610,7 @@ public:
 	/// <param name="movesSearched"></param>
 	virtual inline void DoStep13c(
 		bool& isContinue,
-		Rucksack& rucksack,
+		OurCarriage& ourCarriage,
 		bool& captureOrPawnPromotion,
 		bool& inCheck,
 		bool& dangerous,
@@ -719,7 +719,7 @@ public:
 	/// 非スプリット・ポイントの場合☆（＾ｑ＾）
 	/// </summary>
 	/// <param name="isBreak"></param>
-	/// <param name="rucksack"></param>
+	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="move"></param>
 	/// <param name="isPVMove"></param>
 	/// <param name="alpha"></param>
@@ -731,7 +731,7 @@ public:
 	/// <param name="beta"></param>
 	virtual inline void DoStep18c(
 		bool& isBreak,
-		Rucksack& rucksack,
+		OurCarriage& ourCarriage,
 		Move& move,
 		bool& isPVMove,
 		ScoreIndex& alpha,
@@ -766,7 +766,7 @@ public:
 	/// 非スプリットポイントでだけ実行するぜ☆（＾ｑ＾）
 	/// </summary>
 	/// <param name="isBreak"></param>
-	/// <param name="rucksack"></param>
+	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="depth"></param>
 	/// <param name="ppThisThread"></param>
 	/// <param name="bestScore"></param>
@@ -781,7 +781,7 @@ public:
 	/// <param name="cutNode"></param>
 	virtual inline void DoStep19(
 		bool& isBreak,
-		Rucksack& rucksack,
+		OurCarriage& ourCarriage,
 		const Depth depth,
 		Soldier** ppThisThread,
 		ScoreIndex& bestScore,
@@ -797,14 +797,14 @@ public:
 		)const override {
 
 		if (
-			rucksack.m_ownerHerosPub.GetMinSplitDepth() <= depth
+			ourCarriage.m_ownerHerosPub.GetMinSplitDepth() <= depth
 			&&
-			rucksack.m_ownerHerosPub.GetAvailableSlave(*ppThisThread)
+			ourCarriage.m_ownerHerosPub.GetAvailableSlave(*ppThisThread)
 			&&
 			(*ppThisThread)->m_splitedNodesSize < g_MaxSplitedNodesPerThread)
 		{
 			assert(bestScore < beta);
-			(*ppThisThread)->ForkNewFighter<Rucksack::FakeSplit>(
+			(*ppThisThread)->ForkNewFighter<OurCarriage::FakeSplit>(
 				pos,
 				*ppFlashlight,
 				alpha,

@@ -33,7 +33,7 @@
 #include "../../header/n800_learn___/n800_100_stopwatch.hpp"
 #include "../../header/n883_nodeType/n883_070_nodetypeAbstract.hpp"
 
-#include "../../header/n885_searcher/n885_040_rucksack.hpp"
+#include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 #include "../../header/n885_searcher/n885_310_hitchhikerQsearchAbstract.hpp"
 #include "../../header/n885_searcher/n885_340_hitchhikerQsearchPrograms.hpp"
 #include "../../header/n885_searcher/n885_480_hitchhikerNyugyoku.hpp"
@@ -66,7 +66,7 @@ NodetypeNonPv g_NODETYPE_NON_PV;
 /// <summary>
 /// 
 /// </summary>
-/// <param name="rucksack"></param>
+/// <param name="ourCarriage"></param>
 /// <param name="pos"></param>
 /// <param name="pFlashlight"></param>
 /// <param name="alpha"></param>
@@ -75,7 +75,7 @@ NodetypeNonPv g_NODETYPE_NON_PV;
 /// <param name="cutNode"></param>
 /// <returns></returns>
 ScoreIndex NodetypeNonPv::GoToTheAdventure_new(
-	Rucksack& rucksack,
+	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
 	ScoreIndex alpha,
@@ -141,7 +141,7 @@ ScoreIndex NodetypeNonPv::GoToTheAdventure_new(
 		isReturnWithScore,
 		returnScore,
 		pos,
-		rucksack,
+		ourCarriage,
 		&pFlashlight
 		);
 	if (isReturnWithScore) { return returnScore; }
@@ -165,19 +165,19 @@ ScoreIndex NodetypeNonPv::GoToTheAdventure_new(
 		posKey,
 		pos,
 		&pTtEntry,//セットされる☆
-		rucksack,
+		ourCarriage,
 		ttScore
 		);
 	this->DoStep4x(
 		ttMove,
-		rucksack,
+		ourCarriage,
 		pTtEntry,
 		pos
 		);
 	this->DoStep4y(
 		isReturnWithScore,
 		returnScore,
-		rucksack,
+		ourCarriage,
 		pTtEntry,
 		depth,
 		ttScore,
@@ -190,7 +190,7 @@ ScoreIndex NodetypeNonPv::GoToTheAdventure_new(
 	this->DoStep4z(
 		isReturnWithScore,
 		returnScore,
-		rucksack,
+		ourCarriage,
 		inCheck,
 		move,
 		pos,
@@ -206,7 +206,7 @@ ScoreIndex NodetypeNonPv::GoToTheAdventure_new(
 	bool isGotoIidStart = false;//NonPVのとき使う☆
 	this->DoStep5(
 		isGotoIidStart,
-		rucksack,
+		ourCarriage,
 		eval,
 		&pFlashlight,
 		pos,
@@ -222,7 +222,7 @@ ScoreIndex NodetypeNonPv::GoToTheAdventure_new(
 	this->DoStep6_NonPV(
 		isReturnWithScore,
 		returnScore,
-		rucksack,
+		ourCarriage,
 		depth,
 		eval,
 		beta,
@@ -247,7 +247,7 @@ ScoreIndex NodetypeNonPv::GoToTheAdventure_new(
 	this->DoStep8_NonPV(
 		isReturnWithScore,
 		returnScore,
-		rucksack,
+		ourCarriage,
 		&pFlashlight,
 		depth,
 		beta,
@@ -263,7 +263,7 @@ ScoreIndex NodetypeNonPv::GoToTheAdventure_new(
 	// step9
 	this->DoStep9(
 		isReturnWithScore,
-		rucksack,
+		ourCarriage,
 		depth,
 		&pFlashlight,
 		beta,
@@ -285,7 +285,7 @@ iid_start:
 		inCheck,
 		beta,
 		&pFlashlight,
-		rucksack,
+		ourCarriage,
 		pos,
 		alpha,
 		&pTtEntry,//セットされるぜ☆
@@ -297,7 +297,7 @@ iid_start:
 		pos,
 		ttMove,
 		depth,
-		rucksack.m_history,
+		ourCarriage.m_history,
 		pFlashlight,
 		this->GetBetaAtStep11(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
 		);
@@ -349,7 +349,7 @@ iid_start:
 
 		// step12
 		this->DoStep12(
-			rucksack,
+			ourCarriage,
 			givesCheck,
 			pos,
 			move,
@@ -370,7 +370,7 @@ iid_start:
 		// 無駄枝狩り☆（＾▽＾）非PVだけ行う☆！
 		this->DoStep13a_FutilityPruning(
 			isContinue,
-			rucksack,
+			ourCarriage,
 			captureOrPawnPromotion,
 			inCheck,
 			dangerous,
@@ -399,7 +399,7 @@ iid_start:
 
 		this->DoStep13c(
 			isContinue,
-			rucksack,
+			ourCarriage,
 			captureOrPawnPromotion,
 			inCheck,
 			dangerous,
@@ -440,7 +440,7 @@ iid_start:
 
 		// step15
 		this->DoStep15(
-			rucksack,
+			ourCarriage,
 			depth,
 			isPVMove,
 			captureOrPawnPromotion,
@@ -459,7 +459,7 @@ iid_start:
 
 		// step16
 		this->DoStep16b_NonPVAtukai(
-			rucksack,
+			ourCarriage,
 			doFullDepthSearch,
 			score,
 			newDepth,
@@ -480,10 +480,10 @@ iid_start:
 
 		// step18
 
-		if (rucksack.m_signals.m_stop || pThisThread->IsUselessNode()) { return score; }
+		if (ourCarriage.m_signals.m_stop || pThisThread->IsUselessNode()) { return score; }
 
 		this->DoStep18b(
-			rucksack,
+			ourCarriage,
 			move,
 			isPVMove,
 			alpha,
@@ -493,7 +493,7 @@ iid_start:
 		bool isBreak = false;
 		this->DoStep18c(
 			isBreak,
-			rucksack,
+			ourCarriage,
 			move,
 			isPVMove,
 			alpha,
@@ -509,7 +509,7 @@ iid_start:
 		// step19
 		this->DoStep19(
 			isBreak,
-			rucksack,
+			ourCarriage,
 			depth,
 			&pThisThread,
 			bestScore,
@@ -532,7 +532,7 @@ iid_start:
 	this->DoStep20(
 		moveCount,
 		excludedMove,
-		rucksack,
+		ourCarriage,
 		alpha,
 		&pFlashlight,
 		bestScore,

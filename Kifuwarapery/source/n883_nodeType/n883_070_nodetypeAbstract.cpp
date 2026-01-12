@@ -61,7 +61,7 @@ extern RepetitionTypeArray g_repetitionTypeArray;
 
 
 ScoreIndex NodetypeAbstract::GoToTheAdventure_new(
-	Rucksack& rucksack,
+	Rucksack& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
 	ScoreIndex alpha,
@@ -150,7 +150,7 @@ ScoreIndex NodetypeAbstract::GoToTheAdventure_new(
 		isReturnWithScore,
 		returnScore,
 		pos,
-		rucksack,
+		ourCarriage,
 		&pFlashlight
 		);
 
@@ -181,19 +181,19 @@ ScoreIndex NodetypeAbstract::GoToTheAdventure_new(
 		posKey,
 		pos,
 		&pTtEntry,//セットされる☆
-		rucksack,
+		ourCarriage,
 		ttScore
 		);
 	this->DoStep4x(
 		ttMove,
-		rucksack,
+		ourCarriage,
 		pTtEntry,
 		pos
 		);
 	this->DoStep4y(
 		isReturnWithScore,
 		returnScore,
-		rucksack,
+		ourCarriage,
 		pTtEntry,
 		depth,
 		ttScore,
@@ -208,7 +208,7 @@ ScoreIndex NodetypeAbstract::GoToTheAdventure_new(
 	this->DoStep4z(
 		isReturnWithScore,
 		returnScore,
-		rucksack,
+		ourCarriage,
 		inCheck,
 		move,
 		pos,
@@ -227,7 +227,7 @@ ScoreIndex NodetypeAbstract::GoToTheAdventure_new(
 	bool isGotoIidStart = false;
 	this->DoStep5(
 		isGotoIidStart,
-		rucksack,
+		ourCarriage,
 		eval,
 		&pFlashlight,
 		pos,
@@ -245,7 +245,7 @@ ScoreIndex NodetypeAbstract::GoToTheAdventure_new(
 	this->DoStep6_NonPV(
 		isReturnWithScore,
 		returnScore,
-		rucksack,
+		ourCarriage,
 		depth,
 		eval,
 		beta,
@@ -276,7 +276,7 @@ ScoreIndex NodetypeAbstract::GoToTheAdventure_new(
 	this->DoStep8_NonPV(
 		isReturnWithScore,
 		returnScore,
-		rucksack,
+		ourCarriage,
 		&pFlashlight,
 		depth,
 		beta,
@@ -294,7 +294,7 @@ ScoreIndex NodetypeAbstract::GoToTheAdventure_new(
 	// step9
 	this->DoStep9(
 		isReturnWithScore,
-		rucksack,
+		ourCarriage,
 		depth,
 		&pFlashlight,
 		beta,
@@ -318,7 +318,7 @@ iid_start:
 		inCheck,
 		beta,
 		&pFlashlight,
-		rucksack,
+		ourCarriage,
 		pos,
 		alpha,
 		&pTtEntry,//セットされるぜ☆
@@ -330,7 +330,7 @@ split_point_start:
 		pos,
 		ttMove,
 		depth,
-		rucksack.m_history,
+		ourCarriage.m_history,
 		pFlashlight,
 		this->GetBetaAtStep11(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
 		);
@@ -377,7 +377,7 @@ split_point_start:
 
 		this->DoStep11d_LoopHeader(
 			isContinue,
-			rucksack,
+			ourCarriage,
 			move
 			);
 		if (isContinue)
@@ -386,7 +386,7 @@ split_point_start:
 		}
 
 		this->DoStep11e_LoopHeader(
-			rucksack,
+			ourCarriage,
 			moveCount
 			);
 
@@ -402,7 +402,7 @@ split_point_start:
 
 		// step12
 		this->DoStep12(
-			rucksack,
+			ourCarriage,
 			givesCheck,
 			pos,
 			move,
@@ -423,7 +423,7 @@ split_point_start:
 		// 無駄枝狩り☆（＾▽＾）
 		this->DoStep13a_FutilityPruning(
 			isContinue,
-			rucksack,
+			ourCarriage,
 			captureOrPawnPromotion,
 			inCheck,
 			dangerous,
@@ -456,7 +456,7 @@ split_point_start:
 		}
 		this->DoStep13c(
 			isContinue,
-			rucksack,
+			ourCarriage,
 			captureOrPawnPromotion,
 			inCheck,
 			dangerous,
@@ -499,7 +499,7 @@ split_point_start:
 
 		// step15
 		this->DoStep15(
-			rucksack,
+			ourCarriage,
 			depth,
 			isPVMove,
 			captureOrPawnPromotion,
@@ -523,7 +523,7 @@ split_point_start:
 			&pSplitedNode
 			);
 		this->DoStep16b_NonPVAtukai(
-			rucksack,
+			ourCarriage,
 			doFullDepthSearch,
 			score,
 			newDepth,
@@ -534,7 +534,7 @@ split_point_start:
 			cutNode
 			);
 		this->DoStep16c(
-			rucksack,
+			ourCarriage,
 			isPVMove,
 			alpha,
 			score,
@@ -560,12 +560,12 @@ split_point_start:
 			alpha
 			);
 
-		if (rucksack.m_signals.m_stop || pThisThread->IsUselessNode()) {
+		if (ourCarriage.m_signals.m_stop || pThisThread->IsUselessNode()) {
 			return score;
 		}
 
 		this->DoStep18b(
-			rucksack,
+			ourCarriage,
 			move,
 			isPVMove,
 			alpha,
@@ -575,7 +575,7 @@ split_point_start:
 		bool isBreak = false;
 		this->DoStep18c(
 			isBreak,
-			rucksack,
+			ourCarriage,
 			move,
 			isPVMove,
 			alpha,
@@ -593,7 +593,7 @@ split_point_start:
 		// step19
 		this->DoStep19(
 			isBreak,
-			rucksack,
+			ourCarriage,
 			depth,
 			&pThisThread,
 			bestScore,
@@ -620,7 +620,7 @@ split_point_start:
 	this->DoStep20(
 		moveCount,
 		excludedMove,
-		rucksack,
+		ourCarriage,
 		alpha,
 		&pFlashlight,
 		bestScore,

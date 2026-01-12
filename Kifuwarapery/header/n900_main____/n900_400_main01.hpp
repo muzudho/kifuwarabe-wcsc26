@@ -5,7 +5,7 @@
 #include "../n220_position/n220_750_charToPieceUSI.hpp"
 #include "../n480_tt______/n480_300_tt.hpp"
 #include "../n760_thread__/n760_400_herosPub.hpp"
-#include "../n885_searcher/n885_040_rucksack.hpp"
+#include "../n885_searcher/n885_040_ourCarriage.hpp"
 
 
 /// <summary>
@@ -19,7 +19,7 @@ public:
 	/// <summary>
 	/// Rucksack？ 探索者☆？（＾ｑ＾）
 	/// </summary>
-	std::unique_ptr<Rucksack> searcher;
+	std::unique_ptr<OurCarriage> searcher;
 
 
 public:

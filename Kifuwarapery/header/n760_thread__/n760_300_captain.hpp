@@ -3,7 +3,7 @@
 #include "n760_250_soldier.hpp"
 
 
-class Rucksack;
+class OurCarriage;
 
 
 /// <summary>
@@ -41,7 +41,7 @@ public:
     /// 生成☆（＾ｑ＾）
 	/// </summary>
 	/// <param name="s"></param>
-	explicit Captain(Rucksack* s) : Soldier(s), m_isMasterThread(true) {}
+	explicit Captain(OurCarriage* s) : Soldier(s), m_isMasterThread(true) {}
 
 
 	// ========================================

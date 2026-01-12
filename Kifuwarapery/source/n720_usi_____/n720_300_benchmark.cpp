@@ -7,7 +7,7 @@
 #include "../../header/n560_timeMgr_/n560_100_limitsDuringGo.hpp"
 #include "../../header/n720_usi_____/n720_260_usiOperation.hpp"
 #include "../../header/n720_usi_____/n720_300_benchmark.hpp"
-#include "../../header/n885_searcher/n885_040_rucksack.hpp"
+#include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 
 
 /// <summary>
@@ -24,7 +24,7 @@ void Benchmark(GameStats& gameStats, Position& pos) {
 							 "name Max_Random_Score_Diff value 0"};
 	for (auto& str : options) {
 		std::istringstream is(str);
-		pos.GetRucksack()->SetOption(is);
+		pos.GetOurCarriage()->SetOption(is);
 	}
 
 	std::ifstream ifs("benchmark.sfen");
@@ -38,6 +38,6 @@ void Benchmark(GameStats& gameStats, Position& pos) {
 
 		std::istringstream ss_go("byoyomi 10000");
 		usiOperation.Go(gameStats, pos, ss_go);
-		pos.GetRucksack()->m_ownerHerosPub.WaitForThinkFinished();
+		pos.GetOurCarriage()->m_ownerHerosPub.WaitForThinkFinished();
 	}
 }

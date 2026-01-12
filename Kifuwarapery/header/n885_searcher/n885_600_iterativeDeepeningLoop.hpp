@@ -7,7 +7,7 @@
 #include "../n220_position/n220_665_utilMoveStack.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"
 #include "../n883_nodeType/n883_070_nodetypeAbstract.hpp"
-#include "n885_040_rucksack.hpp"
+#include "n885_040_ourCarriage.hpp"
 #include "n885_580_skill.hpp"
 
 
@@ -29,9 +29,9 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="rucksack"></param>
+	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pos"></param>
-	static inline void Execute885_500(Rucksack& rucksack, Position& pos)
+	static inline void Execute885_500(OurCarriage& ourCarriage, Position& pos)
 	{
 		Flashlight flashlight[g_maxPlyPlus2];
 		Ply depth;
@@ -47,7 +47,7 @@ public:
 		int lastInfoTime = -1; // 将棋所のコンソールが詰まる問題への対処用
 
 		memset(flashlight, 0, 4 * sizeof(Flashlight));
-		rucksack.ZeroclearBestMovePlyChanges();
+		ourCarriage.ZeroclearBestMovePlyChanges();
 #if defined LEARN
 		// 高速化の為に浅い探索は反復深化しないようにする。学習時は浅い探索をひたすら繰り返す為。
 		GetDepth = std::max<Ply>(0, m_limits.GetDepth - 1);
@@ -56,30 +56,30 @@ public:
 #endif
 
 		flashlight[0].m_currentMove = g_MOVE_NULL; // skip update gains
-		rucksack.m_tt.NewSearch();
-		rucksack.m_history.Clear();
-		rucksack.m_gains.Clear();
+		ourCarriage.m_tt.NewSearch();
+		ourCarriage.m_history.Clear();
+		ourCarriage.m_gains.Clear();
 
 		// マルチＰＶの数☆？
-		rucksack.m_pvSize = rucksack.m_engineOptions["MultiPV"];
-		Skill skill(rucksack.m_engineOptions["Skill_Level"], rucksack.m_engineOptions["Max_Random_Score_Diff"]);
+		ourCarriage.m_pvSize = ourCarriage.m_engineOptions["MultiPV"];
+		Skill skill(ourCarriage.m_engineOptions["Skill_Level"], ourCarriage.m_engineOptions["Max_Random_Score_Diff"]);
 
-		if (rucksack.m_engineOptions["Max_Random_Score_Diff_Ply"] < pos.GetGamePly()) {
+		if (ourCarriage.m_engineOptions["Max_Random_Score_Diff_Ply"] < pos.GetGamePly()) {
 			skill.m_maxRandomScoreDiff = ScoreZero;
-			rucksack.m_pvSize = 1;
+			ourCarriage.m_pvSize = 1;
 			assert(!skill.enabled()); // level による設定が出来るようになるまでは、これで良い。
 		}
 
-		if (skill.enabled() && rucksack.m_pvSize < 3) {
-			rucksack.m_pvSize = 3;
+		if (skill.enabled() && ourCarriage.m_pvSize < 3) {
+			ourCarriage.m_pvSize = 3;
 		}
-		rucksack.m_pvSize = std::min(rucksack.m_pvSize, rucksack.m_rootMoves.size());
+		ourCarriage.m_pvSize = std::min(ourCarriage.m_pvSize, ourCarriage.m_rootMoves.size());
 
 		// 指し手が無ければ負け
-		if (rucksack.m_rootMoves.empty()) {
-			rucksack.m_rootMoves.push_back(RootMove(g_MOVE_NONE));
+		if (ourCarriage.m_rootMoves.empty()) {
+			ourCarriage.m_rootMoves.push_back(RootMove(g_MOVE_NONE));
 			SYNCCOUT << "info depth 0 score "
-				<< rucksack.scoreToUSI(-ScoreMate0Ply)
+				<< ourCarriage.scoreToUSI(-ScoreMate0Ply)
 				<< SYNCENDL;
 
 			return;
@@ -105,32 +105,32 @@ public:
 #endif
 
 		// 反復深化で探索を行う。
-		while (++depth <= g_maxPly && !rucksack.m_signals.m_stop && (!rucksack.m_limits.m_depth || depth <= rucksack.m_limits.m_depth)) {
+		while (++depth <= g_maxPly && !ourCarriage.m_signals.m_stop && (!ourCarriage.m_limits.m_depth || depth <= ourCarriage.m_limits.m_depth)) {
 
 			// 前回の iteration の結果を全てコピー
-			for (size_t i = 0; i < rucksack.m_rootMoves.size(); ++i) {
-				rucksack.m_rootMoves[i].m_prevScore_ = rucksack.m_rootMoves[i].m_score_;
+			for (size_t i = 0; i < ourCarriage.m_rootMoves.size(); ++i) {
+				ourCarriage.m_rootMoves[i].m_prevScore_ = ourCarriage.m_rootMoves[i].m_score_;
 			}
 
-			prevBestMovePlyChanges = rucksack.GetBestMovePlyChanges();
-			rucksack.ZeroclearBestMovePlyChanges(); // 退避したので、ゼロクリアーするぜ☆（＾ｑ＾）
+			prevBestMovePlyChanges = ourCarriage.GetBestMovePlyChanges();
+			ourCarriage.ZeroclearBestMovePlyChanges(); // 退避したので、ゼロクリアーするぜ☆（＾ｑ＾）
 
 			// Multi PV loop
-			for (rucksack.m_pvIdx = 0; rucksack.m_pvIdx < rucksack.m_pvSize && !rucksack.m_signals.m_stop; ++rucksack.m_pvIdx) {
+			for (ourCarriage.m_pvIdx = 0; ourCarriage.m_pvIdx < ourCarriage.m_pvSize && !ourCarriage.m_signals.m_stop; ++ourCarriage.m_pvIdx) {
 #if defined LEARN
-				m_alpha = rucksack.m_alpha;
-				m_beta = rucksack.m_beta;
+				m_alpha = ourCarriage.m_alpha;
+				m_beta = ourCarriage.m_beta;
 #else
 				// aspiration search
 				// alpha, beta をある程度絞ることで、探索効率を上げる。
 				if (
 					// 深さ５以上で
 					5 <= depth &&
-					abs(rucksack.m_rootMoves[rucksack.m_pvIdx].m_prevScore_) < PieceScore::m_ScoreKnownWin
+					abs(ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_prevScore_) < PieceScore::m_ScoreKnownWin
 					) {
 					delta = static_cast<ScoreIndex>(16);
-					alpha = rucksack.m_rootMoves[rucksack.m_pvIdx].m_prevScore_ - delta;
-					beta = rucksack.m_rootMoves[rucksack.m_pvIdx].m_prevScore_ + delta;
+					alpha = ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_prevScore_ - delta;
+					beta = ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_prevScore_ + delta;
 				}
 				else {
 					alpha = -ScoreInfinite;
@@ -147,21 +147,21 @@ public:
 					//────────────────────────────────────────────────────────────────────────────────
 					// 探索☆？（＾ｑ＾）　１回目のぐるんぐるんだぜ～☆　ルート～☆
 					//────────────────────────────────────────────────────────────────────────────────
-					bestScore = g_NODETYPE_PROGRAMS[NodeType::N00_Root]->GoToTheAdventure_new(rucksack, pos, flashlight + 1, alpha, beta, static_cast<Depth>(depth * OnePly), false);
+					bestScore = g_NODETYPE_PROGRAMS[NodeType::N00_Root]->GoToTheAdventure_new(ourCarriage, pos, flashlight + 1, alpha, beta, static_cast<Depth>(depth * OnePly), false);
 
 					// 先頭が最善手になるようにソート
-					UtilMoveStack::InsertionSort(rucksack.m_rootMoves.begin() + rucksack.m_pvIdx, rucksack.m_rootMoves.end());
+					UtilMoveStack::InsertionSort(ourCarriage.m_rootMoves.begin() + ourCarriage.m_pvIdx, ourCarriage.m_rootMoves.end());
 
-					for (size_t i = 0; i <= rucksack.m_pvIdx; ++i) {
+					for (size_t i = 0; i <= ourCarriage.m_pvIdx; ++i) {
 						flashlight->m_staticEvalRaw.m_p[0][0] = (flashlight + 1)->m_staticEvalRaw.m_p[0][0] = ScoreNotEvaluated;
-						rucksack.m_rootMoves[i].InsertPvInTT(pos);
+						ourCarriage.m_rootMoves[i].InsertPvInTT(pos);
 					}
 
 #if 0
 					// 詰みを発見したら即指す。
-					if (ScoreMateInMaxPly <= abs(rucksack.m_bestScore) && abs(rucksack.m_bestScore) < ScoreInfinite) {
-						SYNCCOUT << PvInfoToUSI(GetPos, rucksack.m_ply, rucksack.m_alpha, rucksack.m_beta) << SYNCENDL;
-						rucksack.m_signals.m_stop = true;
+					if (ScoreMateInMaxPly <= abs(ourCarriage.m_bestScore) && abs(ourCarriage.m_bestScore) < ScoreInfinite) {
+						SYNCCOUT << PvInfoToUSI(GetPos, ourCarriage.m_ply, ourCarriage.m_alpha, ourCarriage.m_beta) << SYNCENDL;
+						ourCarriage.m_signals.m_stop = true;
 					}
 #endif
 
@@ -169,17 +169,17 @@ public:
 					break;
 #endif
 
-					if (rucksack.m_signals.m_stop) { break; }
+					if (ourCarriage.m_signals.m_stop) { break; }
 					if (alpha < bestScore && bestScore < beta) { break; }
 
 					if (
 						// 思考時間が3秒経過するまで、読み筋を出力しないぜ☆！（＾ｑ＾）
-						3000 < rucksack.m_stopwatch.GetElapsed()
+						3000 < ourCarriage.m_stopwatch.GetElapsed()
 						// 将棋所のコンソールが詰まるのを防ぐ。
-						&& (depth < 10 || lastInfoTime + 200 < rucksack.m_stopwatch.GetElapsed()))
+						&& (depth < 10 || lastInfoTime + 200 < ourCarriage.m_stopwatch.GetElapsed()))
 					{
-						lastInfoTime = rucksack.m_stopwatch.GetElapsed();
-						SYNCCOUT << rucksack.PvInfoToUSI(pos, depth, alpha, beta) << SYNCENDL;
+						lastInfoTime = ourCarriage.m_stopwatch.GetElapsed();
+						SYNCCOUT << ourCarriage.PvInfoToUSI(pos, depth, alpha, beta) << SYNCENDL;
 					}
 
 					// fail high/low のとき、aspiration window を広げる。
@@ -193,8 +193,8 @@ public:
 						delta += delta / 2;
 					}
 					else {
-						rucksack.m_signals.m_failedLowAtRoot = true;
-						rucksack.m_signals.m_stopOnPonderHit = false;
+						ourCarriage.m_signals.m_failedLowAtRoot = true;
+						ourCarriage.m_signals.m_stopOnPonderHit = false;
 
 						alpha -= delta;
 						delta += delta / 2;
@@ -203,19 +203,19 @@ public:
 					assert(-ScoreInfinite <= alpha && beta <= ScoreInfinite);
 				}
 
-				UtilMoveStack::InsertionSort(rucksack.m_rootMoves.begin(), rucksack.m_rootMoves.begin() + rucksack.m_pvIdx + 1);
+				UtilMoveStack::InsertionSort(ourCarriage.m_rootMoves.begin(), ourCarriage.m_rootMoves.begin() + ourCarriage.m_pvIdx + 1);
 
 				if (
 					(
-						rucksack.m_pvIdx + 1 == rucksack.m_pvSize ||
+						ourCarriage.m_pvIdx + 1 == ourCarriage.m_pvSize ||
 						// 思考時間が3秒経過するまで、読み筋を出力しないぜ☆！（＾ｑ＾）
-						3000 < rucksack.m_stopwatch.GetElapsed()
+						3000 < ourCarriage.m_stopwatch.GetElapsed()
 					)
 					// 将棋所のコンソールが詰まるのを防ぐ。
-					&& (depth < 10 || lastInfoTime + 200 < rucksack.m_stopwatch.GetElapsed()))
+					&& (depth < 10 || lastInfoTime + 200 < ourCarriage.m_stopwatch.GetElapsed()))
 				{
-					lastInfoTime = rucksack.m_stopwatch.GetElapsed();
-					SYNCCOUT << rucksack.PvInfoToUSI(pos, depth, alpha, beta) << SYNCENDL;
+					lastInfoTime = ourCarriage.m_stopwatch.GetElapsed();
+					SYNCCOUT << ourCarriage.PvInfoToUSI(pos, depth, alpha, beta) << SYNCENDL;
 				}
 			}
 
@@ -224,25 +224,25 @@ public:
 			//}
 
 			if (
-				rucksack.m_limits.IsBrandnewTimeMgr() // 反復深化探索に潜るために真であることが必要☆
+				ourCarriage.m_limits.IsBrandnewTimeMgr() // 反復深化探索に潜るために真であることが必要☆
 				&&
-				!rucksack.m_signals.m_stopOnPonderHit
+				!ourCarriage.m_signals.m_stopOnPonderHit
 			) {
 				bool stop = false;
 
 				// 深さが 5 ～ 49 で、PVサイズが 1 のとき。
-				if (4 < depth && depth < 50 && rucksack.m_pvSize == 1) {
-					rucksack.m_timeMgr.SetPvInstability(rucksack.GetBestMovePlyChanges(), prevBestMovePlyChanges);
+				if (4 < depth && depth < 50 && ourCarriage.m_pvSize == 1) {
+					ourCarriage.m_timeMgr.SetPvInstability(ourCarriage.GetBestMovePlyChanges(), prevBestMovePlyChanges);
 				}
 
 				// 次のイテレーションを回す時間が無いなら、ストップ
 				if (
-					!rucksack.m_timeMgr.IsTimeOk_CanIterativeDeeping(rucksack.m_stopwatch.GetElapsed())
+					!ourCarriage.m_timeMgr.IsTimeOk_CanIterativeDeeping(ourCarriage.m_stopwatch.GetElapsed())
 					) {
 					stop = true;
 				}
 
-				if (2 < depth && rucksack.GetBestMovePlyChanges()) {
+				if (2 < depth && ourCarriage.GetBestMovePlyChanges()) {
 					bestMoveNeverChanged = false;
 				}
 
@@ -252,26 +252,26 @@ public:
 					12 <= depth
 					&& !stop
 					&& bestMoveNeverChanged
-					&& rucksack.m_pvSize == 1
+					&& ourCarriage.m_pvSize == 1
 					// ここは確実にバグらせないようにする。
 					&& -ScoreInfinite + 2 * PieceScore::m_capturePawn <= bestScore
 					&& (
-						rucksack.m_rootMoves.size() == 1
+						ourCarriage.m_rootMoves.size() == 1
 						||
 						// または、まだ反復深化探索していい時間が残ってるなら。
-						rucksack.m_timeMgr.IsTimeOk_CanIterativeDeeping(rucksack.m_stopwatch.GetElapsed())
+						ourCarriage.m_timeMgr.IsTimeOk_CanIterativeDeeping(ourCarriage.m_stopwatch.GetElapsed())
 					)
 				) {
 					const ScoreIndex rBeta = bestScore - 2 * PieceScore::m_capturePawn;
 					(flashlight + 1)->m_staticEvalRaw.m_p[0][0] = ScoreNotEvaluated;
-					(flashlight + 1)->m_excludedMove = rucksack.m_rootMoves[0].m_pv_[0];
+					(flashlight + 1)->m_excludedMove = ourCarriage.m_rootMoves[0].m_pv_[0];
 					(flashlight + 1)->m_skipNullMove = true;
 
 					//────────────────────────────────────────────────────────────────────────────────
 					// さあ、探索に潜るぜ～☆！（＾ｑ＾）　２回目のぐるんぐるんだぜ～☆ ノンＰＶ～☆
 					//────────────────────────────────────────────────────────────────────────────────
 					const ScoreIndex s = g_NODETYPE_PROGRAMS[NodeType::N02_NonPV]->GoToTheAdventure_new(
-						rucksack, pos, flashlight + 1, rBeta - 1, rBeta, (depth - 3) * OnePly, true);
+						ourCarriage, pos, flashlight + 1, rBeta - 1, rBeta, (depth - 3) * OnePly, true);
 
 					(flashlight + 1)->m_skipNullMove = false;
 					(flashlight + 1)->m_excludedMove = g_MOVE_NONE;
@@ -282,16 +282,16 @@ public:
 				}
 
 				if (stop) {
-					if (rucksack.m_limits.m_canPonder) {
-						rucksack.m_signals.m_stopOnPonderHit = true;
+					if (ourCarriage.m_limits.m_canPonder) {
+						ourCarriage.m_signals.m_stopOnPonderHit = true;
 					}
 					else {
-						rucksack.m_signals.m_stop = true;
+						ourCarriage.m_signals.m_stop = true;
 					}
 				}
 			}
 		}
-		skill.swapIfEnabled(&rucksack);
-		SYNCCOUT << rucksack.PvInfoToUSI(pos, depth - 1, alpha, beta) << SYNCENDL;
+		skill.swapIfEnabled(&ourCarriage);
+		SYNCCOUT << ourCarriage.PvInfoToUSI(pos, depth - 1, alpha, beta) << SYNCENDL;
 	}
 };

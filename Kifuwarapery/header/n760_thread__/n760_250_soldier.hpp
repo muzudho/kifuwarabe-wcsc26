@@ -12,7 +12,7 @@
 #include "../n640_searcher/n640_440_splitedNode.hpp" // 持ち合い
 
 
-class Rucksack;
+class OurCarriage;
 
 
 /// <summary>
@@ -44,7 +44,7 @@ public:
 	/// 生成。
 	/// </summary>
 	/// <param name="s"></param>
-	explicit Soldier(Rucksack* s);
+	explicit Soldier(OurCarriage* s);
 
 
 	/// <summary>
@@ -121,9 +121,9 @@ public:
 	volatile int m_splitedNodesSize;
 
 	/// <summary>
-	/// 
+	/// わたしたちの馬車
 	/// </summary>
-	Rucksack* m_pRucksack;
+	OurCarriage* m_pOurCarriage;
 
 
 	// ========================================

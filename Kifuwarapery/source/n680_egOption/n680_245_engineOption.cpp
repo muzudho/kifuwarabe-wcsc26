@@ -1,6 +1,6 @@
 ﻿#include <ostream>
 #include "../../header/n680_egOption/n680_245_engineOption.hpp"
-#include "../../header/n885_searcher/n885_040_rucksack.hpp"
+#include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 
 
 /// <summary>
@@ -9,7 +9,7 @@
 /// <param name="v"></param>
 /// <param name="f"></param>
 /// <param name="s"></param>
-EngineOption::EngineOption(const char* v, Fn* f, Rucksack* s) : EngineOptionable(v, f, s)
+EngineOption::EngineOption(const char* v, Fn* f, OurCarriage* s) : EngineOptionable(v, f, s)
 {
 }
 
@@ -20,7 +20,7 @@ EngineOption::EngineOption(const char* v, Fn* f, Rucksack* s) : EngineOptionable
 /// <param name="v"></param>
 /// <param name="f"></param>
 /// <param name="s"></param>
-EngineOption::EngineOption(const bool v, Fn* f, Rucksack* s) : EngineOptionable(v, f, s)
+EngineOption::EngineOption(const bool v, Fn* f, OurCarriage* s) : EngineOptionable(v, f, s)
 {
 }
 
@@ -30,7 +30,7 @@ EngineOption::EngineOption(const bool v, Fn* f, Rucksack* s) : EngineOptionable(
 /// </summary>
 /// <param name="f"></param>
 /// <param name="s"></param>
-EngineOption::EngineOption(Fn* f, Rucksack* s) : EngineOptionable(f, s)
+EngineOption::EngineOption(Fn* f, OurCarriage* s) : EngineOptionable(f, s)
 {
 }
 
@@ -43,7 +43,7 @@ EngineOption::EngineOption(Fn* f, Rucksack* s) : EngineOptionable(f, s)
 /// <param name="max"></param>
 /// <param name="f"></param>
 /// <param name="s"></param>
-EngineOption::EngineOption(const int v, const int min, const int max, Fn* f, Rucksack* s) : EngineOptionable(v, min, max, f, s)
+EngineOption::EngineOption(const int v, const int min, const int max, Fn* f, OurCarriage* s) : EngineOptionable(v, min, max, f, s)
 {
 }
 

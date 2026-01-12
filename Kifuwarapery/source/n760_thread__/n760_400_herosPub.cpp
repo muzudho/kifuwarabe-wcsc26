@@ -6,7 +6,7 @@
 #include "../../header/n640_searcher/n640_450_rootMove.hpp"
 #include "../../header/n760_thread__/n760_250_soldier.hpp"
 #include "../../header/n760_thread__/n760_400_herosPub.hpp"
-#include "../../header/n885_searcher/n885_040_rucksack.hpp"
+#include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 
 
 // ========================================
@@ -23,7 +23,7 @@
 /// <typeparam name="T"></typeparam>
 /// <param name="s"></param>
 /// <returns></returns>
-template <typename T> T* newThread(Rucksack* s) {
+template <typename T> T* newThread(OurCarriage* s) {
 	T* th = new T(s);
 	th->m_handle = std::thread(&Soldier::StartWorkerThread, th); // move constructor
 	return th;
@@ -49,7 +49,7 @@ void deleteThread(Soldier* th) {
 /// 最初の設定（初期化）を行うぜ☆（＾▽＾）
 /// </summary>
 /// <param name="s"></param>
-void HerosPub::Init(Rucksack* s) {
+void HerosPub::Init(OurCarriage* s) {
 	m_isSleepWhileIdle_ = true;
 #if defined LEARN
 #else
@@ -80,7 +80,7 @@ void HerosPub::Exit() {
 /// 
 /// </summary>
 /// <param name="searcher"></param>
-void HerosPub::ReadUSIOptions(Rucksack* searcher) {
+void HerosPub::ReadUSIOptions(OurCarriage* searcher) {
 
 	this->m_maxThreadsPerSplitedNode_ = searcher->m_engineOptions["Max_Threads_per_Split_Point"];
 
@@ -161,15 +161,15 @@ void HerosPub::StartThinking(
 	WaitForThinkFinished();
 #endif
 
-	position.GetRucksack()->m_stopwatch.Restart();
+	position.GetOurCarriage()->m_stopwatch.Restart();
 
-	position.GetRucksack()->m_signals.m_stopOnPonderHit = position.GetRucksack()->m_signals.m_firstRootMove = false;
-	position.GetRucksack()->m_signals.m_stop = position.GetRucksack()->m_signals.m_failedLowAtRoot = false;
+	position.GetOurCarriage()->m_signals.m_stopOnPonderHit = position.GetOurCarriage()->m_signals.m_firstRootMove = false;
+	position.GetOurCarriage()->m_signals.m_stop = position.GetOurCarriage()->m_signals.m_failedLowAtRoot = false;
 
-	position.GetRucksack()->m_gameStats = gameStats;
-	position.GetRucksack()->m_rootPosition = position;
-	position.GetRucksack()->m_limits = limits;
-	position.GetRucksack()->m_rootMoves.clear();
+	position.GetOurCarriage()->m_gameStats = gameStats;
+	position.GetOurCarriage()->m_rootPosition = position;
+	position.GetOurCarriage()->m_limits = limits;
+	position.GetOurCarriage()->m_rootMoves.clear();
 
 #if defined LEARN
 	// searchMoves を直接使う。
@@ -183,7 +183,7 @@ void HerosPub::StartThinking(
 		if (searchMoves.empty()
 			|| std::find(searchMoves.begin(), searchMoves.end(), ml.GetMove()) != searchMoves.end())
 		{
-			position.GetRucksack()->m_rootMoves.push_back(RootMove(ml.GetMove()));
+			position.GetOurCarriage()->m_rootMoves.push_back(RootMove(ml.GetMove()));
 		}
 	}
 

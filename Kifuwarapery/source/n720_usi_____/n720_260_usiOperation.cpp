@@ -7,7 +7,7 @@
 #include "../../header/n350_pieceTyp/n350_030_makePromoteMove.hpp"
 #include "../../header/n407_moveGen_/n407_900_moveList.hpp"
 #include "../../header/n720_usi_____/n720_260_usiOperation.hpp"
-#include "../../header/n885_searcher/n885_040_rucksack.hpp"
+#include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 
 
 /// <summary>
@@ -108,7 +108,7 @@ void UsiOperation::Go(GameStats& gameStats, const Position& pos, std::istringstr
 			if (limits.GetMoveTime() != 0) {
 //#if !defined(FISCHER_RULE)
 				// フィッシャー・ルールでないときは、秒読みがあるのだろう☆（＾ｑ＾）
-				limits.DecrementMoveTime( pos.GetRucksack()->m_engineOptions["Byoyomi_Margin"]);
+				limits.DecrementMoveTime( pos.GetOurCarriage()->m_engineOptions["Byoyomi_Margin"]);
 //#endif
 			}
 		}
@@ -138,10 +138,10 @@ void UsiOperation::Go(GameStats& gameStats, const Position& pos, std::istringstr
 			ssCmd >> limits.m_increment[Color::Black];
 		}
 	}
-	pos.GetRucksack()->m_ourMoves = moves;
+	pos.GetOurCarriage()->m_ourMoves = moves;
 
 	// 思考を開始☆
-	pos.GetRucksack()->m_ownerHerosPub.StartThinking(gameStats, pos, limits, moves);
+	pos.GetOurCarriage()->m_ownerHerosPub.StartThinking(gameStats, pos, limits, moves);
 }
 
 
@@ -249,10 +249,10 @@ void UsiOperation::SetPosition(Position& pos, std::istringstream& ssCmd) {
 	else { return; }
 
     // 指し手リストだぜ（＾▽＾）
-	pos.Set(sfen, pos.GetRucksack()->m_ownerHerosPub.GetFirstCaptain());
+	pos.Set(sfen, pos.GetOurCarriage()->m_ownerHerosPub.GetFirstCaptain());
 
     // 指し手を進めるぜ（＾▽＾）
-	pos.GetRucksack()->m_setUpStates = StateStackPtr(new std::stack<StateInfo>());
+	pos.GetOurCarriage()->m_setUpStates = StateStackPtr(new std::stack<StateInfo>());
 
 	Ply currentPly = pos.GetGamePly();
 
@@ -262,14 +262,14 @@ void UsiOperation::SetPosition(Position& pos, std::istringstream& ssCmd) {
 		if (move.IsNone()) { break; }
 
         // 状態情報を積むぜ（＾▽＾）
-		pos.GetRucksack()->m_setUpStates->push(StateInfo());
+		pos.GetOurCarriage()->m_setUpStates->push(StateInfo());
 
         // 指し手を指すぜ（＾▽＾）
 		pos.GetTurn() == Color::Black	// 自分は先手か？
 			?
-			pos.DoMove<Color::Black,Color::White>(move, pos.GetRucksack()->m_setUpStates->top())
+			pos.DoMove<Color::Black,Color::White>(move, pos.GetOurCarriage()->m_setUpStates->top())
 			:
-			pos.DoMove<Color::White,Color::Black>(move, pos.GetRucksack()->m_setUpStates->top())	// 自分が後手のとき。
+			pos.DoMove<Color::White,Color::Black>(move, pos.GetOurCarriage()->m_setUpStates->top())	// 自分が後手のとき。
 			;
 
 		++currentPly;

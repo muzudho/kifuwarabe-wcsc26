@@ -6,7 +6,7 @@
 #include "../../header/n600_book____/n600_400_bookEntry.hpp"
 #include "../../header/n600_book____/n600_500_book.hpp"
 #include "../../header/n720_usi_____/n720_260_usiOperation.hpp"
-#include "../../header/n885_searcher/n885_040_rucksack.hpp"
+#include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 
 
 /// <summary>
@@ -146,7 +146,7 @@ MoveAndScoreIndex Book::GetProbe(const Position& position, const std::string& fN
 	u32 sum = 0;
 	Move move = g_MOVE_NONE;//該当なしのときに使う値☆
 	const Key key = this->GetBookKey(position);
-	const ScoreIndex min_book_score = static_cast<ScoreIndex>(static_cast<int>(position.GetRucksack()->m_engineOptions["Min_Book_Score"]));
+	const ScoreIndex min_book_score = static_cast<ScoreIndex>(static_cast<int>(position.GetOurCarriage()->m_engineOptions["Min_Book_Score"]));
 	ScoreIndex score = ScoreZero;
 
 	if (this->m_fileName_ != fName && !this->OpenBook(fName.c_str())) {
@@ -254,7 +254,7 @@ void MakeBook(GameStats& gameStats, Position& pos, std::istringstream& ssCmd) {
 			return;
 		}
 
-		pos.Set(g_DefaultStartPositionSFEN, pos.GetRucksack()->m_ownerHerosPub.GetFirstCaptain());
+		pos.Set(g_DefaultStartPositionSFEN, pos.GetOurCarriage()->m_ownerHerosPub.GetFirstCaptain());
 		StateStackPtr SetUpStates = StateStackPtr(new std::stack<StateInfo>());
 		UsiOperation usiOperation;
 		while (!line.empty()) {
@@ -299,13 +299,13 @@ void MakeBook(GameStats& gameStats, Position& pos, std::istringstream& ssCmd) {
 					std::istringstream ssCmd("byoyomi 1000");
 					UsiOperation usiOperation;
 					usiOperation.Go(gameStats, pos, ssCmd);
-					pos.GetRucksack()->m_ownerHerosPub.WaitForThinkFinished();
+					pos.GetOurCarriage()->m_ownerHerosPub.WaitForThinkFinished();
 
 					pos.UndoMove(move);
 					SetUpStates->pop();
 
 					// doMove してから search してるので点数が反転しているので直す。
-					const ScoreIndex score = -pos.GetConstRucksack()->m_rootMoves[0].m_score_;
+					const ScoreIndex score = -pos.GetConstOurCarriage()->m_rootMoves[0].m_score_;
 #else
 					const ScoreIndex GetScore = ScoreZero;
 #endif

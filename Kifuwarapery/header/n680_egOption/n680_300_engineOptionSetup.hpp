@@ -4,7 +4,7 @@
 #include "../n680_egOption/n680_240_engineOptionsMap.hpp"
 
 
-class Rucksack;
+class OurCarriage;
 
 
 /// <summary>
@@ -21,5 +21,5 @@ public:
 	/// </summary>
 	/// <param name="pMap"></param>
 	/// <param name="s"></param>
-	void Initialize( EngineOptionsMap* pMap, Rucksack* s);
+	void Initialize( EngineOptionsMap* pMap, OurCarriage* s);
 };

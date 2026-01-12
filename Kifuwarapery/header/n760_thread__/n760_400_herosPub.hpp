@@ -15,7 +15,7 @@
 
 
 // 依存関係の回避
-class Rucksack;
+class OurCarriage;
 
 
 const int g_MaxThreads = 64;
@@ -103,7 +103,7 @@ public:
 	/// 初期化？
 	/// </summary>
 	/// <param name="s"></param>
-	void Init(Rucksack* s);
+	void Init(OurCarriage* s);
 
 
 	/// <summary>
@@ -115,8 +115,8 @@ public:
 	/// <summary>
 	/// 起きろ？
 	/// </summary>
-	/// <param name="rucksack"></param>
-	void WakeUp(Rucksack* rucksack);
+	/// <param name="ourCarriage">わたしたちの馬車</param>
+	void WakeUp(OurCarriage* ourCarriage);
 
 
 	/// <summary>
@@ -129,7 +129,7 @@ public:
 	/// USIオプションを読め？
 	/// </summary>
 	/// <param name="s"></param>
-	void ReadUSIOptions(Rucksack* s);
+	void ReadUSIOptions(OurCarriage* s);
 
 
 	/// <summary>

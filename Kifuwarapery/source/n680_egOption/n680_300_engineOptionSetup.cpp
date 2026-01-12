@@ -2,7 +2,7 @@
 #include "../../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
 #include "..\..\header\n680_egOption/n680_245_engineOption.hpp"
 #include "..\..\header\n680_egOption\n680_300_engineOptionSetup.hpp"
-#include "../../header/n885_searcher/n885_040_rucksack.hpp"
+#include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 
 
 // 初期化の値を取ってくるのに使います。
@@ -14,7 +14,7 @@ namespace {
 	/// </summary>
 	/// <param name="s"></param>
 	/// <param name="opt"></param>
-	void onHashSize(Rucksack* s, const EngineOptionable& opt) { s->m_tt.SetSize(opt); }
+	void onHashSize(OurCarriage* s, const EngineOptionable& opt) { s->m_tt.SetSize(opt); }
 
 
 	/// <summary>
@@ -22,7 +22,7 @@ namespace {
 	/// </summary>
 	/// <param name="s"></param>
 	/// <param name=""></param>
-	void onClearHash(Rucksack* s, const EngineOptionable&) { s->m_tt.Clear(); }
+	void onClearHash(OurCarriage* s, const EngineOptionable&) { s->m_tt.Clear(); }
 
 
 	/// <summary>
@@ -30,7 +30,7 @@ namespace {
 	/// </summary>
 	/// <param name=""></param>
 	/// <param name="opt"></param>
-	void onEvalDir(Rucksack*, const EngineOptionable& opt) {
+	void onEvalDir(OurCarriage*, const EngineOptionable& opt) {
 		std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->Init(opt, true);
 	}
 
@@ -40,7 +40,7 @@ namespace {
 	/// </summary>
 	/// <param name="s"></param>
 	/// <param name=""></param>
-	void onThreads(Rucksack* s, const EngineOptionable&) { s->m_ownerHerosPub.ReadUSIOptions(s); }
+	void onThreads(OurCarriage* s, const EngineOptionable&) { s->m_ownerHerosPub.ReadUSIOptions(s); }
 
 
 	/// <summary>
@@ -60,7 +60,7 @@ namespace {
 /// </summary>
 /// <param name="pMap"></param>
 /// <param name="pRucksack"></param>
-void EngineOptionSetup::Initialize(EngineOptionsMap* pMap, Rucksack * pRucksack)
+void EngineOptionSetup::Initialize(EngineOptionsMap* pMap, OurCarriage * pRucksack)
 {
 	pMap->Put("USI_Hash"					, EngineOption(256, 1, 65536, onHashSize, pRucksack));
 	pMap->Put("Clear_Hash"					, EngineOption(onClearHash, pRucksack));
