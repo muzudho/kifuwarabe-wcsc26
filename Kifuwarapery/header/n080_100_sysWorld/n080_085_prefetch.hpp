@@ -1,5 +1,5 @@
 #pragma once
-#include "../n080_common__/n080_084_cacheLineSize.hpp"
+#include "../n080_100_sysWorld/n080_084_cacheLineSize.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────

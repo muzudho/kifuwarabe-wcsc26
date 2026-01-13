@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../n080_common__/n080_100_common.hpp"	//u32
+#include "../n080_100_sysWorld/n080_100_500_common.hpp"	//u32
 #include "../n105_color___/n105_100_color.hpp"
 #include "../n119_score___/n119_090_scoreIndex.hpp"	//Ply
 

@@ -1,6 +1,6 @@
 ﻿#include <windows.h> // ヘッダー・ファイルに書くとエラーになる。 FIXME: C++14 から C++17 へ上げたいので、なるべくファイルの冒頭に定義したい。
 
-#include "../../header/n080_common__/n080_100_common.hpp"	// FIXME: この中で windows.h を定義しているから、このファイルで windows.h のインクルードは要らないのでは？
+#include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"	// FIXME: この中で windows.h を定義しているから、このファイルで windows.h のインクルードは要らないのでは？
 #include "../../header/n090_utilProg/n090_500_utilProgram.hpp"
 
 

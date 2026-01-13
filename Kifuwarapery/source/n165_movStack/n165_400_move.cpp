@@ -1,5 +1,5 @@
 ﻿#include <string>
-#include "../../header/n080_common__/n080_100_common.hpp"
+#include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../../header/n110_square__/n110_100_square.hpp"
 #include "../../header/n110_square__/n110_155_convFile.hpp"
 #include "../../header/n110_square__/n110_205_convRank.hpp"

@@ -1,29 +1,30 @@
 #pragma once
-#include "../n080_common__/n080_088_mutex.hpp"
+#include "../n080_100_sysWorld/n080_079_count1s.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────
-// エンディアン
+// 2進数出力
 //────────────────────────────────────────────────────────────────────────────────
-
-
-#if 0
-#include <boost/detail/endian.hpp>
 
 
 /// <summary>
-/// 
+/// (デバッグ用)2進表示
 /// </summary>
 /// <typeparam name="T"></typeparam>
-/// <param name="r"></param>
+/// <param name="value"></param>
+/// <param name="msb"></param>
+/// <param name="lsb"></param>
+/// <returns></returns>
 template <typename T>
-inline void reverseEndian(T& r)
+inline std::string putb(const T value, const int msb = sizeof(T) * 8 - 1, const int lsb = 0)
 {
-	u8* begin = reinterpret_cast<u8*>(&r);
-	u8* IsEnd = reinterpret_cast<u8*>(&r) + sizeof(T);
-	for (; begin < IsEnd; ++begin, --IsEnd)
+	std::string str;
+	u64 tempValue = (static_cast<u64>(value) >> lsb);
+
+	for (int length = msb - lsb + 1; length; --length)
 	{
-		std::swap(*begin, *(IsEnd - 1));
+		str += ((tempValue & (UINT64_C(1) << (length - 1))) ? "1" : "0");
 	}
+
+	return str;
 }
-#endif

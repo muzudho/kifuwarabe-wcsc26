@@ -1,13 +1,10 @@
 #pragma once
-#include "../n080_common__/n080_086_hashTable.hpp"
+#include "../n080_100_sysWorld/n080_074_asmcomment.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────
-// 乱数
+// DEBUGCERR
 //────────────────────────────────────────────────────────────────────────────────
 
 
-/// <summary>
-/// メルセンヌツイスター乱数の種だろうか☆（＾～＾）？
-/// </summary>
-extern std::mt19937_64 g_randomTimeSeed;
+#define DEBUGCERR(x) std::cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << std::endl;

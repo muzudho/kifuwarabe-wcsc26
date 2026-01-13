@@ -157,22 +157,22 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="header\n080_common__\n080_070_bmi2.hpp" />
-    <ClInclude Include="header\n080_common__\n080_071_sse.hpp" />
-    <ClInclude Include="header\n080_common__\n080_072_unreachable.hpp" />
-    <ClInclude Include="header\n080_common__\n080_074_asmcomment.hpp" />
-    <ClInclude Include="header\n080_common__\n080_076_int.hpp" />
-    <ClInclude Include="header\n080_common__\n080_079_count1s.hpp" />
-    <ClInclude Include="header\n080_common__\n080_080_putb.hpp" />
-    <ClInclude Include="header\n080_common__\n080_081_ioLock.hpp" />
-    <ClInclude Include="header\n080_common__\n080_082_eraser.hpp" />
-    <ClInclude Include="header\n080_common__\n080_083_unroller.hpp" />
-    <ClInclude Include="header\n080_common__\n080_084_cacheLineSize.hpp" />
-    <ClInclude Include="header\n080_common__\n080_085_prefetch.hpp" />
-    <ClInclude Include="header\n080_common__\n080_086_hashTable.hpp" />
-    <ClInclude Include="header\n080_common__\n080_087_random.hpp" />
-    <ClInclude Include="header\n080_common__\n080_088_mutex.hpp" />
-    <ClInclude Include="header\n080_common__\n080_089_endian.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_070_bmi2.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_071_sse.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_072_unreachable.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_074_asmcomment.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_076_int.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_079_count1s.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_080_putb.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_081_ioLock.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_082_eraser.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_083_unroller.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_084_cacheLineSize.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_085_prefetch.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_086_hashTable.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_087_random.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_088_mutex.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_089_endian.hpp" />
     <ClInclude Include="header\n090_utilProg\n090_500_utilProgram.hpp" />
     <ClInclude Include="header\n105_color___\n105_100_color.hpp" />
     <ClInclude Include="header\n105_color___\n105_500_convColor.hpp" />
@@ -245,8 +245,8 @@
     <ClInclude Include="header\n223_move____\n223_300_moveAndScoreIndex.hpp" />
     <ClInclude Include="header\n223_move____\n223_500_flashlight.hpp" />
     <ClInclude Include="header\n225_movPhase\n225_050_generateMovePhase.hpp" />
-    <ClInclude Include="header\n080_common__\n080_050_ifdef.hpp" />
-    <ClInclude Include="header\n080_common__\n080_100_common.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_050_ifdef.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_500_common.hpp" />
     <ClInclude Include="header\n085_overEnum\n085_500_overloadEnumOperators.hpp" />
     <ClInclude Include="header\n160_board___\n160_600_bitboardAll.hpp" />
     <ClInclude Include="header\n350_pieceTyp\n350_030_makePromoteMove.hpp" />
@@ -435,10 +435,10 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="header\n080_common__\n080_073_forceInline.hpp" />
-    <ClCompile Include="header\n080_common__\n080_075_debugcerr.hpp" />
-    <ClCompile Include="header\n080_common__\n080_077_binary.hpp" />
-    <ClCompile Include="header\n080_common__\n080_078_lsbMsb.hpp" />
+    <ClCompile Include="header\n080_100_sysWorld\n080_073_forceInline.hpp" />
+    <ClCompile Include="header\n080_100_sysWorld\n080_075_debugcerr.hpp" />
+    <ClCompile Include="header\n080_100_sysWorld\n080_077_binary.hpp" />
+    <ClCompile Include="header\n080_100_sysWorld\n080_078_lsbMsb.hpp" />
     <ClCompile Include="source\n165_movStack\n165_410_moveModels.cpp" />
     <ClCompile Include="source\n220_position\n220_645_gameStats.cpp" />
     <ClCompile Include="source\n080_common__\n080_100_common.cpp" />

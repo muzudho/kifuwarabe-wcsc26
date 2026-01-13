@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../n080_common__/n080_100_common.hpp"
+#include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n119_score___/n119_090_scoreIndex.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n220_position/n220_665_utilMoveStack.hpp"
