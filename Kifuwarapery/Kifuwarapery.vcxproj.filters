@@ -1023,6 +1023,9 @@
     <ClInclude Include="header\n220_position\n220_645_gameStats.hpp">
       <Filter>header</Filter>
     </ClInclude>
+    <ClInclude Include="header\n080_common__\n080_070_bmi2.hpp">
+      <Filter>header\n080_common__</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

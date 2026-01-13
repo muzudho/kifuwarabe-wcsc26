@@ -143,6 +143,7 @@
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <DisableSpecificWarnings>4002;4067;4244;4267;4305;4521;4522;4800;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -156,6 +157,7 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="header\n080_common__\n080_070_bmi2.hpp" />
     <ClInclude Include="header\n080_common__\n080_200_utilProgram.hpp" />
     <ClInclude Include="header\n105_color___\n105_100_color.hpp" />
     <ClInclude Include="header\n105_color___\n105_500_convColor.hpp" />

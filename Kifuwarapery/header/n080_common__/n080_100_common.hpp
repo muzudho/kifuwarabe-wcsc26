@@ -1,21 +1,20 @@
 ﻿#pragma once
 
-#include "n080_050_ifdef.hpp"
+#include "../n080_common__/n080_050_ifdef.hpp"
+#include "../n080_common__/n080_070_bmi2.hpp"
 #include <random>				// std::mt19937_64
 #include <condition_variable>	// std::mutex, std::condition_variable
 
-using namespace std;
 
+// SSE4, SSE2
 
-#if defined HAVE_BMI2
-	#include <immintrin.h>
-#endif
 
 #if defined (HAVE_SSE4)
 	#include <smmintrin.h>
 #elif defined (HAVE_SSE2)
 	#include <emmintrin.h>
 #endif
+
 
 #if !defined(NDEBUG)
 	// デバッグ時は、ここへ到達してはいけないので、assert でプログラムを止める。
@@ -437,13 +436,19 @@ private:
 extern std::mt19937_64 g_randomTimeSeed;
 
 
+// ミューテックス
+
+
 #if defined _WIN32 && !defined _MSC_VER
 	#ifndef NOMINMAX
 		#define NOMINMAX
 	#endif
 
 	#define WIN32_LEAN_AND_MEAN
+
+	// FIXME: C++14 から C++17 へ上げたいので、なるべくファイルの冒頭に定義したい。
 	#include <windows.h>
+
 	#undef WIN32_LEAN_AND_MEAN
 	#undef NOMINMAX
 
@@ -505,6 +510,9 @@ extern std::mt19937_64 g_randomTimeSeed;
 	/// </summary>
 	using ConditionVariable = std::condition_variable;
 #endif
+
+
+// エンディアン
 
 
 #if 0
