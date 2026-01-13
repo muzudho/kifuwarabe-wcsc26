@@ -104,7 +104,7 @@ ScoreIndex AdventureNodekindSplitedNodeRoot::ExplorePlain(
 	ScoreIndex eval;
 	bool inCheck;
 	bool givesCheck;
-	bool isPVMove;
+	bool isPVMove;	// 本筋の指し手かどうかかなあ（＾～＾）？
 	bool singularExtensionNode;
 	bool captureOrPawnPromotion;
 	bool dangerous;

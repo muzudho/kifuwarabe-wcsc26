@@ -235,7 +235,7 @@ public:
 
 				// 次のイテレーションを回す時間が無いなら、ストップ
 				if (
-					!ourCarriage.m_timeMgr.IsTimeOk_CanIterativeDeeping(ourCarriage.m_stopwatch.GetElapsed())
+					!ourCarriage.m_timeMgr.CanIterativeDeepingTimeOk(ourCarriage.m_stopwatch.GetElapsed())
 					) {
 					stop = true;
 				}
@@ -257,7 +257,7 @@ public:
 						ourCarriage.m_rootMoves.size() == 1
 						||
 						// または、まだ反復深化探索していい時間が残ってるなら。
-						ourCarriage.m_timeMgr.IsTimeOk_CanIterativeDeeping(ourCarriage.m_stopwatch.GetElapsed())
+						ourCarriage.m_timeMgr.CanIterativeDeepingTimeOk(ourCarriage.m_stopwatch.GetElapsed())
 					)
 				) {
 					const ScoreIndex rBeta = bestScore - 2 * PieceScore::m_capturePawn;

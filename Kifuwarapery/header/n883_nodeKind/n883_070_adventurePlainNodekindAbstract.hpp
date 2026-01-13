@@ -1138,7 +1138,7 @@ public:
 	/// <param name="ppFlashlight"></param>
 	/// <param name="beta"></param>
 	/// <param name="ci"></param>
-	/// <param name="isPVMove"></param>
+	/// <param name="isPVMoveRef"></param>
 	/// <param name="playedMoveCount"></param>
 	/// <param name="movesSearched"></param>
 	virtual inline void ExplorerPlainStep13c(
@@ -1159,7 +1159,7 @@ public:
 		Flashlight** ppFlashlight,
 		ScoreIndex& beta,
 		const CheckInfo& ci,
-		bool& isPVMove,
+		bool& isPVMoveRef,
 		int& playedMoveCount,
 		Move movesSearched[64]
 		) const = 0;
@@ -1463,7 +1463,7 @@ public:
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="move"></param>
-	/// <param name="isPVMove"></param>
+	/// <param name="isPVMove">本筋の指し手かどうかかなあ（＾～＾）？</param>
 	/// <param name="alpha"></param>
 	/// <param name="score"></param>
 	/// <param name="pos"></param>
@@ -1476,7 +1476,9 @@ public:
 		Position& pos
 		) const
 	{
+		// ルート・ムーブのリストから、１つ選んでる（＾～＾）？
 		RootMove& rm = *std::find(ourCarriage.m_rootMoves.begin(), ourCarriage.m_rootMoves.end(), move);
+
 		if (isPVMove || alpha < score) {
 			// PV move or new best move
 			rm.m_score_ = score;
@@ -1491,7 +1493,7 @@ public:
 #endif
 			rm.ExtractPvFromTT(pos);
 
-			if (!isPVMove) {
+			if (!isPVMove) {	// 本筋じゃないとき（＾～＾）
 				ourCarriage.IncreaseBestMovePlyChanges();
 			}
 		}

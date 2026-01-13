@@ -1,5 +1,4 @@
 ﻿#pragma once
-
 #include "../n520_evaluate/n520_700_evaluation09.hpp"
 #include "../n560_timeMgr_/n560_100_limitsDuringGo.hpp"
 
@@ -45,8 +44,49 @@ public:
 
 
 	// ========================================
-	// アクセッサ
+	// メソッド
 	// ========================================
+
+
+	// クエスチョン・メソッド
+
+
+	/// <summary>
+	/// まだ反復深化していい時間が残ってるか☆？（＾ｑ＾）
+	/// 
+	///		- 消費時間が、使っていい時間の60%を下回っている場合。
+	/// </summary>
+	/// <param name="elapsed"></param>
+	/// <returns></returns>
+	inline bool CanIterativeDeepingTimeOk(const int elapsed) {
+		return elapsed < this->GetPlanThinkSeconds() * 60 / 100;
+	}
+
+
+	/// <summary>
+	///		<pre>
+	/// 使っていい時間をオーバーしちゃったかどうかだぜ☆（＾ｑ＾）
+	/// 
+	///		- 最初の指し手のときに呼び出して確認するぜ☆
+	///		</pre>
+	/// </summary>
+	/// <param name="elapsed"></param>
+	/// <returns></returns>
+	inline bool IsTimeBudgetOver(const int elapsed) { return this->GetPlanThinkSeconds() < elapsed; }
+
+
+	/// <summary>
+	/// これ以上の時間がないか☆？（＾ｑ＾）
+	/// </summary>
+	/// <param name="timerResolution"></param>
+	/// <param name="elapsed"></param>
+	/// <returns></returns>
+	inline bool IsNoMoreTime(const int timerResolution, const int elapsed) {
+		return this->GetSaidaiEnchoTime() - 2 * timerResolution < elapsed;
+	}
+
+
+	// アクセッサ
 
 
 	/// <summary>
@@ -64,45 +104,10 @@ public:
 
 
 	/// <summary>
-	///		<pre>
-	/// 使っていい時間をオーバーしちゃったかどうかだぜ☆（＾ｑ＾）
-	/// 
-	///		- 最初の指し手のときに呼び出して確認するぜ☆
-	///		</pre>
-	/// </summary>
-	/// <param name="elapsed"></param>
-	/// <returns></returns>
-	inline bool IsTimeBudgetOver(const int elapsed) { return this->GetPlanThinkSeconds() < elapsed; }
-
-
-	/// <summary>
-	/// まだ反復深化していい時間が残ってるか☆？（＾ｑ＾）
-	/// 
-	///		- 消費時間が、使っていい時間の60%を下回っている場合。
-	/// </summary>
-	/// <param name="elapsed"></param>
-	/// <returns></returns>
-	inline bool IsTimeOk_CanIterativeDeeping(const int elapsed) {
-		return elapsed < this->GetPlanThinkSeconds() * 60 / 100;
-	}
-
-
-	/// <summary>
 	/// 新しく生まれてくる部下の寿命☆（＾ｑ＾）
 	/// </summary>
 	/// <returns></returns>
 	inline int GetSubordinateLifeTime() { return this->GetPlanThinkSeconds() / 16; }
-
-
-	/// <summary>
-	/// これ以上の時間がないか☆？（＾ｑ＾）
-	/// </summary>
-	/// <param name="timerResolution"></param>
-	/// <param name="elapsed"></param>
-	/// <returns></returns>
-	inline bool IsNoMoreTime(const int timerResolution, const int elapsed) {
-		return this->GetSaidaiEnchoTime() - 2 * timerResolution < elapsed;
-	}
 
 
 private:
@@ -149,8 +154,11 @@ private:
 
 
 	// ========================================
-	// アクセッサ
+	// メソッド
 	// ========================================
+
+
+	// アクセッサ
 
 
 	/// <summary>
@@ -300,9 +308,7 @@ private:
 	}
 
 
-	// ========================================
 	// メイン・メソッド
-	// ========================================
 
 
 	/// <summary>
