@@ -317,25 +317,9 @@ ScoreIndex AdventureNodekindPv::ExplorePlain(
 		// 本筋かどうか判定するぜ（＾～＾）
 		isPVMove = this->ExplorerPlainStep13c1IsPvMove(moveCount);
 
-		this->ExplorerPlainStep13c(
-			isContinue,
-			ourCarriage,
-			captureOrPawnPromotion,
-			inCheck,
-			dangerous,
-			bestScore,
+		this->ExplorerPlainStep13c2SetMove(
 			move,
-			ttMove,
-			depth,
-			threatMove,
-			pos,
-			&pSplitedNode,
-			newDepth,
-			&pFlashlight,
-			beta,
-			ci,
-			playedMoveCount,
-			movesSearched);
+			&pFlashlight);
 		if (isContinue) { continue; }
 
 		this->ExplorerPlainStep13d(

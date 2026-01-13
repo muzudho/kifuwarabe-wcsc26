@@ -598,44 +598,11 @@ public:
 	/// <summary>
 	/// スプリット・ポイントか、PVノードかで手続きが変わるぜ☆！（＾ｑ＾）
 	/// </summary>
-	/// <param name="isContinue"></param>
-	/// <param name="ourCarriage">わたしたちの馬車</param>
-	/// <param name="captureOrPawnPromotion"></param>
-	/// <param name="inCheck"></param>
-	/// <param name="dangerous"></param>
-	/// <param name="bestScore"></param>
 	/// <param name="move"></param>
-	/// <param name="ttMove"></param>
-	/// <param name="depth"></param>
-	/// <param name="threatMove"></param>
-	/// <param name="pos"></param>
-	/// <param name="ppSplitedNode"></param>
-	/// <param name="newDepth"></param>
 	/// <param name="ppFlashlight"></param>
-	/// <param name="beta"></param>
-	/// <param name="ci"></param>
-	/// <param name="playedMoveCount"></param>
-	/// <param name="movesSearched"></param>
-	virtual inline void ExplorerPlainStep13c(
-		bool& isContinue,
-		OurCarriage& ourCarriage,
-		bool& captureOrPawnPromotion,
-		bool& inCheck,
-		bool& dangerous,
-		ScoreIndex& bestScore,
-		Move& move,
-		Move& ttMove,
-		const Depth depth,
-		Move& threatMove,
-		Position& pos,
-		SplitedNode** ppSplitedNode,
-		Depth& newDepth,
-		Flashlight** ppFlashlight,
-		ScoreIndex& beta,
-		const CheckInfo& ci,
-		int& playedMoveCount,
-		Move movesSearched[64]
-		) const override
+	virtual inline void ExplorerPlainStep13c2SetMove(
+		Move move,
+		Flashlight** ppFlashlight) const override
 	{
 		// PVノードだぜ☆！（＾ｑ＾）
 		(*ppFlashlight)->m_currentMove = move;
