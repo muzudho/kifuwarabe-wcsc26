@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../n080_150_overEnum/n080_150_overloadEnumOperators.hpp"
+#include "../n080_150_overEnum/n080_150_500_overloadEnumOperators.hpp"
 #include "n119_055_utilBound.hpp"
 
 
