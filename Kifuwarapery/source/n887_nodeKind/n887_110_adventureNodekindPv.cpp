@@ -314,6 +314,9 @@ ScoreIndex AdventureNodekindPv::ExplorePlain(
 			);
 		if (isContinue) { continue; }
 
+		// 本筋かどうか判定するぜ（＾～＾）
+		isPVMove = this->ExplorerPlainStep13c1IsPvMove(moveCount);
+
 		this->ExplorerPlainStep13c(
 			isContinue,
 			ourCarriage,
@@ -324,7 +327,6 @@ ScoreIndex AdventureNodekindPv::ExplorePlain(
 			move,
 			ttMove,
 			depth,
-			moveCount,
 			threatMove,
 			pos,
 			&pSplitedNode,
@@ -332,10 +334,8 @@ ScoreIndex AdventureNodekindPv::ExplorePlain(
 			&pFlashlight,
 			beta,
 			ci,
-			isPVMove,
 			playedMoveCount,
-			movesSearched
-			);
+			movesSearched);
 		if (isContinue) { continue; }
 
 		this->ExplorerPlainStep13d(

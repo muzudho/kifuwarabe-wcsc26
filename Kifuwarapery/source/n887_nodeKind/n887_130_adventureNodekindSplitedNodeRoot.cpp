@@ -293,6 +293,9 @@ split_point_start:
 
 		// step13
 
+		// 本筋かどうか判定するぜ（＾～＾）
+		isPVMove = this->ExplorerPlainStep13c1IsPvMove(moveCount);
+
 		this->ExplorerPlainStep13c(
 			isContinue,
 			ourCarriage,
@@ -303,7 +306,6 @@ split_point_start:
 			move,
 			ttMove,
 			depth,
-			moveCount,
 			threatMove,
 			pos,
 			&pSplitedNode,
@@ -311,10 +313,8 @@ split_point_start:
 			&pFlashlight,
 			beta,
 			ci,
-			isPVMove,
 			playedMoveCount,
-			movesSearched
-			);
+			movesSearched);
 		if (isContinue) { continue; }
 
 		// step14

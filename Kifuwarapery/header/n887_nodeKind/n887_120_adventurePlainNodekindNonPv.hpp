@@ -343,6 +343,17 @@ public:
 
 
 	/// <summary>
+	/// 本筋かどうか判定するぜ（＾～＾）
+	/// </summary>
+	/// <param name="moveCount"></param>
+	virtual inline bool ExplorerPlainStep13c1IsPvMove(
+		int moveCount) const override
+	{
+		return false;	// 非PVノードだぜ☆！（＾ｑ＾）
+	}
+
+
+	/// <summary>
 	/// スプリット・ポイントか、PVノードかで手続きが変わるぜ☆！（＾ｑ＾）
 	/// </summary>
 	/// <param name="isContinue"></param>
@@ -354,7 +365,6 @@ public:
 	/// <param name="move"></param>
 	/// <param name="ttMove"></param>
 	/// <param name="depth"></param>
-	/// <param name="moveCount"></param>
 	/// <param name="threatMove"></param>
 	/// <param name="pos"></param>
 	/// <param name="ppSplitedNode"></param>
@@ -362,7 +372,6 @@ public:
 	/// <param name="ppFlashlight"></param>
 	/// <param name="beta"></param>
 	/// <param name="ci"></param>
-	/// <param name="isPVMoveRef"></param>
 	/// <param name="playedMoveCount"></param>
 	/// <param name="movesSearched"></param>
 	virtual inline void ExplorerPlainStep13c(
@@ -375,7 +384,6 @@ public:
 		Move& move,
 		Move& ttMove,
 		const Depth depth,
-		int& moveCount,
 		Move& threatMove,
 		Position& pos,
 		SplitedNode** ppSplitedNode,
@@ -383,13 +391,10 @@ public:
 		Flashlight** ppFlashlight,
 		ScoreIndex& beta,
 		const CheckInfo& ci,
-		bool& isPVMoveRef,
 		int& playedMoveCount,
-		Move movesSearched[64]
-		)const override {
-
+		Move movesSearched[64]) const override
+	{
 		// 非PVノードだぜ☆！（＾ｑ＾）
-		isPVMoveRef = false;
 		(*ppFlashlight)->m_currentMove = move;
 	}
 

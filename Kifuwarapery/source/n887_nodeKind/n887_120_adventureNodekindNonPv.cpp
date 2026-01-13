@@ -384,6 +384,9 @@ iid_start:
 			);
 		if (isContinue) { continue; }
 
+		// 本筋かどうか判定するぜ（＾～＾）
+		isPVMove = this->ExplorerPlainStep13c1IsPvMove(moveCount);
+
 		this->ExplorerPlainStep13c(
 			isContinue,
 			ourCarriage,
@@ -394,7 +397,6 @@ iid_start:
 			move,
 			ttMove,
 			depth,
-			moveCount,
 			threatMove,
 			pos,
 			&pSplitedNode,
@@ -402,10 +404,8 @@ iid_start:
 			&pFlashlight,
 			beta,
 			ci,
-			isPVMove,
 			playedMoveCount,
-			movesSearched
-			);
+			movesSearched);
 		if (isContinue) { continue; }
 
 		this->ExplorerPlainStep13d(
