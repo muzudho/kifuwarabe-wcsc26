@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-#include "../n080_common__/n080_050_ifdef.hpp"
 #include "../n080_common__/n080_070_bmi2.hpp"
 #include <random>				// std::mt19937_64
 #include <condition_variable>	// std::mutex, std::condition_variable

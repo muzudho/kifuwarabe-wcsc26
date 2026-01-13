@@ -1,4 +1,5 @@
 #pragma once
+#include "../n080_common__/n080_050_ifdef.hpp"
 
 
 using namespace std;
