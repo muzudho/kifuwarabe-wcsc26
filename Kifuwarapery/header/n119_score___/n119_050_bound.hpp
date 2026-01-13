@@ -1,7 +1,6 @@
 ﻿#pragma once
-
 #include "../n080_common__/n080_100_common.hpp"
-#include "../n080_common__/n080_150_overloadEnumOperators.hpp"
+#include "../n085_overEnum/n085_500_overloadEnumOperators.hpp"
 
 
 /// <summary>

@@ -29,6 +29,7 @@
 	#define UNREACHABLE assert(false)
 #endif
 
+
 #if defined(_MSC_VER) && !defined(__INTEL_COMPILER)
 	#define FORCE_INLINE __forceinline
 #elif defined(__INTEL_COMPILER)
@@ -38,6 +39,7 @@
 #else
 	#define FORCE_INLINE inline
 #endif
+
 
 // インラインアセンブリのコメントを使用することで、
 // C++ コードのどの部分がアセンブラのどの部分に対応するかを
@@ -53,6 +55,7 @@
 #else
 	#define ASMCOMMENT(s)
 #endif
+
 
 #define DEBUGCERR(x) std::cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << std::endl;
 
