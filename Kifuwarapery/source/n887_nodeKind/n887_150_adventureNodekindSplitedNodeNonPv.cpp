@@ -129,12 +129,11 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::ExplorePlain(
 		ttScore);
 	if (isGotoSplitPointStart) { goto split_point_start; }
 
-	this->ExplorerPlainStep1b(
+	this->ExplorerPlainStep1bSetMoveNone(
 		bestScore,
 		&pFlashlight,
 		threatMove,
-		bestMove
-		);
+		bestMove);
 
 	// step2: 千日手による探索打切りの判断
 	{

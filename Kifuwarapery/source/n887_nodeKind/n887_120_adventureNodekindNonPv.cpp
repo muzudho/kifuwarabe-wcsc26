@@ -114,12 +114,11 @@ ScoreIndex AdventureNodekindNonPv::ExplorePlain(
 
 	bool isGotoSplitPointStart = false;
 
-	this->ExplorerPlainStep1b(
+	this->ExplorerPlainStep1bSetMoveNone(
 		bestScore,
 		&pFlashlight,
 		threatMove,
-		bestMove
-		);
+		bestMove);
 
 	// step2: 千日手による探索打切りの判断
 	auto p = this->ExplorerPlainStep2_IsStopByRepetetion(

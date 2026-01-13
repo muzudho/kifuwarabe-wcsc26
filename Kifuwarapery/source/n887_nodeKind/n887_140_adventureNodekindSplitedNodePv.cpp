@@ -132,12 +132,11 @@ ScoreIndex AdventureNodekindSplitedNodePv::ExplorePlain(
 		ttScore);
 	if (isGotoSplitPointStart) { goto split_point_start; }
 
-	this->ExplorerPlainStep1b(
+	this->ExplorerPlainStep1bSetMoveNone(
 		bestScore,
 		&pFlashlight,
 		threatMove,
-		bestMove
-		);
+		bestMove);
 	this->ExplorerPlainStep1c(
 		&pThisThread,
 		pFlashlight

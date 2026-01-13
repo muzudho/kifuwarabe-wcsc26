@@ -132,12 +132,11 @@ ScoreIndex AdventureNodekindSplitedNodeRoot::ExplorePlain(
 		ttScore);
 	if (isGotoSplitPointStart) { goto split_point_start; }
 
-	this->ExplorerPlainStep1b(
+	this->ExplorerPlainStep1bSetMoveNone(
 		bestScore,
 		&pFlashlight,
 		threatMove,
-		bestMove
-		);
+		bestMove);
 	this->ExplorerPlainStep1c(
 		&pThisThread,
 		pFlashlight
@@ -201,6 +200,7 @@ ScoreIndex AdventureNodekindSplitedNodeRoot::ExplorePlain(
 		posKey
 		);
 
+	// 読み筋の分岐点かだぜ（＾～＾）？
 split_point_start:
 	NextmoveEvent mp(
 		pos,
@@ -208,7 +208,7 @@ split_point_start:
 		depth,
 		ourCarriage.m_history,
 		pFlashlight,
-		this->GetBetaAtStep11(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
+		this->GetBetaAtStep11(beta)		//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
 		);
 	const CheckInfo ci(pos);
 

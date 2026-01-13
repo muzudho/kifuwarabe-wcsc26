@@ -60,7 +60,11 @@ public:
 
 
 	/// <summary>
-	/// スプリット・ポイントのみ実行☆（＾ｑ＾）
+	///		<pre>
+	/// ノード初期化
+	/// 
+	///		- スプリット・ポイントのみ実行☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="isGotoSplitPointStart"></param>
 	/// <param name="pos"></param>
@@ -106,19 +110,18 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// オーバーライドが無い（＾～＾）？
 	/// </summary>
 	/// <param name="bestScore"></param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="threatMove"></param>
 	/// <param name="bestMove"></param>
-	virtual inline void ExplorerPlainStep1b(
+	virtual inline void ExplorerPlainStep1bSetMoveNone(
 		ScoreIndex& bestScore,
 		Flashlight** ppFlashlight,
 		Move& threatMove,
-		Move& bestMove
-		)const {
-
+		Move& bestMove) const
+	{
 		bestScore = -ScoreInfinite;
 		(*ppFlashlight)->m_currentMove = threatMove = bestMove = ((*ppFlashlight) + 1)->m_excludedMove = g_MOVE_NONE;
 		(*ppFlashlight)->m_ply = ((*ppFlashlight) - 1)->m_ply + 1;

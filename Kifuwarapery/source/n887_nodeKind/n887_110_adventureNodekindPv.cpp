@@ -114,12 +114,11 @@ ScoreIndex AdventureNodekindPv::ExplorePlain(
 
 	bool isGotoSplitPointStart = false;
 
-	this->ExplorerPlainStep1b(
+	this->ExplorerPlainStep1bSetMoveNone(
 		bestScore,
 		&pFlashlight,
 		threatMove,
-		bestMove
-		);
+		bestMove);
 	this->ExplorerPlainStep1c(
 		&pThisThread,
 		pFlashlight
