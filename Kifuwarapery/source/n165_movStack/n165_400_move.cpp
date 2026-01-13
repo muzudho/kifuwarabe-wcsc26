@@ -1,9 +1,9 @@
 ﻿#include <string>
 #include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../../header/n110_square__/n110_100_square.hpp"
-#include "../../header/n110_square__/n110_155_convFile.hpp"
-#include "../../header/n110_square__/n110_205_convRank.hpp"
-#include "../../header/n110_square__/n110_500_convSquare.hpp"
+#include "../../header/n105_120_square__/n105_120_100_square.hpp"
+#include "../../header/n105_120_square__/n105_120_155_convFile.hpp"
+#include "../../header/n105_120_square__/n105_120_205_convRank.hpp"
+#include "../../header/n105_120_square__/n105_120_500_convSquare.hpp"
 #include "../../header/n112_pieceTyp/n112_050_pieceType.hpp"
 #include "../../header/n113_piece___/n113_105_convPieceType.hpp"
 #include "../../header/n113_piece___/n113_200_handPiece.hpp"

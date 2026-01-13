@@ -1,5 +1,5 @@
-﻿#include "../../header/n110_square__/n110_100_square.hpp"
-#include "../../header/n110_square__/n110_150_file.hpp"
+﻿#include "../../header/n105_120_square__/n105_120_100_square.hpp"
+#include "../../header/n105_120_square__/n105_120_150_file.hpp"
 
 
 /// <summary>

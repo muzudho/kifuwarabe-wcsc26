@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include "../n110_square__/n110_150_file.hpp"
-#include "../n110_square__/n110_500_convSquare.hpp"
+#include "../n105_120_square__/n105_120_150_file.hpp"
+#include "../n105_120_square__/n105_120_500_convSquare.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 
 

@@ -1,5 +1,5 @@
-﻿#include "../../header/n110_square__/n110_400_squareRelation.hpp"
-#include "../../header/n110_square__/n110_500_convSquare.hpp"
+﻿#include "../../header/n105_120_square__/n105_120_400_squareRelation.hpp"
+#include "../../header/n105_120_square__/n105_120_500_convSquare.hpp"
 
 
 /// <summary>

@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include <algorithm> //std::upper_bound
-#include "../n110_square__/n110_500_convSquare.hpp"
+#include "../n105_120_square__/n105_120_500_convSquare.hpp"
 #include "../n520_evaluate/n520_100_evaluateEnum.hpp"
 
 

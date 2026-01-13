@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 
-#include "../n105_color___/n105_100_color.hpp"
+#include "../n105_100_color___/n105_100_100_color.hpp"
 #include "../n113_piece___/n113_200_handPiece.hpp"
 
 

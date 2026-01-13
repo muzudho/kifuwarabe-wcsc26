@@ -1,7 +1,7 @@
 ﻿#pragma once
 
-#include "../n110_square__/n110_100_square.hpp"
-#include "../n110_square__/n110_500_convSquare.hpp"
+#include "../n105_120_square__/n105_120_100_square.hpp"
+#include "../n105_120_square__/n105_120_500_convSquare.hpp"
 #include "../n113_piece___/n113_150_piece.hpp"
 #include "../n119_score___/n119_090_scoreIndex.hpp"
 

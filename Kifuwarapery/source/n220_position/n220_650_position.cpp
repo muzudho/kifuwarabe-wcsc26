@@ -1,9 +1,9 @@
 ﻿#include <iostream>		// std::cout
 #include <algorithm>	// std::min,std::max
 #include <sstream>      // std::istringstream
-#include "../../header/n105_color___/n105_100_color.hpp"
-#include "../../header/n110_square__/n110_100_square.hpp"
-#include "../../header/n110_square__/n110_400_squareRelation.hpp"
+#include "../../header/n105_100_color___/n105_100_100_color.hpp"
+#include "../../header/n105_120_square__/n105_120_100_square.hpp"
+#include "../../header/n105_120_square__/n105_120_400_squareRelation.hpp"
 #include "../../header/n112_pieceTyp/n112_050_pieceType.hpp"
 #include "../../header/n113_piece___/n113_150_piece.hpp"
 #include "../../header/n113_piece___/n113_155_convPiece.hpp"

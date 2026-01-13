@@ -288,22 +288,22 @@
     <ClInclude Include="header\n220_position\n220_350_stateInfo.hpp">
       <Filter>header\n220_position</Filter>
     </ClInclude>
-    <ClInclude Include="header\n105_color___\n105_100_color.hpp">
+    <ClInclude Include="header\n105_100_color___\n105_100_100_color.hpp">
       <Filter>header\n105_color___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n110_square__\n110_100_square.hpp">
+    <ClInclude Include="header\n105_120_square__\n105_120_100_square.hpp">
       <Filter>header\n110_square__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n110_square__\n110_150_file.hpp">
+    <ClInclude Include="header\n105_120_square__\n105_120_150_file.hpp">
       <Filter>header\n110_square__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n110_square__\n110_200_rank.hpp">
+    <ClInclude Include="header\n105_120_square__\n105_120_200_rank.hpp">
       <Filter>header\n110_square__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n110_square__\n110_250_squareDelta.hpp">
+    <ClInclude Include="header\n105_120_square__\n105_120_250_squareDelta.hpp">
       <Filter>header\n110_square__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n110_square__\n110_300_direction.hpp">
+    <ClInclude Include="header\n105_120_square__\n105_120_300_direction.hpp">
       <Filter>header\n110_square__</Filter>
     </ClInclude>
     <ClInclude Include="header\n113_piece___\n113_150_piece.hpp">
@@ -390,7 +390,7 @@
     <ClInclude Include="header\n160_board___\n160_108_slideBits.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n110_square__\n110_400_squareRelation.hpp">
+    <ClInclude Include="header\n105_120_square__\n105_120_400_squareRelation.hpp">
       <Filter>header\n110_square__</Filter>
     </ClInclude>
     <ClInclude Include="header\n220_position\n220_400_evalList.hpp">
@@ -924,13 +924,13 @@
     <ClInclude Include="header\n113_piece___\n113_105_convPieceType.hpp">
       <Filter>header\n113_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n110_square__\n110_155_convFile.hpp">
+    <ClInclude Include="header\n105_120_square__\n105_120_155_convFile.hpp">
       <Filter>header\n110_square__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n110_square__\n110_205_convRank.hpp">
+    <ClInclude Include="header\n105_120_square__\n105_120_205_convRank.hpp">
       <Filter>header\n110_square__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n110_square__\n110_500_convSquare.hpp">
+    <ClInclude Include="header\n105_120_square__\n105_120_500_convSquare.hpp">
       <Filter>header\n110_square__</Filter>
     </ClInclude>
     <ClInclude Include="header\n113_piece___\n113_205_convHandPiece.hpp">
@@ -951,7 +951,7 @@
     <ClInclude Include="header\n350_pieceTyp\n350_045_pieceTypeSeeEvent.hpp">
       <Filter>header\n350_pieceTyp</Filter>
     </ClInclude>
-    <ClInclude Include="header\n105_color___\n105_500_convColor.hpp">
+    <ClInclude Include="header\n105_100_color___\n105_100_500_convColor.hpp">
       <Filter>header\n105_color___</Filter>
     </ClInclude>
     <ClInclude Include="header\n350_pieceTyp\n350_500_ptPrograms.hpp">
@@ -1082,10 +1082,10 @@
     <ClCompile Include="source\n160_board___\n160_100_bitboard.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n080_common__\n080_100_common.cpp">
+    <ClCompile Include="source\n080_100_sysWorld\n080_100_500_common.cpp">
       <Filter>source\n080_common</Filter>
     </ClCompile>
-    <ClCompile Include="source\n080_common__\n080_200_utilProgram.cpp">
+    <ClCompile Include="source\n080_200_utilProg\n080_200_500_utilProgram.cpp">
       <Filter>source\n080_common</Filter>
     </ClCompile>
     <ClCompile Include="source\n900_main____\n900_500_main.cpp">
@@ -1163,16 +1163,16 @@
     <ClCompile Include="source\n220_position\n220_150_checkInfo.cpp">
       <Filter>source\n220_position</Filter>
     </ClCompile>
-    <ClCompile Include="source\n110_square\n110_400_squareRelation.cpp">
+    <ClCompile Include="source\n105_120_square__\n110_400_squareRelation.cpp">
       <Filter>source\n110_square___</Filter>
     </ClCompile>
     <ClCompile Include="source\n220_position\n220_400_evalList.cpp">
       <Filter>source\n220_position</Filter>
     </ClCompile>
-    <ClCompile Include="source\n110_square\n110_150_file.cpp">
+    <ClCompile Include="source\n105_120_square__\n105_120_150_file.cpp">
       <Filter>source\n110_square___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n110_square\n110_200_rank.cpp">
+    <ClCompile Include="source\n105_120_square__\n105_120_200_rank.cpp">
       <Filter>source\n110_square___</Filter>
     </ClCompile>
     <ClCompile Include="source\n113_piece___\n113_200_handPiece.cpp">

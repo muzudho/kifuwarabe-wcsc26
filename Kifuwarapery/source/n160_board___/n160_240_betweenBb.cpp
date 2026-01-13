@@ -1,4 +1,4 @@
-﻿#include "../../header/n110_square__/n110_400_squareRelation.hpp"
+﻿#include "../../header/n105_120_square__/n105_120_400_squareRelation.hpp"
 #include "../../header/n160_board___/n160_120_bishopAttackBb.hpp"
 #include "../../header/n160_board___/n160_150_rookAttackBb.hpp"
 #include "../../header/n160_board___/n160_230_setMaskBb.hpp"

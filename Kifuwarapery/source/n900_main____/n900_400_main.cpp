@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 #include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../../header/n110_square__/n110_400_squareRelation.hpp"
+#include "../../header/n105_120_square__/n105_120_400_squareRelation.hpp"
 #include "../../header/n160_board___/n160_100_bitboard.hpp"
 #include "../../header/n160_board___/n160_110_silverAttackBb.hpp"
 #include "../../header/n160_board___/n160_120_bishopAttackBb.hpp"

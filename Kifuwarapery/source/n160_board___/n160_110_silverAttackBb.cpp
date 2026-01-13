@@ -1,4 +1,4 @@
-﻿#include "../../header/n110_square__/n110_500_convSquare.hpp"
+﻿#include "../../header/n105_120_square__/n105_120_500_convSquare.hpp"
 #include "../../header/n160_board___/n160_106_inFrontMaskBb.hpp"
 #include "../../header/n160_board___/n160_110_silverAttackBb.hpp"
 #include "../../header/n160_board___/n160_120_bishopAttackBb.hpp"	// TODO:これを消すのが難しい

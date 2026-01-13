@@ -1,38 +1,25 @@
 ﻿#pragma once
 #include "../n080_150_overEnum/n080_150_500_overloadEnumOperators.hpp"
-#include "../n110_square__/n110_100_square.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────
-// 段
+// マスの位置の差分
 //────────────────────────────────────────────────────────────────────────────────
 
 
 /// <summary>
-/// 段の定数
+/// マスの位置の差分
 /// </summary>
-enum Rank {
+enum SquareDelta {
+
 	/// <summary>
-	/// ９段目
+	/// 同一の Square にあるとき
 	/// </summary>
-	Rank9,
-	
-	Rank8, Rank7, Rank6, Rank5, Rank4, Rank3, Rank2,
-	
-	/// <summary>
-	/// １段目
-	/// </summary>
-	Rank1,
-	
-	/// <summary>
-	/// 列挙型の終端
-	/// </summary>
-	RankNum
+	DeltaNothing = 0,
+	DeltaN = -1, DeltaE = -9, DeltaS = 1, DeltaW = 9,
+	DeltaNE = DeltaN + DeltaE,
+	DeltaSE = DeltaS + DeltaE,
+	DeltaSW = DeltaS + DeltaW,
+	DeltaNW = DeltaN + DeltaW
 };
-OverloadEnumOperators(Rank);
-
-
-/// <summary>
-/// 
-/// </summary>
-extern const Rank g_squareToRank[SquareNum];
+OverloadEnumOperators(SquareDelta);
