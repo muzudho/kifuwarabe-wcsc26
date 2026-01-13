@@ -66,9 +66,6 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="isGotoSplitPointStart"></param>
-	/// <param name="moveCount"></param>
-	/// <param name="playedMoveCount"></param>
-	/// <param name="inCheck"></param>
 	/// <param name="pos"></param>
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="ppFlashlight"></param>
@@ -78,11 +75,8 @@ public:
 	/// <param name="ttMove"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="ttScore"></param>
-	virtual inline void ExplorerPlainStep1a(
+	virtual inline void ExplorerPlainStep1a1InitializeNode(
 		bool& isGotoSplitPointStart,
-		int& moveCount,
-		int& playedMoveCount,
-		bool& inCheck,
 		Position& pos,
 		SplitedNode** ppSplitedNode,
 		Flashlight** ppFlashlight,
@@ -92,7 +86,8 @@ public:
 		Move& ttMove,
 		Move& excludedMove,
 		ScoreIndex& ttScore
-		)const override {
+		) const override
+	{
 		// 非スプリット・ポイントはスルー☆！（＾ｑ＾）
 	}
 

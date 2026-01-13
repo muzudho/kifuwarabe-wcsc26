@@ -119,11 +119,8 @@ ScoreIndex AdventureNodekindSplitedNodeRoot::ExplorePlain(
 	inCheck = pos.InCheck();
 
 	bool isGotoSplitPointStart = false;
-	this->ExplorerPlainStep1a(
+	this->ExplorerPlainStep1a1InitializeNode(
 		isGotoSplitPointStart,
-		moveCount,
-		playedMoveCount,
-		inCheck,
 		pos,
 		&pSplitedNode,
 		&pFlashlight,
@@ -132,8 +129,7 @@ ScoreIndex AdventureNodekindSplitedNodeRoot::ExplorePlain(
 		bestScore,
 		ttMove,
 		excludedMove,
-		ttScore
-		);
+		ttScore);
 	if (isGotoSplitPointStart) { goto split_point_start; }
 
 	this->ExplorerPlainStep1b(

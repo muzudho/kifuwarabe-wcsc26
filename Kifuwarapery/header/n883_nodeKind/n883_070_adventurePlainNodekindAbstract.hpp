@@ -63,9 +63,6 @@ public:
 	/// スプリット・ポイントのみ実行☆（＾ｑ＾）
 	/// </summary>
 	/// <param name="isGotoSplitPointStart"></param>
-	/// <param name="moveCount"></param>
-	/// <param name="playedMoveCount"></param>
-	/// <param name="inCheck"></param>
 	/// <param name="pos"></param>
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="ppFlashlight"></param>
@@ -75,11 +72,8 @@ public:
 	/// <param name="ttMove"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="ttScore"></param>
-	virtual inline void ExplorerPlainStep1a(
+	virtual inline void ExplorerPlainStep1a1InitializeNode(
 		bool& isGotoSplitPointStart,
-		int& moveCount,
-		int& playedMoveCount,
-		bool& inCheck,
 		Position& pos,
 		SplitedNode** ppSplitedNode,
 		Flashlight** ppFlashlight,
@@ -88,11 +82,8 @@ public:
 		ScoreIndex& bestScore,
 		Move& ttMove,
 		Move& excludedMove,
-		ScoreIndex& ttScore
-		)const// = 0;
-	// /*
+		ScoreIndex& ttScore) const
 	{
-
 		// initialize node
 
 		*ppSplitedNode = (*ppFlashlight)->m_splitedNode;
@@ -112,7 +103,6 @@ public:
 		return;
 		//goto split_point_start;
 	}
-	//*/
 
 
 	/// <summary>
