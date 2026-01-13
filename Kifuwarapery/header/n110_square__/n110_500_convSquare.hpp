@@ -1,5 +1,4 @@
 ﻿#pragma once
-
 #include "../n080_common__/n080_100_common.hpp"
 #include "../n105_color___/n105_500_convColor.hpp"
 #include "../n110_square__/n110_100_square.hpp"
@@ -11,8 +10,13 @@
 #include "../n110_square__/n110_300_direction.hpp"
 
 
+//────────────────────────────────────────────────────────────────────────────────
+// マス番号の操作
+//────────────────────────────────────────────────────────────────────────────────
+
+
 /// <summary>
-/// 
+/// マス番号の操作
 /// </summary>
 class ConvSquare {
 

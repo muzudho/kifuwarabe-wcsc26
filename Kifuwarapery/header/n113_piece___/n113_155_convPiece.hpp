@@ -1,9 +1,13 @@
 ﻿#pragma once
-
 #include "../n105_color___/n105_100_color.hpp"
 #include "../n112_pieceTyp/n112_050_pieceType.hpp"
 #include "../n113_piece___/n113_105_convPieceType.hpp"	// g_isSliderVal
 #include "../n113_piece___/n113_150_piece.hpp"
+
+
+//────────────────────────────────────────────────────────────────────────────────
+// 駒の操作
+//────────────────────────────────────────────────────────────────────────────────
 
 
 namespace {
