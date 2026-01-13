@@ -1,15 +1,19 @@
 #pragma once
-#include "../n080_common__/n080_050_ifdef.hpp"
-
-
-using namespace std;
+#include "../n080_common__/n080_080_putb.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────
-// BMI2
+// 同期入出力
 //────────────────────────────────────────────────────────────────────────────────
 
 
-#if defined HAVE_BMI2
-    #include <immintrin.h>
-#endif
+/// <summary>
+/// 同期入出力
+/// </summary>
+enum SyncCout {
+	IOLock,
+	IOUnlock
+};
+std::ostream& operator << (std::ostream& os, SyncCout sc);
+#define SYNCCOUT std::cout << IOLock
+#define SYNCENDL std::endl << IOUnlock

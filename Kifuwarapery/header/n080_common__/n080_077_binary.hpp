@@ -1,15 +1,29 @@
 #pragma once
-#include "../n080_common__/n080_050_ifdef.hpp"
-
-
-using namespace std;
+#include "../n080_common__/n080_076_int.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────
-// BMI2
+// 2進数表記
 //────────────────────────────────────────────────────────────────────────────────
 
 
-#if defined HAVE_BMI2
-    #include <immintrin.h>
-#endif
+/// <summary>
+/// 例えば、Binary<11110>::value とすれば、30 となる。
+/// 符合なし64bitなので19桁まで表記可能。
+/// </summary>
+/// <typeparam name="n"></typeparam>
+template <u64 n>
+struct Binary
+{
+	static const u64 value = n % 10 + (Binary<n / 10>::value << 1);
+};
+
+
+/// <summary>
+/// template 特殊化
+/// </summary>
+template <>
+struct Binary<0>
+{
+	static const u64 value = 0;
+};

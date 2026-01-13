@@ -1,15 +1,10 @@
 #pragma once
-#include "../n080_common__/n080_050_ifdef.hpp"
-
-
-using namespace std;
+#include "../n080_common__/n080_074_asmcomment.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────
-// BMI2
+// DEBUGCERR
 //────────────────────────────────────────────────────────────────────────────────
 
 
-#if defined HAVE_BMI2
-    #include <immintrin.h>
-#endif
+#define DEBUGCERR(x) std::cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << std::endl;

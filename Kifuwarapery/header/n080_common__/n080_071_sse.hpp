@@ -1,15 +1,16 @@
 #pragma once
-#include "../n080_common__/n080_050_ifdef.hpp"
-
-
-using namespace std;
+#include "../n080_common__/n080_070_bmi2.hpp"
+#include <random>				// std::mt19937_64
+#include <condition_variable>	// std::mutex, std::condition_variable
 
 
 //────────────────────────────────────────────────────────────────────────────────
-// BMI2
+// SSE4, SSE2
 //────────────────────────────────────────────────────────────────────────────────
 
 
-#if defined HAVE_BMI2
-    #include <immintrin.h>
+#if defined (HAVE_SSE4)
+    #include <smmintrin.h>
+#elif defined (HAVE_SSE2)
+    #include <emmintrin.h>
 #endif

@@ -1026,6 +1026,51 @@
     <ClInclude Include="header\n080_common__\n080_070_bmi2.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
+    <ClInclude Include="header\n080_common__\n080_071_sse.hpp">
+      <Filter>header\n080_common__</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n080_common__\n080_072_unreachable.hpp">
+      <Filter>header\n080_common__</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n080_common__\n080_074_asmcomment.hpp">
+      <Filter>header\n080_common__</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n080_common__\n080_076_int.hpp">
+      <Filter>header\n080_common__</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n080_common__\n080_079_count1s.hpp">
+      <Filter>header\n080_common__</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n080_common__\n080_080_putb.hpp">
+      <Filter>header\n080_common__</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n080_common__\n080_081_ioLock.hpp">
+      <Filter>header\n080_common__</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n080_common__\n080_082_eraser.hpp">
+      <Filter>header\n080_common__</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n080_common__\n080_083_unroller.hpp">
+      <Filter>header\n080_common__</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n080_common__\n080_084_cacheLineSize.hpp">
+      <Filter>header\n080_common__</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n080_common__\n080_085_prefetch.hpp">
+      <Filter>header\n080_common__</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n080_common__\n080_086_hashTable.hpp">
+      <Filter>header\n080_common__</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n080_common__\n080_087_random.hpp">
+      <Filter>header\n080_common__</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n080_common__\n080_088_mutex.hpp">
+      <Filter>header\n080_common__</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n080_common__\n080_089_endian.hpp">
+      <Filter>header\n080_common__</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -1641,6 +1686,18 @@
       <Filter>source\n165_movStack</Filter>
     </ClCompile>
     <ClCompile Include="source\n220_position\n220_645_gameStats.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="header\n080_common__\n080_073_forceInline.hpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="header\n080_common__\n080_075_debugcerr.hpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="header\n080_common__\n080_077_binary.hpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="header\n080_common__\n080_078_lsbMsb.hpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
