@@ -1,10 +1,16 @@
 #pragma once
-#include "../n080_100_sysWorld/n080_074_asmcomment.hpp"
+#include "../n080_100_sysWorld/n080_100_070_bmi2.hpp"
+#include <random>				// std::mt19937_64
+#include <condition_variable>	// std::mutex, std::condition_variable
 
 
 //────────────────────────────────────────────────────────────────────────────────
-// DEBUGCERR
+// SSE4, SSE2
 //────────────────────────────────────────────────────────────────────────────────
 
 
-#define DEBUGCERR(x) std::cerr << #x << " = " << (x) << " (L" << __LINE__ << ")" << " " << __FILE__ << std::endl;
+#if defined (HAVE_SSE4)
+    #include <smmintrin.h>
+#elif defined (HAVE_SSE2)
+    #include <emmintrin.h>
+#endif

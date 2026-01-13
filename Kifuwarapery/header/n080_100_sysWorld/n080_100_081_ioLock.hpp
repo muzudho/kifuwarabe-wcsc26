@@ -1,19 +1,19 @@
 #pragma once
-#include "../n080_100_sysWorld/n080_075_debugcerr.hpp"
+#include "../n080_100_sysWorld/n080_100_080_putb.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────
-// int
+// 同期入出力
 //────────────────────────────────────────────────────────────────────────────────
-//
-//      - bit幅を指定する必要があるときは、以下の型を使用する。
 
 
-using s8 = int8_t;
-using u8 = uint8_t;
-using s16 = int16_t;
-using u16 = uint16_t;
-using s32 = int32_t;
-using u32 = uint32_t;
-using s64 = int64_t;
-using u64 = uint64_t;
+/// <summary>
+/// 同期入出力
+/// </summary>
+enum SyncCout {
+	IOLock,
+	IOUnlock
+};
+std::ostream& operator << (std::ostream& os, SyncCout sc);
+#define SYNCCOUT std::cout << IOLock
+#define SYNCENDL std::endl << IOUnlock

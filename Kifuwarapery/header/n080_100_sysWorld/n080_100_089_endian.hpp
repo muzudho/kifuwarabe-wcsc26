@@ -1,34 +1,29 @@
 #pragma once
-#include "../n080_100_sysWorld/n080_081_ioLock.hpp"
+#include "../n080_100_sysWorld/n080_100_088_mutex.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────
-// イレイザー
+// エンディアン
 //────────────────────────────────────────────────────────────────────────────────
-//
-//      - 出力を捨ててる（＾～＾）？
 
 
-#if defined LEARN
-#undef SYNCCOUT
-#undef SYNCENDL
-/// <summary>
-/// 
-/// </summary>
-class Eraser {};
-
-
-extern Eraser SYNCCOUT;
-extern Eraser SYNCENDL;
+#if 0
+#include <boost/detail/endian.hpp>
 
 
 /// <summary>
 /// 
 /// </summary>
 /// <typeparam name="T"></typeparam>
-/// <param name="temp"></param>
-/// <param name=""></param>
-/// <returns></returns>
+/// <param name="r"></param>
 template <typename T>
-Eraser& operator << (Eraser& temp, const T&) { return temp; }
+inline void reverseEndian(T& r)
+{
+	u8* begin = reinterpret_cast<u8*>(&r);
+	u8* IsEnd = reinterpret_cast<u8*>(&r) + sizeof(T);
+	for (; begin < IsEnd; ++begin, --IsEnd)
+	{
+		std::swap(*begin, *(IsEnd - 1));
+	}
+}
 #endif

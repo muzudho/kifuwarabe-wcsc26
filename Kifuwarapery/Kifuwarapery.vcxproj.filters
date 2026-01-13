@@ -255,7 +255,7 @@
     <ClInclude Include="header\n080_100_sysWorld\n080_100_500_common.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n080_100_sysWorld\n080_050_ifdef.hpp">
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_050_ifdef.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
     <ClInclude Include="header\n160_board___\n160_100_bitboard.hpp">
@@ -1023,53 +1023,56 @@
     <ClInclude Include="header\n220_position\n220_645_gameStats.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="header\n080_100_sysWorld\n080_070_bmi2.hpp">
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_070_bmi2.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n080_100_sysWorld\n080_071_sse.hpp">
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_071_sse.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n080_100_sysWorld\n080_072_unreachable.hpp">
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_072_unreachable.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n080_100_sysWorld\n080_074_asmcomment.hpp">
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_074_asmcomment.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n080_100_sysWorld\n080_076_int.hpp">
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_076_int.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n080_100_sysWorld\n080_079_count1s.hpp">
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_079_count1s.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n080_100_sysWorld\n080_080_putb.hpp">
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_080_putb.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n080_100_sysWorld\n080_081_ioLock.hpp">
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_081_ioLock.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n080_100_sysWorld\n080_082_eraser.hpp">
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_082_eraser.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n080_100_sysWorld\n080_083_unroller.hpp">
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_083_unroller.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n080_100_sysWorld\n080_084_cacheLineSize.hpp">
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_084_cacheLineSize.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n080_100_sysWorld\n080_085_prefetch.hpp">
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_085_prefetch.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n080_100_sysWorld\n080_086_hashTable.hpp">
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_086_hashTable.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n080_100_sysWorld\n080_087_random.hpp">
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_087_random.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n080_100_sysWorld\n080_088_mutex.hpp">
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_088_mutex.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n080_100_sysWorld\n080_089_endian.hpp">
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_089_endian.hpp">
       <Filter>header\n080_common__</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n374_genMove_\n374_780_MoveGenerator100.hpp">
+      <Filter>header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1688,16 +1691,16 @@
     <ClCompile Include="source\n220_position\n220_645_gameStats.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="header\n080_100_sysWorld\n080_073_forceInline.hpp">
+    <ClCompile Include="header\n080_100_sysWorld\n080_100_073_forceInline.hpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="header\n080_100_sysWorld\n080_075_debugcerr.hpp">
+    <ClCompile Include="header\n080_100_sysWorld\n080_100_075_debugcerr.hpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="header\n080_100_sysWorld\n080_077_binary.hpp">
+    <ClCompile Include="header\n080_100_sysWorld\n080_100_077_binary.hpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="header\n080_100_sysWorld\n080_078_lsbMsb.hpp">
+    <ClCompile Include="header\n080_100_sysWorld\n080_100_078_lsbMsb.hpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

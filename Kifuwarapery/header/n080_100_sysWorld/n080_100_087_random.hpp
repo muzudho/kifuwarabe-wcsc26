@@ -1,15 +1,13 @@
 #pragma once
-#include "../n080_100_sysWorld/n080_050_ifdef.hpp"
-
-
-using namespace std;
+#include "../n080_100_sysWorld/n080_100_086_hashTable.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────
-// BMI2
+// 乱数
 //────────────────────────────────────────────────────────────────────────────────
 
 
-#if defined HAVE_BMI2
-    #include <immintrin.h>
-#endif
+/// <summary>
+/// メルセンヌツイスター乱数の種だろうか☆（＾～＾）？
+/// </summary>
+extern std::mt19937_64 g_randomTimeSeed;

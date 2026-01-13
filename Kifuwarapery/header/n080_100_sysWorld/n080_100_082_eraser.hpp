@@ -1,19 +1,34 @@
 #pragma once
-#include "../n080_100_sysWorld/n080_080_putb.hpp"
+#include "../n080_100_sysWorld/n080_100_081_ioLock.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────
-// 同期入出力
+// イレイザー
 //────────────────────────────────────────────────────────────────────────────────
+//
+//      - 出力を捨ててる（＾～＾）？
+
+
+#if defined LEARN
+#undef SYNCCOUT
+#undef SYNCENDL
+/// <summary>
+/// 
+/// </summary>
+class Eraser {};
+
+
+extern Eraser SYNCCOUT;
+extern Eraser SYNCENDL;
 
 
 /// <summary>
-/// 同期入出力
+/// 
 /// </summary>
-enum SyncCout {
-	IOLock,
-	IOUnlock
-};
-std::ostream& operator << (std::ostream& os, SyncCout sc);
-#define SYNCCOUT std::cout << IOLock
-#define SYNCENDL std::endl << IOUnlock
+/// <typeparam name="T"></typeparam>
+/// <param name="temp"></param>
+/// <param name=""></param>
+/// <returns></returns>
+template <typename T>
+Eraser& operator << (Eraser& temp, const T&) { return temp; }
+#endif
