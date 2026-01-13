@@ -261,7 +261,7 @@
     <ClInclude Include="header\n160_board___\n160_100_bitboard.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n080_common__\n080_200_utilProgram.hpp">
+    <ClInclude Include="header\n090_utilProg\n090_500_utilProgram.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
     <ClInclude Include="header\n900_main____\n900_300_usiLoop.hpp">

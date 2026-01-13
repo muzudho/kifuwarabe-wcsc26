@@ -158,7 +158,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="header\n080_common__\n080_070_bmi2.hpp" />
-    <ClInclude Include="header\n080_common__\n080_200_utilProgram.hpp" />
+    <ClInclude Include="header\n090_utilProg\n090_500_utilProgram.hpp" />
     <ClInclude Include="header\n105_color___\n105_100_color.hpp" />
     <ClInclude Include="header\n105_color___\n105_500_convColor.hpp" />
     <ClInclude Include="header\n110_square__\n110_155_convFile.hpp" />
