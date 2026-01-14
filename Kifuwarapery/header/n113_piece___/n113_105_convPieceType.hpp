@@ -2,7 +2,7 @@
 #include <string>
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n105_120_square__/n105_120_100_square.hpp"
-#include "../n112_pieceTyp/n112_050_pieceType.hpp"
+#include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────

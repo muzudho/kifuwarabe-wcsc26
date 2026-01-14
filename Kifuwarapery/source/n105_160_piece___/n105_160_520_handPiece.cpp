@@ -1,4 +1,4 @@
-﻿#include "../../header/n112_pieceTyp/n112_050_pieceType.hpp"
+﻿#include "../../header/n105_160_pieceTyp/n105_160_500_pieceType.hpp"
 #include "../../header/n113_piece___/n113_200_handPiece.hpp"
 
 

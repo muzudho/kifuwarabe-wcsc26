@@ -4,7 +4,7 @@
 #include "../../header/n105_100_color___/n105_100_100_color.hpp"
 #include "../../header/n105_120_square__/n105_120_100_square.hpp"
 #include "../../header/n105_120_square__/n105_120_400_squareRelation.hpp"
-#include "../../header/n112_pieceTyp/n112_050_pieceType.hpp"
+#include "../../header/n105_160_pieceTyp/n105_160_500_pieceType.hpp"
 #include "../../header/n113_piece___/n113_150_piece.hpp"
 #include "../../header/n113_piece___/n113_155_convPiece.hpp"
 #include "../../header/n119_score___/n119_090_scoreIndex.hpp"

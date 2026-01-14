@@ -312,7 +312,7 @@
     <ClInclude Include="header\n113_piece___\n113_200_handPiece.hpp">
       <Filter>header\n113_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n111_colorSq_\n111_500_ColorFileRank.h">
+    <ClInclude Include="header\n105_140_colorSq_\n105_140_ColorFileRank.h">
       <Filter>header\n111_colorSq_</Filter>
     </ClInclude>
     <ClInclude Include="header\n223_move____\n223_200_depth.hpp">
@@ -414,7 +414,7 @@
     <ClInclude Include="header\n220_position\n220_650_position.hpp">
       <Filter>header\n220_position</Filter>
     </ClInclude>
-    <ClInclude Include="header\n112_pieceTyp\n112_050_pieceType.hpp">
+    <ClInclude Include="header\n105_160_pieceTyp\n105_160_500_pieceType.hpp">
       <Filter>header\n112_pieceTyp</Filter>
     </ClInclude>
     <ClInclude Include="header\n220_position\n220_640_utilAttack.hpp">
@@ -1097,7 +1097,7 @@
     <ClCompile Include="source\n900_main____\n900_300_usiLoop.cpp">
       <Filter>source\n900_main____</Filter>
     </ClCompile>
-    <ClCompile Include="source\n111_colorSq_\n111_500_ColorFileRank.cpp">
+    <ClCompile Include="source\n105_140_colorSq_\n105_140_ColorFileRank.cpp">
       <Filter>source\n111_colorSq_</Filter>
     </ClCompile>
     <ClCompile Include="source\n119_score___\n119_200_pieceScore.cpp">
@@ -1175,10 +1175,10 @@
     <ClCompile Include="source\n105_120_square__\n105_120_200_rank.cpp">
       <Filter>source\n110_square___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n113_piece___\n113_200_handPiece.cpp">
+    <ClCompile Include="source\n105_160_piece___\n105_160_520_handPiece.cpp">
       <Filter>source\n113_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n113_piece___\n113_500_hand.cpp">
+    <ClCompile Include="source\n105_160_piece___\n106_160_540_hand.cpp">
       <Filter>source\n113_piece___</Filter>
     </ClCompile>
     <ClCompile Include="source\n220_position\n220_750_charToPieceUSI.cpp">

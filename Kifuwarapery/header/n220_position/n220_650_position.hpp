@@ -4,7 +4,7 @@
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n105_100_color___/n105_100_100_color.hpp"
 #include "../n105_120_square__/n105_120_100_square.hpp"
-#include "../n112_pieceTyp/n112_050_pieceType.hpp"
+#include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
 #include "../n113_piece___/n113_150_piece.hpp"
 #include "../n113_piece___/n113_500_hand.hpp"
 #include "../n119_score___/n119_090_scoreIndex.hpp"
