@@ -119,10 +119,9 @@ ScoreIndex AdventureNodekindPv::ExplorePlain(
 		&pFlashlight,
 		threatMove,
 		bestMove);
-	this->ExplorerPlainStep1c(
+	this->ExplorerPlainStep1cUpdateMaxPly(
 		&pThisThread,
-		pFlashlight
-		);
+		pFlashlight);
 
 	// step2: 千日手による探索打切りの判断
 	//		- maxPly を更新するケースもある。

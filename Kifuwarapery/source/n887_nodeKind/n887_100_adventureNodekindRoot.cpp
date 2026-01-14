@@ -117,10 +117,9 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 		&pFlashlight,
 		threatMove,
 		bestMove);
-	this->ExplorerPlainStep1c(
+	this->ExplorerPlainStep1cUpdateMaxPly(
 		&pThisThread,
-		pFlashlight
-		);
+		pFlashlight);
 
 	//bool isReturnWithScore = false;
 	//ScoreIndex returnScore = ScoreIndex::ScoreNone;

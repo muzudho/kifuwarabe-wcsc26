@@ -79,10 +79,10 @@ public:
 	/// </summary>
 	/// <param name="ppThisThread"></param>
 	/// <param name="pFlashlight"></param>
-	inline void ExplorerPlainStep1c(
+	inline void ExplorerPlainStep1cUpdateMaxPly(
 		Soldier** ppThisThread,
-		const Flashlight* pFlashlight
-		)const override {
+		const Flashlight* pFlashlight) const override
+	{
 		// 非PVノードはスルー☆！（＾ｑ＾）
 		//UNREACHABLE;
 	}
