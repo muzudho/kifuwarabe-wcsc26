@@ -472,7 +472,7 @@
     <ClCompile Include="source\n160_boardBb_\n160_104_rankMaskBb.cpp" />
     <ClCompile Include="source\n160_boardBb_\n160_106_inFrontMaskBb.cpp" />
     <ClCompile Include="source\n105_200_sqDistan\n105_200_squareDistance.cpp" />
-    <ClCompile Include="source\n340_bonaDir_\n162_070_bonaDirAbstract.cpp" />
+    <ClCompile Include="source\n340_bonaDir_\n340_500_bonaDirAbstract.cpp" />
     <ClCompile Include="source\n105_200_sqDistan\n163_600_utilSquareDistance.cpp" />
     <ClCompile Include="source\n165_movStack\n165_400_move.cpp" />
     <ClCompile Include="source\n165_movStack\n165_600_utilMove.cpp" />
