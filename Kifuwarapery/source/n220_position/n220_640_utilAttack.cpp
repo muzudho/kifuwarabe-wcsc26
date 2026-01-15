@@ -3,9 +3,9 @@
 #include "../../header/n105_160_pieceTyp/n105_160_500_pieceType.hpp"
 #include "../../header/n160_board___/n160_100_bitboard.hpp"
 #include "../../header/n220_position/n220_640_utilAttack.hpp"
-#include "../../header/n350_pieceTyp/n350_040_ptEvent.hpp"
-#include "../../header/n350_pieceTyp/n350_070_ptAbstract.hpp"
-#include "../../header/n350_pieceTyp/n350_500_ptPrograms.hpp"
+#include "../../header/n250_pieceTyp/n350_040_ptEvent.hpp"
+#include "../../header/n250_pieceTyp/n350_070_ptAbstract.hpp"
+#include "../../header/n250_pieceTyp/n350_500_ptPrograms.hpp"
 
 
 /// <summary>

@@ -6,10 +6,10 @@
 #include "../n105_120_square__/n105_120_250_squareDelta.hpp"
 #include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
 #include "../n161_sqDistan/n161_500_squareDistance.hpp"
-#include "../n162_bonaDir_/n162_070_bonaDirAbstract.hpp"
+#include "../n340_bonaDir_/n162_070_bonaDirAbstract.hpp"
 #include "../n220_position/n220_650_position.hpp"
-#include "../n350_pieceTyp/n350_040_ptEvent.hpp"
-#include "../n350_pieceTyp/n350_500_ptPrograms.hpp"
+#include "../n250_pieceTyp/n350_040_ptEvent.hpp"
+#include "../n250_pieceTyp/n350_500_ptPrograms.hpp"
 
 
 /// <summary>

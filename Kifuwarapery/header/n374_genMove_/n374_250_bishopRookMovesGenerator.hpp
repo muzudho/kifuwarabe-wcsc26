@@ -9,8 +9,8 @@
 #include "../n165_movStack/n165_300_moveType.hpp"
 #include "../n165_movStack/n165_500_moveStack.hpp"
 #include "../n220_position/n220_650_position.hpp"
-#include "../n350_pieceTyp/n350_040_ptEvent.hpp"
-#include "../n350_pieceTyp/n350_500_ptPrograms.hpp"
+#include "../n250_pieceTyp/n350_040_ptEvent.hpp"
+#include "../n250_pieceTyp/n350_500_ptPrograms.hpp"
 #include "n374_040_pieceMoveEvent.hpp"
 
 

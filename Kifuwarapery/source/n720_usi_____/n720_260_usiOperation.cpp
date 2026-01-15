@@ -4,7 +4,7 @@
 #include "../../header/n165_movStack/n165_600_convMove.hpp"
 #include "../../header/n220_position/n220_645_gameStats.hpp"
 #include "../../header/n220_position/n220_650_position.hpp"
-#include "../../header/n350_pieceTyp/n350_030_makePromoteMove.hpp"
+#include "../../header/n250_pieceTyp/n350_030_makePromoteMove.hpp"
 #include "../../header/n407_moveGen_/n407_900_moveList.hpp"
 #include "../../header/n720_usi_____/n720_260_usiOperation.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"

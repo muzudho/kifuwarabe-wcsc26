@@ -6,7 +6,7 @@
 #include "../../header/n223_move____/n223_060_stats.hpp"
 #include "../../header/n223_move____/n223_500_flashlight.hpp"
 
-#include "../../header/n350_pieceTyp/n350_030_makePromoteMove.hpp"
+#include "../../header/n250_pieceTyp/n350_030_makePromoteMove.hpp"
 #include "../../header/n407_moveGen_/n407_900_moveList.hpp"
 #include "../../header/n440_movStack/n440_500_nextmoveEvent.hpp"
 
