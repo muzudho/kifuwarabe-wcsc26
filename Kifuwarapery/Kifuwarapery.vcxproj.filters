@@ -672,9 +672,6 @@
     <ClInclude Include="header\n358_dropMake\n358_500_dropMakerArray.hpp">
       <Filter>header\n358_dropMake</Filter>
     </ClInclude>
-    <ClInclude Include="header\n340_bonaDir_\n162_070_bonaDirAbstract.hpp">
-      <Filter>header\n162_bonaDir_</Filter>
-    </ClInclude>
     <ClInclude Include="header\n105_200_sqDistan\n105_200_600_utilSquareDistance.hpp">
       <Filter>header\n163_sqDistan</Filter>
     </ClInclude>
@@ -1074,6 +1071,9 @@
     <ClInclude Include="header\n374_genMove_\n374_780_MoveGenerator100.hpp">
       <Filter>header</Filter>
     </ClInclude>
+    <ClInclude Include="header\n340_bonaDir_\n340_500_bonaDirAbstract.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -1387,9 +1387,6 @@
     </ClCompile>
     <ClCompile Include="source\n358_dropMake\n358_500_dropMakerArray.cpp">
       <Filter>source\n358_dropMake</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n340_bonaDir_\n162_070_bonaDirAbstract.cpp">
-      <Filter>source\n162_bonaDir_</Filter>
     </ClCompile>
     <ClCompile Include="source\n105_200_sqDistan\n163_600_utilSquareDistance.cpp">
       <Filter>source\n163_sqDistan</Filter>

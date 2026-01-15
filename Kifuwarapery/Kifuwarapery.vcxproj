@@ -220,7 +220,6 @@
     <ClInclude Include="header\n160_boardBb_\n160_104_rankMaskBb.hpp" />
     <ClInclude Include="header\n160_boardBb_\n160_106_inFrontMaskBb.hpp" />
     <ClInclude Include="header\n105_200_sqDistan\n105_200_500_squareDistance.hpp" />
-    <ClInclude Include="header\n340_bonaDir_\n162_070_bonaDirAbstract.hpp" />
     <ClInclude Include="header\n105_200_sqDistan\n105_200_600_utilSquareDistance.hpp" />
     <ClInclude Include="header\n165_movStack\n165_300_moveType.hpp" />
     <ClInclude Include="header\n165_movStack\n165_310_promoteMode.hpp" />
@@ -239,6 +238,7 @@
     <ClInclude Include="header\n220_position\n220_665_utilMoveStack.hpp" />
     <ClInclude Include="header\n220_position\n220_750_charToPieceUSI.hpp" />
     <ClInclude Include="header\n220_position\n220_400_evalList.hpp" />
+    <ClInclude Include="header\n340_bonaDir_\n340_500_bonaDirAbstract.hpp" />
     <ClInclude Include="header\n374_genMove_\n374_780_MoveGenerator100.hpp" />
     <ClInclude Include="header\n640_searcher\n640_040_nodeKind.hpp" />
     <ClInclude Include="header\n223_move____\n223_060_stats.hpp" />
@@ -472,7 +472,6 @@
     <ClCompile Include="source\n160_boardBb_\n160_104_rankMaskBb.cpp" />
     <ClCompile Include="source\n160_boardBb_\n160_106_inFrontMaskBb.cpp" />
     <ClCompile Include="source\n105_200_sqDistan\n105_200_squareDistance.cpp" />
-    <ClCompile Include="source\n340_bonaDir_\n340_500_bonaDirAbstract.cpp" />
     <ClCompile Include="source\n105_200_sqDistan\n163_600_utilSquareDistance.cpp" />
     <ClCompile Include="source\n165_movStack\n165_400_move.cpp" />
     <ClCompile Include="source\n165_movStack\n165_600_utilMove.cpp" />

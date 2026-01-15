@@ -10,7 +10,7 @@
 
 
 /// <summary>
-/// 
+/// Bonanzaで使われている［向き］。
 /// </summary>
 class BonaDirAbstract {
 
@@ -28,7 +28,12 @@ public:
 
 
 	/// <summary>
+	///		<pre>
 	/// インターフェースのメソッド
+	/// 
+	///		- checkerBb を調べるためのもの。
+	///		- FIXME: checkerBb を返り値にすれば、 Position& position は要らないのでは？
+	///		</pre>
 	/// </summary>
 	/// <param name="position"></param>
 	/// <param name="from"></param>

@@ -5,12 +5,12 @@
 #include "../n160_boardBb_/n160_180_knightAttackBb.hpp"
 #include "../n160_boardBb_/n160_230_setMaskBB.hpp"
 #include "../n105_200_sqDistan/n105_200_500_squareDistance.hpp"
-#include "../n340_bonaDir_/n162_070_bonaDirAbstract.hpp"
+#include "../n340_bonaDir_/n340_500_bonaDirAbstract.hpp"
 #include "../n220_position/n220_650_position.hpp"
 
 
 /// <summary>
-/// 
+/// Bonanzaで使われている［向き］。
 /// </summary>
 class DirecMisc : public BonaDirAbstract {
 
@@ -24,7 +24,8 @@ public:
 	/// <param name="squareDistance"></param>
 	/// <param name="sq0"></param>
 	/// <param name="sq1"></param>
-	void InitializeSquareDistance(SquareDistance& squareDistance, Square sq0, Square sq1) const {
+	void InitializeSquareDistance(SquareDistance& squareDistance, Square sq0, Square sq1) const
+	{
 		// DirecMisc な関係は全て距離 1 にしてもKPE学習には問題無いんだけれど。
 		squareDistance.SetValue(sq0,sq1, 0);
 		if (
@@ -43,7 +44,8 @@ public:
 	/// <param name="from"></param>
 	/// <param name="ksq"></param>
 	/// <param name="us"></param>
-	void Do2Move(Position& position, Square from, const Square ksq, const Color us) const {
+	void Do2Move(Position& position, Square from, const Square ksq, const Color us) const
+	{
 		assert(false); // 最適化の為のダミー
 	}
 };
