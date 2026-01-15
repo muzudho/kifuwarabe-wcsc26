@@ -14,7 +14,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// 千日手による探索打切りの判断
+	///		</pre>
 	/// </summary>
 	/// <param name="isReturn"></param>
 	/// <param name="resultScore"></param>

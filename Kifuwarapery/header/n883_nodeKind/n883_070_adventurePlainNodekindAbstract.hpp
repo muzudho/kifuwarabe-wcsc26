@@ -24,7 +24,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// 平野へ大冒険に出るぜ☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pos"></param>
@@ -41,8 +44,7 @@ public:
 		ScoreIndex alpha,
 		ScoreIndex beta,
 		const Depth depth,
-		const bool cutNode
-		) const = 0;
+		const bool cutNode) const = 0;
 
 
 	/// <summary>
@@ -226,7 +228,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// ルートノードか、それ以外かで　値が分かれるぜ☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="ttMove"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
@@ -293,7 +298,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// PVノードか、非PVノードかで実行条件が変わるぜ☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="pTtEntry"></param>
 	/// <param name="beta"></param>
@@ -701,7 +709,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// PVノードか、そうでないかで手続きが変わるぜ☆！（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="depth"></param>
 	/// <param name="ttMove"></param>
@@ -727,7 +738,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// これはベータ値☆ PVノードか、そうでないかで値が変わるぜ☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="beta"></param>
 	/// <returns></returns>
@@ -736,7 +750,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// これはムーブ☆
+	///		</pre>
 	/// </summary>
 	/// <param name="mp"></param>
 	/// <returns></returns>
@@ -745,7 +762,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// ルートノードか、そうでないかで分かれるぜ☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="ttMove"></param>
 	/// <param name="depth"></param>
@@ -765,7 +785,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// スプリット・ポイントかどうかで変わる手続きだぜ☆！（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="isContinue"></param>
 	/// <param name="pos"></param>
@@ -1023,7 +1046,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// PVノードか、そうでないかで変わるぜ☆！（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="newDepth"></param>
 	/// <param name="depth"></param>
@@ -1095,7 +1121,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// 本筋かどうか判定するぜ（＾～＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="moveCount"></param>
 	virtual inline bool ExplorerPlainStep13c1IsPvMove(
@@ -1103,7 +1132,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// スプリット・ポイントか、PVノードかで手続きが変わるぜ☆！（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="move"></param>
 	/// <param name="ppFlashlight"></param>
@@ -1232,7 +1264,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// Pvノードかどうかで手続きが変わるぜ☆！（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="depth"></param>
@@ -1357,7 +1392,7 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// インターフェースのメソッド
 	/// </summary>
 	/// <param name="score"></param>
 	/// <param name="beta"></param>
@@ -1442,7 +1477,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// スプリット・ポイントかどうかで分かれるぜ☆！（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="isBreak"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
@@ -1470,7 +1508,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// 非スプリットポイントでだけ実行するぜ☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="isBreak"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
@@ -1504,7 +1545,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// スプリット・ポイントは　ステップ２０を実行する前に終了するぜ☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <returns></returns>
 	virtual inline bool GetReturnBeforeStep20() const = 0;
@@ -1592,7 +1636,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// スタティック・メソッドは継承できないので、スタティックにはしないぜ☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="bestMoveExists"></param>
 	/// <returns></returns>

@@ -24,19 +24,28 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// 新方式（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	virtual Move AsMove() const = 0;
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// 駒種別イベントから、その駒種別の駒が動けるマスのビットボードを返す。
+	///		</pre>
 	/// </summary>
 	virtual Bitboard GetAttacks2From(const PieceTypeEvent& ptEvent) const = 0;
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// pin は省かない。//FORCE_INLINE にしたいが、virtual なのでできない。
+	///		</pre>
 	/// </summary>
 	virtual void Generate2RecaptureMoves_usWhite(
 		MoveStack* moveStackList,
@@ -47,18 +56,20 @@ public:
 
 
 	/// <summary>
-	///
+	///インターフェースのメソッド
 	/// </summary>
 	virtual void Generate2RecaptureMoves_usBlack(
 		MoveStack* moveStackList,
 		const Position& pos,
 		const Square from,
-		const Square to
-		) const = 0;
+		const Square to) const = 0;
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// 駒種別SEEイベントから、その駒種別の駒が動けるマスのビットボードを返す。
+	///		</pre>
 	/// </summary>
 	virtual PieceType AppendToNextAttackerAndTryPromote(
 		Bitboard& occupied,

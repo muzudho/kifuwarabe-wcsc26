@@ -24,7 +24,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
     /// ９段目への打ち手を生成する。ただし桂馬、香車以外。
+	///		</pre>
 	/// </summary>
 	/// <param name="pMovestack"></param>
 	/// <param name="dmEvent"></param>
@@ -38,7 +41,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
     /// ８段目への打ち手を生成する。ただし桂馬以外。
+	///		</pre>
 	/// </summary>
 	/// <param name="pMovestack"></param>
 	/// <param name="dmEvent"></param>
@@ -52,7 +58,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
     /// １〜７段目への打ち手を生成する。
+	///		</pre>
 	/// </summary>
 	/// <param name="pMovestack"></param>
 	/// <param name="dmEvent"></param>

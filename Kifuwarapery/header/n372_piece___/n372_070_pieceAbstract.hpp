@@ -16,7 +16,7 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// インターフェースのメソッド
 	/// </summary>
 	/// <param name="bannedKingToBB"></param>
 	/// <param name="pos"></param>

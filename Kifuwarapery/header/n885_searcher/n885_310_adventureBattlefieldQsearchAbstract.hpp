@@ -43,7 +43,9 @@ public:
 
 
 	/// <summary>
-	/// 
+	///		<pre>
+	/// インターフェースのメソッド
+	///		</pre>
 	/// </summary>
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
@@ -54,7 +56,9 @@ public:
 
 
 	/// <summary>
-	/// 
+	///		<pre>
+	/// インターフェースのメソッド
+	///		</pre>
 	/// </summary>
 	/// <param name="oldAlpha"></param>
 	/// <param name="alpha"></param>
@@ -65,7 +69,9 @@ public:
 
 
 	/// <summary>
-	/// 
+	///		<pre>
+	/// インターフェースのメソッド
+	///		</pre>
 	/// </summary>
 	/// <param name="ppTtEntry"></param>
 	/// <param name="beta"></param>
@@ -79,7 +85,9 @@ public:
 
 
 	/// <summary>
-	/// 
+	///		<pre>
+	/// インターフェースのメソッド
+	///		</pre>
 	/// </summary>
 	/// <param name="alpha"></param>
 	/// <param name="bestScore"></param>
@@ -90,7 +98,9 @@ public:
 
 
 	/// <summary>
-	/// 
+	///		<pre>
+	/// インターフェースのメソッド
+	///		</pre>
 	/// </summary>
 	/// <param name="isContinue"></param>
 	/// <param name="INCHECK"></param>
@@ -119,7 +129,9 @@ public:
 
 
 	/// <summary>
-	/// 
+	///		<pre>
+	/// インターフェースのメソッド
+	///		</pre>
 	/// </summary>
 	/// <param name="isContinue"></param>
 	/// <param name="INCHECK"></param>
@@ -138,7 +150,9 @@ public:
 
 
 	/// <summary>
-	/// 
+	///		<pre>
+	/// インターフェースのメソッド
+	///		</pre>
 	/// </summary>
 	/// <param name="isReturnWithScore"></param>
 	/// <param name="returnScore"></param>
@@ -167,7 +181,9 @@ public:
 
 
 	/// <summary>
-	/// 
+	///		<pre>
+	/// インターフェースのメソッド
+	///		</pre>
 	/// </summary>
 	/// <param name="oldAlpha"></param>
 	/// <param name="bestScore"></param>

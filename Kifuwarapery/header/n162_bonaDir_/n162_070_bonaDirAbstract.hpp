@@ -19,7 +19,7 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// インターフェースのメソッド
 	/// </summary>
 	/// <param name="squareDistance"></param>
 	/// <param name="sq0"></param>
@@ -28,7 +28,7 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// インターフェースのメソッド
 	/// </summary>
 	/// <param name="position"></param>
 	/// <param name="from"></param>
