@@ -153,7 +153,8 @@ public:
 	/// </summary>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	inline Bitboard GetControllBbToEdge(const Square sq) const {
+	inline Bitboard GetControllBbToEdge(const Square sq) const
+	{
 		return this->m_controllBbToEdge_[sq];
 	}
 
@@ -163,7 +164,8 @@ public:
 	/// </summary>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	inline Bitboard BishopStepAttacks(const Square sq) const {
+	inline Bitboard BishopStepAttacks(const Square sq) const
+	{
 		return g_silverAttackBb.GetControllBb(Black, sq) & g_silverAttackBb.GetControllBb(White, sq);
 	}
 
@@ -175,7 +177,8 @@ public:
 		/// <param name="thisBitboard"></param>
 		/// <param name="sq"></param>
 		/// <returns></returns>
-		inline Bitboard BishopAttack(const Bitboard* thisBitboard, const Square sq) const {
+		inline Bitboard BishopAttack(const Bitboard* thisBitboard, const Square sq) const
+		{
 			const Bitboard block((*thisBitboard) & this->m_bishopBlockMask_[sq]);
 			return this->m_controllBb_[this->m_controllBbIndex_[sq] + OccupiedToIndex(block, this->m_bishopBlockMask_[sq])];
 		}
@@ -186,7 +189,8 @@ public:
 		/// <param name="thisBitboard"></param>
 		/// <param name="sq"></param>
 		/// <returns></returns>
-		inline Bitboard BishopAttack(const Bitboard& thisBitboard, const Square sq) const {
+		inline Bitboard BishopAttack(const Bitboard& thisBitboard, const Square sq) const
+		{
 
 			const Bitboard block(thisBitboard & this->m_bishopBlockMask_[sq]);
 

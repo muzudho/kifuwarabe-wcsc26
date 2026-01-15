@@ -12,7 +12,8 @@
 /// <summary>
 /// 馬
 /// </summary>
-class HorseAttackBb {
+class HorseAttackBb
+{
 
 
 public:
@@ -24,7 +25,8 @@ public:
 	/// <param name="thisBitboard"></param>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	inline Bitboard GetControllBb(const Bitboard& thisBitboard, const Square sq) const {
+	inline Bitboard GetControllBb(const Bitboard& thisBitboard, const Square sq) const
+	{
 		return g_bishopAttackBb.BishopAttack(thisBitboard, sq) | g_kingAttackBb.GetControllBb(sq);
 	}
 
@@ -34,7 +36,8 @@ public:
 	/// </summary>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	inline Bitboard GetControllBbToEdge(const Square sq) const {
+	inline Bitboard GetControllBbToEdge(const Square sq) const
+	{
 		return g_bishopAttackBb.GetControllBbToEdge(sq) | g_kingAttackBb.GetControllBb(sq);
 	}
 };

@@ -48,7 +48,8 @@ public:
 	/// <param name="c"></param>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	inline Bitboard GetControllBb(const Color c, const Square sq) const {
+	inline Bitboard GetControllBb(const Color c, const Square sq) const
+	{
 		return this->m_controllBb_[c][sq];
 	}
 
@@ -59,7 +60,8 @@ public:
 	/// <param name="c"></param>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	inline Bitboard SilverCheckTable(const Color c, const Square sq) const {
+	inline Bitboard SilverCheckTable(const Color c, const Square sq) const
+	{
 		return this->m_silverCheckTable_[c][sq];
 	}
 };

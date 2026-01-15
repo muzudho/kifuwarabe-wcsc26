@@ -35,7 +35,8 @@
 /// <param name="sq"></param>
 /// <param name="t"></param>
 /// <returns></returns>
-template <typename T> FORCE_INLINE void foreachBB(Bitboard& bb, Square& sq, T t) {
+template <typename T> FORCE_INLINE void foreachBB(Bitboard& bb, Square& sq, T t)
+{
 	while (bb.GetP(0)) {
 		sq = bb.PopFirstOneRightFromI9();
 		t(0);

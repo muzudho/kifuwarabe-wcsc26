@@ -68,7 +68,8 @@ public:
 	/// <param name="c"></param>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	Bitboard GetControllBb(const Bitboard& thisBitboard, const Color c, const Square sq) const {
+	Bitboard GetControllBb(const Bitboard& thisBitboard, const Color c, const Square sq) const
+	{
 		const int part = Bitboard::Part(sq);
 		const int index = (thisBitboard.GetP(part) >> g_slideBits.m_slide[sq]) & 127;
 		return this->m_controllBb[c][sq][index];
@@ -81,7 +82,8 @@ public:
 	/// <param name="c"></param>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	Bitboard GetControllBbToEdge(const Color c, const Square sq) const {
+	Bitboard GetControllBbToEdge(const Color c, const Square sq) const
+	{
 		return this->m_controllBbToEdge_[c][sq];
 	}
 
@@ -92,7 +94,8 @@ public:
 	/// <param name="c"></param>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	Bitboard LanceCheckTable(const Color c, const Square sq) const {
+	Bitboard LanceCheckTable(const Color c, const Square sq) const
+	{
 		return this->m_lanceCheckTable_[c][sq];
 	}
 

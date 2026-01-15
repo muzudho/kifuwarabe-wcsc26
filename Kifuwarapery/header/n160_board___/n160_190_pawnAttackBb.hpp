@@ -10,7 +10,8 @@
 /// <summary>
 /// 歩ビットボード
 /// </summary>
-class PawnAttackBb {
+class PawnAttackBb
+{
 
 
 private:
@@ -37,7 +38,8 @@ public:
 	/// <param name="c"></param>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	inline Bitboard GetControllBb(const Color c, const Square sq) const {
+	inline Bitboard GetControllBb(const Color c, const Square sq) const
+	{
 		return this->m_controllBb_[c][sq];
 	}
 };

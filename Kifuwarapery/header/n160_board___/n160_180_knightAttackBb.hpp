@@ -10,7 +10,8 @@
 /// <summary>
 /// 桂ビットボード
 /// </summary>
-class KnightAttackBb {
+class KnightAttackBb
+{
 
 
 private:
@@ -48,7 +49,8 @@ public:
 	/// <param name="c"></param>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	inline Bitboard GetControllBb(const Color c, const Square sq) const {
+	inline Bitboard GetControllBb(const Color c, const Square sq) const
+	{
 		return this->m_controllBb_[c][sq];
 	}
 
@@ -59,7 +61,8 @@ public:
 	/// <param name="c"></param>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	inline Bitboard KnightCheckTable(const Color c, const Square sq) const {
+	inline Bitboard KnightCheckTable(const Color c, const Square sq) const
+	{
 		return this->m_knightCheckTable_[c][sq];
 	}
 };

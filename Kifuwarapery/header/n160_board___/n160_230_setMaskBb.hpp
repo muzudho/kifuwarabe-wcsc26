@@ -10,7 +10,8 @@
 /// <summary>
 /// １マスのマスク・ビットボード☆
 /// </summary>
-class SetMaskBb {
+class SetMaskBb
+{
 
 
 private:
@@ -19,7 +20,8 @@ private:
 	/// <summary>
 	/// １マスのビットボード。２バイト使って表現。
 	/// </summary>
-	const Bitboard m_setMaskBB_[SquareNum] = {
+	const Bitboard m_setMaskBB_[SquareNum] =
+	{
 		Bitboard(UINT64_C(1) <<  0,                 0),  // 0 , I9
 		Bitboard(UINT64_C(1) <<  1,                 0),  // 1 , I8
 		Bitboard(UINT64_C(1) <<  2,                 0),  // 2 , I7
@@ -112,7 +114,8 @@ public:
 	/// </summary>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	inline Bitboard GetSetMaskBb(const Square sq) const {
+	inline Bitboard GetSetMaskBb(const Square sq) const
+	{
 		return this->m_setMaskBB_[sq];
 	}
 

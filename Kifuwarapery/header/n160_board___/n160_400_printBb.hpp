@@ -10,7 +10,8 @@
 /// <summary>
 /// ビットボードの出力
 /// </summary>
-class PrintBb {
+class PrintBb
+{
 
 
 public:

@@ -12,7 +12,8 @@
 /// <summary>
 /// 金と銀
 /// </summary>
-class GoldAndSilverAttackBb {
+class GoldAndSilverAttackBb
+{
 
 
 public:
@@ -24,7 +25,8 @@ public:
 	/// <param name="c"></param>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	inline Bitboard GoldAndSilverAttacks(const Color c, const Square sq) const {
+	inline Bitboard GoldAndSilverAttacks(const Color c, const Square sq) const
+	{
 		return g_goldAttackBb.GetControllBb(c, sq) & g_silverAttackBb.GetControllBb(c, sq);
 	}
 };

@@ -10,7 +10,8 @@
 /// <summary>
 /// 玉の利きビットボード
 /// </summary>
-const class KingAttackBb  {
+const class KingAttackBb
+{
 
 
 private:
@@ -37,7 +38,8 @@ public:
 	/// </summary>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	inline Bitboard GetControllBb(const Square sq) const {
+	inline Bitboard GetControllBb(const Square sq) const
+	{
 		return this->m_controllBb_[sq];
 	}
 };

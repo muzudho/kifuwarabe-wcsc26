@@ -12,7 +12,8 @@
 /// <summary>
 /// 竜
 /// </summary>
-class DragonAttackBb {
+class DragonAttackBb
+{
 
 
 public:
@@ -35,7 +36,8 @@ public:
 	/// </summary>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	inline Bitboard GetControllBbToEdge(const Square sq) const {
+	inline Bitboard GetControllBbToEdge(const Square sq) const
+	{
 		return g_rookAttackBb.GetControllBbToEdge(sq) | g_kingAttackBb.GetControllBb(sq);
 	}
 };

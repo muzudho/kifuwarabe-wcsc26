@@ -12,7 +12,8 @@
 /// <summary>
 /// 
 /// </summary>
-class QueenAttackBb {
+class QueenAttackBb
+{
 
 
 public:

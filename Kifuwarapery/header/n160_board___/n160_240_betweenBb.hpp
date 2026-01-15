@@ -10,7 +10,8 @@
 /// <summary>
 /// ［飛車、角の元位置］と、［その利き］の２点のビットボード（＾～＾）？
 /// </summary>
-class BetweenBb {
+class BetweenBb
+{
 
 
 private:
@@ -37,7 +38,8 @@ public:
 	/// <param name="sq1"></param>
 	/// <param name="sq2"></param>
 	/// <returns></returns>
-	inline Bitboard GetBetweenBB(const Square sq1, const Square sq2) const {
+	inline Bitboard GetBetweenBB(const Square sq1, const Square sq2) const
+	{
 		return this->m_betweenBB_[sq1][sq2];
 	}
 };

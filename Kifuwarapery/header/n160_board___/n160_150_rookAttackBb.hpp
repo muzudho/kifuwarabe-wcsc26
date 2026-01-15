@@ -21,7 +21,8 @@ private:
 	/// <summary>
 	/// 各マスのrookが利きを調べる必要があるマスの数
 	/// </summary>
-	const int m_rookBlockBits_[SquareNum] = {
+	const int m_rookBlockBits_[SquareNum] =
+	{
 		14, 13, 13, 13, 13, 13, 13, 13, 14,
 		13, 12, 12, 12, 12, 12, 12, 12, 13,
 		13, 12, 12, 12, 12, 12, 12, 12, 13,
@@ -41,7 +42,8 @@ private:
 	/// この方法は issei_y さんに相談したところ、教えて頂いた方法。
 	/// PEXT Bitboardを使用する際はシフト量を減らす必要が無い。
 	/// </summary>
-	const int m_rookShiftBits_[SquareNum] = {
+	const int m_rookShiftBits_[SquareNum] =
+	{
 		50, 51, 51, 51, 51, 51, 51, 51, 50,
 #if defined HAVE_BMI2
 		51, 52, 52, 52, 52, 52, 52, 52, 51,
@@ -67,7 +69,8 @@ private:
 	/// <summary>
 	/// 飛車の利きのマジックビットボード
 	/// </summary>
-	const u64 m_rookMagic_[SquareNum] = {
+	const u64 m_rookMagic_[SquareNum] =
+	{
 		UINT64_C(0x140000400809300),  UINT64_C(0x1320000902000240), UINT64_C(0x8001910c008180),
 		UINT64_C(0x40020004401040),   UINT64_C(0x40010000d01120),   UINT64_C(0x80048020084050),
 		UINT64_C(0x40004000080228),   UINT64_C(0x400440000a2a0a),   UINT64_C(0x40003101010102),
@@ -173,7 +176,8 @@ public:
 	/// </summary>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	inline Bitboard GetControllBbToEdge(const Square sq) const {
+	inline Bitboard GetControllBbToEdge(const Square sq) const
+	{
 		return this->m_controllBbToEdge_[sq];
 	}
 
@@ -184,7 +188,8 @@ public:
 	/// <param name="thisBitboard"></param>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	inline Bitboard GetControllBbFile(const Bitboard* thisBitboard, const Square sq) const {
+	inline Bitboard GetControllBbFile(const Bitboard* thisBitboard, const Square sq) const
+	{
 		const int part = Bitboard::Part(sq);
 		const int index = ((*thisBitboard).GetP(part) >> g_slideBits.m_slide[sq]) & 127;
 		return g_lanceAttackBb.m_controllBb[Black][sq][index] | g_lanceAttackBb.m_controllBb[White][sq][index];
@@ -196,7 +201,8 @@ public:
 	/// </summary>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	inline Bitboard RookStepAttacks(const Square sq) const {
+	inline Bitboard RookStepAttacks(const Square sq) const
+	{
 		return g_goldAttackBb.GetControllBb(Black, sq) & g_goldAttackBb.GetControllBb(White, sq);
 	}
 
@@ -208,7 +214,8 @@ public:
 		/// <param name="thisBitboard"></param>
 		/// <param name="sq"></param>
 		/// <returns></returns>
-		inline Bitboard GetControllBb(Bitboard& thisBitboard, const Square sq) const {
+		inline Bitboard GetControllBb(Bitboard& thisBitboard, const Square sq) const
+		{
 			const Bitboard block(thisBitboard & this->m_rookBlockMask_[sq]);
 			return this->m_controllBb_[this->m_rookAttackIndex[sq] + OccupiedToIndex(block, this->m_rookBlockMask_[sq])];
 		}
@@ -219,7 +226,8 @@ public:
 		/// <param name="thisBitboard">ビットボード</param>
 		/// <param name="sq">マス</param>
 		/// <returns></returns>
-		inline Bitboard GetControllBb(const Bitboard& thisBitboard, const Square sq) const {
+		inline Bitboard GetControllBb(const Bitboard& thisBitboard, const Square sq) const
+		{
 
 			// 飛車の利きのブロックマスの有無か？
 			const Bitboard block(thisBitboard & this->m_rookBlockMask_[sq]);
