@@ -2,11 +2,11 @@
 #include <string>
 #include <sstream>
 #include "../n210_score___/n119_090_scoreIndex.hpp"
-#include "../n160_board___/n160_100_bitboard.hpp"
-#include "../n160_board___/n160_130_lanceAttackBb.hpp"
-#include "../n160_board___/n160_150_rookAttackBb.hpp"
-#include "../n160_board___/n160_220_queenAttackBb.hpp"
-#include "../n160_board___/n160_230_setMaskBb.hpp"
+#include "../n160_boardBb_/n160_100_bitboard.hpp"
+#include "../n160_boardBb_/n160_130_lanceAttackBb.hpp"
+#include "../n160_boardBb_/n160_150_rookAttackBb.hpp"
+#include "../n160_boardBb_/n160_220_queenAttackBb.hpp"
+#include "../n160_boardBb_/n160_230_setMaskBb.hpp"
 #include "../n220_position/n220_645_gameStats.hpp"
 #include "../n223_move____/n223_060_stats.hpp"
 #include "../n250_pieceTyp/n350_040_ptEvent.hpp"

@@ -1,8 +1,8 @@
 #include <iostream>
 #include "../../header/n210_score___/n119_200_pieceScore.hpp"
-#include "../../header/n160_board___/n160_106_inFrontMaskBb.hpp"
-#include "../../header/n160_board___/n160_220_queenAttackBb.hpp"
-#include "../../header/n160_board___/n160_230_setMaskBb.hpp"
+#include "../../header/n160_boardBb_/n160_106_inFrontMaskBb.hpp"
+#include "../../header/n160_boardBb_/n160_220_queenAttackBb.hpp"
+#include "../../header/n160_boardBb_/n160_230_setMaskBb.hpp"
 #include "../../header/n220_position/n220_100_repetitionType.hpp"
 #include "../../header/n220_position/n220_640_utilAttack.hpp"
 #include "../../header/n220_position/n220_650_position.hpp"

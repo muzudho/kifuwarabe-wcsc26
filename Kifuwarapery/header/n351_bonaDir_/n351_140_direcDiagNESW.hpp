@@ -5,7 +5,7 @@
 #include "../n105_120_square__/n105_120_100_square.hpp"
 #include "../n105_120_square__/n105_120_250_squareDelta.hpp"
 #include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
-#include "../n161_sqDistan/n161_500_squareDistance.hpp"
+#include "../n105_200_sqDistan/n105_200_500_squareDistance.hpp"
 #include "../n340_bonaDir_/n162_070_bonaDirAbstract.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n250_pieceTyp/n350_040_ptEvent.hpp"

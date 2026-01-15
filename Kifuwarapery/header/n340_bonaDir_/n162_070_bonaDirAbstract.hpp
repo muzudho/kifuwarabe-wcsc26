@@ -2,7 +2,7 @@
 
 #include "../n105_100_color___/n105_100_100_color.hpp"
 #include "../n105_120_square__/n105_120_100_square.hpp"
-#include "../n161_sqDistan/n161_500_squareDistance.hpp"
+#include "../n105_200_sqDistan/n105_200_500_squareDistance.hpp"
 #include "../n220_position/n220_650_position.hpp" //FIXME:
 
 

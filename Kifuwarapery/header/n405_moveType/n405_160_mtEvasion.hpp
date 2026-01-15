@@ -85,11 +85,16 @@ private:
 			++checkersNum;
 
 
-			// checkSq にある駒で王手されたとき、玉はその駒の利きの位置には移動できないので、
-			// 移動できない位置を bannnedKingToBB に格納する。
-			// 両王手のときには二度連続で呼ばれるため、= ではなく |= を使用している。
-			// 最初に呼ばれたときは、bannedKingToBB == allZeroBB() である。
-			// todo: FOECE_INLINE と template 省いてNPS比較
+			// Ban は出禁 ☆（＾～＾）
+			// 
+			//		checkSq にある駒で王手されたとき、玉はその駒の利きの位置には移動できないので、
+			//		移動できない位置を bannnedKingToBB に格納する。
+			//		両王手のときには二度連続で呼ばれるため、= ではなく |= を使用している。
+			// 
+			//			※両王手 … ２枚の駒で同時に王手がかかるような王手。
+			// 
+			//		最初に呼ばれたときは、bannedKingToBB == allZeroBB() である。
+			//		todo: FOECE_INLINE と template 省いてNPS比較
 			g_pieceArray.m_pieceAbstractArray[pos.GetPiece(checkSq)]->MakeBanned2KingTo(bannedKingToBB, pos, checkSq, ksq);
 
 		} while (bb.Exists1Bit());

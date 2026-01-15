@@ -258,7 +258,7 @@
     <ClInclude Include="header\n080_100_sysWorld\n080_100_050_ifdef.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_100_bitboard.hpp">
+    <ClInclude Include="header\n160_boardBb_\n160_100_bitboard.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
     <ClInclude Include="header\n080_200_utilProg\n080_200_500_utilProgram.hpp">
@@ -330,64 +330,64 @@
     <ClInclude Include="header\n210_score___\n119_200_pieceScore.hpp">
       <Filter>header\n119_score___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_600_bitboardAll.hpp">
+    <ClInclude Include="header\n160_boardBb_\n160_600_bitboardAll.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_400_printBb.hpp">
+    <ClInclude Include="header\n160_boardBb_\n160_400_printBb.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_240_betweenBb.hpp">
+    <ClInclude Include="header\n160_boardBb_\n160_240_betweenBb.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_200_horseAttackBb.hpp">
+    <ClInclude Include="header\n160_boardBb_\n160_200_horseAttackBb.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_210_dragonAttackBb.hpp">
+    <ClInclude Include="header\n160_boardBb_\n160_210_dragonAttackBb.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_220_queenAttackBb.hpp">
+    <ClInclude Include="header\n160_boardBb_\n160_220_queenAttackBb.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_170_goldAndSilverAttackBb.hpp">
+    <ClInclude Include="header\n160_boardBb_\n160_170_goldAndSilverAttackBb.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_180_knightAttackBb.hpp">
+    <ClInclude Include="header\n160_boardBb_\n160_180_knightAttackBb.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_190_pawnAttackBb.hpp">
+    <ClInclude Include="header\n160_boardBb_\n160_190_pawnAttackBb.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_230_setMaskBb.hpp">
+    <ClInclude Include="header\n160_boardBb_\n160_230_setMaskBb.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_160_kingAttackBb.hpp">
+    <ClInclude Include="header\n160_boardBb_\n160_160_kingAttackBb.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_110_silverAttackBb.hpp">
+    <ClInclude Include="header\n160_boardBb_\n160_110_silverAttackBb.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_120_bishopAttackBb.hpp">
+    <ClInclude Include="header\n160_boardBb_\n160_120_bishopAttackBb.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_130_lanceAttackBb.hpp">
+    <ClInclude Include="header\n160_boardBb_\n160_130_lanceAttackBb.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_140_goldAttackBb.hpp">
+    <ClInclude Include="header\n160_boardBb_\n160_140_goldAttackBb.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_150_rookAttackBb.hpp">
+    <ClInclude Include="header\n160_boardBb_\n160_150_rookAttackBb.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_102_fileMaskBb.hpp">
+    <ClInclude Include="header\n160_boardBb_\n160_102_fileMaskBb.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_104_rankMaskBb.hpp">
+    <ClInclude Include="header\n160_boardBb_\n160_104_rankMaskBb.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_106_inFrontMaskBb.hpp">
+    <ClInclude Include="header\n160_boardBb_\n160_106_inFrontMaskBb.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_108_slideBits.hpp">
+    <ClInclude Include="header\n160_boardBb_\n160_108_slideBits.hpp">
       <Filter>header\n160_board___</Filter>
     </ClInclude>
     <ClInclude Include="header\n105_120_square__\n105_120_400_squareRelation.hpp">
@@ -675,10 +675,10 @@
     <ClInclude Include="header\n340_bonaDir_\n162_070_bonaDirAbstract.hpp">
       <Filter>header\n162_bonaDir_</Filter>
     </ClInclude>
-    <ClInclude Include="header\n163_sqDistan\n163_600_utilSquareDistance.hpp">
+    <ClInclude Include="header\n105_200_sqDistan\n105_200_600_utilSquareDistance.hpp">
       <Filter>header\n163_sqDistan</Filter>
     </ClInclude>
-    <ClInclude Include="header\n161_sqDistan\n161_500_squareDistance.hpp">
+    <ClInclude Include="header\n105_200_sqDistan\n105_200_500_squareDistance.hpp">
       <Filter>header\n161_sqDistan</Filter>
     </ClInclude>
     <ClInclude Include="header\n351_bonaDir_\n351_140_direcDiagNESW.hpp">
@@ -711,103 +711,103 @@
     <ClInclude Include="header\n374_genMove_\n374_250_bishopRookMovesGenerator.hpp">
       <Filter>header\n374_genMove_</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_070_pieceAbstract.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_070_pieceAbstract.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_080_pieceNull.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_080_pieceNull.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_100_pieceEmpty.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_100_pieceEmpty.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_110_pieceBPawn.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_110_pieceBPawn.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_120_pieceBLance.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_120_pieceBLance.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_130_pieceBKnight.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_130_pieceBKnight.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_140_pieceBSilver.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_140_pieceBSilver.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_150_pieceBBishop.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_150_pieceBBishop.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_160_pieceBRook.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_160_pieceBRook.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_170_pieceBGold.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_170_pieceBGold.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_180_pieceBKing.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_180_pieceBKing.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_190_pieceBProPawn.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_190_pieceBProPawn.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_200_pieceBProLance.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_200_pieceBProLance.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_210_pieceBProKnight.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_210_pieceBProKnight.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_220_pieceBProSilver.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_220_pieceBProSilver.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_230_pieceBHorse.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_230_pieceBHorse.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_240_pieceBDragon.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_240_pieceBDragon.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_270_pieceWPawn.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_270_pieceWPawn.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_280_pieceWLance.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_280_pieceWLance.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_290_pieceWKnight.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_290_pieceWKnight.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_300_pieceWSilver.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_300_pieceWSilver.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_310_pieceWBishop.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_310_pieceWBishop.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_320_pieceWRook.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_320_pieceWRook.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_330_pieceWGold.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_330_pieceWGold.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_340_pieceWKing.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_340_pieceWKing.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_350_pieceWProPawn.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_350_pieceWProPawn.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_360_pieceWProLance.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_360_pieceWProLance.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_370_pieceWProKnight.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_370_pieceWProKnight.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_380_pieceWProSilver.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_380_pieceWProSilver.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_390_pieceWHorse.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_390_pieceWHorse.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_400_pieceWDragon.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_400_pieceWDragon.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_410_pieceNone.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_410_pieceNone.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n372_piece___\n372_500_pieceArray.hpp">
+    <ClInclude Include="header\n372_banKing_\n372_500_pieceArray.hpp">
       <Filter>header\n372_piece___</Filter>
     </ClInclude>
     <ClInclude Include="header\n407_moveGen_\n407_800_moveGenerator200.hpp">
@@ -1079,7 +1079,7 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_100_bitboard.cpp">
+    <ClCompile Include="source\n160_boardBb_\n160_100_bitboard.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
     <ClCompile Include="source\n080_100_sysWorld\n080_100_500_common.cpp">
@@ -1103,61 +1103,61 @@
     <ClCompile Include="source\n210_score___\n119_200_pieceScore.cpp">
       <Filter>source\n119_score___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_400_printBb.cpp">
+    <ClCompile Include="source\n160_boardBb_\n160_400_printBb.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_240_betweenBb.cpp">
+    <ClCompile Include="source\n160_boardBb_\n160_240_betweenBb.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_200_horseAttackBb.cpp">
+    <ClCompile Include="source\n160_boardBb_\n160_200_horseAttackBb.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_210_dragonAttackBb.cpp">
+    <ClCompile Include="source\n160_boardBb_\n160_210_dragonAttackBb.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_220_queenAttackBb.cpp">
+    <ClCompile Include="source\n160_boardBb_\n160_220_queenAttackBb.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_170_goldAndSilverAttackBb.cpp">
+    <ClCompile Include="source\n160_boardBb_\n160_170_goldAndSilverAttackBb.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_180_knightAttackBb.cpp">
+    <ClCompile Include="source\n160_boardBb_\n160_180_knightAttackBb.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_190_pawnAttackBb.cpp">
+    <ClCompile Include="source\n160_boardBb_\n160_190_pawnAttackBb.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_230_setMaskBb.cpp">
+    <ClCompile Include="source\n160_boardBb_\n160_230_setMaskBb.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_160_kingAttackBb.cpp">
+    <ClCompile Include="source\n160_boardBb_\n160_160_kingAttackBb.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_110_silverAttackBb.cpp">
+    <ClCompile Include="source\n160_boardBb_\n160_110_silverAttackBb.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_120_bishopAttackBb.cpp">
+    <ClCompile Include="source\n160_boardBb_\n160_120_bishopAttackBb.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_130_lanceAttackBb.cpp">
+    <ClCompile Include="source\n160_boardBb_\n160_130_lanceAttackBb.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_140_goldAttackBb.cpp">
+    <ClCompile Include="source\n160_boardBb_\n160_140_goldAttackBb.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_150_rookAttackBb.cpp">
+    <ClCompile Include="source\n160_boardBb_\n160_150_rookAttackBb.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_102_fileMaskBb.cpp">
+    <ClCompile Include="source\n160_boardBb_\n160_102_fileMaskBb.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_104_rankMaskBb.cpp">
+    <ClCompile Include="source\n160_boardBb_\n160_104_rankMaskBb.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_106_inFrontMaskBb.cpp">
+    <ClCompile Include="source\n160_boardBb_\n160_106_inFrontMaskBb.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_108_slideBits.cpp">
+    <ClCompile Include="source\n160_boardBb_\n160_108_slideBits.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
     <ClCompile Include="source\n220_position\n220_150_checkInfo.cpp">
@@ -1391,10 +1391,10 @@
     <ClCompile Include="source\n340_bonaDir_\n162_070_bonaDirAbstract.cpp">
       <Filter>source\n162_bonaDir_</Filter>
     </ClCompile>
-    <ClCompile Include="source\n163_sqDistan\n163_600_utilSquareDistance.cpp">
+    <ClCompile Include="source\n105_200_sqDistan\n163_600_utilSquareDistance.cpp">
       <Filter>source\n163_sqDistan</Filter>
     </ClCompile>
-    <ClCompile Include="source\n161_sqDistan\n161_500_squareDistance.cpp">
+    <ClCompile Include="source\n105_200_sqDistan\n105_200_squareDistance.cpp">
       <Filter>source\n161_sqDistan</Filter>
     </ClCompile>
     <ClCompile Include="source\n351_bonaDir_\n351_090_nullBonaDir.cpp">
@@ -1421,103 +1421,103 @@
     <ClCompile Include="source\n374_genMove_\n374_750_dropMoveGenerator.cpp">
       <Filter>source\n374_genMove_</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_070_pieceAbstract.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_070_pieceAbstract.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_080_pieceNull.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_080_pieceNull.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_100_pieceEmpty.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_100_pieceEmpty.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_110_pieceBPawn.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_110_pieceBPawn.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_120_pieceBLance.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_120_pieceBLance.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_130_pieceBKnight.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_130_pieceBKnight.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_140_pieceBSilver.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_140_pieceBSilver.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_150_pieceBBishop.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_150_pieceBBishop.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_160_pieceBRook.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_160_pieceBRook.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_170_pieceBGold.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_170_pieceBGold.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_180_pieceBKing.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_180_pieceBKing.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_190_pieceBProPawn.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_190_pieceBProPawn.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_200_pieceBProLance.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_200_pieceBProLance.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_210_pieceBProKnight.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_210_pieceBProKnight.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_220_pieceBProSilver.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_220_pieceBProSilver.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_230_pieceBHorse.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_230_pieceBHorse.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_240_pieceBDragon.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_240_pieceBDragon.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_270_pieceWPawn.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_270_pieceWPawn.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_280_pieceWLance.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_280_pieceWLance.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_290_pieceWKnight.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_290_pieceWKnight.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_300_pieceWSilver.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_300_pieceWSilver.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_310_pieceWBishop.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_310_pieceWBishop.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_320_pieceWRook.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_320_pieceWRook.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_330_pieceWGold.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_330_pieceWGold.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_340_pieceWKing.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_340_pieceWKing.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_350_pieceWProPawn.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_350_pieceWProPawn.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_360_pieceWProLance.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_360_pieceWProLance.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_370_pieceWProKnight.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_370_pieceWProKnight.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_380_pieceWProSilver.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_380_pieceWProSilver.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_390_pieceWHorse.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_390_pieceWHorse.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_400_pieceWDragon.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_400_pieceWDragon.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_410_pieceNone.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_410_pieceNone.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n372_piece___\n372_500_pieceArray.cpp">
+    <ClCompile Include="source\n372_banKing_\n372_500_pieceArray.cpp">
       <Filter>source\n372_piece___</Filter>
     </ClCompile>
     <ClCompile Include="source\n407_moveGen_\n407_900_moveList.cpp">
