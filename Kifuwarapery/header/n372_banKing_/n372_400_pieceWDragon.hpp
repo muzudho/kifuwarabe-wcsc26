@@ -26,18 +26,19 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="checkSq"></param>
 	/// <param name="ksq"></param>
-	void MakeBanned2KingTo(Bitboard& bannedKingToBB, const Position& pos, const Square checkSq, const Square ksq
-		) const override {
-
+	void MakeBanned2KingTo(
+		Bitboard& bannedKingToBB, const Position& pos, const Square checkSq, const Square ksq) const override
+	{
 		// 斜めから王手したとき
-		if (g_squareRelation.GetSquareRelation(checkSq, ksq) & N04_DirecDiag) {
+		if (g_squareRelation.GetSquareRelation(checkSq, ksq) & N04_DirecDiag)
+		{
 			// 玉の移動先と王手した駒の間に駒があることがあるので、
 			// dragonAttackToEdge(checkSq) は使えない。
 			const PieceTypeEvent ptEvent1(pos.GetOccupiedBB(), Color::Null, checkSq);
 			bannedKingToBB |= PiecetypePrograms::m_DRAGON.GetAttacks2From(ptEvent1);
 		}
 		else
-		
+		{
 			bannedKingToBB |= g_dragonAttackBb.GetControllBbToEdge(checkSq);
 		}
 	}
