@@ -5,8 +5,8 @@
 #include "../../header/n105_120_square__/n105_120_100_square.hpp"
 #include "../../header/n105_120_square__/n105_120_500_convSquare.hpp"
 #include "../../header/n105_160_pieceTyp/n105_160_500_pieceType.hpp"
-#include "../../header/n113_piece___/n113_200_handPiece.hpp"
-#include "../../header/n113_piece___/n113_205_convHandPiece.hpp"
+#include "../../header/n105_180_piece___/n105_180_200_handPiece.hpp"
+#include "../../header/n105_180_piece___/n105_180_205_convHandPiece.hpp"
 
 
 

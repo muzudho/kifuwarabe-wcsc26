@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../n113_piece___/n113_150_piece.hpp"
+#include "../n105_180_piece___/n105_180_150_piece.hpp"
 #include "../n165_movStack/n165_500_moveStack.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n350_pieceTyp/n350_500_ptPrograms.hpp"

@@ -4,7 +4,7 @@
 #include "../n105_120_square__/n105_120_100_square.hpp"
 #include "../n105_140_colorSq_/n105_140_ColorFileRank.h"
 #include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
-#include "../n113_piece___/n113_155_convPiece.hpp"
+#include "../n105_180_piece___/n105_180_155_convPiece.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 #include "../n160_board___/n160_230_setMaskBb.hpp"
 #include "../n161_sqDistan/n161_500_squareDistance.hpp"

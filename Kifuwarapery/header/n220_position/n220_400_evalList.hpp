@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "../n105_120_square__/n105_120_500_convSquare.hpp"
-#include "../n113_piece___/n113_205_convHandPiece.hpp"
+#include "../n105_180_piece___/n105_180_205_convHandPiece.hpp"
 
 
 class Position;

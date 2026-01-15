@@ -306,10 +306,10 @@
     <ClInclude Include="header\n105_120_square__\n105_120_300_direction.hpp">
       <Filter>header\n110_square__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n113_piece___\n113_150_piece.hpp">
+    <ClInclude Include="header\n105_180_piece___\n105_180_150_piece.hpp">
       <Filter>header\n113_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n113_piece___\n113_200_handPiece.hpp">
+    <ClInclude Include="header\n105_180_piece___\n105_180_200_handPiece.hpp">
       <Filter>header\n113_piece___</Filter>
     </ClInclude>
     <ClInclude Include="header\n105_140_colorSq_\n105_140_ColorFileRank.h">
@@ -405,7 +405,7 @@
     <ClInclude Include="header\n223_move____\n223_060_stats.hpp">
       <Filter>header\n223_move____</Filter>
     </ClInclude>
-    <ClInclude Include="header\n113_piece___\n113_500_hand.hpp">
+    <ClInclude Include="header\n105_180_piece___\n105_180_500_hand.hpp">
       <Filter>header\n113_piece___</Filter>
     </ClInclude>
     <ClInclude Include="header\n220_position\n220_750_charToPieceUSI.hpp">
@@ -921,7 +921,7 @@
     <ClInclude Include="header\n165_movStack\n165_600_convMove.hpp">
       <Filter>header\n165_movStack</Filter>
     </ClInclude>
-    <ClInclude Include="header\n113_piece___\n113_105_convPieceType.hpp">
+    <ClInclude Include="header\n105_180_piece___\n105_180_105_convPieceType.hpp">
       <Filter>header\n113_piece___</Filter>
     </ClInclude>
     <ClInclude Include="header\n105_120_square__\n105_120_155_convFile.hpp">
@@ -933,10 +933,10 @@
     <ClInclude Include="header\n105_120_square__\n105_120_500_convSquare.hpp">
       <Filter>header\n110_square__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n113_piece___\n113_205_convHandPiece.hpp">
+    <ClInclude Include="header\n105_180_piece___\n105_180_205_convHandPiece.hpp">
       <Filter>header\n113_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n113_piece___\n113_155_convPiece.hpp">
+    <ClInclude Include="header\n105_180_piece___\n105_180_155_convPiece.hpp">
       <Filter>header\n113_piece___</Filter>
     </ClInclude>
     <ClInclude Include="header\n119_score___\n119_090_scoreIndex.hpp">

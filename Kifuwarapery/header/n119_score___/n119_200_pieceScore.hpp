@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include "../n113_piece___/n113_150_piece.hpp"
-#include "../n113_piece___/n113_205_convHandPiece.hpp"
+#include "../n105_180_piece___/n105_180_150_piece.hpp"
+#include "../n105_180_piece___/n105_180_205_convHandPiece.hpp"
 #include "n119_090_scoreIndex.hpp"
 #include "n119_100_utilScore.hpp"
 
