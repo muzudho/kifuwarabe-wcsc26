@@ -1,5 +1,5 @@
 ﻿#include "../../header/n105_100_color___/n105_100_500_convColor.hpp"
-#include "../../header/n119_score___/n119_200_pieceScore.hpp"
+#include "../../header/n210_score___/n119_200_pieceScore.hpp"
 
 
 const ScoreIndex PieceScore::m_pawn = static_cast<ScoreIndex>(100 * 9 / 10);

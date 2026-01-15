@@ -3,7 +3,7 @@
 #include "../n105_120_square__/n105_120_100_square.hpp"
 #include "../n105_120_square__/n105_120_500_convSquare.hpp"
 #include "../n105_180_piece___/n105_180_150_piece.hpp"
-#include "../n119_score___/n119_090_scoreIndex.hpp"
+#include "../n210_score___/n119_090_scoreIndex.hpp"
 
 
 /// <summary>

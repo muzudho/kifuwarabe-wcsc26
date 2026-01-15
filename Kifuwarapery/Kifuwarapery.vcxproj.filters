@@ -318,16 +318,16 @@
     <ClInclude Include="header\n223_move____\n223_200_depth.hpp">
       <Filter>header\n223_move____</Filter>
     </ClInclude>
-    <ClInclude Include="header\n119_score___\n119_050_bound.hpp">
+    <ClInclude Include="header\n210_score___\n119_050_bound.hpp">
       <Filter>header\n119_score___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n119_score___\n119_055_utilBound.hpp">
+    <ClInclude Include="header\n210_score___\n119_055_utilBound.hpp">
       <Filter>header\n119_score___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n119_score___\n119_100_utilScore.hpp">
+    <ClInclude Include="header\n210_score___\n119_100_utilScore.hpp">
       <Filter>header\n119_score___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n119_score___\n119_200_pieceScore.hpp">
+    <ClInclude Include="header\n210_score___\n119_200_pieceScore.hpp">
       <Filter>header\n119_score___</Filter>
     </ClInclude>
     <ClInclude Include="header\n160_board___\n160_600_bitboardAll.hpp">
@@ -396,7 +396,7 @@
     <ClInclude Include="header\n220_position\n220_400_evalList.hpp">
       <Filter>header\n220_position</Filter>
     </ClInclude>
-    <ClInclude Include="header\n119_score___\n119_500_EvalSum.hpp">
+    <ClInclude Include="header\n210_score___\n119_500_EvalSum.hpp">
       <Filter>header\n119_score___</Filter>
     </ClInclude>
     <ClInclude Include="header\n640_searcher\n640_040_nodeKind.hpp">
@@ -939,7 +939,7 @@
     <ClInclude Include="header\n105_180_piece___\n105_180_155_convPiece.hpp">
       <Filter>header\n113_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n119_score___\n119_090_scoreIndex.hpp">
+    <ClInclude Include="header\n210_score___\n119_090_scoreIndex.hpp">
       <Filter>header\n119_score___</Filter>
     </ClInclude>
     <ClInclude Include="header\n223_move____\n223_300_moveAndScoreIndex.hpp">

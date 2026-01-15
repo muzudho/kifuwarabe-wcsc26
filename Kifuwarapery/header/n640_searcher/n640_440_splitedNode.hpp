@@ -2,7 +2,7 @@
 
 
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"	//Mutexなど
-#include "../n119_score___/n119_090_scoreIndex.hpp"
+#include "../n210_score___/n119_090_scoreIndex.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n223_move____/n223_200_depth.hpp"

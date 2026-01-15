@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "../n105_180_piece___/n105_180_155_convPiece.hpp"
-#include "../n119_score___/n119_090_scoreIndex.hpp"
+#include "../n210_score___/n119_090_scoreIndex.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
 #include "../n165_movStack/n165_500_moveStack.hpp"
