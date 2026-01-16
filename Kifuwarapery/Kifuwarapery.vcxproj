@@ -193,6 +193,7 @@
     <ClInclude Include="header\n105_180_piece___\n105_180_200_handPiece.hpp" />
     <ClInclude Include="header\n105_180_piece___\n105_180_205_convHandPiece.hpp" />
     <ClInclude Include="header\n105_180_piece___\n105_180_500_hand.hpp" />
+    <ClInclude Include="header\n105_220_bonaDir_\n105_220_500_IBonaDirectional.hpp" />
     <ClInclude Include="header\n210_score___\n119_050_bound.hpp" />
     <ClInclude Include="header\n210_score___\n119_055_utilBound.hpp" />
     <ClInclude Include="header\n210_score___\n119_090_scoreIndex.hpp" />
@@ -440,6 +441,8 @@
     <ClCompile Include="header\n080_100_sysWorld\n080_100_075_debugcerr.hpp" />
     <ClCompile Include="header\n080_100_sysWorld\n080_100_077_binary.hpp" />
     <ClCompile Include="header\n080_100_sysWorld\n080_100_078_lsbMsb.hpp" />
+    <ClCompile Include="source\n105_220_bonaDir_\n105_220_600_NullBonaDirection.cpp" />
+    <ClCompile Include="source\n105_220_bonaDir_\n105_220_700_bonaMoveArray.cpp" />
     <ClCompile Include="source\n165_movStack\n165_410_moveModels.cpp" />
     <ClCompile Include="source\n220_position\n220_645_gameStats.cpp" />
     <ClCompile Include="source\n080_100_sysWorld\n080_100_500_common.cpp" />

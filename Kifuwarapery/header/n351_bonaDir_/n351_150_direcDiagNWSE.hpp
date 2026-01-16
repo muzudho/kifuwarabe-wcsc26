@@ -1,11 +1,11 @@
 ﻿#pragma once
-
 #include <cstdlib>	// abs()
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n105_100_color___/n105_100_100_color.hpp"
 #include "../n105_120_square__/n105_120_100_square.hpp"
 #include "../n105_120_square__/n105_120_250_squareDelta.hpp"
 #include "../n105_200_sqDistan/n105_200_500_squareDistance.hpp"
+#include "../n105_220_bonaDir_/n105_220_500_IBonaDirectional.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n250_pieceTyp/n350_040_ptEvent.hpp"
 #include "../n250_pieceTyp/n350_500_ptPrograms.hpp"

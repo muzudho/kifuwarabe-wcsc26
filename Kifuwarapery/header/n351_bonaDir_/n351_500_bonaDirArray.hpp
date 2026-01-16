@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "../n105_220_bonaDir_/n105_220_500_IBonaDirectional.hpp"
 #include "../n340_bonaDir_/n340_500_IBonaDirectional.hpp"
 #include "n351_100_direcMisc.hpp"
 #include "n351_120_direcFile.hpp"

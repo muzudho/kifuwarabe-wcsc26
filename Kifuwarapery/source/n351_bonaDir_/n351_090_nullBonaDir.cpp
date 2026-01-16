@@ -4,10 +4,4 @@
 /// <summary>
 /// Bonanzaで使われている［向き］。
 /// </summary>
-NullBonaDirection g_nullBonaDirection;
-
-
-/// <summary>
-/// Bonanzaで使われている［向き］。
-/// </summary>
 NullBonaMove g_nullBonaMove;

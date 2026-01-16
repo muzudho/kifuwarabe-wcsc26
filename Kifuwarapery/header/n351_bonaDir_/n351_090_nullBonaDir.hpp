@@ -10,35 +10,6 @@
 /// <summary>
 /// Bonanzaで使われている［向き］。
 /// </summary>
-class NullBonaDirection : public IBonaDirectionable
-{
-
-
-public:
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="squareDistance"></param>
-	/// <param name="sq0"></param>
-	/// <param name="sq1"></param>
-	void InitializeSquareDistance(SquareDistance& squareDistance, Square sq0, Square sq1) const
-	{
-		UNREACHABLE;
-	}
-};
-
-
-/// <summary>
-/// Bonanzaで使われている［向き］。
-/// </summary>
-extern NullBonaDirection g_nullBonaDirection;
-
-
-/// <summary>
-/// Bonanzaで使われている［向き］。
-/// </summary>
 class NullBonaMove : public IBonaMovable
 {
 

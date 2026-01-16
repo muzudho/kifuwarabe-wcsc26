@@ -1,4 +1,5 @@
-﻿#include "../../header/n105_220_bonaDir_/n105_220_500_IBonaDirectional.hpp"
+#include "../../header/n105_220_bonaDir_/n105_220_500_IBonaDirectional.hpp"
+#include "../../header/n105_220_bonaDir_/n105_220_600_NullBonaDirection.hpp"
 #include "../../header/n340_bonaDir_/n340_500_IBonaDirectional.hpp"
 #include "../../header/n351_bonaDir_/n351_090_nullBonaDir.hpp"
 #include "../../header/n351_bonaDir_/n351_100_direcMisc.hpp"
@@ -12,11 +13,11 @@
 /// <summary>
 /// Bonanzaで使われている［向き］。
 /// </summary>
-IBonaMovable* g_bonaMoveArray[6] = {
-	&g_miscBonaMove,
-	&g_nullBonaMove,
-	&g_fileBonaMove,
-	&g_rankBonaMove,
-	&g_diagonalNESWBonaMove,
-	&g_diagonalNWSEBonaMove
+IBonaDirectionable* g_bonaDirectionArray[6] = {
+	&g_miscBonaDirection,
+	&g_nullBonaDirection,
+	&g_fileBonaDirection,
+	&g_rankBonaDirection,
+	&g_diagonalNESWBonaDirection,
+	&g_diagonalNWSEBonaDirection
 };
