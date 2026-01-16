@@ -1,5 +1,5 @@
 ﻿#include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../../header/n165_movStack/n165_300_moveType.hpp"
+#include "../../header/n165_movStack/n165_300_movegenType.hpp"
 #include "../../header/n220_position/n220_650_position.hpp"
 #include "../../header/n407_moveGen_/n407_900_moveList.hpp"
 #include "../../header/n560_timeMgr_/n560_100_limitsDuringGo.hpp"
@@ -178,7 +178,7 @@ void HerosPub::StartThinking(
 	// 浅い探索なので、thread 生成、破棄のコストが高い。余分な thread を生成せずに直接探索を呼び出す。
 	GetPos.GetRucksack()->Think(GetPos.GetRucksack());
 #else
-	const MoveType MT = N08_Legal;
+	const MovegenType MT = N08_Legal;
 	for (MoveList<MT> ml(position); !ml.IsEnd(); ++ml) {
 		if (searchMoves.empty()
 			|| std::find(searchMoves.begin(), searchMoves.end(), ml.GetMove()) != searchMoves.end())

@@ -3,8 +3,8 @@
 #include "../n105_100_color___/n105_100_100_color.hpp"
 #include "../n105_120_square__/n105_120_100_square.hpp"
 #include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
-#include "../n160_boardBb_/n160_100_bitboard.hpp"
-#include "../n165_movStack/n165_300_moveType.hpp"
+#include "../n130_100_boardBb_/n160_100_bitboard.hpp"
+#include "../n165_movStack/n165_300_movegenType.hpp"
 #include "../n220_position/n220_650_position.hpp"
 
 
@@ -20,7 +20,7 @@ public:
 	/// <summary>
 	/// 指し手生成区分
 	/// </summary>
-	const MoveType m_mt;
+	const MovegenType m_mt;
 
 	/// <summary>
 	/// 
@@ -49,7 +49,7 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="ksq"></param>
 	PieceMoveEvent (
-		const MoveType mt,
+		const MovegenType mt,
 		const bool all,
 		const Position& pos,
 		const Square ksq

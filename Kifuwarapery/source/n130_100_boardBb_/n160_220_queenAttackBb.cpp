@@ -1,5 +1,5 @@
-﻿#include "../../header/n160_boardBb_/n160_220_queenAttackBb.hpp"
-#include "../../header/n160_boardBb_/n160_400_printBb.hpp"
+﻿#include "../../header/n130_100_boardBb_/n160_220_queenAttackBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_400_printBb.hpp"
 
 
 /// <summary>

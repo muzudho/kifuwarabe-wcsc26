@@ -1,10 +1,10 @@
 ﻿#include "../../header/n105_120_square__/n105_120_500_convSquare.hpp"
-#include "../../header/n160_boardBb_/n160_106_inFrontMaskBb.hpp"
-#include "../../header/n160_boardBb_/n160_110_silverAttackBb.hpp"
-#include "../../header/n160_boardBb_/n160_120_bishopAttackBb.hpp"	// TODO:これを消すのが難しい
-#include "../../header/n160_boardBb_/n160_140_goldAttackBb.hpp"		// TODO:これを消すのが難しい
-#include "../../header/n160_boardBb_/n160_160_kingAttackBb.hpp"		// TODO:これを消すのが難しい
-#include "../../header/n160_boardBb_/n160_230_setMaskBb.hpp"		// TODO:これを消すのが難しい
+#include "../../header/n130_100_boardBb_/n160_106_inFrontMaskBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_110_silverAttackBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_120_bishopAttackBb.hpp"	// TODO:これを消すのが難しい
+#include "../../header/n130_100_boardBb_/n160_140_goldAttackBb.hpp"		// TODO:これを消すのが難しい
+#include "../../header/n130_100_boardBb_/n160_160_kingAttackBb.hpp"		// TODO:これを消すのが難しい
+#include "../../header/n130_100_boardBb_/n160_230_setMaskBb.hpp"		// TODO:これを消すのが難しい
 
 
 /// <summary>

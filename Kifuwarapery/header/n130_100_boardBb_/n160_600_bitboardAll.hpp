@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../n160_boardBb_/n160_106_inFrontMaskBb.hpp"
+#include "../n130_100_boardBb_/n160_106_inFrontMaskBb.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────

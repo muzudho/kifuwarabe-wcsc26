@@ -1,9 +1,9 @@
-﻿#include "../../header/n160_boardBb_/n160_106_inFrontMaskBb.hpp"
-#include "../../header/n160_boardBb_/n160_140_goldAttackBb.hpp"
-#include "../../header/n160_boardBb_/n160_150_rookAttackBb.hpp"
-#include "../../header/n160_boardBb_/n160_160_kingAttackBb.hpp"
-#include "../../header/n160_boardBb_/n160_230_setMaskBb.hpp"
-#include "../../header/n160_boardBb_/n160_400_printBb.hpp"
+﻿#include "../../header/n130_100_boardBb_/n160_106_inFrontMaskBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_140_goldAttackBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_150_rookAttackBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_160_kingAttackBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_230_setMaskBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_400_printBb.hpp"
 
 
 /// <summary>

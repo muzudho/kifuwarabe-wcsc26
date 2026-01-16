@@ -1,8 +1,8 @@
 ﻿#pragma once
 
 #include "../n105_120_square__/n105_120_100_square.hpp"
-#include "../n160_boardBb_/n160_100_bitboard.hpp"
-#include "../n160_boardBb_/n160_140_goldAttackBb.hpp"
+#include "../n130_100_boardBb_/n160_100_bitboard.hpp"
+#include "../n130_100_boardBb_/n160_140_goldAttackBb.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n372_banKing_/n372_070_PieceAbstract.hpp"
 

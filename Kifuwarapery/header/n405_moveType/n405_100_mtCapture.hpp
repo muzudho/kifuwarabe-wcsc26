@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../n165_movStack/n165_300_moveType.hpp"
+#include "../n165_movStack/n165_300_movegenType.hpp"
 #include "../n165_movStack/n165_500_moveStack.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n374_genMove_/n374_040_pieceMoveEvent.hpp"
@@ -74,7 +74,7 @@ private:
 
 
 		// FIXME: 色をテンプレート化するのは良さげ☆
-		const PieceMoveEvent pmEvent(MoveType::N00_Capture, all, pos, ksq);
+		const PieceMoveEvent pmEvent(MovegenType::N00_Capture, all, pos, ksq);
 		moveStackList = PieceMovesGenerator::GeneratePieceMoves_N01_Pawn<US>(moveStackList, pmEvent, targetPawn);
 		moveStackList = PieceMovesGenerator::GeneratePieceMoves_N02_Lance<US>(moveStackList, pmEvent, targetOther);
 		moveStackList = PieceMovesGenerator::GeneratePieceMoves_N03_Knight<US>(moveStackList, pmEvent, targetOther);

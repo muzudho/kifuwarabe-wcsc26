@@ -2,8 +2,8 @@
 #include "../../header/n105_120_square__/n105_120_150_file.hpp"
 #include "../../header/n105_120_square__/n105_120_200_rank.hpp"
 #include "../../header/n105_120_square__/n105_120_500_convSquare.hpp"
-#include "../../header/n160_boardBb_/n160_230_setMaskBb.hpp"
-#include "../../header/n160_boardBb_/n160_400_printBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_230_setMaskBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_400_printBb.hpp"
 
 
 /// <summary>

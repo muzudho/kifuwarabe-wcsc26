@@ -1,7 +1,7 @@
-﻿#include "../../header/n160_boardBb_/n160_110_silverAttackBb.hpp"
-#include "../../header/n160_boardBb_/n160_120_bishopAttackBb.hpp"
-#include "../../header/n160_boardBb_/n160_190_pawnAttackBb.hpp"
-#include "../../header/n160_boardBb_/n160_400_printBb.hpp"
+﻿#include "../../header/n130_100_boardBb_/n160_110_silverAttackBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_120_bishopAttackBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_190_pawnAttackBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_400_printBb.hpp"
 
 
 /// <summary>

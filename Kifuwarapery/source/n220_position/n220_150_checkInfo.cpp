@@ -2,7 +2,7 @@
 #include "../../header/n105_100_color___/n105_100_500_convColor.hpp"
 #include "../../header/n105_120_square__/n105_120_100_square.hpp"
 #include "../../header/n105_160_pieceTyp/n105_160_500_pieceType.hpp"
-#include "../../header/n160_boardBb_/n160_100_bitboard.hpp"
+#include "../../header/n130_100_boardBb_/n160_100_bitboard.hpp"
 #include "../../header/n220_position/n220_150_checkInfo.hpp"
 #include "../../header/n220_position/n220_650_position.hpp"
 #include "../../header/n250_pieceTyp/n350_030_makePromoteMove.hpp"

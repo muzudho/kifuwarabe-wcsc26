@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../n165_movStack/n165_300_moveType.hpp"
+#include "../n165_movStack/n165_300_movegenType.hpp"
 #include "../n165_movStack/n165_500_moveStack.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n374_genMove_/n374_350_PieceMovesGenerator.hpp"
@@ -71,7 +71,7 @@ private:
 		const Bitboard targetOther = pos.GetEmptyBB();
 		const Square ksq = pos.GetKingSquare(THEM);
 
-		const PieceMoveEvent pmEvent(MoveType::N01_NonCapture, all, pos, ksq);
+		const PieceMoveEvent pmEvent(MovegenType::N01_NonCapture, all, pos, ksq);
 
 		moveStackList = PieceMovesGenerator::GeneratePieceMoves_N01_Pawn<US>(moveStackList, pmEvent, targetPawn);
 		moveStackList = PieceMovesGenerator::GeneratePieceMoves_N02_Lance<US>(moveStackList, pmEvent, targetOther);

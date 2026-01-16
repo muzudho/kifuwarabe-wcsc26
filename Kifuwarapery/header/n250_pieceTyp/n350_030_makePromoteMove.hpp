@@ -2,7 +2,7 @@
 
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n105_180_piece___/n105_180_205_convHandPiece.hpp"
-#include "../n165_movStack/n165_300_moveType.hpp"
+#include "../n165_movStack/n165_300_movegenType.hpp"
 #include "../n165_movStack/n165_310_promoteMode.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
 #include "../n165_movStack/n165_600_convMove.hpp"
@@ -25,7 +25,7 @@ public:
 	/// <summary>
 	///		<pre>
 	///(^q^)新型2
-	/// MoveType によって指し手生成関数を使い分ける。
+	/// MovegenType によって指し手生成関数を使い分ける。
 	/// Drop, Check, Evasion, の場合は別で指し手生成を行う。
 	///		</pre>
 	/// </summary>
@@ -36,7 +36,7 @@ public:
 	/// <param name="pos"></param>
 	/// <returns></returns>
 	static inline Move GetSelectedMakeMove_ExceptPromote_mt2(
-		MoveType mt,
+		MovegenType mt,
 		const Move pieceTypeAsMove,
 		const Square from, const Square to, const Position& pos) {
 
@@ -56,7 +56,7 @@ public:
 	/// <summary>
 	///		<pre>
 	///(^q^)新型1
-	/// MoveType によって指し手生成関数を使い分ける。
+	/// MovegenType によって指し手生成関数を使い分ける。
 	/// Drop, Check, Evasion, の場合は別で指し手生成を行う。
 	///		</pre>
 	/// </summary>
@@ -67,7 +67,7 @@ public:
 	/// <param name="pos"></param>
 	/// <returns></returns>
 	static inline Move GetSelectedMakeMove_ExceptPromote_goldHorseDragon(
-		MoveType mt,
+		MovegenType mt,
 		const PieceType pt, // 新型２ならここを Move にできるぜ☆（＾ｑ＾）
 		const Square from, const Square to, const Position& pos) {
 
@@ -98,7 +98,7 @@ public:
 		const Square to,
 		const Position& pos
 		) {
-		//MoveType mt_forAssert, assert(!(mt_forAssert == N01_NonCapture || mt_forAssert == N04_NonCaptureMinusPro), "");
+		//MovegenType mt_forAssert, assert(!(mt_forAssert == N01_NonCapture || mt_forAssert == N04_NonCaptureMinusPro), "");
 		return UtilMovePos::MakeCaptureMove(pieceTypeAsMove, from, to, pos);
 	}
 
@@ -109,7 +109,7 @@ public:
 	/// <param name="move"></param>
 	static inline void APPEND_PROMOTE_FLAG(Move& move)
 	{
-		//, MoveType mt_forAssert, const PieceType pt_forAssert
+		//, MovegenType mt_forAssert, const PieceType pt_forAssert
 		//assert(!(
 		//	// 持ち駒の打ち込みに成りは無い☆
 		//	mt_forAssert == N02_Drop ||

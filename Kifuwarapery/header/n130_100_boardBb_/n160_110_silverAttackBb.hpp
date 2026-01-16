@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../n160_boardBb_/n160_100_bitboard.hpp"
+#include "../n130_100_boardBb_/n160_100_bitboard.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────

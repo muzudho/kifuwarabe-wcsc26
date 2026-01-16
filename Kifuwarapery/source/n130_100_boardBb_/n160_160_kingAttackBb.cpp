@@ -1,6 +1,6 @@
-﻿#include "../../header/n160_boardBb_/n160_120_bishopAttackBb.hpp"
-#include "../../header/n160_boardBb_/n160_150_rookAttackBb.hpp"
-#include "../../header/n160_boardBb_/n160_160_kingAttackBb.hpp"
+﻿#include "../../header/n130_100_boardBb_/n160_120_bishopAttackBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_150_rookAttackBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_160_kingAttackBb.hpp"
 
 
 /// <summary>

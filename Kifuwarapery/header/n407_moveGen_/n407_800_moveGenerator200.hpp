@@ -26,7 +26,7 @@
 
 
 /// <summary>
-/// MoveType の全ての指し手を生成
+/// MovegenType の全ての指し手を生成
 /// </summary>
 class MoveGenerator200 {
 
@@ -42,7 +42,7 @@ public:
 	/// <param name="pos"></param>
 	/// <returns></returns>
 	inline MoveStack* GenerateMoves_2(
-		MoveType mt, MoveStack* moveStackList, const Position& pos
+		MovegenType mt, MoveStack* moveStackList, const Position& pos
 	) const {
 		return g_moveTypeArray.m_moveTypeArray[mt]->GenerateMove(moveStackList, pos);
 	}

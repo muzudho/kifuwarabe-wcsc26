@@ -2,8 +2,8 @@
 
 #include "../n105_120_square__/n105_120_100_square.hpp"
 #include "../n105_120_square__/n105_120_400_squareRelation.hpp"
-#include "../n160_boardBb_/n160_100_bitboard.hpp"
-#include "../n160_boardBb_/n160_210_dragonAttackBb.hpp"
+#include "../n130_100_boardBb_/n160_100_bitboard.hpp"
+#include "../n130_100_boardBb_/n160_210_dragonAttackBb.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n250_pieceTyp/n350_040_ptEvent.hpp"
 #include "../n250_pieceTyp/n350_500_ptPrograms.hpp"

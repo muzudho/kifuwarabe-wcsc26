@@ -1,10 +1,10 @@
 ﻿#include "../../header/n105_120_square__/n105_120_500_convSquare.hpp"
-#include "../../header/n160_boardBb_/n160_400_printBb.hpp"
-#include "../../header/n160_boardBb_/n160_106_inFrontMaskBb.hpp"
-#include "../../header/n160_boardBb_/n160_120_bishopAttackBb.hpp"
-#include "../../header/n160_boardBb_/n160_140_goldAttackBb.hpp"
-#include "../../header/n160_boardBb_/n160_180_knightAttackBb.hpp"
-#include "../../header/n160_boardBb_/n160_190_pawnAttackBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_400_printBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_106_inFrontMaskBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_120_bishopAttackBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_140_goldAttackBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_180_knightAttackBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_190_pawnAttackBb.hpp"
 
 
 /// <summary>

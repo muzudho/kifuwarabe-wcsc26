@@ -1,4 +1,4 @@
-﻿#include "../../header/n160_boardBb_/n160_106_inFrontMaskBb.hpp"
+﻿#include "../../header/n130_100_boardBb_/n160_106_inFrontMaskBb.hpp"
 
 
 /// <summary>

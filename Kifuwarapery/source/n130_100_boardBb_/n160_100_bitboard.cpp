@@ -1,7 +1,7 @@
 ﻿#include <iostream>	// std::cout
 #include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../../header/n105_120_square__/n105_120_500_convSquare.hpp"
-#include "../../header/n160_boardBb_/n160_100_bitboard.hpp"
+#include "../../header/n130_100_boardBb_/n160_100_bitboard.hpp"
 
 
 using namespace std;

@@ -1,9 +1,9 @@
 ﻿#include "../../header/n105_120_square__/n105_120_400_squareRelation.hpp"
-#include "../../header/n160_boardBb_/n160_120_bishopAttackBb.hpp"
-#include "../../header/n160_boardBb_/n160_150_rookAttackBb.hpp"
-#include "../../header/n160_boardBb_/n160_230_setMaskBb.hpp"
-#include "../../header/n160_boardBb_/n160_240_betweenBb.hpp"
-#include "../../header/n160_boardBb_/n160_400_printBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_120_bishopAttackBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_150_rookAttackBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_230_setMaskBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_240_betweenBb.hpp"
+#include "../../header/n130_100_boardBb_/n160_400_printBb.hpp"
 
 
 BetweenBb g_betweenBb;

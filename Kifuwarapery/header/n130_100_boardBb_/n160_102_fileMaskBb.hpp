@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "../n105_120_square__/n105_120_150_file.hpp"
 #include "../n105_120_square__/n105_120_500_convSquare.hpp"
-#include "../n160_boardBb_/n160_100_bitboard.hpp"
+#include "../n130_100_boardBb_/n160_100_bitboard.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────

@@ -2,8 +2,8 @@
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n105_100_color___/n105_100_500_convColor.hpp"
 #include "../n105_120_square__/n105_120_200_rank.hpp"
-#include "../n160_boardBb_/n160_100_bitboard.hpp"
-#include "../n160_boardBb_/n160_104_RankMaskBb.hpp"
+#include "../n130_100_boardBb_/n160_100_bitboard.hpp"
+#include "../n130_100_boardBb_/n160_104_RankMaskBb.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────
