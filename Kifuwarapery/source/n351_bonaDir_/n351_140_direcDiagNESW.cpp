@@ -4,4 +4,4 @@
 /// <summary>
 /// 
 /// </summary>
-DirecDiagNESW g_direcDiagNESW;
+DiagonalNESWBonaDirection g_direcDiagNESW;

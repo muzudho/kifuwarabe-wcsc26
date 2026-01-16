@@ -4,4 +4,4 @@
 /// <summary>
 /// 
 /// </summary>
-DirecDiagNWSE g_direcDiagNWSE;
+DiagonalNWSEBonaDirection g_direcDiagNWSE;

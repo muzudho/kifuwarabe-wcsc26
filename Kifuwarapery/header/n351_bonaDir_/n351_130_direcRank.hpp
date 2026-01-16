@@ -6,7 +6,7 @@
 #include "../n105_120_square__/n105_120_250_squareDelta.hpp"
 #include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
 #include "../n105_200_sqDistan/n105_200_500_squareDistance.hpp"
-#include "../n340_bonaDir_/n340_500_IBonaDirectable.hpp"
+#include "../n340_bonaDir_/n340_500_IBonaDirectional.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n250_pieceTyp/n350_040_ptEvent.hpp"
 #include "../n250_pieceTyp/n350_500_ptPrograms.hpp"
@@ -15,7 +15,7 @@
 /// <summary>
 /// Bonanzaで使われている［向き］。
 /// </summary>
-class DirecRank : public IBonaDirectable {
+class RankBonaDirection : public IBonaDirectionable {
 
 
 public:
@@ -62,4 +62,4 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern DirecRank g_direcRank;
+extern RankBonaDirection g_direcRank;

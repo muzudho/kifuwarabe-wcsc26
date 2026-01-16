@@ -4,4 +4,4 @@
 /// <summary>
 /// 
 /// </summary>
-DirecFile g_direcFile;
+FileBonaDirection g_direcFile;

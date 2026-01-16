@@ -4,4 +4,4 @@
 /// <summary>
 /// 
 /// </summary>
-DirecMisc g_direcMisc;
+MiscBonaDirection g_direcMisc;

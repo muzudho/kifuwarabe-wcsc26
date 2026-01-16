@@ -4,13 +4,13 @@
 #include "../n105_120_square__/n105_120_100_square.hpp"
 #include "../n105_200_sqDistan/n105_200_500_squareDistance.hpp"
 #include "../n220_position/n220_650_position.hpp"
-#include "../n340_bonaDir_/n340_500_IBonaDirectable.hpp"
+#include "../n340_bonaDir_/n340_500_IBonaDirectional.hpp"
 
 
 /// <summary>
 /// Bonanzaで使われている［向き］。
 /// </summary>
-class NullBonaDir : public IBonaDirectable {
+class NullBonaDirection : public IBonaDirectionable {
 
 
 public:
@@ -45,4 +45,4 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern NullBonaDir g_nullBonaDir;
+extern NullBonaDirection g_nullBonaDir;

@@ -4,4 +4,4 @@
 /// <summary>
 /// 
 /// </summary>
-NullBonaDir g_nullBonaDir;
+NullBonaDirection g_nullBonaDir;

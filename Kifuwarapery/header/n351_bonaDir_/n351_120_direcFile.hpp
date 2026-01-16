@@ -7,13 +7,13 @@
 #include "../n130_100_boardBb_/n160_150_rookAttackBb.hpp"
 #include "../n105_200_sqDistan/n105_200_500_squareDistance.hpp"
 #include "../n220_position/n220_650_position.hpp"
-#include "../n340_bonaDir_/n340_500_IBonaDirectable.hpp"
+#include "../n340_bonaDir_/n340_500_IBonaDirectional.hpp"
 
 
 /// <summary>
 /// Bonanzaで使われている［向き］。
 /// </summary>
-class DirecFile : public IBonaDirectable {
+class FileBonaDirection : public IBonaDirectionable {
 
 
 public:
@@ -53,4 +53,4 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern DirecFile g_direcFile;
+extern FileBonaDirection g_direcFile;
