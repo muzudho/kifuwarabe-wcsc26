@@ -61,9 +61,9 @@ public:
 
 
 /// <summary>
-/// 
+/// Bonanzaで使われている［向き］。
 /// </summary>
-extern RankBonaDirection g_direcRank;
+extern RankBonaDirection g_rankBonaDirection;
 
 
 /// <summary>
@@ -72,3 +72,9 @@ extern RankBonaDirection g_direcRank;
 class RankBonaMove : public IBonaMovable
 {
 };
+
+
+/// <summary>
+/// Bonanzaで使われている［向き］。
+/// </summary>
+extern RankBonaMove g_rankBonaMove;

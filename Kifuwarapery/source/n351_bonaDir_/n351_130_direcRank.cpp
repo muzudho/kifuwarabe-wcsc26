@@ -4,4 +4,4 @@
 /// <summary>
 /// 
 /// </summary>
-RankBonaDirection g_direcRank;
+RankBonaDirection g_rankBonaDirection;

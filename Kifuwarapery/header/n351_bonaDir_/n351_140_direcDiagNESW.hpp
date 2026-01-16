@@ -62,9 +62,9 @@ public:
 
 
 /// <summary>
-/// 
+/// Bonanzaで使われている［向き］。
 /// </summary>
-extern DiagonalNESWBonaDirection g_direcDiagNESW;
+extern DiagonalNESWBonaDirection g_diagonalNESWBonaDirection;
 
 
 /// <summary>
@@ -73,3 +73,9 @@ extern DiagonalNESWBonaDirection g_direcDiagNESW;
 class DiagonalNESWBonaMove : public IBonaMovable
 {
 };
+
+
+/// <summary>
+/// Bonanzaで使われている［向き］。
+/// </summary>
+extern DiagonalNESWBonaMove g_diagonalNESWBonaMove;

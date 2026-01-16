@@ -9,13 +9,26 @@
 
 
 /// <summary>
-/// 
+/// Bonanzaで使われている［向き］。
 /// </summary>
 IBonaDirectionable* g_bonaDirectionArray[6] = {
-	&g_direcMisc,
-	&g_nullBonaDir,
-	&g_direcFile,
-	&g_direcRank,
-	&g_direcDiagNESW,
-	&g_direcDiagNWSE
+	&g_miscBonaDirection,
+	&g_nullBonaDirection,
+	&g_fileBonaDirection,
+	&g_rankBonaDirection,
+	&g_diagonalNESWBonaDirection,
+	&g_diagonalNWSEBonaDirection
 };
+
+
+///// <summary>
+///// Bonanzaで使われている［向き］。
+///// </summary>
+//IBonaMovable* g_bonaMoveArray[6] = {
+//	&g_miscBonaMove,
+//	&g_nullBonaMove,
+//	&g_fileBonaMove,
+//	&g_rankBonaMove,
+//	&g_diagonalNESWBonaMove,
+//	&g_diagonalNWSEBonaMove
+//};

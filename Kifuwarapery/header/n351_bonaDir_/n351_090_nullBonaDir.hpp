@@ -44,9 +44,9 @@ public:
 
 
 /// <summary>
-/// 
+/// Bonanzaで使われている［向き］。
 /// </summary>
-extern NullBonaDirection g_nullBonaDir;
+extern NullBonaDirection g_nullBonaDirection;
 
 
 /// <summary>
@@ -55,3 +55,9 @@ extern NullBonaDirection g_nullBonaDir;
 class NullBonaMove : public IBonaMovable
 {
 };
+
+
+/// <summary>
+/// Bonanzaで使われている［向き］。
+/// </summary>
+extern NullBonaMove g_nullBonaMove;

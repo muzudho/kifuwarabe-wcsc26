@@ -54,9 +54,9 @@ public:
 
 
 /// <summary>
-/// 
+/// Bonanzaで使われている［向き］。
 /// </summary>
-extern MiscBonaDirection g_direcMisc;
+extern MiscBonaDirection g_miscBonaDirection;
 
 
 /// <summary>
@@ -65,3 +65,9 @@ extern MiscBonaDirection g_direcMisc;
 class MiscBonaMove : public IBonaMovable
 {
 };
+
+
+/// <summary>
+/// Bonanzaで使われている［向き］。
+/// </summary>
+extern MiscBonaMove g_miscBonaMove;

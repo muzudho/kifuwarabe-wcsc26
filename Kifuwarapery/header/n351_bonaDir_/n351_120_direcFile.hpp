@@ -52,9 +52,9 @@ public:
 
 
 /// <summary>
-/// 
+/// Bonanzaで使われている［向き］。
 /// </summary>
-extern FileBonaDirection g_direcFile;
+extern FileBonaDirection g_fileBonaDirection;
 
 
 /// <summary>
@@ -64,3 +64,9 @@ class FileBonaMove : public IBonaMovable
 {
 
 };
+
+
+/// <summary>
+/// Bonanzaで使われている［向き］。
+/// </summary>
+extern FileBonaMove g_fileBonaMove;
