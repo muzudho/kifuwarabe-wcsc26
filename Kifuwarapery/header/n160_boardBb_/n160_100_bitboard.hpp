@@ -10,7 +10,11 @@
 
 
 /// <summary>
+///		<pre>
 /// ビットボード
+/// 
+///		- ２つの u64 でできているぜ（＾～＾）
+///		</pre>
 /// </summary>
 class Bitboard {
 

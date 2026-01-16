@@ -35,7 +35,7 @@ public:
 	/// <param name="ksq"></param>
 	/// <param name="us"></param>
 	/// <returns>checkerBB</returns>
-	Bitboard* Do2Move(Position& position, Square from, const Square ksq, const Color us) const
+	std::unique_ptr<Bitboard> Do2Move(Position& position, Square from, const Square ksq, const Color us) const
 	{
 		UNREACHABLE;
 	}

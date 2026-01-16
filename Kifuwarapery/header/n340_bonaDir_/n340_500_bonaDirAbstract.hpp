@@ -40,5 +40,5 @@ public:
 	/// <param name="ksq"></param>
 	/// <param name="us"></param>
 	/// <returns>checkerBB</returns>
-	virtual Bitboard* Do2Move(Position& position, Square from, const Square ksq, const Color us) const = 0;
+	virtual std::unique_ptr<Bitboard> Do2Move(Position& position, Square from, const Square ksq, const Color us) const = 0;
 };
