@@ -34,7 +34,8 @@ public:
 	/// <param name="from"></param>
 	/// <param name="ksq"></param>
 	/// <param name="us"></param>
-	void Do2Move(Position& position, Square from, const Square ksq, const Color us) const
+	/// <returns>checkerBB</returns>
+	Bitboard* Do2Move(Position& position, Square from, const Square ksq, const Color us) const
 	{
 		UNREACHABLE;
 	}

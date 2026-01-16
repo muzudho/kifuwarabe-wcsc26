@@ -39,5 +39,6 @@ public:
 	/// <param name="from"></param>
 	/// <param name="ksq"></param>
 	/// <param name="us"></param>
-	virtual void Do2Move(Position& position, Square from, const Square ksq, const Color us) const = 0;
+	/// <returns>checkerBB</returns>
+	virtual Bitboard* Do2Move(Position& position, Square from, const Square ksq, const Color us) const = 0;
 };

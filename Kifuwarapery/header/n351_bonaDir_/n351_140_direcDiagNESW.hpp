@@ -42,7 +42,8 @@ public:
 	/// <param name="from"></param>
 	/// <param name="ksq"></param>
 	/// <param name="us"></param>
-	void Do2Move(Position& position, Square from, const Square ksq, const Color us) const
+	/// <returns>checkerBB</returns>
+	Bitboard* Do2Move(Position& position, Square from, const Square ksq, const Color us) const
 	{
 		const PieceTypeEvent ptEvent1(position.GetOccupiedBB(), Color::Null, ksq);
 
@@ -56,6 +57,7 @@ public:
 				position.GetBbOf30<Color::White>(PieceType::N05_Bishop, PieceType::N13_Horse)
 				)
 			;
+		return nullptr;
 	}
 };
 

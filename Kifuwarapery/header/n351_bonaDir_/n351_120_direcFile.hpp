@@ -39,11 +39,13 @@ public:
 	/// <param name="from"></param>
 	/// <param name="ksq"></param>
 	/// <param name="us"></param>
-	void Do2Move(Position& position, Square from, const Square ksq, const Color us) const
+	/// <returns>checkerBB</returns>
+	Bitboard* Do2Move(Position& position, Square from, const Square ksq, const Color us) const
 	{
 		// from の位置から縦に利きを調べると相手玉と、空き王手している駒に当たっているはず。味方の駒が空き王手している駒。
 		position.GetStateInfo()->m_checkersBB |=
 			g_rookAttackBb.GetControllBbFile(&position.GetOccupiedBB(), from) & position.GetBbOf10(us);
+		return nullptr;
 	}
 };
 
