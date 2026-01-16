@@ -13,7 +13,8 @@
 /// <summary>
 /// Bonanzaで使われている［向き］。
 /// </summary>
-class FileBonaDirection : public IBonaDirectionable {
+class FileBonaDirection : public IBonaDirectionable
+{
 
 
 public:
@@ -54,3 +55,12 @@ public:
 /// 
 /// </summary>
 extern FileBonaDirection g_direcFile;
+
+
+/// <summary>
+/// Bonanzaで使われている［向き］。
+/// </summary>
+class FileBonaMove : public IBonaMovable
+{
+
+};

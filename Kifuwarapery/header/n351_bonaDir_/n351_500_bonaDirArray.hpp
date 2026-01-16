@@ -12,3 +12,9 @@
 /// Bonanzaで使われている［向き］。
 /// </summary>
 extern IBonaDirectionable* g_bonaDirectionArray[6];
+
+
+/// <summary>
+/// Bonanzaで使われている［向き］。
+/// </summary>
+extern IBonaMovable* g_bonaMoveArray[6];

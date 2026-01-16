@@ -12,7 +12,8 @@
 /// <summary>
 /// Bonanzaで使われている［向き］。
 /// </summary>
-class IBonaDirectionable {
+class IBonaDirectionable
+{
 
 
 public:
@@ -41,4 +42,12 @@ public:
 	/// <param name="ksq"></param>
 	/// <param name="us"></param>
 	virtual void Do2Move(Position& position, Square from, const Square ksq, const Color us) const = 0;
+};
+
+
+/// <summary>
+/// Bonanzaで使われている［向き］。
+/// </summary>
+class IBonaMovable
+{
 };

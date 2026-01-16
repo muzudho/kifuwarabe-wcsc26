@@ -12,7 +12,8 @@
 /// <summary>
 /// Bonanzaで使われている［向き］。
 /// </summary>
-class MiscBonaDirection : public IBonaDirectionable {
+class MiscBonaDirection : public IBonaDirectionable
+{
 
 
 public:
@@ -56,3 +57,11 @@ public:
 /// 
 /// </summary>
 extern MiscBonaDirection g_direcMisc;
+
+
+/// <summary>
+/// Bonanzaで使われている［向き］。
+/// </summary>
+class MiscBonaMove : public IBonaMovable
+{
+};

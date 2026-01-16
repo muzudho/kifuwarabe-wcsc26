@@ -10,7 +10,8 @@
 /// <summary>
 /// Bonanzaで使われている［向き］。
 /// </summary>
-class NullBonaDirection : public IBonaDirectionable {
+class NullBonaDirection : public IBonaDirectionable
+{
 
 
 public:
@@ -46,3 +47,11 @@ public:
 /// 
 /// </summary>
 extern NullBonaDirection g_nullBonaDir;
+
+
+/// <summary>
+/// Bonanzaで使われている［向き］。
+/// </summary>
+class NullBonaMove : public IBonaMovable
+{
+};
