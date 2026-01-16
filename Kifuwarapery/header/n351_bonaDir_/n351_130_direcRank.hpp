@@ -34,29 +34,6 @@ public:
 			abs(static_cast<int>(sq0 - sq1) / static_cast<int>(SquareDelta::DeltaE))
 		);
 	}
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="position"></param>
-	/// <param name="from"></param>
-	/// <param name="ksq"></param>
-	/// <param name="us"></param>
-	/// <returns>checkerBB</returns>
-	void Do2Move(Position& position, Square from, const Square ksq, const Color us) const
-	{
-		const PieceTypeEvent ptEvent1(position.GetOccupiedBB(), Color::Null, ksq);
-		Bitboard checkerBB = PiecetypePrograms::m_ROOK.GetAttacks2From(ptEvent1) &
-			(
-				us == Color::Black
-				?
-				position.GetBbOf30<Color::Black>(PieceType::N06_Rook, PieceType::N14_Dragon)
-				:
-				position.GetBbOf30<Color::White>(PieceType::N06_Rook, PieceType::N14_Dragon)
-			);
-
-		position.GetStateInfo()->m_checkersBB |= checkerBB;
-	}
 };
 
 
@@ -76,6 +53,28 @@ class RankBonaMove : public IBonaMovable
 public:
 
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="position"></param>
+	/// <param name="from"></param>
+	/// <param name="ksq"></param>
+	/// <param name="us"></param>
+	/// <returns>checkerBB</returns>
+	void Do2Move(Position& position, Square from, const Square ksq, const Color us) const
+	{
+		const PieceTypeEvent ptEvent1(position.GetOccupiedBB(), Color::Null, ksq);
+		Bitboard checkerBB = PiecetypePrograms::m_ROOK.GetAttacks2From(ptEvent1) &
+			(
+				us == Color::Black
+				?
+				position.GetBbOf30<Color::Black>(PieceType::N06_Rook, PieceType::N14_Dragon)
+				:
+				position.GetBbOf30<Color::White>(PieceType::N06_Rook, PieceType::N14_Dragon)
+				);
+
+		position.GetStateInfo()->m_checkersBB |= checkerBB;
+	}
 };
 
 

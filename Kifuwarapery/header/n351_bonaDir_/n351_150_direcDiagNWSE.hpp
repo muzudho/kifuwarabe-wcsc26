@@ -34,6 +34,23 @@ public:
 			abs(static_cast<int>(sq0 - sq1) / static_cast<int>(SquareDelta::DeltaNW))
 		);
 	}
+};
+
+
+/// <summary>
+/// Bonanzaで使われている［向き］。
+/// </summary>
+extern DiagonalNWSEBonaDirection g_diagonalNWSEBonaDirection;
+
+
+/// <summary>
+/// Bonanzaで使われている［向き］。
+/// </summary>
+class DiagonalNWSEBonaMove : public IBonaMovable
+{
+
+
+public:
 
 
 	/// <summary>
@@ -54,29 +71,10 @@ public:
 				position.GetBbOf30<Color::Black>(PieceType::N05_Bishop, PieceType::N13_Horse)
 				:
 				position.GetBbOf30<Color::White>(PieceType::N05_Bishop, PieceType::N13_Horse)
-			);
+				);
 
 		position.GetStateInfo()->m_checkersBB |= checkerBB;
 	}
-};
-
-
-/// <summary>
-/// Bonanzaで使われている［向き］。
-/// </summary>
-extern DiagonalNWSEBonaDirection g_diagonalNWSEBonaDirection;
-
-
-/// <summary>
-/// Bonanzaで使われている［向き］。
-/// </summary>
-class DiagonalNWSEBonaMove : public IBonaMovable
-{
-
-
-public:
-
-
 };
 
 

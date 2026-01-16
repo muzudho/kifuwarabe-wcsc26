@@ -22,6 +22,17 @@ public:
 	/// <param name="sq0"></param>
 	/// <param name="sq1"></param>
 	virtual void InitializeSquareDistance(SquareDistance& squareDistance, Square sq0, Square sq1) const = 0;
+};
+
+
+/// <summary>
+/// Bonanzaで使われている［向き］。
+/// </summary>
+class IBonaMovable
+{
+
+
+public:
 
 
 	/// <summary>
@@ -38,17 +49,4 @@ public:
 	/// <param name="ksq"></param>
 	/// <param name="us"></param>
 	virtual void Do2Move(Position& position, Square from, const Square ksq, const Color us) const = 0;
-};
-
-
-/// <summary>
-/// Bonanzaで使われている［向き］。
-/// </summary>
-class IBonaMovable
-{
-
-
-public:
-
-
 };

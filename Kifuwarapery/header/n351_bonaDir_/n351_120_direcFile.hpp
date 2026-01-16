@@ -32,22 +32,6 @@ public:
 			abs(static_cast<int>(sq0 - sq1) / static_cast<int>(SquareDelta::DeltaN))
 		);
 	}
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="position"></param>
-	/// <param name="from"></param>
-	/// <param name="ksq"></param>
-	/// <param name="us"></param>
-	/// <returns>checkerBB</returns>
-	void Do2Move(Position& position, Square from, const Square ksq, const Color us) const
-	{
-		// from の位置から縦に利きを調べると相手玉と、空き王手している駒に当たっているはず。味方の駒が空き王手している駒。
-		Bitboard checkerBB = g_rookAttackBb.GetControllBbFile(&position.GetOccupiedBB(), from) & position.GetBbOf10(us);
-
-		position.GetStateInfo()->m_checkersBB |= checkerBB;
-	}
 };
 
 
@@ -67,6 +51,21 @@ class FileBonaMove : public IBonaMovable
 public:
 
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="position"></param>
+	/// <param name="from"></param>
+	/// <param name="ksq"></param>
+	/// <param name="us"></param>
+	/// <returns>checkerBB</returns>
+	void Do2Move(Position& position, Square from, const Square ksq, const Color us) const
+	{
+		// from の位置から縦に利きを調べると相手玉と、空き王手している駒に当たっているはず。味方の駒が空き王手している駒。
+		Bitboard checkerBB = g_rookAttackBb.GetControllBbFile(&position.GetOccupiedBB(), from) & position.GetBbOf10(us);
+
+		position.GetStateInfo()->m_checkersBB |= checkerBB;
+	}
 };
 
 

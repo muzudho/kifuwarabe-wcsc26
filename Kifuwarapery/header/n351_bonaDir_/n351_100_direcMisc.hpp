@@ -37,19 +37,6 @@ public:
 			squareDistance.SetValue( sq0, sq1, 1);
 		}
 	}
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="position"></param>
-	/// <param name="from"></param>
-	/// <param name="ksq"></param>
-	/// <param name="us"></param>
-	/// <returns>checkerBB</returns>
-	void Do2Move(Position& position, Square from, const Square ksq, const Color us) const
-	{
-		assert(false); // 最適化の為のダミー
-	}
 };
 
 
@@ -69,6 +56,18 @@ class MiscBonaMove : public IBonaMovable
 public:
 
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="position"></param>
+	/// <param name="from"></param>
+	/// <param name="ksq"></param>
+	/// <param name="us"></param>
+	/// <returns>checkerBB</returns>
+	void Do2Move(Position& position, Square from, const Square ksq, const Color us) const
+	{
+		assert(false); // 最適化の為のダミー
+	}
 };
 
 

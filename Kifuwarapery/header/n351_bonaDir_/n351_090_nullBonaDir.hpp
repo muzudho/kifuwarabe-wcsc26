@@ -27,19 +27,6 @@ public:
 	{
 		UNREACHABLE;
 	}
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="position"></param>
-	/// <param name="from"></param>
-	/// <param name="ksq"></param>
-	/// <param name="us"></param>
-	/// <returns>checkerBB</returns>
-	void Do2Move(Position& position, Square from, const Square ksq, const Color us) const
-	{
-		UNREACHABLE;
-	}
 };
 
 
@@ -59,6 +46,18 @@ class NullBonaMove : public IBonaMovable
 public:
 
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="position"></param>
+	/// <param name="from"></param>
+	/// <param name="ksq"></param>
+	/// <param name="us"></param>
+	/// <returns>checkerBB</returns>
+	void Do2Move(Position& position, Square from, const Square ksq, const Color us) const
+	{
+		UNREACHABLE;
+	}
 };
 
 
