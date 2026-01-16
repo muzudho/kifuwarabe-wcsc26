@@ -88,10 +88,10 @@ public:
 	/// </summary>
 	/// <param name="ppThisThread"></param>
 	/// <param name="pFlashlight"></param>
-	inline void ExplorerPlainStep1c(
+	inline void ExplorerPlainStep1cUpdateMaxPly(
 		Soldier** ppThisThread,
-		const Flashlight* pFlashlight
-		)const override {
+		const Flashlight* pFlashlight) const override
+	{
 		// PVノードはスルー☆！（＾ｑ＾）
 		//UNREACHABLE;
 	}
@@ -355,53 +355,26 @@ public:
 
 
 	/// <summary>
+	/// 本筋かどうか判定するぜ（＾～＾）
+	/// </summary>
+	/// <param name="moveCount"></param>
+	virtual inline bool ExplorerPlainStep13c1IsPvMove(
+		int moveCount) const override
+	{
+		return false;	// 非PVノードだぜ☆（＾ｑ＾）
+	}
+
+
+	/// <summary>
 	/// スプリット・ポイントか、PVノードかで手続きが変わるぜ☆！（＾ｑ＾）
 	/// </summary>
-	/// <param name="isContinue"></param>
-	/// <param name="ourCarriage"></param>
-	/// <param name="captureOrPawnPromotion"></param>
-	/// <param name="inCheck"></param>
-	/// <param name="dangerous"></param>
-	/// <param name="bestScore"></param>
 	/// <param name="move"></param>
-	/// <param name="ttMove"></param>
-	/// <param name="depth"></param>
-	/// <param name="moveCount"></param>
-	/// <param name="threatMove"></param>
-	/// <param name="pos"></param>
-	/// <param name="ppSplitedNode"></param>
-	/// <param name="newDepth"></param>
 	/// <param name="ppFlashlight"></param>
-	/// <param name="beta"></param>
-	/// <param name="ci"></param>
-	/// <param name="isPVMoveRef"></param>
-	/// <param name="playedMoveCount"></param>
-	/// <param name="movesSearched"></param>
-	virtual inline void ExplorerPlainStep13c(
-		bool& isContinue,
-		OurCarriage& ourCarriage,
-		bool& captureOrPawnPromotion,
-		bool& inCheck,
-		bool& dangerous,
-		ScoreIndex& bestScore,
-		Move& move,
-		Move& ttMove,
-		const Depth depth,
-		int& moveCount,
-		Move& threatMove,
-		Position& pos,
-		SplitedNode** ppSplitedNode,
-		Depth& newDepth,
-		Flashlight** ppFlashlight,
-		ScoreIndex& beta,
-		const CheckInfo& ci,
-		bool& isPVMoveRef,
-		int& playedMoveCount,
-		Move movesSearched[64]
-		)const override {
-
+	virtual inline void ExplorerPlainStep13c2SetMove(
+		Move move,
+		Flashlight** ppFlashlight) const override
+	{
 		// 非PVノードだぜ☆（＾ｑ＾）
-		isPVMoveRef = false;
 		(*ppFlashlight)->m_currentMove = move;
 	}
 

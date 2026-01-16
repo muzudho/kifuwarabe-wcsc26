@@ -4,10 +4,10 @@
 #include "../n105_100_color___/n105_100_100_color.hpp"
 #include "../n105_120_square__/n105_120_100_square.hpp"
 #include "../n105_120_square__/n105_120_205_convRank.hpp"
-#include "../n112_pieceTyp/n112_050_pieceType.hpp"
-#include "../n160_board___/n160_100_bitboard.hpp"
-#include "../n160_board___/n160_230_setMaskBB.hpp"
-#include "../n160_board___/n160_600_bitboardAll.hpp"
+#include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
+#include "../n160_boardBb_/n160_100_bitboard.hpp"
+#include "../n160_boardBb_/n160_230_setMaskBB.hpp"
+#include "../n160_boardBb_/n160_600_bitboardAll.hpp"
 #include "../n165_movStack/n165_500_moveStack.hpp"
 #include "../n165_movStack/n165_600_convMove.hpp"
 #include "../n220_position/n220_650_position.hpp"
@@ -24,7 +24,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
     /// ９段目への打ち手を生成する。ただし桂馬、香車以外。
+	///		</pre>
 	/// </summary>
 	/// <param name="pMovestack"></param>
 	/// <param name="dmEvent"></param>
@@ -38,7 +41,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
     /// ８段目への打ち手を生成する。ただし桂馬以外。
+	///		</pre>
 	/// </summary>
 	/// <param name="pMovestack"></param>
 	/// <param name="dmEvent"></param>
@@ -52,7 +58,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
     /// １〜７段目への打ち手を生成する。
+	///		</pre>
 	/// </summary>
 	/// <param name="pMovestack"></param>
 	/// <param name="dmEvent"></param>

@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../n119_score___/n119_090_scoreIndex.hpp"
+#include "../n210_score___/n119_090_scoreIndex.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
 
 

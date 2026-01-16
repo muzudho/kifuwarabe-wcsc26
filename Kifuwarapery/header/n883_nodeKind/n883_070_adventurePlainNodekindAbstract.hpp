@@ -24,7 +24,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// 平野へ大冒険に出るぜ☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pos"></param>
@@ -41,8 +44,7 @@ public:
 		ScoreIndex alpha,
 		ScoreIndex beta,
 		const Depth depth,
-		const bool cutNode
-		) const = 0;
+		const bool cutNode) const = 0;
 
 
 	/// <summary>
@@ -60,12 +62,13 @@ public:
 
 
 	/// <summary>
-	/// スプリット・ポイントのみ実行☆（＾ｑ＾）
+	///		<pre>
+	/// ノード初期化
+	/// 
+	///		- スプリット・ポイントのみ実行☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="isGotoSplitPointStart"></param>
-	/// <param name="moveCount"></param>
-	/// <param name="playedMoveCount"></param>
-	/// <param name="inCheck"></param>
 	/// <param name="pos"></param>
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="ppFlashlight"></param>
@@ -75,11 +78,8 @@ public:
 	/// <param name="ttMove"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="ttScore"></param>
-	virtual inline void ExplorerPlainStep1a(
+	virtual inline void ExplorerPlainStep1a1InitializeNode(
 		bool& isGotoSplitPointStart,
-		int& moveCount,
-		int& playedMoveCount,
-		bool& inCheck,
 		Position& pos,
 		SplitedNode** ppSplitedNode,
 		Flashlight** ppFlashlight,
@@ -88,11 +88,8 @@ public:
 		ScoreIndex& bestScore,
 		Move& ttMove,
 		Move& excludedMove,
-		ScoreIndex& ttScore
-		)const// = 0;
-	// /*
+		ScoreIndex& ttScore) const
 	{
-
 		// initialize node
 
 		*ppSplitedNode = (*ppFlashlight)->m_splitedNode;
@@ -112,23 +109,21 @@ public:
 		return;
 		//goto split_point_start;
 	}
-	//*/
 
 
 	/// <summary>
-	/// 
+	/// オーバーライドが無い（＾～＾）？
 	/// </summary>
 	/// <param name="bestScore"></param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="threatMove"></param>
 	/// <param name="bestMove"></param>
-	virtual inline void ExplorerPlainStep1b(
+	virtual inline void ExplorerPlainStep1bSetMoveNone(
 		ScoreIndex& bestScore,
 		Flashlight** ppFlashlight,
 		Move& threatMove,
-		Move& bestMove
-		)const {
-
+		Move& bestMove) const
+	{
 		bestScore = -ScoreInfinite;
 		(*ppFlashlight)->m_currentMove = threatMove = bestMove = ((*ppFlashlight) + 1)->m_excludedMove = g_MOVE_NONE;
 		(*ppFlashlight)->m_ply = ((*ppFlashlight) - 1)->m_ply + 1;
@@ -143,10 +138,10 @@ public:
 	/// </summary>
 	/// <param name="ppThisThread"></param>
 	/// <param name="pFlashlight"></param>
-	virtual inline void ExplorerPlainStep1c(
+	virtual inline void ExplorerPlainStep1cUpdateMaxPly(
 		Soldier** ppThisThread,
-		const Flashlight* pFlashlight
-		)const {
+		const Flashlight* pFlashlight) const
+	{
 		// PVノードのみ、最大Plyの更新の可能性があるぜ☆（＾ｑ＾）
 		if ((*ppThisThread)->m_maxPly < pFlashlight->m_ply) {
 			(*ppThisThread)->m_maxPly = pFlashlight->m_ply;
@@ -167,16 +162,12 @@ public:
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="ppFlashlight"></param>
 	virtual inline std::pair<bool, ScoreIndex> ExplorerPlainStep2_IsStopByRepetetion(
-		//bool& isReturnWithScore,
-		//ScoreIndex& returnScore,
 		Position& pos,
 		OurCarriage& ourCarriage,
 		Flashlight** ppFlashlight) const
 	{
 		// stop と最大探索深さのチェック
 		return g_repetitionTypes.m_ARRAY[pos.IsRepetition(16)]->IsStop(
-			//isReturnWithScore,
-			//returnScore,
 			&ourCarriage,
 			(*ppFlashlight));
 	}
@@ -195,8 +186,8 @@ public:
 		ScoreIndex& returnScore,
 		Flashlight** ppFlashlight,
 		ScoreIndex& alpha,
-		ScoreIndex& beta
-	)const {
+		ScoreIndex& beta) const
+	{
 		// ルート以外のみで行われる手続きだぜ☆（＾ｑ＾）！
 		alpha = std::max(UtilScore::MatedIn((*ppFlashlight)->m_ply), alpha);
 		beta = std::min(UtilScore::MateIn((*ppFlashlight)->m_ply + 1), beta);
@@ -226,8 +217,8 @@ public:
 		Position& pos,
 		const TTEntry** ppTtEntry,//セットされるぜ☆（＾ｑ＾）
 		OurCarriage& ourCarriage,
-		ScoreIndex& ttScore
-	)const {
+		ScoreIndex& ttScore) const
+	{
 		// trans position table lookup
 		excludedMove = (*ppFlashlight)->m_excludedMove;
 		posKey = (excludedMove.IsNone() ? pos.GetKey() : pos.GetExclusionKey());
@@ -237,7 +228,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// ルートノードか、それ以外かで　値が分かれるぜ☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="ttMove"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
@@ -247,8 +241,7 @@ public:
 		Move& ttMove,
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
-		Position& pos
-		)const = 0;
+		Position& pos) const = 0;
 
 
 	/// <summary>
@@ -272,9 +265,8 @@ public:
 		ScoreIndex& ttScore,
 		ScoreIndex& beta,
 		Flashlight** ppFlashlight,
-		Move& ttMove
-		)const {
-
+		Move& ttMove) const
+	{
 		// ルートノード以外だけにある手続きだぜ☆（＾ｑ＾）
 		if (pTtEntry != nullptr
 			&& depth <= pTtEntry->GetDepth()
@@ -306,7 +298,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// PVノードか、非PVノードかで実行条件が変わるぜ☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="pTtEntry"></param>
 	/// <param name="beta"></param>
@@ -315,8 +310,7 @@ public:
 	virtual inline bool GetConditionInStep4y(
 		const TTEntry* pTtEntry,
 		ScoreIndex& beta,
-		ScoreIndex& ttScore
-		) const = 0;
+		ScoreIndex& ttScore) const = 0;
 
 
 	/// <summary>
@@ -344,8 +338,8 @@ public:
 		ScoreIndex& bestScore,
 		Key& posKey,
 		const Depth depth,
-		Move& bestMove
-		)const {
+		Move& bestMove) const
+	{
 		// ルートノード以外だけにある手続きだぜ☆（＾ｑ＾）
 #if 1
 		if (!inCheck)
@@ -397,8 +391,8 @@ public:
 		const TTEntry* pTtEntry,
 		ScoreIndex& ttScore,
 		Key& posKey,
-		Move& move
-	)const {
+		Move& move) const
+	{
 		// evaluate the position statically
 		Evaluation09 evaluation;
 		evalScore = (*ppFlashlight)->m_staticEval = evaluation.evaluate(pos, (*ppFlashlight)); // Bonanza の差分評価の為、evaluate() を常に呼ぶ。
@@ -465,8 +459,8 @@ public:
 		ScoreIndex& beta,
 		Move& ttMove,
 		Position& pos,
-		Flashlight** ppFlashlight
-	)const {
+		Flashlight** ppFlashlight) const
+	{
 		// razoring
 
 		// 非PVノードだけが実行するぜ☆！（＾ｑ＾）
@@ -503,8 +497,8 @@ public:
 		Flashlight** ppFlashlight,
 		const Depth depth,
 		ScoreIndex& beta,
-		ScoreIndex& eval
-	)const {
+		ScoreIndex& eval) const
+	{
 		// static null move pruning
 
 		// 非PVノードだけが実行するぜ☆！（＾ｑ＾）
@@ -551,9 +545,8 @@ public:
 		StateInfo& st,
 		ScoreIndex& alpha,
 		const bool cutNode,
-		Move& threatMove
-	)const {
-
+		Move& threatMove) const
+	{
 		// null move
 
 		// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
@@ -659,9 +652,8 @@ public:
 		Move& ttMove,
 		StateInfo& st,
 		ScoreIndex& score,
-		const bool cutNode
-		)const {
-
+		const bool cutNode) const
+	{
 		// probcut
 
 		// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
@@ -717,7 +709,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// PVノードか、そうでないかで手続きが変わるぜ☆！（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="depth"></param>
 	/// <param name="ttMove"></param>
@@ -739,32 +734,38 @@ public:
 		Position& pos,
 		ScoreIndex& alpha,
 		const TTEntry** ppTtEntry,//セットされるぜ☆
-		Key& posKey
-		)const = 0;
+		Key& posKey) const = 0;
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// これはベータ値☆ PVノードか、そうでないかで値が変わるぜ☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="beta"></param>
 	/// <returns></returns>
 	virtual inline ScoreIndex GetBetaAtStep11(
-		ScoreIndex beta
-		) const = 0;
+		ScoreIndex beta) const = 0;
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// これはムーブ☆
+	///		</pre>
 	/// </summary>
 	/// <param name="mp"></param>
 	/// <returns></returns>
 	virtual inline Move GetNextMove_AtStep11(
-		NextmoveEvent& mp
-		) const = 0;
+		NextmoveEvent& mp) const = 0;
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// ルートノードか、そうでないかで分かれるぜ☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="ttMove"></param>
 	/// <param name="depth"></param>
@@ -780,12 +781,14 @@ public:
 		ScoreIndex& bestScore,
 		bool& singularExtensionNode,
 		Move& excludedMove,
-		const TTEntry* pTtEntry
-		)const = 0;
+		const TTEntry* pTtEntry) const = 0;
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// スプリット・ポイントかどうかで変わる手続きだぜ☆！（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="isContinue"></param>
 	/// <param name="pos"></param>
@@ -799,8 +802,7 @@ public:
 		Move& move,
 		const CheckInfo& ci,
 		int& moveCount,
-		SplitedNode** ppSplitedNode
-		) const = 0;
+		SplitedNode** ppSplitedNode) const = 0;
 
 
 	/// <summary>
@@ -812,8 +814,8 @@ public:
 	virtual inline void ExplorerPlainStep11d_LoopHeader(
 		bool& isContinue,
 		const OurCarriage& ourCarriage,
-		const Move& move
-		)const {
+		const Move& move) const
+	{
 		// ルートノードにのみある手続きだぜ☆！（＾ｑ＾）
 		if (std::find(ourCarriage.m_rootMoves.begin() + ourCarriage.m_pvIdx,
 				ourCarriage.m_rootMoves.end(),
@@ -1044,7 +1046,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// PVノードか、そうでないかで変わるぜ☆！（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="newDepth"></param>
 	/// <param name="depth"></param>
@@ -1053,8 +1058,7 @@ public:
 	virtual inline const Depth GetPredictedDepthInStep13a(
 		Depth& newDepth,
 		const Depth depth,
-		int& moveCount
-		) const = 0;
+		int& moveCount) const = 0;
 
 
 	/// <summary>
@@ -1062,8 +1066,7 @@ public:
 	/// </summary>
 	/// <param name="ppSplitedNode"></param>
 	virtual inline void LockInStep13a(
-		SplitedNode** ppSplitedNode
-		) const
+		SplitedNode** ppSplitedNode) const
 	{
 		(*ppSplitedNode)->m_mutex.lock();
 	}
@@ -1076,9 +1079,8 @@ public:
 	/// <param name="bestScore"></param>
 	virtual inline void LockAndUpdateBestScoreInStep13a(
 		SplitedNode** ppSplitedNode,
-		ScoreIndex& bestScore
-		) const {
-
+		ScoreIndex& bestScore) const
+	{
 		(*ppSplitedNode)->m_mutex.lock();
 		if ((*ppSplitedNode)->m_bestScore < bestScore) {
 			(*ppSplitedNode)->m_bestScore = bestScore;
@@ -1119,50 +1121,27 @@ public:
 
 
 	/// <summary>
-	/// スプリット・ポイントか、PVノードかで手続きが変わるぜ☆！（＾ｑ＾）
+	///		<pre>
+	/// インターフェースのメソッド
+	/// 本筋かどうか判定するぜ（＾～＾）
+	///		</pre>
 	/// </summary>
-	/// <param name="isContinue"></param>
-	/// <param name="ourCarriage">わたしたちの馬車</param>
-	/// <param name="captureOrPawnPromotion"></param>
-	/// <param name="inCheck"></param>
-	/// <param name="dangerous"></param>
-	/// <param name="bestScore"></param>
-	/// <param name="move"></param>
-	/// <param name="ttMove"></param>
-	/// <param name="depth"></param>
 	/// <param name="moveCount"></param>
-	/// <param name="threatMove"></param>
-	/// <param name="pos"></param>
-	/// <param name="ppSplitedNode"></param>
-	/// <param name="newDepth"></param>
+	virtual inline bool ExplorerPlainStep13c1IsPvMove(
+		int moveCount) const = 0;
+
+
+	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
+	/// スプリット・ポイントか、PVノードかで手続きが変わるぜ☆！（＾ｑ＾）
+	///		</pre>
+	/// </summary>
+	/// <param name="move"></param>
 	/// <param name="ppFlashlight"></param>
-	/// <param name="beta"></param>
-	/// <param name="ci"></param>
-	/// <param name="isPVMoveRef"></param>
-	/// <param name="playedMoveCount"></param>
-	/// <param name="movesSearched"></param>
-	virtual inline void ExplorerPlainStep13c(
-		bool& isContinue,
-		OurCarriage& ourCarriage,
-		bool& captureOrPawnPromotion,
-		bool& inCheck,
-		bool& dangerous,
-		ScoreIndex& bestScore,
-		Move& move,
-		Move& ttMove,
-		const Depth depth,
-		int& moveCount,
-		Move& threatMove,
-		Position& pos,
-		SplitedNode** ppSplitedNode,
-		Depth& newDepth,
-		Flashlight** ppFlashlight,
-		ScoreIndex& beta,
-		const CheckInfo& ci,
-		bool& isPVMoveRef,
-		int& playedMoveCount,
-		Move movesSearched[64]
-		) const = 0;
+	virtual inline void ExplorerPlainStep13c2SetMove(
+		Move move,
+		Flashlight** ppFlashlight) const = 0;
 
 
 	/// <summary>
@@ -1176,8 +1155,7 @@ public:
 		bool& captureOrPawnPromotion,
 		int& playedMoveCount,
 		Move movesSearched[64],
-		Move& move
-		) const
+		Move& move) const
 	{
 		if (!captureOrPawnPromotion && playedMoveCount < 64) {
 			movesSearched[playedMoveCount++] = move;
@@ -1200,8 +1178,7 @@ public:
 		StateInfo& st,
 		const CheckInfo& ci,
 		bool& givesCheck,
-		Flashlight** ppFlashlight
-		) const
+		Flashlight** ppFlashlight) const
 	{
 		pos.GetTurn()==Color::Black
 			?
@@ -1247,8 +1224,7 @@ public:
 		SplitedNode** ppSplitedNode,
 		ScoreIndex& score,
 		Position& pos,
-		bool& doFullDepthSearch
-		) const
+		bool& doFullDepthSearch) const
 	{
 		// LMR
 		if (3 * OnePly <= depth
@@ -1288,7 +1264,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// Pvノードかどうかで手続きが変わるぜ☆！（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="depth"></param>
@@ -1298,8 +1277,7 @@ public:
 		Flashlight** ppFlashlight,
 		const Depth depth,
 		int& moveCount,
-		const bool cutNode
-		) const = 0;
+		const bool cutNode) const = 0;
 
 
 	/// <summary>
@@ -1309,9 +1287,8 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	virtual inline void UpdateAlphaInStep15(
 		ScoreIndex& alpha,
-		SplitedNode** ppSplitedNode
-		) const {
-
+		SplitedNode** ppSplitedNode) const
+	{
 		alpha = (*ppSplitedNode)->m_alpha;
 	}
 
@@ -1415,15 +1392,14 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// インターフェースのメソッド
 	/// </summary>
 	/// <param name="score"></param>
 	/// <param name="beta"></param>
 	/// <returns></returns>
 	virtual inline bool IsBetaLargeAtStep16c(
 		ScoreIndex& score,
-		ScoreIndex& beta
-		) const = 0;
+		ScoreIndex& beta) const = 0;
 		
 
 	/// <summary>
@@ -1433,8 +1409,7 @@ public:
 	/// <param name="move"></param>
 	virtual inline void ExplorerPlainStep17(
 		Position& pos,
-		Move& move
-		) const
+		Move& move) const
 	{
 		pos.UndoMove(move);
 	}
@@ -1449,12 +1424,11 @@ public:
 	virtual inline void ExplorerPlainStep18a(
 		SplitedNode** ppSplitedNode,
 		ScoreIndex& bestScore,
-		ScoreIndex& alpha
-		) const
+		ScoreIndex& alpha) const
 	{
-			(*ppSplitedNode)->m_mutex.lock();
-			bestScore = (*ppSplitedNode)->m_bestScore;
-			alpha = (*ppSplitedNode)->m_alpha;
+		(*ppSplitedNode)->m_mutex.lock();
+		bestScore = (*ppSplitedNode)->m_bestScore;
+		alpha = (*ppSplitedNode)->m_alpha;
 	}
 
 
@@ -1473,8 +1447,7 @@ public:
 		bool& isPVMove,
 		ScoreIndex& alpha,
 		ScoreIndex& score,
-		Position& pos
-		) const
+		Position& pos) const
 	{
 		// ルート・ムーブのリストから、１つ選んでる（＾～＾）？
 		RootMove& rm = *std::find(ourCarriage.m_rootMoves.begin(), ourCarriage.m_rootMoves.end(), move);
@@ -1504,7 +1477,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// スプリット・ポイントかどうかで分かれるぜ☆！（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="isBreak"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
@@ -1532,7 +1508,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// 非スプリットポイントでだけ実行するぜ☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="isBreak"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
@@ -1566,7 +1545,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// スプリット・ポイントは　ステップ２０を実行する前に終了するぜ☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <returns></returns>
 	virtual inline bool GetReturnBeforeStep20() const = 0;
@@ -1654,7 +1636,10 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// インターフェースのメソッド
 	/// スタティック・メソッドは継承できないので、スタティックにはしないぜ☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="bestMoveExists"></param>
 	/// <returns></returns>

@@ -1,10 +1,10 @@
 #pragma once
 
 #include "../n105_100_color___/n105_100_100_color.hpp"
-#include "../n112_pieceTyp/n112_050_pieceType.hpp"
-#include "../n113_piece___/n113_500_hand.hpp"
+#include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
+#include "../n105_180_piece___/n105_180_500_hand.hpp"
 #include "../n220_position/n220_650_position.hpp"
-#include "../n160_board___/n160_100_bitboard.hpp"
+#include "../n160_boardBb_/n160_100_bitboard.hpp"
 
 
 /// <summary>

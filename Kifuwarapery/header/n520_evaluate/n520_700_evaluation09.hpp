@@ -1,9 +1,9 @@
 ﻿#pragma once
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n080_150_overEnum/n080_150_500_overloadEnumOperators.hpp"
-#include "../n111_colorSq_/n111_500_ColorFileRank.h"
-#include "../n119_score___/n119_200_pieceScore.hpp"
-#include "../n119_score___/n119_500_EvalSum.hpp"
+#include "../n105_140_colorSq_/n105_140_ColorFileRank.h"
+#include "../n210_score___/n119_200_pieceScore.hpp"
+#include "../n210_score___/n119_500_EvalSum.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n220_position/n220_750_charToPieceUSI.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"

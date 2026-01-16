@@ -1,6 +1,5 @@
 ﻿#pragma once
-
-#include "../n162_bonaDir_/n162_070_bonaDirAbstract.hpp"
+#include "../n340_bonaDir_/n340_500_bonaDirAbstract.hpp"
 #include "n351_100_direcMisc.hpp"
 #include "n351_120_direcFile.hpp"
 #include "n351_130_direcRank.hpp"
@@ -10,6 +9,6 @@
 
 
 /// <summary>
-/// 
+/// Bonanzaで使われている［向き］。
 /// </summary>
 extern BonaDirAbstract* g_bonaDirArray[6];

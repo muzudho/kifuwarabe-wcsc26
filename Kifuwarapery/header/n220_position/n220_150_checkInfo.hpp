@@ -1,7 +1,7 @@
 ﻿#pragma once
 
-#include "../n112_pieceTyp/n112_050_pieceType.hpp"
-#include "../n160_board___/n160_100_bitboard.hpp"
+#include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
+#include "../n160_boardBb_/n160_100_bitboard.hpp"
 
 
 class Position;

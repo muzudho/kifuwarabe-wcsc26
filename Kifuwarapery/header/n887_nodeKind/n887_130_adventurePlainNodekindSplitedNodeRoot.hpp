@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../n119_score___/n119_090_scoreIndex.hpp"
+#include "../n210_score___/n119_090_scoreIndex.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n220_position/n220_665_utilMoveStack.hpp"
 #include "../n223_move____/n223_200_depth.hpp"
@@ -575,53 +575,26 @@ public:
 
 
 	/// <summary>
+	/// 本筋かどうか判定するぜ（＾～＾）
+	/// </summary>
+	/// <param name="moveCount"></param>
+	virtual inline bool ExplorerPlainStep13c1IsPvMove(
+		int moveCount) const override
+	{
+		return (moveCount == 1);	// PVノードだぜ☆（＾ｑ＾）
+	}
+
+
+	/// <summary>
 	/// スプリット・ポイントか、PVノードかで手続きが変わるぜ☆！（＾ｑ＾）
 	/// </summary>
-	/// <param name="isContinue"></param>
-	/// <param name="ourCarriage"></param>
-	/// <param name="captureOrPawnPromotion"></param>
-	/// <param name="inCheck"></param>
-	/// <param name="dangerous"></param>
-	/// <param name="bestScore"></param>
 	/// <param name="move"></param>
-	/// <param name="ttMove"></param>
-	/// <param name="depth"></param>
-	/// <param name="moveCount"></param>
-	/// <param name="threatMove"></param>
-	/// <param name="pos"></param>
-	/// <param name="ppSplitedNode"></param>
-	/// <param name="newDepth"></param>
 	/// <param name="ppFlashlight"></param>
-	/// <param name="beta"></param>
-	/// <param name="ci"></param>
-	/// <param name="isPVMoveRef"></param>
-	/// <param name="playedMoveCount"></param>
-	/// <param name="movesSearched"></param>
-	virtual inline void ExplorerPlainStep13c(
-		bool& isContinue,
-		OurCarriage& ourCarriage,
-		bool& captureOrPawnPromotion,
-		bool& inCheck,
-		bool& dangerous,
-		ScoreIndex& bestScore,
-		Move& move,
-		Move& ttMove,
-		const Depth depth,
-		int& moveCount,
-		Move& threatMove,
-		Position& pos,
-		SplitedNode** ppSplitedNode,
-		Depth& newDepth,
-		Flashlight** ppFlashlight,
-		ScoreIndex& beta,
-		const CheckInfo& ci,
-		bool& isPVMoveRef,
-		int& playedMoveCount,
-		Move movesSearched[64]
-		)const override {
-
+	virtual inline void ExplorerPlainStep13c2SetMove(
+		Move move,
+		Flashlight** ppFlashlight) const override
+	{
 		// PVノードだぜ☆（＾ｑ＾）
-		isPVMoveRef = (moveCount == 1);
 		(*ppFlashlight)->m_currentMove = move;
 	}
 

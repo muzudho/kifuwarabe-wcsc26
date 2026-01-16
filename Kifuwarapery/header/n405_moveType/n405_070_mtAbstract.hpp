@@ -14,7 +14,7 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// インターフェースのメソッド
 	/// </summary>
 	/// <param name="moveStackList"></param>
 	/// <param name="pos"></param>

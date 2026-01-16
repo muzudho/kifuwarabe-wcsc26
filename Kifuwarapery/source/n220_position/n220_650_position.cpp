@@ -4,30 +4,30 @@
 #include "../../header/n105_100_color___/n105_100_100_color.hpp"
 #include "../../header/n105_120_square__/n105_120_100_square.hpp"
 #include "../../header/n105_120_square__/n105_120_400_squareRelation.hpp"
-#include "../../header/n112_pieceTyp/n112_050_pieceType.hpp"
-#include "../../header/n113_piece___/n113_150_piece.hpp"
-#include "../../header/n113_piece___/n113_155_convPiece.hpp"
-#include "../../header/n119_score___/n119_090_scoreIndex.hpp"
-#include "../../header/n119_score___/n119_200_pieceScore.hpp"
-#include "../../header/n160_board___/n160_100_bitboard.hpp"
-#include "../../header/n160_board___/n160_170_goldAndSilverAttackBb.hpp"
-#include "../../header/n160_board___/n160_230_setMaskBb.hpp"
-#include "../../header/n160_board___/n160_240_betweenBb.hpp"
+#include "../../header/n105_160_pieceTyp/n105_160_500_pieceType.hpp"
+#include "../../header/n105_180_piece___/n105_180_150_piece.hpp"
+#include "../../header/n105_180_piece___/n105_180_155_convPiece.hpp"
+#include "../../header/n210_score___/n119_090_scoreIndex.hpp"
+#include "../../header/n210_score___/n119_200_pieceScore.hpp"
+#include "../../header/n160_boardBb_/n160_100_bitboard.hpp"
+#include "../../header/n160_boardBb_/n160_170_goldAndSilverAttackBb.hpp"
+#include "../../header/n160_boardBb_/n160_230_setMaskBb.hpp"
+#include "../../header/n160_boardBb_/n160_240_betweenBb.hpp"
 #include "../../header/n165_movStack/n165_300_moveType.hpp"
 #include "../../header/n220_position/n220_100_repetitionType.hpp"
 #include "../../header/n220_position/n220_640_utilAttack.hpp"
 #include "../../header/n220_position/n220_650_position.hpp"
-#include "../../header/n350_pieceTyp/n350_040_ptEvent.hpp"
-#include "../../header/n350_pieceTyp/n350_110_ptPawn.hpp"
-#include "../../header/n350_pieceTyp/n350_120_ptLance.hpp"
-#include "../../header/n350_pieceTyp/n350_130_ptKnight.hpp"
-#include "../../header/n350_pieceTyp/n350_140_ptSilver.hpp"
-#include "../../header/n350_pieceTyp/n350_150_ptBishop.hpp"
-#include "../../header/n350_pieceTyp/n350_160_ptRook.hpp"
-#include "../../header/n350_pieceTyp/n350_170_ptGold.hpp"
-#include "../../header/n350_pieceTyp/n350_230_ptHorse.hpp"
-#include "../../header/n350_pieceTyp/n350_240_ptDragon.hpp"
-#include "../../header/n350_pieceTyp/n350_500_ptPrograms.hpp"
+#include "../../header/n250_pieceTyp/n350_040_ptEvent.hpp"
+#include "../../header/n250_pieceTyp/n350_110_ptPawn.hpp"
+#include "../../header/n250_pieceTyp/n350_120_ptLance.hpp"
+#include "../../header/n250_pieceTyp/n350_130_ptKnight.hpp"
+#include "../../header/n250_pieceTyp/n350_140_ptSilver.hpp"
+#include "../../header/n250_pieceTyp/n350_150_ptBishop.hpp"
+#include "../../header/n250_pieceTyp/n350_160_ptRook.hpp"
+#include "../../header/n250_pieceTyp/n350_170_ptGold.hpp"
+#include "../../header/n250_pieceTyp/n350_230_ptHorse.hpp"
+#include "../../header/n250_pieceTyp/n350_240_ptDragon.hpp"
+#include "../../header/n250_pieceTyp/n350_500_ptPrograms.hpp"
 #include "../../header/n351_bonaDir_/n351_500_bonaDirArray.hpp"
 #include "../../header/n407_moveGen_/n407_900_moveList.hpp"
 #include "../../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
@@ -1132,8 +1132,16 @@ void Position::DoMove(const Move move, StateInfo& newSt, const CheckInfo& ci, co
 
 			// Discovery checks
 			const Square ksq = this->GetKingSquare<THEM>();
-			if (IsDiscoveredCheck(from, to, ksq, ci.m_dcBB)) {
+			if (IsDiscoveredCheck(from, to, ksq, ci.m_dcBB))
+			{
 				g_bonaDirArray[g_squareRelation.GetSquareRelation(from, ksq)]->Do2Move(*this, from, ksq, US);
+				// NOTE: ユニークポインタを使ってみたが、探索が止まってしまった。
+				//auto pCheckerBB = g_bonaDirArray[g_squareRelation.GetSquareRelation(from, ksq)]->Do2Move(*this, from, ksq, US);
+				//if (pCheckerBB.get() != nullptr)
+				//{
+				//	this->GetStateInfo()->m_checkersBB |= *pCheckerBB.get();
+				//	pCheckerBB.reset();
+				//}
 			}
 			m_st_->m_continuousCheck[US] += 2;
 		}

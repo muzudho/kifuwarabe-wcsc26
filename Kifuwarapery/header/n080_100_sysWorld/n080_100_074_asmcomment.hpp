@@ -11,13 +11,13 @@
 //		  分り易くする。
 //		- GnuC 以外は無視するのかだぜ（＾～＾）？
 #if defined(_MSC_VER) && !defined(__INTEL_COMPILER)
-#define ASMCOMMENT(s)
+    #define ASMCOMMENT(s)
 #elif defined(__INTEL_COMPILER)
-#define ASMCOMMENT(s)
+    #define ASMCOMMENT(s)
 #elif defined(__clang__)
-#define ASMCOMMENT(s)
+    #define ASMCOMMENT(s)
 #elif defined(__GNUC__)
-#define ASMCOMMENT(s) __asm__("#"s)
+    #define ASMCOMMENT(s) __asm__("#"s)
 #else
-#define ASMCOMMENT(s)
+    #define ASMCOMMENT(s)
 #endif

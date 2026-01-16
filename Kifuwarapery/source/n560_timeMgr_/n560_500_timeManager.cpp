@@ -1,5 +1,5 @@
 ﻿#include <algorithm> // std::min
-#include "../../header/n119_score___/n119_090_scoreIndex.hpp"
+#include "../../header/n210_score___/n119_090_scoreIndex.hpp"
 #include "../../header/n560_timeMgr_/n560_100_limitsDuringGo.hpp"
 #include "../../header/n560_timeMgr_/n560_500_timeManager.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
@@ -10,6 +10,7 @@ namespace {
 
 	//────────────────────────────────────────────────────────────────────────────────
 	// MoveHorizon …… 消費する思考時間の配分にだけ関係するみたいだが☆？（＾ｑ＾）？ 初期値47☆
+	//					減らすと、１手の思考時間が長くなるぜ（＾～＾）
 	// MaxRatio …… 1.0 より大きくする感じ☆？ 最大延長時間にだけ関係するみたいだが☆？（＾ｑ＾）？ 5.0 で 長考は 通常の3倍☆？
 	//
 	// 知見

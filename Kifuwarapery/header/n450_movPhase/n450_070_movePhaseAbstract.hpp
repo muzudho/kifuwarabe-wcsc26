@@ -15,7 +15,7 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// インターフェースのメソッド
 	/// </summary>
 	/// <param name="resultMove"></param>
 	/// <param name="nmEvent"></param>
@@ -24,7 +24,7 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// インターフェースのメソッド
 	/// </summary>
 	/// <param name="nmEvent"></param>
 	virtual void GoNext2Phase(NextmoveEvent& nmEvent) = 0;

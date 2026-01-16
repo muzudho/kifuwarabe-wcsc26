@@ -1,9 +1,9 @@
 ﻿#include <iostream>
 #include <algorithm>
-#include "../../header/n119_score___/n119_200_pieceScore.hpp"
-#include "../../header/n160_board___/n160_106_inFrontMaskBb.hpp"
-#include "../../header/n160_board___/n160_220_queenAttackBb.hpp"
-#include "../../header/n160_board___/n160_230_setMaskBb.hpp"
+#include "../../header/n210_score___/n119_200_pieceScore.hpp"
+#include "../../header/n160_boardBb_/n160_106_inFrontMaskBb.hpp"
+#include "../../header/n160_boardBb_/n160_220_queenAttackBb.hpp"
+#include "../../header/n160_boardBb_/n160_230_setMaskBb.hpp"
 #include "../../header/n220_position/n220_100_repetitionType.hpp"
 #include "../../header/n220_position/n220_640_utilAttack.hpp"
 #include "../../header/n220_position/n220_650_position.hpp"
@@ -11,8 +11,8 @@
 #include "../../header/n220_position/n220_750_charToPieceUSI.hpp"
 #include "../../header/n223_move____/n223_300_moveAndScoreIndex.hpp"
 #include "../../header/n223_move____/n223_500_flashlight.hpp"
-#include "../../header/n350_pieceTyp/n350_030_makePromoteMove.hpp"
-#include "../../header/n350_pieceTyp/n350_500_ptPrograms.hpp"
+#include "../../header/n250_pieceTyp/n350_030_makePromoteMove.hpp"
+#include "../../header/n250_pieceTyp/n350_500_ptPrograms.hpp"
 #include "../../header/n440_movStack/n440_500_nextmoveEvent.hpp"
 #include "../../header/n520_evaluate/n520_700_evaluation09.hpp"
 #include "../../header/n560_timeMgr_/n560_500_timeManager.hpp"
@@ -112,16 +112,14 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 
 	//bool isGotoSplitPointStart = false;
 
-	this->ExplorerPlainStep1b(
+	this->ExplorerPlainStep1bSetMoveNone(
 		bestScore,
 		&pFlashlight,
 		threatMove,
-		bestMove
-		);
-	this->ExplorerPlainStep1c(
+		bestMove);
+	this->ExplorerPlainStep1cUpdateMaxPly(
 		&pThisThread,
-		pFlashlight
-		);
+		pFlashlight);
 
 	//bool isReturnWithScore = false;
 	//ScoreIndex returnScore = ScoreIndex::ScoreNone;
@@ -269,28 +267,12 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 			newDepth
 			);
 
-		this->ExplorerPlainStep13c(
-			isContinue,
-			ourCarriage,
-			captureOrPawnPromotion,
-			inCheck,
-			dangerous,
-			bestScore,
+		// 本筋かどうか判定するぜ（＾～＾）
+		isPVMove = this->ExplorerPlainStep13c1IsPvMove(moveCount);
+
+		this->ExplorerPlainStep13c2SetMove(
 			move,
-			ttMove,
-			depth,
-			moveCount,
-			threatMove,
-			pos,
-			&pSplitedNode,
-			newDepth,
-			&pFlashlight,
-			beta,
-			ci,
-			isPVMove,
-			playedMoveCount,
-			movesSearched
-			);
+			&pFlashlight);
 		if (isContinue) { continue; }
 
 		this->ExplorerPlainStep13d(
