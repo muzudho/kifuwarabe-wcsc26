@@ -5,3 +5,9 @@
 /// 
 /// </summary>
 MiscBonaDirection g_miscBonaDirection;
+
+
+/// <summary>
+/// 
+/// </summary>
+MiscBonaMove g_miscBonaMove;

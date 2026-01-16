@@ -5,3 +5,9 @@
 /// 
 /// </summary>
 DiagonalNWSEBonaDirection g_diagonalNWSEBonaDirection;
+
+
+/// <summary>
+/// 
+/// </summary>
+DiagonalNWSEBonaMove g_diagonalNWSEBonaMove;

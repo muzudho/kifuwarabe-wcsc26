@@ -5,3 +5,9 @@
 /// 
 /// </summary>
 DiagonalNESWBonaDirection g_diagonalNESWBonaDirection;
+
+
+/// <summary>
+/// 
+/// </summary>
+DiagonalNESWBonaMove g_diagonalNESWBonaMove;

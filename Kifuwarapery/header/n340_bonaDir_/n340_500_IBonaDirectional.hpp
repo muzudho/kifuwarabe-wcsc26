@@ -46,4 +46,9 @@ public:
 /// </summary>
 class IBonaMovable
 {
+
+
+public:
+
+
 };
