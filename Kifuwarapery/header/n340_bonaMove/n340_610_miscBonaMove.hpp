@@ -13,43 +13,6 @@
 /// <summary>
 /// Bonanzaで使われている［向き］。
 /// </summary>
-class MiscBonaDirection : public IBonaDirectionable
-{
-
-
-public:
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="squareDistance"></param>
-	/// <param name="sq0"></param>
-	/// <param name="sq1"></param>
-	void InitializeSquareDistance(SquareDistance& squareDistance, Square sq0, Square sq1) const
-	{
-		// DirecMisc な関係は全て距離 1 にしてもKPE学習には問題無いんだけれど。
-		squareDistance.SetValue(sq0,sq1, 0);
-		if (
-			g_setMaskBb.IsSet(&g_knightAttackBb.GetControllBb(Black, sq0), sq1) ||
-			g_setMaskBb.IsSet(&g_knightAttackBb.GetControllBb(White, sq0), sq1)
-			)
-		{
-			squareDistance.SetValue( sq0, sq1, 1);
-		}
-	}
-};
-
-
-/// <summary>
-/// Bonanzaで使われている［向き］。
-/// </summary>
-extern MiscBonaDirection g_miscBonaDirection;
-
-
-/// <summary>
-/// Bonanzaで使われている［向き］。
-/// </summary>
 class MiscBonaMove : public IBonaMovable
 {
 
