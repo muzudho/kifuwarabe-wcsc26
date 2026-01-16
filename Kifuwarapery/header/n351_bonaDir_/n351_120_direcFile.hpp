@@ -63,6 +63,10 @@ extern FileBonaDirection g_fileBonaDirection;
 class FileBonaMove : public IBonaMovable
 {
 
+
+public:
+
+
 };
 
 

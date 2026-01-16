@@ -72,6 +72,11 @@ extern DiagonalNESWBonaDirection g_diagonalNESWBonaDirection;
 /// </summary>
 class DiagonalNESWBonaMove : public IBonaMovable
 {
+
+
+public:
+
+
 };
 
 

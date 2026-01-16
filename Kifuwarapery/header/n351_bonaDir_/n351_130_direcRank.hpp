@@ -71,6 +71,11 @@ extern RankBonaDirection g_rankBonaDirection;
 /// </summary>
 class RankBonaMove : public IBonaMovable
 {
+
+
+public:
+
+
 };
 
 

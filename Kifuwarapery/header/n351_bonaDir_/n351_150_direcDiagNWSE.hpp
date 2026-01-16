@@ -72,6 +72,11 @@ extern DiagonalNWSEBonaDirection g_diagonalNWSEBonaDirection;
 /// </summary>
 class DiagonalNWSEBonaMove : public IBonaMovable
 {
+
+
+public:
+
+
 };
 
 

@@ -64,6 +64,11 @@ extern MiscBonaDirection g_miscBonaDirection;
 /// </summary>
 class MiscBonaMove : public IBonaMovable
 {
+
+
+public:
+
+
 };
 
 

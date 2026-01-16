@@ -54,6 +54,11 @@ extern NullBonaDirection g_nullBonaDirection;
 /// </summary>
 class NullBonaMove : public IBonaMovable
 {
+
+
+public:
+
+
 };
 
 
