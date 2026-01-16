@@ -12,7 +12,7 @@
 /// <summary>
 /// Bonanzaで使われている［向き］。
 /// </summary>
-class BonaDirAbstract {
+class IBonaDirectable {
 
 
 public:

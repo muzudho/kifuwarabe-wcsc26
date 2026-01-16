@@ -9,13 +9,13 @@
 #include "../n220_position/n220_650_position.hpp"
 #include "../n250_pieceTyp/n350_040_ptEvent.hpp"
 #include "../n250_pieceTyp/n350_500_ptPrograms.hpp"
-#include "../n340_bonaDir_/n340_500_bonaDirAbstract.hpp"
+#include "../n340_bonaDir_/n340_500_IBonaDirectable.hpp"
 
 
 /// <summary>
 /// Bonanzaで使われている［向き］。
 /// </summary>
-class DirecDiagNWSE : public BonaDirAbstract {
+class DirecDiagNWSE : public IBonaDirectable {
 
 
 public:

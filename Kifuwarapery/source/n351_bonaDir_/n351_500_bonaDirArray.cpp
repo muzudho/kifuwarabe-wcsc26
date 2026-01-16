@@ -1,4 +1,4 @@
-﻿#include "../../header/n340_bonaDir_/n340_500_bonaDirAbstract.hpp"
+﻿#include "../../header/n340_bonaDir_/n340_500_IBonaDirectable.hpp"
 #include "../../header/n351_bonaDir_/n351_090_nullBonaDir.hpp"
 #include "../../header/n351_bonaDir_/n351_100_direcMisc.hpp"
 #include "../../header/n351_bonaDir_/n351_120_direcFile.hpp"
@@ -11,7 +11,7 @@
 /// <summary>
 /// 
 /// </summary>
-BonaDirAbstract* g_bonaDirArray[6] = {
+IBonaDirectable* g_bonaDirArray[6] = {
 	&g_direcMisc,
 	&g_nullBonaDir,
 	&g_direcFile,

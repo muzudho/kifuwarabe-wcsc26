@@ -5,14 +5,14 @@
 #include "../n130_100_boardBb_/n160_180_knightAttackBb.hpp"
 #include "../n130_100_boardBb_/n160_230_setMaskBB.hpp"
 #include "../n105_200_sqDistan/n105_200_500_squareDistance.hpp"
-#include "../n340_bonaDir_/n340_500_bonaDirAbstract.hpp"
+#include "../n340_bonaDir_/n340_500_IBonaDirectable.hpp"
 #include "../n220_position/n220_650_position.hpp"
 
 
 /// <summary>
 /// Bonanzaで使われている［向き］。
 /// </summary>
-class DirecMisc : public BonaDirAbstract {
+class DirecMisc : public IBonaDirectable {
 
 
 public:

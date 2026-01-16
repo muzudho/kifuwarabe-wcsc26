@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../n340_bonaDir_/n340_500_bonaDirAbstract.hpp"
+#include "../n340_bonaDir_/n340_500_IBonaDirectable.hpp"
 #include "n351_100_direcMisc.hpp"
 #include "n351_120_direcFile.hpp"
 #include "n351_130_direcRank.hpp"
@@ -11,4 +11,4 @@
 /// <summary>
 /// Bonanzaで使われている［向き］。
 /// </summary>
-extern BonaDirAbstract* g_bonaDirArray[6];
+extern IBonaDirectable* g_bonaDirArray[6];
