@@ -1,4 +1,4 @@
-﻿#include "../../header/n351_bonaDir_/n351_150_direcDiagNWSE.hpp"
+﻿#include "../../header/n340_bonaMove/n340_650_diagonalNWSEBonaMove.hpp"
 
 
 /// <summary>

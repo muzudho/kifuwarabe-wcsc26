@@ -1,13 +1,13 @@
 #include "../../header/n105_220_bonaDir_/n105_220_500_IBonaDirectional.hpp"
 #include "../../header/n105_220_bonaDir_/n105_220_600_NullBonaDirection.hpp"
 #include "../../header/n340_bonaMove/n340_500_IBonaMovable.hpp"
-#include "../../header/n351_bonaDir_/n351_090_nullBonaDir.hpp"
-#include "../../header/n351_bonaDir_/n351_100_direcMisc.hpp"
-#include "../../header/n351_bonaDir_/n351_120_direcFile.hpp"
-#include "../../header/n351_bonaDir_/n351_130_direcRank.hpp"
-#include "../../header/n351_bonaDir_/n351_140_direcDiagNESW.hpp"
-#include "../../header/n351_bonaDir_/n351_150_direcDiagNWSE.hpp"
-#include "../../header/n351_bonaDir_/n351_500_bonaDirArray.hpp"
+#include "../../header/n340_bonaMove/n340_600_nullBonaMove.hpp"
+#include "../../header/n340_bonaMove/n340_610_miscBonaMove.hpp"
+#include "../../header/n340_bonaMove/n340_620_fileBonaMove.hpp"
+#include "../../header/n340_bonaMove/n340_630_rankBonaMove.hpp"
+#include "../../header/n340_bonaMove/n340_640_diagonalNESWBonaMove.hpp"
+#include "../../header/n340_bonaMove/n340_650_diagonalNWSEBonaMove.hpp"
+#include "../../header/n340_bonaMove/n340_700_bonaMoveArray.hpp"
 
 
 /// <summary>

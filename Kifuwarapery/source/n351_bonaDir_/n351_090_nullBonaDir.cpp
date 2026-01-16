@@ -1,4 +1,4 @@
-﻿#include "../../header/n351_bonaDir_/n351_090_nullBonaDir.hpp"
+﻿#include "../../header/n340_bonaMove/n340_600_nullBonaMove.hpp"
 
 
 /// <summary>

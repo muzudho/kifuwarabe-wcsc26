@@ -5,7 +5,7 @@
 #include "../../header/n130_100_boardBb_/n160_230_setMaskBb.hpp"
 #include "../../header/n105_200_sqDistan/n105_200_500_squareDistance.hpp"
 #include "../../header/n105_200_sqDistan/n105_200_600_utilSquareDistance.hpp"
-#include "../../header/n351_bonaDir_/n351_500_bonaDirArray.hpp"
+#include "../../header/n340_bonaMove/n340_700_bonaMoveArray.hpp"
 
 
 /// <summary>

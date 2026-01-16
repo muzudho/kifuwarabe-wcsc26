@@ -612,25 +612,25 @@
     <ClInclude Include="header\n105_200_sqDistan\n105_200_500_squareDistance.hpp">
       <Filter>header\n161_sqDistan</Filter>
     </ClInclude>
-    <ClInclude Include="header\n351_bonaDir_\n351_140_direcDiagNESW.hpp">
+    <ClInclude Include="header\n340_bonaMove\n340_640_diagonalNESWBonaMove.hpp">
       <Filter>header\n351_bonaDir_</Filter>
     </ClInclude>
-    <ClInclude Include="header\n351_bonaDir_\n351_090_nullBonaDir.hpp">
+    <ClInclude Include="header\n340_bonaMove\n340_600_nullBonaMove.hpp">
       <Filter>header\n351_bonaDir_</Filter>
     </ClInclude>
-    <ClInclude Include="header\n351_bonaDir_\n351_100_direcMisc.hpp">
+    <ClInclude Include="header\n340_bonaMove\n340_610_miscBonaMove.hpp">
       <Filter>header\n351_bonaDir_</Filter>
     </ClInclude>
-    <ClInclude Include="header\n351_bonaDir_\n351_120_direcFile.hpp">
+    <ClInclude Include="header\n340_bonaMove\n340_620_fileBonaMove.hpp">
       <Filter>header\n351_bonaDir_</Filter>
     </ClInclude>
-    <ClInclude Include="header\n351_bonaDir_\n351_130_direcRank.hpp">
+    <ClInclude Include="header\n340_bonaMove\n340_630_rankBonaMove.hpp">
       <Filter>header\n351_bonaDir_</Filter>
     </ClInclude>
-    <ClInclude Include="header\n351_bonaDir_\n351_150_direcDiagNWSE.hpp">
+    <ClInclude Include="header\n340_bonaMove\n340_650_diagonalNWSEBonaMove.hpp">
       <Filter>header\n351_bonaDir_</Filter>
     </ClInclude>
-    <ClInclude Include="header\n351_bonaDir_\n351_500_bonaDirArray.hpp">
+    <ClInclude Include="header\n340_bonaMove\n340_700_bonaMoveArray.hpp">
       <Filter>header\n351_bonaDir_</Filter>
     </ClInclude>
     <ClInclude Include="header\n374_genMove_\n374_750_dropMoveGenerator.hpp">
