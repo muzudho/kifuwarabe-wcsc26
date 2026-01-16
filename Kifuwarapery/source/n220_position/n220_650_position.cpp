@@ -1133,7 +1133,11 @@ void Position::DoMove(const Move move, StateInfo& newSt, const CheckInfo& ci, co
 			// Discovery checks
 			const Square ksq = this->GetKingSquare<THEM>();
 			if (IsDiscoveredCheck(from, to, ksq, ci.m_dcBB)) {
-				g_bonaDirArray[g_squareRelation.GetSquareRelation(from, ksq)]->Do2Move(*this, from, ksq, US);
+				Bitboard* checkerBB = g_bonaDirArray[g_squareRelation.GetSquareRelation(from, ksq)]->Do2Move(*this, from, ksq, US);
+				if (checkerBB != nullptr)
+				{
+					// TODO: this->GetStateInfo()->m_checkersBB |= checkerBB;
+				}
 			}
 			m_st_->m_continuousCheck[US] += 2;
 		}
