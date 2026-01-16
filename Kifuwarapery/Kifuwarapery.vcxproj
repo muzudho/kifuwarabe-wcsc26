@@ -196,6 +196,7 @@
     <ClInclude Include="header\n105_220_bonaDir_\n105_220_500_IBonaDirectional.hpp" />
     <ClInclude Include="header\n105_220_bonaDir_\n105_220_600_NullBonaDirection.hpp" />
     <ClInclude Include="header\n105_220_bonaDir_\n105_220_610_MiscBonaDirection.hpp" />
+    <ClInclude Include="header\n105_220_bonaDir_\n105_220_620_FileBonaDirection.hpp" />
     <ClInclude Include="header\n210_score___\n119_050_bound.hpp" />
     <ClInclude Include="header\n210_score___\n119_055_utilBound.hpp" />
     <ClInclude Include="header\n210_score___\n119_090_scoreIndex.hpp" />
@@ -444,6 +445,8 @@
     <ClCompile Include="header\n080_100_sysWorld\n080_100_077_binary.hpp" />
     <ClCompile Include="header\n080_100_sysWorld\n080_100_078_lsbMsb.hpp" />
     <ClCompile Include="source\n105_220_bonaDir_\n105_220_600_NullBonaDirection.cpp" />
+    <ClCompile Include="source\n105_220_bonaDir_\n105_220_610_MiscBonaDirection.cpp" />
+    <ClCompile Include="source\n105_220_bonaDir_\n105_220_620_FileBonaDirection.cpp" />
     <ClCompile Include="source\n105_220_bonaDir_\n105_220_700_bonaMoveArray.cpp" />
     <ClCompile Include="source\n165_movStack\n165_410_moveModels.cpp" />
     <ClCompile Include="source\n220_position\n220_645_gameStats.cpp" />
@@ -515,12 +518,12 @@
     <ClCompile Include="source\n250_pieceTyp\n350_250_ptPieceTypeNum.cpp" />
     <ClCompile Include="source\n250_pieceTyp\n350_260_ptGoldHorseDragon.cpp" />
     <ClCompile Include="source\n250_pieceTyp\n350_500_ptPrograms.cpp" />
-    <ClCompile Include="source\n351_bonaDir_\n351_090_nullBonaDir.cpp" />
-    <ClCompile Include="source\n351_bonaDir_\n351_100_direcMisc.cpp" />
-    <ClCompile Include="source\n351_bonaDir_\n351_120_direcFile.cpp" />
-    <ClCompile Include="source\n351_bonaDir_\n351_130_direcRank.cpp" />
-    <ClCompile Include="source\n351_bonaDir_\n351_140_direcDiagNESW.cpp" />
-    <ClCompile Include="source\n351_bonaDir_\n351_150_direcDiagNWSE.cpp" />
+    <ClCompile Include="source\n351_bonaDir_\n351_090_NullBonaMove.cpp" />
+    <ClCompile Include="source\n351_bonaDir_\n351_100_MiscBonaMove.cpp" />
+    <ClCompile Include="source\n351_bonaDir_\n351_120_FileBonaMove.cpp" />
+    <ClCompile Include="source\n351_bonaDir_\n351_130_RankBonaMove.cpp" />
+    <ClCompile Include="source\n351_bonaDir_\n351_140_DiagonalNESWBonaMove.cpp" />
+    <ClCompile Include="source\n351_bonaDir_\n351_150_DiagonalNWSEBonaMove.cpp" />
     <ClCompile Include="source\n351_bonaDir_\n351_500_bonaDirArray.cpp" />
     <ClCompile Include="source\n358_dropMake\n358_070_dropMakerAbstract.cpp" />
     <ClCompile Include="source\n358_dropMake\n358_100_dropMakerHand0.cpp" />

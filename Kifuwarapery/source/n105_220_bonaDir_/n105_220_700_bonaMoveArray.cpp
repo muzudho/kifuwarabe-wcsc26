@@ -1,8 +1,8 @@
 #include "../../header/n105_220_bonaDir_/n105_220_500_IBonaDirectional.hpp"
 #include "../../header/n105_220_bonaDir_/n105_220_600_NullBonaDirection.hpp"
 #include "../../header/n105_220_bonaDir_/n105_220_610_MiscBonaDirection.hpp"
+#include "../../header/n105_220_bonaDir_/n105_220_620_FileBonaDirection.hpp"
 
-#include "../../header/n340_bonaMove/n340_620_fileBonaMove.hpp"
 #include "../../header/n340_bonaMove/n340_630_rankBonaMove.hpp"
 #include "../../header/n340_bonaMove/n340_640_diagonalNESWBonaMove.hpp"
 #include "../../header/n340_bonaMove/n340_650_diagonalNWSEBonaMove.hpp"

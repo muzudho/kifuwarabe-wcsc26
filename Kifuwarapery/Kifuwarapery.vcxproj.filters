@@ -1083,6 +1083,9 @@
     <ClInclude Include="header\n105_220_bonaDir_\n105_220_600_NullBonaDirection.hpp">
       <Filter>header</Filter>
     </ClInclude>
+    <ClInclude Include="header\n105_220_bonaDir_\n105_220_620_FileBonaDirection.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -1343,22 +1346,22 @@
     <ClCompile Include="source\n105_200_sqDistan\n105_200_squareDistance.cpp">
       <Filter>source\n161_sqDistan</Filter>
     </ClCompile>
-    <ClCompile Include="source\n351_bonaDir_\n351_090_nullBonaDir.cpp">
+    <ClCompile Include="source\n351_bonaDir_\n351_090_NullBonaMove.cpp">
       <Filter>source\n351_bonaDir_</Filter>
     </ClCompile>
-    <ClCompile Include="source\n351_bonaDir_\n351_100_direcMisc.cpp">
+    <ClCompile Include="source\n351_bonaDir_\n351_100_MiscBonaMove.cpp">
       <Filter>source\n351_bonaDir_</Filter>
     </ClCompile>
-    <ClCompile Include="source\n351_bonaDir_\n351_120_direcFile.cpp">
+    <ClCompile Include="source\n351_bonaDir_\n351_120_FileBonaMove.cpp">
       <Filter>source\n351_bonaDir_</Filter>
     </ClCompile>
-    <ClCompile Include="source\n351_bonaDir_\n351_130_direcRank.cpp">
+    <ClCompile Include="source\n351_bonaDir_\n351_130_RankBonaMove.cpp">
       <Filter>source\n351_bonaDir_</Filter>
     </ClCompile>
-    <ClCompile Include="source\n351_bonaDir_\n351_140_direcDiagNESW.cpp">
+    <ClCompile Include="source\n351_bonaDir_\n351_140_DiagonalNESWBonaMove.cpp">
       <Filter>source\n351_bonaDir_</Filter>
     </ClCompile>
-    <ClCompile Include="source\n351_bonaDir_\n351_150_direcDiagNWSE.cpp">
+    <ClCompile Include="source\n351_bonaDir_\n351_150_DiagonalNWSEBonaMove.cpp">
       <Filter>source\n351_bonaDir_</Filter>
     </ClCompile>
     <ClCompile Include="source\n351_bonaDir_\n351_500_bonaDirArray.cpp">
@@ -1713,6 +1716,12 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="source\n130_100_boardBb_\n160_106_inFrontMaskBb.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n105_220_bonaDir_\n105_220_610_MiscBonaDirection.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n105_220_bonaDir_\n105_220_620_FileBonaDirection.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

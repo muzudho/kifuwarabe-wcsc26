@@ -4,10 +4,4 @@
 /// <summary>
 /// 
 /// </summary>
-FileBonaDirection g_fileBonaDirection;
-
-
-/// <summary>
-/// 
-/// </summary>
 FileBonaMove g_fileBonaMove;
