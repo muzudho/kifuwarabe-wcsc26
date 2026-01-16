@@ -1,5 +1,5 @@
 ﻿#include "../../header/n105_220_bonaDir_/n105_220_500_IBonaDirectional.hpp"
-#include "../../header/n340_bonaDir_/n340_500_IBonaDirectional.hpp"
+#include "../../header/n340_bonaMove/n340_500_IBonaMovable.hpp"
 #include "../../header/n351_bonaMove/n351_090_nullBonaMove.hpp"
 #include "../../header/n351_bonaMove/n351_100_direcMisc.hpp"
 #include "../../header/n351_bonaMove/n351_120_direcFile.hpp"

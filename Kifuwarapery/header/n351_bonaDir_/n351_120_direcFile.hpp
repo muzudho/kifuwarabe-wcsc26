@@ -7,7 +7,7 @@
 #include "../n105_220_bonaDir_/n105_220_500_IBonaDirectional.hpp"
 #include "../n130_100_boardBb_/n160_150_rookAttackBb.hpp"
 #include "../n220_position/n220_650_position.hpp"
-#include "../n340_bonaDir_/n340_500_IBonaDirectional.hpp"
+#include "../n340_bonaMove/n340_500_IBonaMovable.hpp"
 
 
 /// <summary>

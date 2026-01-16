@@ -1,6 +1,6 @@
 #include "../../header/n105_220_bonaDir_/n105_220_500_IBonaDirectional.hpp"
 #include "../../header/n105_220_bonaDir_/n105_220_600_NullBonaDirection.hpp"
-#include "../../header/n340_bonaDir_/n340_500_IBonaDirectional.hpp"
+#include "../../header/n340_bonaMove/n340_500_IBonaMovable.hpp"
 #include "../../header/n351_bonaDir_/n351_090_nullBonaDir.hpp"
 #include "../../header/n351_bonaDir_/n351_100_direcMisc.hpp"
 #include "../../header/n351_bonaDir_/n351_120_direcFile.hpp"

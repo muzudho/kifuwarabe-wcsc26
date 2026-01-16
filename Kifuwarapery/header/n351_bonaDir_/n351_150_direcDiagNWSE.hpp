@@ -9,7 +9,7 @@
 #include "../n220_position/n220_650_position.hpp"
 #include "../n250_pieceTyp/n350_040_ptEvent.hpp"
 #include "../n250_pieceTyp/n350_500_ptPrograms.hpp"
-#include "../n340_bonaDir_/n340_500_IBonaDirectional.hpp"
+#include "../n340_bonaMove/n340_500_IBonaMovable.hpp"
 
 
 /// <summary>

@@ -7,7 +7,7 @@
 #include "../n130_100_boardBb_/n160_180_knightAttackBb.hpp"
 #include "../n130_100_boardBb_/n160_230_setMaskBB.hpp"
 #include "../n220_position/n220_650_position.hpp"
-#include "../n340_bonaDir_/n340_500_IBonaDirectional.hpp"
+#include "../n340_bonaMove/n340_500_IBonaMovable.hpp"
 
 
 /// <summary>
