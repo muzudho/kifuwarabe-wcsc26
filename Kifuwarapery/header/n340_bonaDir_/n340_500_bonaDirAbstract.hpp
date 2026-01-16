@@ -32,13 +32,13 @@ public:
 	/// インターフェースのメソッド
 	/// 
 	///		- checkerBb を調べるためのもの。
-	///		- FIXME: checkerBb を返り値にすれば、 Position& position は要らないのでは？
+	///		- 第一引数の position は更新にも使う。
+	///			- 返り値を `std::unique_ptr<Bitboard>` 型の checkerBB にするのも試してみたが、探索が止まってしまった。
 	///		</pre>
 	/// </summary>
 	/// <param name="position"></param>
 	/// <param name="from"></param>
 	/// <param name="ksq"></param>
 	/// <param name="us"></param>
-	/// <returns>checkerBB</returns>
-	virtual std::unique_ptr<Bitboard> Do2Move(Position& position, Square from, const Square ksq, const Color us) const = 0;
+	virtual void Do2Move(Position& position, Square from, const Square ksq, const Color us) const = 0;
 };

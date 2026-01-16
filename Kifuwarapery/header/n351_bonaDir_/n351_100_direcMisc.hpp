@@ -45,10 +45,9 @@ public:
 	/// <param name="ksq"></param>
 	/// <param name="us"></param>
 	/// <returns>checkerBB</returns>
-	std::unique_ptr<Bitboard> Do2Move(Position& position, Square from, const Square ksq, const Color us) const
+	void Do2Move(Position& position, Square from, const Square ksq, const Color us) const
 	{
 		assert(false); // 最適化の為のダミー
-		return nullptr;
 	}
 };
 

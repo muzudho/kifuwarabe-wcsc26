@@ -1134,11 +1134,14 @@ void Position::DoMove(const Move move, StateInfo& newSt, const CheckInfo& ci, co
 			const Square ksq = this->GetKingSquare<THEM>();
 			if (IsDiscoveredCheck(from, to, ksq, ci.m_dcBB))
 			{
-				auto pCheckerBB = g_bonaDirArray[g_squareRelation.GetSquareRelation(from, ksq)]->Do2Move(*this, from, ksq, US);
-				if (pCheckerBB.get() != nullptr)
-				{
-					this->GetStateInfo()->m_checkersBB |= *pCheckerBB.get();
-				}
+				g_bonaDirArray[g_squareRelation.GetSquareRelation(from, ksq)]->Do2Move(*this, from, ksq, US);
+				// NOTE: ユニークポインタを使ってみたが、探索が止まってしまった。
+				//auto pCheckerBB = g_bonaDirArray[g_squareRelation.GetSquareRelation(from, ksq)]->Do2Move(*this, from, ksq, US);
+				//if (pCheckerBB.get() != nullptr)
+				//{
+				//	this->GetStateInfo()->m_checkersBB |= *pCheckerBB.get();
+				//	pCheckerBB.reset();
+				//}
 			}
 			m_st_->m_continuousCheck[US] += 2;
 		}

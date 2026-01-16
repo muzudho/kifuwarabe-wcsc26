@@ -42,7 +42,7 @@ public:
 	/// <param name="ksq"></param>
 	/// <param name="us"></param>
 	/// <returns>checkerBB</returns>
-	std::unique_ptr<Bitboard> Do2Move(Position& position, Square from, const Square ksq, const Color us) const
+	void Do2Move(Position& position, Square from, const Square ksq, const Color us) const
 	{
 		const PieceTypeEvent ptEvent1(position.GetOccupiedBB(), Color::Null, ksq);
 		Bitboard checkerBB = PiecetypePrograms::m_ROOK.GetAttacks2From(ptEvent1) &
@@ -53,7 +53,8 @@ public:
 				:
 				position.GetBbOf30<Color::White>(PieceType::N06_Rook, PieceType::N14_Dragon)
 			);
-		return std::make_unique<Bitboard>(checkerBB);
+
+		position.GetStateInfo()->m_checkersBB |= checkerBB;
 	}
 };
 
