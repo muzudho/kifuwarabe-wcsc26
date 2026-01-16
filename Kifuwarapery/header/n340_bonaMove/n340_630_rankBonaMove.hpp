@@ -16,37 +16,6 @@
 /// <summary>
 /// Bonanzaで使われている［向き］。
 /// </summary>
-class RankBonaDirection : public IBonaDirectionable
-{
-
-
-public:
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="squareDistance"></param>
-	/// <param name="sq0"></param>
-	/// <param name="sq1"></param>
-	void InitializeSquareDistance(SquareDistance& squareDistance, Square sq0, Square sq1) const
-	{
-		squareDistance.SetValue( sq0, sq1,
-			abs(static_cast<int>(sq0 - sq1) / static_cast<int>(SquareDelta::DeltaE))
-		);
-	}
-};
-
-
-/// <summary>
-/// Bonanzaで使われている［向き］。
-/// </summary>
-extern RankBonaDirection g_rankBonaDirection;
-
-
-/// <summary>
-/// Bonanzaで使われている［向き］。
-/// </summary>
 class RankBonaMove : public IBonaMovable
 {
 

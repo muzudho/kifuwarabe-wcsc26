@@ -2,11 +2,10 @@
 #include "../../header/n105_220_bonaDir_/n105_220_600_NullBonaDirection.hpp"
 #include "../../header/n105_220_bonaDir_/n105_220_610_MiscBonaDirection.hpp"
 #include "../../header/n105_220_bonaDir_/n105_220_620_FileBonaDirection.hpp"
-
-#include "../../header/n340_bonaMove/n340_630_rankBonaMove.hpp"
-#include "../../header/n340_bonaMove/n340_640_diagonalNESWBonaMove.hpp"
-#include "../../header/n340_bonaMove/n340_650_diagonalNWSEBonaMove.hpp"
-#include "../../header/n340_bonaMove/n340_700_bonaMoveArray.hpp"
+#include "../../header/n105_220_bonaDir_/n105_220_630_RankBonaDirection.hpp"
+#include "../../header/n105_220_bonaDir_/n105_220_640_DiagonalNESWBonaDirection.hpp"
+#include "../../header/n105_220_bonaDir_/n105_220_650_DiagonalNWSEBonaDirection.hpp"
+#include "../../header/n105_220_bonaDir_/n105_220_700_BonaDirectionArray.hpp"
 
 
 /// <summary>
