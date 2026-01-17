@@ -9,9 +9,9 @@
 #include "../n560_timeMgr_/n560_100_limitsDuringGo.hpp"
 #include "../n640_searcher/n640_040_nodeKind.hpp"
 #include "../n640_searcher/n640_440_splitedNode.hpp"
-#include "n760_250_soldier.hpp"
-#include "n760_300_captain.hpp"
-#include "n760_350_subordinate.hpp"
+#include "n760_250_MonkeyAbstract.hpp"
+#include "n760_300_CaptainMonkey.hpp"
+#include "n760_350_ErrandMonkey.hpp"
 
 
 // 依存関係の回避
@@ -23,11 +23,12 @@ const int g_MaxThreads = 64;
 
 /// <summary>
 ///		<pre>
-/// 元の名前：　ＴhreadPool
-/// ベクター型。
+/// 猿酒場
+/// 
+///		- 元の名前：　`ＴhreadPool`
 ///		</pre>
 /// </summary>
-class MonkiesPub : public std::vector<Soldier*> {
+class MonkiesPub : public std::vector<MonkeyAbstract*> {
 
 
 public:
@@ -77,7 +78,7 @@ public:
 	/// メインスレッド？
 	/// </summary>
 	/// <returns></returns>
-	Captain* GetFirstCaptain() { return static_cast<Captain*>((*this)[0]); }
+	CaptainMonkey* GetFirstCaptain() { return static_cast<CaptainMonkey*>((*this)[0]); }
 
 
 	/// <summary>
@@ -91,7 +92,7 @@ public:
 	/// 現在の部下スレッド
 	/// </summary>
 	/// <returns></returns>
-	Subordinate* GetCurrSubordinate() { return this->m_pSubordinate_; }
+	ErrandMonkey* GetCurrSubordinate() { return this->m_pSubordinate_; }
 
 
 	// ========================================
@@ -137,7 +138,7 @@ public:
 	/// </summary>
 	/// <param name="master"></param>
 	/// <returns></returns>
-	Soldier* GetAvailableSlave(Soldier* master) const;
+	MonkeyAbstract* GetAvailableSlave(MonkeyAbstract* master) const;
 
 
 	/// <summary>
@@ -179,7 +180,7 @@ private:
 	/// <summary>
 	/// タイマースレッド☆
 	/// </summary>
-	Subordinate* m_pSubordinate_;
+	ErrandMonkey* m_pSubordinate_;
 
 
 	/// <summary>

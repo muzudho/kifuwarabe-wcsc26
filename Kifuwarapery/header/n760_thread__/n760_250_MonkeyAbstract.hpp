@@ -1,5 +1,4 @@
 ﻿#pragma once
-
 #include <thread>	//std::thread
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n210_score___/n119_090_scoreIndex.hpp"
@@ -25,11 +24,11 @@ const int g_MaxSplitedNodesPerThread = 8;
 ///		<pre>
 /// 戦士☆（＾▽＾） わたしが名前を変えた☆（＾▽＾） リュックサックを持っているぜ（＾▽＾）
 /// 
-///		- 元の名前： 1. Ｔｈｒｅａｄ, 2. Ｍilitary
+///		- 元の名前： `Ｔhread`
 ///		- ゲームツリーを戦線拡大していくぜ☆！（＾ｑ＾）
 ///		</pre>
 /// </summary>
-class Soldier {
+class MonkeyAbstract {
 
 
 public:
@@ -44,13 +43,13 @@ public:
 	/// 生成。
 	/// </summary>
 	/// <param name="s"></param>
-	explicit Soldier(OurCarriage* s);
+	explicit MonkeyAbstract(OurCarriage* s);
 
 
 	/// <summary>
 	/// 破棄。
 	/// </summary>
-	virtual ~Soldier() {};
+	virtual ~MonkeyAbstract() {};
 
 
 	// ========================================
@@ -139,7 +138,7 @@ public:
 	/// </summary>
 	/// <param name="master"></param>
 	/// <returns></returns>
-	bool SetLastSplitNodeSlavesMask(Soldier* master) const;
+	bool SetLastSplitNodeSlavesMask(MonkeyAbstract* master) const;
 
 
 	/// <summary>

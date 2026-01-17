@@ -1,6 +1,5 @@
 ﻿#pragma once
-
-#include "n760_250_soldier.hpp"
+#include "n760_250_MonkeyAbstract.hpp"
 
 
 class OurCarriage;
@@ -10,10 +9,10 @@ class OurCarriage;
 ///		<pre>
 /// キャプテン☆（＾ｑ＾） わたしが名前を変えた☆（＾▽＾）
 /// 
-///		- 元の名前：ＭａｉｎＴｈｒｅａｄ
+///		- 元の名前： `ＭainThread`
 ///		</pre>
 /// </summary>
-class Captain : public Soldier {
+class CaptainMonkey : public MonkeyAbstract {
 
 
 public:
@@ -41,7 +40,7 @@ public:
     /// 生成☆（＾ｑ＾）
 	/// </summary>
 	/// <param name="s"></param>
-	explicit Captain(OurCarriage* s) : Soldier(s), m_isMasterThread(true) {}
+	explicit CaptainMonkey(OurCarriage* s) : MonkeyAbstract(s), m_isMasterThread(true) {}
 
 
 	// ========================================

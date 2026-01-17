@@ -1,6 +1,5 @@
 ﻿#pragma once
-
-#include "n760_250_soldier.hpp"
+#include "n760_250_MonkeyAbstract.hpp"
 
 
 class OurCarriage;
@@ -10,10 +9,10 @@ class OurCarriage;
 ///		<pre>
 /// 部下
 /// 
-///		- 元の名前：　1. ＴｉｍｅｒＴｈｒｅａｄ, 2. Ｗarrior
+///		- 元の名前： `ＴimerThread`
 ///		</pre>
 /// </summary>
-class Subordinate : public Soldier {
+class ErrandMonkey : public MonkeyAbstract {
 
 
 public:
@@ -39,7 +38,7 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="s"></param>
-	explicit Subordinate(OurCarriage* s) : Soldier(s), m_lifetimeMilliseconds(0) {}
+	explicit ErrandMonkey(OurCarriage* s) : MonkeyAbstract(s), m_lifetimeMilliseconds(0) {}
 
 
 	// ========================================

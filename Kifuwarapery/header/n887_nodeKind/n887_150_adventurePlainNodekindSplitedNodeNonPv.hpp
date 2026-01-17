@@ -89,7 +89,7 @@ public:
 	/// <param name="ppThisThread"></param>
 	/// <param name="pFlashlight"></param>
 	inline void ExplorerPlainStep1cUpdateMaxPly(
-		Soldier** ppThisThread,
+		MonkeyAbstract** ppThisThread,
 		const Flashlight* pFlashlight) const override
 	{
 		// PVノードはスルー☆！（＾ｑ＾）
@@ -549,7 +549,7 @@ public:
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		const Depth depth,
-		Soldier** ppThisThread,
+		MonkeyAbstract** ppThisThread,
 		ScoreIndex& bestScore,
 		ScoreIndex& beta,
 		Position& pos,

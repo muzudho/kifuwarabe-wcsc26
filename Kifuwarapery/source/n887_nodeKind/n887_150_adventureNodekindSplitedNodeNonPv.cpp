@@ -24,7 +24,7 @@
 #include "../../header/n640_searcher/n640_520_futilityMoveCounts.hpp"
 #include "../../header/n680_egOption/n680_240_engineOptionsMap.hpp"
 #include "../../header/n680_egOption/n680_300_engineOptionSetup.hpp"
-#include "../../header/n760_thread__/n760_400_monkiesPub.hpp"
+#include "../../header/n760_thread__/n760_400_MonkiesPub.hpp"
 #include "../../header/n800_learn___/n800_100_stopwatch.hpp"
 #include "../../header/n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
@@ -111,7 +111,7 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::ExplorePlain(
 
 	// step1
 	// initialize node
-	Soldier* pThisThread = pos.GetThisThread();
+	MonkeyAbstract* pThisThread = pos.GetThisThread();
 	moveCount = playedMoveCount = 0;
 	inCheck = pos.InCheck();
 

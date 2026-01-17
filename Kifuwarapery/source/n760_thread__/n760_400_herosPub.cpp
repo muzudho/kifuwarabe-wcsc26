@@ -4,8 +4,8 @@
 #include "../../header/n407_moveGen_/n407_900_moveList.hpp"
 #include "../../header/n560_timeMgr_/n560_100_limitsDuringGo.hpp"
 #include "../../header/n640_searcher/n640_450_rootMove.hpp"
-#include "../../header/n760_thread__/n760_250_soldier.hpp"
-#include "../../header/n760_thread__/n760_400_monkiesPub.hpp"
+#include "../../header/n760_thread__/n760_250_MonkeyAbstract.hpp"
+#include "../../header/n760_thread__/n760_400_MonkiesPub.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 
 
@@ -25,7 +25,7 @@
 /// <returns></returns>
 template <typename T> T* newThread(OurCarriage* s) {
 	T* th = new T(s);
-	th->m_handle = std::thread(&Soldier::StartWorkerThread, th); // move constructor
+	th->m_handle = std::thread(&MonkeyAbstract::StartWorkerThread, th); // move constructor
 	return th;
 }
 
@@ -34,7 +34,7 @@ template <typename T> T* newThread(OurCarriage* s) {
 /// 
 /// </summary>
 /// <param name="th"></param>
-void deleteThread(Soldier* th) {
+void deleteThread(MonkeyAbstract* th) {
 	th->m_isEndOfSearch = true;
 	th->NotifyOne();
 	th->m_handle.join(); // Wait for thread termination
@@ -53,9 +53,9 @@ void MonkiesPub::Init(OurCarriage* s) {
 	m_isSleepWhileIdle_ = true;
 #if defined LEARN
 #else
-	m_pSubordinate_ = newThread<Subordinate>(s);
+	m_pSubordinate_ = newThread<ErrandMonkey>(s);
 #endif
-	push_back(newThread<Captain>(s));
+	push_back(newThread<CaptainMonkey>(s));
 	ReadUSIOptions(s);
 }
 
@@ -98,7 +98,7 @@ void MonkiesPub::ReadUSIOptions(OurCarriage* searcher) {
 	assert(0 < numberOfThreads);
 
 	while (size() < numberOfThreads) {
-		push_back(newThread<Soldier>(searcher));
+		push_back(newThread<MonkeyAbstract>(searcher));
 	}
 
 	while (numberOfThreads < size()) {
@@ -113,7 +113,7 @@ void MonkiesPub::ReadUSIOptions(OurCarriage* searcher) {
 /// </summary>
 /// <param name="master"></param>
 /// <returns></returns>
-Soldier* MonkiesPub::GetAvailableSlave(Soldier* master) const {
+MonkeyAbstract* MonkiesPub::GetAvailableSlave(MonkeyAbstract* master) const {
 	for (auto elem : *this) {
 		if (elem->SetLastSplitNodeSlavesMask(master)) {
 			return elem;
@@ -138,7 +138,7 @@ void MonkiesPub::SetCurrWorrior(const int maxPly) {
 /// </summary>
 void MonkiesPub::WaitForThinkFinished()
 {
-	Captain* t = GetFirstCaptain();
+	CaptainMonkey* t = GetFirstCaptain();
 	std::unique_lock<Mutex> lock(t->m_sleepLock);
 	m_sleepCond_.wait(lock, [&] { return !(t->m_isMasterThread); });
 }

@@ -406,10 +406,10 @@
     <ClInclude Include="header\n755_sword___\n755_100_SwordRoot.hpp" />
     <ClInclude Include="header\n755_sword___\n755_110_SwordPv.hpp" />
     <ClInclude Include="header\n755_sword___\n755_120_SwordNonPv.hpp" />
-    <ClInclude Include="header\n760_thread__\n760_250_soldier.hpp" />
-    <ClInclude Include="header\n760_thread__\n760_300_captain.hpp" />
-    <ClInclude Include="header\n760_thread__\n760_350_subordinate.hpp" />
-    <ClInclude Include="header\n760_thread__\n760_400_monkiesPub.hpp" />
+    <ClInclude Include="header\n760_thread__\n760_250_MonkeyAbstract.hpp" />
+    <ClInclude Include="header\n760_thread__\n760_300_CaptainMonkey.hpp" />
+    <ClInclude Include="header\n760_thread__\n760_350_ErrandMonkey.hpp" />
+    <ClInclude Include="header\n760_thread__\n760_400_MonkiesPub.hpp" />
     <ClInclude Include="header\n800_learn___\n800_100_stopwatch.hpp" />
     <ClInclude Include="header\n800_learn___\n800_500_learner.hpp" />
     <ClInclude Include="header\n883_nodeKind\n883_070_adventurePlainNodekindAbstract.hpp" />

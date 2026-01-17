@@ -16,7 +16,7 @@
 #include "../n640_searcher/n640_450_rootMove.hpp"
 #include "../n680_egOption/n680_240_engineOptionsMap.hpp"
 #include "../n640_searcher/n640_440_splitedNode.hpp"
-#include "../n760_thread__/n760_400_monkiesPub.hpp"
+#include "../n760_thread__/n760_400_MonkiesPub.hpp"
 #include "../n800_learn___/n800_100_stopwatch.hpp"
 #include "n885_510_adventureContinent.hpp"
 

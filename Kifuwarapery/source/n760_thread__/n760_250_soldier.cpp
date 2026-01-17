@@ -7,7 +7,7 @@
 #include "../../header/n440_movStack/n440_500_nextmoveEvent.hpp"
 #include "../../header/n640_searcher/n640_040_nodeKind.hpp"
 #include "../../header/n640_searcher/n640_440_splitedNode.hpp"
-#include "../../header/n760_thread__/n760_250_soldier.hpp"
+#include "../../header/n760_thread__/n760_250_MonkeyAbstract.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 
 
@@ -16,7 +16,7 @@
 // ========================================
 
 
-Soldier::Soldier(OurCarriage* ourCarriage) /*: ＳｐｌｉｔＰｏｉｎｔｓ()*/ {
+MonkeyAbstract::MonkeyAbstract(OurCarriage* ourCarriage) /*: ＳｐｌｉｔＰｏｉｎｔｓ()*/ {
 	this->m_pOurCarriage = ourCarriage;
 	this->m_isEndOfSearch = false;
 	this->m_isBeingSearched = false;
@@ -45,7 +45,7 @@ Soldier::Soldier(OurCarriage* ourCarriage) /*: ＳｐｌｉｔＰｏｉｎｔｓ
 /// </summary>
 /// <param name="master"></param>
 /// <returns></returns>
-bool Soldier::SetLastSplitNodeSlavesMask(Soldier* master) const {
+bool MonkeyAbstract::SetLastSplitNodeSlavesMask(MonkeyAbstract* master) const {
 	if (m_isBeingSearched) { return false; }
 
 	// 分岐ノードの数。ローカルコピーし、次の瞬間に値が変わらないようにする。
@@ -59,7 +59,7 @@ bool Soldier::SetLastSplitNodeSlavesMask(Soldier* master) const {
 // メイン・メソッド
 
 
-void Soldier::NotifyOne() {
+void MonkeyAbstract::NotifyOne() {
 	std::unique_lock<Mutex> lock(m_sleepLock);
 	m_sleepCond.notify_one();
 }
@@ -69,7 +69,7 @@ void Soldier::NotifyOne() {
 /// 
 /// </summary>
 /// <returns></returns>
-bool Soldier::IsUselessNode() const {
+bool MonkeyAbstract::IsUselessNode() const {
 	for (SplitedNode* sp = m_activeSplitedNode; sp != nullptr; sp = sp->m_pParentSplitedNode) {
 		if (sp->m_isUselessNode) { return true; }
 	}
@@ -81,7 +81,7 @@ bool Soldier::IsUselessNode() const {
 /// 
 /// </summary>
 /// <param name="b"></param>
-void Soldier::WaitFor(volatile const bool& b) {
+void MonkeyAbstract::WaitFor(volatile const bool& b) {
 	std::unique_lock<Mutex> lock(m_sleepLock);
 	m_sleepCond.wait(lock, [&] { return b; });
 }
@@ -104,7 +104,7 @@ void Soldier::WaitFor(volatile const bool& b) {
 /// <param name="pSword"></param>
 /// <param name="cutNode"></param>
 template <bool Fake>
-void Soldier::ForkNewFighter(
+void MonkeyAbstract::ForkNewFighter(
 	Position& pos,
 	Flashlight* pFlashlightBox,
 	const ScoreIndex alpha,
@@ -156,7 +156,7 @@ void Soldier::ForkNewFighter(
 
 	// thisThread が常に含まれるので 1
 	size_t slavesCount = 1;
-	Soldier* slave;
+	MonkeyAbstract* slave;
 
 	while ((slave = this->m_pOurCarriage->m_ownerHerosPub.GetAvailableSlave(this)) != nullptr
 		&& ++slavesCount <= this->m_pOurCarriage->m_ownerHerosPub.m_maxThreadsPerSplitedNode_ && !Fake)
@@ -170,7 +170,7 @@ void Soldier::ForkNewFighter(
 	if (1 < slavesCount || Fake) {
 		splitedNode.m_mutex.unlock();
 		this->m_pOurCarriage->m_ownerHerosPub.m_mutex_.unlock();
-		Soldier::StartWorkerThread();	// ワーカースレッド開始
+		MonkeyAbstract::StartWorkerThread();	// ワーカースレッド開始
 		assert(!m_isBeingSearched);
 		assert(!m_activePosition);
 		this->m_pOurCarriage->m_ownerHerosPub.m_mutex_.lock();
@@ -206,7 +206,7 @@ void Soldier::ForkNewFighter(
 /// <param name="pSword"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-template void Soldier::ForkNewFighter<true >(
+template void MonkeyAbstract::ForkNewFighter<true >(
 	Position& pos,
 	Flashlight* ss,
 	const ScoreIndex alpha,
@@ -237,7 +237,7 @@ template void Soldier::ForkNewFighter<true >(
 /// <param name="pSword"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-template void Soldier::ForkNewFighter<false>(
+template void MonkeyAbstract::ForkNewFighter<false>(
 	Position& pos,
 	Flashlight* ss,
 	const ScoreIndex alpha,
