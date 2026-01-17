@@ -78,33 +78,31 @@ ScoreNumber AdventureNodekindRoot::explorePlain_n10(
 
 
 	// 途中で goto を使用している為、先に全部の変数を定義しておいた方が安全。
-	Move movesSearched[64];
-	StateInfo st;
-	const TTEntry* pTtEntry = nullptr;//(^q^)トランスポジション・テーブル・エントリー☆？
-	SplitedNode* pSplitedNode = nullptr;//(^q^)
-	Key posKey;
-	Move ttMove;
-	Move move;
-	Move excludedMove;
-	Move bestMove;
-	Move threatMove;
-	Depth newDepth;
-	Depth extension;
-	ScoreNumber bestScore;
-	ScoreNumber score;
-	ScoreNumber ttScore;
-	ScoreNumber eval;
-	bool inCheck;
-	bool givesCheck;
-
-	bool isPVMove;	// 本筋の指し手かどうかかなあ（＾～＾）？
-
-	bool singularExtensionNode;
-	bool captureOrPawnPromotion;
-	bool dangerous;
-	bool doFullDepthSearch;
-	int moveCount;
-	int playedMoveCount;
+	Move			movesSearched[64];
+	StateInfo		stateInfo;
+	const TTEntry*	pTtEntry = nullptr;//(^q^)トランスポジション・テーブル・エントリー☆？
+	SplitedNode*	pSplitedNode = nullptr;//(^q^)
+	Key				posKey;	// 局面のハッシュキー（＾～＾）？
+	Move			move;
+	Move			excludedMove;
+	Move			bestMove;
+	Move			threatMove;
+	Depth			newDepth;
+	Depth			extension;
+	ScoreNumber		bestScore;
+	ScoreNumber		score;
+	ScoreNumber		eval;
+	bool			inCheck;
+	bool			givesCheck;
+	bool			isPVMove;	// 本筋の指し手かどうかかなあ（＾～＾）？
+	bool			singularExtensionNode;
+	bool			captureOrPawnPromotion;
+	bool			dangerous;
+	bool			doFullDepthSearch;
+	int				moveCount;
+	int				playedMoveCount;
+	Move			bananaTtMove;
+	ScoreNumber		bananaTtScore;
 
 	// step1
 	// initialize node
@@ -150,12 +148,10 @@ ScoreNumber AdventureNodekindRoot::explorePlain_n10(
 		pos,
 		&pTtEntry,	//セットされる☆
 		ourCarriage,
-		ttScore);	//セットされる☆
-
-
+		bananaTtScore);	//セットされる☆
 	// なんか ttMove を取得した（＾～＾）？
 	this->explorePlain_n200n400_getTtMove(
-		ttMove,
+		bananaTtMove,
 		ourCarriage,
 		pTtEntry,
 		pos);
@@ -175,7 +171,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_n10(
 		pos,
 		inCheck,
 		pTtEntry,
-		ttScore,
+		bananaTtScore,
 		posKey,
 		move);
 	/*
@@ -192,7 +188,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_n10(
 	// なんか再帰的に探索してる（＾～＾）
 	this->explorePlain_n200n800_internalIterativeDeepening(
 		depth,
-		ttMove,
+		bananaTtMove,
 		inCheck,
 		beta,
 		&pFlashlight,
@@ -206,7 +202,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_n10(
 //split_point_start:
 	NextmoveEvent nextMoveEvent(
 		pos,
-		ttMove,
+		bananaTtMove,
 		depth,
 		ourCarriage.m_history,
 		pFlashlight,
@@ -220,7 +216,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_n10(
 
 	// なんかセットしてる（＾～＾）
 	this->explorePlain_n200n900_beforeLoop_splitPointStart(
-		ttMove,
+		bananaTtMove,
 		depth,
 		score,
 		bestScore,
@@ -296,8 +292,8 @@ ScoreNumber AdventureNodekindRoot::explorePlain_n10(
 				move,
 				extension,
 				singularExtensionNode,
-				ttMove,
-				ttScore,
+				bananaTtMove,
+				bananaTtScore,
 				checkInfo,
 				depth,
 				&pFlashlight,
@@ -334,7 +330,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_n10(
 		this->explorerPlain_n500n100_doMove(
 			pos,
 			move,
-			st,
+			stateInfo,
 			checkInfo,
 			givesCheck,
 			&pFlashlight);
@@ -354,7 +350,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_n10(
 				isPVMove,
 				captureOrPawnPromotion,
 				move,
-				ttMove,
+				bananaTtMove,
 				&pFlashlight,
 				moveCount,
 				cutNode,

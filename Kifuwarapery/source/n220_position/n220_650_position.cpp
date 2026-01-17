@@ -39,6 +39,10 @@
 // なんだこれ☆（＾～＾）？
 Key Position::m_ZOBRIST_[g_PIECETYPE_NUM][SquareNum][g_COLOR_NUM];
 Key Position::m_ZOB_HAND_[HandPieceNum][g_COLOR_NUM];
+
+/// <summary>
+/// トランスポジションで使う局面ハッシュを作るのに使ってる。１手前の手を取り除くのに使う？
+/// </summary>
 Key Position::m_ZOB_EXCLUSION_;
 
 

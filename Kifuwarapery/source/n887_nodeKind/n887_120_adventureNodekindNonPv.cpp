@@ -86,7 +86,6 @@ ScoreNumber AdventureNodekindNonPv::explorePlain_n10(
 	const TTEntry* pTtEntry = nullptr;//(^q^)トランスポジション・テーブル・エントリー☆？
 	SplitedNode* pSplitedNode = nullptr;//(^q^)
 	Key posKey;
-	Move ttMove;
 	Move move;
 	Move excludedMove;
 	Move bestMove;
@@ -95,7 +94,6 @@ ScoreNumber AdventureNodekindNonPv::explorePlain_n10(
 	Depth extension;
 	ScoreNumber bestScore;
 	ScoreNumber score;
-	ScoreNumber ttScore;
 	ScoreNumber eval;
 	bool inCheck;
 	bool givesCheck;
@@ -106,6 +104,8 @@ ScoreNumber AdventureNodekindNonPv::explorePlain_n10(
 	bool doFullDepthSearch;
 	int moveCount;
 	int playedMoveCount;
+	Move bananaTtMove;
+	ScoreNumber bananaTtScore;
 
 	// step1
 	// initialize node
@@ -157,11 +157,9 @@ ScoreNumber AdventureNodekindNonPv::explorePlain_n10(
 		pos,
 		&pTtEntry,//セットされる☆
 		ourCarriage,
-		ttScore);
-
-
+		bananaTtScore);
 	this->explorePlain_n200n400_getTtMove(
-		ttMove,
+		bananaTtMove,
 		ourCarriage,
 		pTtEntry,
 		pos);
@@ -173,10 +171,10 @@ ScoreNumber AdventureNodekindNonPv::explorePlain_n10(
 		ourCarriage,
 		pTtEntry,
 		depth,
-		ttScore,
+		bananaTtScore,
 		beta,
 		&pFlashlight,
-		ttMove);
+		bananaTtMove);
 	if (isReturnWithScore) { return returnScore; }
 
 
@@ -204,7 +202,7 @@ ScoreNumber AdventureNodekindNonPv::explorePlain_n10(
 		pos,
 		inCheck,
 		pTtEntry,
-		ttScore,
+		bananaTtScore,
 		posKey,
 		move);
 	if (isGotoIidStart) { goto iid_start; }
@@ -264,7 +262,7 @@ ScoreNumber AdventureNodekindNonPv::explorePlain_n10(
 			beta,
 			move,
 			pos,
-			ttMove,
+			bananaTtMove,
 			st,
 			score,
 			cutNode);
@@ -279,7 +277,7 @@ iid_start:
 	#ifndef SHRINK_NP_NODEKIND_EXPLORE_PLAIN_200N800_INTERNAL_ID
 		this->explorePlain_n200n800_internalIterativeDeepening(
 			depth,
-			ttMove,
+			bananaTtMove,
 			inCheck,
 			beta,
 			&pFlashlight,
@@ -295,7 +293,7 @@ iid_start:
 //split_point_start:
 	NextmoveEvent nextMoveEvent(
 		pos,
-		ttMove,
+		bananaTtMove,
 		depth,
 		ourCarriage.m_history,
 		pFlashlight,
@@ -307,7 +305,7 @@ iid_start:
 
 
 	this->explorePlain_n200n900_beforeLoop_splitPointStart(
-		ttMove,
+		bananaTtMove,
 		depth,
 		score,
 		bestScore,
@@ -369,8 +367,8 @@ iid_start:
 				move,
 				extension,
 				singularExtensionNode,
-				ttMove,
-				ttScore,
+				bananaTtMove,
+				bananaTtScore,
 				ci,
 				depth,
 				&pFlashlight,
@@ -391,7 +389,7 @@ iid_start:
 				dangerous,
 				bestScore,
 				move,
-				ttMove,
+				bananaTtMove,
 				depth,
 				moveCount,
 				threatMove,
@@ -457,7 +455,7 @@ iid_start:
 				isPVMove,
 				captureOrPawnPromotion,
 				move,
-				ttMove,
+				bananaTtMove,
 				&pFlashlight,
 				moveCount,
 				cutNode,

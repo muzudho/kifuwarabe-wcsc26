@@ -205,7 +205,11 @@ public:
 
 
 	/// <summary>
-	/// トランスポジション・テーブルのスコアを取得した（＾～＾）？
+	///		<pre>
+	/// trans position table lookup
+	/// 
+	///		- トランスポジション・テーブルのスコアを取得した（＾～＾）？
+	///		</pre>
 	/// </summary>
 	/// <param name="excludedMove"></param>
 	/// <param name="ppFlashlight"></param>
@@ -223,13 +227,13 @@ public:
 		OurCarriage& ourCarriage,
 		ScoreNumber& ttScore) const
 	{
-		// trans position table lookup
+		// １つ前の手
 		excludedMove = (*ppFlashlight)->m_excludedMove;
 
-		// 局面ハッシュ（＾～＾）？
+		// 局面ハッシュ（＾～＾）？ １つ前の手を取り除いている（＾～＾）？
 		posKey = (excludedMove.IsNone() ? pos.GetKey() : pos.GetExclusionKey());
 
-		// トランスポジション・テーブルをなんか探した（＾～＾）？
+		// トランスポジション・テーブルからエントリーをなんか探した（＾～＾）？
 		(*ppTtEntry) = ourCarriage.m_tt.Probe(posKey);
 
 		// トランスポジション・テーブルのスコアを取得した（＾～＾）？

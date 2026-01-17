@@ -90,7 +90,6 @@ ScoreNumber AdventureNodekindSplitedNodePv::explorePlain_n10(
 	const TTEntry* pTtEntry = nullptr;//(^q^)トランスポジション・テーブル・エントリー☆？
 	SplitedNode* pSplitedNode = nullptr;//(^q^)
 	Key posKey;
-	Move ttMove;
 	Move move;
 	Move excludedMove;
 	Move bestMove;
@@ -99,7 +98,6 @@ ScoreNumber AdventureNodekindSplitedNodePv::explorePlain_n10(
 	Depth extension;
 	ScoreNumber bestScore;
 	ScoreNumber score;
-	ScoreNumber ttScore;
 	ScoreNumber eval;
 	bool inCheck;
 	bool givesCheck;
@@ -110,6 +108,8 @@ ScoreNumber AdventureNodekindSplitedNodePv::explorePlain_n10(
 	bool doFullDepthSearch;
 	int moveCount;
 	int playedMoveCount;
+	Move bananaTtMove;
+	ScoreNumber bananaTtScore;
 
 	// step1
 	// initialize node
@@ -127,9 +127,9 @@ ScoreNumber AdventureNodekindSplitedNodePv::explorePlain_n10(
 		bestMove,
 		threatMove,
 		bestScore,
-		ttMove,
+		bananaTtMove,
 		excludedMove,
-		ttScore);
+		bananaTtScore);
 	if (isGotoSplitPointStart) { goto split_point_start; }
 
 
@@ -185,11 +185,9 @@ ScoreNumber AdventureNodekindSplitedNodePv::explorePlain_n10(
 		pos,
 		&pTtEntry,//セットされる☆
 		ourCarriage,
-		ttScore);
-
-
+		bananaTtScore);
 	this->explorePlain_n200n400_getTtMove(
-		ttMove,
+		bananaTtMove,
 		ourCarriage,
 		pTtEntry,
 		pos);
@@ -201,10 +199,10 @@ ScoreNumber AdventureNodekindSplitedNodePv::explorePlain_n10(
 		ourCarriage,
 		pTtEntry,
 		depth,
-		ttScore,
+		bananaTtScore,
 		beta,
 		&pFlashlight,
-		ttMove);
+		bananaTtMove);
 	if (isReturnWithScore) { return returnScore; }
 
 
@@ -232,7 +230,7 @@ ScoreNumber AdventureNodekindSplitedNodePv::explorePlain_n10(
 		pos,
 		inCheck,
 		pTtEntry,
-		ttScore,
+		bananaTtScore,
 		posKey,
 		move);
 	/*
@@ -247,7 +245,7 @@ ScoreNumber AdventureNodekindSplitedNodePv::explorePlain_n10(
 	// step10
 	this->explorePlain_n200n800_internalIterativeDeepening(
 		depth,
-		ttMove,
+		bananaTtMove,
 		inCheck,
 		beta,
 		&pFlashlight,
@@ -261,7 +259,7 @@ ScoreNumber AdventureNodekindSplitedNodePv::explorePlain_n10(
 split_point_start:
 	NextmoveEvent nextMoveEvent(
 		pos,
-		ttMove,
+		bananaTtMove,
 		depth,
 		ourCarriage.m_history,
 		pFlashlight,
@@ -273,7 +271,7 @@ split_point_start:
 
 
 	this->explorePlain_n200n900_beforeLoop_splitPointStart(
-		ttMove,
+		bananaTtMove,
 		depth,
 		score,
 		bestScore,
@@ -332,8 +330,8 @@ split_point_start:
 			move,
 			extension,
 			singularExtensionNode,
-			ttMove,
-			ttScore,
+			bananaTtMove,
+			bananaTtScore,
 			checkInfo,
 			depth,
 			&pFlashlight,
@@ -378,7 +376,7 @@ split_point_start:
 				isPVMove,
 				captureOrPawnPromotion,
 				move,
-				ttMove,
+				bananaTtMove,
 				&pFlashlight,
 				moveCount,
 				cutNode,

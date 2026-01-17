@@ -41,8 +41,11 @@ public:
 	Move			m_currentMove;
 
 	/// <summary>
-	/// TODO: これは必要？
-	/// トランスポジション・テーブルと関連☆？
+	///		<pre>
+	/// １つ前の手
+	///
+	///		- トランスポジション・テーブルと関連☆？
+	///		</pre>
 	/// </summary>
 	Move			m_excludedMove;
 

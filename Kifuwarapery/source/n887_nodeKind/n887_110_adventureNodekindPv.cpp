@@ -86,7 +86,6 @@ ScoreNumber AdventureNodekindPv::explorePlain_n10(
 	const TTEntry* pTtEntry = nullptr;//(^q^)トランスポジション・テーブル・エントリー☆？
 	SplitedNode* pSplitedNode = nullptr;//(^q^)
 	Key posKey;
-	Move ttMove;
 	Move move;
 	Move excludedMove;
 	Move bestMove;
@@ -95,7 +94,6 @@ ScoreNumber AdventureNodekindPv::explorePlain_n10(
 	Depth extension;
 	ScoreNumber bestScore;
 	ScoreNumber score;
-	ScoreNumber ttScore;
 	ScoreNumber eval;
 	bool inCheck;
 	bool givesCheck;
@@ -106,6 +104,8 @@ ScoreNumber AdventureNodekindPv::explorePlain_n10(
 	bool doFullDepthSearch;
 	int moveCount;
 	int playedMoveCount;
+	Move bananaTtMove;
+	ScoreNumber bananaTtScore;
 
 	// step1
 	// initialize node
@@ -166,24 +166,24 @@ ScoreNumber AdventureNodekindPv::explorePlain_n10(
 		pos,
 		&pTtEntry,//セットされる☆
 		ourCarriage,
-		ttScore
-		);
+		bananaTtScore);
 	this->explorePlain_n200n400_getTtMove(
-		ttMove,
+		bananaTtMove,
 		ourCarriage,
 		pTtEntry,
-		pos
-		);
+		pos);
+
+
 	this->explorePlain_n200n450_returnWithScore(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
 		pTtEntry,
 		depth,
-		ttScore,
+		bananaTtScore,
 		beta,
 		&pFlashlight,
-		ttMove
+		bananaTtMove
 		);
 	if (isReturnWithScore) { return returnScore; }
 
@@ -212,7 +212,7 @@ ScoreNumber AdventureNodekindPv::explorePlain_n10(
 		pos,
 		inCheck,
 		pTtEntry,
-		ttScore,
+		bananaTtScore,
 		posKey,
 		move
 		);
@@ -228,7 +228,7 @@ ScoreNumber AdventureNodekindPv::explorePlain_n10(
 	// step10
 	this->explorePlain_n200n800_internalIterativeDeepening(
 		depth,
-		ttMove,
+		bananaTtMove,
 		inCheck,
 		beta,
 		&pFlashlight,
@@ -243,7 +243,7 @@ ScoreNumber AdventureNodekindPv::explorePlain_n10(
 //split_point_start:
 	NextmoveEvent nextMoveEvent(
 		pos,
-		ttMove,
+		bananaTtMove,
 		depth,
 		ourCarriage.m_history,
 		pFlashlight,
@@ -255,7 +255,7 @@ ScoreNumber AdventureNodekindPv::explorePlain_n10(
 
 
 	this->explorePlain_n200n900_beforeLoop_splitPointStart(
-		ttMove,
+		bananaTtMove,
 		depth,
 		score,
 		bestScore,
@@ -313,8 +313,8 @@ ScoreNumber AdventureNodekindPv::explorePlain_n10(
 			move,
 			extension,
 			singularExtensionNode,
-			ttMove,
-			ttScore,
+			bananaTtMove,
+			bananaTtScore,
 			checkInfo,
 			depth,
 			&pFlashlight,
