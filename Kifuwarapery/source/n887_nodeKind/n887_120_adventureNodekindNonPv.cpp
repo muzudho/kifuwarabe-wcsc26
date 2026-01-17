@@ -106,7 +106,7 @@ ScoreNumber AdventureNodekindNonPv::explorePlain_n10(
 	int playedMoveCount;
 	Move bananaTtMove;
 	ScoreNumber bananaTtScore;
-	DeliciousBanana ttDeliciousBanana;
+	//DeliciousBanana ttDeliciousBanana;
 
 	// step1
 	// initialize node
@@ -151,17 +151,30 @@ ScoreNumber AdventureNodekindNonPv::explorePlain_n10(
 	pos.SetNodesVisited(pos.GetNodesVisited() + 1);
 
 
-	bananaTtScore = this->explorePlain_n200n350_getTtScore(
-		excludedMove,
-		&pFlashlight,
-		posKey,
-		pos,
-		&pTtEntry,//セットされる☆
-		ourCarriage);
-	bananaTtMove = this->explorePlain_n200n400_getTtMove(
-		ourCarriage,
-		pTtEntry,
-		pos);
+	//bananaTtScore = this->explorePlain_n200n350_getTtScore(
+	//	excludedMove,
+	//	&pFlashlight,
+	//	posKey,
+	//	pos,
+	//	&pTtEntry,//セットされる☆
+	//	ourCarriage);
+	//bananaTtMove = this->explorePlain_n200n400_getTtMove(
+	//	ourCarriage,
+	//	pTtEntry,
+	//	pos);
+	// ttScore と ttMove でデリシャス・バナナ（＾～＾）！
+	{
+		DeliciousBanana ttDeliciousBanana = this->explorePlain_n200n405_getTtDeliciousBanana(
+			excludedMove,
+			&pFlashlight,
+			posKey,
+			pos,
+			&pTtEntry,	//セットされる☆
+			ourCarriage,
+			pTtEntry);
+		bananaTtScore = (ScoreNumber)ttDeliciousBanana.m_score;
+		bananaTtMove = ttDeliciousBanana.m_move;
+	}
 
 
 	this->explorePlain_n200n450_returnWithScore(
