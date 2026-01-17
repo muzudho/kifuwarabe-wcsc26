@@ -333,7 +333,7 @@ split_point_start:
 
 
 		// step16
-		this->ExplorerPlainStep16a(
+		this->explorePlain_n378_setAlpha(
 			doFullDepthSearch,
 			alpha,
 			&pSplitedNode);

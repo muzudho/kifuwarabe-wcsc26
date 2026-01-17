@@ -73,14 +73,13 @@ ScoreIndex AdventureNodekindSplitedNodePv::explorePlain_n10(
 	ScoreIndex alpha,
 	ScoreIndex beta,
 	const Depth depth,
-	const bool cutNode
-	) const {
+	const bool cutNode) const
+{
 
 	assert(-ScoreInfinite <= alpha && alpha < beta && beta <= ScoreInfinite);
 	this->AssertBeforeStep1(
 		alpha,
-		beta
-		);
+		beta);
 	assert(Depth0 < depth);
 
 	// 途中で goto を使用している為、先に全部の変数を定義しておいた方が安全。
@@ -116,6 +115,7 @@ ScoreIndex AdventureNodekindSplitedNodePv::explorePlain_n10(
 	moveCount = playedMoveCount = 0;
 	inCheck = pos.InCheck();
 
+
 	bool isGotoSplitPointStart = false;
 	this->explorePlain_n70_splitPointStart(
 		isGotoSplitPointStart,
@@ -130,14 +130,18 @@ ScoreIndex AdventureNodekindSplitedNodePv::explorePlain_n10(
 		ttScore);
 	if (isGotoSplitPointStart) { goto split_point_start; }
 
+
 	this->explorePlain_n80_setMoveNone(
 		bestScore,
 		&pFlashlight,
 		threatMove,
 		bestMove);
+
+
 	this->explorePlain_n90_updateMaxPly(
 		&pThisThread,
 		pFlashlight);
+
 
 	// step2: 千日手による探索打切りの判断
 	{
@@ -156,19 +160,19 @@ ScoreIndex AdventureNodekindSplitedNodePv::explorePlain_n10(
 	bool isReturnWithScore = false;
 	ScoreIndex returnScore = ScoreNone;
 
-	// step3
+
 	this->explorePlain_n98_step3(
 		isReturnWithScore,
 		returnScore,
 		&pFlashlight,
 		alpha,
-		beta
-		);
+		beta);
 	if (isReturnWithScore) { return returnScore; }
+
 
 	pos.SetNodesVisited(pos.GetNodesVisited() + 1);
 
-	// step4
+
 	this->explorePlain_n100_getTtScore(
 		excludedMove,
 		&pFlashlight,
@@ -176,14 +180,16 @@ ScoreIndex AdventureNodekindSplitedNodePv::explorePlain_n10(
 		pos,
 		&pTtEntry,//セットされる☆
 		ourCarriage,
-		ttScore
-		);
+		ttScore);
+
+
 	this->explorePlain_n110_getTtMove(
 		ttMove,
 		ourCarriage,
 		pTtEntry,
-		pos
-		);
+		pos);
+
+
 	this->explorePlain_n116_returnStep4y(
 		isReturnWithScore,
 		returnScore,
@@ -193,9 +199,9 @@ ScoreIndex AdventureNodekindSplitedNodePv::explorePlain_n10(
 		ttScore,
 		beta,
 		&pFlashlight,
-		ttMove
-		);
+		ttMove);
 	if (isReturnWithScore) { return returnScore; }
+
 
 	this->explorePlain_n118_returnWithValue(
 		isReturnWithScore,
@@ -208,11 +214,10 @@ ScoreIndex AdventureNodekindSplitedNodePv::explorePlain_n10(
 		bestScore,
 		posKey,
 		depth,
-		bestMove
-		);
+		bestMove);
 	if (isReturnWithScore) { return returnScore; }
 
-	// step5
+
 	bool isGotoIidStart = false;//NonPVのとき使う☆
 	this->explorePlain_n120_eval(
 		isGotoIidStart,
@@ -224,13 +229,13 @@ ScoreIndex AdventureNodekindSplitedNodePv::explorePlain_n10(
 		pTtEntry,
 		ttScore,
 		posKey,
-		move
-		);
+		move);
 	/*
 	if (isGotoIidStart) {
 		goto iid_start;
 	}
 	*/
+
 
 	// 内側の反復深化探索☆？（＾ｑ＾）
 //iid_start:
@@ -245,11 +250,11 @@ ScoreIndex AdventureNodekindSplitedNodePv::explorePlain_n10(
 		pos,
 		alpha,
 		&pTtEntry,//セットされるぜ☆
-		posKey
-		);
+		posKey);
+
 
 split_point_start:
-	NextmoveEvent mp(
+	NextmoveEvent nextMoveEvent(
 		pos,
 		ttMove,
 		depth,
@@ -257,7 +262,8 @@ split_point_start:
 		pFlashlight,
 		this->getBeta_n140(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
 		);
-	const CheckInfo ci(pos);
+	const CheckInfo checkInfo(pos);
+
 
 	this->explorePlain_n150_beforeLoop_splitPointStart(
 		ttMove,
@@ -269,41 +275,43 @@ split_point_start:
 		pTtEntry//pv,nonPv の２つで、nullptrはダメ☆
 		);
 
+
 	// step11
 	// Loop through moves
 	while (
 		!(
 			// スプリット・ポイントかどうかで、取ってくる指し手が変わる☆
-			move = this->getNextMove_n160(mp)
+			move = this->getNextMove_n160(nextMoveEvent)
 			).IsNone()
 		) {
 
-		// DoStep11b
+
 		if (move == excludedMove) { continue; }	// ムーブが一致していれば、次のループへ☆
 
+
 		bool isContinue = false;
+
 
 		this->explorePlain_n180_loopHeader(
 			isContinue,
 			pos,
 			move,
-			ci,
+			checkInfo,
 			moveCount,
-			&pSplitedNode
-			);
+			&pSplitedNode);
 		if (isContinue) { continue; }
+
 
 		this->explorePlain_n240_loopHeader(
 			extension,
 			captureOrPawnPromotion,
 			move,
 			givesCheck,
-			ci,
+			checkInfo,
 			pos,
-			dangerous
-			);
+			dangerous);
 
-		// step12
+
 		this->explorePlain_n260_recursiveSearch(
 			ourCarriage,
 			givesCheck,
@@ -313,34 +321,34 @@ split_point_start:
 			singularExtensionNode,
 			ttMove,
 			ttScore,
-			ci,
+			checkInfo,
 			depth,
 			&pFlashlight,
 			score,
 			cutNode,
 			beta,
-			newDepth
-			);
+			newDepth);
+
 
 		// 本筋かどうか判定するぜ（＾～＾）
 		isPVMove = this->explorePlain_n280_isPvMove(moveCount);
+
 
 		this->explorePlain_n300_setMove(
 			move,
 			&pFlashlight);
 		if (isContinue) { continue; }
 
-		// step14
+
 		this->explorerPlain_n340_doMove(
 			pos,
 			move,
 			st,
-			ci,
+			checkInfo,
 			givesCheck,
-			&pFlashlight
-			);
+			&pFlashlight);
 
-		// step15
+
 		this->explorePlain_n360_recursiveSearch(
 			ourCarriage,
 			depth,
@@ -356,15 +364,13 @@ split_point_start:
 			&pSplitedNode,
 			score,
 			pos,
-			doFullDepthSearch
-			);
+			doFullDepthSearch);
 
-		// step16
-		this->ExplorerPlainStep16a(
+
+		this->explorePlain_n378_setAlpha(
 			doFullDepthSearch,
 			alpha,
-			&pSplitedNode
-			);
+			&pSplitedNode);
 
 
 		#ifndef SHRINK_SPLITED_PV_NODE_EXPLORE_PLAIN_380_NON_PV_RECURSIVE_SEARCH
