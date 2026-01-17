@@ -148,7 +148,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 	pos.SetNodesVisited(pos.GetNodesVisited() + 1);
 
 
-	this->explorePlain_n100_getTtScore(
+	this->explorePlain_n200n350_getTtScore(
 		excludedMove,
 		&pFlashlight,
 		posKey,
@@ -159,7 +159,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 		);
 
 
-	this->explorePlain_n110_getTtMove(
+	this->explorePlain_n200n400_getTtMove(
 		ttMove,
 		ourCarriage,
 		pTtEntry,
@@ -167,7 +167,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 		);
 
 
-	this->explorePlain_n116_returnStep4y(
+	this->explorePlain_n200n450_returnStep4y(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -181,7 +181,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 	if (isReturnWithScore) { return returnScore; }
 
 
-	this->explorePlain_n118_returnWithValue(
+	this->explorePlain_n200n500_returnWithValue(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -198,7 +198,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 
 
 	bool isGotoIidStart = false;//NonPVのとき使う☆
-	this->explorePlain_n120_eval(
+	this->explorePlain_n200n550_eval(
 		isGotoIidStart,
 		ourCarriage,
 		eval,
@@ -213,7 +213,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 	if (isGotoIidStart) { goto iid_start; }
 
 
-	this->explorePlain_n122_nonPVRazoring(
+	this->explorePlain_n200n600_nonPVRazoring(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -227,7 +227,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 	if (isReturnWithScore) { return returnScore; }
 
 
-	this->explorePlain_n123_returnWithValue(
+	this->explorePlain_n200n650_returnWithValue(
 		isReturnWithScore,
 		returnScore,
 		&pFlashlight,
@@ -240,7 +240,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 
 
 	#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_125_NON_PV_RECURSIVE_SEARCH
-		this->explorePlain_n125_nonPVRecursiveSearch(
+		this->explorePlain_n200n700_nonPVRecursiveSearch(
 			isReturnWithScore,
 			returnScore,
 			ourCarriage,
@@ -258,7 +258,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 
 	
 	#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_127_RECURSIVE_SEARCH
-		this->explorePlain_n127_recursiveSearch(
+		this->explorePlain_n200n750_recursiveSearch(
 			isReturnWithScore,
 			ourCarriage,
 			depth,
@@ -279,7 +279,7 @@ iid_start:
 
 
 	#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_130_INTERNAL_ID
-		this->explorePlain_n130_internalIterativeDeepening(
+		this->explorePlain_n200n800_internalIterativeDeepening(
 			depth,
 			ttMove,
 			inCheck,
@@ -303,10 +303,12 @@ iid_start:
 		pFlashlight,
 		this->getBeta_n140(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
 		);
+
+
 	const CheckInfo ci(pos);
 
 
-	this->explorePlain_n150_beforeLoop_splitPointStart(
+	this->explorePlain_n200n900_beforeLoop_splitPointStart(
 		ttMove,
 		depth,
 		score,
@@ -327,13 +329,16 @@ iid_start:
 		) {
 
 		
+		// 指さずに探索する前
+
+
 		if (move == excludedMove) { continue; }	// ムーブが一致していれば、次のループへ☆
 
 
 		bool isContinue = false;
 
 
-		this->explorePlain_n200_loopHeader(
+		this->explorePlain_n300n500_loopHeader(
 			isContinue,
 			pos,
 			move,
@@ -344,7 +349,7 @@ iid_start:
 		if (isContinue) { continue; }
 
 
-		this->explorePlain_n240_loopHeader(
+		this->explorePlain_n300n900_loopHeader(
 			extension,
 			captureOrPawnPromotion,
 			move,
@@ -355,8 +360,11 @@ iid_start:
 			);
 
 
+		// 指さずに探索処理
+
+
 		#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_260_RECURSIVE_SEARCH
-			this->explorePlain_n260_recursiveSearch(
+			this->explorePlain_n400n500_recursiveSearch(
 				ourCarriage,
 				givesCheck,
 				pos,
@@ -377,7 +385,7 @@ iid_start:
 
 		#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_273_FUTILITY_PRUNING
 			// 無駄枝狩り☆（＾▽＾）非PVだけ行う☆！
-			this->explorePlain_n290_futilityPruning(
+			this->explorePlain_n400n550_futilityPruning(
 				isContinue,
 				ourCarriage,
 				captureOrPawnPromotion,
@@ -398,7 +406,7 @@ iid_start:
 		#endif
 
 
-		this->explorePlain_n320_continue(
+		this->explorePlain_n400n600_continue(
 			isContinue,
 			pos,
 			move,
@@ -408,16 +416,16 @@ iid_start:
 
 
 		// 本筋かどうか判定するぜ（＾～＾）
-		isPVMove = this->explorePlain_n410_isPvMove(moveCount);
+		isPVMove = this->explorePlain_n400n700_isPvMove(moveCount);
 
 
-		this->explorePlain_n440_setMove(
+		this->explorePlain_n400n800_setMove(
 			move,
 			&pFlashlight);
 		if (isContinue) { continue; }
 
 
-		this->explorePlain_n470_memoryVariationMove(
+		this->explorePlain_n400n900_memoryVariationMove(
 			captureOrPawnPromotion,
 			playedMoveCount,
 			movesSearched,
@@ -425,7 +433,10 @@ iid_start:
 			);
 
 
-		this->explorerPlain_n340_doMove(
+		// ドゥムーブ処理
+
+
+		this->explorerPlain_n500n100_doMove(
 			pos,
 			move,
 			st,
@@ -435,8 +446,14 @@ iid_start:
 			);
 
 
+		// ドゥムーブ後処理
+
+
+		// 探索処理
+
+
 		#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_360_RECURSIVE_SEARCH
-			this->explorePlain_n360_recursiveSearch(
+			this->explorePlain_n500n500_recursiveSearch(
 				ourCarriage,
 				depth,
 				isPVMove,
@@ -455,8 +472,11 @@ iid_start:
 		#endif
 
 
+		// 探索後処理
+
+
 		#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_380_NON_PV_RECURSIVE_SEARCH
-			this->explorePlain_n380_nonPVRecursiveSearch(
+			this->explorePlain_n500n600_nonPVRecursiveSearch(
 				ourCarriage,
 				doFullDepthSearch,
 				score,
@@ -469,10 +489,17 @@ iid_start:
 		#endif
 
 
-		this->explorePlain_n420_undoMove(
+		// アンドゥ処理
+
+
+		this->explorePlain_n700n100_undoMove(
 			pos,
 			move
 			);
+
+
+		// アンドゥ後処理
+
 
 		assert(-ScoreInfinite < score && score < ScoreInfinite);
 
@@ -480,7 +507,7 @@ iid_start:
 		if (ourCarriage.m_signals.m_isIterationDeepingStop || pThisThread->IsUselessSplitedNode()) { return score; }
 
 
-		this->explorePlain_n680_findRootNode(
+		this->explorePlain_n700n600_findRootNode(
 			ourCarriage,
 			move,
 			isPVMove,
@@ -488,10 +515,13 @@ iid_start:
 			score,
 			pos
 			);
+
+
+		// アップデートα処理
+
+
 		bool isBreak = false;
-
-
-		this->explorePlain_n710_updateAlpha(
+		this->explorePlain_n700n700_updateAlpha(
 			isBreak,
 			ourCarriage,
 			move,
@@ -507,9 +537,12 @@ iid_start:
 		if (isBreak) { break; }
 
 
+		// アップデートα後処理
+
+
 		#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_FORK_NEW_MONKEY
 			// 猿を増やすの、止めるぜ（＾～＾）
-			this->explorePlain_n740_forkNewMonkey(
+			this->explorePlain_n770_forkNewMonkey(
 				isBreak,
 				ourCarriage,
 				depth,
@@ -530,11 +563,13 @@ iid_start:
 	}
 
 
-	if (this->getReturn_n780()) { return bestScore; }
+	// ループ後処理
 
 
-	// step20
-	this->explorePlain_n800(
+	if (this->getReturn_n800n400()) { return bestScore; }
+
+
+	this->explorePlain_n800n500(
 		moveCount,
 		excludedMove,
 		ourCarriage,
@@ -548,8 +583,7 @@ iid_start:
 		bestMove,
 		inCheck,
 		pos,
-		movesSearched
-		);
+		movesSearched);
 
 
 	return bestScore;

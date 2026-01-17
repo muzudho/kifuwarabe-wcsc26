@@ -141,7 +141,7 @@ public:
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pTtEntry"></param>
 	/// <param name="pos"></param>
-	virtual inline void explorePlain_n110_getTtMove(
+	virtual inline void explorePlain_n200n400_getTtMove(
 		Move& ttMove,
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
@@ -164,7 +164,7 @@ public:
 	/// <param name="beta"></param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="ttMove"></param>
-	virtual inline void explorePlain_n116_returnStep4y(
+	virtual inline void explorePlain_n200n450_returnStep4y(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
 		OurCarriage& ourCarriage,
@@ -210,7 +210,7 @@ public:
 	/// <param name="posKey"></param>
 	/// <param name="depth"></param>
 	/// <param name="bestMove"></param>
-	virtual inline void explorePlain_n118_returnWithValue(
+	virtual inline void explorePlain_n200n500_returnWithValue(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
 		OurCarriage& ourCarriage,
@@ -240,7 +240,7 @@ public:
 	/// <param name="ttMove"></param>
 	/// <param name="pos"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void explorePlain_n122_nonPVRazoring(
+	virtual inline void explorePlain_n200n600_nonPVRazoring(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
 		OurCarriage& ourCarriage,
@@ -264,7 +264,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="beta"></param>
 	/// <param name="eval"></param>
-	virtual inline void explorePlain_n123_returnWithValue(
+	virtual inline void explorePlain_n200n650_returnWithValue(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
 		Flashlight** ppFlashlight,
@@ -291,7 +291,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="cutNode"></param>
 	/// <param name="threatMove"></param>
-	virtual inline void explorePlain_n125_nonPVRecursiveSearch(
+	virtual inline void explorePlain_n200n700_nonPVRecursiveSearch(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
 		OurCarriage& ourCarriage,
@@ -323,7 +323,7 @@ public:
 	/// <param name="st"></param>
 	/// <param name="score"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void explorePlain_n127_recursiveSearch(
+	virtual inline void explorePlain_n200n750_recursiveSearch(
 		bool& isReturnWithScore,
 		OurCarriage& ourCarriage,
 		const Depth& depth,
@@ -353,7 +353,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="ppTtEntry"></param>
 	/// <param name="posKey"></param>
-	virtual inline void explorePlain_n130_internalIterativeDeepening(
+	virtual inline void explorePlain_n200n800_internalIterativeDeepening(
 		const Depth depth,
 		Move& ttMove,
 		bool& inCheck,
@@ -428,7 +428,7 @@ public:
 	/// <param name="singularExtensionNode"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="pTtEntry"></param>
-	virtual inline void explorePlain_n150_beforeLoop_splitPointStart(
+	virtual inline void explorePlain_n200n900_beforeLoop_splitPointStart(
 		Move& ttMove,
 		const Depth depth,
 		ScoreIndex& score,
@@ -466,7 +466,7 @@ public:
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void explorePlain_n200_loopHeader(
+	virtual inline void explorePlain_n300n500_loopHeader(
 		bool& isContinue,
 		Position& pos,
 		Move& move,
@@ -497,7 +497,7 @@ public:
 	/// <param name="newDepth"></param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="beta"></param>
-	virtual inline void explorePlain_n290_futilityPruning(
+	virtual inline void explorePlain_n400n550_futilityPruning(
 		bool& isContinue,
 		OurCarriage& ourCarriage,
 		bool& captureOrPawnPromotion,
@@ -545,7 +545,7 @@ public:
 	/// <param name="move"></param>
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
-	virtual inline void explorePlain_n320_continue(
+	virtual inline void explorePlain_n400n600_continue(
 		bool& isContinue,
 		Position& pos,
 		Move& move,
@@ -586,7 +586,7 @@ public:
 	/// 本筋かどうか判定するぜ（＾～＾）
 	/// </summary>
 	/// <param name="moveCount"></param>
-	virtual inline bool explorePlain_n410_isPvMove(
+	virtual inline bool explorePlain_n400n700_isPvMove(
 		int moveCount) const override
 	{
 		return (moveCount == 1);	// PVノードだぜ☆！（＾ｑ＾）
@@ -598,7 +598,7 @@ public:
 	/// </summary>
 	/// <param name="move"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void explorePlain_n440_setMove(
+	virtual inline void explorePlain_n400n800_setMove(
 		Move move,
 		Flashlight** ppFlashlight) const override
 	{
@@ -645,7 +645,7 @@ public:
 	/// <param name="doFullDepthSearch"></param>
 	/// <param name="alpha"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void explorePlain_n560_setAlpha(
+	virtual inline void explorePlain_n600n700_setAlpha(
 		bool& doFullDepthSearch,
 		ScoreIndex& alpha,
 		SplitedNode** ppSplitedNode
@@ -676,7 +676,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestScore"></param>
 	/// <param name="alpha"></param>
-	virtual inline void explorePlain_n650_setAlpha(
+	virtual inline void explorePlain_n700n500_setAlpha(
 		SplitedNode** ppSplitedNode,
 		ScoreIndex& bestScore,
 		ScoreIndex& alpha
@@ -699,7 +699,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestMove"></param>
 	/// <param name="beta"></param>
-	virtual inline void explorePlain_n710_updateAlpha(
+	virtual inline void explorePlain_n700n700_updateAlpha(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		Move& move,
@@ -749,7 +749,7 @@ public:
 	/// <param name="moveCount"></param>
 	/// <param name="mp"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void explorePlain_n740_forkNewMonkey(
+	virtual inline void explorePlain_n770_forkNewMonkey(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		const Depth depth,
@@ -802,7 +802,7 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	virtual inline bool getReturn_n780() const override {
+	virtual inline bool getReturn_n800n400() const override {
 		// 非スプリット・ポイントは　ステップ２０を実行する前に途中抜けはしないぜ☆（＾ｑ＾）
 		return false;
 	}
