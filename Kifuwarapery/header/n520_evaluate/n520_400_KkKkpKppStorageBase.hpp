@@ -435,7 +435,7 @@ struct KkKkpKppStorageBase {
 				Square jto = jtoBB.PopFirstOneFromI9();
 				if (kfile == FileE && E1 < jto)
 					jto = ConvSquare::inverseFile_n40(jto);
-				const int distance = g_squareDistance.GetSquareDistance(jsq, jto);
+				const int distance = g_twoSquaresDistanceKind.GetDistanceKind(jsq, jto);
 				// distance == 1 で 1/8 で 3bit シフトにする程度の寄与にする。
 #if defined EVAL_PHASE3
 				ret[retIdx++] = std::make_pair(&kpps.kpe[ksq][i][jcolor][jto] - GetKppOneArrayFirst(0), MaxWeight() >> (distance + 4));
@@ -529,7 +529,7 @@ struct KkKkpKppStorageBase {
 					}
 					const Rank ijrank = ConvSquare::toRank_n10(ijsq_tmp);
 					const File ijfile = ConvSquare::toFile_n10(ijsq_tmp);
-					const int distance = g_squareDistance.GetSquareDistance(jisq, jito);
+					const int distance = g_twoSquaresDistanceKind.GetDistanceKind(jisq, jito);
 #if defined EVAL_PHASE3
 					ret[retIdx++] = std::make_pair(&kpps.kpe[ksq][ij][jicolor][jito] - GetKppOneArrayFirst(0), MaxWeight() >> (distance + 4));
 					ret[retIdx++] = std::make_pair(&kpps.xpe[ConvSquare::toFile_n10(ksq)][ij][jicolor][jito] - GetKppOneArrayFirst(0), MaxWeight() >> (distance + 4));
@@ -613,11 +613,11 @@ struct KkKkpKppStorageBase {
 				Bitboard jtoBB = jmask.NotThisAnd(UtilAttack::GetAttacksFrom(jpt, jcolor, jsq, jmask));
 				while (itoBB.Exists1Bit()) {
 					const Square ito = itoBB.PopFirstOneFromI9();
-					const int itodistance = g_squareDistance.GetSquareDistance(isq, ito);
+					const int itodistance = g_twoSquaresDistanceKind.GetDistanceKind(isq, ito);
 					Bitboard jtoBB_tmp = jtoBB;
 					while (jtoBB_tmp.Exists1Bit()) {
 						const Square jto = jtoBB_tmp.PopFirstOneFromI9();
-						const int jtodistance = g_squareDistance.GetSquareDistance(jsq, jto);
+						const int jtodistance = g_twoSquaresDistanceKind.GetDistanceKind(jsq, jto);
 						const int distance = itodistance + jtodistance - 1;
 						{
 							Square ito_tmp = ito;
@@ -773,7 +773,7 @@ struct KkKkpKppStorageBase {
 						UtilAttack::GetAttacksFrom(ipt, icolor, isq, g_setMaskBB.GetSetMaskBb(ksq)));
 					while (itoBB.Exists1Bit()) {
 						Square ito = itoBB.PopFirstOneFromI9();
-						const int distance = g_squareDistance.GetSquareDistance(isq, ito);
+						const int distance = g_twoSquaresDistanceKind.GetDistanceKind(isq, ito);
 						ret[retIdx++] = std::make_pair(sign*(&kkps.r_ke[icolor][m_R_Mid + -abs(ConvSquare::toFile_n10(ksq) - ConvSquare::toFile_n10(ito))][m_R_Mid + ConvSquare::toRank_n10(ksq) - ConvSquare::toRank_n10(ito)] - GetKkpOneArrayFirst(0)), MaxWeight() >> (distance + 4));
 					}
 #endif
@@ -792,7 +792,7 @@ struct KkKkpKppStorageBase {
 					UtilAttack::GetAttacksFrom(ipt, icolor, isq, g_setMaskBB.GetSetMaskBb(ksq)));
 				while (itoBB.Exists1Bit()) {
 					Square ito = itoBB.PopFirstOneFromI9();
-					const int distance = g_squareDistance.GetSquareDistance(isq, ito);
+					const int distance = g_twoSquaresDistanceKind.GetDistanceKind(isq, ito);
 					if (ConvSquare::toFile_n10(ksq) == FileE && E1 < ito)
 						ito = ConvSquare::inverseFile_n40(ito);
 					ret[retIdx++] = std::make_pair(sign*(&kkps.ke[ksq][icolor][ito] - GetKkpOneArrayFirst(0)), MaxWeight() >> (distance + 4));
@@ -858,7 +858,7 @@ struct KkKkpKppStorageBase {
 			Bitboard itoBB = mask.NotThisAnd(UtilAttack::GetAttacksFrom(ipt, icolor, isq, mask));
 			while (itoBB.Exists1Bit()) {
 				Square ito = itoBB.PopFirstOneFromI9();
-				const int distance = g_squareDistance.GetSquareDistance(isq, ito);
+				const int distance = g_twoSquaresDistanceKind.GetDistanceKind(isq, ito);
 				if (ConvSquare::toFile_n10(ksq0) == FileE && ConvSquare::toFile_n10(ksq1) == FileE && E1 < ito)
 					ito = ConvSquare::inverseFile_n40(ito);
 #if defined EVAL_PHASE3

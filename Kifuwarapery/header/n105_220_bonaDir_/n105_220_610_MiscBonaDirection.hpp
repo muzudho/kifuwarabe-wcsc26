@@ -23,14 +23,15 @@ public:
 	/// <param name="sq1"></param>
 	void InitializeSquareDistance(SquareDistance& squareDistance, Square sq0, Square sq1) const
 	{
-		// DirecMisc な関係は全て距離 1 にしてもKPE学習には問題無いんだけれど。
-		squareDistance.SetValue(sq0, sq1, 0);
+		// Misc（ボナンザでの向き） な関係は全て距離 1 にしてもKPE学習には問題無いんだけれど。
+		squareDistance.SetDistanceKind(sq0, sq1, 0);
+
+		// 黒白の桂馬の利き
 		if (
 			g_setMaskBB.IsSet(&g_knightAttackBb.GetControllBb(Black, sq0), sq1) ||
-			g_setMaskBB.IsSet(&g_knightAttackBb.GetControllBb(White, sq0), sq1)
-			)
+			g_setMaskBB.IsSet(&g_knightAttackBb.GetControllBb(White, sq0), sq1))
 		{
-			squareDistance.SetValue(sq0, sq1, 1);
+			squareDistance.SetDistanceKind(sq0, sq1, 1);
 		}
 	}
 };

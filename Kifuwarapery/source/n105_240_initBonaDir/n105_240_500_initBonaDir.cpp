@@ -15,8 +15,11 @@
 void UtilSquareDistance::initSquareDistance_app10(SquareDistance& squareDistance) {
 	for (Square sq0 = I9; sq0 < SquareNum; ++sq0) {
 		for (Square sq1 = I9; sq1 < SquareNum; ++sq1) {
-			// ボナンザの［向き］を利用
-			g_bonaDirectionArray[g_squareRelation.GetSquareRelation(sq0, sq1)]->InitializeSquareDistance(squareDistance, sq0, sq1);
+			// ボナンザの［向き］を使って、マス距離を更新
+			g_bonaDirectionArray[g_squareRelation.GetSquareRelation(sq0, sq1)]->InitializeSquareDistance(
+				squareDistance,	// 更新
+				sq0,
+				sq1);
 		}
 	}
 }

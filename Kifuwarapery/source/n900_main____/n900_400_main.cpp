@@ -111,7 +111,7 @@ void Main01::initialize_app10()
 		g_lanceAttackBb.initCheckTableLance_app10();
 
 		SYNCCOUT << "(^q^) 1-18. ２点の距離初期化！" << SYNCENDL;
-		UtilSquareDistance::initSquareDistance_app10(g_squareDistance);
+		UtilSquareDistance::initSquareDistance_app10(g_twoSquaresDistanceKind);
 
 		SYNCCOUT << "(^q^) I-19. 定跡初期化！" << SYNCENDL;
 		Book::init_app10();
