@@ -314,7 +314,7 @@ public:
 		if (pTtEntry != nullptr
 			&& depth <= pTtEntry->GetDepth()
 			&& ttScore != ScoreNone // アクセス競合が起きたときのみ、ここに引っかかる。
-			&& this->GetConditionInStep4y(
+			&& this->getCondition_n200n450n500(
 				pTtEntry,
 				beta,
 				ttScore)
@@ -348,10 +348,10 @@ public:
 	/// <param name="beta"></param>
 	/// <param name="ttScore"></param>
 	/// <returns></returns>
-	virtual inline bool GetConditionInStep4y(
+	virtual inline bool getCondition_n200n450n500(
 		const TTEntry* pTtEntry,
-		ScoreNumber& beta,
-		ScoreNumber& ttScore) const = 0;
+		ScoreNumber beta,
+		ScoreNumber ttScore) const = 0;
 
 
 	/// <summary>

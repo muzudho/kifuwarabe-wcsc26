@@ -112,10 +112,10 @@ public:
 	/// <param name="beta"></param>
 	/// <param name="ttScore"></param>
 	/// <returns></returns>
-	virtual inline bool GetConditionInStep4y(
+	virtual inline bool getCondition_n200n450n500(
 		const TTEntry* pTtEntry,
-		ScoreNumber& beta,
-		ScoreNumber& ttScore
+		ScoreNumber beta,
+		ScoreNumber ttScore
 		) const override {
 		return  beta <= ttScore ?
 			(pTtEntry->GetBoundKind() & Bound::BoundLower)
