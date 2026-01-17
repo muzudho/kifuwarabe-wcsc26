@@ -1355,24 +1355,6 @@
     <ClCompile Include="source\n358_dropMake\n358_500_dropMakerArray.cpp">
       <Filter>source\n358_dropMake</Filter>
     </ClCompile>
-    <ClCompile Include="source\n351_bonaDir_\n351_090_NullBonaMove.cpp">
-      <Filter>source\n351_bonaDir_</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n351_bonaDir_\n351_100_MiscBonaMove.cpp">
-      <Filter>source\n351_bonaDir_</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n351_bonaDir_\n351_120_FileBonaMove.cpp">
-      <Filter>source\n351_bonaDir_</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n351_bonaDir_\n351_130_RankBonaMove.cpp">
-      <Filter>source\n351_bonaDir_</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n351_bonaDir_\n351_140_DiagonalNESWBonaMove.cpp">
-      <Filter>source\n351_bonaDir_</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n351_bonaDir_\n351_150_DiagonalNWSEBonaMove.cpp">
-      <Filter>source\n351_bonaDir_</Filter>
-    </ClCompile>
     <ClCompile Include="source\n351_bonaDir_\n351_500_bonaDirArray.cpp">
       <Filter>source\n351_bonaDir_</Filter>
     </ClCompile>
@@ -1743,9 +1725,6 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="source\n250_pieceTyp\n350_070_ptAbstract.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n351_bonaDir_\n351_500_bonaDirArray.cpp">
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="source\n105_220_bonaDir_\n105_220_630_RankBonaDirection.cpp">
