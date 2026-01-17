@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "n760_250_MonkeyDefault.hpp"
+#include "n760_250_Monkey.hpp"
 
 
 class OurCarriage;
@@ -7,13 +7,13 @@ class OurCarriage;
 
 /// <summary>
 ///		<pre>
-/// キャプテン☆（＾ｑ＾） わたしが名前を変えた☆（＾▽＾）
+/// オラウータン☆（＾ｑ＾） わたしが名前を変えた☆（＾▽＾）
 /// 
-///		- 元の名前： `ＭainThread`
+///		- 元の名前： `ＭainThread`, `ＣaptainMonkey`
 ///		- マスタースレッドに対応する
 ///		</pre>
 /// </summary>
-class CaptainMonkey : public MonkeyDefault {
+class Orangutans : public Monkey {
 
 
 public:
@@ -41,10 +41,10 @@ public:
     /// 生成☆（＾ｑ＾）
 	/// </summary>
 	/// <param name="s"></param>
-	explicit CaptainMonkey(
+	explicit Orangutans(
 		OurCarriage* s
 	) :
-		MonkeyDefault(s),
+		Monkey(s),
 		m_isMasterThread(true)
 	{
 	}

@@ -406,9 +406,9 @@
     <ClInclude Include="header\n755_sword___\n755_100_SwordRoot.hpp" />
     <ClInclude Include="header\n755_sword___\n755_110_SwordPv.hpp" />
     <ClInclude Include="header\n755_sword___\n755_120_SwordNonPv.hpp" />
-    <ClInclude Include="header\n760_thread__\n760_250_MonkeyDefault.hpp" />
-    <ClInclude Include="header\n760_thread__\n760_300_CaptainMonkey.hpp" />
-    <ClInclude Include="header\n760_thread__\n760_350_ErrandMonkey.hpp" />
+    <ClInclude Include="header\n760_thread__\n760_250_Monkey.hpp" />
+    <ClInclude Include="header\n760_thread__\n760_300_Orangutans.hpp" />
+    <ClInclude Include="header\n760_thread__\n760_350_Chimpanzee.hpp" />
     <ClInclude Include="header\n760_thread__\n760_400_MonkiesPub.hpp" />
     <ClInclude Include="header\n800_learn___\n800_100_stopwatch.hpp" />
     <ClInclude Include="header\n800_learn___\n800_500_learner.hpp" />

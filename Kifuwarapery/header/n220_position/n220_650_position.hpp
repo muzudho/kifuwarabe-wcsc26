@@ -29,7 +29,7 @@ using StateStackPtr = std::unique_ptr<std::stack<StateInfo> >;
 
 
 // 依存関係回避のため。
-class MonkeyDefault;
+class Monkey;
 class OurCarriage;
 
 
@@ -56,9 +56,9 @@ public:
 
 	Position(const Position& pos);
 
-	Position(const Position& pos, MonkeyDefault* th);
+	Position(const Position& pos, Monkey* th);
 
-	Position(const std::string& sfen, MonkeyDefault* th, OurCarriage* s);
+	Position(const std::string& sfen, Monkey* th, OurCarriage* s);
 
 
 	// ========================================
@@ -79,7 +79,7 @@ public:
 	/// </summary>
 	/// <param name="sfen"></param>
 	/// <param name="th"></param>
-	void Set(const std::string& sfen, MonkeyDefault* th);
+	void Set(const std::string& sfen, Monkey* th);
 
 
 	/// <summary>
@@ -514,7 +514,7 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	MonkeyDefault* GetThisThread() const;
+	Monkey* GetThisThread() const;
 
 
 	/// <summary>
@@ -821,7 +821,7 @@ private:
 	/// <summary>
 	/// 
 	/// </summary>
-	MonkeyDefault* m_thisThread_;
+	Monkey* m_thisThread_;
 
 	/// <summary>
 	/// 

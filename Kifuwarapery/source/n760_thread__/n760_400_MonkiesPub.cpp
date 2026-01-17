@@ -4,7 +4,7 @@
 #include "../../header/n407_moveGen_/n407_900_moveList.hpp"
 #include "../../header/n560_timeMgr_/n560_100_limitsDuringGo.hpp"
 #include "../../header/n640_searcher/n640_450_rootMove.hpp"
-#include "../../header/n760_thread__/n760_250_MonkeyDefault.hpp"
+#include "../../header/n760_thread__/n760_250_Monkey.hpp"
 #include "../../header/n760_thread__/n760_400_MonkiesPub.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 
@@ -25,7 +25,7 @@
 /// <returns></returns>
 template <typename MONKT> MONKT* newMonkeyWithThread(OurCarriage* s) {
 	MONKT* monkey = new MONKT(s);
-	monkey->m_threadHandle = std::thread(&MonkeyDefault::startMonkey_n10, monkey); // move constructor
+	monkey->m_threadHandle = std::thread(&Monkey::startMonkey_n10, monkey); // move constructor
 	return monkey;
 }
 
@@ -34,7 +34,7 @@ template <typename MONKT> MONKT* newMonkeyWithThread(OurCarriage* s) {
 /// 
 /// </summary>
 /// <param name="th"></param>
-void deleteThread(MonkeyDefault* th) {
+void deleteThread(Monkey* th) {
 	th->m_isEndOfSearch = true;
 	th->NotifyOne();
 	th->m_threadHandle.join(); // Wait for thread termination
@@ -57,11 +57,11 @@ void MonkiesPub::initializeMonkiePub_app10(OurCarriage* s)
 	#if defined LEARN
 	#else
 		// お使い猿
-		this->m_pErrandMonkey_ = newMonkeyWithThread<ErrandMonkey>(s);
+		this->m_pErrandMonkey_ = newMonkeyWithThread<Chimpanzee>(s);
 	#endif
 
 	// キャプテン猿
-	this->m_itemMonkies.push_back(newMonkeyWithThread<CaptainMonkey>(s));
+	this->m_defaultMonkies.push_back(newMonkeyWithThread<Orangutans>(s));
 
 	newAllMonkiesByUSIOptions(s);
 }
@@ -77,7 +77,7 @@ void MonkiesPub::Exit() {
 		deleteThread(m_pErrandMonkey_);
 	#endif
 
-	for (auto monkey : (*this).m_itemMonkies) {
+	for (auto monkey : (*this).m_defaultMonkies) {
 		deleteThread(monkey);
 	}
 }
@@ -105,16 +105,16 @@ void MonkiesPub::newAllMonkiesByUSIOptions(OurCarriage* pOurCarriage) {
 	assert(0 < numberOfMonkies);
 
 	// 猿で埋める
-	while (this->m_itemMonkies.size() < numberOfMonkies)
+	while (this->m_defaultMonkies.size() < numberOfMonkies)
 	{
-		this->m_itemMonkies.push_back(newMonkeyWithThread<MonkeyDefault>(pOurCarriage));
+		this->m_defaultMonkies.push_back(newMonkeyWithThread<Monkey>(pOurCarriage));
 	}
 
 	// 多すぎる猿は消す
-	while (numberOfMonkies < this->m_itemMonkies.size())
+	while (numberOfMonkies < this->m_defaultMonkies.size())
 	{
-		deleteThread(this->m_itemMonkies.back());
-		this->m_itemMonkies.pop_back();
+		deleteThread(this->m_defaultMonkies.back());
+		this->m_defaultMonkies.pop_back();
 	}
 }
 
@@ -124,8 +124,8 @@ void MonkiesPub::newAllMonkiesByUSIOptions(OurCarriage* pOurCarriage) {
 /// </summary>
 /// <param name="master"></param>
 /// <returns></returns>
-MonkeyDefault* MonkiesPub::GetAvailableSlave(MonkeyDefault* master) const {
-	for (auto elem : (*this).m_itemMonkies) {
+Monkey* MonkiesPub::GetAvailableSlave(Monkey* master) const {
+	for (auto elem : (*this).m_defaultMonkies) {
 		if (elem->SetLastSplitNodeSlavesMask(master)) {
 			return elem;
 		}
@@ -149,7 +149,7 @@ void MonkiesPub::SetCurrWorrior(const int maxPly) {
 /// </summary>
 void MonkiesPub::WaitForThinkFinished()
 {
-	CaptainMonkey* t = GetFirstCaptain();
+	Orangutans* t = GetFirstCaptain();
 	std::unique_lock<Mutex> lock(t->m_sleepLock);
 	m_sleepCond_.wait(lock, [&] { return !(t->m_isMasterThread); });
 }

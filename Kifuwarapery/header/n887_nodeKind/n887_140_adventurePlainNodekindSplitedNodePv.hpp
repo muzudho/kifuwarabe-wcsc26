@@ -666,7 +666,7 @@ public:
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		const Depth depth,
-		MonkeyDefault** ppThisThread,
+		Monkey** ppThisThread,
 		ScoreIndex& bestScore,
 		ScoreIndex& beta,
 		Position& pos,

@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "n760_250_MonkeyDefault.hpp"
+#include "n760_250_Monkey.hpp"
 
 
 class OurCarriage;
@@ -7,12 +7,12 @@ class OurCarriage;
 
 /// <summary>
 ///		<pre>
-/// 部下
+/// チンパンジー
 /// 
-///		- 元の名前： `ＴimerThread`
+///		- 元の名前： `ＴimerThread`, `ＥrrandMonkey`
 ///		</pre>
 /// </summary>
-class ErrandMonkey : public MonkeyDefault {
+class Chimpanzee : public Monkey {
 
 
 public:
@@ -38,7 +38,7 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="s"></param>
-	explicit ErrandMonkey(OurCarriage* s) : MonkeyDefault(s), m_lifetimeMilliseconds(0) {}
+	explicit Chimpanzee(OurCarriage* s) : Monkey(s), m_lifetimeMilliseconds(0) {}
 
 
 	// ========================================

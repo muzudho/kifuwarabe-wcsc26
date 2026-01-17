@@ -24,11 +24,11 @@ const int g_MaxSplitedNodesPerThread = 8;
 ///		<pre>
 /// 猿☆（＾▽＾） わたしが名前を変えた☆（＾▽＾） ［わたしたちの馬車］を持っているぜ（＾▽＾）
 /// 
-///		- 元の名前： `Ｔhread`
+///		- 元の名前： `Ｔhread`, `ＭonkeyAbstract`
 ///		- ゲームツリーを戦線拡大していくぜ☆！（＾ｑ＾）
 ///		</pre>
 /// </summary>
-class MonkeyDefault {
+class Monkey {
 
 
 public:
@@ -43,13 +43,13 @@ public:
 	/// 生成。
 	/// </summary>
 	/// <param name="s"></param>
-	explicit MonkeyDefault(OurCarriage* s);
+	explicit Monkey(OurCarriage* s);
 
 
 	/// <summary>
 	/// 破棄。
 	/// </summary>
-	virtual ~MonkeyDefault() {};
+	virtual ~Monkey() {};
 
 
 	// ========================================
@@ -142,7 +142,7 @@ public:
 	/// </summary>
 	/// <param name="master"></param>
 	/// <returns></returns>
-	bool SetLastSplitNodeSlavesMask(MonkeyDefault* master) const;
+	bool SetLastSplitNodeSlavesMask(Monkey* master) const;
 
 
 	/// <summary>

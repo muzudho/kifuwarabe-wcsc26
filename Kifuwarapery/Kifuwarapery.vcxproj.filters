@@ -828,16 +828,16 @@
     <ClInclude Include="header\n223_move____\n223_500_flashlight.hpp">
       <Filter>header\n223_move____</Filter>
     </ClInclude>
-    <ClInclude Include="header\n760_thread__\n760_350_ErrandMonkey.hpp">
+    <ClInclude Include="header\n760_thread__\n760_350_Chimpanzee.hpp">
       <Filter>header\n760_thread__</Filter>
     </ClInclude>
     <ClInclude Include="header\n760_thread__\n760_400_MonkiesPub.hpp">
       <Filter>header\n760_thread__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n760_thread__\n760_300_CaptainMonkey.hpp">
+    <ClInclude Include="header\n760_thread__\n760_300_Orangutans.hpp">
       <Filter>header\n760_thread__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n760_thread__\n760_250_MonkeyDefault.hpp">
+    <ClInclude Include="header\n760_thread__\n760_250_Monkey.hpp">
       <Filter>header\n760_thread__</Filter>
     </ClInclude>
     <ClInclude Include="header\n885_searcher\n885_490_adventureMountainIterativeDeepeningLoop.hpp">

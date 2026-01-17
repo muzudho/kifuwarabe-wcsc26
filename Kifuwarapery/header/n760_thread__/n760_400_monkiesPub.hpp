@@ -9,9 +9,9 @@
 #include "../n560_timeMgr_/n560_100_limitsDuringGo.hpp"
 #include "../n640_searcher/n640_040_nodeKind.hpp"
 #include "../n640_searcher/n640_440_splitedNode.hpp"
-#include "n760_250_MonkeyDefault.hpp"
-#include "n760_300_CaptainMonkey.hpp"
-#include "n760_350_ErrandMonkey.hpp"
+#include "n760_250_Monkey.hpp"
+#include "n760_300_Orangutans.hpp"
+#include "n760_350_Chimpanzee.hpp"
 
 
 // 依存関係の回避
@@ -56,7 +56,7 @@ public:
 	/// <summary>
 	/// お客の猿たち
 	/// </summary>
-	std::vector<MonkeyDefault*> m_itemMonkies;
+	std::vector<Monkey*> m_defaultMonkies;
 
 	/// <summary>
 	/// マックス・スレッド？
@@ -85,7 +85,7 @@ public:
 	/// メインスレッド？
 	/// </summary>
 	/// <returns></returns>
-	CaptainMonkey* GetFirstCaptain() { return static_cast<CaptainMonkey*>((*this).m_itemMonkies[0]); }
+	Orangutans* GetFirstCaptain() { return static_cast<Orangutans*>((*this).m_defaultMonkies[0]); }
 
 
 	/// <summary>
@@ -99,7 +99,7 @@ public:
 	/// 現在の部下スレッド
 	/// </summary>
 	/// <returns></returns>
-	ErrandMonkey* GetCurrSubordinate() { return this->m_pErrandMonkey_; }
+	Chimpanzee* GetCurrSubordinate() { return this->m_pErrandMonkey_; }
 
 
 	// ========================================
@@ -145,7 +145,7 @@ public:
 	/// </summary>
 	/// <param name="master"></param>
 	/// <returns></returns>
-	MonkeyDefault* GetAvailableSlave(MonkeyDefault* master) const;
+	Monkey* GetAvailableSlave(Monkey* master) const;
 
 
 	/// <summary>
@@ -187,7 +187,7 @@ private:
 	/// <summary>
 	/// タイマースレッド☆
 	/// </summary>
-	ErrandMonkey* m_pErrandMonkey_;
+	Chimpanzee* m_pErrandMonkey_;
 
 
 	/// <summary>
