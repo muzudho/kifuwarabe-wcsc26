@@ -545,7 +545,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="cutNode"></param>
 	/// <param name="threatMove"></param>
-	virtual inline void ExplorerPlainStep8_NonPV(
+	virtual inline void explorePlain_n125_nonPVRecursiveSearch(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
 		OurCarriage& ourCarriage,

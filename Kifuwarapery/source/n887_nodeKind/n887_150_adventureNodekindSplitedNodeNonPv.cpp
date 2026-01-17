@@ -250,7 +250,7 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::explorePlain_n10(
 	if (isReturnWithScore) { return returnScore; }
 
 	// step8
-	this->ExplorerPlainStep8_NonPV(
+	this->explorePlain_n125_nonPVRecursiveSearch(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
