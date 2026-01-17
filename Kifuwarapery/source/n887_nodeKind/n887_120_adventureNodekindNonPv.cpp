@@ -262,24 +262,29 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 		);
 	if (isReturnWithScore) { return score; }
 
+
 	// 内側の反復深化探索☆？（＾ｑ＾）
 iid_start:
-	// step10
-	this->explorePlain_n130_internalIterativeDeepening(
-		depth,
-		ttMove,
-		inCheck,
-		beta,
-		&pFlashlight,
-		ourCarriage,
-		pos,
-		alpha,
-		&pTtEntry,//セットされるぜ☆
-		posKey
-		);
+
+
+	#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_130_INTERNAL_ID
+		this->explorePlain_n130_internalIterativeDeepening(
+			depth,
+			ttMove,
+			inCheck,
+			beta,
+			&pFlashlight,
+			ourCarriage,
+			pos,
+			alpha,
+			&pTtEntry,//セットされるぜ☆
+			posKey
+			);
+	#endif
+
 
 //split_point_start:
-	NextmoveEvent mp(
+	NextmoveEvent nextMoveEvent(
 		pos,
 		ttMove,
 		depth,
@@ -288,6 +293,7 @@ iid_start:
 		this->getBeta_n140(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
 		);
 	const CheckInfo ci(pos);
+
 
 	this->explorePlain_n150_beforeLoop_splitPointStart(
 		ttMove,
@@ -299,19 +305,22 @@ iid_start:
 		pTtEntry//pv,nonPv の２つで、nullptrはダメ☆
 		);
 
+
 	// step11
 	// Loop through moves
 	while (
 		!(
 			// スプリット・ポイントかどうかで、取ってくる指し手が変わる☆
-			move = this->getNextMove_n160(mp)
+			move = this->getNextMove_n160(nextMoveEvent)
 			).IsNone()
 		) {
 
-		// DoStep11b
+		
 		if (move == excludedMove) { continue; }	// ムーブが一致していれば、次のループへ☆
 
+
 		bool isContinue = false;
+
 
 		this->explorePlain_n180_loopHeader(
 			isContinue,
@@ -322,6 +331,7 @@ iid_start:
 			&pSplitedNode
 			);
 		if (isContinue) { continue; }
+
 
 		this->explorePlain_n240_loopHeader(
 			extension,
@@ -501,7 +511,7 @@ iid_start:
 				bestMove,
 				threatMove,
 				moveCount,
-				mp,
+				nextMoveEvent,
 				cutNode
 				);
 			if (isBreak) { break; }
