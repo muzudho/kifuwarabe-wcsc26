@@ -176,7 +176,7 @@ MoveAndScoreIndex Book::GetProbe(const Position& position, const std::string& fN
 			else {
 				// 定跡の手（持ち駒以外）を、ムーブの書式に変換している？？（＾ｑ＾）？
 				const Square from = tmp.From();
-				const Move fromMove = ConvMove::FROM_PIECETYPE_ONBOARD10(ConvPiece::TO_PIECE_TYPE10(position.GetPiece(from)));
+				const Move fromMove = ConvMove::FROM_PIECETYPE_ONBOARD10(PieceExtensions::TO_PIECE_TYPE10(position.GetPiece(from)));
 				if (tmp.IsPromotion()) {
 					move = UtilMovePos::MakeCapturePromoteMove(	fromMove, from, to, position);
 				}

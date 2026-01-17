@@ -1,6 +1,6 @@
 ﻿#include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../../header/n105_180_piece___/n105_180_205_convHandPiece.hpp"
-#include "../../header/n105_180_piece___/n105_180_500_hand.hpp"
+#include "../../header/n105_180_piece___/n105_180_205_HandPieceExtensions.hpp"
+#include "../../header/n105_180_piece___/n105_180_500_Hand.hpp"
 
 
 /// <summary>

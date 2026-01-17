@@ -6,7 +6,7 @@
 #include "../n105_120_square__/n105_120_200_rank.hpp"
 #include "../n105_120_square__/n105_120_250_squareDelta.hpp"
 #include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
-#include "../n105_180_piece___/n105_180_150_piece.hpp"
+#include "../n105_180_piece___/n105_180_150_Piece.hpp"
 #include "../n130_100_boardBb_/n160_100_bitboard.hpp"
 #include "../n130_100_boardBb_/n160_600_bitboardAll.hpp"
 #include "../n165_movStack/n165_300_movegenType.hpp"
@@ -292,7 +292,7 @@ public:
 		while (fromBB.Exists1Bit()) {
 			const Square from = fromBB.PopFirstOneFromI9();
 			// from にある駒の種類を判別
-			const PieceType pt = ConvPiece::TO_PIECE_TYPE10(ptEvent.m_pos.GetPiece(from));
+			const PieceType pt = PieceExtensions::TO_PIECE_TYPE10(ptEvent.m_pos.GetPiece(from));
 			Bitboard toBB = UtilAttack::GetAttacksFrom<US>(pt, from, ptEvent.m_pos.GetOccupiedBB()) & target;
 			while (toBB.Exists1Bit()) {
 				const Square to = toBB.PopFirstOneFromI9();

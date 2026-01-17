@@ -1,6 +1,6 @@
 ﻿#include <array>
 #include "../../header/n105_100_color___/n105_100_100_color.hpp"
-#include "../../header/n105_180_piece___/n105_180_200_handPiece.hpp"
+#include "../../header/n105_180_piece___/n105_180_200_HandPiece.hpp"
 #include "../../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
 #include "../../header/n520_evaluate/n520_700_evaluation09.hpp"
 

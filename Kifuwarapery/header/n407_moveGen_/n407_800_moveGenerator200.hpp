@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../n105_180_piece___/n105_180_150_piece.hpp"
+#include "../n105_180_piece___/n105_180_150_Piece.hpp"
 #include "../n165_movStack/n165_500_moveStack.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n250_pieceTyp/n350_500_ptPrograms.hpp"
@@ -64,7 +64,7 @@ public:
 		Bitboard fromBB = pos.GetAttackersTo_a<US, THEM>(to, pos.GetOccupiedBB());
 		while (fromBB.Exists1Bit()) {
 			const Square from = fromBB.PopFirstOneFromI9();
-			const PieceType pieceType = ConvPiece::TO_PIECE_TYPE10(pos.GetPiece(from));
+			const PieceType pieceType = PieceExtensions::TO_PIECE_TYPE10(pos.GetPiece(from));
 
 			// TODO: 配列のリミットチェックをしてないぜ☆（＾ｑ＾）
 			US == Color::Black

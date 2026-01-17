@@ -1022,7 +1022,7 @@ public:
 			const Depth predictedDepth = this->GetPredictedDepthInStep13a( newDepth, depth, moveCount);
 			// gain を 2倍にする。
 			const ScoreIndex futilityScore = (*ppFlashlight)->m_staticEval + g_futilityMargins.GetFutilityMargin(predictedDepth, moveCount)
-				+ 2 * ourCarriage.m_gains.GetValue(move.IsDrop(), ConvPiece::FROM_COLOR_AND_PIECE_TYPE10(pos.GetTurn(), move.GetPieceTypeFromOrDropped()), move.To());
+				+ 2 * ourCarriage.m_gains.GetValue(move.IsDrop(), PieceExtensions::FROM_COLOR_AND_PIECE_TYPE10(pos.GetTurn(), move.GetPieceTypeFromOrDropped()), move.To());
 
 			if (futilityScore < beta) {
 				bestScore = std::max(bestScore, futilityScore);
@@ -1609,12 +1609,12 @@ public:
 				}
 
 				const ScoreIndex bonus = static_cast<ScoreIndex>(depth * depth);
-				const Piece pc1 = ConvPiece::FROM_COLOR_AND_PIECE_TYPE10(pos.GetTurn(), bestMove.GetPieceTypeFromOrDropped());
+				const Piece pc1 = PieceExtensions::FROM_COLOR_AND_PIECE_TYPE10(pos.GetTurn(), bestMove.GetPieceTypeFromOrDropped());
 				ourCarriage.m_history.Update(bestMove.IsDrop(), pc1, bestMove.To(), bonus);
 
 				for (int i = 0; i < playedMoveCount - 1; ++i) {
 					const Move m = movesSearched[i];
-					const Piece pc2 = ConvPiece::FROM_COLOR_AND_PIECE_TYPE10(pos.GetTurn(), m.GetPieceTypeFromOrDropped());
+					const Piece pc2 = PieceExtensions::FROM_COLOR_AND_PIECE_TYPE10(pos.GetTurn(), m.GetPieceTypeFromOrDropped());
 					ourCarriage.m_history.Update(m.IsDrop(), pc2, m.To(), -bonus);
 				}
 			}

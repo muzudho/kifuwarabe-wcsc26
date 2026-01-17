@@ -2,7 +2,7 @@
 
 
 #include "../n105_100_color___/n105_100_100_color.hpp"
-#include "../n105_180_piece___/n105_180_200_handPiece.hpp"
+#include "../n105_180_piece___/n105_180_200_HandPiece.hpp"
 
 
 /// <summary>

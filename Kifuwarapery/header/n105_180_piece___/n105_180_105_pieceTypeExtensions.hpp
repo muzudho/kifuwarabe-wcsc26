@@ -148,7 +148,7 @@ namespace {
 /// <summary>
 /// 暗算表（＾ｑ＾）
 /// </summary>
-class ConvPieceType {
+class PieceTypeExtentions {
 
 
 public:
@@ -159,7 +159,7 @@ public:
 	/// </summary>
 	/// <param name="pt"></param>
 	/// <returns></returns>
-	static inline std::string GET_STRING(const PieceType pt) {
+	static inline std::string getString_n10(const PieceType pt) {
 		return g_CONV_PIECE_TYPE_STRING_TABLE[pt];
 	}
 	
@@ -169,7 +169,7 @@ public:
 	/// </summary>
 	/// <param name="pt"></param>
 	/// <returns></returns>
-	static inline bool IS_SLIDER10(const PieceType pt) {
+	static inline bool isSlider_n10(const PieceType pt) {
 		return g_CONV_PIECE_TYPE_IS_SLIDER[pt];
 	}
 
@@ -179,7 +179,7 @@ public:
 	/// </summary>
 	/// <param name="from"></param>
 	/// <returns></returns>
-	static inline PieceType FROM_SRC_TO_DROP10(const Square from) {
+	static inline PieceType fromSrcToDrop_n10(const Square from) {
 		return g_CONV_PIECE_TYPE_FROM_SRC_TO_DROP10[from];
 	}
 };

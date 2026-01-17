@@ -416,7 +416,7 @@ public://private:
 		}
 
 		if (!second.IsDrop()
-			&& ConvPieceType::IS_SLIDER10(m2ptFrom)
+			&& PieceTypeExtentions::isSlider_n10(m2ptFrom)
 			&& g_setMaskBB.IsSet(&g_betweenBb.GetBetweenBB(second.From(), m2to), first.To())
 			&& ScoreZero <= pos.GetSeeSign(first))
 		{ return true; }

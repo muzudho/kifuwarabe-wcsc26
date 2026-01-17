@@ -4,8 +4,8 @@
 #include <memory>
 #include <map>
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../n105_180_piece___/n105_180_205_convHandPiece.hpp"
-#include "../n105_180_piece___/n105_180_500_hand.hpp"
+#include "../n105_180_piece___/n105_180_205_HandPieceExtensions.hpp"
+#include "../n105_180_piece___/n105_180_500_Hand.hpp"
 #include "../n210_score___/n119_200_pieceScore.hpp"
 #include "../n130_100_boardBb_/n160_110_silverAttackBb.hpp"
 #include "../n130_100_boardBb_/n160_120_bishopAttackBb.hpp"

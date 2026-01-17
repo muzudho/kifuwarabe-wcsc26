@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../n105_180_piece___/n105_180_200_handPiece.hpp"
+#include "../n105_180_piece___/n105_180_200_HandPiece.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────

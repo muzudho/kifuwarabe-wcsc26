@@ -264,12 +264,12 @@ void NextmoveEvent::ScoreEvasions() {
 		else if (move.IsCaptureOrPromotion()) {
 			curr->m_score = PieceScore::GetCapturePieceScore(GetPos().GetPiece(move.To())) + History::m_MaxScore;
 			if (move.IsPromotion()) {
-				const PieceType pt = ConvPiece::TO_PIECE_TYPE10(GetPos().GetPiece(move.From()));
+				const PieceType pt = PieceExtensions::TO_PIECE_TYPE10(GetPos().GetPiece(move.From()));
 				curr->m_score += PieceScore::GetPromotePieceScore(pt);
 			}
 		}
 		else {
-			curr->m_score = GetHistory().GetValue(move.IsDrop(), ConvPiece::FROM_COLOR_AND_PIECE_TYPE10(GetPos().GetTurn(), move.GetPieceTypeFromOrDropped()), move.To());
+			curr->m_score = GetHistory().GetValue(move.IsDrop(), PieceExtensions::FROM_COLOR_AND_PIECE_TYPE10(GetPos().GetTurn(), move.GetPieceTypeFromOrDropped()), move.To());
 		}
 	}
 }

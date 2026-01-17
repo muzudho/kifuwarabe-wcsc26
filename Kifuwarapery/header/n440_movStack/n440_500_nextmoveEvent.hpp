@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../n105_180_piece___/n105_180_155_convPiece.hpp"
+#include "../n105_180_piece___/n105_180_155_PieceExtensions.hpp"
 #include "../n210_score___/n119_090_scoreIndex.hpp"
 #include "../n130_100_boardBb_/n160_100_bitboard.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
@@ -204,7 +204,7 @@ public:// もともと本当はプライベート・メソッド☆
 			const Move move = curr->m_move;
 			curr->m_score =
 				GetHistory().GetValue(IsDrop,
-					ConvPiece::FROM_COLOR_AND_PIECE_TYPE10(GetPos().GetTurn(),
+					PieceExtensions::FROM_COLOR_AND_PIECE_TYPE10(GetPos().GetTurn(),
 						(IsDrop ? move.GetPieceTypeDropped() : move.GetPieceTypeFrom())),
 					move.To());
 		}

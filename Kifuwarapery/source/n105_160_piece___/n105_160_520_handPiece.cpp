@@ -1,5 +1,5 @@
 ﻿#include "../../header/n105_160_pieceTyp/n105_160_500_pieceType.hpp"
-#include "../../header/n105_180_piece___/n105_180_200_handPiece.hpp"
+#include "../../header/n105_180_piece___/n105_180_200_HandPiece.hpp"
 
 
 /// <summary>

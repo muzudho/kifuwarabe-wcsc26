@@ -1,8 +1,8 @@
 ﻿#pragma once
 #include "../n105_100_color___/n105_100_100_color.hpp"
 #include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
-#include "../n105_180_piece___/n105_180_105_convPieceType.hpp"	// g_isSliderVal
-#include "../n105_180_piece___/n105_180_150_piece.hpp"
+#include "../n105_180_piece___/n105_180_105_pieceTypeExtensions.hpp"	// g_isSliderVal
+#include "../n105_180_piece___/n105_180_150_Piece.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────
@@ -199,7 +199,7 @@ namespace {
 /// <summary>
 /// 
 /// </summary>
-class ConvPiece {
+class PieceExtensions {
 
 
 public:

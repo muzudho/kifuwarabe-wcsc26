@@ -292,7 +292,7 @@ Move UsiOperation::UsiToMoveBody(const Position& pos, const std::string& moveStr
     // 指し手文字列の長さチェック
 	if (g_charToPieceUSI.IsLegalChar(moveStr[0])) {
 		// drop
-		const PieceType ptTo = ConvPiece::TO_PIECE_TYPE10(g_charToPieceUSI.GetValue(moveStr[0]));
+		const PieceType ptTo = PieceExtensions::TO_PIECE_TYPE10(g_charToPieceUSI.GetValue(moveStr[0]));
 		if (moveStr[1] != '*') { return g_MOVE_NONE; }
 
 		const File toFile = ConvFile::FROM_CHAR_USI10(moveStr[2]);
@@ -315,14 +315,14 @@ Move UsiOperation::UsiToMoveBody(const Position& pos, const std::string& moveStr
 		const Square to = ConvSquare::fromFileRank_n10(toFile, toRank);
 		if (moveStr[4] == '\0') {
 			move = g_makePromoteMove.GetSelectedMakeMove_ExceptPromote_CaptureCategory(
-				ConvMove::FROM_PIECETYPE_ONBOARD10( ConvPiece::TO_PIECE_TYPE10(pos.GetPiece(from))), // （＾ｑ＾）
+				ConvMove::FROM_PIECETYPE_ONBOARD10( PieceExtensions::TO_PIECE_TYPE10(pos.GetPiece(from))), // （＾ｑ＾）
 				from, to, pos);
 		}
 		else if (moveStr[4] == '+') {
 			if (moveStr[5] != '\0') { return g_MOVE_NONE; }
 
 			move = g_makePromoteMove.GetSelectedMakeMove_ExceptPromote_CaptureCategory(
-				ConvMove::FROM_PIECETYPE_ONBOARD10( ConvPiece::TO_PIECE_TYPE10(pos.GetPiece(from))),
+				ConvMove::FROM_PIECETYPE_ONBOARD10( PieceExtensions::TO_PIECE_TYPE10(pos.GetPiece(from))),
 				from, to, pos);
 			MakePromoteMove::APPEND_PROMOTE_FLAG(move);
 		}
@@ -381,7 +381,7 @@ Move UsiOperation::CsaToMoveBody(const Position& pos, const std::string& moveStr
 		if (!ConvSquare::containsOf_n20(fromFile, fromRank)) { return g_MOVE_NONE; }
 
 		const Square from = ConvSquare::fromFileRank_n10(fromFile, fromRank);
-		PieceType ptFrom = ConvPiece::TO_PIECE_TYPE10(pos.GetPiece(from));
+		PieceType ptFrom = PieceExtensions::TO_PIECE_TYPE10(pos.GetPiece(from));
 		if (ptFrom == ptTo) {
 			// non promote
 			move = g_makePromoteMove.GetSelectedMakeMove_ExceptPromote_CaptureCategory(

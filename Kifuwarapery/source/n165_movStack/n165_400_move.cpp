@@ -5,8 +5,8 @@
 #include "../../header/n105_120_square__/n105_120_205_convRank.hpp"
 #include "../../header/n105_120_square__/n105_120_500_convSquare.hpp"
 #include "../../header/n105_160_pieceTyp/n105_160_500_pieceType.hpp"
-#include "../../header/n105_180_piece___/n105_180_105_convPieceType.hpp"
-#include "../../header/n105_180_piece___/n105_180_200_handPiece.hpp"
+#include "../../header/n105_180_piece___/n105_180_105_pieceTypeExtensions.hpp"
+#include "../../header/n105_180_piece___/n105_180_200_HandPiece.hpp"
 #include "../../header/n165_movStack/n165_400_move.hpp"
 
 
@@ -181,7 +181,7 @@ PieceType Move::GetPieceTypeFromOrDropped() const
 HandPiece Move::GetHandPieceDropped() const
 {
 	assert(this->IsDrop());
-	return ConvHandPiece::FromPieceType(this->GetPieceTypeDropped());
+	return HandPieceExtensions::FromPieceType(this->GetPieceTypeDropped());
 }
 
 
@@ -387,7 +387,7 @@ std::string Move::ToCSA() const {
 	// 移動先の段☆（＾ｑ＾）
 	s += ConvSquare::toString_CSA40(this->To()) +
 		// 駒の種類☆（＾ｑ＾）
-		ConvPieceType::GET_STRING(this->GetPieceTypeTo());
+		PieceTypeExtentions::getString_n10(this->GetPieceTypeTo());
 
 	return s;
 }

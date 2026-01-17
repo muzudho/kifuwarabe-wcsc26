@@ -4,7 +4,7 @@
 #include "../n105_120_square__/n105_120_100_square.hpp"
 #include "../n105_140_colorSq_/n105_140_ColorFileRank.h"
 #include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
-#include "../n105_180_piece___/n105_180_155_convPiece.hpp"
+#include "../n105_180_piece___/n105_180_155_PieceExtensions.hpp"
 #include "../n130_100_boardBb_/n160_100_bitboard.hpp"
 #include "../n130_100_boardBb_/n160_230_setMaskBb.hpp"
 #include "../n105_200_sqDistan/n105_200_500_squareDistance.hpp"
@@ -427,8 +427,8 @@ struct KkKkpKppStorageBase {
 #endif
 
 #if defined EVAL_PHASE1 || defined EVAL_PHASE3
-			const Color jcolor = ConvPiece::TO_COLOR10(jpiece);
-			const PieceType jpt = ConvPiece::TO_PIECE_TYPE10(jpiece);
+			const Color jcolor = PieceExtensions::TO_COLOR10(jpiece);
+			const PieceType jpt = PieceExtensions::TO_PIECE_TYPE10(jpiece);
 			Bitboard jtoBB = g_setMaskBB.GetSetMaskBb(ksq).NotThisAnd(
 				UtilAttack::GetAttacksFrom(jpt, jcolor, jsq, g_setMaskBB.GetSetMaskBb(ksq)));
 			while (jtoBB.Exists1Bit()) {
@@ -510,8 +510,8 @@ struct KkKkpKppStorageBase {
 				const Square ijsq = static_cast<Square>(ij - ijbegin);
 				const Square jisq = static_cast<Square>(ji - jibegin);
 
-				const Color jicolor = ConvPiece::TO_COLOR10(jipiece);
-				const PieceType jipt = ConvPiece::TO_PIECE_TYPE10(jipiece);
+				const Color jicolor = PieceExtensions::TO_COLOR10(jipiece);
+				const PieceType jipt = PieceExtensions::TO_PIECE_TYPE10(jipiece);
 				const Bitboard mask = g_setMaskBB.GetSetMaskBb(ksq) | g_setMaskBB.GetSetMaskBb(ijsq);
 				Bitboard jitoBB = mask.NotThisAnd(UtilAttack::GetAttacksFrom(jipt, jicolor, jisq, mask));
 				while (jitoBB.Exists1Bit()) {
@@ -591,7 +591,7 @@ struct KkKkpKppStorageBase {
 				auto color = [](int ij) {
 					const int ijbegin = UtilKppIndex::GetBegin(ij);
 					const Piece ijpiece = g_kppBoardIndexStartToPiece.value(ijbegin);
-					const Color ijcolor = ConvPiece::TO_COLOR10(ijpiece);
+					const Color ijcolor = PieceExtensions::TO_COLOR10(ijpiece);
 					return ijcolor;
 				};
 				if (color(j) < color(i))
@@ -603,10 +603,10 @@ struct KkKkpKppStorageBase {
 				const Square isq = static_cast<Square>(i - ibegin);
 				const Square jsq = static_cast<Square>(j - jbegin);
 
-				const Color icolor = ConvPiece::TO_COLOR10(ipiece);
-				const Color jcolor = ConvPiece::TO_COLOR10(jpiece);
-				const PieceType ipt = ConvPiece::TO_PIECE_TYPE10(ipiece);
-				const PieceType jpt = ConvPiece::TO_PIECE_TYPE10(jpiece);
+				const Color icolor = PieceExtensions::TO_COLOR10(ipiece);
+				const Color jcolor = PieceExtensions::TO_COLOR10(jpiece);
+				const PieceType ipt = PieceExtensions::TO_PIECE_TYPE10(ipiece);
+				const PieceType jpt = PieceExtensions::TO_PIECE_TYPE10(jpiece);
 				const Bitboard imask = g_setMaskBB.GetSetMaskBb(ksq) | g_setMaskBB.GetSetMaskBb(jsq);
 				const Bitboard jmask = g_setMaskBB.GetSetMaskBb(ksq) | g_setMaskBB.GetSetMaskBb(isq);
 				Bitboard itoBB = imask.NotThisAnd(UtilAttack::GetAttacksFrom(jpt, icolor, isq, imask));
@@ -767,8 +767,8 @@ struct KkKkpKppStorageBase {
 #endif
 
 #if defined EVAL_PHASE1
-					const PieceType ipt = ConvPiece::TO_PIECE_TYPE10(ipiece);
-					const Color icolor = ConvPiece::TO_COLOR10(ipiece);
+					const PieceType ipt = PieceExtensions::TO_PIECE_TYPE10(ipiece);
+					const Color icolor = PieceExtensions::TO_COLOR10(ipiece);
 					Bitboard itoBB = g_setMaskBB.GetSetMaskBb(ksq).NotThisAnd(
 						UtilAttack::GetAttacksFrom(ipt, icolor, isq, g_setMaskBB.GetSetMaskBb(ksq)));
 					while (itoBB.Exists1Bit()) {
@@ -785,8 +785,8 @@ struct KkKkpKppStorageBase {
 				const int ibegin = UtilKppIndex::GetBegin(i);
 				const Square isq = static_cast<Square>(i - ibegin);
 				const Piece ipiece = g_kppBoardIndexStartToPiece.value(ibegin);
-				const PieceType ipt = ConvPiece::TO_PIECE_TYPE10(ipiece);
-				const Color icolor = ConvPiece::TO_COLOR10(ipiece);
+				const PieceType ipt = PieceExtensions::TO_PIECE_TYPE10(ipiece);
+				const Color icolor = PieceExtensions::TO_COLOR10(ipiece);
 
 				Bitboard itoBB = g_setMaskBB.GetSetMaskBb(ksq).NotThisAnd(
 					UtilAttack::GetAttacksFrom(ipt, icolor, isq, g_setMaskBB.GetSetMaskBb(ksq)));
@@ -852,8 +852,8 @@ struct KkKkpKppStorageBase {
 			const Rank diff_rank_k0i = ConvSquare::toRank_n10(ksq0) - ConvSquare::toRank_n10(isq);
 			File diff_file_k0i = ConvSquare::toFile_n10(ksq0) - ConvSquare::toFile_n10(isq);
 
-			const Color icolor = ConvPiece::TO_COLOR10(ipiece);
-			const PieceType ipt = ConvPiece::TO_PIECE_TYPE10(ipiece);
+			const Color icolor = PieceExtensions::TO_COLOR10(ipiece);
+			const PieceType ipt = PieceExtensions::TO_PIECE_TYPE10(ipiece);
 			const Bitboard mask = g_setMaskBB.GetSetMaskBb(ksq0) | g_setMaskBB.GetSetMaskBb(ksq1);
 			Bitboard itoBB = mask.NotThisAnd(UtilAttack::GetAttacksFrom(ipt, icolor, isq, mask));
 			while (itoBB.Exists1Bit()) {

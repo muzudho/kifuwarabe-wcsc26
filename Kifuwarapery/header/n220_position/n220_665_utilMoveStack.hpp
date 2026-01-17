@@ -3,7 +3,7 @@
 #include <algorithm> //std::swap std::max_element
 #include "../n105_120_square__/n105_120_100_square.hpp"
 #include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
-#include "../n105_180_piece___/n105_180_105_convPieceType.hpp"
+#include "../n105_180_piece___/n105_180_105_pieceTypeExtensions.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
 #include "../n165_movStack/n165_500_moveStack.hpp"
 #include "../n165_movStack/n165_600_convMove.hpp"
@@ -79,7 +79,7 @@ public:
 			return move;
 		}
 		const Square from = move.From();
-		const PieceType ptFrom = ConvPiece::TO_PIECE_TYPE10(pos.GetPiece(from));
+		const PieceType ptFrom = PieceExtensions::TO_PIECE_TYPE10(pos.GetPiece(from));
 		return move | ConvMove::FROM_PIECETYPE_ONBOARD10(ptFrom) | UtilMovePos::GET_CAPTURED_PIECE_FROM_SQ(move.To(), pos);
 	}
 };

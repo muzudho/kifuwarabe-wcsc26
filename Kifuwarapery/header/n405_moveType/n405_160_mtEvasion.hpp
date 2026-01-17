@@ -79,7 +79,7 @@ private:
 			// 最初にビットが立っていたマス☆
 			checkSq = bb.PopFirstOneFromI9();
 
-			assert(ConvPiece::TO_COLOR10(pos.GetPiece(checkSq)) == THEM);
+			assert(PieceExtensions::TO_COLOR10(pos.GetPiece(checkSq)) == THEM);
 
 			// カウントアップ☆
 			++checkersNum;

@@ -187,12 +187,12 @@
     <ClInclude Include="header\n105_120_square__\n105_120_500_convSquare.hpp" />
     <ClInclude Include="header\n105_140_colorSq_\n105_140_ColorFileRank.h" />
     <ClInclude Include="header\n105_160_pieceTyp\n105_160_500_pieceType.hpp" />
-    <ClInclude Include="header\n105_180_piece___\n105_180_105_convPieceType.hpp" />
-    <ClInclude Include="header\n105_180_piece___\n105_180_150_piece.hpp" />
-    <ClInclude Include="header\n105_180_piece___\n105_180_155_convPiece.hpp" />
-    <ClInclude Include="header\n105_180_piece___\n105_180_200_handPiece.hpp" />
-    <ClInclude Include="header\n105_180_piece___\n105_180_205_convHandPiece.hpp" />
-    <ClInclude Include="header\n105_180_piece___\n105_180_500_hand.hpp" />
+    <ClInclude Include="header\n105_180_piece___\n105_180_105_pieceTypeExtensions.hpp" />
+    <ClInclude Include="header\n105_180_piece___\n105_180_150_Piece.hpp" />
+    <ClInclude Include="header\n105_180_piece___\n105_180_155_PieceExtensions.hpp" />
+    <ClInclude Include="header\n105_180_piece___\n105_180_200_HandPiece.hpp" />
+    <ClInclude Include="header\n105_180_piece___\n105_180_205_HandPieceExtensions.hpp" />
+    <ClInclude Include="header\n105_180_piece___\n105_180_500_Hand.hpp" />
     <ClInclude Include="header\n105_220_bonaDir_\n105_220_500_IBonaDirectional.hpp" />
     <ClInclude Include="header\n105_220_bonaDir_\n105_220_600_NullBonaDirection.hpp" />
     <ClInclude Include="header\n105_220_bonaDir_\n105_220_610_MiscBonaDirection.hpp" />
@@ -246,6 +246,7 @@
     <ClInclude Include="header\n220_position\n220_665_utilMoveStack.hpp" />
     <ClInclude Include="header\n220_position\n220_750_charToPieceUSI.hpp" />
     <ClInclude Include="header\n220_position\n220_400_evalList.hpp" />
+    <ClInclude Include="header\n250_pieceTyp\n350_070_IPieceType.hpp" />
     <ClInclude Include="header\n340_bonaMove\n340_500_IBonaMovable.hpp" />
     <ClInclude Include="header\n374_genMove_\n374_780_MoveGenerator100.hpp" />
     <ClInclude Include="header\n640_searcher\n640_040_nodeKind.hpp" />

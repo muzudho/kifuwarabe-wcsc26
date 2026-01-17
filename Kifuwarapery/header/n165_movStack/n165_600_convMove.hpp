@@ -2,7 +2,7 @@
 
 #include "../n105_120_square__/n105_120_100_square.hpp"
 #include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
-#include "../n105_180_piece___/n105_180_155_convPiece.hpp"
+#include "../n105_180_piece___/n105_180_155_PieceExtensions.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
 #include "../n165_movStack/n165_600_convMove.hpp"
 
