@@ -115,8 +115,8 @@ public:
 	virtual inline bool getCondition_n200n450n500(
 		const TTEntry* pTtEntry,
 		ScoreNumber beta,
-		ScoreNumber ttScore
-		) const override {
+		ScoreNumber ttScore) const override
+	{
 		return  beta <= ttScore ?
 			(pTtEntry->GetBoundKind() & Bound::BoundLower)
 			:

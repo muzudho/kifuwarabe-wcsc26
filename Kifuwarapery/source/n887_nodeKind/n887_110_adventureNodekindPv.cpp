@@ -176,12 +176,12 @@ ScoreNumber AdventureNodekindPv::explorePlain_n10(
 
 
 	std::tie(isReturnWithScore, returnScore) = this->explorePlain_n200n450_returnWithScore(
+		&pFlashlight,
 		ourCarriage,
 		pTtEntry,
 		depth,
 		bananaTtScore,
 		beta,
-		&pFlashlight,
 		bananaTtMove);
 	if (isReturnWithScore) { return returnScore; }
 

@@ -171,12 +171,12 @@ public:
 	/// <param name="ppFlashlight"></param>
 	/// <param name="ttMove"></param>
 	virtual inline std::tuple<bool, ScoreNumber> explorePlain_n200n450_returnWithScore(
+		Flashlight** ppFlashlight,
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
 		const Depth depth,
-		ScoreNumber& ttScore,
-		ScoreNumber& beta,
-		Flashlight** ppFlashlight,
+		ScoreNumber ttScore,
+		ScoreNumber beta,
 		Move& ttMove) const override
 	{
 		// ルートノードはスルー☆！（＾ｑ＾）
