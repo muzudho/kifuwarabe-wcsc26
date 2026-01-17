@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "n358_070_dropMakerAbstract.hpp"
+#include "n358_070_IDropMakeable.hpp"
 #include "n358_100_dropMakerHand0.hpp"
 #include "n358_110_dropMakerHand1.hpp"
 #include "n358_120_dropMakerHand2.hpp"
@@ -33,5 +33,5 @@ public:
 	/// <summary>
 	/// 配列
 	/// </summary>
-	static const DropMakerAbstract* m_dropMakerArray[7];
+	static const IDropMakeable* m_dropMakerArray[7];
 };

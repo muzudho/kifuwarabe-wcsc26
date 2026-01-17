@@ -36,7 +36,7 @@ public:
 	/// <returns></returns>
 	ScoreIndex GetValue(const bool isDrop, const Piece pc, const Square to) const {
 		assert(0 < pc && pc < N31_PieceNone);
-		assert(ConvSquare::CONTAINS_OF10(to));
+		assert(ConvSquare::containsOf_n10(to));
 		return this->m_table_[isDrop][pc][to];
 	}
 

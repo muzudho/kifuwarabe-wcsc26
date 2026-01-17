@@ -43,7 +43,7 @@ public:
 	DropMakerHand4 m_dropMakerHand4;
 	DropMakerHand5 m_dropMakerHand5;
 	DropMakerHand6 m_dropMakerHand6;
-	DropMakerAbstract* m_pDropMakerArray[7];
+	IDropMakeable* m_pDropMakerArray[7];
 
 
 	/// <summary>
@@ -104,16 +104,16 @@ public:
 
 			const Square ksq = pos.GetKingSquare(THEM);
 			// 相手玉が九段目なら、歩で王手出来ないので、打ち歩詰めを調べる必要はない。
-			if (ConvSquare::TO_RANK10(ksq) != tRank1) {
+			if (ConvSquare::toRank_n10(ksq) != tRank1) {
 				const Square pawnDropCheckSquare = ksq + tDeltaS;
-				assert(ConvSquare::CONTAINS_OF10(pawnDropCheckSquare));
-				if (g_setMaskBb.IsSet(&toBB, pawnDropCheckSquare) && pos.GetPiece(pawnDropCheckSquare) == N00_Empty) {
+				assert(ConvSquare::containsOf_n10(pawnDropCheckSquare));
+				if (g_setMaskBB.IsSet(&toBB, pawnDropCheckSquare) && pos.GetPiece(pawnDropCheckSquare) == N00_Empty) {
 					if (!pos.IsPawnDropCheckMate<US,THEM>(pawnDropCheckSquare)) {
 						// ここで clearBit だけして MakeMove しないことも出来る。
 						// 指し手が生成される順番が変わり、王手が先に生成されるが、後で問題にならないか?
 						(*pMovestack++).m_move = ConvMove::Convert30_MakeDropMove_da(g_PTPAWN_DA_AS_MOVE, pawnDropCheckSquare);
 					}
-					g_setMaskBb.XorBit(&toBB, pawnDropCheckSquare);
+					g_setMaskBB.XorBit(&toBB, pawnDropCheckSquare);
 				}
 			}
 

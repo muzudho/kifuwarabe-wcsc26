@@ -43,7 +43,7 @@ Main01::~Main01()
 /// <summary>
 /// 最初の設定（初期化）。
 /// </summary>
-void Main01::Initialize()
+void Main01::initialize_app10()
 {
 	//────────────────────────────────────────────────────────────────────────────────
 	// ビットボードとテーブルの初期化☆（＾ｑ＾）
@@ -54,32 +54,32 @@ void Main01::Initialize()
 #ifndef SKIP_LONG_TIME_EVAL
 		// 長い時間が掛かる初期化処理をするか？
 		SYNCCOUT << "(^q^) 1- 1. 飛の利きビットボードの初期化！" << SYNCENDL;
-		g_rookAttackBb.InitRookAttacks();
+		g_rookAttackBb.initRookAttacks_app10();
 #endif
 
 		SYNCCOUT << "(^q^) 1- 2. 角の利きビットボードの初期化！" << SYNCENDL;
-		g_bishopAttackBb.InitBishopAttacks();
+		g_bishopAttackBb.initBishopAttacks_app10();
 
 		SYNCCOUT << "(^q^) 1- 3. 玉の利きビットボードの初期化！" << SYNCENDL;
-		g_kingAttackBb.Initialize();
+		g_kingAttackBb.initialize_app10();
 
 		SYNCCOUT << "(^q^) 1- 4. 金の利きビットボードの初期化！" << SYNCENDL;
-		g_goldAttackBb.Initialize();
+		g_goldAttackBb.initialize_app10();
 
 		SYNCCOUT << "(^q^) 1- 5. 銀の利きビットボードの初期化！" << SYNCENDL;
-		g_silverAttackBb.Initialize();
+		g_silverAttackBb.initialize_app10();
 
 		SYNCCOUT << "(^q^) 1- 6. 歩の利きビットボードの初期化！" << SYNCENDL;
-		g_pawnAttackBb.Initialize();
+		g_pawnAttackBb.initialize_app10();
 
 		SYNCCOUT << "(^q^) 1- 7. 桂の利きビットボードの初期化！" << SYNCENDL;
-		g_knightAttackBb.Initialize();
+		g_knightAttackBb.initialize_app10();
 
 		SYNCCOUT << "(^q^) 1- 8. 香の利きビットボードの初期化！" << SYNCENDL;
-		g_lanceAttackBb.Initialize();
+		g_lanceAttackBb.initialize_app10();
 
 		SYNCCOUT << "(^q^) 1- 9. ２つのマスの位置関係が［同筋］［同段］［同右肩上がり］［同右肩下がり］［その他］かを区別するビットボードの初期化！" << SYNCENDL;
-		g_squareRelation.Initialize();
+		g_squareRelation.initialize_app10();
 
 
 		// 障害物が無いときの利きの Bitboard
@@ -87,51 +87,51 @@ void Main01::Initialize()
 
 
 		SYNCCOUT << "(^q^) 1-10. 障害物が無いときの飛の利きビットボードの初期化！" << SYNCENDL;
-		g_rookAttackBb.InitializeToEdge();
+		g_rookAttackBb.initializeToEdge_app10();
 
 		SYNCCOUT << "(^q^) 1-11. 障害物が無いときの角の利きビットボードの初期化！" << SYNCENDL;
-		g_bishopAttackBb.InitializeToEdge();
+		g_bishopAttackBb.initializeToEdge_app10();
 
 		SYNCCOUT << "(^q^) 1-12. 障害物が無いときの香の利きビットボードの初期化！" << SYNCENDL;
-		g_lanceAttackBb.InitializeToEdge();
+		g_lanceAttackBb.initializeToEdge_app10();
 
 		SYNCCOUT << "(^q^) 1-13. ［飛車、角の元位置］と、［その利き］の２点のビットボード？の初期化！" << SYNCENDL;
-		g_betweenBb.Initialize();
+		g_betweenBb.initialize_app10();
 
 		SYNCCOUT << "(^q^) 1-14. 金の王手？ビットボードの初期化！" << SYNCENDL;
-		g_goldAttackBb.InitCheckTableGold();
+		g_goldAttackBb.initCheckTableGold_app10();
 
 		SYNCCOUT << "(^q^) 1-15. 銀の王手？ビットボードの初期化！" << SYNCENDL;
-		g_silverAttackBb.InitCheckTableSilver();
+		g_silverAttackBb.initCheckTableSilver_app10();
 
 		SYNCCOUT << "(^q^) 1-16. 桂の王手？ビットボードの初期化！" << SYNCENDL;
-		g_knightAttackBb.InitCheckTableKnight();
+		g_knightAttackBb.initCheckTableKnight_app10();
 
 		SYNCCOUT << "(^q^) 1-17. 香の王手？ビットボードの初期化！" << SYNCENDL;
-		g_lanceAttackBb.InitCheckTableLance();
+		g_lanceAttackBb.initCheckTableLance_app10();
 
 		SYNCCOUT << "(^q^) 1-18. ２点の距離初期化！" << SYNCENDL;
-		UtilSquareDistance::InitSquareDistance(g_squareDistance);
+		UtilSquareDistance::initSquareDistance_app10(g_squareDistance);
 
 		SYNCCOUT << "(^q^) I-19. 定跡初期化！" << SYNCENDL;
-		Book::Init();
+		Book::init_app10();
 
 		SYNCCOUT << "(^q^) 1-20. 検索テーブル初期化！" << SYNCENDL;
-		InitSearchTable();
+		initSearchTable_app10();
 	}
 
 	SYNCCOUT << "(^q^) 2   . 局面のゾブリストハッシュ初期化！" << SYNCENDL;
-	Position::InitZobrist();
+	Position::initZobrist_app10();
 
 	SYNCCOUT << "(^q^) 3   . 探索部の初期化！" << SYNCENDL;
-	this->searcher->Init();
+	this->searcher->init_app10();
 
 
 	// 一時オブジェクトの生成と破棄
 
 
 	SYNCCOUT << "(^q^) 4   . 評価関数の初期化！" << SYNCENDL;
-	std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->Init(this->searcher->m_engineOptions["Eval_Dir"], true);
+	std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->init_app10(this->searcher->m_engineOptions["Eval_Dir"], true);
 
 	SYNCCOUT << "(^q^) 次は USIループへ！" << SYNCENDL;
 }
@@ -142,7 +142,7 @@ void Main01::Initialize()
 /// </summary>
 /// <param name="argc"></param>
 /// <param name="argv"></param>
-void Main01::Body(int argc, char* argv[])
+void Main01::body_app10(int argc, char* argv[])
 {
 	UsiLoop usiLoop;
 	usiLoop.Mainloop(argc, argv, *this->searcher);
@@ -152,7 +152,7 @@ void Main01::Body(int argc, char* argv[])
 /// <summary>
 /// 事後処理。
 /// </summary>
-void Main01::Finalize()
+void Main01::finalize_app10()
 {
 	SYNCCOUT << "(^q^)main(6/6): threads.exit! ----> doUSICommandLoop" << SYNCENDL;
 	this->searcher->m_ownerHerosPub.Exit();

@@ -1,4 +1,5 @@
-﻿#include "../../header/n105_120_square__/n105_120_500_convSquare.hpp"
+﻿#include <cassert>
+#include "../../header/n105_120_square__/n105_120_500_convSquare.hpp"
 #include "../../header/n130_100_boardBb_/n160_400_printBb.hpp"
 #include "../../header/n130_100_boardBb_/n160_230_setMaskBb.hpp"
 
@@ -6,7 +7,12 @@
 //────────────────────────────────────────────────────────────────────────────────
 // マスク
 //────────────────────────────────────────────────────────────────────────────────
-const SetMaskBb g_setMaskBb;
+
+
+/// <summary>
+/// マスク
+/// </summary>
+const SetMaskBb g_setMaskBB;
 
 
 /// <summary>
@@ -51,8 +57,8 @@ void SetMaskBb::XorBit(Bitboard* thisBitboard, const Square sq1, const Square sq
 /// <returns></returns>
 bool SetMaskBb::IsSet(const Bitboard* thisBitboard, const Square sq) const
 {
-	assert(ConvSquare::CONTAINS_OF10(sq));
-	return thisBitboard->AndIsNot0(g_setMaskBb.m_setMaskBB_[sq]);
+	assert(ConvSquare::containsOf_n10(sq));
+	return thisBitboard->AndIsNot0(g_setMaskBB.m_setMaskBB_[sq]);
 }
 
 
@@ -63,7 +69,7 @@ bool SetMaskBb::IsSet(const Bitboard* thisBitboard, const Square sq) const
 /// <param name="sq"></param>
 void SetMaskBb::AddBit(Bitboard* thisBitboard, const Square sq) const
 {
-	*thisBitboard |= g_setMaskBb.m_setMaskBB_[sq];
+	*thisBitboard |= g_setMaskBB.m_setMaskBB_[sq];
 }
 
 

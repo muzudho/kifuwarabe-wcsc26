@@ -1724,6 +1724,33 @@
     <ClCompile Include="source\n105_220_bonaDir_\n105_220_620_FileBonaDirection.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n351_090_nullBonaMove.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n351_100_miscBonaMove.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n351_120_FileBonaMove.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n351_130_RankBonaMove.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n351_140_DiagonalNESWBonaMove.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n351_150_DiagonalNWSEBonaMove.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n351_500_bonaDirArray.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n351_bonaDir_\n351_500_bonaDirArray.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n250_pieceTyp\n350_070_ptAbstract.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

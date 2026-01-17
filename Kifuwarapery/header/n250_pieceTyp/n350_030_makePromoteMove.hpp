@@ -1,5 +1,4 @@
 ﻿#pragma once
-
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n105_180_piece___/n105_180_205_convHandPiece.hpp"
 #include "../n165_movStack/n165_300_movegenType.hpp"
@@ -16,7 +15,8 @@
 /// <summary>
 /// 駒の成る動き
 /// </summary>
-class MakePromoteMove {
+class MakePromoteMove
+{
 
 
 public:
@@ -38,7 +38,8 @@ public:
 	static inline Move GetSelectedMakeMove_ExceptPromote_mt2(
 		MovegenType mt,
 		const Move pieceTypeAsMove,
-		const Square from, const Square to, const Position& pos) {
+		const Square from, const Square to, const Position& pos)
+	{
 
 		// キャプチャー系か、非キャプチャー系かで処理を分けるぜ☆（＾ｑ＾）
 		Move move = ((mt == N01_NonCapture || mt == N04_NonCaptureMinusPro) ?
@@ -69,8 +70,8 @@ public:
 	static inline Move GetSelectedMakeMove_ExceptPromote_goldHorseDragon(
 		MovegenType mt,
 		const PieceType pt, // 新型２ならここを Move にできるぜ☆（＾ｑ＾）
-		const Square from, const Square to, const Position& pos) {
-
+		const Square from, const Square to, const Position& pos)
+	{
 		// キャプチャー系か、非キャプチャー系かで処理を分けるぜ☆（＾ｑ＾）
 		Move move = ((mt == N01_NonCapture || mt == N04_NonCaptureMinusPro) ?
 			ConvMove::FROM_PT_SRC_DST20(
@@ -96,8 +97,8 @@ public:
 		const Move pieceTypeAsMove,
 		const Square from,
 		const Square to,
-		const Position& pos
-		) {
+		const Position& pos)
+	{
 		//MovegenType mt_forAssert, assert(!(mt_forAssert == N01_NonCapture || mt_forAssert == N04_NonCaptureMinusPro), "");
 		return UtilMovePos::MakeCaptureMove(pieceTypeAsMove, from, to, pos);
 	}

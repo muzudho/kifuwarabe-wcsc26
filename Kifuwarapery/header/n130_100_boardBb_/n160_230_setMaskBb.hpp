@@ -177,4 +177,4 @@ public:
 /// <summary>
 /// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
 /// </summary>
-extern const SetMaskBb g_setMaskBb;
+extern const SetMaskBb g_setMaskBB;

@@ -21,7 +21,7 @@ LanceAttackBb g_lanceAttackBb;
 /// <summary>
 /// 
 /// </summary>
-void LanceAttackBb::Initialize()
+void LanceAttackBb::initialize_app10()
 {
 	// LanceBlockMask, g_lanceAttack の値を設定する。
 	for (Color c = Black; c < g_COLOR_NUM; ++c) {
@@ -31,7 +31,7 @@ void LanceAttackBb::Initialize()
 			const int num1s = 7;
 			assert(num1s == blockMask.PopCount());
 			for (int i = 0; i < (1 << num1s); ++i) {
-				Bitboard occupied = g_setMaskBb.IndexToOccupied(i, num1s, blockMask);
+				Bitboard occupied = g_setMaskBB.IndexToOccupied(i, num1s, blockMask);
 				this->m_controllBb[c][sq][i] = this->LanceAttackCalc(c, sq, occupied);
 			}
 		}
@@ -42,7 +42,7 @@ void LanceAttackBb::Initialize()
 /// <summary>
 /// 
 /// </summary>
-void LanceAttackBb::InitCheckTableLance() {
+void LanceAttackBb::initCheckTableLance_app10() {
 	for (Color c = Black; c < g_COLOR_NUM; ++c) {
 		const Color opp = ConvColor::OPPOSITE_COLOR10b(c);//色はループで交互になるぜ☆（＾ｑ＾）
 		for (Square sq = I9; sq < SquareNum; ++sq) {
@@ -55,7 +55,7 @@ void LanceAttackBb::InitCheckTableLance() {
 				const Square checkSq = checkBB.PopFirstOneFromI9();
 				this->m_lanceCheckTable_[c][sq] |= this->GetControllBbToEdge(opp, checkSq);
 			}
-			this->m_lanceCheckTable_[c][sq].AndEqualNot(g_setMaskBb.GetSetMaskBb(sq) | g_pawnAttackBb.GetControllBb(opp, sq));
+			this->m_lanceCheckTable_[c][sq].AndEqualNot(g_setMaskBB.GetSetMaskBb(sq) | g_pawnAttackBb.GetControllBb(opp, sq));
 		}
 	}
 }
@@ -64,7 +64,7 @@ void LanceAttackBb::InitCheckTableLance() {
 /// <summary>
 /// 
 /// </summary>
-void LanceAttackBb::InitializeToEdge()
+void LanceAttackBb::initializeToEdge_app10()
 {
 	for (Square sq = I9; sq < SquareNum; ++sq) {
 		this->m_controllBbToEdge_[Black][sq] = this->GetControllBb(Bitboard::CreateAllZeroBB(), Black, sq);
@@ -99,5 +99,5 @@ Bitboard LanceAttackBb::LanceBlockMask(const Square square) {
 /// <param name="occupied"></param>
 /// <returns></returns>
 Bitboard LanceAttackBb::LanceAttackCalc(const Color c, const Square square, const Bitboard& occupied) {
-	return g_rookAttackBb.GetControllBb(occupied, square) & g_inFrontMaskBb.GetInFrontMask(c, ConvSquare::TO_RANK10(square));
+	return g_rookAttackBb.GetControllBb(occupied, square) & g_inFrontMaskBb.GetInFrontMask(c, ConvSquare::toRank_n10(square));
 }

@@ -16,7 +16,7 @@ void PrintBb::PrintBoard(const Bitboard* thisBitboard)// const
 	for (Rank r = Rank9; r < RankNum; ++r) {
 		std::cout << (9 - r);
 		for (File f = FileA; FileI <= f; --f) {
-			std::cout << (g_setMaskBb.IsSet(thisBitboard, ConvSquare::FROM_FILE_RANK10(f, r)) ? "  X" : "  .");
+			std::cout << (g_setMaskBB.IsSet(thisBitboard, ConvSquare::fromFileRank_n10(f, r)) ? "  X" : "  .");
 		}
 		std::cout << "\n";
 	}

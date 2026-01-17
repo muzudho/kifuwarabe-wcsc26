@@ -5,14 +5,14 @@
 #include "../../header/n130_100_boardBb_/n160_230_setMaskBb.hpp"
 #include "../../header/n105_200_sqDistan/n105_200_500_squareDistance.hpp"
 #include "../../header/n105_200_sqDistan/n105_200_600_utilSquareDistance.hpp"
-#include "../../header/n340_bonaMove/n340_700_bonaMoveArray.hpp"
+#include "../../header/n105_220_bonaDir_/n105_220_700_BonaDirectionArray.hpp"
 
 
 /// <summary>
 /// 
 /// </summary>
 /// <param name="squareDistance"></param>
-void UtilSquareDistance::InitSquareDistance(SquareDistance& squareDistance) {
+void UtilSquareDistance::initSquareDistance_app10(SquareDistance& squareDistance) {
 	for (Square sq0 = I9; sq0 < SquareNum; ++sq0) {
 		for (Square sq1 = I9; sq1 < SquareNum; ++sq1) {
 			g_bonaDirectionArray[g_squareRelation.GetSquareRelation(sq0, sq1)]->InitializeSquareDistance(squareDistance, sq0, sq1);

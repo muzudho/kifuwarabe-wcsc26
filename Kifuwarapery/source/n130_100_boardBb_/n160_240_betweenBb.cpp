@@ -12,7 +12,7 @@ BetweenBb g_betweenBb;
 /// <summary>
 /// 最初の設定（初期化）を行うぜ☆（＾▽＾）
 /// </summary>
-void BetweenBb::Initialize() {
+void BetweenBb::initialize_app10() {
 	for (Square sq1 = I9; sq1 < SquareNum; ++sq1) {
 		for (Square sq2 = I9; sq2 < SquareNum; ++sq2) {
 			// 既定値、空ビットボード。
@@ -29,16 +29,16 @@ void BetweenBb::Initialize() {
 			{
 				// 飛車の利きのブロック駒を考慮？
 				g_betweenBb.m_betweenBB_[sq1][sq2] =
-					  g_rookAttackBb.GetControllBb(g_setMaskBb.GetSetMaskBb(sq2), sq1)
-					& g_rookAttackBb.GetControllBb(g_setMaskBb.GetSetMaskBb(sq1), sq2);
+					  g_rookAttackBb.GetControllBb(g_setMaskBB.GetSetMaskBb(sq2), sq1)
+					& g_rookAttackBb.GetControllBb(g_setMaskBB.GetSetMaskBb(sq1), sq2);
 			}
 			// 斜め
 			else if (direc & N04_DirecDiag)
 			{
 				// 角の利きのブロック駒を考慮？
 				g_betweenBb.m_betweenBB_[sq1][sq2] =
-					  g_bishopAttackBb.BishopAttack(g_setMaskBb.GetSetMaskBb(sq2), sq1)
-					& g_bishopAttackBb.BishopAttack(g_setMaskBb.GetSetMaskBb(sq1), sq2);
+					  g_bishopAttackBb.BishopAttack(g_setMaskBB.GetSetMaskBb(sq2), sq1)
+					& g_bishopAttackBb.BishopAttack(g_setMaskBB.GetSetMaskBb(sq1), sq2);
 			}
 		}
 	}

@@ -47,9 +47,9 @@ int main01() {
 /// <returns></returns>
 int main(int argc, char* argv[]) {
 	Main01 main01;
-	main01.Initialize();
-	main01.Body(argc, argv);
-	main01.Finalize();
+	main01.initialize_app10();
+	main01.body_app10(argc, argv);
+	main01.finalize_app10();
 }
 
 

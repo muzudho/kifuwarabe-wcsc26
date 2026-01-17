@@ -299,10 +299,10 @@ std::string Move::ToUSI() const {
 		buf[1] = '*';
 
 		// （ハ）移動先の筋☆（＾ｑ＾）
-		buf[2] = ConvFile::TO_CHAR_USI10(ConvSquare::TO_FILE10(to));
+		buf[2] = ConvFile::TO_CHAR_USI10(ConvSquare::toFile_n10(to));
 
 		// （ニ）移動先の段☆（＾ｑ＾）
-		buf[3] = ConvRank::TO_CHAR_USI10(ConvSquare::TO_RANK10(to));
+		buf[3] = ConvRank::TO_CHAR_USI10(ConvSquare::toRank_n10(to));
 
 		// （ホ）終端子☆
 		buf[4] = '\0';
@@ -320,16 +320,16 @@ std::string Move::ToUSI() const {
 		char buf[6];//8
 
 		// （イ）移動元の筋☆（＾ｑ＾）
-		buf[0] = ConvFile::TO_CHAR_USI10(ConvSquare::TO_FILE10(from));
+		buf[0] = ConvFile::TO_CHAR_USI10(ConvSquare::toFile_n10(from));
 
 		// （ロ）移動元の段☆（＾ｑ＾）
-		buf[1] = ConvRank::TO_CHAR_USI10(ConvSquare::TO_RANK10(from));
+		buf[1] = ConvRank::TO_CHAR_USI10(ConvSquare::toRank_n10(from));
 
 		// （ハ）移動先の筋☆（＾ｑ＾）
-		buf[2] = ConvFile::TO_CHAR_USI10(ConvSquare::TO_FILE10(to));
+		buf[2] = ConvFile::TO_CHAR_USI10(ConvSquare::toFile_n10(to));
 
 		// （ニ）移動先の段☆（＾ｑ＾）
-		buf[3] = ConvRank::TO_CHAR_USI10(ConvSquare::TO_RANK10(to));
+		buf[3] = ConvRank::TO_CHAR_USI10(ConvSquare::toRank_n10(to));
 
 		// （ホ）成りだぜ☆（＾ｑ＾）
 		buf[4] = '+';
@@ -350,16 +350,16 @@ std::string Move::ToUSI() const {
 		char buf[5];//8
 
 		// （イ）移動元の筋☆（＾ｑ＾）
-		buf[0] = ConvFile::TO_CHAR_USI10(ConvSquare::TO_FILE10(from));
+		buf[0] = ConvFile::TO_CHAR_USI10(ConvSquare::toFile_n10(from));
 
 		// （ロ）移動元の段☆（＾ｑ＾）
-		buf[1] = ConvRank::TO_CHAR_USI10(ConvSquare::TO_RANK10(from));
+		buf[1] = ConvRank::TO_CHAR_USI10(ConvSquare::toRank_n10(from));
 
 		// （ハ）移動先の筋☆（＾ｑ＾）
-		buf[2] = ConvFile::TO_CHAR_USI10(ConvSquare::TO_FILE10(to));
+		buf[2] = ConvFile::TO_CHAR_USI10(ConvSquare::toFile_n10(to));
 
 		// （ニ）移動先の段☆（＾ｑ＾）
-		buf[3] = ConvRank::TO_CHAR_USI10(ConvSquare::TO_RANK10(to));
+		buf[3] = ConvRank::TO_CHAR_USI10(ConvSquare::toRank_n10(to));
 
 		// （ホ）終端子☆
 		buf[4] = '\0';
@@ -380,12 +380,12 @@ std::string Move::ToCSA() const {
 	std::string s = (
 		this->IsDrop() ?
 		std::string("00") :
-		ConvSquare::TO_STRING_CSA40(this->From())
+		ConvSquare::toString_CSA40(this->From())
 	);
 
 	// 移動先の筋☆（＾ｑ＾）
 	// 移動先の段☆（＾ｑ＾）
-	s += ConvSquare::TO_STRING_CSA40(this->To()) +
+	s += ConvSquare::toString_CSA40(this->To()) +
 		// 駒の種類☆（＾ｑ＾）
 		ConvPieceType::GET_STRING(this->GetPieceTypeTo());
 

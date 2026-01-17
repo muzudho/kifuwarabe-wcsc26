@@ -66,14 +66,14 @@ u64 BishopAttackBb::findMagicBishop(const Square square) {
 /// <param name="square"></param>
 /// <returns></returns>
 Bitboard BishopAttackBb::BishopBlockMaskCalc(const Square square) const {
-	const Rank rank = ConvSquare::TO_RANK10(square);
-	const File file = ConvSquare::TO_FILE10(square);
+	const Rank rank = ConvSquare::toRank_n10(square);
+	const File file = ConvSquare::toFile_n10(square);
 	Bitboard result = Bitboard::CreateAllZeroBB();
 	for (Square sq = I9; sq < SquareNum; ++sq) {
-		const Rank r = ConvSquare::TO_RANK10(sq);
-		const File f = ConvSquare::TO_FILE10(sq);
+		const Rank r = ConvSquare::toRank_n10(sq);
+		const File f = ConvSquare::toFile_n10(sq);
 		if (abs(rank - r) == abs(file - f))
-			g_setMaskBb.AddBit(&result, sq);
+			g_setMaskBB.AddBit(&result, sq);
 	}
 	result &= ~(
 		g_rankMaskBb.GetRankMask<Rank1>() |
@@ -81,7 +81,7 @@ Bitboard BishopAttackBb::BishopBlockMaskCalc(const Square square) const {
 		g_fileMaskBb.GetFileMask(FileA) |
 		g_fileMaskBb.GetFileMask(FileI)
 	);
-	g_setMaskBb.ClearBit(&result, square);
+	g_setMaskBB.ClearBit(&result, square);
 
 	return result;
 }
@@ -101,11 +101,11 @@ Bitboard BishopAttackBb::BishopAttackCalc(const Square square, const Bitboard& o
 	Bitboard result = Bitboard::CreateAllZeroBB();
 	for (SquareDelta delta : deltaArray[true/*isBishop*/]) {
 		for (Square sq = square + delta;
-		ConvSquare::CONTAINS_OF10(sq) && abs(ConvSquare::TO_RANK10(sq - delta) - ConvSquare::TO_RANK10(sq)) <= 1;
+		ConvSquare::containsOf_n10(sq) && abs(ConvSquare::toRank_n10(sq - delta) - ConvSquare::toRank_n10(sq)) <= 1;
 			sq += delta)
 		{
-			g_setMaskBb.AddBit(&result, sq);
-			if (g_setMaskBb.IsSet(&occupied, sq)) { break; }
+			g_setMaskBB.AddBit(&result, sq);
+			if (g_setMaskBB.IsSet(&occupied, sq)) { break; }
 		}
 	}
 
@@ -116,7 +116,7 @@ Bitboard BishopAttackBb::BishopAttackCalc(const Square square, const Bitboard& o
 /// <summary>
 /// 
 /// </summary>
-void BishopAttackBb::InitBishopAttacks()
+void BishopAttackBb::initBishopAttacks_app10()
 {
 	// 角か、飛車か
 	auto* attacks = g_bishopAttackBb.m_controllBb_;
@@ -137,7 +137,7 @@ void BishopAttackBb::InitBishopAttacks()
 		const int num1s = g_bishopAttackBb.m_bishopBlockBits[sq];
 		for (int i = 0; i < (1 << num1s); ++i)
 		{
-			const Bitboard occupied = g_setMaskBb.IndexToOccupied(i, num1s, blockMask[sq]);
+			const Bitboard occupied = g_setMaskBB.IndexToOccupied(i, num1s, blockMask[sq]);
 #if defined HAVE_BMI2
 			attacks[index + (occupied & blockMask[sq]).OccupiedToIndex(blockMask[sq])] = this->BishopAttackCalc(sq, occupied);
 #else
@@ -153,7 +153,7 @@ void BishopAttackBb::InitBishopAttacks()
 /// <summary>
 /// 
 /// </summary>
-void BishopAttackBb::InitializeToEdge()
+void BishopAttackBb::initializeToEdge_app10()
 {
 	for (Square sq = I9; sq < SquareNum; ++sq) {
 		g_bishopAttackBb.m_controllBbToEdge_[sq] = g_bishopAttackBb.BishopAttack(Bitboard::CreateAllZeroBB(), sq);

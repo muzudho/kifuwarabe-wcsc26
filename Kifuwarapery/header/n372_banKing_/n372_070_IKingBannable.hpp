@@ -1,5 +1,4 @@
 ﻿#pragma once
-
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n105_120_square__/n105_120_100_square.hpp"
 #include "../n130_100_boardBb_/n160_100_bitboard.hpp"
@@ -9,7 +8,8 @@
 /// <summary>
 /// 駒
 /// </summary>
-class PieceAbstract{
+class IKingBannable
+{
 
 
 public:
@@ -18,11 +18,13 @@ public:
 	/// <summary>
 	/// インターフェースのメソッド
 	/// </summary>
-	/// <param name="bannedKingToBB"></param>
-	/// <param name="pos"></param>
+	/// <param name="bannedKingToBB">これを更新していく</param>
+	/// <param name="pos">竜の利きのとき使う</param>
 	/// <param name="checkSq"></param>
 	/// <param name="ksq"></param>
 	virtual void MakeBanned2KingTo(
-		Bitboard& bannedKingToBB, const Position& pos, const Square checkSq, const Square ksq
-	) const = 0;
+		Bitboard& bannedKingToBB,
+		const Position& pos,
+		const Square checkSq,
+		const Square ksq) const = 0;
 };

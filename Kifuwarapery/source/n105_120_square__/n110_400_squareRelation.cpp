@@ -11,14 +11,14 @@ SquareRelation g_squareRelation;
 /// <summary>
 /// ２つのマスの位置関係が［同筋］［同段］［同右肩上がり］［同右肩下がり］［その他］かを区別するビットボード（＾～＾）！
 /// </summary>
-void SquareRelation::Initialize()
+void SquareRelation::initialize_app10()
 {
 	for (Square sq1 = I9; sq1 < SquareNum; ++sq1) {
-		const File file1 = ConvSquare::TO_FILE10(sq1);
-		const Rank rank1 = ConvSquare::TO_RANK10(sq1);
+		const File file1 = ConvSquare::toFile_n10(sq1);
+		const Rank rank1 = ConvSquare::toRank_n10(sq1);
 		for (Square sq2 = I9; sq2 < SquareNum; ++sq2) {
-			const File file2 = ConvSquare::TO_FILE10(sq2);
-			const Rank rank2 = ConvSquare::TO_RANK10(sq2);
+			const File file2 = ConvSquare::toFile_n10(sq2);
+			const Rank rank2 = ConvSquare::toRank_n10(sq2);
 			this->m_squareRelation_[sq1][sq2] = N00_DirecMisc;
 
 			// 同マスはその他扱い

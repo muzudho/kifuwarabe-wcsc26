@@ -1,4 +1,4 @@
-﻿#include "../../header/n358_dropMake/n358_070_dropMakerAbstract.hpp"
+﻿#include "../../header/n358_dropMake/n358_070_IDropMakeable.hpp"
 #include "../../header/n358_dropMake/n358_100_dropMakerHand0.hpp"
 #include "../../header/n358_dropMake/n358_110_dropMakerHand1.hpp"
 #include "../../header/n358_dropMake/n358_120_dropMakerHand2.hpp"
@@ -21,7 +21,7 @@ const DropMakerHand6 DropMakerArray::m_dropMakerHand6;
 /// <summary>
 /// 抽象クラスのインスタンスを配列にするためには、ポインタで持てばいいんだぜ☆（＾ｑ＾）
 /// </summary>
-const DropMakerAbstract* DropMakerArray::m_dropMakerArray[] = {
+const IDropMakeable* DropMakerArray::m_dropMakerArray[] = {
 	&DropMakerArray::m_dropMakerHand0,
 	&DropMakerArray::m_dropMakerHand1,
 	&DropMakerArray::m_dropMakerHand2,

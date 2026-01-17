@@ -14,7 +14,7 @@
 #include "../../header/n250_pieceTyp/n350_030_makePromoteMove.hpp"
 #include "../../header/n250_pieceTyp/n350_040_ptEvent.hpp"
 #include "../../header/n250_pieceTyp/n350_045_pieceTypeSeeEvent.hpp"
-#include "../../header/n250_pieceTyp/n350_070_ptAbstract.hpp"
+#include "../../header/n250_pieceTyp/n350_070_IPieceType.hpp"
 #include "../../header/n250_pieceTyp/n350_110_ptPawn.hpp"
 #include "../../header/n250_pieceTyp/n350_500_ptPrograms.hpp"
 
@@ -41,14 +41,14 @@ PieceType PtPawn::AppendToNextAttackerAndTryPromote(
 		//       その場合、キャッシュに乗りやすくなるので逆に速くなるかも。
 		const Bitboard bb = ptsEvent.m_opponentAttackers & ptsEvent.m_pos.GetBbOf10(PT);
 		const Square from = bb.GetFirstOneFromI9();
-		g_setMaskBb.XorBit(&occupied, from);
+		g_setMaskBB.XorBit(&occupied, from);
 
 		attackers |= (g_lanceAttackBb.GetControllBb(occupied, ConvColor::OPPOSITE_COLOR10b(ptsEvent.m_turn), ptsEvent.m_to) &
 			(ptsEvent.m_pos.GetBbOf20(N06_Rook, N14_Dragon) |
 				ptsEvent.m_pos.GetBbOf20(N02_Lance, turn)));
 
 		// 歩、香、桂は　陣地に飛び込んだとき、成れる時には成る☆
-		if (ConvSquare::CAN_PROMOTE10b(turn, ConvSquare::TO_RANK10(ptsEvent.m_to))) {
+		if (ConvSquare::canPromote_n10b(turn, ConvSquare::toRank_n10(ptsEvent.m_to))) {
 			return PT + PTPromote;
 		}
 		// それ以外の駒種類は、そのまま返す☆

@@ -16,7 +16,7 @@
 #include "n350_030_makePromoteMove.hpp"
 #include "n350_040_ptEvent.hpp"
 #include "n350_045_pieceTypeSeeEvent.hpp"
-#include "n350_070_ptAbstract.hpp"
+#include "n350_070_IPieceType.hpp"
 
 
 /// <summary>
@@ -28,7 +28,7 @@ const static Move g_PTPROPAWN_ONBOARD_AS_MOVE = ConvMove::FROM_PIECETYPE_ONBOARD
 /// <summary>
 /// ＰｉｅｃｅＴｙｐｅ：：ＰｒｏＰａｗｎ
 /// </summary>
-class PtProPawn : public PtAbstract {
+class PtProPawn : public IPieceType {
 
 
 public:

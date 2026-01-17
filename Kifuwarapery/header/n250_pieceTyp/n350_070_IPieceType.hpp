@@ -15,9 +15,12 @@
 
 
 /// <summary>
-/// 駒の動きの抽象基底クラス
+///		<pre>
+/// インターフェース
+/// 駒の動き
+///		</pre>
 /// </summary>
-class PtAbstract {
+class IPieceType {
 
 
 public:
@@ -51,8 +54,7 @@ public:
 		MoveStack* moveStackList,
 		const Position& pos,
 		const Square from,
-		const Square to
-	) const = 0;
+		const Square to) const = 0;
 
 
 	/// <summary>
@@ -75,6 +77,5 @@ public:
 		Bitboard& occupied,
 		Bitboard& attackers,
 		PieceType nextPT,
-		const PieceTypeSeeEvent ptsEvent
-		) const = 0;
+		const PieceTypeSeeEvent ptsEvent) const = 0;
 };

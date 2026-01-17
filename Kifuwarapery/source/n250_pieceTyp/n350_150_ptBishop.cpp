@@ -14,7 +14,7 @@
 #include "../../header/n250_pieceTyp/n350_030_makePromoteMove.hpp"
 #include "../../header/n250_pieceTyp/n350_040_ptEvent.hpp"
 #include "../../header/n250_pieceTyp/n350_045_pieceTypeSeeEvent.hpp"
-#include "../../header/n250_pieceTyp/n350_070_ptAbstract.hpp"
+#include "../../header/n250_pieceTyp/n350_070_IPieceType.hpp"
 #include "../../header/n250_pieceTyp/n350_150_ptBishop.hpp"
 #include "../../header/n250_pieceTyp/n350_500_ptPrograms.hpp"
 
@@ -40,13 +40,13 @@ PieceType PtBishop::AppendToNextAttackerAndTryPromote(
 		//       その場合、キャッシュに乗りやすくなるので逆に速くなるかも。
 		const Bitboard bb = ptsEvent.m_opponentAttackers & ptsEvent.m_pos.GetBbOf10(PT);
 		const Square from = bb.GetFirstOneFromI9();
-		g_setMaskBb.XorBit(&occupied, from);
+		g_setMaskBB.XorBit(&occupied, from);
 
 		attackers |= (g_bishopAttackBb.BishopAttack(occupied, ptsEvent.m_to) & ptsEvent.m_pos.GetBbOf20(N05_Bishop, N13_Horse));
 
 		// 銀、角、飛は　陣地に飛び込んだとき、または陣地から飛び出たとき、成れる時には成る☆
-		if (ConvSquare::CAN_PROMOTE10b(ptsEvent.m_turn, ConvSquare::TO_RANK10(ptsEvent.m_to)) ||
-			ConvSquare::CAN_PROMOTE10b(ptsEvent.m_turn, ConvSquare::TO_RANK10(from))) {
+		if (ConvSquare::canPromote_n10b(ptsEvent.m_turn, ConvSquare::toRank_n10(ptsEvent.m_to)) ||
+			ConvSquare::canPromote_n10b(ptsEvent.m_turn, ConvSquare::toRank_n10(from))) {
 			return PT + PTPromote;
 		}
 		// それ以外の駒種類は、そのまま返す☆

@@ -1,6 +1,5 @@
 ﻿#pragma once
-
-#include "../n372_banKing_/n372_070_PieceAbstract.hpp"
+#include "../n372_banKing_/n372_070_IKingBannable.hpp"
 #include "../n372_banKing_/n372_080_pieceNull.hpp"
 #include "../n372_banKing_/n372_190_pieceBProPawn.hpp"
 #include "../n372_banKing_/n372_100_pieceEmpty.hpp"
@@ -38,7 +37,8 @@
 /// <summary>
 /// 駒配列。
 /// </summary>
-class PieceArray {
+class PieceArray
+{
 
 
 public:
@@ -79,7 +79,7 @@ public:
 	static const PieceWDragon m_pieceWDragon;//[30]
 	static const PieceNone m_pieceNone;//[31]
 
-	static const PieceAbstract* m_pieceAbstractArray[32];
+	static const IKingBannable* m_pieceAbstractArray[32];
 };
 
 

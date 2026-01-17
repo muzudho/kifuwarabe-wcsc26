@@ -3,7 +3,7 @@
 #include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
 #include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
 #include "n350_040_ptEvent.hpp"
-#include "n350_070_ptAbstract.hpp"
+#include "n350_070_IPieceType.hpp"
 #include "n350_100_ptOccupied.hpp"
 #include "n350_110_ptPawn.hpp"
 #include "n350_120_ptLance.hpp"
@@ -52,5 +52,5 @@ public:
 	static const PtHorse m_HORSE;
 	static const PtDragon m_DRAGON;
 
-	static const PtAbstract* m_PIECETYPE_PROGRAMS[g_PIECETYPE_NUM];
+	static const IPieceType* m_PIECETYPE_PROGRAMS[g_PIECETYPE_NUM];
 };

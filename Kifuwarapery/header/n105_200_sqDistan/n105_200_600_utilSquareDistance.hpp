@@ -16,5 +16,5 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="squareDistance"></param>
-	static void InitSquareDistance(SquareDistance& squareDistance);
+	static void initSquareDistance_app10(SquareDistance& squareDistance);
 };

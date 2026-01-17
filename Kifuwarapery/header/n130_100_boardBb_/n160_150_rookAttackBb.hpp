@@ -110,7 +110,7 @@ private:
 	/// <summary>
 	/// メモリ節約の為、1次元配列にして無駄が無いようにしている。
 	/// </summary>
-	Bitboard m_controllBb_[512000];
+	Bitboard m_controllBB_[512000];
 #endif
 
 	/// <summary>
@@ -161,14 +161,14 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	void InitRookAttacks();
+	void initRookAttacks_app10();
 
 
 	/// <summary>
 	/// 障害物が無いときの利きの Bitboard
 	/// g_rookAttack, g_bishopAttack, g_lanceAttack を設定してから、この関数を呼ぶこと。
 	/// </summary>
-	void InitializeToEdge();
+	void initializeToEdge_app10();
 
 
 	/// <summary>
@@ -232,7 +232,7 @@ public:
 			// 飛車の利きのブロックマスの有無か？
 			const Bitboard block(thisBitboard & this->m_rookBlockMask_[sq]);
 
-			return this->m_controllBb_[
+			return this->m_controllBB_[
 				this->m_rookAttackIndex[sq] +
 					block.OccupiedToIndex(this->m_rookMagic_[sq], this->m_rookShiftBits_[sq])
 			];

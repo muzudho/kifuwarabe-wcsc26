@@ -1,5 +1,4 @@
 ﻿#pragma once
-
 #include <stack>
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n105_100_color___/n105_100_100_color.hpp"
@@ -214,7 +213,7 @@ public:
 	template <bool IsKnight = false>
 	bool IsPinnedIllegal(const Square from, const Square to, const Square ksq, const Bitboard& pinned) const {
 		// 桂馬ならどこに動いても駄目。
-		return g_setMaskBb.IsSet(&pinned, from) && (IsKnight || !g_squareRelation.IsAligned<true>(from, to, ksq));
+		return g_setMaskBB.IsSet(&pinned, from) && (IsKnight || !g_squareRelation.IsAligned<true>(from, to, ksq));
 	}
 
 
@@ -230,7 +229,7 @@ public:
 	template <bool IsKnight = false>
 	bool IsDiscoveredCheck(const Square from, const Square to, const Square ksq, const Bitboard& dcBB) const {
 		// 桂馬ならどこに動いても空き王手になる。
-		return g_setMaskBb.IsSet(&dcBB, from) && (IsKnight || !g_squareRelation.IsAligned<true>(from, to, ksq));
+		return g_setMaskBB.IsSet(&dcBB, from) && (IsKnight || !g_squareRelation.IsAligned<true>(from, to, ksq));
 	}
 
 
@@ -749,7 +748,7 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	static void InitZobrist();
+	static void initZobrist_app10();
 
 
 private:
@@ -1033,9 +1032,9 @@ private:
 	/// <param name="sq"></param>
 	template<Color CLR>
 	inline void XorBBs(const PieceType pt, const Square sq) {
-		g_setMaskBb.XorBit(&this->m_BB_ByPiecetype_[N00_Occupied], sq);
-		g_setMaskBb.XorBit(&this->m_BB_ByPiecetype_[pt], sq);
-		g_setMaskBb.XorBit(&this->m_BB_ByColor_[CLR], sq);
+		g_setMaskBB.XorBit(&this->m_BB_ByPiecetype_[N00_Occupied], sq);
+		g_setMaskBB.XorBit(&this->m_BB_ByPiecetype_[pt], sq);
+		g_setMaskBB.XorBit(&this->m_BB_ByColor_[CLR], sq);
 	}
 	void XorBBs(const PieceType pt, const Square sq, const Color c);
 

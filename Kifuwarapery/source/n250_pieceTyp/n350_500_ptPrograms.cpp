@@ -1,5 +1,5 @@
 ﻿#include "../../header/n105_160_pieceTyp/n105_160_500_pieceType.hpp"
-#include "../../header/n250_pieceTyp/n350_070_ptAbstract.hpp"
+#include "../../header/n250_pieceTyp/n350_070_IPieceType.hpp"
 #include "../../header/n250_pieceTyp/n350_100_ptOccupied.hpp"
 #include "../../header/n250_pieceTyp/n350_110_ptPawn.hpp"
 #include "../../header/n250_pieceTyp/n350_120_ptLance.hpp"
@@ -41,7 +41,7 @@ const PtDragon PiecetypePrograms::m_DRAGON;
 /// <summary>
 /// ポインタの配列にするのが正解☆（＾ｑ＾）
 /// </summary>
-const PtAbstract* PiecetypePrograms::m_PIECETYPE_PROGRAMS[g_PIECETYPE_NUM] = {
+const IPieceType* PiecetypePrograms::m_PIECETYPE_PROGRAMS[g_PIECETYPE_NUM] = {
 	&PiecetypePrograms::m_OCCUPIED,
 	&PiecetypePrograms::m_PAWN,
 	&PiecetypePrograms::m_LANCE,

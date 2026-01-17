@@ -11,13 +11,13 @@
 #include "../n165_movStack/n165_500_moveStack.hpp"
 #include "../n165_movStack/n165_600_convMove.hpp"
 #include "../n220_position/n220_650_position.hpp"
-#include "n358_070_dropMakerAbstract.hpp"
+#include "n358_070_IDropMakeable.hpp"
 
 
 /// <summary>
 /// 
 /// </summary>
-class DropMakerHand4 : public DropMakerAbstract {
+class DropMakerHand4 : public IDropMakeable {
 
 
 public:
