@@ -882,7 +882,7 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// なんか分からんが再帰探索（＾～＾）
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="givesCheck"></param>
@@ -899,7 +899,7 @@ public:
 	/// <param name="cutNode"></param>
 	/// <param name="beta"></param>
 	/// <param name="newDepth"></param>
-	virtual inline void explorePlain_n260(
+	virtual inline void explorePlain_n260_recursiveSearch(
 		OurCarriage& ourCarriage,
 		bool& givesCheck,
 		Position& pos,
@@ -1159,7 +1159,7 @@ public:
 	/// <param name="playedMoveCount"></param>
 	/// <param name="movesSearched"></param>
 	/// <param name="move"></param>
-	virtual inline void explorePlain_n320(
+	virtual inline void explorePlain_n320_memoryVariationMove(
 		bool& captureOrPawnPromotion,
 		int& playedMoveCount,
 		Move movesSearched[64],
@@ -1172,7 +1172,7 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// １手指すぜ（＾～＾）
 	/// </summary>
 	/// <param name="pos"></param>
 	/// <param name="move"></param>
@@ -1180,7 +1180,7 @@ public:
 	/// <param name="ci"></param>
 	/// <param name="givesCheck"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void explorerPlain_n340(
+	virtual inline void explorerPlain_n340_doMove(
 		Position& pos,
 		Move& move,
 		StateInfo& st,

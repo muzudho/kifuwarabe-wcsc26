@@ -6,7 +6,12 @@
 
 
 // なんか分からんが再帰探索（＾～＾）
-#define SHRINK_EXPLORE_PLAIN_360_RECURSIVE_SEARCH
+#define SHRINK_EXPLORE_PLAIN_260_RECURSIVE_SEARCH
+
+
+// なんか分からんが再帰探索（＾～＾）
+// シュリンクすると１手の深さしか読まなくなるようだぜ（＾～＾）
+//#define SHRINK_EXPLORE_PLAIN_360_RECURSIVE_SEARCH
 
 
 // NonPV扱いで再帰するみたいなんだがなんだこれだぜ☆（＾～＾）？

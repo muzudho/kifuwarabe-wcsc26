@@ -285,7 +285,7 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 			);
 
 		// step12
-		this->explorePlain_n260(
+		this->explorePlain_n260_recursiveSearch(
 			ourCarriage,
 			givesCheck,
 			pos,
@@ -320,7 +320,7 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 			&pFlashlight);
 		if (isContinue) { continue; }
 
-		this->explorePlain_n320(
+		this->explorePlain_n320_memoryVariationMove(
 			captureOrPawnPromotion,
 			playedMoveCount,
 			movesSearched,
@@ -328,7 +328,7 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 			);
 
 		// step14
-		this->explorerPlain_n340(
+		this->explorerPlain_n340_doMove(
 			pos,
 			move,
 			st,

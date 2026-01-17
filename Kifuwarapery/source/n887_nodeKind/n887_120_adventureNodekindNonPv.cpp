@@ -334,7 +334,7 @@ iid_start:
 			);
 
 		// step12
-		this->explorePlain_n260(
+		this->explorePlain_n260_recursiveSearch(
 			ourCarriage,
 			givesCheck,
 			pos,
@@ -391,7 +391,7 @@ iid_start:
 			&pFlashlight);
 		if (isContinue) { continue; }
 
-		this->explorePlain_n320(
+		this->explorePlain_n320_memoryVariationMove(
 			captureOrPawnPromotion,
 			playedMoveCount,
 			movesSearched,
@@ -399,7 +399,7 @@ iid_start:
 			);
 
 		// step14
-		this->explorerPlain_n340(
+		this->explorerPlain_n340_doMove(
 			pos,
 			move,
 			st,

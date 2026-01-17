@@ -354,7 +354,7 @@ split_point_start:
 			);
 
 		// step12
-		this->explorePlain_n260(
+		this->explorePlain_n260_recursiveSearch(
 			ourCarriage,
 			givesCheck,
 			pos,
@@ -403,7 +403,7 @@ split_point_start:
 		if (isContinue) { continue; }
 
 		// step14
-		this->explorerPlain_n340(
+		this->explorerPlain_n340_doMove(
 			pos,
 			move,
 			st,

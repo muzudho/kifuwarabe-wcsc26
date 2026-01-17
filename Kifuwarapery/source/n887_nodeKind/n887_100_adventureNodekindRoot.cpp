@@ -261,40 +261,49 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 			pos,
 			dangerous);
 
-		// step12
-		this->explorePlain_n260(
-			ourCarriage,
-			givesCheck,
-			pos,
-			move,
-			extension,
-			singularExtensionNode,
-			ttMove,
-			ttScore,
-			checkInfo,
-			depth,
-			&pFlashlight,
-			score,
-			cutNode,
-			beta,
-			newDepth);
+
+		#ifndef SHRINK_EXPLORE_PLAIN_260_RECURSIVE_SEARCH
+			// なんか分からんが再帰探索（＾～＾）
+			this->explorePlain_n260_recursiveSearch(
+				ourCarriage,
+				givesCheck,
+				pos,
+				move,
+				extension,
+				singularExtensionNode,
+				ttMove,
+				ttScore,
+				checkInfo,
+				depth,
+				&pFlashlight,
+				score,
+				cutNode,
+				beta,
+				newDepth);
+		#endif // !SHRINK_EXPLORE_PLAIN_260_RECURSIVE_SEARCH
+
 
 		// 本筋かどうか判定するぜ（＾～＾）
 		isPVMove = this->explorePlain_n280_isPvMove(moveCount);
 
+
+		// 現在の指し手を覚えた（＾～＾）
 		this->explorePlain_n300_setMove(
 			move,
 			&pFlashlight);
 		if (isContinue) { continue; }
 
-		this->explorePlain_n320(
+
+		// 探索した変化を覚えてる（＾～＾）？
+		this->explorePlain_n320_memoryVariationMove(
 			captureOrPawnPromotion,
 			playedMoveCount,
 			movesSearched,
 			move);
 
-		// step14
-		this->explorerPlain_n340(
+
+		// １手指すぜ（＾～＾）
+		this->explorerPlain_n340_doMove(
 			pos,
 			move,
 			st,
