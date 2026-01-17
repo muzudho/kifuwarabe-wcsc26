@@ -225,10 +225,12 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 			).IsNone()
 		) {
 
-		// DoStep11b
+
 		if (move == excludedMove) { continue; }	// ムーブが一致していれば、次のループへ☆
 
+
 		bool isContinue = false;
+
 
 		this->explorePlain_n180_loopHeader(
 			isContinue,
@@ -240,6 +242,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 			);
 		if (isContinue) { continue; }
 
+
 		this->explorePlain_n200_loopHeader(
 			isContinue,
 			ourCarriage,
@@ -247,10 +250,13 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 			);
 		if (isContinue) { continue; }
 
-		this->explorePlain_n220_loopHeader(
+
+		// info 表示
+		this->explorePlain_n220_displayInfo(
 			ourCarriage,
 			moveCount
 			);
+
 
 		this->explorePlain_n240_loopHeader(
 			extension,
@@ -262,7 +268,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 			dangerous);
 
 
-		#ifndef SHRINK_EXPLORE_PLAIN_260_RECURSIVE_SEARCH
+		#ifndef SHRINK_ROOT_NODE_EXPLORE_PLAIN_260_RECURSIVE_SEARCH
 			// なんか分からんが再帰探索（＾～＾）
 			this->explorePlain_n260_recursiveSearch(
 				ourCarriage,
@@ -280,7 +286,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 				cutNode,
 				beta,
 				newDepth);
-		#endif // !SHRINK_EXPLORE_PLAIN_260_RECURSIVE_SEARCH
+		#endif
 
 
 		// 本筋かどうか判定するぜ（＾～＾）
@@ -312,7 +318,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 			&pFlashlight);
 
 
-		#ifndef SHRINK_EXPLORE_PLAIN_360_RECURSIVE_SEARCH
+		#ifndef SHRINK_ROOT_NODE_EXPLORE_PLAIN_360_RECURSIVE_SEARCH
 			// なんか分からんが再帰探索（＾～＾）
 			this->explorePlain_n360_recursiveSearch(
 				ourCarriage,
@@ -333,7 +339,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 		#endif
 
 
-		#ifndef SHRINK_EXPLORE_PLAIN_NON_PV_RECURSIVE_SEARCH
+		#ifndef SHRINK_ROOT_NODE_EXPLORE_PLAIN_NON_PV_RECURSIVE_SEARCH
 			// NonPV扱いで再帰するみたいなんだがなんだこれだぜ☆（＾～＾）？
 			this->explorePlain_n380_nonPVRecursiveSearch(
 				ourCarriage,
@@ -348,7 +354,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 		#endif
 
 
-		#ifndef SHRINK_EXPLORE_PLAIN_LARGE_BETA_RECURSIVE_SEARCH
+		#ifndef SHRINK_ROOT_NODE_EXPLORE_PLAIN_LARGE_BETA_RECURSIVE_SEARCH
 			// 大きなβ値のときの深掘りか（＾～＾）？
 			this->explorePlain_n400_betaLargeRecursiveSearch(
 				ourCarriage,
@@ -360,7 +366,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 				givesCheck,
 				pos,
 				&pFlashlight);
-		#endif // !SHRINK_EXPLORE_PLAIN_LARGE_BETA_RECURSIVE_SEARCH
+		#endif
 
 
 		this->explorePlain_n420_undoMove(
@@ -403,7 +409,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 		if (isBreak) { break; }
 
 
-		#ifndef SHRINK_EXPLORE_PLAIN_FORK_NEW_MONKEY
+		#ifndef SHRINK_ROOT_NODE_EXPLORE_PLAIN_FORK_NEW_MONKEY
 			// さらに枝に別の猿を走らせる。
 			this->explorePlain_n480_forkNewMonkey(
 				isBreak,

@@ -252,7 +252,7 @@ split_point_start:
 			);
 		if (isContinue) { continue; }
 
-		this->explorePlain_n220_loopHeader(
+		this->explorePlain_n220_displayInfo(
 			ourCarriage,
 			moveCount
 			);

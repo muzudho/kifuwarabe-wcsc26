@@ -476,27 +476,32 @@ iid_start:
 			);
 		if (isBreak) { break; }
 
-		// step19
-		this->explorePlain_n480_forkNewMonkey(
-			isBreak,
-			ourCarriage,
-			depth,
-			&pThisThread,
-			bestScore,
-			beta,
-			pos,
-			&pFlashlight,
-			alpha,
-			bestMove,
-			threatMove,
-			moveCount,
-			mp,
-			cutNode
-			);
-		if (isBreak) { break; }
+
+		#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_FORK_NEW_MONKEY
+			// 猿を増やすの、止めるぜ（＾～＾）
+			this->explorePlain_n480_forkNewMonkey(
+				isBreak,
+				ourCarriage,
+				depth,
+				&pThisThread,
+				bestScore,
+				beta,
+				pos,
+				&pFlashlight,
+				alpha,
+				bestMove,
+				threatMove,
+				moveCount,
+				mp,
+				cutNode
+				);
+			if (isBreak) { break; }
+		#endif
 	}
 
+
 	if (this->getReturn_beforeN500()) { return bestScore; }
+
 
 	// step20
 	this->explorePlain_n500(
@@ -515,6 +520,7 @@ iid_start:
 		pos,
 		movesSearched
 		);
+
 
 	return bestScore;
 }

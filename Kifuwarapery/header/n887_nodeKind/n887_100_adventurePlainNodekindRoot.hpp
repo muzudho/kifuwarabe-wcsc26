@@ -18,7 +18,7 @@
 // IsRootNode = true
 
 /// <summary>
-/// 
+/// 根ノード
 /// </summary>
 class AdventureNodekindRoot : public AdventureNodekindAbstract {
 

@@ -409,7 +409,7 @@ public:
 	/// </summary>
 	/// <param name="ourCarriage"></param>
 	/// <param name="moveCount"></param>
-	virtual inline void explorePlain_n220_loopHeader(
+	virtual inline void explorePlain_n220_displayInfo(
 		OurCarriage& ourCarriage,
 		int& moveCount
 		) const override {

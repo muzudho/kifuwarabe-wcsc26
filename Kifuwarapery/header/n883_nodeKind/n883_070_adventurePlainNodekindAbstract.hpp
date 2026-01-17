@@ -15,7 +15,11 @@ extern RepetitionTypeModels g_repetitionTypes;
 
 
 /// <summary>
-/// 大冒険する平野だぜ（＾▽＾）！
+///		<pre>
+///	大冒険する平野だぜ（＾▽＾）！
+/// 
+///		- サブクラスが６つあるぜ（＾～＾）
+///		</pre>
 /// </summary>
 class AdventureNodekindAbstract {
 
@@ -836,11 +840,15 @@ public:
 
 
 	/// <summary>
-	/// ルートノードだけ実行する手続きだぜ☆（＾ｑ＾）
+	///		<pre>
+	/// info 表示
+	/// 
+	///		- ルートノードだけ実行する手続きだぜ☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="moveCount"></param>
-	virtual inline void explorePlain_n220_loopHeader(
+	virtual inline void explorePlain_n220_displayInfo(
 		OurCarriage& ourCarriage,
 		int& moveCount) const
 	{
@@ -940,10 +948,14 @@ public:
 			const ScoreIndex rBeta = ttScore - static_cast<ScoreIndex>(depth);
 			(*ppFlashlight)->m_excludedMove = move;
 			(*ppFlashlight)->m_skipNullMove = true;
+
+
 			//────────────────────────────────────────────────────────────────────────────────
 			// 探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			score =	g_NODEKIND_PROGRAMS[No2_NonPV]->explorePlain_n10(ourCarriage, pos, (*ppFlashlight), rBeta - 1, rBeta, depth / 2, cutNode);
+
+
 			(*ppFlashlight)->m_skipNullMove = false;
 			(*ppFlashlight)->m_excludedMove = g_MOVE_NONE;
 
