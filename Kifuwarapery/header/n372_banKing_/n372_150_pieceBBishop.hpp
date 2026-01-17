@@ -4,7 +4,7 @@
 #include "../n130_100_boardBb_/n160_100_bitboard.hpp"
 #include "../n130_100_boardBb_/n160_120_bishopAttackBb.hpp"
 #include "../n220_position/n220_650_position.hpp"
-#include "../n372_banKing_/n372_070_PieceAbstract.hpp"
+#include "../n372_banKing_/n372_070_IKingBannable.hpp"
 
 
 /// <summary>

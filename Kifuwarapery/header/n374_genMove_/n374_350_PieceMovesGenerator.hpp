@@ -15,7 +15,7 @@
 #include "../n220_position/n220_650_position.hpp"
 #include "../n250_pieceTyp/n350_040_ptEvent.hpp"
 #include "../n250_pieceTyp/n350_500_ptPrograms.hpp"
-#include "../n372_banKing_/n372_070_pieceAbstract.hpp"
+#include "../n372_banKing_/n372_070_IKingBannable.hpp"
 #include "../n372_banKing_/n372_500_pieceArray.hpp"
 #include "n374_040_pieceMoveEvent.hpp"
 #include "n374_250_bishopRookMovesGenerator.hpp"

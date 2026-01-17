@@ -1,6 +1,5 @@
 ﻿#pragma once
-
-#include "../n372_banKing_/n372_070_PieceAbstract.hpp"
+#include "../n372_banKing_/n372_070_IKingBannable.hpp"
 #include "../n372_banKing_/n372_080_pieceNull.hpp"
 #include "../n372_banKing_/n372_190_pieceBProPawn.hpp"
 #include "../n372_banKing_/n372_100_pieceEmpty.hpp"

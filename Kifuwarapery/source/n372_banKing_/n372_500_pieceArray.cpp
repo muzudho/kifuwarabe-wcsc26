@@ -1,4 +1,4 @@
-﻿#include "../../header/n372_banKing_/n372_070_pieceAbstract.hpp"
+﻿#include "../../header/n372_banKing_/n372_070_IKingBannable.hpp"
 #include "../../header/n372_banKing_/n372_080_pieceNull.hpp"
 #include "../../header/n372_banKing_/n372_190_pieceBProPawn.hpp"
 #include "../../header/n372_banKing_/n372_100_pieceEmpty.hpp"

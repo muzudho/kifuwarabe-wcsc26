@@ -299,7 +299,6 @@
     <ClInclude Include="header\n358_dropMake\n358_150_dropMakerHand5.hpp" />
     <ClInclude Include="header\n358_dropMake\n358_160_dropMakerHand6.hpp" />
     <ClInclude Include="header\n358_dropMake\n358_500_dropMakerArray.hpp" />
-    <ClInclude Include="header\n372_banKing_\n372_070_pieceAbstract.hpp" />
     <ClInclude Include="header\n372_banKing_\n372_080_pieceNull.hpp" />
     <ClInclude Include="header\n372_banKing_\n372_100_pieceEmpty.hpp" />
     <ClInclude Include="header\n372_banKing_\n372_110_pieceBPawn.hpp" />
