@@ -14,11 +14,11 @@ SquareRelation g_squareRelation;
 void SquareRelation::Initialize()
 {
 	for (Square sq1 = I9; sq1 < SquareNum; ++sq1) {
-		const File file1 = ConvSquare::ToFile_n10(sq1);
-		const Rank rank1 = ConvSquare::ToRank_n10(sq1);
+		const File file1 = ConvSquare::toFile_n10(sq1);
+		const Rank rank1 = ConvSquare::toRank_n10(sq1);
 		for (Square sq2 = I9; sq2 < SquareNum; ++sq2) {
-			const File file2 = ConvSquare::ToFile_n10(sq2);
-			const Rank rank2 = ConvSquare::ToRank_n10(sq2);
+			const File file2 = ConvSquare::toFile_n10(sq2);
+			const Rank rank2 = ConvSquare::toRank_n10(sq2);
 			this->m_squareRelation_[sq1][sq2] = N00_DirecMisc;
 
 			// 同マスはその他扱い

@@ -297,22 +297,22 @@ Move UsiOperation::UsiToMoveBody(const Position& pos, const std::string& moveStr
 
 		const File toFile = ConvFile::FROM_CHAR_USI10(moveStr[2]);
 		const Rank toRank = ConvRank::FROM_CHAR_USI10(moveStr[3]);
-		if (!ConvSquare::ContainsOf_n20(toFile, toRank)) { return g_MOVE_NONE; }
+		if (!ConvSquare::containsOf_n20(toFile, toRank)) { return g_MOVE_NONE; }
 
-		const Square to = ConvSquare::FromFileRank_n10(toFile, toRank);
+		const Square to = ConvSquare::fromFileRank_n10(toFile, toRank);
 		move = ConvMove::Convert30_MakeDropMove_da(ConvMove::FROM_PIECETYPE_DA10(ptTo), to);
 	}
 	else {
 		const File fromFile = ConvFile::FROM_CHAR_USI10(moveStr[0]);
 		const Rank fromRank = ConvRank::FROM_CHAR_USI10(moveStr[1]);
-		if (!ConvSquare::ContainsOf_n20(fromFile, fromRank)) { return g_MOVE_NONE; }
+		if (!ConvSquare::containsOf_n20(fromFile, fromRank)) { return g_MOVE_NONE; }
 
-		const Square from = ConvSquare::FromFileRank_n10(fromFile, fromRank);
+		const Square from = ConvSquare::fromFileRank_n10(fromFile, fromRank);
 		const File toFile = ConvFile::FROM_CHAR_USI10(moveStr[2]);
 		const Rank toRank = ConvRank::FROM_CHAR_USI10(moveStr[3]);
-		if (!ConvSquare::ContainsOf_n20(toFile, toRank)) { return g_MOVE_NONE; }
+		if (!ConvSquare::containsOf_n20(toFile, toRank)) { return g_MOVE_NONE; }
 
-		const Square to = ConvSquare::FromFileRank_n10(toFile, toRank);
+		const Square to = ConvSquare::fromFileRank_n10(toFile, toRank);
 		if (moveStr[4] == '\0') {
 			move = g_makePromoteMove.GetSelectedMakeMove_ExceptPromote_CaptureCategory(
 				ConvMove::FROM_PIECETYPE_ONBOARD10( ConvPiece::TO_PIECE_TYPE10(pos.GetPiece(from))), // （＾ｑ＾）
@@ -363,9 +363,9 @@ Move UsiOperation::CsaToMoveBody(const Position& pos, const std::string& moveStr
 
 	const File toFile = ConvFile::FROM_CHAR_CSA10(moveStr[2]);
 	const Rank toRank = ConvRank::FROM_CHAR_CSA10(moveStr[3]);
-	if (!ConvSquare::ContainsOf_n20(toFile, toRank)) { return g_MOVE_NONE; }
+	if (!ConvSquare::containsOf_n20(toFile, toRank)) { return g_MOVE_NONE; }
 
-	const Square to = ConvSquare::FromFileRank_n10(toFile, toRank);
+	const Square to = ConvSquare::fromFileRank_n10(toFile, toRank);
 	const std::string ptToString(moveStr.begin() + 4, moveStr.end());
 	if (!g_stringToPieceTypeCSA.isLegalString(ptToString)) { return g_MOVE_NONE; }
 
@@ -378,9 +378,9 @@ Move UsiOperation::CsaToMoveBody(const Position& pos, const std::string& moveStr
 	else {
 		const File fromFile = ConvFile::FROM_CHAR_CSA10(moveStr[0]);
 		const Rank fromRank = ConvRank::FROM_CHAR_CSA10(moveStr[1]);
-		if (!ConvSquare::ContainsOf_n20(fromFile, fromRank)) { return g_MOVE_NONE; }
+		if (!ConvSquare::containsOf_n20(fromFile, fromRank)) { return g_MOVE_NONE; }
 
-		const Square from = ConvSquare::FromFileRank_n10(fromFile, fromRank);
+		const Square from = ConvSquare::fromFileRank_n10(fromFile, fromRank);
 		PieceType ptFrom = ConvPiece::TO_PIECE_TYPE10(pos.GetPiece(from));
 		if (ptFrom == ptTo) {
 			// non promote

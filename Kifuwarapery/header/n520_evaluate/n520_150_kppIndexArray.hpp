@@ -114,7 +114,7 @@ public:
 		const Square sq = static_cast<Square>(index - begin);
 		if (sq <= Square::E1) { return index; }
 
-		return static_cast<int>(begin + ConvSquare::INVERSE_FILE40(sq));
+		return static_cast<int>(begin + ConvSquare::inverseFile_n40(sq));
 	};
 
 
@@ -128,7 +128,7 @@ public:
 
 		const int begin = UtilKppIndex::GetBegin(index);
 		const Square sq = static_cast<Square>(index - begin);
-		return static_cast<int>(begin + ConvSquare::INVERSE_FILE40(sq));
+		return static_cast<int>(begin + ConvSquare::inverseFile_n40(sq));
 	};
 
 
@@ -141,6 +141,6 @@ public:
 		assert(f_pawn <= index);
 		const int begin = UtilKppIndex::GetBegin(index);
 		const Square sq = static_cast<Square>(index - begin);
-		return static_cast<int>(begin + ConvSquare::INVERSE_FILE40(sq));
+		return static_cast<int>(begin + ConvSquare::inverseFile_n40(sq));
 	};
 };

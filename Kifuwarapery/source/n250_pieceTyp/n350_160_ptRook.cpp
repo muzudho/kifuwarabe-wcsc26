@@ -49,9 +49,9 @@ PieceType PtRook::AppendToNextAttackerAndTryPromote(
 			| (g_rookAttackBb.GetControllBb(occupied, ptsEvent.m_to) & ptsEvent.m_pos.GetBbOf20(N06_Rook, N14_Dragon));
 
 		// 銀、角、飛は　陣地に飛び込んだとき、または陣地から飛び出たとき、成れる時には成る☆
-		if (ConvSquare::CAN_PROMOTE10b(ptsEvent.m_turn, ConvSquare::ToRank_n10(ptsEvent.m_to))
+		if (ConvSquare::canPromote_n10b(ptsEvent.m_turn, ConvSquare::toRank_n10(ptsEvent.m_to))
 			||
-			ConvSquare::CAN_PROMOTE10b(ptsEvent.m_turn, ConvSquare::ToRank_n10(from))) {
+			ConvSquare::canPromote_n10b(ptsEvent.m_turn, ConvSquare::toRank_n10(from))) {
 			return PT + PTPromote;
 		}
 		// それ以外の駒種類は、そのまま返す☆

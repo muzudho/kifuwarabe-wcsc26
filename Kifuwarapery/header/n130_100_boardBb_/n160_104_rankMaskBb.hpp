@@ -80,7 +80,7 @@ public:
 	/// <param name="sq"></param>
 	/// <returns></returns>
 	inline Bitboard GetSquareRankMask(const Square sq) const {
-		const Rank r = ConvSquare::ToRank_n10(sq);
+		const Rank r = ConvSquare::toRank_n10(sq);
 		return this->GetRankMask(r);
 	}
 };

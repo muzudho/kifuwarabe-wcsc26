@@ -26,7 +26,7 @@ void KnightAttackBb::Initialize()
 				g_knightAttackBb.m_controllBb_[c][sq] =
 					g_bishopAttackBb.BishopStepAttacks(
 						bb.GetFirstOneFromI9()) &
-						g_inFrontMaskBb.GetInFrontMask(c, ConvSquare::ToRank_n10(sq)
+						g_inFrontMaskBb.GetInFrontMask(c, ConvSquare::toRank_n10(sq)
 					);
 		}
 	}

@@ -738,7 +738,7 @@ bool Position::MoveIsPseudoLegal(const Move move, const bool checkPawnDrop) cons
 		}
 
 		if (ptFrom == N01_Pawn && checkPawnDrop) {
-			if ((this->GetBbOf20<US>(N01_Pawn) & g_fileMaskBb.GetFileMask(ConvSquare::ToFile_n10(to))).Exists1Bit()) { return false; }	// 二歩
+			if ((this->GetBbOf20<US>(N01_Pawn) & g_fileMaskBb.GetFileMask(ConvSquare::toFile_n10(to))).Exists1Bit()) { return false; }	// 二歩
 
 			const SquareDelta TDeltaN = (US == Black ? DeltaN : DeltaS);
 			if (to + TDeltaN == this->GetKingSquare(THEM) && this->IsPawnDropCheckMate<US, THEM>(to)) { return false; }	// 王手かつ打ち歩詰め
@@ -1029,7 +1029,7 @@ void Position::DoMove(const Move move, StateInfo& newSt, const CheckInfo& ci, co
 		m_st_->m_cl.m_clistpair[0].m_oldlist[1] = m_evalList_.m_list1[listIndex];
 
 		m_evalList_.m_list0[listIndex] = kppArray[pcTo] + to;
-		m_evalList_.m_list1[listIndex] = kppArray[ConvPiece::INVERSE10(pcTo)] + ConvSquare::INVERSE10(to);
+		m_evalList_.m_list1[listIndex] = kppArray[ConvPiece::INVERSE10(pcTo)] + ConvSquare::inverse_n10(to);
 		m_evalList_.m_listToSquareHand[listIndex] = to;
 		m_evalList_.m_squareHandToList[to] = listIndex;
 
@@ -1112,7 +1112,7 @@ void Position::DoMove(const Move move, StateInfo& newSt, const CheckInfo& ci, co
 			m_st_->m_cl.m_clistpair[0].m_oldlist[1] = m_evalList_.m_list1[fromListIndex];
 
 			m_evalList_.m_list0[fromListIndex] = kppArray[pcTo] + to;
-			m_evalList_.m_list1[fromListIndex] = kppArray[ConvPiece::INVERSE10(pcTo)] + ConvSquare::INVERSE10(to);
+			m_evalList_.m_list1[fromListIndex] = kppArray[ConvPiece::INVERSE10(pcTo)] + ConvSquare::inverse_n10(to);
 			m_evalList_.m_listToSquareHand[fromListIndex] = to;
 			m_evalList_.m_squareHandToList[to] = fromListIndex;
 
@@ -1210,7 +1210,7 @@ void Position::UndoMove(const Move move) {
 			const Piece pcFrom = ConvPiece::FROM_COLOR_AND_PIECE_TYPE10(us, ptFrom);
 			const int toListIndex = m_evalList_.m_squareHandToList[to];
 			m_evalList_.m_list0[toListIndex] = kppArray[pcFrom] + from;
-			m_evalList_.m_list1[toListIndex] = kppArray[ConvPiece::INVERSE10(pcFrom)] + ConvSquare::INVERSE10(from);
+			m_evalList_.m_list1[toListIndex] = kppArray[ConvPiece::INVERSE10(pcFrom)] + ConvSquare::inverse_n10(from);
 			m_evalList_.m_listToSquareHand[toListIndex] = from;
 			m_evalList_.m_squareHandToList[from] = toListIndex;
 		}
@@ -1226,7 +1226,7 @@ void Position::UndoMove(const Move move) {
 			const int handnum = GetHand(us).NumOf(hpCaptured);
 			const int toListIndex = m_evalList_.m_squareHandToList[g_HandPieceToSquareHand[us][hpCaptured] + handnum];
 			m_evalList_.m_list0[toListIndex] = kppArray[pcCaptured] + to;
-			m_evalList_.m_list1[toListIndex] = kppArray[ConvPiece::INVERSE10(pcCaptured)] + ConvSquare::INVERSE10(to);
+			m_evalList_.m_list1[toListIndex] = kppArray[ConvPiece::INVERSE10(pcCaptured)] + ConvSquare::inverse_n10(to);
 			m_evalList_.m_listToSquareHand[toListIndex] = to;
 			m_evalList_.m_squareHandToList[to] = toListIndex;
 
@@ -1432,7 +1432,7 @@ Move Position::GetMateMoveIn1Ply() {
 	// 玉が 9(1) 段目にいれば香車で王手出来無いので、それも省く。
 	else if (
 		Hand::Exists_HLance(ourHand) &&
-		ConvSquare::IsInFrontOf_n10(US, Rank1, Rank9, ConvSquare::ToRank_n10(ksq))
+		ConvSquare::isInFrontOf_n10(US, Rank1, Rank9, ConvSquare::toRank_n10(ksq))
 	) {
 		const Square to = ksq + TDeltaS;
 		if (GetPiece(to) == N00_Empty && IsAttackersToIsNot0(US, to)) {
@@ -1491,7 +1491,7 @@ Move Position::GetMateMoveIn1Ply() {
 				goto silver_drop_end;
 			}
 			// 斜め後ろから打つ場合を調べる必要がある。
-			toBB = dropTarget & (g_silverAttackBb.GetControllBb(THEM, ksq) & g_inFrontMaskBb.GetInFrontMask(US, ConvSquare::ToRank_n10(ksq)));
+			toBB = dropTarget & (g_silverAttackBb.GetControllBb(THEM, ksq) & g_inFrontMaskBb.GetInFrontMask(US, ConvSquare::toRank_n10(ksq)));
 		}
 		else {
 			if (Hand::Exists_HBishop(ourHand)) {
@@ -1878,7 +1878,7 @@ silver_drop_end:
 
 						// 玉の前方に移動する場合、成で詰まなかったら不成でも詰まないので、ここで省く。
 						// sakurapyon の作者が言ってたので実装。
-						toBB.AndEqualNot(g_inFrontMaskBb.GetInFrontMask(THEM, ConvSquare::ToRank_n10(ksq)));
+						toBB.AndEqualNot(g_inFrontMaskBb.GetInFrontMask(THEM, ConvSquare::toRank_n10(ksq)));
 						while (toBB.Exists1Bit()) {
 							const Square to = toBB.PopFirstOneFromI9();
 							if (IsUnDropCheckIsSupported(US, to)) {
@@ -2115,16 +2115,16 @@ silver_drop_end:
 		// 歩による移動
 		// 成れる場合は必ずなる。
 		// todo: PawnCheckBB 作って簡略化する。
-		const Rank krank = ConvSquare::ToRank_n10(ksq);
+		const Rank krank = ConvSquare::toRank_n10(ksq);
 		// 歩が移動して王手になるのは、相手玉が1~7段目の時のみ。
-		if (ConvSquare::IsInFrontOf_n10(US, Rank2, Rank8, krank)) {
+		if (ConvSquare::isInFrontOf_n10(US, Rank2, Rank8, krank)) {
 			// Txxx は先手、後手の情報を吸収した変数。数字は先手に合わせている。
 			const SquareDelta TDeltaS = (US == Black ? DeltaS : DeltaN);
 			const SquareDelta TDeltaN = (US == Black ? DeltaN : DeltaS);
 
 			Bitboard fromBB = this->GetBbOf20(N01_Pawn, US);
 			// 玉が敵陣にいないと成で王手になることはない。
-			if (ConvSquare::IsInFrontOf_n10(US, Rank6, Rank4, krank)) {
+			if (ConvSquare::isInFrontOf_n10(US, Rank6, Rank4, krank)) {
 				// 成った時に王手になる位置
 				const PieceTypeEvent ptEvent1(g_nullBitboard, THEM, ksq);
 				const Bitboard toBB_promo = moveTarget & PiecetypePrograms::m_GOLD.GetAttacks2From(ptEvent1) & TRank789BB;
@@ -2161,7 +2161,7 @@ silver_drop_end:
 			const Square from = to + TDeltaS;
 			if (g_setMaskBb.IsSet(&fromBB, from) && !g_setMaskBb.IsSet(&this->GetBbOf10(US), to)) {
 				// 玉が 1, 2 段目にいるなら、成りで王手出来るので不成は調べない。
-				if (ConvSquare::IsBehind_n10<US>(Rank8, Rank2, krank)) {
+				if (ConvSquare::isBehind_n10<US>(Rank8, Rank2, krank)) {
 					this->XorBBs(N01_Pawn, from, US);
 					// 動いた後の dcBB: to の位置の occupied や checkers は関係ないので、ここで生成できる。
 					const Bitboard dcBB_betweenIsThem_after = DiscoveredCheckBB<US, THEM, false>();
@@ -2250,7 +2250,7 @@ void Position::Print() const {
 		++i;
 		std::cout << "P" << i;
 		for (File f = FileA; FileI <= f; --f) {
-			std::cout << pieceToCharCSA(GetPiece(ConvSquare::FromFileRank_n10(f, r)));
+			std::cout << pieceToCharCSA(GetPiece(ConvSquare::fromFileRank_n10(f, r)));
 		}
 		std::cout << std::endl;
 	}
@@ -2638,7 +2638,7 @@ void Position::Set(const std::string& sfen, Soldier* th) {
 			promoteFlag = Promoted;
 		}
 		else if (g_charToPieceUSI.IsLegalChar(token)) {
-			if (ConvSquare::ContainsOf_n10(sq)) {
+			if (ConvSquare::containsOf_n10(sq)) {
 				SetPiece(g_charToPieceUSI.GetValue(token) + promoteFlag, sq);
 				promoteFlag = Piece::UnPromoted;
 				sq += SquareDelta::DeltaE;

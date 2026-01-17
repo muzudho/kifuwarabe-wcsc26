@@ -309,7 +309,7 @@ void Bitboard::PrintTable(const int part) const
 {
 	for (Rank r = Rank9; r < RankNum; ++r) {
 		for (File f = FileC; FileI <= f; --f) {
-			std::cout << (UINT64_C(1) & (this->GetP(part) >> ConvSquare::FromFileRank_n10(f, r)));
+			std::cout << (UINT64_C(1) & (this->GetP(part) >> ConvSquare::fromFileRank_n10(f, r)));
 		}
 		std::cout << std::endl;
 	}

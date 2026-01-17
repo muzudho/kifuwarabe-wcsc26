@@ -71,7 +71,7 @@ public:
 					moveStackList++;
 
 					if (ptEvent.m_mt == N07_NonEvasion || ptEvent.m_all) {
-						if (ConvSquare::ToRank_n10(to) != TRank9) {
+						if (ConvSquare::toRank_n10(to) != TRank9) {
 							moveStackList->m_move = g_makePromoteMove.GetSelectedMakeMove_ExceptPromote_mt2(ptEvent.m_mt,g_PTPAWN_ONBOARD_AS_MOVE,from, to, ptEvent.m_pos);
 							moveStackList++;
 						}
@@ -119,7 +119,7 @@ public:
 				if (toBB.Exists1Bit()) {
 					// 駒取り対象は必ず一つ以下なので、toBB のビットを 0 にする必要がない。
 					const Square to = (ptEvent.m_mt == N00_Capture || ptEvent.m_mt == N03_CapturePlusPro ? toBB.GetFirstOneFromI9() : toBB.PopFirstOneFromI9());
-					const bool toCanPromote = ConvSquare::CAN_PROMOTE10<US>(ConvSquare::ToRank_n10(to));
+					const bool toCanPromote = ConvSquare::canPromote_n10<US>(ConvSquare::toRank_n10(to));
 					if (toCanPromote) {
 
 						moveStackList->m_move = g_makePromoteMove.GetSelectedMakeMove_ExceptPromote_mt2(ptEvent.m_mt,g_PTLANCE_ONBOARD_AS_MOVE,	from, to, ptEvent.m_pos);
@@ -127,14 +127,14 @@ public:
 						moveStackList++;
 
 						if (ptEvent.m_mt == N07_NonEvasion || ptEvent.m_all) {
-							if (ConvSquare::IsBehind_n10<US>(Rank9, Rank1, ConvSquare::ToRank_n10(to))) // 1段目の不成は省く
+							if (ConvSquare::isBehind_n10<US>(Rank9, Rank1, ConvSquare::toRank_n10(to))) // 1段目の不成は省く
 							{
 								moveStackList->m_move = g_makePromoteMove.GetSelectedMakeMove_ExceptPromote_mt2(ptEvent.m_mt,g_PTLANCE_ONBOARD_AS_MOVE,	from, to, ptEvent.m_pos);
 								moveStackList++;
 							}
 						}
 						else if (ptEvent.m_mt != N01_NonCapture && ptEvent.m_mt != N04_NonCaptureMinusPro) { // 駒を取らない3段目の不成を省く
-							if (ConvSquare::IsBehind_n10<US>(Rank8, Rank2, ConvSquare::ToRank_n10(to))) // 2段目の不成を省く
+							if (ConvSquare::isBehind_n10<US>(Rank8, Rank2, ConvSquare::toRank_n10(to))) // 2段目の不成を省く
 							{
 								moveStackList->m_move = g_makePromoteMove.GetSelectedMakeMove_ExceptPromote_mt2(ptEvent.m_mt,g_PTLANCE_ONBOARD_AS_MOVE,	from, to, ptEvent.m_pos);
 								moveStackList++;
@@ -175,14 +175,14 @@ public:
 			Bitboard toBB = PiecetypePrograms::m_KNIGHT.GetAttacks2From(ptEvent1) & target;
 			while (toBB.Exists1Bit()) {
 				const Square to = toBB.PopFirstOneFromI9();
-				const bool toCanPromote = ConvSquare::CAN_PROMOTE10<US>(ConvSquare::ToRank_n10(to));
+				const bool toCanPromote = ConvSquare::canPromote_n10<US>(ConvSquare::toRank_n10(to));
 				if (toCanPromote) {
 
 					moveStackList->m_move = g_makePromoteMove.GetSelectedMakeMove_ExceptPromote_mt2(ptEvent.m_mt, g_PTKNIGHT_ONBOARD_AS_MOVE, from, to, ptEvent.m_pos);
 					MakePromoteMove::APPEND_PROMOTE_FLAG(moveStackList->m_move);
 					moveStackList++;
 
-					if (ConvSquare::IsBehind_n10<US>(Rank8, Rank2, ConvSquare::ToRank_n10(to))) // 1, 2段目の不成は省く
+					if (ConvSquare::isBehind_n10<US>(Rank8, Rank2, ConvSquare::toRank_n10(to))) // 1, 2段目の不成は省く
 					{
 						moveStackList->m_move = g_makePromoteMove.GetSelectedMakeMove_ExceptPromote_mt2(ptEvent.m_mt, g_PTKNIGHT_ONBOARD_AS_MOVE, from, to, ptEvent.m_pos);
 						moveStackList++;
@@ -216,12 +216,12 @@ public:
 		Bitboard fromBB = ptEvent.m_pos.GetBbOf20<US>(N04_Silver);
 		while (fromBB.Exists1Bit()) {
 			const Square from = fromBB.PopFirstOneFromI9();
-			const bool fromCanPromote = ConvSquare::CAN_PROMOTE10<US>(ConvSquare::ToRank_n10(from));
+			const bool fromCanPromote = ConvSquare::canPromote_n10<US>(ConvSquare::toRank_n10(from));
 			const PieceTypeEvent ptEvent1(g_nullBitboard, US, from);
 			Bitboard toBB = PiecetypePrograms::m_SILVER.GetAttacks2From(ptEvent1) & target;
 			while (toBB.Exists1Bit()) {
 				const Square to = toBB.PopFirstOneFromI9();
-				const bool toCanPromote = ConvSquare::CAN_PROMOTE10<US>(ConvSquare::ToRank_n10(to));
+				const bool toCanPromote = ConvSquare::canPromote_n10<US>(ConvSquare::toRank_n10(to));
 				if (fromCanPromote | toCanPromote) {
 					moveStackList->m_move = g_makePromoteMove.GetSelectedMakeMove_ExceptPromote_mt2(ptEvent.m_mt,g_PTSILVER_ONBOARD_AS_MOVE,	from, to, ptEvent.m_pos);
 					MakePromoteMove::APPEND_PROMOTE_FLAG(moveStackList->m_move);

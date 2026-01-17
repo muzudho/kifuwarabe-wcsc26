@@ -22,7 +22,7 @@ void GoldAttackBb::Initialize()
 			g_goldAttackBb.m_controllBb_[c][sq] =
 			(
 				g_kingAttackBb.GetControllBb(sq) &
-				g_inFrontMaskBb.GetInFrontMask(c, ConvSquare::ToRank_n10(sq))
+				g_inFrontMaskBb.GetInFrontMask(c, ConvSquare::toRank_n10(sq))
 			) |
 			g_rookAttackBb.GetControllBb(Bitboard::CreateAllOneBB(), sq);
 }
