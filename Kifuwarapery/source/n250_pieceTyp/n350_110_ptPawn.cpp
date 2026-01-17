@@ -41,7 +41,7 @@ PieceType PtPawn::AppendToNextAttackerAndTryPromote(
 		//       その場合、キャッシュに乗りやすくなるので逆に速くなるかも。
 		const Bitboard bb = ptsEvent.m_opponentAttackers & ptsEvent.m_pos.GetBbOf10(PT);
 		const Square from = bb.GetFirstOneFromI9();
-		g_setMaskBb.XorBit(&occupied, from);
+		g_setMaskBB.XorBit(&occupied, from);
 
 		attackers |= (g_lanceAttackBb.GetControllBb(occupied, ConvColor::OPPOSITE_COLOR10b(ptsEvent.m_turn), ptsEvent.m_to) &
 			(ptsEvent.m_pos.GetBbOf20(N06_Rook, N14_Dragon) |

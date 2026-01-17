@@ -193,7 +193,7 @@ public:
 	/// <summary>
 	/// 初期化？
 	/// </summary>
-	void	Init();
+	void	init_app10();
 
 
 	/// <summary>
@@ -304,15 +304,15 @@ public://private:
 		if (second.IsDrop() && first.IsDrop()) { return false; }
 
 		if (!second.IsDrop() && !first.IsDrop()) {
-			if (g_setMaskBb.IsSet(&g_betweenBb.GetBetweenBB(m2from, m2to), m1from)) { return true; }
+			if (g_setMaskBB.IsSet(&g_betweenBb.GetBetweenBB(m2from, m2to), m1from)) { return true; }
 		}
 
 		const PieceType m1pt = first.GetPieceTypeFromOrDropped();
 		const Color us = pos.GetTurn();
-		const Bitboard occ = (second.IsDrop() ? pos.GetOccupiedBB() : pos.GetOccupiedBB() ^ g_setMaskBb.GetSetMaskBb(m2from));
+		const Bitboard occ = (second.IsDrop() ? pos.GetOccupiedBB() : pos.GetOccupiedBB() ^ g_setMaskBB.GetSetMaskBb(m2from));
 		const Bitboard m1att = UtilAttack::GetAttacksFrom(m1pt, us, m1to, occ);
-		if (g_setMaskBb.IsSet(&m1att, m2to)) { return true; }
-		if (g_setMaskBb.IsSet(&m1att, pos.GetKingSquare(us))) { return true; }
+		if (g_setMaskBB.IsSet(&m1att, m2to)) { return true; }
+		if (g_setMaskBB.IsSet(&m1att, pos.GetKingSquare(us))) { return true; }
 
 		return false;
 	}
@@ -390,7 +390,7 @@ public://private:
 			//const Color us = pos.GetTurn();
 			const Square m1to = first.To();
 			const Square m2from = second.From();
-			Bitboard occ = pos.GetOccupiedBB() ^ g_setMaskBb.GetSetMaskBb(m2from) ^ g_setMaskBb.GetSetMaskBb(m1to);
+			Bitboard occ = pos.GetOccupiedBB() ^ g_setMaskBB.GetSetMaskBb(m2from) ^ g_setMaskBB.GetSetMaskBb(m1to);
 			PieceType m1ptTo;
 
 			if (first.IsDrop()) {
@@ -398,10 +398,10 @@ public://private:
 			}
 			else {
 				m1ptTo = first.GetPieceTypeTo();
-				occ ^= g_setMaskBb.GetSetMaskBb(m1from);
+				occ ^= g_setMaskBB.GetSetMaskBb(m1from);
 			}
 
-			if (g_setMaskBb.IsSet(&UtilAttack::GetAttacksFrom(m1ptTo, US, m1to, occ), m2to)) { return true; }
+			if (g_setMaskBB.IsSet(&UtilAttack::GetAttacksFrom(m1ptTo, US, m1to, occ), m2to)) { return true; }
 
 			// first で動いた後、sq へ当たりになっている遠隔駒
 			const PieceTypeEvent ptEventL(occ, THEM, m2to);
@@ -417,7 +417,7 @@ public://private:
 
 		if (!second.IsDrop()
 			&& ConvPieceType::IS_SLIDER10(m2ptFrom)
-			&& g_setMaskBb.IsSet(&g_betweenBb.GetBetweenBB(second.From(), m2to), first.To())
+			&& g_setMaskBB.IsSet(&g_betweenBb.GetBetweenBB(second.From(), m2to), first.To())
 			&& ScoreZero <= pos.GetSeeSign(first))
 		{ return true; }
 
@@ -448,7 +448,7 @@ private:
 /// <summary>
 /// メイン関数で１回だけ呼ばれる。
 /// </summary>
-void InitSearchTable();
+void initSearchTable_app10();
 
 
 //────────────────────────────────────────────────────────────────────────────────

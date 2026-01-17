@@ -40,7 +40,7 @@ PieceType PtBishop::AppendToNextAttackerAndTryPromote(
 		//       その場合、キャッシュに乗りやすくなるので逆に速くなるかも。
 		const Bitboard bb = ptsEvent.m_opponentAttackers & ptsEvent.m_pos.GetBbOf10(PT);
 		const Square from = bb.GetFirstOneFromI9();
-		g_setMaskBb.XorBit(&occupied, from);
+		g_setMaskBB.XorBit(&occupied, from);
 
 		attackers |= (g_bishopAttackBb.BishopAttack(occupied, ptsEvent.m_to) & ptsEvent.m_pos.GetBbOf20(N05_Bishop, N13_Horse));
 

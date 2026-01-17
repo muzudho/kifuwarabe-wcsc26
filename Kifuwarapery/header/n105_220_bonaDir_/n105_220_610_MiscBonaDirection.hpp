@@ -26,8 +26,8 @@ public:
 		// DirecMisc な関係は全て距離 1 にしてもKPE学習には問題無いんだけれど。
 		squareDistance.SetValue(sq0, sq1, 0);
 		if (
-			g_setMaskBb.IsSet(&g_knightAttackBb.GetControllBb(Black, sq0), sq1) ||
-			g_setMaskBb.IsSet(&g_knightAttackBb.GetControllBb(White, sq0), sq1)
+			g_setMaskBB.IsSet(&g_knightAttackBb.GetControllBb(Black, sq0), sq1) ||
+			g_setMaskBB.IsSet(&g_knightAttackBb.GetControllBb(White, sq0), sq1)
 			)
 		{
 			squareDistance.SetValue(sq0, sq1, 1);

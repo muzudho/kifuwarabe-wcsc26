@@ -107,13 +107,13 @@ public:
 			if (ConvSquare::toRank_n10(ksq) != tRank1) {
 				const Square pawnDropCheckSquare = ksq + tDeltaS;
 				assert(ConvSquare::containsOf_n10(pawnDropCheckSquare));
-				if (g_setMaskBb.IsSet(&toBB, pawnDropCheckSquare) && pos.GetPiece(pawnDropCheckSquare) == N00_Empty) {
+				if (g_setMaskBB.IsSet(&toBB, pawnDropCheckSquare) && pos.GetPiece(pawnDropCheckSquare) == N00_Empty) {
 					if (!pos.IsPawnDropCheckMate<US,THEM>(pawnDropCheckSquare)) {
 						// ここで clearBit だけして MakeMove しないことも出来る。
 						// 指し手が生成される順番が変わり、王手が先に生成されるが、後で問題にならないか?
 						(*pMovestack++).m_move = ConvMove::Convert30_MakeDropMove_da(g_PTPAWN_DA_AS_MOVE, pawnDropCheckSquare);
 					}
-					g_setMaskBb.XorBit(&toBB, pawnDropCheckSquare);
+					g_setMaskBB.XorBit(&toBB, pawnDropCheckSquare);
 				}
 			}
 

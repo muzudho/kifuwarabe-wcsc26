@@ -13,7 +13,7 @@ PawnAttackBb g_pawnAttackBb;
 /// <summary>
 /// 歩の初期化を行うぜ☆（＾▽＾）
 /// </summary>
-void PawnAttackBb::Initialize()
+void PawnAttackBb::initialize_app10()
 {
 	for (Color c = Black; c < g_COLOR_NUM; ++c)
 		for (Square sq = I9; sq < SquareNum; ++sq)

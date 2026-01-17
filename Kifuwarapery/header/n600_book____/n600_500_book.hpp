@@ -43,7 +43,7 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	static void Init();
+	static void init_app10();
 
 
 	/// <summary>

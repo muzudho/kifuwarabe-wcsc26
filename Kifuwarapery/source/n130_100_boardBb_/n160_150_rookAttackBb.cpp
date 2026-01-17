@@ -97,8 +97,8 @@ Bitboard RookAttackBb::RookAttackCalc(const Square square, const Bitboard& occup
 		ConvSquare::containsOf_n10(sq) && abs(ConvSquare::toRank_n10(sq - delta) - ConvSquare::toRank_n10(sq)) <= 1;
 			sq += delta)
 		{
-			g_setMaskBb.AddBit(&result, sq);
-			if (g_setMaskBb.IsSet(&occupied, sq)) { break; }
+			g_setMaskBB.AddBit(&result, sq);
+			if (g_setMaskBB.IsSet(&occupied, sq)) { break; }
 		}
 	}
 
@@ -109,9 +109,9 @@ Bitboard RookAttackBb::RookAttackCalc(const Square square, const Bitboard& occup
 /// <summary>
 /// 飛車の利きビットボードの初期化。
 /// </summary>
-void RookAttackBb::InitRookAttacks()
+void RookAttackBb::initRookAttacks_app10()
 {
-	auto* attacks = g_rookAttackBb.m_controllBb_;			// 飛車の利き
+	auto* attacksBB = g_rookAttackBb.m_controllBB_;			// 飛車の利き
 	auto* attackIndex = g_rookAttackBb.m_rookAttackIndex;	// 飛車の利きのインデックス
 	auto* blockMask = g_rookAttackBb.m_rookBlockMask_;		// 飛車の利きのブロック・マスか？
 	auto* shift = this->m_rookShiftBits_;					// 飛車のシフト
@@ -129,11 +129,11 @@ void RookAttackBb::InitRookAttacks()
 		const int num1s = this->m_rookBlockBits_[sq];
 		for (int i = 0; i < (1 << num1s); ++i)
 		{
-			const Bitboard occupied = g_setMaskBb.IndexToOccupied(i, num1s, blockMask[sq]);
+			const Bitboard occupied = g_setMaskBB.IndexToOccupied(i, num1s, blockMask[sq]);
 #if defined HAVE_BMI2
 			attacks[index + (occupied & blockMask[sq]).OccupiedToIndex(blockMask[sq])] = this->RookAttackCalc(sq, occupied);
 #else
-			attacks[index + occupied.OccupiedToIndex(magic[sq], shift[sq])] =
+			attacksBB[index + occupied.OccupiedToIndex(magic[sq], shift[sq])] =
 				this->RookAttackCalc(sq, occupied);
 #endif
 		}
@@ -145,7 +145,7 @@ void RookAttackBb::InitRookAttacks()
 /// <summary>
 /// 
 /// </summary>
-void RookAttackBb::InitializeToEdge()
+void RookAttackBb::initializeToEdge_app10()
 {
 	for (Square sq = I9; sq < SquareNum; ++sq) {
 		g_rookAttackBb.m_controllBbToEdge_[sq] = g_rookAttackBb.GetControllBb(Bitboard::CreateAllZeroBB(), sq);

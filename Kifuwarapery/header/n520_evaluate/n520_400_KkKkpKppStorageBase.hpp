@@ -429,8 +429,8 @@ struct KkKkpKppStorageBase {
 #if defined EVAL_PHASE1 || defined EVAL_PHASE3
 			const Color jcolor = ConvPiece::TO_COLOR10(jpiece);
 			const PieceType jpt = ConvPiece::TO_PIECE_TYPE10(jpiece);
-			Bitboard jtoBB = g_setMaskBb.GetSetMaskBb(ksq).NotThisAnd(
-				UtilAttack::GetAttacksFrom(jpt, jcolor, jsq, g_setMaskBb.GetSetMaskBb(ksq)));
+			Bitboard jtoBB = g_setMaskBB.GetSetMaskBb(ksq).NotThisAnd(
+				UtilAttack::GetAttacksFrom(jpt, jcolor, jsq, g_setMaskBB.GetSetMaskBb(ksq)));
 			while (jtoBB.Exists1Bit()) {
 				Square jto = jtoBB.PopFirstOneFromI9();
 				if (kfile == FileE && E1 < jto)
@@ -512,7 +512,7 @@ struct KkKkpKppStorageBase {
 
 				const Color jicolor = ConvPiece::TO_COLOR10(jipiece);
 				const PieceType jipt = ConvPiece::TO_PIECE_TYPE10(jipiece);
-				const Bitboard mask = g_setMaskBb.GetSetMaskBb(ksq) | g_setMaskBb.GetSetMaskBb(ijsq);
+				const Bitboard mask = g_setMaskBB.GetSetMaskBb(ksq) | g_setMaskBB.GetSetMaskBb(ijsq);
 				Bitboard jitoBB = mask.NotThisAnd(UtilAttack::GetAttacksFrom(jipt, jicolor, jisq, mask));
 				while (jitoBB.Exists1Bit()) {
 					Square jito = jitoBB.PopFirstOneFromI9();
@@ -607,8 +607,8 @@ struct KkKkpKppStorageBase {
 				const Color jcolor = ConvPiece::TO_COLOR10(jpiece);
 				const PieceType ipt = ConvPiece::TO_PIECE_TYPE10(ipiece);
 				const PieceType jpt = ConvPiece::TO_PIECE_TYPE10(jpiece);
-				const Bitboard imask = g_setMaskBb.GetSetMaskBb(ksq) | g_setMaskBb.GetSetMaskBb(jsq);
-				const Bitboard jmask = g_setMaskBb.GetSetMaskBb(ksq) | g_setMaskBb.GetSetMaskBb(isq);
+				const Bitboard imask = g_setMaskBB.GetSetMaskBb(ksq) | g_setMaskBB.GetSetMaskBb(jsq);
+				const Bitboard jmask = g_setMaskBB.GetSetMaskBb(ksq) | g_setMaskBB.GetSetMaskBb(isq);
 				Bitboard itoBB = imask.NotThisAnd(UtilAttack::GetAttacksFrom(jpt, icolor, isq, imask));
 				Bitboard jtoBB = jmask.NotThisAnd(UtilAttack::GetAttacksFrom(jpt, jcolor, jsq, jmask));
 				while (itoBB.Exists1Bit()) {
@@ -769,8 +769,8 @@ struct KkKkpKppStorageBase {
 #if defined EVAL_PHASE1
 					const PieceType ipt = ConvPiece::TO_PIECE_TYPE10(ipiece);
 					const Color icolor = ConvPiece::TO_COLOR10(ipiece);
-					Bitboard itoBB = g_setMaskBb.GetSetMaskBb(ksq).NotThisAnd(
-						UtilAttack::GetAttacksFrom(ipt, icolor, isq, g_setMaskBb.GetSetMaskBb(ksq)));
+					Bitboard itoBB = g_setMaskBB.GetSetMaskBb(ksq).NotThisAnd(
+						UtilAttack::GetAttacksFrom(ipt, icolor, isq, g_setMaskBB.GetSetMaskBb(ksq)));
 					while (itoBB.Exists1Bit()) {
 						Square ito = itoBB.PopFirstOneFromI9();
 						const int distance = g_squareDistance.GetSquareDistance(isq, ito);
@@ -788,8 +788,8 @@ struct KkKkpKppStorageBase {
 				const PieceType ipt = ConvPiece::TO_PIECE_TYPE10(ipiece);
 				const Color icolor = ConvPiece::TO_COLOR10(ipiece);
 
-				Bitboard itoBB = g_setMaskBb.GetSetMaskBb(ksq).NotThisAnd(
-					UtilAttack::GetAttacksFrom(ipt, icolor, isq, g_setMaskBb.GetSetMaskBb(ksq)));
+				Bitboard itoBB = g_setMaskBB.GetSetMaskBb(ksq).NotThisAnd(
+					UtilAttack::GetAttacksFrom(ipt, icolor, isq, g_setMaskBB.GetSetMaskBb(ksq)));
 				while (itoBB.Exists1Bit()) {
 					Square ito = itoBB.PopFirstOneFromI9();
 					const int distance = g_squareDistance.GetSquareDistance(isq, ito);
@@ -854,7 +854,7 @@ struct KkKkpKppStorageBase {
 
 			const Color icolor = ConvPiece::TO_COLOR10(ipiece);
 			const PieceType ipt = ConvPiece::TO_PIECE_TYPE10(ipiece);
-			const Bitboard mask = g_setMaskBb.GetSetMaskBb(ksq0) | g_setMaskBb.GetSetMaskBb(ksq1);
+			const Bitboard mask = g_setMaskBB.GetSetMaskBb(ksq0) | g_setMaskBB.GetSetMaskBb(ksq1);
 			Bitboard itoBB = mask.NotThisAnd(UtilAttack::GetAttacksFrom(ipt, icolor, isq, mask));
 			while (itoBB.Exists1Bit()) {
 				Square ito = itoBB.PopFirstOneFromI9();

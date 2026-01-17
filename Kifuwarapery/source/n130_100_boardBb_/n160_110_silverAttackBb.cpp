@@ -16,7 +16,7 @@ SilverAttackBb g_silverAttackBb;
 /// <summary>
 /// 
 /// </summary>
-void SilverAttackBb::Initialize()
+void SilverAttackBb::initialize_app10()
 {
 	for (Color c = Black; c < g_COLOR_NUM; ++c)
 		for (Square sq = I9; sq < SquareNum; ++sq)
@@ -29,9 +29,9 @@ void SilverAttackBb::Initialize()
 
 
 /// <summary>
-/// 
+/// 対局開始時
 /// </summary>
-void SilverAttackBb::InitCheckTableSilver() {
+void SilverAttackBb::initCheckTableSilver_app10() {
 	for (Color c = Black; c < g_COLOR_NUM; ++c) {
 		const Color opp = ConvColor::OPPOSITE_COLOR10b(c);//色はループで交互になるぜ☆（＾ｑ＾）
 		for (Square sq = I9; sq < SquareNum; ++sq) {
@@ -57,7 +57,7 @@ void SilverAttackBb::InitCheckTableSilver() {
 				const Square checkSq = checkBB.PopFirstOneFromI9();
 				this->m_silverCheckTable_[c][sq] |= (this->GetControllBb(opp, checkSq) & TRank6BB);
 			}
-			this->m_silverCheckTable_[c][sq].AndEqualNot(g_setMaskBb.GetSetMaskBb(sq) | this->GetControllBb(opp, sq));
+			this->m_silverCheckTable_[c][sq].AndEqualNot(g_setMaskBB.GetSetMaskBb(sq) | this->GetControllBb(opp, sq));
 		}
 	}
 }

@@ -8,7 +8,9 @@
 
 
 /// <summary>
+///		<pre>
 /// 金の利きビットボード
+///		</pre>
 /// </summary>
 class GoldAttackBb {
 
@@ -33,12 +35,12 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	void Initialize();
+	void initialize_app10();
 
 	/// <summary>
 	/// チェック・テーブル
 	/// </summary>
-	void InitCheckTableGold();
+	void initCheckTableGold_app10();
 
 	/// <summary>
 	/// 利きビットボード取得

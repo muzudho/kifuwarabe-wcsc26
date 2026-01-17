@@ -11,7 +11,7 @@ SquareRelation g_squareRelation;
 /// <summary>
 /// ２つのマスの位置関係が［同筋］［同段］［同右肩上がり］［同右肩下がり］［その他］かを区別するビットボード（＾～＾）！
 /// </summary>
-void SquareRelation::Initialize()
+void SquareRelation::initialize_app10()
 {
 	for (Square sq1 = I9; sq1 < SquareNum; ++sq1) {
 		const File file1 = ConvSquare::toFile_n10(sq1);

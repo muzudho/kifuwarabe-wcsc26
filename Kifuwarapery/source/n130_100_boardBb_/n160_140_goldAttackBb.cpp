@@ -15,7 +15,7 @@ GoldAttackBb g_goldAttackBb;
 /// <summary>
 /// 
 /// </summary>
-void GoldAttackBb::Initialize()
+void GoldAttackBb::initialize_app10()
 {
 	for (Color c = Black; c < g_COLOR_NUM; ++c)
 		for (Square sq = I9; sq < SquareNum; ++sq)
@@ -31,7 +31,7 @@ void GoldAttackBb::Initialize()
 /// <summary>
 /// 王手？テーブル・ビットボード初期化
 /// </summary>
-void GoldAttackBb::InitCheckTableGold() {
+void GoldAttackBb::initCheckTableGold_app10() {
 	for (Color c = Black; c < g_COLOR_NUM; ++c) {	// 手番の色
 		const Color opp = ConvColor::OPPOSITE_COLOR10b(c);	// 相手の色☆（＾ｑ＾）
 		for (Square sq = I9; sq < SquareNum; ++sq) {
@@ -43,7 +43,7 @@ void GoldAttackBb::InitCheckTableGold() {
 				const Square checkSq = checkBB.PopFirstOneFromI9();
 				g_goldAttackBb.m_goldCheckTable_[c][sq] |= g_goldAttackBb.GetControllBb(opp, checkSq);
 			}
-			g_goldAttackBb.m_goldCheckTable_[c][sq].AndEqualNot(g_setMaskBb.GetSetMaskBb(sq) | g_goldAttackBb.GetControllBb(opp, sq));
+			g_goldAttackBb.m_goldCheckTable_[c][sq].AndEqualNot(g_setMaskBB.GetSetMaskBb(sq) | g_goldAttackBb.GetControllBb(opp, sq));
 		}
 	}
 }

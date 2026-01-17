@@ -30,7 +30,7 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	void Initialize();
+	void initialize_app10();
 
 
 	/// <summary>

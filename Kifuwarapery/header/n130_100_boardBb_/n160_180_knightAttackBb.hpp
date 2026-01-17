@@ -34,13 +34,13 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	void Initialize();
+	void initialize_app10();
 
 
 	/// <summary>
 	/// 
 	/// </summary>
-	void InitCheckTableKnight();
+	void initCheckTableKnight_app10();
 
 
 	/// <summary>
