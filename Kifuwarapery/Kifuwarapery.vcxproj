@@ -197,6 +197,10 @@
     <ClInclude Include="header\n105_220_bonaDir_\n105_220_600_NullBonaDirection.hpp" />
     <ClInclude Include="header\n105_220_bonaDir_\n105_220_610_MiscBonaDirection.hpp" />
     <ClInclude Include="header\n105_220_bonaDir_\n105_220_620_FileBonaDirection.hpp" />
+    <ClInclude Include="header\n105_220_bonaDir_\n105_220_630_RankBonaDirection.hpp" />
+    <ClInclude Include="header\n105_220_bonaDir_\n105_220_640_DiagonalNESWBonaDirection.hpp" />
+    <ClInclude Include="header\n105_220_bonaDir_\n105_220_650_DiagonalNWSEBonaDirection.hpp" />
+    <ClInclude Include="header\n105_220_bonaDir_\n105_220_700_BonaDirectionArray.hpp" />
     <ClInclude Include="header\n210_score___\n119_050_bound.hpp" />
     <ClInclude Include="header\n210_score___\n119_055_utilBound.hpp" />
     <ClInclude Include="header\n210_score___\n119_090_scoreIndex.hpp" />
