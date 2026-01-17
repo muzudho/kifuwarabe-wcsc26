@@ -10,6 +10,7 @@ class OurCarriage;
 /// チンパンジー
 /// 
 ///		- 元の名前： `ＴimerThread`, `ＥrrandMonkey`
+///		- ［反復深化探索］を止めるかどうかのタイマーの働きをしている。
 ///		</pre>
 /// </summary>
 class Chimpanzee : public Monkey {
@@ -24,7 +25,12 @@ public:
 
 
 	/// <summary>
-	/// ｍｓｅｃはミリ秒☆？ 0にするとタイマーが止まるらしい☆（＾ｑ＾）？
+	///		<pre>
+	/// ライフタイム・ミリ秒
+	/// 
+	///		- 旧名： `ｍsec`
+	///		- 0 になると、［反復深化探索］を止めるフラグをオンにするぜ☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
 	int m_lifetimeMilliseconds;
 
@@ -35,10 +41,12 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// 生成
 	/// </summary>
 	/// <param name="s"></param>
-	explicit Chimpanzee(OurCarriage* s) : Monkey(s), m_lifetimeMilliseconds(0) {}
+	explicit Chimpanzee(OurCarriage* s) :
+		Monkey(s),
+		m_lifetimeMilliseconds(0) {}
 
 
 	// ========================================

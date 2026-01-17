@@ -220,7 +220,7 @@ public:
 	/// <summary>
 	/// 時間チェック？
 	/// </summary>
-	void	CheckTime();
+	void	ChimpanzeeStopped();
 
 
 	/// <summary>
@@ -468,8 +468,8 @@ void initSearchTable_app10();
 /// <returns></returns>
 FORCE_INLINE void		MonkiesPub::wakeUpMonkies_n10(OurCarriage* ourCarriage) {
 	// 全員初期化☆？
-	for (size_t i = 0; i < this->m_defaultMonkies.size(); ++i) {
-		(*this).m_defaultMonkies[i]->m_maxPly = 0;
+	for (size_t i = 0; i < this->m_itemMonkies.size(); ++i) {
+		(*this).m_itemMonkies[i]->m_maxPly = 0;
 	}
 
 	// ［やることない猿は寝てろ］フラグを立てる☆？

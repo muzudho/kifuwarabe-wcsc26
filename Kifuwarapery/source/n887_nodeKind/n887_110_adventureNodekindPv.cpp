@@ -368,7 +368,7 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 
 		assert(-ScoreInfinite < score && score < ScoreInfinite);
 
-		if (ourCarriage.m_signals.m_isStop || pThisThread->IsUselessNode()) { return score; }
+		if (ourCarriage.m_signals.m_isIterationDeepingStop || pThisThread->IsUselessNode()) { return score; }
 
 		bool isBreak = false;
 		this->explorePlain_n460(

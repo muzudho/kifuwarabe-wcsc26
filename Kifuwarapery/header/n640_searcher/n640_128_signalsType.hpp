@@ -21,9 +21,9 @@ public:
 	bool m_isFirstRootMove;
 
 	/// <summary>
-	/// 
+	/// ［反復深化探索］を止める信号
 	/// </summary>
-	bool m_isStop;
+	bool m_isIterationDeepingStop;
 
 	/// <summary>
 	/// 

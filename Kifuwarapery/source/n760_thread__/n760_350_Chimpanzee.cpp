@@ -12,9 +12,13 @@
 /// ワーカースレッド開始
 /// </summary>
 void Chimpanzee::startMonkey_n10() {
-	while (!this->m_isEndOfSearch) {
+	while (!this->m_isEndOfSearch)	// 探索が終わっていない間
+	{
 		{
+			// ロックする
 			std::unique_lock<Mutex> lock(this->m_sleepLock);
+
+			// 探索が終わっていない間
 			if (!this->m_isEndOfSearch)
 			{
 				// ずっと寝る？？（＾ｑ＾）？
@@ -22,8 +26,9 @@ void Chimpanzee::startMonkey_n10() {
 					this->m_lifetimeMilliseconds ? this->m_lifetimeMilliseconds : INT_MAX));
 			}
 		}
+
 		if (this->m_lifetimeMilliseconds) {
-			this->m_pOurCarriage->CheckTime();
+			this->m_pOurCarriage->ChimpanzeeStopped();
 		}
 	}
 }

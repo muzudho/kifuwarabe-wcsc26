@@ -73,9 +73,9 @@ std::string OurCarriage::PvInfoToUSI(Position& pos, const Ply depth, const Score
 	Ply selDepth = 0; // 選択的に読んでいる部分の探索深さ。
 	std::stringstream ss;
 
-	for (size_t i = 0; i < m_monkiesPub.m_defaultMonkies.size(); ++i) {
-		if (selDepth < m_monkiesPub.m_defaultMonkies[i]->m_maxPly) {
-			selDepth = m_monkiesPub.m_defaultMonkies[i]->m_maxPly;
+	for (size_t i = 0; i < m_monkiesPub.m_itemMonkies.size(); ++i) {
+		if (selDepth < m_monkiesPub.m_itemMonkies[i]->m_maxPly) {
+			selDepth = m_monkiesPub.m_itemMonkies[i]->m_maxPly;
 		}
 	}
 
@@ -310,27 +310,48 @@ void initSearchTable_app10() {
 
 
 /// <summary>
+///		<pre>
+/// チンパンジーが止まった時、呼び出されるぜ（＾～＾）
 /// 
+///		- 旧名： `CheckTime`
+///		</pre>
 /// </summary>
-void OurCarriage::CheckTime() {
-	if (m_limits.m_canPonder) { return; }
+void OurCarriage::ChimpanzeeStopped() {
+	if (m_limits.m_canPonder) { return; }	// ポンダーしているならスキップ
 
+	// 訪問ノード数を数える
 	s64 nodes = 0;
-	if (m_limits.m_visitedNodesNum) {
+	if (m_limits.m_visitedNodesNum)		// 訪問ノードが 0 ではない
+	{
+		// ロック
 		std::unique_lock<Mutex> lock(m_monkiesPub.m_mutex_);
 
+		// 訪問ノード数
 		nodes = m_rootPosition.GetNodesSearched();
-		for (size_t i = 0; i < m_monkiesPub.m_defaultMonkies.size(); ++i) {
-			for (int j = 0; j < m_monkiesPub.m_defaultMonkies[i]->m_splitedNodesSize; ++j) {
-				SplitedNode& splitedNode = m_monkiesPub.m_defaultMonkies[i]->m_SplitedNodes[j];
+
+		for (size_t i = 0; i < m_monkiesPub.m_itemMonkies.size(); ++i)	// 猿の数だけ
+		{
+			for (int j = 0; j < m_monkiesPub.m_itemMonkies[i]->m_splitedNodesSize; ++j)		// 分岐ノードの数だけ？
+			{
+				// 分岐ノード
+				SplitedNode& splitedNode = m_monkiesPub.m_itemMonkies[i]->m_SplitedNodes[j];
+
+				// ロック
 				std::unique_lock<Mutex> spLock(splitedNode.m_mutex);
+
+				// 分岐ノードの訪問ノード数
 				nodes += splitedNode.m_nodes;
+
+				// 奴隷ビットが立っている間
 				u64 slvMask = splitedNode.m_slavesMask;
 				while (slvMask) {
 					const int index = firstOneFromLSB(slvMask);
 					slvMask &= slvMask - 1;
-					Position* pos = m_monkiesPub.m_defaultMonkies[index]->m_activePosition;
+
+					// 局面
+					Position* pos = m_monkiesPub.m_itemMonkies[index]->m_activePosition;
 					if (pos != nullptr) {
+						// 訪問ノード数追加
 						nodes += pos->GetNodesSearched();
 					}
 				}
@@ -361,7 +382,8 @@ void OurCarriage::CheckTime() {
 		||
 		(m_limits.m_visitedNodesNum != 0 && m_limits.m_visitedNodesNum < nodes)
 	){
-		m_signals.m_isStop = true;
+		// 停止信号を立てる
+		m_signals.m_isIterationDeepingStop = true;
 	}
 }
 

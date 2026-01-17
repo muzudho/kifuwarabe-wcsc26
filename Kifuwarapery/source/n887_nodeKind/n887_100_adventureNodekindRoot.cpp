@@ -334,7 +334,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 
 		// step18
 
-		if (ourCarriage.m_signals.m_isStop || pThisThread->IsUselessNode()) { return score; }
+		if (ourCarriage.m_signals.m_isIterationDeepingStop || pThisThread->IsUselessNode()) { return score; }
 
 		this->explorePlain_n440(
 			ourCarriage,

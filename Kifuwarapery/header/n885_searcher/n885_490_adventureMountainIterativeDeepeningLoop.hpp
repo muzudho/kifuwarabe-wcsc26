@@ -103,7 +103,7 @@ public:
 #endif
 
 		// 反復深化で探索を行う。
-		while (++depth <= g_maxPly && !ourCarriage.m_signals.m_isStop && (!ourCarriage.m_limits.m_depth || depth <= ourCarriage.m_limits.m_depth)) {
+		while (++depth <= g_maxPly && !ourCarriage.m_signals.m_isIterationDeepingStop && (!ourCarriage.m_limits.m_depth || depth <= ourCarriage.m_limits.m_depth)) {
 
 			// 前回の iteration の結果を全てコピー
 			for (size_t i = 0; i < ourCarriage.m_rootMovesByID.size(); ++i) {
@@ -114,7 +114,7 @@ public:
 			ourCarriage.ZeroclearBestMovePlyChanges(); // 退避したので、ゼロクリアーするぜ☆（＾ｑ＾）
 
 			// Multi PV loop
-			for (ourCarriage.m_pvIdx = 0; ourCarriage.m_pvIdx < ourCarriage.m_pvSize && !ourCarriage.m_signals.m_isStop; ++ourCarriage.m_pvIdx) {
+			for (ourCarriage.m_pvIdx = 0; ourCarriage.m_pvIdx < ourCarriage.m_pvSize && !ourCarriage.m_signals.m_isIterationDeepingStop; ++ourCarriage.m_pvIdx) {
 #if defined LEARN
 				m_alpha = ourCarriage.m_alpha;
 				m_beta = ourCarriage.m_beta;
@@ -167,7 +167,7 @@ public:
 					break;
 #endif
 
-					if (ourCarriage.m_signals.m_isStop) { break; }
+					if (ourCarriage.m_signals.m_isIterationDeepingStop) { break; }
 					if (alpha < bestScore && bestScore < beta) { break; }
 
 					if (
@@ -287,7 +287,7 @@ public:
 						ourCarriage.m_signals.m_isStopOnPonderHit = true;
 					}
 					else {
-						ourCarriage.m_signals.m_isStop = true;
+						ourCarriage.m_signals.m_isIterationDeepingStop = true;
 					}
 				}
 			}

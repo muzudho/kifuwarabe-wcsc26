@@ -56,7 +56,7 @@ public:
 	/// <summary>
 	/// お客の猿たち
 	/// </summary>
-	std::vector<Monkey*> m_defaultMonkies;
+	std::vector<Monkey*> m_itemMonkies;
 
 	/// <summary>
 	/// マックス・スレッド？
@@ -85,7 +85,7 @@ public:
 	/// メインスレッド？
 	/// </summary>
 	/// <returns></returns>
-	Orangutans* GetFirstCaptain() { return static_cast<Orangutans*>((*this).m_defaultMonkies[0]); }
+	Orangutans* GetFirstCaptain() { return static_cast<Orangutans*>((*this).m_itemMonkies[0]); }
 
 
 	/// <summary>
@@ -96,10 +96,10 @@ public:
 
 
 	/// <summary>
-	/// 現在の部下スレッド
+	/// 現在のチンパンジー
 	/// </summary>
 	/// <returns></returns>
-	Chimpanzee* GetCurrSubordinate() { return this->m_pErrandMonkey_; }
+	Chimpanzee* GetCurrentChimpanzee() { return this->m_pChimpanzee_; }
 
 
 	// ========================================
@@ -185,9 +185,13 @@ private:
 
 
 	/// <summary>
-	/// タイマースレッド☆
+	///		<pre>
+	/// チンパンジー
+	/// 
+	///		- タイマースレッド☆
+	///		</pre>
 	/// </summary>
-	Chimpanzee* m_pErrandMonkey_;
+	Chimpanzee* m_pChimpanzee_;
 
 
 	/// <summary>

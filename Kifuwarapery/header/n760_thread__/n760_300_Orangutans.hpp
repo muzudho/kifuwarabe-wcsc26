@@ -11,6 +11,7 @@ class OurCarriage;
 /// 
 ///		- 元の名前： `ＭainThread`, `ＣaptainMonkey`
 ///		- マスタースレッドに対応する
+///		- 冒険しているのはこの猿（＾～＾）
 ///		</pre>
 /// </summary>
 class Orangutans : public Monkey {
@@ -26,7 +27,7 @@ public:
 
 	/// <summary>
 	///		<pre>
-	/// キャプテン猿（マスタースレッド）だ（ワーカースレッドではない）
+	/// マスタースレッドだ（ワーカースレッドではない）
 	///		</pre>
 	/// </summary>
 	volatile bool m_isMasterThread;

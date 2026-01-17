@@ -135,7 +135,7 @@ void AdventureContinent::exploreContinent_n10(
 	captainsRucksack.m_monkiesPub.wakeUpMonkies_n10(&captainsRucksack);
 
 	// 下級戦士の寿命（ミリ秒）を設定するぜ☆
-	captainsRucksack.m_monkiesPub.GetCurrSubordinate()->m_lifetimeMilliseconds =
+	captainsRucksack.m_monkiesPub.GetCurrentChimpanzee()->m_lifetimeMilliseconds =
 		(
 			captainsRucksack.m_limits.IsBrandnewTimeMgr() ? // 反復深化をしたい☆？（＾ｑ＾）
 			// する場合
@@ -151,7 +151,7 @@ void AdventureContinent::exploreContinent_n10(
 				100
 			);
 
-	captainsRucksack.m_monkiesPub.GetCurrSubordinate()->NotifyOne();
+	captainsRucksack.m_monkiesPub.GetCurrentChimpanzee()->NotifyOne();
 
 #if defined INANIWA_SHIFT
 	detectInaniwa(GetPos);
@@ -170,7 +170,7 @@ void AdventureContinent::exploreContinent_n10(
 
 #if defined LEARN
 #else
-	captainsRucksack.m_monkiesPub.GetCurrSubordinate()->m_lifetimeMilliseconds = 0; // timer を止める。
+	captainsRucksack.m_monkiesPub.GetCurrentChimpanzee()->m_lifetimeMilliseconds = 0; // timer を止める。
 	captainsRucksack.m_monkiesPub.Sleep();
 
 finalize:
@@ -178,9 +178,9 @@ finalize:
 	SYNCCOUT << "info nodes " << pos.GetNodesSearched()
 		<< " time " << captainsRucksack.m_stopwatch.GetElapsed() << SYNCENDL;
 
-	if (!captainsRucksack.m_signals.m_isStop && (captainsRucksack.m_limits.m_canPonder || captainsRucksack.m_limits.m_isInfinite)) {
+	if (!captainsRucksack.m_signals.m_isIterationDeepingStop && (captainsRucksack.m_limits.m_canPonder || captainsRucksack.m_limits.m_isInfinite)) {
 		captainsRucksack.m_signals.m_isStopOnPonderHit = true;
-		pos.GetThisThread()->WaitFor(captainsRucksack.m_signals.m_isStop);
+		pos.GetThisThread()->WaitFor(captainsRucksack.m_signals.m_isIterationDeepingStop);
 	}
 
 	if (captainsRucksack.m_rootMovesByID[0].m_pv_[0].IsNone()) {

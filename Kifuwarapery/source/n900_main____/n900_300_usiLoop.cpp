@@ -138,7 +138,7 @@ void UsiLoop::Mainloop(int argc, char* argv[], OurCarriage& searcher)
 				searcher.m_signals.m_isStopOnPonderHit
 			) {
                 // 思考停止シグナルを立てる。
-				searcher.m_signals.m_isStop = true;
+				searcher.m_signals.m_isIterationDeepingStop = true;
 
 				// 排他的処理の何か？？
 				searcher.m_monkiesPub.GetFirstCaptain()->NotifyOne();

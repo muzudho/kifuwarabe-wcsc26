@@ -57,11 +57,11 @@ void MonkiesPub::initializeMonkiePub_app10(OurCarriage* s)
 	#if defined LEARN
 	#else
 		// お使い猿
-		this->m_pErrandMonkey_ = newMonkeyWithThread<Chimpanzee>(s);
+		this->m_pChimpanzee_ = newMonkeyWithThread<Chimpanzee>(s);
 	#endif
 
 	// キャプテン猿
-	this->m_defaultMonkies.push_back(newMonkeyWithThread<Orangutans>(s));
+	this->m_itemMonkies.push_back(newMonkeyWithThread<Orangutans>(s));
 
 	newAllMonkiesByUSIOptions(s);
 }
@@ -74,10 +74,10 @@ void MonkiesPub::Exit() {
 	#if defined LEARN
 	#else
 		// checkTime() がデータにアクセスしないよう、先に timer_ を delete
-		deleteThread(m_pErrandMonkey_);
+		deleteThread(m_pChimpanzee_);
 	#endif
 
-	for (auto monkey : (*this).m_defaultMonkies) {
+	for (auto monkey : (*this).m_itemMonkies) {
 		deleteThread(monkey);
 	}
 }
@@ -105,16 +105,16 @@ void MonkiesPub::newAllMonkiesByUSIOptions(OurCarriage* pOurCarriage) {
 	assert(0 < numberOfMonkies);
 
 	// 猿で埋める
-	while (this->m_defaultMonkies.size() < numberOfMonkies)
+	while (this->m_itemMonkies.size() < numberOfMonkies)
 	{
-		this->m_defaultMonkies.push_back(newMonkeyWithThread<Monkey>(pOurCarriage));
+		this->m_itemMonkies.push_back(newMonkeyWithThread<Monkey>(pOurCarriage));
 	}
 
 	// 多すぎる猿は消す
-	while (numberOfMonkies < this->m_defaultMonkies.size())
+	while (numberOfMonkies < this->m_itemMonkies.size())
 	{
-		deleteThread(this->m_defaultMonkies.back());
-		this->m_defaultMonkies.pop_back();
+		deleteThread(this->m_itemMonkies.back());
+		this->m_itemMonkies.pop_back();
 	}
 }
 
@@ -125,7 +125,7 @@ void MonkiesPub::newAllMonkiesByUSIOptions(OurCarriage* pOurCarriage) {
 /// <param name="master"></param>
 /// <returns></returns>
 Monkey* MonkiesPub::GetAvailableSlave(Monkey* master) const {
-	for (auto elem : (*this).m_defaultMonkies) {
+	for (auto elem : (*this).m_itemMonkies) {
 		if (elem->SetLastSplitNodeSlavesMask(master)) {
 			return elem;
 		}
@@ -139,8 +139,8 @@ Monkey* MonkiesPub::GetAvailableSlave(Monkey* master) const {
 /// </summary>
 /// <param name="maxPly"></param>
 void MonkiesPub::SetCurrWorrior(const int maxPly) {
-	m_pErrandMonkey_->m_maxPly = maxPly;
-	m_pErrandMonkey_->NotifyOne(); // Wake up and restart the timer
+	m_pChimpanzee_->m_maxPly = maxPly;
+	m_pChimpanzee_->NotifyOne(); // Wake up and restart the timer
 }
 
 
@@ -183,7 +183,7 @@ void MonkiesPub::startClimbingTree_n10(
 	//		- 根のフェイルド・ロウ
 	position.getOurCarriage()->m_signals.m_isStopOnPonderHit
 		= position.getOurCarriage()->m_signals.m_isFirstRootMove
-			= position.getOurCarriage()->m_signals.m_isStop
+			= position.getOurCarriage()->m_signals.m_isIterationDeepingStop
 				= position.getOurCarriage()->m_signals.m_isFailedLowAtRoot
 					= false;
 
