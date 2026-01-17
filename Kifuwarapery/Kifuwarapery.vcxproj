@@ -289,7 +289,7 @@
     <ClInclude Include="header\n340_bonaMove\n340_650_diagonalNWSEBonaMove.hpp" />
     <ClInclude Include="header\n340_bonaMove\n340_700_bonaMoveArray.hpp" />
     <ClInclude Include="header\n358_dropMake\n358_040_dropMakerEvent.hpp" />
-    <ClInclude Include="header\n358_dropMake\n358_070_dropMakerAbstract.hpp" />
+    <ClInclude Include="header\n358_dropMake\n358_070_IDropMakeable.hpp" />
     <ClInclude Include="header\n358_dropMake\n358_100_dropMakerHand0.hpp" />
     <ClInclude Include="header\n358_dropMake\n358_110_dropMakerHand1.hpp" />
     <ClInclude Include="header\n358_dropMake\n358_120_dropMakerHand2.hpp" />

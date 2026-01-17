@@ -43,7 +43,7 @@ public:
 	DropMakerHand4 m_dropMakerHand4;
 	DropMakerHand5 m_dropMakerHand5;
 	DropMakerHand6 m_dropMakerHand6;
-	DropMakerAbstract* m_pDropMakerArray[7];
+	IDropMakeable* m_pDropMakerArray[7];
 
 
 	/// <summary>

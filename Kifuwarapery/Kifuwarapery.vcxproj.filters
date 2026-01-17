@@ -573,7 +573,7 @@
     <ClInclude Include="header\n440_movStack\n440_400_hasPositiveScore.hpp">
       <Filter>header\n440_movStack</Filter>
     </ClInclude>
-    <ClInclude Include="header\n358_dropMake\n358_070_dropMakerAbstract.hpp">
+    <ClInclude Include="header\n358_dropMake\n358_070_IDropMakeable.hpp">
       <Filter>header\n358_dropMake</Filter>
     </ClInclude>
     <ClInclude Include="header\n358_dropMake\n358_100_dropMakerHand0.hpp">
