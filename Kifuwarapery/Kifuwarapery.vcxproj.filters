@@ -606,9 +606,6 @@
     <ClInclude Include="header\n358_dropMake\n358_500_dropMakerArray.hpp">
       <Filter>header\n358_dropMake</Filter>
     </ClInclude>
-    <ClInclude Include="header\n105_200_sqDistan\n105_200_600_utilSquareDistance.hpp">
-      <Filter>header\n163_sqDistan</Filter>
-    </ClInclude>
     <ClInclude Include="header\n105_200_sqDistan\n105_200_500_squareDistance.hpp">
       <Filter>header\n161_sqDistan</Filter>
     </ClInclude>
@@ -1086,6 +1083,21 @@
     <ClInclude Include="header\n105_220_bonaDir_\n105_220_620_FileBonaDirection.hpp">
       <Filter>header</Filter>
     </ClInclude>
+    <ClInclude Include="header\n105_220_bonaDir_\n105_220_630_RankBonaDirection.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n105_220_bonaDir_\n105_220_640_DiagonalNESWBonaDirection.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n105_220_bonaDir_\n105_220_650_DiagonalNWSEBonaDirection.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n105_220_bonaDir_\n105_220_700_BonaDirectionArray.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n105_240_initTwoSquaresDistanceKind\n105_240_500_twoSquaresDistanceKindInitializer.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -1339,12 +1351,6 @@
     </ClCompile>
     <ClCompile Include="source\n358_dropMake\n358_500_dropMakerArray.cpp">
       <Filter>source\n358_dropMake</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n105_200_sqDistan\n163_600_utilSquareDistance.cpp">
-      <Filter>source\n163_sqDistan</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n105_200_sqDistan\n105_200_squareDistance.cpp">
-      <Filter>source\n161_sqDistan</Filter>
     </ClCompile>
     <ClCompile Include="source\n351_bonaDir_\n351_090_NullBonaMove.cpp">
       <Filter>source\n351_bonaDir_</Filter>
@@ -1749,6 +1755,33 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="source\n250_pieceTyp\n350_070_ptAbstract.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n105_200_sqDistan\n105_200_twoSquaresDistanceKind.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n105_240_initBonaDir\n105_240_500_initBonaDir.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n105_220_700_bonaMoveArray.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n250_pieceTyp\n350_070_ptAbstract.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n351_bonaDir_\n351_500_bonaDirArray.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n105_220_bonaDir_\n105_220_630_RankBonaDirection.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n105_220_bonaDir_\n105_220_640_DiagonalNESWBonaDirection.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n105_220_bonaDir_\n105_220_650_DiagonalNWSEBonaDirection.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n105_220_bonaDir_\n105_220_700_BonaDirectionArray.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

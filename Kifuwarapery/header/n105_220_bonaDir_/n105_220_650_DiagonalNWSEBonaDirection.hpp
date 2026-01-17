@@ -28,9 +28,9 @@ public:
 	/// <param name="squareDistance"></param>
 	/// <param name="sq0"></param>
 	/// <param name="sq1"></param>
-	void InitializeSquareDistance(SquareDistance& squareDistance, Square sq0, Square sq1) const
+	void InitializeSquareDistance(TwoSquaresDistanceKind& squareDistance, Square sq0, Square sq1) const
 	{
-		squareDistance.SetValue(sq0, sq1,
+		squareDistance.SetDistanceKind(sq0, sq1,
 			abs(static_cast<int>(sq0 - sq1) / static_cast<int>(SquareDelta::DeltaNW))
 		);
 	}
