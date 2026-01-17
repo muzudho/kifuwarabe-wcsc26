@@ -82,10 +82,15 @@ public:
 
 
 	/// <summary>
-	/// メインスレッド？
+	///		<pre>
+	/// オランウータンを取得
+	/// 
+	///		- たくさん居る猿のうち、最初の１匹を［オランウータン］扱いする。
+	///		- オランウータン＝メインスレッド。
+	///		</pre>
 	/// </summary>
 	/// <returns></returns>
-	Orangutans* GetFirstCaptain() { return static_cast<Orangutans*>((*this).m_itemMonkies[0]); }
+	Orangutans* GetFirstMonkeyAsOrangutans() { return static_cast<Orangutans*>((*this).m_itemMonkies[0]); }
 
 
 	/// <summary>

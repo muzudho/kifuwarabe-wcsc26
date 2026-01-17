@@ -34,7 +34,7 @@ void Benchmark(GameStats& gameStats, Position& pos) {
 		std::cout << sfen << std::endl;
 		std::istringstream ss_sfen(sfen);
 
-		usiOperation.SetPosition(pos, ss_sfen);
+		usiOperation.SetPositionToOrangutans(pos, ss_sfen);
 
 		std::istringstream ss_go("byoyomi 10000");
 		usiOperation.Go(gameStats, pos, ss_go);

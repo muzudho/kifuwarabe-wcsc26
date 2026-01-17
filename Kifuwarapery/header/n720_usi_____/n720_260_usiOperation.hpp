@@ -37,7 +37,7 @@ public:
 	/// </summary>
 	/// <param name="pos"></param>
 	/// <param name="ssCmd"></param>
-	void SetPosition(Position& pos, std::istringstream& ssCmd);
+	void SetPositionToOrangutans(Position& pos, std::istringstream& ssCmd);
 
 
 #if !defined NDEBUG

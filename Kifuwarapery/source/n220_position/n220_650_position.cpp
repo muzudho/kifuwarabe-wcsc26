@@ -2587,9 +2587,10 @@ Position::Position(const Position & pos, Monkey * th)
 /// <param name="sfen"></param>
 /// <param name="th"></param>
 /// <param name="s"></param>
-Position::Position(const std::string & sfen, Monkey * th, OurCarriage * s)
+Position::Position(const std::string & sfen, Monkey* pMonkey, OurCarriage * s)
 {
-	this->Set(sfen, th);
+	// 猿にポジションを覚えさす。
+	this->SetPosition(sfen, pMonkey);
 	this->SetOurCarriage(s);
 }
 
@@ -2612,22 +2613,22 @@ Position& Position::operator = (const Position& pos) {
 
 
 /// <summary>
-/// 
+/// 猿にポジションを覚えさす。
 /// </summary>
 /// <param name="sfen"></param>
 /// <param name="th"></param>
-void Position::Set(const std::string& sfen, Monkey* th) {
+void Position::SetPosition(const std::string& sfen, Monkey* pMonkey) {
 	Piece promoteFlag = UnPromoted;
-	std::istringstream ss(sfen);
+	std::istringstream textStream(sfen);
 	char token;
 	Square sq = A9;
 
-	OurCarriage* s = std::move(m_pOurCarriage_);
+	OurCarriage* pOurCarriage = std::move(m_pOurCarriage_);
 	this->Clear();
-	this->SetOurCarriage(s);
+	this->SetOurCarriage(pOurCarriage);
 
 	// 盤上の駒
-	while (ss.get(token) && token != ' ') {
+	while (textStream.get(token) && token != ' ') {
 		if (isdigit(token)) {
 			sq += SquareDelta::DeltaE * (token - '0');
 		}
@@ -2656,7 +2657,7 @@ void Position::Set(const std::string& sfen, Monkey* th) {
 	this->m_goldsBB_ = this->GetBbOf(N07_Gold, N09_ProPawn, N10_ProLance, N11_ProKnight, N12_ProSilver);
 
 	// 手番
-	while (ss.get(token) && token != ' ') {
+	while (textStream.get(token) && token != ' ') {
 		if (token == 'b') {
 			this->m_turn_ = Black;
 		}
@@ -2669,7 +2670,7 @@ void Position::Set(const std::string& sfen, Monkey* th) {
 	}
 
 	// 持ち駒
-	for (int digits = 0; ss.get(token) && token != ' '; ) {
+	for (int digits = 0; textStream.get(token) && token != ' '; ) {
 		if (token == '-') {
 			memset(m_hand_, 0, sizeof(m_hand_));
 		}
@@ -2689,7 +2690,7 @@ void Position::Set(const std::string& sfen, Monkey* th) {
 	}
 
 	// 次の手が何手目か
-	ss >> this->m_gamePly_;
+	textStream >> this->m_gamePly_;
 	this->m_gamePly_ = std::max(2 * (this->m_gamePly_ - 1), 0) + static_cast<int>(this->GetTurn() == White);
 
 	// 残り時間, hash key, (もし実装するなら)駒番号などをここで設定
@@ -2700,7 +2701,7 @@ void Position::Set(const std::string& sfen, Monkey* th) {
 	this->SetEvalList();
 	this->FindCheckers();
 	this->m_st_->m_material = this->ComputeMaterial();
-	this->m_thisThread_ = th;
+	this->m_thisThread_ = pMonkey;
 
 	return;
 INCORRECT:

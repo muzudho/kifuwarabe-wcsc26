@@ -149,7 +149,7 @@ void MonkiesPub::SetCurrWorrior(const int maxPly) {
 /// </summary>
 void MonkiesPub::WaitForThinkFinished()
 {
-	Orangutans* t = GetFirstCaptain();
+	Orangutans* t = GetFirstMonkeyAsOrangutans();
 	std::unique_lock<Mutex> lock(t->m_sleepLock);
 	m_sleepCond_.wait(lock, [&] { return !(t->m_isMasterThread); });
 }
@@ -231,10 +231,10 @@ void MonkiesPub::startClimbingTree_n10(
 		}
 
 		// マスタースレッドだというフラグを立てる（＾～＾）？
-		this->GetFirstCaptain()->m_isMasterThread = true;
+		this->GetFirstMonkeyAsOrangutans()->m_isMasterThread = true;
 
 		// フラグを立てた後に、通知してる（＾～＾）？
-		this->GetFirstCaptain()->NotifyOne();
+		this->GetFirstMonkeyAsOrangutans()->NotifyOne();
 
 
 	#endif

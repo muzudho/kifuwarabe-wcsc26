@@ -230,7 +230,7 @@ Move UsiOperation::CsaToMove(const Position& pos, const std::string& moveStr) {
 /// </summary>
 /// <param name="pos"></param>
 /// <param name="ssCmd"></param>
-void UsiOperation::SetPosition(Position& pos, std::istringstream& ssCmd) {
+void UsiOperation::SetPositionToOrangutans(Position& pos, std::istringstream& ssCmd) {
 	std::string token;
 	std::string sfen;
 
@@ -250,8 +250,8 @@ void UsiOperation::SetPosition(Position& pos, std::istringstream& ssCmd) {
 	}
 	else { return; }
 
-    // 指し手リストだぜ（＾▽＾）
-	pos.Set(sfen, pos.getOurCarriage()->m_monkiesPub.GetFirstCaptain());
+    // オランウータン（メインスレッド）にポジションを覚えさすぜ（＾▽＾）
+	pos.SetPosition(sfen, pos.getOurCarriage()->m_monkiesPub.GetFirstMonkeyAsOrangutans());
 
     // 指し手を進めるぜ（＾▽＾）
 	pos.getOurCarriage()->m_setUpStates = StateStackPtr(new std::stack<StateInfo>());

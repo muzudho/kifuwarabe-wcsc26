@@ -96,7 +96,7 @@ UsiLoop::UsiLoop()
 void UsiLoop::Mainloop(int argc, char* argv[], OurCarriage& searcher)
 {
 	GameStats gameStats{};	// こう書くと関数呼出しと思われてエラー： GameStats gameStats();
-	Position pos(g_DefaultStartPositionSFEN, searcher.m_monkiesPub.GetFirstCaptain(), &searcher);
+	Position pos(g_DefaultStartPositionSFEN, searcher.m_monkiesPub.GetFirstMonkeyAsOrangutans(), &searcher);
 
 	std::string cmd;
 	std::string token;
@@ -141,7 +141,7 @@ void UsiLoop::Mainloop(int argc, char* argv[], OurCarriage& searcher)
 				searcher.m_signals.m_isIterationDeepingStop = true;
 
 				// 排他的処理の何か？？
-				searcher.m_monkiesPub.GetFirstCaptain()->NotifyOne();
+				searcher.m_monkiesPub.GetFirstMonkeyAsOrangutans()->NotifyOne();
 			}
 			else {
 				// 相手の思考時間中に自分も思考するのを止める。
@@ -176,7 +176,7 @@ void UsiLoop::Mainloop(int argc, char* argv[], OurCarriage& searcher)
 			SYNCCOUT << "readyok" << SYNCENDL;
 		}
 		else if (token == "position") {
-			usiOperation.SetPosition(pos, ssCmd);
+			usiOperation.SetPositionToOrangutans(pos, ssCmd);
 		}
 		else if (token == "setoption") {
 			searcher.SetOption(ssCmd);

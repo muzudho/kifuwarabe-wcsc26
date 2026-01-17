@@ -254,7 +254,9 @@ void MakeBook(GameStats& gameStats, Position& pos, std::istringstream& ssCmd) {
 			return;
 		}
 
-		pos.Set(g_DefaultStartPositionSFEN, pos.getOurCarriage()->m_monkiesPub.GetFirstCaptain());
+		// オランウータン（メインスレッド）にポジションを覚えさす。
+		pos.SetPosition(g_DefaultStartPositionSFEN, pos.getOurCarriage()->m_monkiesPub.GetFirstMonkeyAsOrangutans());
+
 		StateStackPtr SetUpStates = StateStackPtr(new std::stack<StateInfo>());
 		UsiOperation usiOperation;
 		while (!line.empty()) {

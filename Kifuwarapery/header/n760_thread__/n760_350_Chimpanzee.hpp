@@ -10,7 +10,8 @@ class OurCarriage;
 /// チンパンジー
 /// 
 ///		- 元の名前： `ＴimerThread`, `ＥrrandMonkey`
-///		- ［反復深化探索］を止めるかどうかのタイマーの働きをしている。
+///		- こいつは他の猿とは違う。思考用ではなく、時計監視用。
+///		- ［反復深化探索］を止めるかどうかのタイマーの働きをしている。１アプリケーションに１匹。
 ///		</pre>
 /// </summary>
 class Chimpanzee : public Monkey {

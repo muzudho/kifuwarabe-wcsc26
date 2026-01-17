@@ -79,7 +79,7 @@ public:
 	/// </summary>
 	/// <param name="sfen"></param>
 	/// <param name="th"></param>
-	void Set(const std::string& sfen, Monkey* th);
+	void SetPosition(const std::string& sfen, Monkey* th);
 
 
 	/// <summary>
