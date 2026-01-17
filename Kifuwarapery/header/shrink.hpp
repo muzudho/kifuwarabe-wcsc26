@@ -23,18 +23,23 @@
 
 
 // でかいβ値も深掘りしないぜ（＾～＾）
-#define SHRINK_ROOT_NODE_EXPLORE_PLAIN_LARGE_BETA_RECURSIVE_SEARCH
+// バグは取れないぜ（＾～＾）
+//#define SHRINK_ROOT_NODE_EXPLORE_PLAIN_LARGE_BETA_RECURSIVE_SEARCH
 
 
 // 猿を増やすの、止めるぜ（＾～＾）
-#define SHRINK_ROOT_NODE_EXPLORE_PLAIN_FORK_NEW_MONKEY
+// バグは取れないぜ（＾～＾）
+//#define SHRINK_ROOT_NODE_EXPLORE_PLAIN_FORK_NEW_MONKEY
 
 
 // 非PVノード
 
 
-// バグは取れるけど、１手しか読まなくなるぜ（＾～＾）
-#define SHRINK_NON_PV_NODE_EXPLORE_PLAIN_NON_PV_RECURSIVE_SEARCH
+#define SHRINK_NON_PV_NODE_EXPLORE_PLAIN_360_RECURSIVE_SEARCH
+
+
+// バグは取れるけど、１手、２手しか読まなくなるぜ（＾～＾）
+//#define SHRINK_NON_PV_NODE_EXPLORE_PLAIN_NON_PV_RECURSIVE_SEARCH
 
 
 // 猿を増やすの、止めるぜ（＾～＾）

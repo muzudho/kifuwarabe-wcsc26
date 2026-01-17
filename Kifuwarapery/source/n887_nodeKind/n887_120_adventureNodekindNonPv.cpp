@@ -408,24 +408,25 @@ iid_start:
 			&pFlashlight
 			);
 
-		// step15
-		this->explorePlain_n360_recursiveSearch(
-			ourCarriage,
-			depth,
-			isPVMove,
-			captureOrPawnPromotion,
-			move,
-			ttMove,
-			&pFlashlight,
-			moveCount,
-			cutNode,
-			newDepth,
-			alpha,
-			&pSplitedNode,
-			score,
-			pos,
-			doFullDepthSearch
-			);
+
+		#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_360_RECURSIVE_SEARCH
+			this->explorePlain_n360_recursiveSearch(
+				ourCarriage,
+				depth,
+				isPVMove,
+				captureOrPawnPromotion,
+				move,
+				ttMove,
+				&pFlashlight,
+				moveCount,
+				cutNode,
+				newDepth,
+				alpha,
+				&pSplitedNode,
+				score,
+				pos,
+				doFullDepthSearch);
+		#endif
 
 
 		#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_NON_PV_RECURSIVE_SEARCH
