@@ -73,9 +73,9 @@ std::string OurCarriage::PvInfoToUSI(Position& pos, const Ply depth, const Score
 	Ply selDepth = 0; // 選択的に読んでいる部分の探索深さ。
 	std::stringstream ss;
 
-	for (size_t i = 0; i < m_monkiesPub.size(); ++i) {
-		if (selDepth < m_monkiesPub[i]->m_maxPly) {
-			selDepth = m_monkiesPub[i]->m_maxPly;
+	for (size_t i = 0; i < m_monkiesPub.m_itemMonkies.size(); ++i) {
+		if (selDepth < m_monkiesPub.m_itemMonkies[i]->m_maxPly) {
+			selDepth = m_monkiesPub.m_itemMonkies[i]->m_maxPly;
 		}
 	}
 
@@ -320,16 +320,16 @@ void OurCarriage::CheckTime() {
 		std::unique_lock<Mutex> lock(m_monkiesPub.m_mutex_);
 
 		nodes = m_rootPosition.GetNodesSearched();
-		for (size_t i = 0; i < m_monkiesPub.size(); ++i) {
-			for (int j = 0; j < m_monkiesPub[i]->m_splitedNodesSize; ++j) {
-				SplitedNode& splitedNode = m_monkiesPub[i]->m_SplitedNodes[j];
+		for (size_t i = 0; i < m_monkiesPub.m_itemMonkies.size(); ++i) {
+			for (int j = 0; j < m_monkiesPub.m_itemMonkies[i]->m_splitedNodesSize; ++j) {
+				SplitedNode& splitedNode = m_monkiesPub.m_itemMonkies[i]->m_SplitedNodes[j];
 				std::unique_lock<Mutex> spLock(splitedNode.m_mutex);
 				nodes += splitedNode.m_nodes;
 				u64 slvMask = splitedNode.m_slavesMask;
 				while (slvMask) {
 					const int index = firstOneFromLSB(slvMask);
 					slvMask &= slvMask - 1;
-					Position* pos = m_monkiesPub[index]->m_activePosition;
+					Position* pos = m_monkiesPub.m_itemMonkies[index]->m_activePosition;
 					if (pos != nullptr) {
 						nodes += pos->GetNodesSearched();
 					}

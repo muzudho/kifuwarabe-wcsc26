@@ -29,7 +29,8 @@ const int g_MaxThreads = 64;
 ///		- ベクターを（持っているのではなく）継承していることに注意。
 ///		</pre>
 /// </summary>
-class MonkiesPub : public std::vector<MonkeyAbstract*> {
+class MonkiesPub	// : public std::vector<MonkeyAbstract*>
+{
 
 
 public:
@@ -51,6 +52,11 @@ public:
 
 	// メイン・フィールド
 
+
+	/// <summary>
+	/// モンキーズ
+	/// </summary>
+	std::vector<MonkeyAbstract*> m_itemMonkies;
 
 	/// <summary>
 	/// マックス・スレッド？
@@ -79,7 +85,7 @@ public:
 	/// メインスレッド？
 	/// </summary>
 	/// <returns></returns>
-	CaptainMonkey* GetFirstCaptain() { return static_cast<CaptainMonkey*>((*this)[0]); }
+	CaptainMonkey* GetFirstCaptain() { return static_cast<CaptainMonkey*>((*this).m_itemMonkies[0]); }
 
 
 	/// <summary>

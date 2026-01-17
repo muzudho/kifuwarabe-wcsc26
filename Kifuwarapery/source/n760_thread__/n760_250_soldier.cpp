@@ -24,7 +24,7 @@ MonkeyAbstract::MonkeyAbstract(OurCarriage* ourCarriage) /*: ＳｐｌｉｔＰ�
 	this->m_maxPly = 0;
 	this->m_activeSplitedNode = nullptr;
 	this->m_activePosition = nullptr;
-	this->m_idx = ourCarriage->m_monkiesPub.size();
+	this->m_idx = ourCarriage->m_monkiesPub.m_itemMonkies.size();
 }
 
 

@@ -57,7 +57,7 @@ void MonkiesPub::initializeMonkiePub_app10(OurCarriage* s)
 	m_pSubordinate_ = newThread<ErrandMonkey>(s);
 #endif
 
-	push_back(newThread<CaptainMonkey>(s));
+	this->m_itemMonkies.push_back(newThread<CaptainMonkey>(s));
 
 	ReadUSIOptions(s);
 }
@@ -73,7 +73,7 @@ void MonkiesPub::Exit() {
 	deleteThread(m_pSubordinate_);
 #endif
 
-	for (auto elem : *this) {
+	for (auto elem : (*this).m_itemMonkies) {
 		deleteThread(elem);
 	}
 }
@@ -100,13 +100,13 @@ void MonkiesPub::ReadUSIOptions(OurCarriage* searcher) {
 	) * OnePly;
 	assert(0 < numberOfThreads);
 
-	while (size() < numberOfThreads) {
-		push_back(newThread<MonkeyAbstract>(searcher));
+	while (this->m_itemMonkies.size() < numberOfThreads) {
+		this->m_itemMonkies.push_back(newThread<MonkeyAbstract>(searcher));
 	}
 
-	while (numberOfThreads < size()) {
-		deleteThread(back());
-		pop_back();
+	while (numberOfThreads < this->m_itemMonkies.size()) {
+		deleteThread(this->m_itemMonkies.back());
+		this->m_itemMonkies.pop_back();
 	}
 }
 
@@ -117,7 +117,7 @@ void MonkiesPub::ReadUSIOptions(OurCarriage* searcher) {
 /// <param name="master"></param>
 /// <returns></returns>
 MonkeyAbstract* MonkiesPub::GetAvailableSlave(MonkeyAbstract* master) const {
-	for (auto elem : *this) {
+	for (auto elem : (*this).m_itemMonkies) {
 		if (elem->SetLastSplitNodeSlavesMask(master)) {
 			return elem;
 		}
