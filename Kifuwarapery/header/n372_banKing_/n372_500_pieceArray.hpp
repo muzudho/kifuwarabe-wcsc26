@@ -79,7 +79,7 @@ public:
 	static const PieceWDragon m_pieceWDragon;//[30]
 	static const PieceNone m_pieceNone;//[31]
 
-	static const PieceAbstract* m_pieceAbstractArray[32];
+	static const IKingBannable* m_pieceAbstractArray[32];
 };
 
 

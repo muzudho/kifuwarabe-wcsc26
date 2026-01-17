@@ -13,7 +13,7 @@
 /// <summary>
 /// 後手竜。
 /// </summary>
-class PieceWDragon : public PieceAbstract {
+class PieceWDragon : public IKingBannable {
 
 
 public:

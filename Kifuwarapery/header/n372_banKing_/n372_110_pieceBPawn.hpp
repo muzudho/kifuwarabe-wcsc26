@@ -9,7 +9,7 @@
 /// <summary>
 /// 先手歩
 /// </summary>
-class PieceBPawn : public PieceAbstract {
+class PieceBPawn : public IKingBannable {
 
 
 public:

@@ -9,7 +9,7 @@
 /// <summary>
 /// 
 /// </summary>
-class PieceNone : public PieceAbstract {
+class PieceNone : public IKingBannable {
 
 
 public:

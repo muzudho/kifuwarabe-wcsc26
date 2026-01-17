@@ -10,7 +10,7 @@
 /// <summary>
 /// 後手成香
 /// </summary>
-class PieceWProLance : public PieceAbstract {
+class PieceWProLance : public IKingBannable {
 
 
 public:

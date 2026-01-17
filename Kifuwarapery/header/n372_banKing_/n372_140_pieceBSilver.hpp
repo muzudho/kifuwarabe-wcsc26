@@ -10,7 +10,7 @@
 /// <summary>
 /// 先手銀
 /// </summary>
-class PieceBSilver : public PieceAbstract {
+class PieceBSilver : public IKingBannable {
 
 
 public:

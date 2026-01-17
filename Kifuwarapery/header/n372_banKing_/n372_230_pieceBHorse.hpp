@@ -10,7 +10,7 @@
 /// <summary>
 /// 先手馬
 /// </summary>
-class PieceBHorse : public PieceAbstract {
+class PieceBHorse : public IKingBannable {
 
 
 public:

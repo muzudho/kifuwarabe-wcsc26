@@ -10,7 +10,7 @@
 /// <summary>
 /// 後手成桂の駒☆（＾～＾）
 /// </summary>
-class PieceWProKnight : public PieceAbstract {
+class PieceWProKnight : public IKingBannable {
 
 
 public:

@@ -9,7 +9,7 @@
 /// <summary>
 /// 駒無し
 /// </summary>
-class PieceEmpty : public PieceAbstract {
+class PieceEmpty : public IKingBannable {
 
 
 public:

@@ -10,7 +10,7 @@
 /// <summary>
 /// 
 /// </summary>
-class PieceWProPawn : public PieceAbstract {
+class PieceWProPawn : public IKingBannable {
 
 
 public:

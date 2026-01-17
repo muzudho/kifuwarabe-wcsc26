@@ -9,7 +9,7 @@
 /// <summary>
 /// 後手の桂馬
 /// </summary>
-class PieceWKnight : public PieceAbstract {
+class PieceWKnight : public IKingBannable {
 
 
 public:

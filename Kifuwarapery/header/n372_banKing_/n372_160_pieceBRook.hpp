@@ -10,7 +10,7 @@
 /// <summary>
 /// 先手飛車
 /// </summary>
-class PieceBRook : public PieceAbstract {
+class PieceBRook : public IKingBannable {
 
 
 public:

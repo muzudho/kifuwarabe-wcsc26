@@ -9,7 +9,7 @@
 /// <summary>
 /// 後手玉。
 /// </summary>
-class PieceWKing : public PieceAbstract {
+class PieceWKing : public IKingBannable {
 
 
 public:

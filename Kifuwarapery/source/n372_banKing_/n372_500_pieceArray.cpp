@@ -73,7 +73,7 @@ const PieceNone PieceArray::m_pieceNone;	//[31]
 /// <summary>
 /// 抽象クラスのインスタンスを配列にするためには、ポインタで持てばいいんだぜ☆（＾ｑ＾）
 /// </summary>
-const PieceAbstract* PieceArray::m_pieceAbstractArray[] = {//32
+const IKingBannable* PieceArray::m_pieceAbstractArray[] = {//32
 	&PieceArray::m_pieceEmpty,	//[0]
 	&PieceArray::m_pieceBPawn,
 	&PieceArray::m_pieceBLance,

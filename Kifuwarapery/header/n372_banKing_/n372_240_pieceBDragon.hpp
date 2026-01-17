@@ -13,7 +13,7 @@
 /// <summary>
 /// 先手の龍の動きを扱うクラス
 /// </summary>
-class PieceBDragon : public PieceAbstract {
+class PieceBDragon : public IKingBannable {
 
 
 public:

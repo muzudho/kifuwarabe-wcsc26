@@ -10,7 +10,7 @@
 /// <summary>
 /// 後手角。
 /// </summary>
-class PieceWBishop : public PieceAbstract {
+class PieceWBishop : public IKingBannable {
 
 
 public:

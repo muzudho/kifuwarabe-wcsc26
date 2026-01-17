@@ -10,7 +10,7 @@
 /// <summary>
 /// 後手成銀
 /// </summary>
-class PieceWProSilver : public PieceAbstract {
+class PieceWProSilver : public IKingBannable {
 
 
 public:

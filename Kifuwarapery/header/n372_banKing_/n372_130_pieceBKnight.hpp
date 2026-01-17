@@ -9,7 +9,7 @@
 /// <summary>
 /// 先手桂馬
 /// </summary>
-class PieceBKnight : public PieceAbstract {
+class PieceBKnight : public IKingBannable {
 
 
 public:

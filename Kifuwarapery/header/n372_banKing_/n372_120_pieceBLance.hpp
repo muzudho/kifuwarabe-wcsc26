@@ -10,7 +10,7 @@
 /// <summary>
 /// 先手香
 /// </summary>
-class PieceBLance : public PieceAbstract {
+class PieceBLance : public IKingBannable {
 
 
 public:
