@@ -104,9 +104,9 @@ public:
 
 			const Square ksq = pos.GetKingSquare(THEM);
 			// 相手玉が九段目なら、歩で王手出来ないので、打ち歩詰めを調べる必要はない。
-			if (ConvSquare::TO_RANK10(ksq) != tRank1) {
+			if (ConvSquare::ToRank_n10(ksq) != tRank1) {
 				const Square pawnDropCheckSquare = ksq + tDeltaS;
-				assert(ConvSquare::CONTAINS_OF10(pawnDropCheckSquare));
+				assert(ConvSquare::ContainsOf_n10(pawnDropCheckSquare));
 				if (g_setMaskBb.IsSet(&toBB, pawnDropCheckSquare) && pos.GetPiece(pawnDropCheckSquare) == N00_Empty) {
 					if (!pos.IsPawnDropCheckMate<US,THEM>(pawnDropCheckSquare)) {
 						// ここで clearBit だけして MakeMove しないことも出来る。

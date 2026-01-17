@@ -51,7 +51,7 @@ void SetMaskBb::XorBit(Bitboard* thisBitboard, const Square sq1, const Square sq
 /// <returns></returns>
 bool SetMaskBb::IsSet(const Bitboard* thisBitboard, const Square sq) const
 {
-	assert(ConvSquare::CONTAINS_OF10(sq));
+	assert(ConvSquare::ContainsOf_n10(sq));
 	return thisBitboard->AndIsNot0(g_setMaskBb.m_setMaskBB_[sq]);
 }
 

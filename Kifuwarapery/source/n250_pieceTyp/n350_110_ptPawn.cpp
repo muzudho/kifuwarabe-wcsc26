@@ -48,7 +48,7 @@ PieceType PtPawn::AppendToNextAttackerAndTryPromote(
 				ptsEvent.m_pos.GetBbOf20(N02_Lance, turn)));
 
 		// 歩、香、桂は　陣地に飛び込んだとき、成れる時には成る☆
-		if (ConvSquare::CAN_PROMOTE10b(turn, ConvSquare::TO_RANK10(ptsEvent.m_to))) {
+		if (ConvSquare::CAN_PROMOTE10b(turn, ConvSquare::ToRank_n10(ptsEvent.m_to))) {
 			return PT + PTPromote;
 		}
 		// それ以外の駒種類は、そのまま返す☆

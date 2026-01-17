@@ -25,15 +25,18 @@ public:
 
 
 	/// <summary>
-	/// 先手のときは BRANK, 後手のときは WRANK より target が前の段にあるなら true を返す。
+	///		<pre>
+	/// 指定の駒（黒または白）の段の前に target があるか。
+	///		</pre>
 	/// </summary>
 	/// <param name="us"></param>
 	/// <param name="bRank"></param>
 	/// <param name="wRank"></param>
 	/// <param name="target"></param>
 	/// <returns></returns>
-	static inline bool IS_IN_FRONT_OF10(Color us, Rank bRank, Rank wRank, const Rank target) {
-		return (us == Color::Black ? (target < bRank) : (wRank < target));
+	static inline bool IsInFrontOf_n10(Color us, Rank rankIfB, Rank rankIfW, const Rank target)
+	{
+		return (us == Color::Black ? (target < rankIfB) : (rankIfW < target));
 	}
 
 
@@ -46,9 +49,9 @@ public:
 	/// <param name="target"></param>
 	/// <returns></returns>
 	template<Color US>
-	static inline bool IS_BEHIND10(Rank bRank, Rank wRank, const Rank target)
+	static inline bool IsBehind_n10(Rank rankIfB, Rank rankIfW, const Rank target)
 	{
-		return (US == Black ? (bRank < target) : (target < wRank));
+		return (US == Black ? (rankIfB < target) : (target < rankIfW));
 	}
 
 
@@ -61,8 +64,9 @@ public:
 	/// <param name="target"></param>
 	/// <returns></returns>
 	template<Color US>
-	static inline bool IS_LEFT_OF10(File bFile, File wFile, const File target) {
-		return (US == Black ? (bFile < target) : (target < wFile));
+	static inline bool IsLeftOf_n10(File fileIfB, File fileIfW, const File target)
+	{
+		return (US == Black ? (fileIfB < target) : (target < fileIfW));
 	}
 
 
@@ -75,8 +79,9 @@ public:
 	/// <param name="target"></param>
 	/// <returns></returns>
 	template<Color US>
-	static inline bool IS_RIGHT_OF10(File bFile, File wFile, const File target) {
-		return (US == Black ? (target < bFile) : (wFile < target));
+	static inline bool IsRightOf_n10(File fileIfB, File fileIfW, const File target)
+	{
+		return (US == Black ? (target < fileIfB) : (fileIfW < target));
 	}
 
 
@@ -85,8 +90,9 @@ public:
 	/// </summary>
 	/// <param name="s"></param>
 	/// <returns></returns>
-	static inline bool CONTAINS_OF10(const Square s) {
-		return (0 <= s) && (s < SquareNum);
+	static inline bool ContainsOf_n10(const Square sq)
+	{
+		return (0 <= sq) && (sq < SquareNum);
 	}
 
 
@@ -98,7 +104,8 @@ public:
 	/// <param name="f"></param>
 	/// <param name="r"></param>
 	/// <returns></returns>
-	static inline bool CONTAINS_OF20(const File f, const Rank r) {
+	static inline bool ContainsOf_n20(const File f, const Rank r)
+	{
 		return ConvFile::CONTAINS_OF10(f) && ConvRank::CONTAINS_OF10(r);
 	}
 
@@ -109,7 +116,8 @@ public:
 	/// <param name="f"></param>
 	/// <param name="r"></param>
 	/// <returns></returns>
-	static inline constexpr Square FROM_FILE_RANK10(const File f, const Rank r) {
+	static inline constexpr Square FromFileRank_n10(const File f, const Rank r)
+	{
 		return static_cast<Square>(static_cast<int>(f) * 9 + static_cast<int>(r));
 	}
 
@@ -119,8 +127,9 @@ public:
 	/// </summary>
 	/// <param name="s"></param>
 	/// <returns></returns>
-	static inline Rank TO_RANK10(const Square s) {
-		assert(ConvSquare::CONTAINS_OF10(s));
+	static inline Rank ToRank_n10(const Square s)
+	{
+		assert(ConvSquare::ContainsOf_n10(s));
 		// 計算せず、テーブル引き☆（＾ｑ＾）
 		return g_squareToRank[s];
 	}
@@ -131,8 +140,9 @@ public:
 	/// </summary>
 	/// <param name="s"></param>
 	/// <returns></returns>
-	static inline File TO_FILE10(const Square s) {
-		assert(ConvSquare::CONTAINS_OF10(s));
+	static inline File ToFile_n10(const Square s)
+	{
+		assert(ConvSquare::ContainsOf_n10(s));
 		return g_squareToFile[s];
 	}
 
@@ -142,9 +152,10 @@ public:
 	/// </summary>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	static inline std::string TO_2CHARS_N0_STRING_USI40(const Square sq) {
-		const Rank r = ConvSquare::TO_RANK10(sq);
-		const File f = ConvSquare::TO_FILE10(sq);
+	static inline std::string To2CharsNoString_USI40(const Square sq)
+	{
+		const Rank r = ConvSquare::ToRank_n10(sq);
+		const File f = ConvSquare::ToFile_n10(sq);
 		const char ch[] = { ConvFile::TO_CHAR_USI10(f), ConvRank::TO_CHAR_USI10(r), '\0' };
 		return std::string(ch);
 	}
@@ -155,9 +166,10 @@ public:
 	/// </summary>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	static inline std::string TO_STRING_CSA40(const Square sq) {
-		const Rank r = ConvSquare::TO_RANK10(sq);
-		const File f = ConvSquare::TO_FILE10(sq);
+	static inline std::string TO_STRING_CSA40(const Square sq)
+	{
+		const Rank r = ConvSquare::ToRank_n10(sq);
+		const File f = ConvSquare::ToFile_n10(sq);
 		const char ch[] = { ConvFile::TO_CHAR_CSA10(f), ConvRank::TO_CHAR_CSA10(r), '\0' };
 		return std::string(ch);
 	}
@@ -168,7 +180,8 @@ public:
 	/// </summary>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	static inline constexpr Square INVERSE10(const Square sq) {
+	static inline constexpr Square INVERSE10(const Square sq)
+	{
 		return SquareNum - 1 - sq;
 	}
 
@@ -178,12 +191,13 @@ public:
 	/// </summary>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	static inline Square INVERSE_FILE40(const Square sq) {
-		return ConvSquare::FROM_FILE_RANK10(
+	static inline Square INVERSE_FILE40(const Square sq)
+	{
+		return ConvSquare::FromFileRank_n10(
 			ConvFile::INVERSE10(
-				ConvSquare::TO_FILE10(sq)
+				ConvSquare::ToFile_n10(sq)
 			),
-			ConvSquare::TO_RANK10(sq)
+			ConvSquare::ToRank_n10(sq)
 		);
 	}
 
@@ -194,7 +208,8 @@ public:
 	/// <param name="c"></param>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	static inline constexpr Square INVERSE_IF_WHITE20(const Color c, const Square sq) {
+	static inline constexpr Square INVERSE_IF_WHITE20(const Color c, const Square sq)
+	{
 		return (c == Black ? sq : INVERSE10(sq));
 	}
 
@@ -206,7 +221,8 @@ public:
 	/// <param name="fromOrToRank"></param>
 	/// <returns></returns>
 	template<Color US>
-	static inline bool CAN_PROMOTE10(const Rank fromOrToRank) {
+	static inline bool CAN_PROMOTE10(const Rank fromOrToRank)
+	{
 #if 1
 		static_assert(Black == 0, "");
 		static_assert(Rank9 == 0, "");
@@ -224,7 +240,8 @@ public:
 	/// <param name="c"></param>
 	/// <param name="fromOrToRank"></param>
 	/// <returns></returns>
-	static inline bool CAN_PROMOTE10b(const Color c, const Rank fromOrToRank) {
+	static inline bool CAN_PROMOTE10b(const Color c, const Rank fromOrToRank)
+	{
 #if 1
 		static_assert(Black == 0, "");
 		static_assert(Rank9 == 0, "");

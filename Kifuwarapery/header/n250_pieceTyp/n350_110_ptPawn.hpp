@@ -78,9 +78,9 @@ public:
 		);
 
 		if (
-				ConvSquare::CAN_PROMOTE10<Color::White>(ConvSquare::TO_RANK10(to))
+				ConvSquare::CAN_PROMOTE10<Color::White>(ConvSquare::ToRank_n10(to))
 				|
-				ConvSquare::CAN_PROMOTE10<Color::White>(ConvSquare::TO_RANK10(from))
+				ConvSquare::CAN_PROMOTE10<Color::White>(ConvSquare::ToRank_n10(from))
 		){
 			MakePromoteMove::APPEND_PROMOTE_FLAG(moveStackList->m_move);
 		}
@@ -111,9 +111,9 @@ public:
 			);
 
 		if (
-			ConvSquare::CAN_PROMOTE10<Color::Black>(ConvSquare::TO_RANK10(to))
+			ConvSquare::CAN_PROMOTE10<Color::Black>(ConvSquare::ToRank_n10(to))
 			|
-			ConvSquare::CAN_PROMOTE10<Color::Black>(ConvSquare::TO_RANK10(from))
+			ConvSquare::CAN_PROMOTE10<Color::Black>(ConvSquare::ToRank_n10(from))
 			) {
 			MakePromoteMove::APPEND_PROMOTE_FLAG(moveStackList->m_move);
 		}

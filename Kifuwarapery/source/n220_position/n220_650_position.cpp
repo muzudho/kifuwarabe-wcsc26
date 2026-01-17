@@ -738,7 +738,7 @@ bool Position::MoveIsPseudoLegal(const Move move, const bool checkPawnDrop) cons
 		}
 
 		if (ptFrom == N01_Pawn && checkPawnDrop) {
-			if ((this->GetBbOf20<US>(N01_Pawn) & g_fileMaskBb.GetFileMask(ConvSquare::TO_FILE10(to))).Exists1Bit()) { return false; }	// 二歩
+			if ((this->GetBbOf20<US>(N01_Pawn) & g_fileMaskBb.GetFileMask(ConvSquare::ToFile_n10(to))).Exists1Bit()) { return false; }	// 二歩
 
 			const SquareDelta TDeltaN = (US == Black ? DeltaN : DeltaS);
 			if (to + TDeltaN == this->GetKingSquare(THEM) && this->IsPawnDropCheckMate<US, THEM>(to)) { return false; }	// 王手かつ打ち歩詰め
@@ -1432,7 +1432,7 @@ Move Position::GetMateMoveIn1Ply() {
 	// 玉が 9(1) 段目にいれば香車で王手出来無いので、それも省く。
 	else if (
 		Hand::Exists_HLance(ourHand) &&
-		ConvSquare::IS_IN_FRONT_OF10(US, Rank1, Rank9, ConvSquare::TO_RANK10(ksq))
+		ConvSquare::IsInFrontOf_n10(US, Rank1, Rank9, ConvSquare::ToRank_n10(ksq))
 	) {
 		const Square to = ksq + TDeltaS;
 		if (GetPiece(to) == N00_Empty && IsAttackersToIsNot0(US, to)) {
@@ -1491,7 +1491,7 @@ Move Position::GetMateMoveIn1Ply() {
 				goto silver_drop_end;
 			}
 			// 斜め後ろから打つ場合を調べる必要がある。
-			toBB = dropTarget & (g_silverAttackBb.GetControllBb(THEM, ksq) & g_inFrontMaskBb.GetInFrontMask(US, ConvSquare::TO_RANK10(ksq)));
+			toBB = dropTarget & (g_silverAttackBb.GetControllBb(THEM, ksq) & g_inFrontMaskBb.GetInFrontMask(US, ConvSquare::ToRank_n10(ksq)));
 		}
 		else {
 			if (Hand::Exists_HBishop(ourHand)) {
@@ -1878,7 +1878,7 @@ silver_drop_end:
 
 						// 玉の前方に移動する場合、成で詰まなかったら不成でも詰まないので、ここで省く。
 						// sakurapyon の作者が言ってたので実装。
-						toBB.AndEqualNot(g_inFrontMaskBb.GetInFrontMask(THEM, ConvSquare::TO_RANK10(ksq)));
+						toBB.AndEqualNot(g_inFrontMaskBb.GetInFrontMask(THEM, ConvSquare::ToRank_n10(ksq)));
 						while (toBB.Exists1Bit()) {
 							const Square to = toBB.PopFirstOneFromI9();
 							if (IsUnDropCheckIsSupported(US, to)) {
@@ -2115,16 +2115,16 @@ silver_drop_end:
 		// 歩による移動
 		// 成れる場合は必ずなる。
 		// todo: PawnCheckBB 作って簡略化する。
-		const Rank krank = ConvSquare::TO_RANK10(ksq);
+		const Rank krank = ConvSquare::ToRank_n10(ksq);
 		// 歩が移動して王手になるのは、相手玉が1~7段目の時のみ。
-		if (ConvSquare::IS_IN_FRONT_OF10(US, Rank2, Rank8, krank)) {
+		if (ConvSquare::IsInFrontOf_n10(US, Rank2, Rank8, krank)) {
 			// Txxx は先手、後手の情報を吸収した変数。数字は先手に合わせている。
 			const SquareDelta TDeltaS = (US == Black ? DeltaS : DeltaN);
 			const SquareDelta TDeltaN = (US == Black ? DeltaN : DeltaS);
 
 			Bitboard fromBB = this->GetBbOf20(N01_Pawn, US);
 			// 玉が敵陣にいないと成で王手になることはない。
-			if (ConvSquare::IS_IN_FRONT_OF10(US, Rank6, Rank4, krank)) {
+			if (ConvSquare::IsInFrontOf_n10(US, Rank6, Rank4, krank)) {
 				// 成った時に王手になる位置
 				const PieceTypeEvent ptEvent1(g_nullBitboard, THEM, ksq);
 				const Bitboard toBB_promo = moveTarget & PiecetypePrograms::m_GOLD.GetAttacks2From(ptEvent1) & TRank789BB;
@@ -2161,7 +2161,7 @@ silver_drop_end:
 			const Square from = to + TDeltaS;
 			if (g_setMaskBb.IsSet(&fromBB, from) && !g_setMaskBb.IsSet(&this->GetBbOf10(US), to)) {
 				// 玉が 1, 2 段目にいるなら、成りで王手出来るので不成は調べない。
-				if (ConvSquare::IS_BEHIND10<US>(Rank8, Rank2, krank)) {
+				if (ConvSquare::IsBehind_n10<US>(Rank8, Rank2, krank)) {
 					this->XorBBs(N01_Pawn, from, US);
 					// 動いた後の dcBB: to の位置の occupied や checkers は関係ないので、ここで生成できる。
 					const Bitboard dcBB_betweenIsThem_after = DiscoveredCheckBB<US, THEM, false>();
@@ -2250,7 +2250,7 @@ void Position::Print() const {
 		++i;
 		std::cout << "P" << i;
 		for (File f = FileA; FileI <= f; --f) {
-			std::cout << pieceToCharCSA(GetPiece(ConvSquare::FROM_FILE_RANK10(f, r)));
+			std::cout << pieceToCharCSA(GetPiece(ConvSquare::FromFileRank_n10(f, r)));
 		}
 		std::cout << std::endl;
 	}
@@ -2638,7 +2638,7 @@ void Position::Set(const std::string& sfen, Soldier* th) {
 			promoteFlag = Promoted;
 		}
 		else if (g_charToPieceUSI.IsLegalChar(token)) {
-			if (ConvSquare::CONTAINS_OF10(sq)) {
+			if (ConvSquare::ContainsOf_n10(sq)) {
 				SetPiece(g_charToPieceUSI.GetValue(token) + promoteFlag, sq);
 				promoteFlag = Piece::UnPromoted;
 				sq += SquareDelta::DeltaE;

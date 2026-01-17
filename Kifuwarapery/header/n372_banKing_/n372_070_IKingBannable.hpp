@@ -18,8 +18,8 @@ public:
 	/// <summary>
 	/// インターフェースのメソッド
 	/// </summary>
-	/// <param name="bannedKingToBB"></param>
-	/// <param name="pos"></param>
+	/// <param name="bannedKingToBB">これを更新していく</param>
+	/// <param name="pos">竜の利きのとき使う</param>
 	/// <param name="checkSq"></param>
 	/// <param name="ksq"></param>
 	virtual void MakeBanned2KingTo(

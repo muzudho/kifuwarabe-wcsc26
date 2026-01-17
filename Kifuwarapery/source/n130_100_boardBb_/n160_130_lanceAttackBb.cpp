@@ -99,5 +99,5 @@ Bitboard LanceAttackBb::LanceBlockMask(const Square square) {
 /// <param name="occupied"></param>
 /// <returns></returns>
 Bitboard LanceAttackBb::LanceAttackCalc(const Color c, const Square square, const Bitboard& occupied) {
-	return g_rookAttackBb.GetControllBb(occupied, square) & g_inFrontMaskBb.GetInFrontMask(c, ConvSquare::TO_RANK10(square));
+	return g_rookAttackBb.GetControllBb(occupied, square) & g_inFrontMaskBb.GetInFrontMask(c, ConvSquare::ToRank_n10(square));
 }

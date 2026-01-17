@@ -45,12 +45,12 @@ public:
 		Bitboard fromBB = ptEvent.m_pos.GetBbOf20<US>(isBishop ? PieceType::N05_Bishop : PieceType::N06_Rook);
 		while (fromBB.Exists1Bit()) {
 			const Square from = fromBB.PopFirstOneFromI9();
-			const bool fromCanPromote = ConvSquare::CAN_PROMOTE10<US>(ConvSquare::TO_RANK10(from));
+			const bool fromCanPromote = ConvSquare::CAN_PROMOTE10<US>(ConvSquare::ToRank_n10(from));
 			const PieceTypeEvent ptEvent1(ptEvent.m_pos.GetOccupiedBB(), US, from);
 			Bitboard toBB = PiecetypePrograms::m_PIECETYPE_PROGRAMS[(isBishop?PieceType::N05_Bishop:PieceType::N06_Rook)]->GetAttacks2From(ptEvent1) & target;
 			while (toBB.Exists1Bit()) {
 				const Square to = toBB.PopFirstOneFromI9();
-				const bool toCanPromote = ConvSquare::CAN_PROMOTE10<US>(ConvSquare::TO_RANK10(to));
+				const bool toCanPromote = ConvSquare::CAN_PROMOTE10<US>(ConvSquare::ToRank_n10(to));
 				if (fromCanPromote | toCanPromote) {
 
 					// 成りVer☆

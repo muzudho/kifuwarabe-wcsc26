@@ -66,7 +66,7 @@ public:
 	/// <param name="sq"></param>
 	/// <returns></returns>
 	inline Bitboard GetSquareFileMask(const Square sq) const {
-		const File f = ConvSquare::TO_FILE10(sq);
+		const File f = ConvSquare::ToFile_n10(sq);
 		return this->GetFileMask(f);
 	}
 };
