@@ -1,5 +1,4 @@
 #pragma once
-
 #include "../n105_200_sqDistan/n105_200_500_squareDistance.hpp"
 
 

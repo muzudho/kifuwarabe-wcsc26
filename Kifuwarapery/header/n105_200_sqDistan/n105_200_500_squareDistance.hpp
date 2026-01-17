@@ -1,5 +1,4 @@
 ﻿#pragma once
-
 #include "../n105_120_square__/n105_120_100_square.hpp"
 
 

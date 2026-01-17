@@ -224,7 +224,7 @@
     <ClInclude Include="header\n130_100_boardBb_\n160_104_rankMaskBb.hpp" />
     <ClInclude Include="header\n130_100_boardBb_\n160_106_inFrontMaskBb.hpp" />
     <ClInclude Include="header\n105_200_sqDistan\n105_200_500_squareDistance.hpp" />
-    <ClInclude Include="header\n105_200_sqDistan\n105_200_600_utilSquareDistance.hpp" />
+    <ClInclude Include="header\n105_240_initBonaDir\n105_240_500_initBonaDir.hpp" />
     <ClInclude Include="header\n165_movStack\n165_300_movegenType.hpp" />
     <ClInclude Include="header\n165_movStack\n165_310_promoteMode.hpp" />
     <ClInclude Include="header\n165_movStack\n165_400_move.hpp" />
@@ -480,7 +480,7 @@
     <ClCompile Include="source\n130_100_boardBb_\n160_104_rankMaskBb.cpp" />
     <ClCompile Include="source\n130_100_boardBb_\n160_106_inFrontMaskBb.cpp" />
     <ClCompile Include="source\n105_200_sqDistan\n105_200_squareDistance.cpp" />
-    <ClCompile Include="source\n105_200_sqDistan\n163_600_utilSquareDistance.cpp" />
+    <ClCompile Include="source\n105_240_initBonaDir\n105_240_500_initBonaDir.cpp" />
     <ClCompile Include="source\n165_movStack\n165_400_move.cpp" />
     <ClCompile Include="source\n165_movStack\n165_600_utilMove.cpp" />
     <ClCompile Include="source\n205_repeType\n886_070_rtAbstract.cpp" />
