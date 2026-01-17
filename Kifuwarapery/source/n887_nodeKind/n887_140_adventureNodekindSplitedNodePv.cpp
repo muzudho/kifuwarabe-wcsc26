@@ -349,22 +349,24 @@ split_point_start:
 			&pFlashlight);
 
 
-		this->explorePlain_n360_recursiveSearch(
-			ourCarriage,
-			depth,
-			isPVMove,
-			captureOrPawnPromotion,
-			move,
-			ttMove,
-			&pFlashlight,
-			moveCount,
-			cutNode,
-			newDepth,
-			alpha,
-			&pSplitedNode,
-			score,
-			pos,
-			doFullDepthSearch);
+		#ifndef SHRINK_SPLITED__PV_NODE_EXPLORE_PLAIN_360_RECURSIVE_SEARCH
+			this->explorePlain_n360_recursiveSearch(
+				ourCarriage,
+				depth,
+				isPVMove,
+				captureOrPawnPromotion,
+				move,
+				ttMove,
+				&pFlashlight,
+				moveCount,
+				cutNode,
+				newDepth,
+				alpha,
+				&pSplitedNode,
+				score,
+				pos,
+				doFullDepthSearch);
+		#endif
 
 
 		this->explorePlain_n378_setAlpha(
