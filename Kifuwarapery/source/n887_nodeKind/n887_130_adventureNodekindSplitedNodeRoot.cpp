@@ -161,8 +161,7 @@ ScoreNumber AdventureNodekindSplitedNodeRoot::explorePlain_n10(
 		pos,
 		&pTtEntry,//セットされる☆
 		ourCarriage);
-	this->explorePlain_n200n400_getTtMove(
-		bananaTtMove,
+	bananaTtMove = this->explorePlain_n200n400_getTtMove(
 		ourCarriage,
 		pTtEntry,
 		pos);

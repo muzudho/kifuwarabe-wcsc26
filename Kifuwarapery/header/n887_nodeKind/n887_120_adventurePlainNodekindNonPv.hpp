@@ -91,18 +91,15 @@ public:
 	/// <summary>
 	/// ルートノードか、それ以外かで　値が分かれるぜ☆（＾ｑ＾）
 	/// </summary>
-	/// <param name="ttMove"></param>
 	/// <param name="ourCarriage"></param>
 	/// <param name="pTtEntry"></param>
 	/// <param name="pos"></param>
-	virtual inline void explorePlain_n200n400_getTtMove(
-		Move& ttMove,
+	virtual inline Move explorePlain_n200n400_getTtMove(
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
-		Position& pos
-		)const override
+		Position& pos) const override
 	{
-		ttMove = pTtEntry != nullptr ?
+		return pTtEntry != nullptr ?
 			UtilMoveStack::Move16toMove(pTtEntry->GetMove(), pos) :
 			g_MOVE_NONE;
 	}

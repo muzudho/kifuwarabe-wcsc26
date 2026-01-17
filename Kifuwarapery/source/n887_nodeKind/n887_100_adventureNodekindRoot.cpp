@@ -148,9 +148,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_n10(
 		pos,
 		&pTtEntry,	//セットされる☆
 		ourCarriage);
-	// なんか ttMove を取得した（＾～＾）？
-	this->explorePlain_n200n400_getTtMove(
-		bananaTtMove,
+	bananaTtMove = this->explorePlain_n200n400_getTtMove(
 		ourCarriage,
 		pTtEntry,
 		pos);

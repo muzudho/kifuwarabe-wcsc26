@@ -137,18 +137,16 @@ public:
 	/// <summary>
 	/// ルートノードか、それ以外かで　値が分かれるぜ☆（＾ｑ＾）
 	/// </summary>
-	/// <param name="ttMove"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pTtEntry"></param>
 	/// <param name="pos"></param>
-	virtual inline void explorePlain_n200n400_getTtMove(
-		Move& ttMove,
+	virtual inline Move explorePlain_n200n400_getTtMove(
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
 		Position& pos
 		)const override
 	{
-		ttMove = ourCarriage.m_rootMovesByID[ourCarriage.m_pvIdx].m_pv_[0];
+		return ourCarriage.m_rootMovesByID[ourCarriage.m_pvIdx].m_pv_[0];
 	}
 
 

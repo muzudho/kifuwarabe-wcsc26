@@ -246,12 +246,10 @@ public:
 	/// ルートノードか、それ以外かで　値が分かれるぜ☆（＾ｑ＾）
 	///		</pre>
 	/// </summary>
-	/// <param name="ttMove"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pTtEntry"></param>
 	/// <param name="pos"></param>
-	virtual inline void explorePlain_n200n400_getTtMove(
-		Move& ttMove,
+	virtual inline Move explorePlain_n200n400_getTtMove(
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
 		Position& pos) const = 0;
