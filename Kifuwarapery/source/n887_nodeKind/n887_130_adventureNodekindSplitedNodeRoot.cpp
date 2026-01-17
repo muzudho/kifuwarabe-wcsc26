@@ -342,7 +342,7 @@ split_point_start:
 			alpha,
 			cutNode
 			);
-		this->explorePlain_n400(
+		this->explorePlain_n400_betaLargeRecursiveSearch(
 			ourCarriage,
 			isPVMove,
 			alpha,
@@ -355,7 +355,7 @@ split_point_start:
 			);
 
 		// step17
-		this->explorePlain_n420(
+		this->explorePlain_n420_undoMove(
 			pos,
 			move
 			);
@@ -369,9 +369,9 @@ split_point_start:
 			alpha
 			);
 
-		if (ourCarriage.m_signals.m_isIterationDeepingStop || pThisThread->IsUselessNode()) { return score; }
+		if (ourCarriage.m_signals.m_isIterationDeepingStop || pThisThread->IsUselessSplitedNode()) { return score; }
 
-		this->explorePlain_n440(
+		this->explorePlain_n440_findRootNode(
 			ourCarriage,
 			move,
 			isPVMove,
@@ -380,7 +380,7 @@ split_point_start:
 			pos
 			);
 		bool isBreak = false;
-		this->explorePlain_n460(
+		this->explorePlain_n460_updateAlpha(
 			isBreak,
 			ourCarriage,
 			move,

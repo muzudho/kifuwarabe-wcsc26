@@ -441,7 +441,7 @@ iid_start:
 			);
 
 		// step17
-		this->explorePlain_n420(
+		this->explorePlain_n420_undoMove(
 			pos,
 			move
 			);
@@ -450,9 +450,9 @@ iid_start:
 
 		// step18
 
-		if (ourCarriage.m_signals.m_isIterationDeepingStop || pThisThread->IsUselessNode()) { return score; }
+		if (ourCarriage.m_signals.m_isIterationDeepingStop || pThisThread->IsUselessSplitedNode()) { return score; }
 
-		this->explorePlain_n440(
+		this->explorePlain_n440_findRootNode(
 			ourCarriage,
 			move,
 			isPVMove,
@@ -461,7 +461,7 @@ iid_start:
 			pos
 			);
 		bool isBreak = false;
-		this->explorePlain_n460(
+		this->explorePlain_n460_updateAlpha(
 			isBreak,
 			ourCarriage,
 			move,

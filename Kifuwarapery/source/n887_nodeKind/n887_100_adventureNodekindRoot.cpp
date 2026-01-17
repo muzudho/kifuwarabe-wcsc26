@@ -332,37 +332,48 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 			alpha,
 			cutNode);
 
-		this->explorePlain_n400(
-			ourCarriage,
-			isPVMove,
-			alpha,
-			score,
-			beta,
-			newDepth,
-			givesCheck,
-			pos,
-			&pFlashlight);
 
-		// step17
-		this->explorePlain_n420(
+		#ifndef SHRINK_EXPLORE_PLAIN_LARGE_BETA_RECURSIVE_SEARCH
+			// 大きなβ値のときの深掘りか（＾～＾）？
+			this->explorePlain_n400_betaLargeRecursiveSearch(
+				ourCarriage,
+				isPVMove,
+				alpha,
+				score,
+				beta,
+				newDepth,
+				givesCheck,
+				pos,
+				&pFlashlight);
+		#endif // !SHRINK_EXPLORE_PLAIN_LARGE_BETA_RECURSIVE_SEARCH
+
+
+		this->explorePlain_n420_undoMove(
 			pos,
 			move);
 
+
 		assert(-ScoreInfinite < score && score < ScoreInfinite);
 
-		// step18
 
-		if (ourCarriage.m_signals.m_isIterationDeepingStop || pHandleMonkey->IsUselessNode()) { return score; }
+		// ［反復深化探索］を止める信号が立っていたり、カットオフされた使われていないノードのとき
+		if (ourCarriage.m_signals.m_isIterationDeepingStop || pHandleMonkey->IsUselessSplitedNode()) { return score; }
 
-		this->explorePlain_n440(
+
+		this->explorePlain_n440_findRootNode(
 			ourCarriage,
 			move,
 			isPVMove,
 			alpha,
 			score,
 			pos);
+
+
 		bool isBreak = false;
-		this->explorePlain_n460(
+
+
+		// α値更新
+		this->explorePlain_n460_updateAlpha(
 			isBreak,
 			ourCarriage,
 			move,

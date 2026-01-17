@@ -69,12 +69,12 @@ void Monkey::NotifyOne() {
 
 
 /// <summary>
-/// 
+/// （カットオフされた）役に立たない分岐ノード
 /// </summary>
 /// <returns></returns>
-bool Monkey::IsUselessNode() const {
-	for (SplitedNode* sp = m_activeSplitedNode; sp != nullptr; sp = sp->m_pParentSplitedNode) {
-		if (sp->m_isUselessNode) { return true; }
+bool Monkey::IsUselessSplitedNode() const {
+	for (SplitedNode* spNode = m_activeSplitedNode; spNode != nullptr; spNode = spNode->m_pParentSplitedNode) {
+		if (spNode->m_isUselessNode) { return true; }
 	}
 	return false;
 }

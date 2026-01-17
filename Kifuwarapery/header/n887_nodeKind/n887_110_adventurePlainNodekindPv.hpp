@@ -595,7 +595,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="score"></param>
 	/// <param name="pos"></param>
-	virtual inline void explorePlain_n440(
+	virtual inline void explorePlain_n440_findRootNode(
 		OurCarriage& ourCarriage,
 		Move& move,
 		bool& isPVMove,
@@ -622,7 +622,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestMove"></param>
 	/// <param name="beta"></param>
-	virtual inline void explorePlain_n460(
+	virtual inline void explorePlain_n460_updateAlpha(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		Move& move,
