@@ -4,7 +4,7 @@
 #include "../../header/n407_moveGen_/n407_900_moveList.hpp"
 #include "../../header/n560_timeMgr_/n560_100_limitsDuringGo.hpp"
 #include "../../header/n640_searcher/n640_450_rootMove.hpp"
-#include "../../header/n760_thread__/n760_250_MonkeyAbstract.hpp"
+#include "../../header/n760_thread__/n760_250_MonkeyDefault.hpp"
 #include "../../header/n760_thread__/n760_400_MonkiesPub.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 
@@ -25,7 +25,7 @@
 /// <returns></returns>
 template <typename MONKT> MONKT* newMonkeyWithThread(OurCarriage* s) {
 	MONKT* monkey = new MONKT(s);
-	monkey->m_threadHandle = std::thread(&MonkeyAbstract::startMonkey_n10, monkey); // move constructor
+	monkey->m_threadHandle = std::thread(&MonkeyDefault::startMonkey_n10, monkey); // move constructor
 	return monkey;
 }
 
@@ -34,7 +34,7 @@ template <typename MONKT> MONKT* newMonkeyWithThread(OurCarriage* s) {
 /// 
 /// </summary>
 /// <param name="th"></param>
-void deleteThread(MonkeyAbstract* th) {
+void deleteThread(MonkeyDefault* th) {
 	th->m_isEndOfSearch = true;
 	th->NotifyOne();
 	th->m_threadHandle.join(); // Wait for thread termination
@@ -51,15 +51,19 @@ void deleteThread(MonkeyAbstract* th) {
 /// <param name="s"></param>
 void MonkiesPub::initializeMonkiePub_app10(OurCarriage* s)
 {
-	m_isSleepWhileIdle_ = true;
-#if defined LEARN
-#else
-	m_pErrandMonkey_ = newMonkeyWithThread<ErrandMonkey>(s);
-#endif
+	// 寝るフラグ？
+	this->m_idleMonkeyIsSleep_ = true;
 
+	#if defined LEARN
+	#else
+		// お使い猿
+		this->m_pErrandMonkey_ = newMonkeyWithThread<ErrandMonkey>(s);
+	#endif
+
+	// キャプテン猿
 	this->m_itemMonkies.push_back(newMonkeyWithThread<CaptainMonkey>(s));
 
-	ReadUSIOptions(s);
+	newAllMonkiesByUSIOptions(s);
 }
 
 
@@ -67,14 +71,14 @@ void MonkiesPub::initializeMonkiePub_app10(OurCarriage* s)
 /// 
 /// </summary>
 void MonkiesPub::Exit() {
-#if defined LEARN
-#else
-	// checkTime() がデータにアクセスしないよう、先に timer_ を delete
-	deleteThread(m_pErrandMonkey_);
-#endif
+	#if defined LEARN
+	#else
+		// checkTime() がデータにアクセスしないよう、先に timer_ を delete
+		deleteThread(m_pErrandMonkey_);
+	#endif
 
-	for (auto elem : (*this).m_itemMonkies) {
-		deleteThread(elem);
+	for (auto monkey : (*this).m_itemMonkies) {
+		deleteThread(monkey);
 	}
 }
 
@@ -83,28 +87,32 @@ void MonkiesPub::Exit() {
 /// 
 /// </summary>
 /// <param name="searcher"></param>
-void MonkiesPub::ReadUSIOptions(OurCarriage* searcher) {
+void MonkiesPub::newAllMonkiesByUSIOptions(OurCarriage* pOurCarriage) {
 
-	this->m_maxThreadsPerSplitedNode_ = searcher->m_engineOptions["Max_Threads_per_Split_Point"];
+	this->m_maxThreadsPerSplitedNode_ = pOurCarriage->m_engineOptions["Max_Threads_per_Split_Point"];
 
-	// スレッドの個数（１以上）
-	const size_t numberOfThreads   = searcher->m_engineOptions["Threads"];
+	// 猿（スレッド）の個数（１以上）
+	const size_t numberOfMonkies   = pOurCarriage->m_engineOptions["Threads"];
 
 	this->m_minimumSplitDepth_ = (
-		numberOfThreads < 6 ?
+		numberOfMonkies < 6 ?
 			4 :
-			(numberOfThreads < 8 ?
+			(numberOfMonkies < 8 ?
 				5 :
 				7
 			)
 	) * OnePly;
-	assert(0 < numberOfThreads);
+	assert(0 < numberOfMonkies);
 
-	while (this->m_itemMonkies.size() < numberOfThreads) {
-		this->m_itemMonkies.push_back(newMonkeyWithThread<MonkeyAbstract>(searcher));
+	// 猿で埋める
+	while (this->m_itemMonkies.size() < numberOfMonkies)
+	{
+		this->m_itemMonkies.push_back(newMonkeyWithThread<MonkeyDefault>(pOurCarriage));
 	}
 
-	while (numberOfThreads < this->m_itemMonkies.size()) {
+	// 多すぎる猿は消す
+	while (numberOfMonkies < this->m_itemMonkies.size())
+	{
 		deleteThread(this->m_itemMonkies.back());
 		this->m_itemMonkies.pop_back();
 	}
@@ -116,7 +124,7 @@ void MonkiesPub::ReadUSIOptions(OurCarriage* searcher) {
 /// </summary>
 /// <param name="master"></param>
 /// <returns></returns>
-MonkeyAbstract* MonkiesPub::GetAvailableSlave(MonkeyAbstract* master) const {
+MonkeyDefault* MonkiesPub::GetAvailableSlave(MonkeyDefault* master) const {
 	for (auto elem : (*this).m_itemMonkies) {
 		if (elem->SetLastSplitNodeSlavesMask(master)) {
 			return elem;

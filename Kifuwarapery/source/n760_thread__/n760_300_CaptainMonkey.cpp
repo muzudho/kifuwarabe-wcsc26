@@ -1,5 +1,5 @@
 ﻿#include "../../header/n250_pieceTyp/n350_030_makePromoteMove.hpp"
-#include "../../header/n760_thread__/n760_250_MonkeyAbstract.hpp"
+#include "../../header/n760_thread__/n760_250_MonkeyDefault.hpp"
 #include "../../header/n760_thread__/n760_300_CaptainMonkey.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 

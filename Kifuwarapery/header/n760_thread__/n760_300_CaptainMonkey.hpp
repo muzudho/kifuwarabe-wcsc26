@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "n760_250_MonkeyAbstract.hpp"
+#include "n760_250_MonkeyDefault.hpp"
 
 
 class OurCarriage;
@@ -13,7 +13,7 @@ class OurCarriage;
 ///		- マスタースレッドに対応する
 ///		</pre>
 /// </summary>
-class CaptainMonkey : public MonkeyAbstract {
+class CaptainMonkey : public MonkeyDefault {
 
 
 public:
@@ -44,7 +44,7 @@ public:
 	explicit CaptainMonkey(
 		OurCarriage* s
 	) :
-		MonkeyAbstract(s),
+		MonkeyDefault(s),
 		m_isMasterThread(true)
 	{
 	}

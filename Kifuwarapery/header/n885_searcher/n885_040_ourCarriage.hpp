@@ -466,13 +466,14 @@ void initSearchTable_app10();
 /// </summary>
 /// <param name="ourCarriage">わたしたちの馬車</param>
 /// <returns></returns>
-FORCE_INLINE void		MonkiesPub::WakeUp(OurCarriage* ourCarriage) {
+FORCE_INLINE void		MonkiesPub::wakeUpMonkies_n10(OurCarriage* ourCarriage) {
 	// 全員初期化☆？
 	for (size_t i = 0; i < this->m_itemMonkies.size(); ++i) {
 		(*this).m_itemMonkies[i]->m_maxPly = 0;
 	}
-	// フラグを立てる☆？
-	this->m_isSleepWhileIdle_ = ourCarriage->m_engineOptions["Use_Sleeping_Threads"];
+
+	// ［やることない猿は寝てろ］フラグを立てる☆？
+	this->m_idleMonkeyIsSleep_ = ourCarriage->m_engineOptions["Use_Sleeping_Threads"];
 }
 
 
@@ -484,5 +485,5 @@ FORCE_INLINE void		MonkiesPub::WakeUp(OurCarriage* ourCarriage) {
 /// </summary>
 /// <returns></returns>
 FORCE_INLINE void		MonkiesPub::Sleep() {
-	this->m_isSleepWhileIdle_ = true;
+	this->m_idleMonkeyIsSleep_ = true;
 }

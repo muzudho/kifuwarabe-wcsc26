@@ -132,7 +132,7 @@ void AdventureContinent::exploreContinent_n10(
 	}
 
 	// 全スレッドの初期化か何か☆？
-	captainsRucksack.m_monkiesPub.WakeUp(&captainsRucksack);
+	captainsRucksack.m_monkiesPub.wakeUpMonkies_n10(&captainsRucksack);
 
 	// 下級戦士の寿命（ミリ秒）を設定するぜ☆
 	captainsRucksack.m_monkiesPub.GetCurrSubordinate()->m_lifetimeMilliseconds =

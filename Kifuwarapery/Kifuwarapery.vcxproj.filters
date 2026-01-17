@@ -837,7 +837,7 @@
     <ClInclude Include="header\n760_thread__\n760_300_CaptainMonkey.hpp">
       <Filter>header\n760_thread__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n760_thread__\n760_250_MonkeyAbstract.hpp">
+    <ClInclude Include="header\n760_thread__\n760_250_MonkeyDefault.hpp">
       <Filter>header\n760_thread__</Filter>
     </ClInclude>
     <ClInclude Include="header\n885_searcher\n885_490_adventureMountainIterativeDeepeningLoop.hpp">

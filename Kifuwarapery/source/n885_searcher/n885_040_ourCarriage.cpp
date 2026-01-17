@@ -369,12 +369,12 @@ void OurCarriage::CheckTime() {
 /// <summary>
 /// ワーカースレッド開始
 /// </summary>
-void MonkeyAbstract::startMonkey_n10() {
+void MonkeyDefault::startMonkey_n10() {
 	SplitedNode* thisSp = m_splitedNodesSize ? m_activeSplitedNode : nullptr;
 	assert(!thisSp || (thisSp->m_masterThread == this && m_isBeingSearched));
 
 	while (true) {
-		while ((!m_isBeingSearched && this->m_pOurCarriage->m_monkiesPub.m_isSleepWhileIdle_) || m_isEndOfSearch)
+		while ((!m_isBeingSearched && this->m_pOurCarriage->m_monkiesPub.m_idleMonkeyIsSleep_) || m_isEndOfSearch)
 		{
 			if (m_isEndOfSearch) {
 				assert(thisSp == nullptr);
@@ -422,7 +422,7 @@ void MonkeyAbstract::startMonkey_n10() {
 			pSplitedNode->m_slavesMask ^= (UINT64_C(1) << m_idx);
 			pSplitedNode->m_nodes += pos.GetNodesSearched();
 
-			if (this->m_pOurCarriage->m_monkiesPub.m_isSleepWhileIdle_
+			if (this->m_pOurCarriage->m_monkiesPub.m_idleMonkeyIsSleep_
 				&& this != pSplitedNode->m_masterThread
 				&& !pSplitedNode->m_slavesMask)
 			{

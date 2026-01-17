@@ -40,7 +40,7 @@ namespace {
 	/// </summary>
 	/// <param name="s"></param>
 	/// <param name=""></param>
-	void onThreads(OurCarriage* s, const EngineOptionable&) { s->m_monkiesPub.ReadUSIOptions(s); }
+	void onThreads(OurCarriage* s, const EngineOptionable&) { s->m_monkiesPub.newAllMonkiesByUSIOptions(s); }
 
 
 	/// <summary>

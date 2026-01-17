@@ -80,7 +80,7 @@ public:
 	/// <param name="ppThisThread"></param>
 	/// <param name="pFlashlight"></param>
 	inline void explorePlain_n90_updateMaxPly(
-		MonkeyAbstract** ppThisThread,
+		MonkeyDefault** ppThisThread,
 		const Flashlight* pFlashlight) const override
 	{
 		// 非PVノードはスルー☆！（＾ｑ＾）
@@ -556,7 +556,7 @@ public:
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		const Depth depth,
-		MonkeyAbstract** ppThisThread,
+		MonkeyDefault** ppThisThread,
 		ScoreIndex& bestScore,
 		ScoreIndex& beta,
 		Position& pos,

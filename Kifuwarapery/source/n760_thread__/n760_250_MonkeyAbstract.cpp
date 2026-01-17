@@ -7,7 +7,7 @@
 #include "../../header/n440_movStack/n440_500_nextmoveEvent.hpp"
 #include "../../header/n640_searcher/n640_040_nodeKind.hpp"
 #include "../../header/n640_searcher/n640_440_splitedNode.hpp"
-#include "../../header/n760_thread__/n760_250_MonkeyAbstract.hpp"
+#include "../../header/n760_thread__/n760_250_MonkeyDefault.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 
 
@@ -16,7 +16,7 @@
 // ========================================
 
 
-MonkeyAbstract::MonkeyAbstract(OurCarriage* ourCarriage) /*: ＳｐｌｉｔＰｏｉｎｔｓ()*/ {
+MonkeyDefault::MonkeyDefault(OurCarriage* ourCarriage) /*: ＳｐｌｉｔＰｏｉｎｔｓ()*/ {
 	this->m_pOurCarriage = ourCarriage;
 	this->m_isEndOfSearch = false;
 	this->m_isBeingSearched = false;
@@ -45,7 +45,7 @@ MonkeyAbstract::MonkeyAbstract(OurCarriage* ourCarriage) /*: ＳｐｌｉｔＰ�
 /// </summary>
 /// <param name="master"></param>
 /// <returns></returns>
-bool MonkeyAbstract::SetLastSplitNodeSlavesMask(MonkeyAbstract* master) const {
+bool MonkeyDefault::SetLastSplitNodeSlavesMask(MonkeyDefault* master) const {
 	if (m_isBeingSearched) { return false; }
 
 	// 分岐ノードの数。ローカルコピーし、次の瞬間に値が変わらないようにする。
@@ -62,7 +62,7 @@ bool MonkeyAbstract::SetLastSplitNodeSlavesMask(MonkeyAbstract* master) const {
 /// <summary>
 /// スリープのロックの通知☆（＾～＾）？
 /// </summary>
-void MonkeyAbstract::NotifyOne() {
+void MonkeyDefault::NotifyOne() {
 	std::unique_lock<Mutex> lock(m_sleepLock);
 	m_sleepCond.notify_one();
 }
@@ -72,7 +72,7 @@ void MonkeyAbstract::NotifyOne() {
 /// 
 /// </summary>
 /// <returns></returns>
-bool MonkeyAbstract::IsUselessNode() const {
+bool MonkeyDefault::IsUselessNode() const {
 	for (SplitedNode* sp = m_activeSplitedNode; sp != nullptr; sp = sp->m_pParentSplitedNode) {
 		if (sp->m_isUselessNode) { return true; }
 	}
@@ -84,7 +84,7 @@ bool MonkeyAbstract::IsUselessNode() const {
 /// 
 /// </summary>
 /// <param name="b"></param>
-void MonkeyAbstract::WaitFor(volatile const bool& b) {
+void MonkeyDefault::WaitFor(volatile const bool& b) {
 	std::unique_lock<Mutex> lock(m_sleepLock);
 	m_sleepCond.wait(lock, [&] { return b; });
 }
@@ -109,7 +109,7 @@ void MonkeyAbstract::WaitFor(volatile const bool& b) {
 /// <param name="pSword"></param>
 /// <param name="cutNode"></param>
 template <bool Fake>
-void MonkeyAbstract::ForkNewMonkey(
+void MonkeyDefault::ForkNewMonkey(
 	Position& pos,
 	Flashlight* pFlashlightBox,
 	const ScoreIndex alpha,
@@ -161,7 +161,7 @@ void MonkeyAbstract::ForkNewMonkey(
 
 	// thisThread が常に含まれるので 1
 	size_t slavesCount = 1;
-	MonkeyAbstract* slave;
+	MonkeyDefault* slave;
 
 	while ((slave = this->m_pOurCarriage->m_monkiesPub.GetAvailableSlave(this)) != nullptr
 		&& ++slavesCount <= this->m_pOurCarriage->m_monkiesPub.m_maxThreadsPerSplitedNode_ && !Fake)
@@ -175,7 +175,7 @@ void MonkeyAbstract::ForkNewMonkey(
 	if (1 < slavesCount || Fake) {
 		splitedNode.m_mutex.unlock();
 		this->m_pOurCarriage->m_monkiesPub.m_mutex_.unlock();
-		MonkeyAbstract::startMonkey_n10();	// ワーカースレッド開始
+		MonkeyDefault::startMonkey_n10();	// ワーカースレッド開始
 		assert(!m_isBeingSearched);
 		assert(!m_activePosition);
 		this->m_pOurCarriage->m_monkiesPub.m_mutex_.lock();
@@ -211,7 +211,7 @@ void MonkeyAbstract::ForkNewMonkey(
 /// <param name="pSword"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-template void MonkeyAbstract::ForkNewMonkey<true >(
+template void MonkeyDefault::ForkNewMonkey<true >(
 	Position& pos,
 	Flashlight* ss,
 	const ScoreIndex alpha,
@@ -242,7 +242,7 @@ template void MonkeyAbstract::ForkNewMonkey<true >(
 /// <param name="pSword"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-template void MonkeyAbstract::ForkNewMonkey<false>(
+template void MonkeyDefault::ForkNewMonkey<false>(
 	Position& pos,
 	Flashlight* ss,
 	const ScoreIndex alpha,

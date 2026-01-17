@@ -9,7 +9,7 @@
 #include "../n560_timeMgr_/n560_100_limitsDuringGo.hpp"
 #include "../n640_searcher/n640_040_nodeKind.hpp"
 #include "../n640_searcher/n640_440_splitedNode.hpp"
-#include "n760_250_MonkeyAbstract.hpp"
+#include "n760_250_MonkeyDefault.hpp"
 #include "n760_300_CaptainMonkey.hpp"
 #include "n760_350_ErrandMonkey.hpp"
 
@@ -45,9 +45,9 @@ public:
 
 
 	/// <summary>
-	/// 寝ているか？
+	/// ［やることない猿は寝てろ］フラグ
 	/// </summary>
-	bool m_isSleepWhileIdle_;
+	bool m_idleMonkeyIsSleep_;
 
 
 	// メイン・フィールド
@@ -56,7 +56,7 @@ public:
 	/// <summary>
 	/// お客の猿たち
 	/// </summary>
-	std::vector<MonkeyAbstract*> m_itemMonkies;
+	std::vector<MonkeyDefault*> m_itemMonkies;
 
 	/// <summary>
 	/// マックス・スレッド？
@@ -124,7 +124,7 @@ public:
 	/// 起きろ？
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
-	void WakeUp(OurCarriage* ourCarriage);
+	void wakeUpMonkies_n10(OurCarriage* ourCarriage);
 
 
 	/// <summary>
@@ -137,7 +137,7 @@ public:
 	/// USIオプションを読め？
 	/// </summary>
 	/// <param name="s"></param>
-	void ReadUSIOptions(OurCarriage* s);
+	void newAllMonkiesByUSIOptions(OurCarriage* s);
 
 
 	/// <summary>
@@ -145,7 +145,7 @@ public:
 	/// </summary>
 	/// <param name="master"></param>
 	/// <returns></returns>
-	MonkeyAbstract* GetAvailableSlave(MonkeyAbstract* master) const;
+	MonkeyDefault* GetAvailableSlave(MonkeyDefault* master) const;
 
 
 	/// <summary>

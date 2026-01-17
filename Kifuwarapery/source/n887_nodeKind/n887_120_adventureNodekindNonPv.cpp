@@ -108,7 +108,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 
 	// step1
 	// initialize node
-	MonkeyAbstract* pThisThread = pos.GetThisThread();
+	MonkeyDefault* pThisThread = pos.GetThisThread();
 	moveCount = playedMoveCount = 0;
 	inCheck = pos.InCheck();
 

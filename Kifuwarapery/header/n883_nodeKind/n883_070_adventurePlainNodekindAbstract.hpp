@@ -139,7 +139,7 @@ public:
 	/// <param name="ppThisThread"></param>
 	/// <param name="pFlashlight"></param>
 	virtual inline void explorePlain_n90_updateMaxPly(
-		MonkeyAbstract** ppThisThread,
+		MonkeyDefault** ppThisThread,
 		const Flashlight* pFlashlight) const
 	{
 		// PVノードのみ、最大Plyの更新の可能性があるぜ☆（＾ｑ＾）
@@ -1531,7 +1531,7 @@ public:
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		const Depth depth,
-		MonkeyAbstract** ppThisThread,
+		MonkeyDefault** ppThisThread,
 		ScoreIndex& bestScore,
 		ScoreIndex& beta,
 		Position& pos,
