@@ -409,7 +409,7 @@
     <ClInclude Include="header\n760_thread__\n760_250_soldier.hpp" />
     <ClInclude Include="header\n760_thread__\n760_300_captain.hpp" />
     <ClInclude Include="header\n760_thread__\n760_350_subordinate.hpp" />
-    <ClInclude Include="header\n760_thread__\n760_400_herosPub.hpp" />
+    <ClInclude Include="header\n760_thread__\n760_400_monkiesPub.hpp" />
     <ClInclude Include="header\n800_learn___\n800_100_stopwatch.hpp" />
     <ClInclude Include="header\n800_learn___\n800_500_learner.hpp" />
     <ClInclude Include="header\n883_nodeKind\n883_070_adventurePlainNodekindAbstract.hpp" />
@@ -437,8 +437,8 @@
     <ClInclude Include="header\n887_nodeKind\n887_140_adventurePlainNodekindSplitedNodePv.hpp" />
     <ClInclude Include="header\n887_nodeKind\n887_150_adventurePlainNodekindSplitedNodeNonPv.hpp" />
     <ClInclude Include="header\n887_nodeKind\n887_500_adventurePlainNodekindPrograms.hpp" />
-    <ClInclude Include="header\n900_main____\n900_300_usiLoop.hpp" />
-    <ClInclude Include="header\n900_main____\n900_400_main01.hpp" />
+    <ClInclude Include="header\n900_app_____\n900_300_usiLoop.hpp" />
+    <ClInclude Include="header\n900_app_____\n900_400_app10.hpp" />
     <ClInclude Include="header\n165_movStack\n165_410_moveModels.hpp" />
     <ClInclude Include="header\n220_position\n220_645_gameStats.hpp" />
     <ClInclude Include="stdafx.h" />

@@ -4,14 +4,14 @@
 #include "../n130_100_boardBb_/n160_100_bitboard.hpp"
 #include "../n220_position/n220_750_charToPieceUSI.hpp"
 #include "../n480_tt______/n480_300_tt.hpp"
-#include "../n760_thread__/n760_400_herosPub.hpp"
+#include "../n760_thread__/n760_400_monkiesPub.hpp"
 #include "../n885_searcher/n885_040_ourCarriage.hpp"
 
 
 /// <summary>
 /// 
 /// </summary>
-class Main01 {
+class App10 {
 
 
 public:
@@ -23,8 +23,8 @@ public:
 
 
 public:
-	Main01();
-	~Main01();
+	App10();
+	~App10();
 	void initialize_app10();
 	void body_app10(int argc, char* argv[]);
 	void finalize_app10();

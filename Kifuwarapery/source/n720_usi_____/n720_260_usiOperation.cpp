@@ -74,7 +74,8 @@ void UsiOperation::Go(GameStats& gameStats, const Position& pos, std::istringstr
 	std::string token;
 
 	// go コマンドを分解（＾▽＾）
-	while (ssCmd >> token) {
+	while (ssCmd >> token)
+	{
 		// 相手の思考時間中にも思考（ポンダー）しろだぜ（＾▽＾）
 		if      (token == "ponder"     ) { limits.m_canPonder = true; }
 
@@ -138,6 +139,7 @@ void UsiOperation::Go(GameStats& gameStats, const Position& pos, std::istringstr
 			ssCmd >> limits.m_increment[Color::Black];
 		}
 	}
+
 	pos.GetOurCarriage()->m_ourMoves = moves;
 
 	// 思考を開始☆

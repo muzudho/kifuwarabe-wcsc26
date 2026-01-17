@@ -2,9 +2,9 @@
 #include "../../header/n130_100_boardBb_/n160_100_bitboard.hpp"
 #include "../../header/n220_position/n220_750_charToPieceUSI.hpp"
 #include "../../header/n480_tt______/n480_300_tt.hpp"
-#include "../../header/n760_thread__/n760_400_herosPub.hpp"
+#include "../../header/n760_thread__/n760_400_monkiesPub.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
-#include "../../header/n900_main____/n900_400_main01.hpp"
+#include "../../header/n900_app_____/n900_400_app10.hpp"
 
 
 #if defined FIND_MAGIC
@@ -46,7 +46,7 @@ int main01() {
 /// <param name="argv"></param>
 /// <returns></returns>
 int main(int argc, char* argv[]) {
-	Main01 main01;
+	App10 main01;
 	main01.initialize_app10();
 	main01.body_app10(argc, argv);
 	main01.finalize_app10();

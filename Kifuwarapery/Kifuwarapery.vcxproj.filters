@@ -261,10 +261,10 @@
     <ClInclude Include="header\n080_200_utilProg\n080_200_500_utilProgram.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n900_main____\n900_300_usiLoop.hpp">
+    <ClInclude Include="header\n900_app_____\n900_300_usiLoop.hpp">
       <Filter>header\n900_main____</Filter>
     </ClInclude>
-    <ClInclude Include="header\n900_main____\n900_400_main01.hpp">
+    <ClInclude Include="header\n900_app_____\n900_400_app10.hpp">
       <Filter>header\n900_main____</Filter>
     </ClInclude>
     <ClInclude Include="header\n220_position\n220_100_repetitionType.hpp">
@@ -831,7 +831,7 @@
     <ClInclude Include="header\n760_thread__\n760_350_subordinate.hpp">
       <Filter>header\n760_thread__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n760_thread__\n760_400_herosPub.hpp">
+    <ClInclude Include="header\n760_thread__\n760_400_monkiesPub.hpp">
       <Filter>header\n760_thread__</Filter>
     </ClInclude>
     <ClInclude Include="header\n760_thread__\n760_300_captain.hpp">
@@ -1271,9 +1271,6 @@
     <ClCompile Include="source\n450_movPhase\n450_500_movePhaseArray.cpp">
       <Filter>source\n450_movPhase</Filter>
     </ClCompile>
-    <ClCompile Include="source\n250_pieceTyp\n350_070_ptAbstract.cpp">
-      <Filter>source\n350_pieceTyp</Filter>
-    </ClCompile>
     <ClCompile Include="source\n250_pieceTyp\n350_080_ptPromote.cpp">
       <Filter>source\n350_pieceTyp</Filter>
     </ClCompile>
@@ -1354,9 +1351,6 @@
     </ClCompile>
     <ClCompile Include="source\n358_dropMake\n358_500_dropMakerArray.cpp">
       <Filter>source\n358_dropMake</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n351_bonaDir_\n351_500_bonaDirArray.cpp">
-      <Filter>source\n351_bonaDir_</Filter>
     </ClCompile>
     <ClCompile Include="source\n374_genMove_\n374_750_dropMoveGenerator.cpp">
       <Filter>source\n374_genMove_</Filter>

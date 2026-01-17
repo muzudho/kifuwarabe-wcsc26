@@ -5,7 +5,7 @@
 #include "../../header/n560_timeMgr_/n560_100_limitsDuringGo.hpp"
 #include "../../header/n640_searcher/n640_450_rootMove.hpp"
 #include "../../header/n760_thread__/n760_250_soldier.hpp"
-#include "../../header/n760_thread__/n760_400_herosPub.hpp"
+#include "../../header/n760_thread__/n760_400_monkiesPub.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 
 
@@ -49,7 +49,7 @@ void deleteThread(Soldier* th) {
 /// 最初の設定（初期化）を行うぜ☆（＾▽＾）
 /// </summary>
 /// <param name="s"></param>
-void HerosPub::Init(OurCarriage* s) {
+void MonkiesPub::Init(OurCarriage* s) {
 	m_isSleepWhileIdle_ = true;
 #if defined LEARN
 #else
@@ -63,7 +63,7 @@ void HerosPub::Init(OurCarriage* s) {
 /// <summary>
 /// 
 /// </summary>
-void HerosPub::Exit() {
+void MonkiesPub::Exit() {
 #if defined LEARN
 #else
 	// checkTime() がデータにアクセスしないよう、先に timer_ を delete
@@ -80,7 +80,7 @@ void HerosPub::Exit() {
 /// 
 /// </summary>
 /// <param name="searcher"></param>
-void HerosPub::ReadUSIOptions(OurCarriage* searcher) {
+void MonkiesPub::ReadUSIOptions(OurCarriage* searcher) {
 
 	this->m_maxThreadsPerSplitedNode_ = searcher->m_engineOptions["Max_Threads_per_Split_Point"];
 
@@ -113,7 +113,7 @@ void HerosPub::ReadUSIOptions(OurCarriage* searcher) {
 /// </summary>
 /// <param name="master"></param>
 /// <returns></returns>
-Soldier* HerosPub::GetAvailableSlave(Soldier* master) const {
+Soldier* MonkiesPub::GetAvailableSlave(Soldier* master) const {
 	for (auto elem : *this) {
 		if (elem->SetLastSplitNodeSlavesMask(master)) {
 			return elem;
@@ -127,7 +127,7 @@ Soldier* HerosPub::GetAvailableSlave(Soldier* master) const {
 /// 元の引数名はｍｓｅｃ☆
 /// </summary>
 /// <param name="maxPly"></param>
-void HerosPub::SetCurrWorrior(const int maxPly) {
+void MonkiesPub::SetCurrWorrior(const int maxPly) {
 	m_pSubordinate_->m_maxPly = maxPly;
 	m_pSubordinate_->NotifyOne(); // Wake up and restart the timer
 }
@@ -136,7 +136,7 @@ void HerosPub::SetCurrWorrior(const int maxPly) {
 /// <summary>
 /// 
 /// </summary>
-void HerosPub::WaitForThinkFinished()
+void MonkiesPub::WaitForThinkFinished()
 {
 	Captain* t = GetFirstCaptain();
 	std::unique_lock<Mutex> lock(t->m_sleepLock);
@@ -150,7 +150,7 @@ void HerosPub::WaitForThinkFinished()
 /// <param name="position"></param>
 /// <param name="limits"></param>
 /// <param name="searchMoves"></param>
-void HerosPub::StartThinking(
+void MonkiesPub::StartThinking(
 	const GameStats& gameStats,
 	const Position& position,
 	const LimitsDuringGo& limits,

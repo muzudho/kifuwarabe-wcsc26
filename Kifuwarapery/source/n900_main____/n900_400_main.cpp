@@ -16,16 +16,16 @@
 #include "../../header/n480_tt______/n480_300_tt.hpp"
 #include "../../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
 #include "../../header/n600_book____/n600_500_book.hpp"
-#include "../../header/n760_thread__/n760_400_herosPub.hpp"
+#include "../../header/n760_thread__/n760_400_monkiesPub.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
-#include "..\..\header\n900_main____/n900_300_usiLoop.hpp"
-#include "..\..\header\n900_main____\n900_400_main01.hpp"
+#include "..\..\header\n900_app_____/n900_300_usiLoop.hpp"
+#include "..\..\header\n900_app_____\n900_400_app10.hpp"
 
 
 /// <summary>
 /// 生成。
 /// </summary>
-Main01::Main01()
+App10::App10()
 {
 	this->searcher = std::unique_ptr<OurCarriage>(new OurCarriage);
 }
@@ -34,7 +34,7 @@ Main01::Main01()
 /// <summary>
 /// 破棄。
 /// </summary>
-Main01::~Main01()
+App10::~App10()
 {
 	this->searcher.reset();
 }
@@ -43,7 +43,7 @@ Main01::~Main01()
 /// <summary>
 /// 最初の設定（初期化）。
 /// </summary>
-void Main01::initialize_app10()
+void App10::initialize_app10()
 {
 	//────────────────────────────────────────────────────────────────────────────────
 	// ビットボードとテーブルの初期化☆（＾ｑ＾）
@@ -142,7 +142,7 @@ void Main01::initialize_app10()
 /// </summary>
 /// <param name="argc"></param>
 /// <param name="argv"></param>
-void Main01::body_app10(int argc, char* argv[])
+void App10::body_app10(int argc, char* argv[])
 {
 	UsiLoop usiLoop;
 	usiLoop.Mainloop(argc, argv, *this->searcher);
@@ -152,7 +152,7 @@ void Main01::body_app10(int argc, char* argv[])
 /// <summary>
 /// 事後処理。
 /// </summary>
-void Main01::finalize_app10()
+void App10::finalize_app10()
 {
 	SYNCCOUT << "(^q^)main(6/6): threads.exit! ----> doUSICommandLoop" << SYNCENDL;
 	this->searcher->m_ownerHerosPub.Exit();
