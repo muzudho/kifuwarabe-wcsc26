@@ -33,6 +33,7 @@
 // 非PVノード
 
 
+// バグは取れるけど、１手しか読まなくなるぜ（＾～＾）
 #define SHRINK_NON_PV_NODE_EXPLORE_PLAIN_NON_PV_RECURSIVE_SEARCH
 
 
