@@ -303,7 +303,7 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 			newDepth
 			);
 
-		this->ExplorerPlainStep13b(
+		this->explorePlain_n275_continue(
 			isContinue,
 			pos,
 			move,

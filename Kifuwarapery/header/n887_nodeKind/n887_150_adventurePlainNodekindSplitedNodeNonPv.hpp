@@ -342,7 +342,7 @@ public:
 	/// <param name="move"></param>
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
-	virtual inline void ExplorerPlainStep13b(
+	virtual inline void explorePlain_n275_continue(
 		bool& isContinue,
 		Position& pos,
 		Move& move,

@@ -35,7 +35,12 @@
 // 非PVノード
 
 
-#define SHRINK_NON_PV_NODE_EXPLORE_PLAIN_360_RECURSIVE_SEARCH
+// これを定義してもバグは取れない（＾～＾）
+//#define SHRINK_NON_PV_NODE_EXPLORE_PLAIN_273_FUTILITY_PRUNING
+
+
+// これを定義すると、読み筋の駒が貫通するバグが出るぜ（＾～＾）
+//#define SHRINK_NON_PV_NODE_EXPLORE_PLAIN_360_RECURSIVE_SEARCH
 
 
 // バグは取れるけど、１手、２手しか読まなくなるぜ（＾～＾）

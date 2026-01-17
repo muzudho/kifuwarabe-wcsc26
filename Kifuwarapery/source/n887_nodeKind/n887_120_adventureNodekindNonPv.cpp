@@ -333,7 +333,7 @@ iid_start:
 			dangerous
 			);
 
-		// step12
+
 		this->explorePlain_n260_recursiveSearch(
 			ourCarriage,
 			givesCheck,
@@ -349,47 +349,50 @@ iid_start:
 			score,
 			cutNode,
 			beta,
-			newDepth
-			);
+			newDepth);
 
-		// step13
-		// 無駄枝狩り☆（＾▽＾）非PVだけ行う☆！
-		this->ExplorerPlainStep13a_FutilityPruning(
-			isContinue,
-			ourCarriage,
-			captureOrPawnPromotion,
-			inCheck,
-			dangerous,
-			bestScore,
-			move,
-			ttMove,
-			depth,
-			moveCount,
-			threatMove,
-			pos,
-			&pSplitedNode,
-			newDepth,
-			&pFlashlight,
-			beta
-			);
-		if (isContinue) { continue; }
 
-		this->ExplorerPlainStep13b(
+		#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_273_FUTILITY_PRUNING
+			// 無駄枝狩り☆（＾▽＾）非PVだけ行う☆！
+			this->explorePlain_n273_futilityPruning(
+				isContinue,
+				ourCarriage,
+				captureOrPawnPromotion,
+				inCheck,
+				dangerous,
+				bestScore,
+				move,
+				ttMove,
+				depth,
+				moveCount,
+				threatMove,
+				pos,
+				&pSplitedNode,
+				newDepth,
+				&pFlashlight,
+				beta);
+			if (isContinue) { continue; }
+		#endif
+
+
+		this->explorePlain_n275_continue(
 			isContinue,
 			pos,
 			move,
 			ci,
-			moveCount
-			);
+			moveCount);
 		if (isContinue) { continue; }
+
 
 		// 本筋かどうか判定するぜ（＾～＾）
 		isPVMove = this->explorePlain_n280_isPvMove(moveCount);
+
 
 		this->explorePlain_n300_setMove(
 			move,
 			&pFlashlight);
 		if (isContinue) { continue; }
+
 
 		this->explorePlain_n320_memoryVariationMove(
 			captureOrPawnPromotion,
@@ -398,7 +401,7 @@ iid_start:
 			move
 			);
 
-		// step14
+
 		this->explorerPlain_n340_doMove(
 			pos,
 			move,
