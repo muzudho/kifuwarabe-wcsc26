@@ -11,7 +11,7 @@
 #include "../../header/n130_100_boardBb_/n160_180_knightAttackBb.hpp"
 #include "../../header/n130_100_boardBb_/n160_190_pawnAttackBb.hpp"
 #include "../../header/n105_200_sqDistan/n105_200_500_squareDistance.hpp"
-#include "../../header/n105_240_initBonaDir/n105_240_500_initBonaDir.hpp"
+#include "../../header/n105_240_initTwoSquaresDistanceKind/n105_240_500_twoSquaresDistanceKindInitializer.hpp"
 #include "../../header/n220_position/n220_750_charToPieceUSI.hpp"
 #include "../../header/n480_tt______/n480_300_tt.hpp"
 #include "../../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
@@ -111,7 +111,7 @@ void Main01::initialize_app10()
 		g_lanceAttackBb.initCheckTableLance_app10();
 
 		SYNCCOUT << "(^q^) 1-18. ２点の距離初期化！" << SYNCENDL;
-		UtilSquareDistance::initSquareDistance_app10(g_twoSquaresDistanceKind);
+		TwoSquaresDistanceKindInitializer::initTwoSquaresDistanceKind_app10(g_twoSquaresDistanceKind);
 
 		SYNCCOUT << "(^q^) I-19. 定跡初期化！" << SYNCENDL;
 		Book::init_app10();

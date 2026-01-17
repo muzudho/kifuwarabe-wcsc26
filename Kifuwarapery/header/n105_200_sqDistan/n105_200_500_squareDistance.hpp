@@ -3,9 +3,13 @@
 
 
 /// <summary>
+///		<pre>
 /// マス距離
+/// 
+///		- 評価関数で使う
+///		</pre>
 /// </summary>
-class SquareDistance {
+class TwoSquaresDistanceKind {
 
 
 public:
@@ -52,4 +56,4 @@ private:
 /// <summary>
 /// クラス定義のあとに書くとビルドできるぜ☆（＾ｑ＾）
 /// </summary>
-extern SquareDistance g_twoSquaresDistanceKind;
+extern TwoSquaresDistanceKind g_twoSquaresDistanceKind;

@@ -18,5 +18,5 @@ public:
 	/// <param name="squareDistance"></param>
 	/// <param name="sq0"></param>
 	/// <param name="sq1"></param>
-	virtual void InitializeSquareDistance(SquareDistance& squareDistance, Square sq0, Square sq1) const = 0;
+	virtual void InitializeSquareDistance(TwoSquaresDistanceKind& squareDistance, Square sq0, Square sq1) const = 0;
 };

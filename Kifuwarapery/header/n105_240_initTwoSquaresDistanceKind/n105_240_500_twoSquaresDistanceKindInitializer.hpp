@@ -5,15 +5,15 @@
 /// <summary>
 /// 
 /// </summary>
-class UtilSquareDistance {
+class TwoSquaresDistanceKindInitializer {
 
 
 public:
 
 
 	/// <summary>
-	/// 
+	/// ２マス間の距離の種類。桂馬は 1 とする。
 	/// </summary>
 	/// <param name="squareDistance"></param>
-	static void initSquareDistance_app10(SquareDistance& squareDistance);
+	static void initTwoSquaresDistanceKind_app10(TwoSquaresDistanceKind& squareDistance);
 };

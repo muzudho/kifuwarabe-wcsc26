@@ -224,7 +224,7 @@
     <ClInclude Include="header\n130_100_boardBb_\n160_104_rankMaskBb.hpp" />
     <ClInclude Include="header\n130_100_boardBb_\n160_106_inFrontMaskBb.hpp" />
     <ClInclude Include="header\n105_200_sqDistan\n105_200_500_squareDistance.hpp" />
-    <ClInclude Include="header\n105_240_initBonaDir\n105_240_500_initBonaDir.hpp" />
+    <ClInclude Include="header\n105_240_initTwoSquaresDistanceKind\n105_240_500_twoSquaresDistanceKindInitializer.hpp" />
     <ClInclude Include="header\n165_movStack\n165_300_movegenType.hpp" />
     <ClInclude Include="header\n165_movStack\n165_310_promoteMode.hpp" />
     <ClInclude Include="header\n165_movStack\n165_400_move.hpp" />
@@ -479,7 +479,7 @@
     <ClCompile Include="source\n130_100_boardBb_\n160_102_fileMaskBb.cpp" />
     <ClCompile Include="source\n130_100_boardBb_\n160_104_rankMaskBb.cpp" />
     <ClCompile Include="source\n130_100_boardBb_\n160_106_inFrontMaskBb.cpp" />
-    <ClCompile Include="source\n105_200_sqDistan\n105_200_squareDistance.cpp" />
+    <ClCompile Include="source\n105_200_sqDistan\n105_200_twoSquaresDistanceKind.cpp" />
     <ClCompile Include="source\n105_240_initBonaDir\n105_240_500_initBonaDir.cpp" />
     <ClCompile Include="source\n165_movStack\n165_400_move.cpp" />
     <ClCompile Include="source\n165_movStack\n165_600_utilMove.cpp" />

@@ -21,7 +21,7 @@ public:
 	/// <param name="squareDistance"></param>
 	/// <param name="sq0"></param>
 	/// <param name="sq1"></param>
-	void InitializeSquareDistance(SquareDistance& squareDistance, Square sq0, Square sq1) const
+	void InitializeSquareDistance(TwoSquaresDistanceKind& squareDistance, Square sq0, Square sq1) const
 	{
 		// Misc（ボナンザでの向き） な関係は全て距離 1 にしてもKPE学習には問題無いんだけれど。
 		squareDistance.SetDistanceKind(sq0, sq1, 0);
