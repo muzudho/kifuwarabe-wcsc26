@@ -289,7 +289,6 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::explorePlain_n10(
 
 	// 内側の反復深化探索☆？（＾ｑ＾）
 iid_start:
-	// step10
 	this->explorePlain_n200n800_internalIterativeDeepening(
 		depth,
 		ttMove,
