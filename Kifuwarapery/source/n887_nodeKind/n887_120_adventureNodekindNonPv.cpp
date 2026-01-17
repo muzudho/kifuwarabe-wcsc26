@@ -427,20 +427,21 @@ iid_start:
 			doFullDepthSearch
 			);
 
-		// step16
-		this->explorePlain_n380_nonPVRecursiveSearch(
-			ourCarriage,
-			doFullDepthSearch,
-			score,
-			newDepth,
-			givesCheck,
-			pos,
-			&pFlashlight,
-			alpha,
-			cutNode
-			);
 
-		// step17
+		#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_NON_PV_RECURSIVE_SEARCH
+			this->explorePlain_n380_nonPVRecursiveSearch(
+				ourCarriage,
+				doFullDepthSearch,
+				score,
+				newDepth,
+				givesCheck,
+				pos,
+				&pFlashlight,
+				alpha,
+				cutNode);
+		#endif
+
+
 		this->explorePlain_n420_undoMove(
 			pos,
 			move
@@ -448,9 +449,9 @@ iid_start:
 
 		assert(-ScoreInfinite < score && score < ScoreInfinite);
 
-		// step18
 
 		if (ourCarriage.m_signals.m_isIterationDeepingStop || pThisThread->IsUselessSplitedNode()) { return score; }
+
 
 		this->explorePlain_n440_findRootNode(
 			ourCarriage,
@@ -461,6 +462,8 @@ iid_start:
 			pos
 			);
 		bool isBreak = false;
+
+
 		this->explorePlain_n460_updateAlpha(
 			isBreak,
 			ourCarriage,

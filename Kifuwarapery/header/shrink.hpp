@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 
 
 // 大平野の冒険をシュリンクするぜ（＾～＾）
@@ -34,5 +33,9 @@
 // 非PVノード
 
 
+#define SHRINK_NON_PV_NODE_EXPLORE_PLAIN_NON_PV_RECURSIVE_SEARCH
+
+
 // 猿を増やすの、止めるぜ（＾～＾）
-#define SHRINK_NON_PV_NODE_EXPLORE_PLAIN_FORK_NEW_MONKEY
+// シュリンクすると１手の深さしか読まなくなるようだぜ（＾～＾）
+//#define SHRINK_NON_PV_NODE_EXPLORE_PLAIN_FORK_NEW_MONKEY
