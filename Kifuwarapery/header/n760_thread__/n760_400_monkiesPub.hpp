@@ -169,7 +169,7 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="limits"></param>
 	/// <param name="searchMoves"></param>
-	void StartClimbingTree(
+	void startClimbingTree_n10(
 		const GameStats& gameStats,
 		const Position& pos,
 		const LimitsDuringGo& limits,

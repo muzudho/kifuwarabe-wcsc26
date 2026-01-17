@@ -158,7 +158,7 @@ public:
 	/// <summary>
 	/// ワーカースレッド開始
 	/// </summary>
-	virtual void StartWorkerThread();
+	virtual void startMonkey_n10();
 
 
 	/// <summary>
@@ -194,7 +194,7 @@ public:
 	/// <param name="pSword"></param>
 	/// <param name="cutNode"></param>
 	template <bool Fake>
-	void ForkNewFighter(
+	void ForkNewMonkey(
 		Position& pos,
 		Flashlight* pFlashlightBox,
 		const ScoreIndex alpha,

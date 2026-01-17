@@ -26,7 +26,12 @@ public:
 	/// 生成。
 	/// </summary>
 	/// <param name="m"></param>
-	explicit RootMove(const Move m) : m_score_(-ScoreInfinite), m_prevScore_(-ScoreInfinite) {
+	explicit RootMove(
+		const Move m
+	) :
+		m_score_(-ScoreInfinite),
+		m_prevScore_(-ScoreInfinite)
+	{
 		m_pv_.push_back(m);
 		m_pv_.push_back(g_MOVE_NONE);
 	}
@@ -36,7 +41,12 @@ public:
 	/// 生成。
 	/// </summary>
 	/// <param name="m"></param>
-	explicit RootMove(const MoveAndScoreIndex m) : m_score_(m.m_scoreIndex), m_prevScore_(-ScoreInfinite) {
+	explicit RootMove(
+		const MoveAndScoreIndex m
+	) :
+		m_score_(m.m_scoreIndex),
+		m_prevScore_(-ScoreInfinite)
+	{
 		m_pv_.push_back(m.m_move);
 		m_pv_.push_back(g_MOVE_NONE);
 	}

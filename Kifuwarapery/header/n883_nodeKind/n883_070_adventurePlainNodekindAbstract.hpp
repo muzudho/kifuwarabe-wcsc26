@@ -37,7 +37,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="cutNode"></param>
 	/// <returns></returns>
-	virtual ScoreIndex ExplorePlain(
+	virtual ScoreIndex explorePlain_n10(
 		OurCarriage& ourCarriage,
 		Position& pos,
 		Flashlight* pFlashlight,//サーチスタック
@@ -138,7 +138,7 @@ public:
 	/// </summary>
 	/// <param name="ppThisThread"></param>
 	/// <param name="pFlashlight"></param>
-	virtual inline void ExplorerPlainStep1cUpdateMaxPly(
+	virtual inline void explorePlain_n90_updateMaxPly(
 		MonkeyAbstract** ppThisThread,
 		const Flashlight* pFlashlight) const
 	{
@@ -210,7 +210,7 @@ public:
 	/// <param name="ppTtEntry"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="ttScore"></param>
-	virtual inline void ExplorerPlainStep4(
+	virtual inline void explorePlain_n100(
 		Move& excludedMove,
 		Flashlight** ppFlashlight,
 		Key& posKey,
@@ -237,7 +237,7 @@ public:
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pTtEntry"></param>
 	/// <param name="pos"></param>
-	virtual inline void ExplorerPlainStep4x(
+	virtual inline void explorePlain_n110(
 		Move& ttMove,
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
@@ -381,7 +381,7 @@ public:
 	/// <param name="ttScore"></param>
 	/// <param name="posKey"></param>
 	/// <param name="move"></param>
-	virtual inline void ExplorerPlainStep5(
+	virtual inline void explorePlain_n120(
 		bool& isGotoIidStart,
 		OurCarriage& ourCarriage,
 		ScoreIndex& evalScore,
@@ -576,7 +576,7 @@ public:
 				//────────────────────────────────────────────────────────────────────────────────
 				// 深さが２手（先後１組）未満なら　ふつーの探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				-g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, depth - reduction, !cutNode)
+				-g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_n10(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, depth - reduction, !cutNode)
 			);
 
 			((*ppFlashlight) + 1)->m_skipNullMove = false;
@@ -599,7 +599,7 @@ public:
 				//────────────────────────────────────────────────────────────────────────────────
 				// 探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				const ScoreIndex s = g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight), alpha, beta, depth - reduction, false);
+				const ScoreIndex s = g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_n10(ourCarriage, pos, (*ppFlashlight), alpha, beta, depth - reduction, false);
 				(*ppFlashlight)->m_skipNullMove = false;
 
 				if (beta <= s) {
@@ -695,7 +695,7 @@ public:
 					//────────────────────────────────────────────────────────────────────────────────
 					// 探索☆？（＾ｑ＾）
 					//────────────────────────────────────────────────────────────────────────────────
-					score =	-g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -rbeta, -rbeta + 1, rdepth, !cutNode);
+					score =	-g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_n10(ourCarriage, pos, (*ppFlashlight) + 1, -rbeta, -rbeta + 1, rdepth, !cutNode);
 					pos.UndoMove(move);
 					if (rbeta <= score) {
 						isReturnWithScore = true;
@@ -724,7 +724,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="ppTtEntry"></param>
 	/// <param name="posKey"></param>
-	virtual inline void ExplorerPlainStep10_InternalIterativeDeepening(
+	virtual inline void explorePlain_n130_internalIterativeDeepening(
 		const Depth depth,
 		Move& ttMove,
 		bool& inCheck,
@@ -745,7 +745,7 @@ public:
 	/// </summary>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	virtual inline ScoreIndex GetBetaAtStep11(
+	virtual inline ScoreIndex getBeta_n140(
 		ScoreIndex beta) const = 0;
 
 
@@ -757,7 +757,7 @@ public:
 	/// </summary>
 	/// <param name="mp"></param>
 	/// <returns></returns>
-	virtual inline Move GetNextMove_AtStep11(
+	virtual inline Move getNextMove_n160(
 		NextmoveEvent& mp) const = 0;
 
 
@@ -774,7 +774,7 @@ public:
 	/// <param name="singularExtensionNode"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="pTtEntry"></param>
-	virtual inline void ExplorerPlainStep11a_BeforeLoop_SplitPointStart(
+	virtual inline void explorePlain_n150_beforeLoop_splitPointStart(
 		Move& ttMove,
 		const Depth depth,
 		ScoreIndex& score,
@@ -796,7 +796,7 @@ public:
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void ExplorerPlainStep11c_LoopHeader(
+	virtual inline void explorePlain_n180_loopHeader(
 		bool& isContinue,
 		Position& pos,
 		Move& move,
@@ -811,7 +811,7 @@ public:
 	/// <param name="isContinue"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="move"></param>
-	virtual inline void ExplorerPlainStep11d_LoopHeader(
+	virtual inline void explorePlain_n200_loopHeader(
 		bool& isContinue,
 		const OurCarriage& ourCarriage,
 		const Move& move) const
@@ -832,7 +832,7 @@ public:
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="moveCount"></param>
-	virtual inline void ExplorerPlainStep11e_LoopHeader(
+	virtual inline void explorePlain_n220_loopHeader(
 		OurCarriage& ourCarriage,
 		int& moveCount) const
 	{
@@ -857,7 +857,7 @@ public:
 	/// <param name="ci"></param>
 	/// <param name="pos"></param>
 	/// <param name="dangerous"></param>
-	virtual inline void ExplorerPlainStep11f_LoopHeader(
+	virtual inline void explorePlain_n240_loopHeader(
 		Depth& extension,
 		bool& captureOrPawnPromotion,
 		Move& move,
@@ -891,7 +891,7 @@ public:
 	/// <param name="cutNode"></param>
 	/// <param name="beta"></param>
 	/// <param name="newDepth"></param>
-	virtual inline void ExplorerPlainStep12(
+	virtual inline void explorePlain_n260(
 		OurCarriage& ourCarriage,
 		bool& givesCheck,
 		Position& pos,
@@ -935,7 +935,7 @@ public:
 			//────────────────────────────────────────────────────────────────────────────────
 			// 探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
-			score =	g_NODEKIND_PROGRAMS[No2_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight), rBeta - 1, rBeta, depth / 2, cutNode);
+			score =	g_NODEKIND_PROGRAMS[No2_NonPV]->explorePlain_n10(ourCarriage, pos, (*ppFlashlight), rBeta - 1, rBeta, depth / 2, cutNode);
 			(*ppFlashlight)->m_skipNullMove = false;
 			(*ppFlashlight)->m_excludedMove = g_MOVE_NONE;
 
@@ -1127,7 +1127,7 @@ public:
 	///		</pre>
 	/// </summary>
 	/// <param name="moveCount"></param>
-	virtual inline bool ExplorerPlainStep13c1IsPvMove(
+	virtual inline bool explorePlain_n280_isPvMove(
 		int moveCount) const = 0;
 
 
@@ -1139,7 +1139,7 @@ public:
 	/// </summary>
 	/// <param name="move"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void ExplorerPlainStep13c2SetMove(
+	virtual inline void explorePlain_n300_setMove(
 		Move move,
 		Flashlight** ppFlashlight) const = 0;
 
@@ -1151,7 +1151,7 @@ public:
 	/// <param name="playedMoveCount"></param>
 	/// <param name="movesSearched"></param>
 	/// <param name="move"></param>
-	virtual inline void ExplorerPlainStep13d(
+	virtual inline void explorePlain_n320(
 		bool& captureOrPawnPromotion,
 		int& playedMoveCount,
 		Move movesSearched[64],
@@ -1172,7 +1172,7 @@ public:
 	/// <param name="ci"></param>
 	/// <param name="givesCheck"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void ExplorerPlainStep14(
+	virtual inline void explorerPlain_n340(
 		Position& pos,
 		Move& move,
 		StateInfo& st,
@@ -1209,7 +1209,7 @@ public:
 	/// <param name="score"></param>
 	/// <param name="pos"></param>
 	/// <param name="doFullDepthSearch"></param>
-	virtual inline void ExplorerPlainStep15(
+	virtual inline void explorePlain_n360(
 		OurCarriage& ourCarriage,
 		const Depth depth,
 		bool& isPVMove,
@@ -1252,7 +1252,7 @@ public:
 			// 探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			// PVS
-			score = -g_NODEKIND_PROGRAMS[No2_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, d, true);
+			score = -g_NODEKIND_PROGRAMS[No2_NonPV]->explorePlain_n10(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, d, true);
 
 			doFullDepthSearch = (alpha < score && (*ppFlashlight)->m_reduction != Depth0);
 			(*ppFlashlight)->m_reduction = Depth0;
@@ -1324,7 +1324,7 @@ public:
 	/// <param name="ppFlashlight"></param>
 	/// <param name="alpha"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void ExplorerPlainStep16b_NonPVAtukai(
+	virtual inline void explorePlain_n380_nonPVAtukai(
 		OurCarriage& ourCarriage,
 		bool& doFullDepthSearch,
 		ScoreIndex& score,
@@ -1344,7 +1344,7 @@ public:
 				//────────────────────────────────────────────────────────────────────────────────
 				// 探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				: -g_NODEKIND_PROGRAMS[No2_NonPV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, newDepth, !cutNode));
+				: -g_NODEKIND_PROGRAMS[No2_NonPV]->explorePlain_n10(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, newDepth, !cutNode));
 		}
 	}
 
@@ -1364,7 +1364,7 @@ public:
 	/// <param name="givesCheck"></param>
 	/// <param name="pos"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void ExplorerPlainStep16c(
+	virtual inline void explorePlain_n400(
 		OurCarriage& ourCarriage,
 		bool& isPVMove,
 		ScoreIndex& alpha,
@@ -1386,7 +1386,7 @@ public:
 				//────────────────────────────────────────────────────────────────────────────────
 				// 探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				: -g_NODEKIND_PROGRAMS[No1_PV]->ExplorePlain(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, newDepth, false));
+				: -g_NODEKIND_PROGRAMS[No1_PV]->explorePlain_n10(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, newDepth, false));
 		}
 	}
 
@@ -1407,7 +1407,7 @@ public:
 	/// </summary>
 	/// <param name="pos"></param>
 	/// <param name="move"></param>
-	virtual inline void ExplorerPlainStep17(
+	virtual inline void explorePlain_n420(
 		Position& pos,
 		Move& move) const
 	{
@@ -1441,7 +1441,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="score"></param>
 	/// <param name="pos"></param>
-	virtual inline void ExplorerPlainStep18b(
+	virtual inline void explorePlain_n440(
 		OurCarriage& ourCarriage,
 		Move& move,
 		bool& isPVMove,
@@ -1493,7 +1493,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestMove"></param>
 	/// <param name="beta"></param>
-	virtual inline void ExplorerPlainStep18c(
+	virtual inline void explorePlain_n460(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		Move& move,
@@ -1527,7 +1527,7 @@ public:
 	/// <param name="moveCount"></param>
 	/// <param name="mp"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void ExplorerPlainStep19(
+	virtual inline void explorePlain_n480_forkNewMonkey(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		const Depth depth,
@@ -1551,7 +1551,7 @@ public:
 	///		</pre>
 	/// </summary>
 	/// <returns></returns>
-	virtual inline bool GetReturnBeforeStep20() const = 0;
+	virtual inline bool getReturn_beforeN500() const = 0;
 
 
 	/// <summary>
@@ -1571,7 +1571,7 @@ public:
 	/// <param name="inCheck"></param>
 	/// <param name="pos"></param>
 	/// <param name="movesSearched"></param>
-	virtual inline void ExplorerPlainStep20(
+	virtual inline void explorePlain_n500(
 		int& moveCount,
 		Move& excludedMove,
 		OurCarriage& ourCarriage,

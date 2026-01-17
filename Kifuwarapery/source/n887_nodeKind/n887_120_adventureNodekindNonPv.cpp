@@ -62,7 +62,7 @@ AdventureNodekindNonPv g_NODEKIND_NON_PV;
 /// <param name="depth"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-ScoreIndex AdventureNodekindNonPv::ExplorePlain(
+ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
@@ -145,7 +145,7 @@ ScoreIndex AdventureNodekindNonPv::ExplorePlain(
 	pos.SetNodesSearched(pos.GetNodesSearched() + 1);
 
 	// step4
-	this->ExplorerPlainStep4(
+	this->explorePlain_n100(
 		excludedMove,
 		&pFlashlight,
 		posKey,
@@ -154,7 +154,7 @@ ScoreIndex AdventureNodekindNonPv::ExplorePlain(
 		ourCarriage,
 		ttScore
 		);
-	this->ExplorerPlainStep4x(
+	this->explorePlain_n110(
 		ttMove,
 		ourCarriage,
 		pTtEntry,
@@ -190,7 +190,7 @@ ScoreIndex AdventureNodekindNonPv::ExplorePlain(
 
 	// step5
 	bool isGotoIidStart = false;//NonPVのとき使う☆
-	this->ExplorerPlainStep5(
+	this->explorePlain_n120(
 		isGotoIidStart,
 		ourCarriage,
 		eval,
@@ -265,7 +265,7 @@ ScoreIndex AdventureNodekindNonPv::ExplorePlain(
 	// 内側の反復深化探索☆？（＾ｑ＾）
 iid_start:
 	// step10
-	this->ExplorerPlainStep10_InternalIterativeDeepening(
+	this->explorePlain_n130_internalIterativeDeepening(
 		depth,
 		ttMove,
 		inCheck,
@@ -285,11 +285,11 @@ iid_start:
 		depth,
 		ourCarriage.m_history,
 		pFlashlight,
-		this->GetBetaAtStep11(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
+		this->getBeta_n140(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
 		);
 	const CheckInfo ci(pos);
 
-	this->ExplorerPlainStep11a_BeforeLoop_SplitPointStart(
+	this->explorePlain_n150_beforeLoop_splitPointStart(
 		ttMove,
 		depth,
 		score,
@@ -304,7 +304,7 @@ iid_start:
 	while (
 		!(
 			// スプリット・ポイントかどうかで、取ってくる指し手が変わる☆
-			move = this->GetNextMove_AtStep11(mp)
+			move = this->getNextMove_n160(mp)
 			).IsNone()
 		) {
 
@@ -313,7 +313,7 @@ iid_start:
 
 		bool isContinue = false;
 
-		this->ExplorerPlainStep11c_LoopHeader(
+		this->explorePlain_n180_loopHeader(
 			isContinue,
 			pos,
 			move,
@@ -323,7 +323,7 @@ iid_start:
 			);
 		if (isContinue) { continue; }
 
-		this->ExplorerPlainStep11f_LoopHeader(
+		this->explorePlain_n240_loopHeader(
 			extension,
 			captureOrPawnPromotion,
 			move,
@@ -334,7 +334,7 @@ iid_start:
 			);
 
 		// step12
-		this->ExplorerPlainStep12(
+		this->explorePlain_n260(
 			ourCarriage,
 			givesCheck,
 			pos,
@@ -384,14 +384,14 @@ iid_start:
 		if (isContinue) { continue; }
 
 		// 本筋かどうか判定するぜ（＾～＾）
-		isPVMove = this->ExplorerPlainStep13c1IsPvMove(moveCount);
+		isPVMove = this->explorePlain_n280_isPvMove(moveCount);
 
-		this->ExplorerPlainStep13c2SetMove(
+		this->explorePlain_n300_setMove(
 			move,
 			&pFlashlight);
 		if (isContinue) { continue; }
 
-		this->ExplorerPlainStep13d(
+		this->explorePlain_n320(
 			captureOrPawnPromotion,
 			playedMoveCount,
 			movesSearched,
@@ -399,7 +399,7 @@ iid_start:
 			);
 
 		// step14
-		this->ExplorerPlainStep14(
+		this->explorerPlain_n340(
 			pos,
 			move,
 			st,
@@ -409,7 +409,7 @@ iid_start:
 			);
 
 		// step15
-		this->ExplorerPlainStep15(
+		this->explorePlain_n360(
 			ourCarriage,
 			depth,
 			isPVMove,
@@ -428,7 +428,7 @@ iid_start:
 			);
 
 		// step16
-		this->ExplorerPlainStep16b_NonPVAtukai(
+		this->explorePlain_n380_nonPVAtukai(
 			ourCarriage,
 			doFullDepthSearch,
 			score,
@@ -441,7 +441,7 @@ iid_start:
 			);
 
 		// step17
-		this->ExplorerPlainStep17(
+		this->explorePlain_n420(
 			pos,
 			move
 			);
@@ -452,7 +452,7 @@ iid_start:
 
 		if (ourCarriage.m_signals.m_isStop || pThisThread->IsUselessNode()) { return score; }
 
-		this->ExplorerPlainStep18b(
+		this->explorePlain_n440(
 			ourCarriage,
 			move,
 			isPVMove,
@@ -461,7 +461,7 @@ iid_start:
 			pos
 			);
 		bool isBreak = false;
-		this->ExplorerPlainStep18c(
+		this->explorePlain_n460(
 			isBreak,
 			ourCarriage,
 			move,
@@ -477,7 +477,7 @@ iid_start:
 		if (isBreak) { break; }
 
 		// step19
-		this->ExplorerPlainStep19(
+		this->explorePlain_n480_forkNewMonkey(
 			isBreak,
 			ourCarriage,
 			depth,
@@ -496,10 +496,10 @@ iid_start:
 		if (isBreak) { break; }
 	}
 
-	if (this->GetReturnBeforeStep20()) { return bestScore; }
+	if (this->getReturn_beforeN500()) { return bestScore; }
 
 	// step20
-	this->ExplorerPlainStep20(
+	this->explorePlain_n500(
 		moveCount,
 		excludedMove,
 		ourCarriage,

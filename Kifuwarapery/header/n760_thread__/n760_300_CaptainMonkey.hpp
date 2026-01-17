@@ -10,6 +10,7 @@ class OurCarriage;
 /// キャプテン☆（＾ｑ＾） わたしが名前を変えた☆（＾▽＾）
 /// 
 ///		- 元の名前： `ＭainThread`
+///		- マスタースレッドに対応する
 ///		</pre>
 /// </summary>
 class CaptainMonkey : public MonkeyAbstract {
@@ -25,7 +26,7 @@ public:
 
 	/// <summary>
 	///		<pre>
-	/// キャプテンのマスタースレッドだ（ワーカースレッドではない）
+	/// キャプテン猿（マスタースレッド）だ（ワーカースレッドではない）
 	///		</pre>
 	/// </summary>
 	volatile bool m_isMasterThread;
@@ -40,7 +41,13 @@ public:
     /// 生成☆（＾ｑ＾）
 	/// </summary>
 	/// <param name="s"></param>
-	explicit CaptainMonkey(OurCarriage* s) : MonkeyAbstract(s), m_isMasterThread(true) {}
+	explicit CaptainMonkey(
+		OurCarriage* s
+	) :
+		MonkeyAbstract(s),
+		m_isMasterThread(true)
+	{
+	}
 
 
 	// ========================================
@@ -51,5 +58,5 @@ public:
 	/// <summary>
 	/// ワーカースレッド開始
 	/// </summary>
-	virtual void StartWorkerThread() override;
+	virtual void startMonkey_n10() override;
 };

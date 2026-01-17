@@ -11,7 +11,7 @@
 /// <summary>
 /// ワーカースレッド開始
 /// </summary>
-void ErrandMonkey::StartWorkerThread() {
+void ErrandMonkey::startMonkey_n10() {
 	while (!this->m_isEndOfSearch) {
 		{
 			std::unique_lock<Mutex> lock(this->m_sleepLock);

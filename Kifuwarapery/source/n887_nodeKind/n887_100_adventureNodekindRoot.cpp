@@ -52,7 +52,7 @@ AdventureNodekindRoot g_NODEKIND_ROOT;
 
 
 /// <summary>
-/// 
+/// 平地を探索だ
 /// </summary>
 /// <param name="ourCarriage"></param>
 /// <param name="pos"></param>
@@ -62,15 +62,15 @@ AdventureNodekindRoot g_NODEKIND_ROOT;
 /// <param name="depth"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-ScoreIndex AdventureNodekindRoot::ExplorePlain(
+ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
 	ScoreIndex alpha,
 	ScoreIndex beta,
 	const Depth depth,
-	const bool cutNode
-	) const {
+	const bool cutNode) const
+{
 
 	assert(-ScoreInfinite <= alpha && alpha < beta && beta <= ScoreInfinite);
 	assert(Depth0 < depth);
@@ -117,7 +117,7 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 		&pFlashlight,
 		threatMove,
 		bestMove);
-	this->ExplorerPlainStep1cUpdateMaxPly(
+	this->explorePlain_n90_updateMaxPly(
 		&pThisThread,
 		pFlashlight);
 
@@ -128,25 +128,23 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 	pos.SetNodesSearched(pos.GetNodesSearched() + 1);
 
 	// step4
-	this->ExplorerPlainStep4(
+	this->explorePlain_n100(
 		excludedMove,
 		&pFlashlight,
 		posKey,
 		pos,
 		&pTtEntry,//セットされる☆
 		ourCarriage,
-		ttScore
-		);
-	this->ExplorerPlainStep4x(
+		ttScore);
+	this->explorePlain_n110(
 		ttMove,
 		ourCarriage,
 		pTtEntry,
-		pos
-		);
+		pos);
 
 	// step5
 	bool isGotoIidStart = false;//NonPVのとき使う☆
-	this->ExplorerPlainStep5(
+	this->explorePlain_n120(
 		isGotoIidStart,
 		ourCarriage,
 		eval,
@@ -156,8 +154,7 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 		pTtEntry,
 		ttScore,
 		posKey,
-		move
-		);
+		move);
 	/*
 	if (isGotoIidStart) {
 		goto iid_start;
@@ -168,7 +165,7 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 	// 内側の反復深化探索☆？（＾ｑ＾）
 //iid_start:
 	// step10
-	this->ExplorerPlainStep10_InternalIterativeDeepening(
+	this->explorePlain_n130_internalIterativeDeepening(
 		depth,
 		ttMove,
 		inCheck,
@@ -178,8 +175,7 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 		pos,
 		alpha,
 		&pTtEntry,//セットされるぜ☆
-		posKey
-		);
+		posKey);
 
 //split_point_start:
 	NextmoveEvent mp(
@@ -188,11 +184,11 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 		depth,
 		ourCarriage.m_history,
 		pFlashlight,
-		this->GetBetaAtStep11(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
+		this->getBeta_n140(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
 		);
 	const CheckInfo ci(pos);
 
-	this->ExplorerPlainStep11a_BeforeLoop_SplitPointStart(
+	this->explorePlain_n150_beforeLoop_splitPointStart(
 		ttMove,
 		depth,
 		score,
@@ -207,7 +203,7 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 	while (
 		!(
 			// スプリット・ポイントかどうかで、取ってくる指し手が変わる☆
-			move = this->GetNextMove_AtStep11(mp)
+			move = this->getNextMove_n160(mp)
 			).IsNone()
 		) {
 
@@ -216,7 +212,7 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 
 		bool isContinue = false;
 
-		this->ExplorerPlainStep11c_LoopHeader(
+		this->explorePlain_n180_loopHeader(
 			isContinue,
 			pos,
 			move,
@@ -226,30 +222,29 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 			);
 		if (isContinue) { continue; }
 
-		this->ExplorerPlainStep11d_LoopHeader(
+		this->explorePlain_n200_loopHeader(
 			isContinue,
 			ourCarriage,
 			move
 			);
 		if (isContinue) { continue; }
 
-		this->ExplorerPlainStep11e_LoopHeader(
+		this->explorePlain_n220_loopHeader(
 			ourCarriage,
 			moveCount
 			);
 
-		this->ExplorerPlainStep11f_LoopHeader(
+		this->explorePlain_n240_loopHeader(
 			extension,
 			captureOrPawnPromotion,
 			move,
 			givesCheck,
 			ci,
 			pos,
-			dangerous
-			);
+			dangerous);
 
 		// step12
-		this->ExplorerPlainStep12(
+		this->explorePlain_n260(
 			ourCarriage,
 			givesCheck,
 			pos,
@@ -264,36 +259,33 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 			score,
 			cutNode,
 			beta,
-			newDepth
-			);
+			newDepth);
 
 		// 本筋かどうか判定するぜ（＾～＾）
-		isPVMove = this->ExplorerPlainStep13c1IsPvMove(moveCount);
+		isPVMove = this->explorePlain_n280_isPvMove(moveCount);
 
-		this->ExplorerPlainStep13c2SetMove(
+		this->explorePlain_n300_setMove(
 			move,
 			&pFlashlight);
 		if (isContinue) { continue; }
 
-		this->ExplorerPlainStep13d(
+		this->explorePlain_n320(
 			captureOrPawnPromotion,
 			playedMoveCount,
 			movesSearched,
-			move
-			);
+			move);
 
 		// step14
-		this->ExplorerPlainStep14(
+		this->explorerPlain_n340(
 			pos,
 			move,
 			st,
 			ci,
 			givesCheck,
-			&pFlashlight
-			);
+			&pFlashlight);
 
 		// step15
-		this->ExplorerPlainStep15(
+		this->explorePlain_n360(
 			ourCarriage,
 			depth,
 			isPVMove,
@@ -308,11 +300,10 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 			&pSplitedNode,
 			score,
 			pos,
-			doFullDepthSearch
-			);
+			doFullDepthSearch);
 
 		// step16
-		this->ExplorerPlainStep16b_NonPVAtukai(
+		this->explorePlain_n380_nonPVAtukai(
 			ourCarriage,
 			doFullDepthSearch,
 			score,
@@ -321,9 +312,9 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 			pos,
 			&pFlashlight,
 			alpha,
-			cutNode
-			);
-		this->ExplorerPlainStep16c(
+			cutNode);
+
+		this->explorePlain_n400(
 			ourCarriage,
 			isPVMove,
 			alpha,
@@ -332,14 +323,12 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 			newDepth,
 			givesCheck,
 			pos,
-			&pFlashlight
-			);
+			&pFlashlight);
 
 		// step17
-		this->ExplorerPlainStep17(
+		this->explorePlain_n420(
 			pos,
-			move
-			);
+			move);
 
 		assert(-ScoreInfinite < score && score < ScoreInfinite);
 
@@ -347,16 +336,15 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 
 		if (ourCarriage.m_signals.m_isStop || pThisThread->IsUselessNode()) { return score; }
 
-		this->ExplorerPlainStep18b(
+		this->explorePlain_n440(
 			ourCarriage,
 			move,
 			isPVMove,
 			alpha,
 			score,
-			pos
-			);
+			pos);
 		bool isBreak = false;
-		this->ExplorerPlainStep18c(
+		this->explorePlain_n460(
 			isBreak,
 			ourCarriage,
 			move,
@@ -367,14 +355,11 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 			bestScore,
 			&pSplitedNode,
 			bestMove,
-			beta
-			);
-		if (isBreak) {
-			break;
-		}
+			beta);
+		if (isBreak) { break; }
 
-		// step19
-		this->ExplorerPlainStep19(
+		// step19 - さらに枝に別の猿を走らせる。
+		this->explorePlain_n480_forkNewMonkey(
 			isBreak,
 			ourCarriage,
 			depth,
@@ -388,15 +373,14 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 			threatMove,
 			moveCount,
 			mp,
-			cutNode
-			);
+			cutNode);
 		if (isBreak) { break; }
 	}
 
-	if (this->GetReturnBeforeStep20()) { return bestScore; }
+	if (this->getReturn_beforeN500()) { return bestScore; }
 
 	// step20
-	this->ExplorerPlainStep20(
+	this->explorePlain_n500(
 		moveCount,
 		excludedMove,
 		ourCarriage,

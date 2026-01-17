@@ -12,7 +12,7 @@
 /// <summary>
 /// ワーカースレッド開始☆（＾～＾）
 /// </summary>
-void CaptainMonkey::StartWorkerThread() {
+void CaptainMonkey::startMonkey_n10() {
 	while (true) {// エグジットするまで　ずっといるぜ☆
 		{
 			std::unique_lock<Mutex> lock(this->m_sleepLock);

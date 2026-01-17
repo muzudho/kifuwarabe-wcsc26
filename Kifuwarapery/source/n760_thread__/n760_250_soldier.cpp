@@ -91,7 +91,9 @@ void MonkeyAbstract::WaitFor(volatile const bool& b) {
 
 
 /// <summary>
-/// 
+///		<pre>
+///		- 旧名： `ForkNewFighter`
+///		</pre>
 /// </summary>
 /// <typeparam name="Fake"></typeparam>
 /// <param name="pos"></param>
@@ -107,7 +109,7 @@ void MonkeyAbstract::WaitFor(volatile const bool& b) {
 /// <param name="pSword"></param>
 /// <param name="cutNode"></param>
 template <bool Fake>
-void MonkeyAbstract::ForkNewFighter(
+void MonkeyAbstract::ForkNewMonkey(
 	Position& pos,
 	Flashlight* pFlashlightBox,
 	const ScoreIndex alpha,
@@ -173,7 +175,7 @@ void MonkeyAbstract::ForkNewFighter(
 	if (1 < slavesCount || Fake) {
 		splitedNode.m_mutex.unlock();
 		this->m_pOurCarriage->m_monkiesPub.m_mutex_.unlock();
-		MonkeyAbstract::StartWorkerThread();	// ワーカースレッド開始
+		MonkeyAbstract::startMonkey_n10();	// ワーカースレッド開始
 		assert(!m_isBeingSearched);
 		assert(!m_activePosition);
 		this->m_pOurCarriage->m_monkiesPub.m_mutex_.lock();
@@ -209,7 +211,7 @@ void MonkeyAbstract::ForkNewFighter(
 /// <param name="pSword"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-template void MonkeyAbstract::ForkNewFighter<true >(
+template void MonkeyAbstract::ForkNewMonkey<true >(
 	Position& pos,
 	Flashlight* ss,
 	const ScoreIndex alpha,
@@ -240,7 +242,7 @@ template void MonkeyAbstract::ForkNewFighter<true >(
 /// <param name="pSword"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-template void MonkeyAbstract::ForkNewFighter<false>(
+template void MonkeyAbstract::ForkNewMonkey<false>(
 	Position& pos,
 	Flashlight* ss,
 	const ScoreIndex alpha,

@@ -23,7 +23,7 @@ void SwordRoot::GoSearch_AsSplitedNode(
 	// 探索☆？（＾ｑ＾）
 	//────────────────────────────────────────────────────────────────────────────────
 	// スプリットポイントは検索を開始するぜ☆（＾ｑ＾）
-	g_NODEKIND_SPLITEDNODE_ROOT.ExplorePlain(
+	g_NODEKIND_SPLITEDNODE_ROOT.explorePlain_n10(
 		ourCarriage,
 		pos,
 		pFlashlight + 1,

@@ -143,7 +143,7 @@ void UsiOperation::Go(GameStats& gameStats, const Position& pos, std::istringstr
 	pos.getOurCarriage()->m_ourMoves = moves;
 
 	// 木登り（思考）を開始☆
-	pos.getOurCarriage()->m_monkiesPub.StartClimbingTree(gameStats, pos, limits, moves);
+	pos.getOurCarriage()->m_monkiesPub.startClimbingTree_n10(gameStats, pos, limits, moves);
 }
 
 

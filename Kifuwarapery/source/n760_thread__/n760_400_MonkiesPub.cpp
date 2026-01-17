@@ -25,7 +25,7 @@
 /// <returns></returns>
 template <typename T> T* newThread(OurCarriage* s) {
 	T* th = new T(s);
-	th->m_handle = std::thread(&MonkeyAbstract::StartWorkerThread, th); // move constructor
+	th->m_handle = std::thread(&MonkeyAbstract::startMonkey_n10, th); // move constructor
 	return th;
 }
 
@@ -153,7 +153,7 @@ void MonkiesPub::WaitForThinkFinished()
 /// <param name="position"></param>
 /// <param name="limits"></param>
 /// <param name="searchMoves">探索する指し手一覧（＾～＾）？</param>
-void MonkiesPub::StartClimbingTree(
+void MonkiesPub::startClimbingTree_n10(
 	const GameStats& gameStats,
 	const Position& position,
 	const LimitsDuringGo& limits,
@@ -208,24 +208,24 @@ void MonkiesPub::StartClimbingTree(
 		const MovegenType MT = N08_Legal;
 
 		// この局面の全ての指し手（＾～＾）？
-		for (DeliciousBananaCollection<MT> moveList(position); !moveList.IsEnd(); ++moveList) {
+		for (DeliciousBananaCollection<MT> deliBananaCol(position); !deliBananaCol.IsEnd(); ++deliBananaCol) {
 
 			if (
 				// 探索する指し手一覧が空か（＾～＾）？
 				searchMoves.empty()
 				||
 				// この局面の指し手の１つは、探索する指し手の最後の要素ではないとき（＾～＾）？
-				std::find(searchMoves.begin(), searchMoves.end(), moveList.GetMove()) != searchMoves.end())
+				std::find(searchMoves.begin(), searchMoves.end(), deliBananaCol.GetMove()) != searchMoves.end())
 			{
 				// ルート・ムーブスの末尾に指し手を追加している（＾～＾）？
-				position.getOurCarriage()->m_rootMovesByID.push_back(RootMove(moveList.GetMove()));
+				position.getOurCarriage()->m_rootMovesByID.push_back(RootMove(deliBananaCol.GetMove()));
 			}
 		}
 
-		// マスタースレッドだ（＾～＾）？
+		// マスタースレッドだというフラグを立てる（＾～＾）？
 		this->GetFirstCaptain()->m_isMasterThread = true;
 
-		// 通知してる（＾～＾）？
+		// フラグを立てた後に、通知してる（＾～＾）？
 		this->GetFirstCaptain()->NotifyOne();
 
 

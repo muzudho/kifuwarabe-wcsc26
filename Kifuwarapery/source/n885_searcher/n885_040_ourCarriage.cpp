@@ -369,7 +369,7 @@ void OurCarriage::CheckTime() {
 /// <summary>
 /// ワーカースレッド開始
 /// </summary>
-void MonkeyAbstract::StartWorkerThread() {
+void MonkeyAbstract::startMonkey_n10() {
 	SplitedNode* thisSp = m_splitedNodesSize ? m_activeSplitedNode : nullptr;
 	assert(!thisSp || (thisSp->m_masterThread == this && m_isBeingSearched));
 

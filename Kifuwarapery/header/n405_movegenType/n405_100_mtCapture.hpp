@@ -28,19 +28,23 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="all"></param>
 	/// <returns></returns>
-	DeliciousBanana* GenerateMove(DeliciousBanana* moveStackList, const Position& pos, bool all = false
-		) const override {
-
+	DeliciousBanana* GenerateMove(
+		DeliciousBanana* pDeliBanana,
+		const Position& pos,
+		bool isAll = false) const override
+	{
+		// 黒番
 		if (pos.GetTurn()==Color::Black)
 		{
-			moveStackList = MovegenTypeCapture::GENERATE_MOVE_<Color::Black, Color::White>(moveStackList,pos,all);
+			pDeliBanana = MovegenTypeCapture::GENERATE_MOVE_<Color::Black, Color::White>(pDeliBanana, pos, isAll);
 		}
+		// 白番
 		else
 		{
-			moveStackList = MovegenTypeCapture::GENERATE_MOVE_<Color::White, Color::Black>(moveStackList, pos, all);
+			pDeliBanana = MovegenTypeCapture::GENERATE_MOVE_<Color::White, Color::Black>(pDeliBanana, pos, isAll);
 		}
 
-		return moveStackList;
+		return pDeliBanana;
 	}
 
 
