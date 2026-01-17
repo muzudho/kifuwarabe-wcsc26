@@ -14,7 +14,7 @@
 #include "n350_030_makePromoteMove.hpp"
 #include "n350_040_ptEvent.hpp"
 #include "n350_045_pieceTypeSeeEvent.hpp"
-#include "n350_070_ptAbstract.hpp"
+#include "n350_070_IPieceType.hpp"
 
 
 /// <summary>
@@ -31,7 +31,7 @@ const static Move g_PTLANCE_DA_AS_MOVE = ConvMove::FROM_PIECETYPE_DA10(PieceType
 /// <summary>
 /// PieceType::N02_Lance
 /// </summary>
-class PtLance : public PtAbstract {
+class PtLance : public IPieceType {
 
 
 public:

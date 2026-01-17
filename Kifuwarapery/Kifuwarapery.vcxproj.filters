@@ -513,7 +513,7 @@
     <ClInclude Include="header\n450_movPhase\n450_500_movePhaseArray.hpp">
       <Filter>header\n450_movPhase</Filter>
     </ClInclude>
-    <ClInclude Include="header\n250_pieceTyp\n350_070_ptAbstract.hpp">
+    <ClInclude Include="header\n250_pieceTyp\n350_070_IPieceType.hpp">
       <Filter>header\n350_pieceTyp</Filter>
     </ClInclude>
     <ClInclude Include="header\n250_pieceTyp\n350_080_ptPromote.hpp">
@@ -1059,6 +1059,39 @@
     <ClInclude Include="header\n105_220_bonaDir_\n105_220_620_FileBonaDirection.hpp">
       <Filter>header</Filter>
     </ClInclude>
+    <ClInclude Include="header\n105_220_bonaDir_\n105_220_630_RankBonaDirection.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n105_220_bonaDir_\n105_220_640_DiagonalNESWBonaDirection.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n105_220_bonaDir_\n105_220_650_DiagonalNWSEBonaDirection.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n105_220_bonaDir_\n105_220_700_BonaDirectionArray.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n340_bonaMove\n340_600_nullBonaMove.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n340_bonaMove\n340_610_miscBonaMove.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n340_bonaMove\n340_620_fileBonaMove.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n340_bonaMove\n340_630_rankBonaMove.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n340_bonaMove\n340_640_diagonalNESWBonaMove.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n340_bonaMove\n340_650_diagonalNWSEBonaMove.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n340_bonaMove\n340_700_bonaMoveArray.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -1229,7 +1262,7 @@
     <ClCompile Include="source\n450_movPhase\n450_500_movePhaseArray.cpp">
       <Filter>source\n450_movPhase</Filter>
     </ClCompile>
-    <ClCompile Include="source\n250_pieceTyp\n350_070_ptAbstract.cpp">
+    <ClCompile Include="source\n250_pieceTyp\n350_070_IPieceType.cpp">
       <Filter>source\n350_pieceTyp</Filter>
     </ClCompile>
     <ClCompile Include="source\n250_pieceTyp\n350_080_ptPromote.cpp">
@@ -1607,9 +1640,6 @@
     <ClCompile Include="source\n105_220_bonaDir_\n105_220_600_NullBonaDirection.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\n105_220_bonaDir_\n105_220_700_bonaMoveArray.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
     <ClCompile Include="source\n130_100_boardBb_\n160_108_slideBits.cpp">
       <Filter>source</Filter>
     </ClCompile>
@@ -1674,6 +1704,39 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="source\n105_220_bonaDir_\n105_220_620_FileBonaDirection.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n105_220_bonaDir_\n105_220_630_RankBonaDirection.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n105_220_bonaDir_\n105_220_640_DiagonalNESWBonaDirection.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n105_220_bonaDir_\n105_220_650_DiagonalNWSEBonaDirection.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n105_220_bonaDir_\n105_220_700_BonaDirectionArray.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n340_090_nullBonaMove.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n340_100_MiscBonaMove.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n340_120_FileBonaMove.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n340_130_RankBonaMove.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n340_140_DiagonalNESWBonaMove.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n340_150_DiagonalNWSEBonaMove.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n340_500_BonaMoveArray.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

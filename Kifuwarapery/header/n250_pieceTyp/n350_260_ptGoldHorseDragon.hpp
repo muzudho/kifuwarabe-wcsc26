@@ -12,7 +12,7 @@
 #include "n350_030_makePromoteMove.hpp"
 #include "n350_040_ptEvent.hpp"
 #include "n350_045_pieceTypeSeeEvent.hpp"
-#include "n350_070_ptAbstract.hpp"
+#include "n350_070_IPieceType.hpp"
 
 
 // PieceType::N16_GoldHorseDragon
@@ -23,7 +23,7 @@
 /// （＾ｑ＾）金馬龍の動きをするプログラムだぜ☆
 ///		</pre>
 /// </summary>
-class PtGoldHorseDragon : public PtAbstract {
+class PtGoldHorseDragon : public IPieceType {
 
 
 public:

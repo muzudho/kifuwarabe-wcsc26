@@ -1,5 +1,4 @@
 #pragma once
-
 #include "../n105_100_color___/n105_100_100_color.hpp"
 #include "../n105_120_square__/n105_120_100_square.hpp"
 #include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
@@ -11,7 +10,7 @@
 #include "../n220_position/n220_650_position.hpp"
 #include "n350_040_ptEvent.hpp"
 #include "n350_045_pieceTypeSeeEvent.hpp"
-#include "n350_070_ptAbstract.hpp"
+#include "n350_070_IPieceType.hpp"
 
 
 /// <summary>
@@ -23,7 +22,8 @@ const static Move g_PTPROMOTE_AS_MOVE = ConvMove::FROM_PIECETYPE_ONBOARD10(Piece
 /// <summary>
 /// PieceType::PTPromote;
 /// </summary>
-class PtPromote : public PtAbstract {
+class PtPromote : public IPieceType
+{
 
 
 public:
@@ -33,7 +33,8 @@ public:
 	///
 	/// </summary>
 	/// <returns></returns>
-	virtual Move AsMove() const override {
+	virtual Move AsMove() const override
+	{
 		return g_PTPROMOTE_AS_MOVE;
 	}
 
@@ -43,9 +44,11 @@ public:
 	/// </summary>
 	/// <param name="ptEvent"></param>
 	/// <returns></returns>
-	Bitboard GetAttacks2From(const PieceTypeEvent& ptEvent) const override {
+	Bitboard GetAttacks2From(const PieceTypeEvent& ptEvent) const override
+	{
 		return g_nullBitboard;
 	}
+
 
 	/// <summary>
 	/// pin は省かない。　FORCE_INLINE
@@ -55,8 +58,8 @@ public:
 		MoveStack* moveStackList,
 		const Position& pos,
 		const Square from,
-		const Square to
-		) const override {
+		const Square to) const override
+	{
 		return;
 	}
 
@@ -69,8 +72,8 @@ public:
 		MoveStack* moveStackList,
 		const Position& pos,
 		const Square from,
-		const Square to
-		) const override {
+		const Square to) const override
+	{
 		return;
 	}
 
@@ -82,13 +85,12 @@ public:
 		Bitboard& occupied,
 		Bitboard& attackers,
 		PieceType nextPT,
-		const PieceTypeSeeEvent ptsEvent
-		) const override {
+		const PieceTypeSeeEvent ptsEvent) const override
+	{
 		PieceType PT = PieceType::PTPromote;
 
 		UNREACHABLE;
 
-		// ����ȊO�̋��ނ́A���̂܂ܕԂ���
 		return PT;
 	}
 };

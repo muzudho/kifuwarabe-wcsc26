@@ -14,7 +14,7 @@
 #include "../../header/n250_pieceTyp/n350_030_makePromoteMove.hpp"
 #include "../../header/n250_pieceTyp/n350_040_ptEvent.hpp"
 #include "../../header/n250_pieceTyp/n350_045_pieceTypeSeeEvent.hpp"
-#include "../../header/n250_pieceTyp/n350_070_ptAbstract.hpp"
+#include "../../header/n250_pieceTyp/n350_070_IPieceType.hpp"
 #include "../../header/n250_pieceTyp/n350_220_ptProSilver.hpp"
 #include "../../header/n250_pieceTyp/n350_500_ptPrograms.hpp"
 
