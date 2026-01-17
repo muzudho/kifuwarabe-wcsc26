@@ -6,6 +6,7 @@
 
 
 // なんか分からんが再帰探索（＾～＾）
+// これを定義するとバグが取れるけど、指し手が全然ダメになるぜ（＾～＾）
 #define SHRINK_EXPLORE_PLAIN_260_RECURSIVE_SEARCH
 
 
