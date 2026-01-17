@@ -58,7 +58,7 @@ public:
 	/// <param name="ttMove"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="ttScore"></param>
-	virtual inline void explorePlain_n70_splitPointStart(
+	virtual inline void explorePlain_n100n900_splitPointStart(
 		bool& isGotoSplitPointStart,
 		Position& pos,
 		SplitedNode** ppSplitedNode,
@@ -79,7 +79,7 @@ public:
 	/// </summary>
 	/// <param name="ppThisThread"></param>
 	/// <param name="pFlashlight"></param>
-	inline void explorePlain_n90_updateMaxPly(
+	inline void explorePlain_n200n200_updateMaxPly(
 		Monkey** ppThisThread,
 		const Flashlight* pFlashlight) const override
 	{

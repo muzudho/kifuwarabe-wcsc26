@@ -49,7 +49,7 @@ public:
 	/// </summary>
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
-	virtual inline void AssertBeforeStep1(
+	virtual inline void explorePlain_n100n800_assert(
 		ScoreIndex alpha,
 		ScoreIndex beta
 		) const override {

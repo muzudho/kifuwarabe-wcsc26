@@ -88,7 +88,7 @@ public:
 	/// </summary>
 	/// <param name="ppThisThread"></param>
 	/// <param name="pFlashlight"></param>
-	inline void explorePlain_n90_updateMaxPly(
+	inline void explorePlain_n200n200_updateMaxPly(
 		Monkey** ppThisThread,
 		const Flashlight* pFlashlight) const override
 	{

@@ -53,7 +53,7 @@ public:
 	/// </summary>
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
-	virtual inline void AssertBeforeStep1(
+	virtual inline void explorePlain_n100n800_assert(
 		ScoreIndex alpha,
 		ScoreIndex beta
 		) const override {
@@ -75,7 +75,7 @@ public:
 	/// <param name="ttMove"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="ttScore"></param>
-	virtual inline void explorePlain_n70_splitPointStart(
+	virtual inline void explorePlain_n100n900_splitPointStart(
 		bool& isGotoSplitPointStart,
 		Position& pos,
 		SplitedNode** ppSplitedNode,
@@ -100,7 +100,7 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline std::pair<bool, ScoreIndex> explorePlain_n95_isStopByRepetetion(
+	virtual inline std::pair<bool, ScoreIndex> explorePlain_n200n250_isStopByRepetetion(
 		//bool& isReturnWithScore,
 		//ScoreIndex& returnScore,
 		Position& pos,
@@ -122,7 +122,7 @@ public:
 	/// <param name="ppFlashlight"></param>
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
-	virtual inline void explorePlain_n98_step3(
+	virtual inline void explorePlain_n200n300(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
 		Flashlight** ppFlashlight,

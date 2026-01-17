@@ -73,15 +73,16 @@ ScoreIndex AdventureNodekindSplitedNodeRoot::explorePlain_n10(
 	ScoreIndex alpha,
 	ScoreIndex beta,
 	const Depth depth,
-	const bool cutNode
-	) const {
+	const bool cutNode) const
+{
+
 
 	assert(-ScoreInfinite <= alpha && alpha < beta && beta <= ScoreInfinite);
-	this->AssertBeforeStep1(
+	this->explorePlain_n100n800_assert(
 		alpha,
-		beta
-		);
+		beta);
 	assert(Depth0 < depth);
+
 
 	// 途中で goto を使用している為、先に全部の変数を定義しておいた方が安全。
 	Move movesSearched[64];
@@ -118,7 +119,7 @@ ScoreIndex AdventureNodekindSplitedNodeRoot::explorePlain_n10(
 
 
 	bool isGotoSplitPointStart = false;
-	this->explorePlain_n70_splitPointStart(
+	this->explorePlain_n100n900_splitPointStart(
 		isGotoSplitPointStart,
 		pos,
 		&pSplitedNode,
@@ -132,14 +133,17 @@ ScoreIndex AdventureNodekindSplitedNodeRoot::explorePlain_n10(
 	if (isGotoSplitPointStart) { goto split_point_start; }
 
 
-	this->explorePlain_n80_setMoveNone(
+	// ヌル指し手セット
+
+
+	this->explorePlain_n200n150_setMoveNone(
 		bestScore,
 		&pFlashlight,
 		threatMove,
 		bestMove);
 
 
-	this->explorePlain_n90_updateMaxPly(
+	this->explorePlain_n200n200_updateMaxPly(
 		&pThisThread,
 		pFlashlight);
 

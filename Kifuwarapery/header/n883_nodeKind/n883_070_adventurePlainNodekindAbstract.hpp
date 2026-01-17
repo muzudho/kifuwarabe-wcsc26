@@ -56,7 +56,7 @@ public:
 	/// </summary>
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
-	virtual inline void AssertBeforeStep1(
+	virtual inline void explorePlain_n100n800_assert(
 		ScoreIndex alpha,
 		ScoreIndex beta
 		) const {
@@ -82,7 +82,7 @@ public:
 	/// <param name="ttMove"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="ttScore"></param>
-	virtual inline void explorePlain_n70_splitPointStart(
+	virtual inline void explorePlain_n100n900_splitPointStart(
 		bool& isGotoSplitPointStart,
 		Position& pos,
 		SplitedNode** ppSplitedNode,
@@ -122,7 +122,7 @@ public:
 	/// <param name="ppFlashlight"></param>
 	/// <param name="threatMove"></param>
 	/// <param name="bestMove"></param>
-	virtual inline void explorePlain_n80_setMoveNone(
+	virtual inline void explorePlain_n200n150_setMoveNone(
 		ScoreIndex& bestScore,
 		Flashlight** ppFlashlight,
 		Move& threatMove,
@@ -142,7 +142,7 @@ public:
 	/// </summary>
 	/// <param name="ppThisThread"></param>
 	/// <param name="pFlashlight"></param>
-	virtual inline void explorePlain_n90_updateMaxPly(
+	virtual inline void explorePlain_n200n200_updateMaxPly(
 		Monkey** ppThisThread,
 		const Flashlight* pFlashlight) const
 	{
@@ -165,7 +165,7 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline std::pair<bool, ScoreIndex> explorePlain_n95_isStopByRepetetion(
+	virtual inline std::pair<bool, ScoreIndex> explorePlain_n200n250_isStopByRepetetion(
 		Position& pos,
 		OurCarriage& ourCarriage,
 		Flashlight** ppFlashlight) const
@@ -185,7 +185,7 @@ public:
 	/// <param name="ppFlashlight"></param>
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
-	virtual inline void explorePlain_n98_step3(
+	virtual inline void explorePlain_n200n300(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
 		Flashlight** ppFlashlight,

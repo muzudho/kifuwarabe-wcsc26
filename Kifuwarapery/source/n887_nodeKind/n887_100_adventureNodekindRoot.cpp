@@ -72,8 +72,10 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 	const bool cutNode) const
 {
 
+
 	assert(-ScoreInfinite <= alpha && alpha < beta && beta <= ScoreInfinite);
 	assert(Depth0 < depth);
+
 
 	// 途中で goto を使用している為、先に全部の変数を定義しておいた方が安全。
 	Move movesSearched[64];
@@ -116,15 +118,19 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 
 	//bool isGotoSplitPointStart = false;
 
+
+	// ヌル指し手セット
+
+
 	// 指し手をクリアーする（＾～＾）？
-	this->explorePlain_n80_setMoveNone(
+	this->explorePlain_n200n150_setMoveNone(
 		bestScore,
 		&pFlashlight,
 		threatMove,
 		bestMove);
 
 	// ［本筋ノードでの最大手数］という情報を更新（＾～＾）
-	this->explorePlain_n90_updateMaxPly(
+	this->explorePlain_n200n200_updateMaxPly(
 		&pHandleMonkey,
 		pFlashlight);
 

@@ -72,12 +72,13 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 	const bool cutNode
 	) const {
 
+
 	assert(-ScoreInfinite <= alpha && alpha < beta && beta <= ScoreInfinite);
-	this->AssertBeforeStep1(
+	this->explorePlain_n100n800_assert(
 		alpha,
-		beta
-		);
+		beta);
 	assert(Depth0 < depth);
+
 
 	// 途中で goto を使用している為、先に全部の変数を定義しておいた方が安全。
 	Move movesSearched[64];
@@ -114,31 +115,39 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 
 	bool isGotoSplitPointStart = false;
 
-	this->explorePlain_n80_setMoveNone(
+
+	// ヌル指し手セット
+
+
+	this->explorePlain_n200n150_setMoveNone(
 		bestScore,
 		&pFlashlight,
 		threatMove,
 		bestMove);
-	this->explorePlain_n90_updateMaxPly(
+
+
+	this->explorePlain_n200n200_updateMaxPly(
 		&pThisThread,
 		pFlashlight);
 
+
 	// step2: 千日手による探索打切りの判断
 	//		- maxPly を更新するケースもある。
-	auto p = this->explorePlain_n95_isStopByRepetetion(
+	auto p = this->explorePlain_n200n250_isStopByRepetetion(
 		//isReturnWithScore,
 		//returnScore,
 		pos,
 		ourCarriage,
-		&pFlashlight
-		);
+		&pFlashlight);
+
+
 	bool isReturnWithScore = p.first;
 	ScoreIndex returnScore = p.second;
 	if (isReturnWithScore) { return returnScore; }
 
 
 	// step3
-	this->explorePlain_n98_step3(
+	this->explorePlain_n200n300(
 		isReturnWithScore,
 		returnScore,
 		&pFlashlight,
