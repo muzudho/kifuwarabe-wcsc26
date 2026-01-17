@@ -334,22 +334,24 @@ iid_start:
 			);
 
 
-		this->explorePlain_n260_recursiveSearch(
-			ourCarriage,
-			givesCheck,
-			pos,
-			move,
-			extension,
-			singularExtensionNode,
-			ttMove,
-			ttScore,
-			ci,
-			depth,
-			&pFlashlight,
-			score,
-			cutNode,
-			beta,
-			newDepth);
+		#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_260_RECURSIVE_SEARCH
+			this->explorePlain_n260_recursiveSearch(
+				ourCarriage,
+				givesCheck,
+				pos,
+				move,
+				extension,
+				singularExtensionNode,
+				ttMove,
+				ttScore,
+				ci,
+				depth,
+				&pFlashlight,
+				score,
+				cutNode,
+				beta,
+				newDepth);
+		#endif
 
 
 		#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_273_FUTILITY_PRUNING
