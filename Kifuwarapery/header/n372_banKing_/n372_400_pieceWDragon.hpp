@@ -1,5 +1,4 @@
 ﻿#pragma once
-
 #include "../n105_120_square__/n105_120_100_square.hpp"
 #include "../n105_120_square__/n105_120_400_squareRelation.hpp"
 #include "../n130_100_boardBb_/n160_100_bitboard.hpp"
@@ -13,7 +12,8 @@
 /// <summary>
 /// 後手竜。
 /// </summary>
-class PieceWDragon : public IKingBannable {
+class PieceWDragon : public IKingBannable
+{
 
 
 public:
@@ -27,7 +27,10 @@ public:
 	/// <param name="checkSq"></param>
 	/// <param name="ksq"></param>
 	void MakeBanned2KingTo(
-		Bitboard& bannedKingToBB, const Position& pos, const Square checkSq, const Square ksq) const override
+		Bitboard& bannedKingToBB,
+		const Position& pos,
+		const Square checkSq,
+		const Square ksq) const override
 	{
 		// 斜めから王手したとき
 		if (g_squareRelation.GetSquareRelation(checkSq, ksq) & N04_DirecDiag)

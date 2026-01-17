@@ -8,7 +8,8 @@
 /// <summary>
 /// 先手桂馬
 /// </summary>
-class PieceBKnight : public IKingBannable {
+class PieceBKnight : public IKingBannable
+{
 
 
 public:

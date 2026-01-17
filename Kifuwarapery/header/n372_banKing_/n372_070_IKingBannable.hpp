@@ -8,7 +8,8 @@
 /// <summary>
 /// 駒
 /// </summary>
-class IKingBannable{
+class IKingBannable
+{
 
 
 public:

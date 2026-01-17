@@ -1,5 +1,4 @@
 ﻿#pragma once
-
 #include "../n105_120_square__/n105_120_100_square.hpp"
 #include "../n130_100_boardBb_/n160_100_bitboard.hpp"
 #include "../n130_100_boardBb_/n160_130_lanceAttackBb.hpp"
@@ -10,7 +9,8 @@
 /// <summary>
 /// 先手香
 /// </summary>
-class PieceBLance : public IKingBannable {
+class PieceBLance : public IKingBannable
+{
 
 
 public:
@@ -23,9 +23,12 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="checkSq"></param>
 	/// <param name="ksq"></param>
-	void MakeBanned2KingTo(Bitboard& bannedKingToBB, const Position& pos, const Square checkSq, const Square ksq
-		) const override {
+	void MakeBanned2KingTo(
+		Bitboard& bannedKingToBB,
+		const Position& pos,
+		const Square checkSq,
+		const Square ksq) const override
+	{
 		bannedKingToBB |= g_lanceAttackBb.GetControllBbToEdge(Color::Black, checkSq);
 	}
-
 };

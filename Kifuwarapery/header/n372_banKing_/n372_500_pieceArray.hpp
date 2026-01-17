@@ -37,7 +37,8 @@
 /// <summary>
 /// 駒配列。
 /// </summary>
-class PieceArray {
+class PieceArray
+{
 
 
 public:
