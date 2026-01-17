@@ -146,7 +146,6 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 	if (isReturnWithScore) { return returnScore; }
 
 
-	// step3
 	this->explorePlain_n200n300_returnWithScore(
 		isReturnWithScore,
 		returnScore,
@@ -290,8 +289,7 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 			move,
 			checkInfo,
 			moveCount,
-			&pSplitedNode
-			);
+			&pSplitedNode);
 		if (isContinue) { continue; }
 
 
@@ -302,8 +300,7 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 			givesCheck,
 			checkInfo,
 			pos,
-			dangerous
-			);
+			dangerous);
 
 
 		// 指さずに探索処理
@@ -324,16 +321,14 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 			score,
 			cutNode,
 			beta,
-			newDepth
-			);
+			newDepth);
 
 		this->explorePlain_n400n600_continue(
 			isContinue,
 			pos,
 			move,
 			checkInfo,
-			moveCount
-			);
+			moveCount);
 		if (isContinue) { continue; }
 
 
@@ -431,15 +426,14 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 			bestScore,
 			&pSplitedNode,
 			bestMove,
-			beta
-			);
+			beta);
 		if (isBreak) { break; }
 
 
 		// アップデートα後処理
 
 
-		this->explorePlain_n770_forkNewMonkey(
+		this->explorePlain_n700n750_forkNewMonkey(
 			isBreak,
 			ourCarriage,
 			depth,
@@ -453,8 +447,7 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 			threatMove,
 			moveCount,
 			nextMoveEvent,
-			cutNode
-			);
+			cutNode);
 		if (isBreak) { break; }
 	}
 

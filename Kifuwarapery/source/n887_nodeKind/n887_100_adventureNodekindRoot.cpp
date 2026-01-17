@@ -287,7 +287,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 		// 指さずに探索処理
 
 
-		#ifndef SHRINK_ROOT_NODE_EXPLORE_PLAIN_400N500_RECURSIVE_SEARCH
+		#ifndef SHRINK_R_NODEKIND_EXPLORE_PLAIN_400N500_RECURSIVE_SEARCH
 			// なんか分からんが再帰探索（＾～＾）
 			this->explorePlain_n400n500_recursiveSearch(
 				ourCarriage,
@@ -346,7 +346,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 		// 探索処理
 
 
-		#ifndef SHRINK_ROOT_NODE_EXPLORE_PLAIN_360_RECURSIVE_SEARCH
+		#ifndef SHRINK_R_NODEKIND_EXPLORE_PLAIN_500N500_RECURSIVE_SEARCH
 			// なんか分からんが再帰探索（＾～＾）
 			this->explorePlain_n500n500_recursiveSearch(
 				ourCarriage,
@@ -370,7 +370,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 		// 探索後処理
 
 
-		#ifndef SHRINK_ROOT_NODE_EXPLORE_PLAIN_NON_PV_RECURSIVE_SEARCH
+		#ifndef SHRINK_R_NODEKIND_EXPLORE_PLAIN_500N600_NON_PV_RECURSIVE_SEARCH
 			// NonPV扱いで再帰するみたいなんだがなんだこれだぜ☆（＾～＾）？
 			this->explorePlain_n500n600_nonPVRecursiveSearch(
 				ourCarriage,
@@ -385,7 +385,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 		#endif
 
 
-		#ifndef SHRINK_ROOT_NODE_EXPLORE_PLAIN_LARGE_BETA_RECURSIVE_SEARCH
+		#ifndef SHRINK_R_NODEKIND_EXPLORE_PLAIN_600N900_LARGE_BETA_RECURSIVE_SEARCH
 			// 大きなβ値のときの深掘りか（＾～＾）？
 			this->explorePlain_n600n900_betaLargeRecursiveSearch(
 				ourCarriage,
@@ -451,9 +451,9 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 		// アップデートα後処理
 
 
-		#ifndef SHRINK_ROOT_NODE_EXPLORE_PLAIN_FORK_NEW_MONKEY
+		#ifndef SHRINK_R_NODEKIND_EXPLORE_PLAIN_700N750_FORK_NEW_MONKEY
 			// さらに枝に別の猿を走らせる。
-			this->explorePlain_n770_forkNewMonkey(
+			this->explorePlain_n700n750_forkNewMonkey(
 				isBreak,
 				ourCarriage,
 				depth,

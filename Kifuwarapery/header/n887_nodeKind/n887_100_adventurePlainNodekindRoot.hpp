@@ -749,7 +749,7 @@ public:
 	/// <param name="moveCount"></param>
 	/// <param name="mp"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void explorePlain_n770_forkNewMonkey(
+	virtual inline void explorePlain_n700n750_forkNewMonkey(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		const Depth depth,

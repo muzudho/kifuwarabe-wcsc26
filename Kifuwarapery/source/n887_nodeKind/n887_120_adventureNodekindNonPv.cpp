@@ -210,7 +210,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 	if (isGotoIidStart) { goto iid_start; }
 
 
-	#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_200N600_NON_PV_RAZORING
+	#ifndef SHRINK_NP_NODEKIND_EXPLORE_PLAIN_200N600_NON_PV_RAZORING
 		this->explorePlain_n200n600_nonPVRazoring(
 			isReturnWithScore,
 			returnScore,
@@ -237,7 +237,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 
 
 
-	#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_125_NON_PV_RECURSIVE_SEARCH
+	#ifndef SHRINK_NP_NODEKIND_EXPLORE_PLAIN_200N700_NON_PV_RECURSIVE_SEARCH
 		this->explorePlain_n200n700_nonPVRecursiveSearch(
 			isReturnWithScore,
 			returnScore,
@@ -255,7 +255,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 	#endif
 
 	
-	#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_127_RECURSIVE_SEARCH
+	#ifndef SHRINK_NP_NODEKIND_EXPLORE_PLAIN_200N750_RECURSIVE_SEARCH
 		this->explorePlain_n200n750_recursiveSearch(
 			isReturnWithScore,
 			ourCarriage,
@@ -276,7 +276,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 iid_start:
 
 
-	#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_130_INTERNAL_ID
+	#ifndef SHRINK_NP_NODEKIND_EXPLORE_PLAIN_200N800_INTERNAL_ID
 		this->explorePlain_n200n800_internalIterativeDeepening(
 			depth,
 			ttMove,
@@ -361,7 +361,7 @@ iid_start:
 		// 指さずに探索処理
 
 
-		#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_260_RECURSIVE_SEARCH
+		#ifndef SHRINK_NP_NODEKIND_EXPLORE_PLAIN_400N500_RECURSIVE_SEARCH
 			this->explorePlain_n400n500_recursiveSearch(
 				ourCarriage,
 				givesCheck,
@@ -381,7 +381,7 @@ iid_start:
 		#endif
 
 
-		#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_273_FUTILITY_PRUNING
+		#ifndef SHRINK_NP_NODEKIND_EXPLORE_PLAIN_400N550_FUTILITY_PRUNING
 			// 無駄枝狩り☆（＾▽＾）非PVだけ行う☆！
 			this->explorePlain_n400n550_futilityPruning(
 				isContinue,
@@ -450,7 +450,7 @@ iid_start:
 		// 探索処理
 
 
-		#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_360_RECURSIVE_SEARCH
+		#ifndef SHRINK_NP_NODEKIND_EXPLORE_PLAIN_500N500_RECURSIVE_SEARCH
 			this->explorePlain_n500n500_recursiveSearch(
 				ourCarriage,
 				depth,
@@ -473,7 +473,7 @@ iid_start:
 		// 探索後処理
 
 
-		#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_380_NON_PV_RECURSIVE_SEARCH
+		#ifndef SHRINK_NP_NODEKIND_EXPLORE_PLAIN_500N600_NON_PV_RECURSIVE_SEARCH
 			this->explorePlain_n500n600_nonPVRecursiveSearch(
 				ourCarriage,
 				doFullDepthSearch,
@@ -492,8 +492,7 @@ iid_start:
 
 		this->explorePlain_n700n100_undoMove(
 			pos,
-			move
-			);
+			move);
 
 
 		// アンドゥ後処理
@@ -511,8 +510,7 @@ iid_start:
 			isPVMove,
 			alpha,
 			score,
-			pos
-			);
+			pos);
 
 
 		// アップデートα処理
@@ -530,17 +528,16 @@ iid_start:
 			bestScore,
 			&pSplitedNode,
 			bestMove,
-			beta
-			);
+			beta);
 		if (isBreak) { break; }
 
 
 		// アップデートα後処理
 
 
-		#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_FORK_NEW_MONKEY
+		#ifndef SHRINK_NP_NODEKIND_EXPLORE_PLAIN_700N750_FORK_NEW_MONKEY
 			// 猿を増やすの、止めるぜ（＾～＾）
-			this->explorePlain_n770_forkNewMonkey(
+			this->explorePlain_n700n750_forkNewMonkey(
 				isBreak,
 				ourCarriage,
 				depth,
@@ -554,8 +551,7 @@ iid_start:
 				threatMove,
 				moveCount,
 				nextMoveEvent,
-				cutNode
-				);
+				cutNode);
 			if (isBreak) { break; }
 		#endif
 	}
