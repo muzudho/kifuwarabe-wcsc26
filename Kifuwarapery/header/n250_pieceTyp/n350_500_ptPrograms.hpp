@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
-#include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
 #include "n350_040_ptEvent.hpp"
 #include "n350_070_IPieceType.hpp"
 #include "n350_100_ptOccupied.hpp"
