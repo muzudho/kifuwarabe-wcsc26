@@ -526,6 +526,13 @@
     <ClCompile Include="source\n250_pieceTyp\n350_260_ptGoldHorseDragon.cpp" />
     <ClCompile Include="source\n250_pieceTyp\n350_500_ptPrograms.cpp" />
     <ClCompile Include="source\n340_bonaMove\n105_220_700_bonaMoveArray.cpp" />
+    <ClCompile Include="source\n340_bonaMove\n340_090_nullBonaMove.cpp" />
+    <ClCompile Include="source\n340_bonaMove\n340_100_MiscBonaMove.cpp" />
+    <ClCompile Include="source\n340_bonaMove\n340_120_FileBonaMove.cpp" />
+    <ClCompile Include="source\n340_bonaMove\n340_130_RankBonaMove.cpp" />
+    <ClCompile Include="source\n340_bonaMove\n340_140_DiagonalNESWBonaMove.cpp" />
+    <ClCompile Include="source\n340_bonaMove\n340_150_DiagonalNWSEBonaMove.cpp" />
+    <ClCompile Include="source\n340_bonaMove\n340_500_BonaMoveArray.cpp" />
     <ClCompile Include="source\n340_bonaMove\n351_090_nullBonaMove.cpp" />
     <ClCompile Include="source\n340_bonaMove\n351_100_miscBonaMove.cpp" />
     <ClCompile Include="source\n340_bonaMove\n351_120_FileBonaMove.cpp" />

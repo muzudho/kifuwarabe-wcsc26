@@ -1781,6 +1781,27 @@
     <ClCompile Include="source\n105_220_bonaDir_\n105_220_700_BonaDirectionArray.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n340_090_nullBonaMove.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n340_100_MiscBonaMove.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n340_120_FileBonaMove.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n340_130_RankBonaMove.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n340_140_DiagonalNESWBonaMove.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n340_150_DiagonalNWSEBonaMove.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n340_bonaMove\n340_500_BonaMoveArray.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
