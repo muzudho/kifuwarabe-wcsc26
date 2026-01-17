@@ -404,7 +404,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void SetReductionInStep15(
+	virtual inline void setReduction_n360(
 		Flashlight** ppFlashlight,
 		const Depth depth,
 		int& moveCount,

@@ -409,7 +409,7 @@ iid_start:
 			);
 
 		// step15
-		this->explorePlain_n360(
+		this->explorePlain_n360_recursiveSearch(
 			ourCarriage,
 			depth,
 			isPVMove,

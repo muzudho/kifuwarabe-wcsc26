@@ -302,23 +302,26 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 			givesCheck,
 			&pFlashlight);
 
-		// step15
-		this->explorePlain_n360(
-			ourCarriage,
-			depth,
-			isPVMove,
-			captureOrPawnPromotion,
-			move,
-			ttMove,
-			&pFlashlight,
-			moveCount,
-			cutNode,
-			newDepth,
-			alpha,
-			&pSplitedNode,
-			score,
-			pos,
-			doFullDepthSearch);
+
+		#ifndef SHRINK_EXPLORE_PLAIN_360_RECURSIVE_SEARCH
+			// なんか分からんが再帰探索（＾～＾）
+			this->explorePlain_n360_recursiveSearch(
+				ourCarriage,
+				depth,
+				isPVMove,
+				captureOrPawnPromotion,
+				move,
+				ttMove,
+				&pFlashlight,
+				moveCount,
+				cutNode,
+				newDepth,
+				alpha,
+				&pSplitedNode,
+				score,
+				pos,
+				doFullDepthSearch);
+		#endif
 
 
 		#ifndef SHRINK_EXPLORE_PLAIN_NON_PV_RECURSIVE_SEARCH

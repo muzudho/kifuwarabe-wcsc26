@@ -1200,7 +1200,7 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// なんか分からんが再帰探索（＾～＾）
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="depth"></param>
@@ -1217,7 +1217,7 @@ public:
 	/// <param name="score"></param>
 	/// <param name="pos"></param>
 	/// <param name="doFullDepthSearch"></param>
-	virtual inline void explorePlain_n360(
+	virtual inline void explorePlain_n360_recursiveSearch(
 		OurCarriage& ourCarriage,
 		const Depth depth,
 		bool& isPVMove,
@@ -1242,19 +1242,17 @@ public:
 			&& (*ppFlashlight)->m_killers[0] != move
 			&& (*ppFlashlight)->m_killers[1] != move)
 		{
-			this->SetReductionInStep15(
+			this->setReduction_n360(
 				ppFlashlight,
 				depth,
 				moveCount,
-				cutNode
-				);
+				cutNode);
 			const Depth d = std::max(newDepth - (*ppFlashlight)->m_reduction, Depth::OnePly);
 
 			// スプリットポイントではアルファを更新☆
-			this->UpdateAlphaInStep15(
+			this->updateAlpha_n360(
 				alpha,
-				ppSplitedNode
-				);
+				ppSplitedNode);
 
 			//────────────────────────────────────────────────────────────────────────────────
 			// 探索☆？（＾ｑ＾）
@@ -1281,7 +1279,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void SetReductionInStep15(
+	virtual inline void setReduction_n360(
 		Flashlight** ppFlashlight,
 		const Depth depth,
 		int& moveCount,
@@ -1293,7 +1291,7 @@ public:
 	/// </summary>
 	/// <param name="alpha"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void UpdateAlphaInStep15(
+	virtual inline void updateAlpha_n360(
 		ScoreIndex& alpha,
 		SplitedNode** ppSplitedNode) const
 	{
