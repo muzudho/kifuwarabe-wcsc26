@@ -155,17 +155,6 @@ ScoreNumber AdventureNodekindSplitedNodeRoot::explorePlain_n10(
 	pos.SetNodesVisited(pos.GetNodesVisited() + 1);
 
 
-	//bananaTtScore = this->explorePlain_n200n350_getTtScore(
-	//	excludedMove,
-	//	&pFlashlight,
-	//	posKey,
-	//	pos,
-	//	&pTtEntry,//セットされる☆
-	//	ourCarriage);
-	//bananaTtMove = this->explorePlain_n200n400_getTtMove(
-	//	ourCarriage,
-	//	pTtEntry,
-	//	pos);
 	// ttScore と ttMove でデリシャス・バナナ（＾～＾）！
 	{
 		DeliciousBanana ttDeliciousBanana = this->explorePlain_n200n405_getTtDeliciousBanana(

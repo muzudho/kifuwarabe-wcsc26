@@ -294,8 +294,6 @@ public:
 	/// <summary>
 	/// PVノードか、非PVノードかで実行条件が変わるぜ☆（＾ｑ＾）
 	/// </summary>
-	/// <param name="isReturnWithScore"></param>
-	/// <param name="returnScore"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pTtEntry"></param>
 	/// <param name="depth"></param>
@@ -303,9 +301,7 @@ public:
 	/// <param name="beta"></param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="ttMove"></param>
-	virtual inline ScoreNumber explorePlain_n200n450_returnWithScore(
-		bool& isReturnWithScore,
-		ScoreNumber defaultReturnScore,
+	virtual inline std::tuple<bool, ScoreNumber> explorePlain_n200n450_returnWithScore(
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
 		const Depth depth,
@@ -335,11 +331,10 @@ public:
 				(*ppFlashlight)->m_killers[0] = ttMove;
 			}
 
-			isReturnWithScore = true;
-			return ttScore;
+			return std::make_tuple(true, ttScore);
 		}
 
-		return defaultReturnScore;
+		return std::make_tuple(false, ScoreZero);
 	}
 
 
