@@ -1757,7 +1757,7 @@
     <ClCompile Include="source\n105_220_bonaDir_\n105_220_700_BonaDirectionArray.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\n340_bonaMove\n340_090_nullBonaMove.cpp">
+    <ClCompile Include="source\n340_bonaMove\n340_090_NullBonaMove.cpp">
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="source\n340_bonaMove\n340_100_MiscBonaMove.cpp">

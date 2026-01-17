@@ -525,7 +525,7 @@
     <ClCompile Include="source\n250_pieceTyp\n350_250_ptPieceTypeNum.cpp" />
     <ClCompile Include="source\n250_pieceTyp\n350_260_ptGoldHorseDragon.cpp" />
     <ClCompile Include="source\n250_pieceTyp\n350_500_ptPrograms.cpp" />
-    <ClCompile Include="source\n340_bonaMove\n340_090_nullBonaMove.cpp" />
+    <ClCompile Include="source\n340_bonaMove\n340_090_NullBonaMove.cpp" />
     <ClCompile Include="source\n340_bonaMove\n340_100_MiscBonaMove.cpp" />
     <ClCompile Include="source\n340_bonaMove\n340_120_FileBonaMove.cpp" />
     <ClCompile Include="source\n340_bonaMove\n340_130_RankBonaMove.cpp" />
