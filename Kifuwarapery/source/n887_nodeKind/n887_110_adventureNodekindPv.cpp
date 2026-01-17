@@ -186,7 +186,7 @@ ScoreNumber AdventureNodekindPv::explorePlain_n10(
 	}
 
 
-	this->explorePlain_n200n450_returnWithScore(
+	returnScore = this->explorePlain_n200n450_returnWithScore(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -195,8 +195,7 @@ ScoreNumber AdventureNodekindPv::explorePlain_n10(
 		bananaTtScore,
 		beta,
 		&pFlashlight,
-		bananaTtMove
-		);
+		bananaTtMove);
 	if (isReturnWithScore) { return returnScore; }
 
 	this->explorePlain_n200n500_returnWithValue(

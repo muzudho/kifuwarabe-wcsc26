@@ -172,9 +172,9 @@ public:
 	/// <param name="beta"></param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="ttMove"></param>
-	virtual inline void explorePlain_n200n450_returnWithScore(
+	virtual inline ScoreNumber explorePlain_n200n450_returnWithScore(
 		bool& isReturnWithScore,
-		ScoreNumber& returnScore,
+		ScoreNumber defaultReturnScore,
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
 		const Depth depth,
@@ -185,6 +185,7 @@ public:
 	{
 		// ルートノードはスルー☆！（＾ｑ＾）
 		//UNREACHABLE;
+		return defaultReturnScore;
 	}
 
 

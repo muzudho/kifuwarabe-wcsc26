@@ -200,7 +200,7 @@ ScoreNumber AdventureNodekindSplitedNodeNonPv::explorePlain_n10(
 	}
 
 
-	this->explorePlain_n200n450_returnWithScore(
+	returnScore = this->explorePlain_n200n450_returnWithScore(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
