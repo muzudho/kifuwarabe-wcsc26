@@ -48,7 +48,7 @@ public:
 	///		</pre>
 	/// </summary>
 	/// <param name="captainsOurCarriage">キャプテンの持っている、わたしたちの馬車☆</param>
-	static void	ExploreContinent(
+	static void	exploreContinent_n10(
 		OurCarriage& captainsOurCarriage);
 
 

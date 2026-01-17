@@ -99,7 +99,7 @@ public:
 	/// 現在の部下スレッド
 	/// </summary>
 	/// <returns></returns>
-	ErrandMonkey* GetCurrSubordinate() { return this->m_pSubordinate_; }
+	ErrandMonkey* GetCurrSubordinate() { return this->m_pErrandMonkey_; }
 
 
 	// ========================================
@@ -187,7 +187,7 @@ private:
 	/// <summary>
 	/// タイマースレッド☆
 	/// </summary>
-	ErrandMonkey* m_pSubordinate_;
+	ErrandMonkey* m_pErrandMonkey_;
 
 
 	/// <summary>

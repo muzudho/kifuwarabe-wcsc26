@@ -20,13 +20,13 @@
 /// <summary>
 /// ワーカースレッド開始
 /// </summary>
-/// <typeparam name="T"></typeparam>
+/// <typeparam name="T">キャプテン猿か、お使い猿</typeparam>
 /// <param name="s"></param>
 /// <returns></returns>
-template <typename T> T* newThread(OurCarriage* s) {
-	T* th = new T(s);
-	th->m_handle = std::thread(&MonkeyAbstract::startMonkey_n10, th); // move constructor
-	return th;
+template <typename MONKT> MONKT* newMonkeyWithThread(OurCarriage* s) {
+	MONKT* monkey = new MONKT(s);
+	monkey->m_threadHandle = std::thread(&MonkeyAbstract::startMonkey_n10, monkey); // move constructor
+	return monkey;
 }
 
 
@@ -37,7 +37,7 @@ template <typename T> T* newThread(OurCarriage* s) {
 void deleteThread(MonkeyAbstract* th) {
 	th->m_isEndOfSearch = true;
 	th->NotifyOne();
-	th->m_handle.join(); // Wait for thread termination
+	th->m_threadHandle.join(); // Wait for thread termination
 	delete th;
 }
 
@@ -54,10 +54,10 @@ void MonkiesPub::initializeMonkiePub_app10(OurCarriage* s)
 	m_isSleepWhileIdle_ = true;
 #if defined LEARN
 #else
-	m_pSubordinate_ = newThread<ErrandMonkey>(s);
+	m_pErrandMonkey_ = newMonkeyWithThread<ErrandMonkey>(s);
 #endif
 
-	this->m_itemMonkies.push_back(newThread<CaptainMonkey>(s));
+	this->m_itemMonkies.push_back(newMonkeyWithThread<CaptainMonkey>(s));
 
 	ReadUSIOptions(s);
 }
@@ -70,7 +70,7 @@ void MonkiesPub::Exit() {
 #if defined LEARN
 #else
 	// checkTime() がデータにアクセスしないよう、先に timer_ を delete
-	deleteThread(m_pSubordinate_);
+	deleteThread(m_pErrandMonkey_);
 #endif
 
 	for (auto elem : (*this).m_itemMonkies) {
@@ -101,7 +101,7 @@ void MonkiesPub::ReadUSIOptions(OurCarriage* searcher) {
 	assert(0 < numberOfThreads);
 
 	while (this->m_itemMonkies.size() < numberOfThreads) {
-		this->m_itemMonkies.push_back(newThread<MonkeyAbstract>(searcher));
+		this->m_itemMonkies.push_back(newMonkeyWithThread<MonkeyAbstract>(searcher));
 	}
 
 	while (numberOfThreads < this->m_itemMonkies.size()) {
@@ -131,8 +131,8 @@ MonkeyAbstract* MonkiesPub::GetAvailableSlave(MonkeyAbstract* master) const {
 /// </summary>
 /// <param name="maxPly"></param>
 void MonkiesPub::SetCurrWorrior(const int maxPly) {
-	m_pSubordinate_->m_maxPly = maxPly;
-	m_pSubordinate_->NotifyOne(); // Wake up and restart the timer
+	m_pErrandMonkey_->m_maxPly = maxPly;
+	m_pErrandMonkey_->NotifyOne(); // Wake up and restart the timer
 }
 
 

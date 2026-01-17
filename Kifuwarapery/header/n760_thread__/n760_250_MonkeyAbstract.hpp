@@ -109,9 +109,9 @@ public:
 	ConditionVariable m_sleepCond;
 
 	/// <summary>
-	/// 
+	/// スレッドのハンドル
 	/// </summary>
-	std::thread m_handle;
+	std::thread m_threadHandle;
 
 	/// <summary>
 	/// 

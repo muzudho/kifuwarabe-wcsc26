@@ -1529,16 +1529,16 @@
     <ClCompile Include="source\n800_learn___\n800_100_stopwatch.cpp">
       <Filter>source\n800_learn___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n760_thread__\n760_350_subordinate.cpp">
+    <ClCompile Include="source\n760_thread__\n760_350_ErrandMonkey.cpp">
       <Filter>source\n760_thread__</Filter>
     </ClCompile>
     <ClCompile Include="source\n760_thread__\n760_400_MonkiesPub.cpp">
       <Filter>source\n760_thread__</Filter>
     </ClCompile>
-    <ClCompile Include="source\n760_thread__\n760_300_captain.cpp">
+    <ClCompile Include="source\n760_thread__\n760_300_CaptainMonkey.cpp">
       <Filter>source\n760_thread__</Filter>
     </ClCompile>
-    <ClCompile Include="source\n760_thread__\n760_250_soldier.cpp">
+    <ClCompile Include="source\n760_thread__\n760_250_MonkeyAbstract.cpp">
       <Filter>source\n760_thread__</Filter>
     </ClCompile>
     <ClCompile Include="source\n885_searcher\n885_490_adventureMountainIterativeDeepeningLoop.cpp">

@@ -633,9 +633,9 @@
     <ClCompile Include="source\n755_sword___\n755_100_SwordRoot.cpp" />
     <ClCompile Include="source\n755_sword___\n755_110_SwordPv.cpp" />
     <ClCompile Include="source\n755_sword___\n755_120_SwordNonPv.cpp" />
-    <ClCompile Include="source\n760_thread__\n760_250_soldier.cpp" />
-    <ClCompile Include="source\n760_thread__\n760_300_captain.cpp" />
-    <ClCompile Include="source\n760_thread__\n760_350_subordinate.cpp" />
+    <ClCompile Include="source\n760_thread__\n760_250_MonkeyAbstract.cpp" />
+    <ClCompile Include="source\n760_thread__\n760_300_CaptainMonkey.cpp" />
+    <ClCompile Include="source\n760_thread__\n760_350_ErrandMonkey.cpp" />
     <ClCompile Include="source\n760_thread__\n760_400_MonkiesPub.cpp" />
     <ClCompile Include="source\n800_learn___\n800_100_stopwatch.cpp" />
     <ClCompile Include="source\n883_nodeKind\n883_070_adventurePlainNodekindAbstract.cpp" />

@@ -53,7 +53,7 @@ extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 ///		</pre>
 /// </summary>
 /// <param name="captainsRucksack">キャプテンの持っているＳｅａｒｃｈｅｒ☆</param>
-void AdventureContinent::ExploreContinent(
+void AdventureContinent::exploreContinent_n10(
 	OurCarriage& captainsRucksack)
 {
 	Position& pos = captainsRucksack.m_rootPosition;
