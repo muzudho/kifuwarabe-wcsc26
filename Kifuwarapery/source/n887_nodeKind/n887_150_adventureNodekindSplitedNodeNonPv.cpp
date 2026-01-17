@@ -137,7 +137,7 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::explorePlain_n10(
 
 	// step2: 千日手による探索打切りの判断
 	{
-		auto p = this->ExplorerPlainStep2_IsStopByRepetetion(
+		auto p = this->explorePlain_n95_isStopByRepetetion(
 			//isReturnWithScore,
 			//returnScore,
 			pos,
@@ -153,7 +153,7 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::explorePlain_n10(
 	ScoreIndex returnScore = ScoreNone;
 
 	// step3
-	this->ExplorerPlainStep3(
+	this->explorePlain_n98_step3(
 		isReturnWithScore,
 		returnScore,
 		&pFlashlight,
@@ -180,7 +180,7 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::explorePlain_n10(
 		pTtEntry,
 		pos
 		);
-	this->ExplorerPlainStep4y(
+	this->explorePlain_n116_returnStep4y(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -193,7 +193,7 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::explorePlain_n10(
 		);
 	if (isReturnWithScore) { return returnScore; }
 
-	this->ExplorerPlainStep4z(
+	this->explorePlain_n118_returnWithValue(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -225,7 +225,7 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::explorePlain_n10(
 	if (isGotoIidStart) { goto iid_start; }
 
 	// step6
-	this->ExplorerPlainStep6_NonPV(
+	this->explorePlain_n122_nonPVRazoring(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -239,7 +239,7 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::explorePlain_n10(
 	if (isReturnWithScore) { return returnScore; }
 
 	// step7
-	this->ExplorerPlainStep7(
+	this->explorePlain_n123_returnWithValue(
 		isReturnWithScore,
 		returnScore,
 		&pFlashlight,

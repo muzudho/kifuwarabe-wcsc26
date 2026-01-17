@@ -75,8 +75,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 	assert(-ScoreInfinite <= alpha && alpha < beta && beta <= ScoreInfinite);
 	this->AssertBeforeStep1(
 		alpha,
-		beta
-		);
+		beta);
 	assert(Depth0 < depth);
 
 	// 途中で goto を使用している為、先に全部の変数を定義しておいた方が安全。
@@ -114,14 +113,16 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 
 	bool isGotoSplitPointStart = false;
 
+
 	this->explorePlain_n80_setMoveNone(
 		bestScore,
 		&pFlashlight,
 		threatMove,
 		bestMove);
 
+
 	// step2: 千日手による探索打切りの判断
-	auto p = this->ExplorerPlainStep2_IsStopByRepetetion(
+	auto p = this->explorePlain_n95_isStopByRepetetion(
 		//isReturnWithScore,
 		//returnScore,
 		pos,
@@ -132,8 +133,9 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 	ScoreIndex returnScore = p.second;
 	if (isReturnWithScore) { return returnScore; }
 
-	// step3
-	this->ExplorerPlainStep3(
+
+
+	this->explorePlain_n98_step3(
 		isReturnWithScore,
 		returnScore,
 		&pFlashlight,
@@ -142,9 +144,10 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 		);
 	if (isReturnWithScore) { return returnScore; }
 
+
 	pos.SetNodesVisited(pos.GetNodesVisited() + 1);
 
-	// step4
+
 	this->explorePlain_n100_getTtScore(
 		excludedMove,
 		&pFlashlight,
@@ -154,13 +157,17 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 		ourCarriage,
 		ttScore
 		);
+
+
 	this->explorePlain_n110_getTtMove(
 		ttMove,
 		ourCarriage,
 		pTtEntry,
 		pos
 		);
-	this->ExplorerPlainStep4y(
+
+
+	this->explorePlain_n116_returnStep4y(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -173,7 +180,8 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 		);
 	if (isReturnWithScore) { return returnScore; }
 
-	this->ExplorerPlainStep4z(
+
+	this->explorePlain_n118_returnWithValue(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -188,7 +196,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 		);
 	if (isReturnWithScore) { return returnScore; }
 
-	// step5
+
 	bool isGotoIidStart = false;//NonPVのとき使う☆
 	this->explorePlain_n120_eval(
 		isGotoIidStart,
@@ -204,8 +212,8 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 		);
 	if (isGotoIidStart) { goto iid_start; }
 
-	// step6
-	this->ExplorerPlainStep6_NonPV(
+
+	this->explorePlain_n122_nonPVRazoring(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -218,8 +226,8 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 		);
 	if (isReturnWithScore) { return returnScore; }
 
-	// step7
-	this->ExplorerPlainStep7(
+
+	this->explorePlain_n123_returnWithValue(
 		isReturnWithScore,
 		returnScore,
 		&pFlashlight,
@@ -228,6 +236,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 		eval
 		);
 	if (isReturnWithScore) { return returnScore; }
+
 
 
 	#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_125_NON_PV_RECURSIVE_SEARCH
