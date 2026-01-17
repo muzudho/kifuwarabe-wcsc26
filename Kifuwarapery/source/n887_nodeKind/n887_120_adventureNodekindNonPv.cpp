@@ -333,7 +333,7 @@ iid_start:
 		bool isContinue = false;
 
 
-		this->explorePlain_n180_loopHeader(
+		this->explorePlain_n200_loopHeader(
 			isContinue,
 			pos,
 			move,
@@ -377,7 +377,7 @@ iid_start:
 
 		#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_273_FUTILITY_PRUNING
 			// 無駄枝狩り☆（＾▽＾）非PVだけ行う☆！
-			this->explorePlain_n273_futilityPruning(
+			this->explorePlain_n290_futilityPruning(
 				isContinue,
 				ourCarriage,
 				captureOrPawnPromotion,
@@ -398,7 +398,7 @@ iid_start:
 		#endif
 
 
-		this->explorePlain_n275_continue(
+		this->explorePlain_n320_continue(
 			isContinue,
 			pos,
 			move,
@@ -408,16 +408,16 @@ iid_start:
 
 
 		// 本筋かどうか判定するぜ（＾～＾）
-		isPVMove = this->explorePlain_n280_isPvMove(moveCount);
+		isPVMove = this->explorePlain_n410_isPvMove(moveCount);
 
 
-		this->explorePlain_n300_setMove(
+		this->explorePlain_n440_setMove(
 			move,
 			&pFlashlight);
 		if (isContinue) { continue; }
 
 
-		this->explorePlain_n320_memoryVariationMove(
+		this->explorePlain_n470_memoryVariationMove(
 			captureOrPawnPromotion,
 			playedMoveCount,
 			movesSearched,
@@ -480,7 +480,7 @@ iid_start:
 		if (ourCarriage.m_signals.m_isIterationDeepingStop || pThisThread->IsUselessSplitedNode()) { return score; }
 
 
-		this->explorePlain_n440_findRootNode(
+		this->explorePlain_n680_findRootNode(
 			ourCarriage,
 			move,
 			isPVMove,
@@ -491,7 +491,7 @@ iid_start:
 		bool isBreak = false;
 
 
-		this->explorePlain_n460_updateAlpha(
+		this->explorePlain_n710_updateAlpha(
 			isBreak,
 			ourCarriage,
 			move,
@@ -509,7 +509,7 @@ iid_start:
 
 		#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_FORK_NEW_MONKEY
 			// 猿を増やすの、止めるぜ（＾～＾）
-			this->explorePlain_n480_forkNewMonkey(
+			this->explorePlain_n740_forkNewMonkey(
 				isBreak,
 				ourCarriage,
 				depth,
@@ -530,11 +530,11 @@ iid_start:
 	}
 
 
-	if (this->getReturn_beforeN500()) { return bestScore; }
+	if (this->getReturn_n780()) { return bestScore; }
 
 
 	// step20
-	this->explorePlain_n500(
+	this->explorePlain_n800(
 		moveCount,
 		excludedMove,
 		ourCarriage,

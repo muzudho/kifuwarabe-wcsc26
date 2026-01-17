@@ -73,7 +73,8 @@
 // 分岐本筋ノード
 
 
-#define SHRINK_SPLITED__PV_NODE_EXPLORE_PLAIN_360_RECURSIVE_SEARCH
+// これを定義してもバグは取れない（＾～＾）
+//#define SHRINK_SPLITED__PV_NODE_EXPLORE_PLAIN_360_RECURSIVE_SEARCH
 
 
 // これを定義してもバグは取れない（＾～＾）

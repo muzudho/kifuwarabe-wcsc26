@@ -264,7 +264,7 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 
 		bool isContinue = false;
 
-		this->explorePlain_n180_loopHeader(
+		this->explorePlain_n200_loopHeader(
 			isContinue,
 			pos,
 			move,
@@ -303,7 +303,7 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 			newDepth
 			);
 
-		this->explorePlain_n275_continue(
+		this->explorePlain_n320_continue(
 			isContinue,
 			pos,
 			move,
@@ -313,14 +313,14 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 		if (isContinue) { continue; }
 
 		// 本筋かどうか判定するぜ（＾～＾）
-		isPVMove = this->explorePlain_n280_isPvMove(moveCount);
+		isPVMove = this->explorePlain_n410_isPvMove(moveCount);
 
-		this->explorePlain_n300_setMove(
+		this->explorePlain_n440_setMove(
 			move,
 			&pFlashlight);
 		if (isContinue) { continue; }
 
-		this->explorePlain_n320_memoryVariationMove(
+		this->explorePlain_n470_memoryVariationMove(
 			captureOrPawnPromotion,
 			playedMoveCount,
 			movesSearched,
@@ -348,7 +348,7 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 			alpha,
 			cutNode
 			);
-		this->explorePlain_n400_betaLargeRecursiveSearch(
+		this->explorePlain_n590_betaLargeRecursiveSearch(
 			ourCarriage,
 			isPVMove,
 			alpha,
@@ -371,7 +371,7 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 		if (ourCarriage.m_signals.m_isIterationDeepingStop || pThisThread->IsUselessSplitedNode()) { return score; }
 
 		bool isBreak = false;
-		this->explorePlain_n460_updateAlpha(
+		this->explorePlain_n710_updateAlpha(
 			isBreak,
 			ourCarriage,
 			move,
@@ -387,7 +387,7 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 		if (isBreak) { break; }
 
 		// step19
-		this->explorePlain_n480_forkNewMonkey(
+		this->explorePlain_n740_forkNewMonkey(
 			isBreak,
 			ourCarriage,
 			depth,
@@ -406,10 +406,10 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 		if (isBreak) { break; }
 	}
 
-	if (this->getReturn_beforeN500()) { return bestScore; }
+	if (this->getReturn_n780()) { return bestScore; }
 
 	// step20
-	this->explorePlain_n500(
+	this->explorePlain_n800(
 		moveCount,
 		excludedMove,
 		ourCarriage,

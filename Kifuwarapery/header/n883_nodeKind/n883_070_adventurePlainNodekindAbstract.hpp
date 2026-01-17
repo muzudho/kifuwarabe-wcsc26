@@ -808,7 +808,7 @@ public:
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void explorePlain_n180_loopHeader(
+	virtual inline void explorePlain_n200_loopHeader(
 		bool& isContinue,
 		Position& pos,
 		Move& move,
@@ -823,7 +823,7 @@ public:
 	/// <param name="isContinue"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="move"></param>
-	virtual inline void explorePlain_n200_loopHeader(
+	virtual inline void explorePlain_n230_loopHeader(
 		bool& isContinue,
 		const OurCarriage& ourCarriage,
 		const Move& move) const
@@ -848,7 +848,7 @@ public:
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="moveCount"></param>
-	virtual inline void explorePlain_n220_displayInfo(
+	virtual inline void explorePlain_n260_displayInfo(
 		OurCarriage& ourCarriage,
 		int& moveCount) const
 	{
@@ -991,7 +991,7 @@ public:
 	/// <param name="newDepth"></param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="beta"></param>
-	virtual inline void explorePlain_n273_futilityPruning(
+	virtual inline void explorePlain_n290_futilityPruning(
 		bool& isContinue,
 		OurCarriage& ourCarriage,
 		bool& captureOrPawnPromotion,
@@ -1033,20 +1033,20 @@ public:
 					)
 					)
 			){
-				this->LockInStep13a(ppSplitedNode);
+				this->lockIn_n350(ppSplitedNode);
 				isContinue = true;
 				return;
 			}
 
 			// score based pruning
-			const Depth predictedDepth = this->GetPredictedDepthInStep13a( newDepth, depth, moveCount);
+			const Depth predictedDepth = this->getPredictedDepth_n290n500( newDepth, depth, moveCount);
 			// gain を 2倍にする。
 			const ScoreIndex futilityScore = (*ppFlashlight)->m_staticEval + g_futilityMargins.GetFutilityMargin(predictedDepth, moveCount)
 				+ 2 * ourCarriage.m_gains.GetValue(move.IsDrop(), PieceExtensions::FROM_COLOR_AND_PIECE_TYPE10(pos.GetTurn(), move.GetPieceTypeFromOrDropped()), move.To());
 
 			if (futilityScore < beta) {
 				bestScore = std::max(bestScore, futilityScore);
-				this->LockAndUpdateBestScoreInStep13a(
+				this->lockAndUpdateBestScore_n380(
 					ppSplitedNode,
 					bestScore
 					);
@@ -1057,7 +1057,7 @@ public:
 			if (predictedDepth < 4 * OnePly
 				&& pos.GetSeeSign(move) < ScoreZero)
 			{
-				this->LockInStep13a(ppSplitedNode);
+				this->lockIn_n350(ppSplitedNode);
 				isContinue = true;
 				return;
 			}
@@ -1075,7 +1075,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="moveCount"></param>
 	/// <returns></returns>
-	virtual inline const Depth GetPredictedDepthInStep13a(
+	virtual inline const Depth getPredictedDepth_n290n500(
 		Depth& newDepth,
 		const Depth depth,
 		int& moveCount) const = 0;
@@ -1085,7 +1085,7 @@ public:
 	/// スプリット・ポイントでだけ実行☆（＾ｑ＾）！
 	/// </summary>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void LockInStep13a(
+	virtual inline void lockIn_n350(
 		SplitedNode** ppSplitedNode) const
 	{
 		(*ppSplitedNode)->m_mutex.lock();
@@ -1097,7 +1097,7 @@ public:
 	/// </summary>
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestScore"></param>
-	virtual inline void LockAndUpdateBestScoreInStep13a(
+	virtual inline void lockAndUpdateBestScore_n380(
 		SplitedNode** ppSplitedNode,
 		ScoreIndex& bestScore) const
 	{
@@ -1116,7 +1116,7 @@ public:
 	/// <param name="move"></param>
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
-	virtual inline void explorePlain_n275_continue(
+	virtual inline void explorePlain_n320_continue(
 		bool& isContinue,
 		Position& pos,
 		Move& move,
@@ -1147,7 +1147,7 @@ public:
 	///		</pre>
 	/// </summary>
 	/// <param name="moveCount"></param>
-	virtual inline bool explorePlain_n280_isPvMove(
+	virtual inline bool explorePlain_n410_isPvMove(
 		int moveCount) const = 0;
 
 
@@ -1159,7 +1159,7 @@ public:
 	/// </summary>
 	/// <param name="move"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void explorePlain_n300_setMove(
+	virtual inline void explorePlain_n440_setMove(
 		Move move,
 		Flashlight** ppFlashlight) const = 0;
 
@@ -1171,7 +1171,7 @@ public:
 	/// <param name="playedMoveCount"></param>
 	/// <param name="movesSearched"></param>
 	/// <param name="move"></param>
-	virtual inline void explorePlain_n320_memoryVariationMove(
+	virtual inline void explorePlain_n470_memoryVariationMove(
 		bool& captureOrPawnPromotion,
 		int& playedMoveCount,
 		Move movesSearched[64],
@@ -1254,7 +1254,7 @@ public:
 			&& (*ppFlashlight)->m_killers[0] != move
 			&& (*ppFlashlight)->m_killers[1] != move)
 		{
-			this->setReduction_n360(
+			this->setReduction_n530(
 				ppFlashlight,
 				depth,
 				moveCount,
@@ -1262,7 +1262,7 @@ public:
 			const Depth d = std::max(newDepth - (*ppFlashlight)->m_reduction, Depth::OnePly);
 
 			// スプリットポイントではアルファを更新☆
-			this->updateAlpha_n360(
+			this->updateAlpha_n500(
 				alpha,
 				ppSplitedNode);
 
@@ -1291,7 +1291,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void setReduction_n360(
+	virtual inline void setReduction_n530(
 		Flashlight** ppFlashlight,
 		const Depth depth,
 		int& moveCount,
@@ -1303,7 +1303,7 @@ public:
 	/// </summary>
 	/// <param name="alpha"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void updateAlpha_n360(
+	virtual inline void updateAlpha_n500(
 		ScoreIndex& alpha,
 		SplitedNode** ppSplitedNode) const
 	{
@@ -1317,7 +1317,7 @@ public:
 	/// <param name="doFullDepthSearch"></param>
 	/// <param name="alpha"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void explorePlain_n378_setAlpha(
+	virtual inline void explorePlain_n560_setAlpha(
 		bool& doFullDepthSearch,
 		ScoreIndex& alpha,
 		SplitedNode** ppSplitedNode) const
@@ -1382,7 +1382,7 @@ public:
 	/// <param name="givesCheck"></param>
 	/// <param name="pos"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void explorePlain_n400_betaLargeRecursiveSearch(
+	virtual inline void explorePlain_n590_betaLargeRecursiveSearch(
 		OurCarriage& ourCarriage,
 		bool& isPVMove,
 		ScoreIndex& alpha,
@@ -1396,7 +1396,7 @@ public:
 		// 通常の探索
 		if (
 			isPVMove ||
-			(alpha < score && this->IsBetaLargeAtStep16c(score,beta))
+			(alpha < score && this->isBetaLarge_n620(score,beta))
 		) {
 			score = (newDepth < OnePly ?
 				(givesCheck ? -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[No1_PV]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
@@ -1415,7 +1415,7 @@ public:
 	/// <param name="score"></param>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	virtual inline bool IsBetaLargeAtStep16c(
+	virtual inline bool isBetaLarge_n620(
 		ScoreIndex& score,
 		ScoreIndex& beta) const = 0;
 		
@@ -1439,7 +1439,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestScore"></param>
 	/// <param name="alpha"></param>
-	virtual inline void explorePlain_n430_setAlpha(
+	virtual inline void explorePlain_n650_setAlpha(
 		SplitedNode** ppSplitedNode,
 		ScoreIndex& bestScore,
 		ScoreIndex& alpha) const
@@ -1459,7 +1459,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="score"></param>
 	/// <param name="pos"></param>
-	virtual inline void explorePlain_n440_findRootNode(
+	virtual inline void explorePlain_n680_findRootNode(
 		OurCarriage& ourCarriage,
 		Move& move,
 		bool& isPVMove,
@@ -1511,7 +1511,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestMove"></param>
 	/// <param name="beta"></param>
-	virtual inline void explorePlain_n460_updateAlpha(
+	virtual inline void explorePlain_n710_updateAlpha(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		Move& move,
@@ -1545,7 +1545,7 @@ public:
 	/// <param name="moveCount"></param>
 	/// <param name="mp"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void explorePlain_n480_forkNewMonkey(
+	virtual inline void explorePlain_n740_forkNewMonkey(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		const Depth depth,
@@ -1569,7 +1569,7 @@ public:
 	///		</pre>
 	/// </summary>
 	/// <returns></returns>
-	virtual inline bool getReturn_beforeN500() const = 0;
+	virtual inline bool getReturn_n780() const = 0;
 
 
 	/// <summary>
@@ -1589,7 +1589,7 @@ public:
 	/// <param name="inCheck"></param>
 	/// <param name="pos"></param>
 	/// <param name="movesSearched"></param>
-	virtual inline void explorePlain_n500(
+	virtual inline void explorePlain_n800(
 		int& moveCount,
 		Move& excludedMove,
 		OurCarriage& ourCarriage,
@@ -1642,7 +1642,7 @@ public:
 			ourCarriage.m_tt.Store(
 				posKey,
 				ourCarriage.ConvertScoreToTT(bestScore, (*ppFlashlight)->m_ply),
-				this->GetBoundAtStep20(!bestMove.IsNone()),
+				this->getBound_n800n500(!bestMove.IsNone()),
 				depth,
 				bestMove,
 				(*ppFlashlight)->m_staticEval
@@ -1661,5 +1661,5 @@ public:
 	/// </summary>
 	/// <param name="bestMoveExists"></param>
 	/// <returns></returns>
-	virtual inline Bound GetBoundAtStep20(bool bestMoveExists) const = 0;
+	virtual inline Bound getBound_n800n500(bool bestMoveExists) const = 0;
 };

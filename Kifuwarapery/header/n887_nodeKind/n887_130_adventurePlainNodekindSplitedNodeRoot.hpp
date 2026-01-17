@@ -424,19 +424,6 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="mp"></param>
-	/// <returns></returns>
-	virtual inline Move getNextMove_n160(
-		NextmoveEvent& mp
-		) const override {
-		// スプリットポイントの場合
-		return mp.GetNextMove_SplitedNode();
-	};
-
-
-	/// <summary>
-	/// 
-	/// </summary>
 	/// <param name="ttMove"></param>
 	/// <param name="depth"></param>
 	/// <param name="score"></param>
@@ -461,6 +448,19 @@ public:
 
 
 	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="mp"></param>
+	/// <returns></returns>
+	virtual inline Move getNextMove_n160(
+		NextmoveEvent& mp
+	) const override {
+		// スプリットポイントの場合
+		return mp.GetNextMove_SplitedNode();
+	};
+
+
+	/// <summary>
 	/// スプリット・ポイントかどうかで変わる手続きだぜ☆！（＾ｑ＾）
 	/// </summary>
 	/// <param name="isContinue"></param>
@@ -469,7 +469,7 @@ public:
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void explorePlain_n180_loopHeader(
+	virtual inline void explorePlain_n200_loopHeader(
 		bool& isContinue,
 		Position& pos,
 		Move& move,
@@ -514,7 +514,7 @@ public:
 	/// <param name="newDepth"></param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="beta"></param>
-	virtual inline void explorePlain_n273_futilityPruning(
+	virtual inline void explorePlain_n290_futilityPruning(
 		bool& isContinue,
 		OurCarriage& ourCarriage,
 		bool& captureOrPawnPromotion,
@@ -544,7 +544,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="moveCount"></param>
 	/// <returns></returns>
-	virtual inline const Depth GetPredictedDepthInStep13a(
+	virtual inline const Depth getPredictedDepth_n290n500(
 		Depth& newDepth,
 		const Depth depth,
 		int& moveCount
@@ -562,7 +562,7 @@ public:
 	/// <param name="move"></param>
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
-	virtual inline void explorePlain_n275_continue(
+	virtual inline void explorePlain_n320_continue(
 		bool& isContinue,
 		Position& pos,
 		Move& move,
@@ -578,7 +578,7 @@ public:
 	/// 本筋かどうか判定するぜ（＾～＾）
 	/// </summary>
 	/// <param name="moveCount"></param>
-	virtual inline bool explorePlain_n280_isPvMove(
+	virtual inline bool explorePlain_n410_isPvMove(
 		int moveCount) const override
 	{
 		return (moveCount == 1);	// PVノードだぜ☆（＾ｑ＾）
@@ -590,7 +590,7 @@ public:
 	/// </summary>
 	/// <param name="move"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void explorePlain_n300_setMove(
+	virtual inline void explorePlain_n440_setMove(
 		Move move,
 		Flashlight** ppFlashlight) const override
 	{
@@ -606,7 +606,7 @@ public:
 	/// <param name="playedMoveCount"></param>
 	/// <param name="movesSearched"></param>
 	/// <param name="move"></param>
-	virtual inline void explorePlain_n320_memoryVariationMove(
+	virtual inline void explorePlain_n470_memoryVariationMove(
 		bool& captureOrPawnPromotion,
 		int& playedMoveCount,
 		Move movesSearched[64],
@@ -624,7 +624,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void setReduction_n360(
+	virtual inline void setReduction_n530(
 		Flashlight** ppFlashlight,
 		const Depth depth,
 		int& moveCount,
@@ -641,7 +641,7 @@ public:
 	/// <param name="score"></param>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	virtual inline bool IsBetaLargeAtStep16c(
+	virtual inline bool isBetaLarge_n620(
 		ScoreIndex& score,
 		ScoreIndex& beta
 		) const override {
@@ -664,7 +664,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestMove"></param>
 	/// <param name="beta"></param>
-	virtual inline void explorePlain_n460_updateAlpha(
+	virtual inline void explorePlain_n710_updateAlpha(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		Move& move,
@@ -717,7 +717,7 @@ public:
 	/// <param name="moveCount"></param>
 	/// <param name="mp"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void explorePlain_n480_forkNewMonkey(
+	virtual inline void explorePlain_n740_forkNewMonkey(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		const Depth depth,
@@ -740,6 +740,16 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
+	/// <returns></returns>
+	virtual inline bool getReturn_n780() const override {
+		// スプリット・ポイントは　ステップ２０を実行する前に途中抜けするぜ☆（＾ｑ＾）
+		return true;
+	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
 	/// <param name="moveCount"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="ourCarriage"></param>
@@ -754,7 +764,7 @@ public:
 	/// <param name="inCheck"></param>
 	/// <param name="pos"></param>
 	/// <param name="movesSearched"></param>
-	inline void explorePlain_n500(
+	inline void explorePlain_n800(
 		int& moveCount,
 		Move& excludedMove,
 		OurCarriage& ourCarriage,
@@ -778,19 +788,9 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <returns></returns>
-	virtual inline bool getReturn_beforeN500() const override {
-		// スプリット・ポイントは　ステップ２０を実行する前に途中抜けするぜ☆（＾ｑ＾）
-		return true;
-	}
-
-
-	/// <summary>
-	/// 
-	/// </summary>
 	/// <param name="bestMoveExists"></param>
 	/// <returns></returns>
-	inline Bound GetBoundAtStep20(bool bestMoveExists) const override {
+	inline Bound getBound_n800n500(bool bestMoveExists) const override {
 		return bestMoveExists ? Bound::BoundExact : Bound::BoundUpper;
 	}
 };

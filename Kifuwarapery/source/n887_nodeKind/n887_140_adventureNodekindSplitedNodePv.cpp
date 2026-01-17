@@ -292,7 +292,7 @@ split_point_start:
 		bool isContinue = false;
 
 
-		this->explorePlain_n180_loopHeader(
+		this->explorePlain_n200_loopHeader(
 			isContinue,
 			pos,
 			move,
@@ -331,10 +331,10 @@ split_point_start:
 
 
 		// 本筋かどうか判定するぜ（＾～＾）
-		isPVMove = this->explorePlain_n280_isPvMove(moveCount);
+		isPVMove = this->explorePlain_n410_isPvMove(moveCount);
 
 
-		this->explorePlain_n300_setMove(
+		this->explorePlain_n440_setMove(
 			move,
 			&pFlashlight);
 		if (isContinue) { continue; }
@@ -369,7 +369,7 @@ split_point_start:
 		#endif
 
 
-		this->explorePlain_n378_setAlpha(
+		this->explorePlain_n560_setAlpha(
 			doFullDepthSearch,
 			alpha,
 			&pSplitedNode);
@@ -389,7 +389,7 @@ split_point_start:
 		#endif
 
 
-		this->explorePlain_n400_betaLargeRecursiveSearch(
+		this->explorePlain_n590_betaLargeRecursiveSearch(
 			ourCarriage,
 			isPVMove,
 			alpha,
@@ -409,7 +409,7 @@ split_point_start:
 		assert(-ScoreInfinite < score && score < ScoreInfinite);
 
 
-		this->explorePlain_n430_setAlpha(
+		this->explorePlain_n650_setAlpha(
 			&pSplitedNode,
 			bestScore,
 			alpha);
@@ -417,7 +417,7 @@ split_point_start:
 
 
 		bool isBreak = false;
-		this->explorePlain_n460_updateAlpha(
+		this->explorePlain_n710_updateAlpha(
 			isBreak,
 			ourCarriage,
 			move,
@@ -433,7 +433,7 @@ split_point_start:
 	}
 
 
-	if (this->getReturn_beforeN500()) { return bestScore; }
+	if (this->getReturn_n780()) { return bestScore; }
 
 
 	return bestScore;

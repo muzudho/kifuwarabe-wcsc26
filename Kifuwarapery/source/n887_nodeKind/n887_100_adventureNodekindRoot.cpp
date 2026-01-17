@@ -232,7 +232,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 		bool isContinue = false;
 
 
-		this->explorePlain_n180_loopHeader(
+		this->explorePlain_n200_loopHeader(
 			isContinue,
 			pos,
 			move,
@@ -243,7 +243,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 		if (isContinue) { continue; }
 
 
-		this->explorePlain_n200_loopHeader(
+		this->explorePlain_n230_loopHeader(
 			isContinue,
 			ourCarriage,
 			move
@@ -252,7 +252,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 
 
 		// info 表示
-		this->explorePlain_n220_displayInfo(
+		this->explorePlain_n260_displayInfo(
 			ourCarriage,
 			moveCount
 			);
@@ -290,18 +290,18 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 
 
 		// 本筋かどうか判定するぜ（＾～＾）
-		isPVMove = this->explorePlain_n280_isPvMove(moveCount);
+		isPVMove = this->explorePlain_n410_isPvMove(moveCount);
 
 
 		// 現在の指し手を覚えた（＾～＾）
-		this->explorePlain_n300_setMove(
+		this->explorePlain_n440_setMove(
 			move,
 			&pFlashlight);
 		if (isContinue) { continue; }
 
 
 		// 探索した変化を覚えてる（＾～＾）？
-		this->explorePlain_n320_memoryVariationMove(
+		this->explorePlain_n470_memoryVariationMove(
 			captureOrPawnPromotion,
 			playedMoveCount,
 			movesSearched,
@@ -356,7 +356,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 
 		#ifndef SHRINK_ROOT_NODE_EXPLORE_PLAIN_LARGE_BETA_RECURSIVE_SEARCH
 			// 大きなβ値のときの深掘りか（＾～＾）？
-			this->explorePlain_n400_betaLargeRecursiveSearch(
+			this->explorePlain_n590_betaLargeRecursiveSearch(
 				ourCarriage,
 				isPVMove,
 				alpha,
@@ -381,7 +381,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 		if (ourCarriage.m_signals.m_isIterationDeepingStop || pHandleMonkey->IsUselessSplitedNode()) { return score; }
 
 
-		this->explorePlain_n440_findRootNode(
+		this->explorePlain_n680_findRootNode(
 			ourCarriage,
 			move,
 			isPVMove,
@@ -394,7 +394,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 
 
 		// α値更新
-		this->explorePlain_n460_updateAlpha(
+		this->explorePlain_n710_updateAlpha(
 			isBreak,
 			ourCarriage,
 			move,
@@ -411,7 +411,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 
 		#ifndef SHRINK_ROOT_NODE_EXPLORE_PLAIN_FORK_NEW_MONKEY
 			// さらに枝に別の猿を走らせる。
-			this->explorePlain_n480_forkNewMonkey(
+			this->explorePlain_n740_forkNewMonkey(
 				isBreak,
 				ourCarriage,
 				depth,
@@ -432,10 +432,10 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 
 	}
 
-	if (this->getReturn_beforeN500()) { return bestScore; }
+	if (this->getReturn_n780()) { return bestScore; }
 
 	// step20
-	this->explorePlain_n500(
+	this->explorePlain_n800(
 		moveCount,
 		excludedMove,
 		ourCarriage,
