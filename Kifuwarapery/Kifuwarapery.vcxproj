@@ -455,7 +455,6 @@
     <ClCompile Include="source\n105_220_bonaDir_\n105_220_640_DiagonalNESWBonaDirection.cpp" />
     <ClCompile Include="source\n105_220_bonaDir_\n105_220_650_DiagonalNWSEBonaDirection.cpp" />
     <ClCompile Include="source\n105_220_bonaDir_\n105_220_700_BonaDirectionArray.cpp" />
-    <ClCompile Include="source\n105_220_bonaDir_\n105_220_700_bonaMoveArray.cpp" />
     <ClCompile Include="source\n165_movStack\n165_410_moveModels.cpp" />
     <ClCompile Include="source\n220_position\n220_645_gameStats.cpp" />
     <ClCompile Include="source\n080_100_sysWorld\n080_100_500_common.cpp" />

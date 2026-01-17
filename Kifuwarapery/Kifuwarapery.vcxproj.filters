@@ -1661,9 +1661,6 @@
     <ClCompile Include="source\n105_220_bonaDir_\n105_220_600_NullBonaDirection.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\n105_220_bonaDir_\n105_220_700_bonaMoveArray.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
     <ClCompile Include="source\n130_100_boardBb_\n160_108_slideBits.cpp">
       <Filter>source</Filter>
     </ClCompile>
