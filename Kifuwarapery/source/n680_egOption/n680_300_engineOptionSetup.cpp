@@ -40,7 +40,7 @@ namespace {
 	/// </summary>
 	/// <param name="s"></param>
 	/// <param name=""></param>
-	void onThreads(OurCarriage* s, const EngineOptionable&) { s->m_ownerHerosPub.ReadUSIOptions(s); }
+	void onThreads(OurCarriage* s, const EngineOptionable&) { s->m_monkiesPub.ReadUSIOptions(s); }
 
 
 	/// <summary>
@@ -60,7 +60,7 @@ namespace {
 /// </summary>
 /// <param name="pMap"></param>
 /// <param name="pRucksack"></param>
-void EngineOptionSetup::Initialize(EngineOptionsMap* pMap, OurCarriage * pRucksack)
+void EngineOptionSetup::initializeMonkiePub_app10(EngineOptionsMap* pMap, OurCarriage * pRucksack)
 {
 	pMap->Put("USI_Hash"					, EngineOption(256, 1, 65536, onHashSize, pRucksack));
 	pMap->Put("Clear_Hash"					, EngineOption(onClearHash, pRucksack));

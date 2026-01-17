@@ -132,10 +132,10 @@ void AdventureContinent::ExploreContinent(
 	}
 
 	// 全スレッドの初期化か何か☆？
-	captainsRucksack.m_ownerHerosPub.WakeUp(&captainsRucksack);
+	captainsRucksack.m_monkiesPub.WakeUp(&captainsRucksack);
 
 	// 下級戦士の寿命（ミリ秒）を設定するぜ☆
-	captainsRucksack.m_ownerHerosPub.GetCurrSubordinate()->m_lifetimeMilliseconds =
+	captainsRucksack.m_monkiesPub.GetCurrSubordinate()->m_lifetimeMilliseconds =
 		(
 			captainsRucksack.m_limits.IsBrandnewTimeMgr() ? // 反復深化をしたい☆？（＾ｑ＾）
 			// する場合
@@ -151,7 +151,7 @@ void AdventureContinent::ExploreContinent(
 				100
 			);
 
-	captainsRucksack.m_ownerHerosPub.GetCurrSubordinate()->NotifyOne();
+	captainsRucksack.m_monkiesPub.GetCurrSubordinate()->NotifyOne();
 
 #if defined INANIWA_SHIFT
 	detectInaniwa(GetPos);
@@ -170,8 +170,8 @@ void AdventureContinent::ExploreContinent(
 
 #if defined LEARN
 #else
-	captainsRucksack.m_ownerHerosPub.GetCurrSubordinate()->m_lifetimeMilliseconds = 0; // timer を止める。
-	captainsRucksack.m_ownerHerosPub.Sleep();
+	captainsRucksack.m_monkiesPub.GetCurrSubordinate()->m_lifetimeMilliseconds = 0; // timer を止める。
+	captainsRucksack.m_monkiesPub.Sleep();
 
 finalize:
 

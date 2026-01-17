@@ -137,9 +137,9 @@ public:
 	Position	m_rootPosition;
 
 	/// <summary>
-	/// スレッズ？
+	/// スレッド・プール
 	/// </summary>
-	MonkiesPub	m_ownerHerosPub;
+	MonkiesPub	m_monkiesPub;
 
 	/// <summary>
 	/// USIオプション？
@@ -193,7 +193,7 @@ public:
 	/// <summary>
 	/// 初期化？
 	/// </summary>
-	void	init_app10();
+	void	initializeOurCarriage_app10();
 
 
 	/// <summary>

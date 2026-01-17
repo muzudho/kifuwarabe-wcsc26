@@ -124,7 +124,7 @@ void App10::initialize_app10()
 	Position::initZobrist_app10();
 
 	SYNCCOUT << "(^q^) 3   . 探索部の初期化！" << SYNCENDL;
-	this->searcher->init_app10();
+	this->searcher->initializeOurCarriage_app10();
 
 
 	// 一時オブジェクトの生成と破棄
@@ -155,5 +155,5 @@ void App10::body_app10(int argc, char* argv[])
 void App10::finalize_app10()
 {
 	SYNCCOUT << "(^q^)main(6/6): threads.exit! ----> doUSICommandLoop" << SYNCENDL;
-	this->searcher->m_ownerHerosPub.Exit();
+	this->searcher->m_monkiesPub.Exit();
 }

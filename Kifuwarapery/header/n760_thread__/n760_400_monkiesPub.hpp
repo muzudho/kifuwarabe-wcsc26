@@ -26,6 +26,7 @@ const int g_MaxThreads = 64;
 /// 猿酒場
 /// 
 ///		- 元の名前：　`ＴhreadPool`
+///		- ベクターを（持っているのではなく）継承していることに注意。
 ///		</pre>
 /// </summary>
 class MonkiesPub : public std::vector<MonkeyAbstract*> {
@@ -104,7 +105,7 @@ public:
 	/// 初期化？
 	/// </summary>
 	/// <param name="s"></param>
-	void Init(OurCarriage* s);
+	void initializeMonkiePub_app10(OurCarriage* s);
 
 
 	/// <summary>

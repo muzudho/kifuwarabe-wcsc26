@@ -21,5 +21,5 @@ public:
 	/// </summary>
 	/// <param name="pMap"></param>
 	/// <param name="s"></param>
-	void Initialize( EngineOptionsMap* pMap, OurCarriage* s);
+	void initializeMonkiePub_app10( EngineOptionsMap* pMap, OurCarriage* s);
 };

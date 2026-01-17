@@ -20,7 +20,7 @@ void CaptainMonkey::StartWorkerThread() {
 			while (!this->m_isMasterThread && !m_isEndOfSearch)
 			{
 				// UI 関連だから要らないのかも。
-				this->m_pOurCarriage->m_ownerHerosPub.m_sleepCond_.notify_one();
+				this->m_pOurCarriage->m_monkiesPub.m_sleepCond_.notify_one();
 				this->m_sleepCond.wait(lock);
 			}
 		}

@@ -1532,7 +1532,7 @@
     <ClCompile Include="source\n760_thread__\n760_350_subordinate.cpp">
       <Filter>source\n760_thread__</Filter>
     </ClCompile>
-    <ClCompile Include="source\n760_thread__\n760_400_herosPub.cpp">
+    <ClCompile Include="source\n760_thread__\n760_400_MonkiesPub.cpp">
       <Filter>source\n760_thread__</Filter>
     </ClCompile>
     <ClCompile Include="source\n760_thread__\n760_300_captain.cpp">

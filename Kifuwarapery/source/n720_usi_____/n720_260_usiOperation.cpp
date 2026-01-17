@@ -143,7 +143,7 @@ void UsiOperation::Go(GameStats& gameStats, const Position& pos, std::istringstr
 	pos.GetOurCarriage()->m_ourMoves = moves;
 
 	// 思考を開始☆
-	pos.GetOurCarriage()->m_ownerHerosPub.StartThinking(gameStats, pos, limits, moves);
+	pos.GetOurCarriage()->m_monkiesPub.StartThinking(gameStats, pos, limits, moves);
 }
 
 
@@ -251,7 +251,7 @@ void UsiOperation::SetPosition(Position& pos, std::istringstream& ssCmd) {
 	else { return; }
 
     // 指し手リストだぜ（＾▽＾）
-	pos.Set(sfen, pos.GetOurCarriage()->m_ownerHerosPub.GetFirstCaptain());
+	pos.Set(sfen, pos.GetOurCarriage()->m_monkiesPub.GetFirstCaptain());
 
     // 指し手を進めるぜ（＾▽＾）
 	pos.GetOurCarriage()->m_setUpStates = StateStackPtr(new std::stack<StateInfo>());
