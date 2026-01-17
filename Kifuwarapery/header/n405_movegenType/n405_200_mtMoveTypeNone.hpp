@@ -8,9 +8,9 @@
 
 
 /// <summary>
-/// 
+/// 指し手生成区分：指し手を生成しない。
 /// </summary>
-class MoveTypeRecapture : public MoveTypeAbstract {
+class MovegenTypeNone : public MovegenTypeAbstract {
 
 
 public:

@@ -7,7 +7,7 @@
 /// <summary>
 /// 
 /// </summary>
-class MoveTypeAbstract {
+class MovegenTypeAbstract {
 
 
 public:

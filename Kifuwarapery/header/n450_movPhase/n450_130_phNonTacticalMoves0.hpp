@@ -49,12 +49,12 @@ public:
 	/// </summary>
 	/// <param name="nmEvent"></param>
 	void GoNext2Phase(NextmoveEvent& nmEvent) override {
-		nmEvent.SetLastMove(g_moveGenerator200.GenerateMoves_2(N04_NonCaptureMinusPro,nmEvent.GetCurrMove(), nmEvent.GetPos()));
+		nmEvent.SetLastMove(g_moveGenerator200.generateDeliciousBanana_n2(N04_NonCaptureMinusPro,nmEvent.GetCurrMove(), nmEvent.GetPos()));
 
 		nmEvent.ScoreNonCapturesMinusPro<false>();
 		nmEvent.SetCurrMove(nmEvent.GetLastMove());
 
-		nmEvent.SetLastMoveAndLastNonCaputre(g_moveGenerator200.GenerateMoves_2(N02_Drop,nmEvent.GetCurrMove(), nmEvent.GetPos()));
+		nmEvent.SetLastMoveAndLastNonCaputre(g_moveGenerator200.generateDeliciousBanana_n2(N02_Drop,nmEvent.GetCurrMove(), nmEvent.GetPos()));
 		nmEvent.ScoreNonCapturesMinusPro<true>();
 
 		nmEvent.SetCurrMove(nmEvent.GetFirstMove());

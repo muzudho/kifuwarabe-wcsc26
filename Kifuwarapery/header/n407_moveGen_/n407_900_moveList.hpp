@@ -7,11 +7,15 @@
 
 
 /// <summary>
-/// 局面の指し手のコレクション
+///		<pre>
+/// 局面の（点数付き）指し手のコレクション
+/// 
+///		- 旧名： `ＭoveList`
+///		</pre>
 /// </summary>
 /// <typeparam name="MT">指し手生成の区別</typeparam>
 template <MovegenType MT>
-class MoveCollection
+class DeliciousBananaCollection
 {
 
 
@@ -27,11 +31,11 @@ public:
 	/// 生成
 	/// </summary>
 	/// <param name="pos"></param>
-	explicit MoveCollection(const Position& pos) :
+	explicit DeliciousBananaCollection(const Position& pos) :
 		// 指し手スタック
 		m_curr_(m_deliciousBananaArray_),
 		// 指し手生成
-		m_last_(g_moveGenerator200.GenerateMoves_2(MT,m_deliciousBananaArray_, pos))
+		m_last_(g_moveGenerator200.generateDeliciousBanana_n2(MT,m_deliciousBananaArray_, pos))
 	{
 	}
 

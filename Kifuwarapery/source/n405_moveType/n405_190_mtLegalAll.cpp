@@ -1,1 +1,1 @@
-﻿#include "../../header/n405_moveType/n405_190_mtLegalAll.hpp"
+﻿#include "../../header/n405_movegenType/n405_190_mtLegalAll.hpp"

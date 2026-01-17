@@ -43,15 +43,15 @@ void measureGenerateMoves(const Position& pos) {
 	if (pos.InCheck()) {
 		for (u64 i = 0; i < num; ++i) {
 			pms = &legalMoves[0];
-			pms = g_moveGenerator200.GenerateMoves_2(N06_Evasion,pms, pos);
+			pms = g_moveGenerator200.generateDeliciousBanana_n2(N06_Evasion,pms, pos);
 		}
 	}
 	else {
 		for (u64 i = 0; i < num; ++i) {
 			pms = &legalMoves[0];
-			pms = g_moveGenerator200.GenerateMoves_2(N03_CapturePlusPro,pms, pos);
-			pms = g_moveGenerator200.GenerateMoves_2(N04_NonCaptureMinusPro,pms, pos);
-			pms = g_moveGenerator200.GenerateMoves_2(N02_Drop,pms, pos);
+			pms = g_moveGenerator200.generateDeliciousBanana_n2(N03_CapturePlusPro,pms, pos);
+			pms = g_moveGenerator200.generateDeliciousBanana_n2(N04_NonCaptureMinusPro,pms, pos);
+			pms = g_moveGenerator200.generateDeliciousBanana_n2(N02_Drop,pms, pos);
 			//			pms = generateMoves<PseudoLegal>(pms, pos);
 			//			pms = generateMoves<Legal>(pms, pos);
 		}

@@ -11,18 +11,18 @@
 #include "../n374_genMove_/n374_350_PieceMovesGenerator.hpp"
 #include "../n374_genMove_/n374_750_dropMoveGenerator.hpp"
 #include "../n374_genMove_/n374_780_MoveGenerator100.hpp""
-#include "../n405_moveType/n405_100_mtCapture.hpp"
-#include "../n405_moveType/n405_110_mtNonCapture.hpp"
-#include "../n405_moveType/n405_120_mtDrop.hpp"
-#include "../n405_moveType/n405_130_mtCapturePlusPro.hpp"
-#include "../n405_moveType/n405_140_mtNonCaptureMinusPro.hpp"
-#include "../n405_moveType/n405_150_mtRecapture.hpp"
-#include "../n405_moveType/n405_160_mtEvasion.hpp"
-#include "../n405_moveType/n405_170_mtNonEvasion.hpp"
-#include "../n405_moveType/n405_180_mtLegal.hpp"
-#include "../n405_moveType/n405_190_mtLegalAll.hpp"
-#include "../n405_moveType/n405_200_mtMoveTypeNone.hpp"
-#include "../n405_moveType/n405_500_mtArray.hpp"
+#include "../n405_movegenType/n405_100_mtCapture.hpp"
+#include "../n405_movegenType/n405_110_mtNonCapture.hpp"
+#include "../n405_movegenType/n405_120_mtDrop.hpp"
+#include "../n405_movegenType/n405_130_mtCapturePlusPro.hpp"
+#include "../n405_movegenType/n405_140_mtNonCaptureMinusPro.hpp"
+#include "../n405_movegenType/n405_150_mtRecapture.hpp"
+#include "../n405_movegenType/n405_160_mtEvasion.hpp"
+#include "../n405_movegenType/n405_170_mtNonEvasion.hpp"
+#include "../n405_movegenType/n405_180_mtLegal.hpp"
+#include "../n405_movegenType/n405_190_mtLegalAll.hpp"
+#include "../n405_movegenType/n405_200_mtMoveTypeNone.hpp"
+#include "../n405_movegenType/n405_500_movegenTypeAllCollections.hpp"
 
 
 /// <summary>
@@ -35,16 +35,18 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// 指し手の生成
 	/// </summary>
 	/// <param name="mt"></param>
 	/// <param name="moveStackList"></param>
 	/// <param name="pos"></param>
 	/// <returns></returns>
-	inline DeliciousBanana* GenerateMoves_2(
-		MovegenType mt, DeliciousBanana* moveStackList, const Position& pos
-	) const {
-		return g_moveTypeArray.m_moveTypeArray[mt]->GenerateMove(moveStackList, pos);
+	inline DeliciousBanana* generateDeliciousBanana_n2(
+		MovegenType mt,
+		DeliciousBanana* pDeliciousBanana,
+		const Position& pos) const
+	{
+		return g_movegenTypeCollection.m_mtArray[mt]->GenerateMove(pDeliciousBanana, pos);
 	}
 
 

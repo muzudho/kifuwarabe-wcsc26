@@ -1,2 +1,2 @@
-﻿#include "../../header/n405_moveType/n405_070_mtAbstract.hpp"
+﻿#include "../../header/n405_movegenType/n405_070_mtAbstract.hpp"
 

@@ -208,7 +208,7 @@ void MonkiesPub::StartClimbingTree(
 		const MovegenType MT = N08_Legal;
 
 		// この局面の全ての指し手（＾～＾）？
-		for (MoveCollection<MT> moveList(position); !moveList.IsEnd(); ++moveList) {
+		for (DeliciousBananaCollection<MT> moveList(position); !moveList.IsEnd(); ++moveList) {
 
 			if (
 				// 探索する指し手一覧が空か（＾～＾）？

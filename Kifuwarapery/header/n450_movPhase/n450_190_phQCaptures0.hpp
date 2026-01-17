@@ -44,7 +44,7 @@ public:
 	/// </summary>
 	/// <param name="nmEvent"></param>
 	void GoNext2Phase(NextmoveEvent& nmEvent) override {
-		nmEvent.SetLastMove(g_moveGenerator200.GenerateMoves_2(N03_CapturePlusPro,nmEvent.GetFirstMove(), nmEvent.GetPos()));
+		nmEvent.SetLastMove(g_moveGenerator200.generateDeliciousBanana_n2(N03_CapturePlusPro,nmEvent.GetFirstMove(), nmEvent.GetPos()));
 		nmEvent.ScoreCaptures();
 	}
 };
