@@ -817,9 +817,9 @@ public:
 		const Move& move) const
 	{
 		// ルートノードにのみある手続きだぜ☆！（＾ｑ＾）
-		if (std::find(ourCarriage.m_rootMoves.begin() + ourCarriage.m_pvIdx,
-				ourCarriage.m_rootMoves.end(),
-				move) == ourCarriage.m_rootMoves.end())
+		if (std::find(ourCarriage.m_rootMovesByID.begin() + ourCarriage.m_pvIdx,
+				ourCarriage.m_rootMovesByID.end(),
+				move) == ourCarriage.m_rootMovesByID.end())
 		{
 			isContinue = true;
 			return;
@@ -836,7 +836,7 @@ public:
 		OurCarriage& ourCarriage,
 		int& moveCount) const
 	{
-		ourCarriage.m_signals.m_firstRootMove = (moveCount == 1);
+		ourCarriage.m_signals.m_isFirstRootMove = (moveCount == 1);
 #if 0
 		if (GetThisThread == ourCarriage.m_ownerHerosPub.GetFirstCaptain() && 3000 < ourCarriage.m_stopwatch.GetElapsed()) {
 			SYNCCOUT << "info depth " << GetDepth / OnePly
@@ -1450,7 +1450,7 @@ public:
 		Position& pos) const
 	{
 		// ルート・ムーブのリストから、１つ選んでる（＾～＾）？
-		RootMove& rm = *std::find(ourCarriage.m_rootMoves.begin(), ourCarriage.m_rootMoves.end(), move);
+		RootMove& rm = *std::find(ourCarriage.m_rootMovesByID.begin(), ourCarriage.m_rootMovesByID.end(), move);
 
 		if (isPVMove || alpha < score) {
 			// PV move or new best move

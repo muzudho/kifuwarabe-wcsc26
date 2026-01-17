@@ -55,7 +55,7 @@ public:
 	/// </summary>
 	/// <param name="moveStackList"></param>
 	void Generate2RecaptureMoves_usWhite(
-		MoveStack* moveStackList,
+		DeliciousBanana* moveStackList,
 		const Position& pos,
 		const Square from,
 		const Square to) const override
@@ -69,7 +69,7 @@ public:
 	/// </summary>
 	/// <param name="moveStackList"></param>
 	void Generate2RecaptureMoves_usBlack(
-		MoveStack* moveStackList,
+		DeliciousBanana* moveStackList,
 		const Position& pos,
 		const Square from,
 		const Square to) const override

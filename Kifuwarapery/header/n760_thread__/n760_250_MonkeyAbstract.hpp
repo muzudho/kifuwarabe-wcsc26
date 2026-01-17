@@ -100,7 +100,11 @@ public:
 	Mutex m_sleepLock;
 
 	/// <summary>
+	///		<pre>
+	/// 標準の条件変数。
 	/// 
+	///		- スリープ？
+	///		</pre>
 	/// </summary>
 	ConditionVariable m_sleepCond;
 

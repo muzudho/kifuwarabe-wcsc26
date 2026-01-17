@@ -61,7 +61,7 @@ public:
 		nmEvent.SetLastMove(std::partition(nmEvent.GetCurrMove(), nmEvent.GetLastNonCapture(), HasPositiveScore()));
 
 		// 要素数は10個くらいまでであることが多い。要素数が少ないので、insertionSort() を使用する。
-		UtilMoveStack::InsertionSort<MoveStack*, true>(nmEvent.GetCurrMove(), nmEvent.GetLastMove());
+		UtilMoveStack::InsertionSort<DeliciousBanana*, true>(nmEvent.GetCurrMove(), nmEvent.GetLastMove());
 	}
 };
 

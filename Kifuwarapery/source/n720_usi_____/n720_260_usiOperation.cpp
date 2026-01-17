@@ -109,7 +109,7 @@ void UsiOperation::Go(GameStats& gameStats, const Position& pos, std::istringstr
 			if (limits.GetMoveTime() != 0) {
 //#if !defined(FISCHER_RULE)
 				// フィッシャー・ルールでないときは、秒読みがあるのだろう☆（＾ｑ＾）
-				limits.DecrementMoveTime( pos.GetOurCarriage()->m_engineOptions["Byoyomi_Margin"]);
+				limits.DecrementMoveTime( pos.getOurCarriage()->m_engineOptions["Byoyomi_Margin"]);
 //#endif
 			}
 		}
@@ -140,10 +140,10 @@ void UsiOperation::Go(GameStats& gameStats, const Position& pos, std::istringstr
 		}
 	}
 
-	pos.GetOurCarriage()->m_ourMoves = moves;
+	pos.getOurCarriage()->m_ourMoves = moves;
 
-	// 思考を開始☆
-	pos.GetOurCarriage()->m_monkiesPub.StartThinking(gameStats, pos, limits, moves);
+	// 木登り（思考）を開始☆
+	pos.getOurCarriage()->m_monkiesPub.StartClimbingTree(gameStats, pos, limits, moves);
 }
 
 
@@ -251,10 +251,10 @@ void UsiOperation::SetPosition(Position& pos, std::istringstream& ssCmd) {
 	else { return; }
 
     // 指し手リストだぜ（＾▽＾）
-	pos.Set(sfen, pos.GetOurCarriage()->m_monkiesPub.GetFirstCaptain());
+	pos.Set(sfen, pos.getOurCarriage()->m_monkiesPub.GetFirstCaptain());
 
     // 指し手を進めるぜ（＾▽＾）
-	pos.GetOurCarriage()->m_setUpStates = StateStackPtr(new std::stack<StateInfo>());
+	pos.getOurCarriage()->m_setUpStates = StateStackPtr(new std::stack<StateInfo>());
 
 	Ply currentPly = pos.GetGamePly();
 
@@ -264,14 +264,14 @@ void UsiOperation::SetPosition(Position& pos, std::istringstream& ssCmd) {
 		if (move.IsNone()) { break; }
 
         // 状態情報を積むぜ（＾▽＾）
-		pos.GetOurCarriage()->m_setUpStates->push(StateInfo());
+		pos.getOurCarriage()->m_setUpStates->push(StateInfo());
 
         // 指し手を指すぜ（＾▽＾）
 		pos.GetTurn() == Color::Black	// 自分は先手か？
 			?
-			pos.DoMove<Color::Black,Color::White>(move, pos.GetOurCarriage()->m_setUpStates->top())
+			pos.DoMove<Color::Black,Color::White>(move, pos.getOurCarriage()->m_setUpStates->top())
 			:
-			pos.DoMove<Color::White,Color::Black>(move, pos.GetOurCarriage()->m_setUpStates->top())	// 自分が後手のとき。
+			pos.DoMove<Color::White,Color::Black>(move, pos.getOurCarriage()->m_setUpStates->top())	// 自分が後手のとき。
 			;
 
 		++currentPly;

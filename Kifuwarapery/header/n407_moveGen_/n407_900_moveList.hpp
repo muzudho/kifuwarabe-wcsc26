@@ -1,5 +1,4 @@
 ﻿#pragma once
-
 #include "../n165_movStack/n165_300_movegenType.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
 #include "../n220_position/n220_665_utilMoveStack.hpp"
@@ -8,35 +7,80 @@
 
 
 /// <summary>
-/// 
+/// 局面の指し手のコレクション
 /// </summary>
-/// <typeparam name="MT"></typeparam>
+/// <typeparam name="MT">指し手生成の区別</typeparam>
 template <MovegenType MT>
-class MoveList {
+class MoveCollection
+{
 
 
 public:
 
 
+	// ========================================
+	// 軽い生成／破棄
+	// ========================================
+
+
 	/// <summary>
-	/// 
+	/// 生成
 	/// </summary>
 	/// <param name="pos"></param>
-	explicit MoveList(const Position& pos) :
-		m_curr_(m_moveStackList_), m_last_(g_moveGenerator200.GenerateMoves_2(MT,m_moveStackList_, pos)) {}
+	explicit MoveCollection(const Position& pos) :
+		// 指し手スタック
+		m_curr_(m_deliciousBananaArray_),
+		// 指し手生成
+		m_last_(g_moveGenerator200.GenerateMoves_2(MT,m_deliciousBananaArray_, pos))
+	{
+	}
+
+
+	// ========================================
+	// 演算子のオーバーロード
+	// ========================================
 
 
 	/// <summary>
-	/// 
+	/// 次の要素へ
 	/// </summary>
-	void operator ++ () { ++m_curr_; }
+	void operator ++ ()
+	{
+		++m_curr_;
+	}
+
+
+	// ========================================
+	// メソッド
+	// ========================================
+
+
+	// クエスチョン・メソッド
 
 
 	/// <summary>
-	/// 
+	/// 最後の要素か
 	/// </summary>
 	/// <returns></returns>
 	bool IsEnd() const { return (m_curr_ == m_last_); }
+
+
+	/// <summary>
+	/// 指し手を含むか
+	/// </summary>
+	/// <param name="move"></param>
+	/// <returns></returns>
+	bool Contains(const Move move) const {
+		for (const DeliciousBanana* pDeliBanana(m_deliciousBananaArray_); pDeliBanana != m_last_; ++pDeliBanana) {
+			if (pDeliBanana->m_move == move) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+
+	// アクセッサ
 
 
 	/// <summary>
@@ -50,39 +94,29 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	size_t GetSize() const { return static_cast<size_t>(m_last_ - m_moveStackList_); }
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="move"></param>
-	/// <returns></returns>
-	bool Contains(const Move move) const {
-		for (const MoveStack* it(m_moveStackList_); it != m_last_; ++it) {
-			if (it->m_move == move) {
-				return true;
-			}
-		}
-		return false;
-	}
+	size_t GetSize() const { return static_cast<size_t>(m_last_ - m_deliciousBananaArray_); }
 
 
 private:
 
 
+	// ========================================
+	// フィールド
+	// ========================================
+
+
 	/// <summary>
-	/// 
+	/// ［指し手］と点数のペアの配列
 	/// </summary>
-	MoveStack m_moveStackList_[Move::m_MAX_LEGAL_MOVES];
+	DeliciousBanana m_deliciousBananaArray_[Move::m_MAX_LEGAL_MOVES];
 
 	/// <summary>
 	/// 
 	/// </summary>
-	MoveStack* m_curr_;
+	DeliciousBanana* m_curr_;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	MoveStack* m_last_;
+	DeliciousBanana* m_last_;
 };

@@ -87,7 +87,7 @@ std::string OurCarriage::PvInfoToUSI(Position& pos, const Ply depth, const Score
 		}
 
 		const Ply d = (update ? depth : depth - 1);
-		const ScoreIndex s = (update ? m_rootMoves[i].m_score_ : m_rootMoves[i].m_prevScore_);
+		const ScoreIndex s = (update ? m_rootMovesByID[i].m_score_ : m_rootMovesByID[i].m_prevScore_);
 
 		ss << "info depth " << d
 		   << " seldepth " << selDepth
@@ -98,8 +98,8 @@ std::string OurCarriage::PvInfoToUSI(Position& pos, const Ply depth, const Score
 		   << " multipv " << i + 1
 		   << " pv ";
 
-		for (int j = 0; !m_rootMoves[i].m_pv_[j].IsNone(); ++j) {
-			ss << " " << m_rootMoves[i].m_pv_[j].ToUSI();
+		for (int j = 0; !m_rootMovesByID[i].m_pv_[j].IsNone(); ++j) {
+			ss << " " << m_rootMovesByID[i].m_pv_[j].ToUSI();
 		}
 
 		ss << std::endl;
@@ -271,7 +271,7 @@ void RootMove::InsertPvInTT(Position& pos) {
 		if (tte == nullptr
 			|| UtilMoveStack::Move16toMove(tte->GetMove(), pos) != m_pv_[ply])
 		{
-			pos.GetOurCarriage()->m_tt.Store(pos.GetKey(), ScoreNone, BoundNone, DepthNone, m_pv_[ply], ScoreNone);
+			pos.getOurCarriage()->m_tt.Store(pos.GetKey(), ScoreNone, BoundNone, DepthNone, m_pv_[ply], ScoreNone);
 		}
 
 		assert(pos.MoveIsLegal(m_pv_[ply]));
@@ -344,9 +344,9 @@ void OurCarriage::CheckTime() {
 	// まだ最初の指し手☆？（＾～＾）？
 	const bool isStillAtFirstMove =
 		// 最初の指し手で☆
-		m_signals.m_firstRootMove
+		m_signals.m_isFirstRootMove
 		// フェイル・ロウではなくて☆？
-		&& !m_signals.m_failedLowAtRoot
+		&& !m_signals.m_isFailedLowAtRoot
 		&& m_timeMgr.IsTimeBudgetOver(elapsed);
 
 	// これ以上の時間がないか☆？（＾ｑ＾）？
@@ -361,7 +361,7 @@ void OurCarriage::CheckTime() {
 		||
 		(m_limits.m_visitedNodesNum != 0 && m_limits.m_visitedNodesNum < nodes)
 	){
-		m_signals.m_stop = true;
+		m_signals.m_isStop = true;
 	}
 }
 

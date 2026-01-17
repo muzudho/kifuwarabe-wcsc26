@@ -39,8 +39,8 @@ public:
 	/// <param name="target"></param>
 	/// <returns></returns>
 	template <const Color US>
-	static FORCE_INLINE MoveStack* GeneratePieceMoves_N01_Pawn(
-		MoveStack* moveStackList,
+	static FORCE_INLINE DeliciousBanana* GeneratePieceMoves_N01_Pawn(
+		DeliciousBanana* moveStackList,
 		const PieceMoveEvent ptEvent,
 		const Bitboard& target
 	) {
@@ -105,8 +105,8 @@ public:
 	/// <param name="target"></param>
 	/// <returns></returns>
 	template <const Color US>
-	static FORCE_INLINE MoveStack* GeneratePieceMoves_N02_Lance(
-		MoveStack* moveStackList,
+	static FORCE_INLINE DeliciousBanana* GeneratePieceMoves_N02_Lance(
+		DeliciousBanana* moveStackList,
 		const PieceMoveEvent ptEvent,
 		const Bitboard& target
 	) {
@@ -163,8 +163,8 @@ public:
 	/// <param name="target"></param>
 	/// <returns></returns>
 	template <const Color US>
-	static FORCE_INLINE MoveStack* GeneratePieceMoves_N03_Knight(
-		MoveStack* moveStackList,
+	static FORCE_INLINE DeliciousBanana* GeneratePieceMoves_N03_Knight(
+		DeliciousBanana* moveStackList,
 		const PieceMoveEvent ptEvent,
 		const Bitboard& target
 	) {
@@ -208,8 +208,8 @@ public:
 	/// <param name="target"></param>
 	/// <returns></returns>
 	template <const Color US>
-	static FORCE_INLINE MoveStack* GeneratePieceMoves_N04_Silver(
-		MoveStack* moveStackList,
+	static FORCE_INLINE DeliciousBanana* GeneratePieceMoves_N04_Silver(
+		DeliciousBanana* moveStackList,
 		const PieceMoveEvent ptEvent,
 		const Bitboard& target
 	) {
@@ -245,8 +245,8 @@ public:
 	/// <param name="target"></param>
 	/// <returns></returns>
 	template <const Color US>
-	static FORCE_INLINE MoveStack* GeneratePieceMoves_N05_Bishop(
-		MoveStack* moveStackList,
+	static FORCE_INLINE DeliciousBanana* GeneratePieceMoves_N05_Bishop(
+		DeliciousBanana* moveStackList,
 		const PieceMoveEvent ptEvent,
 		const Bitboard& target
 	) {
@@ -263,8 +263,8 @@ public:
 	/// <param name="target"></param>
 	/// <returns></returns>
 	template <const Color US>
-	static FORCE_INLINE MoveStack* GeneratePieceMoves_N06_Rook(
-		MoveStack* moveStackList,
+	static FORCE_INLINE DeliciousBanana* GeneratePieceMoves_N06_Rook(
+		DeliciousBanana* moveStackList,
 		const PieceMoveEvent ptEvent,
 		const Bitboard& target
 	) {
@@ -281,8 +281,8 @@ public:
 	/// <param name="target"></param>
 	/// <returns></returns>
 	template <const Color US>
-	static FORCE_INLINE MoveStack* GeneratePieceMoves_N16_GoldHorseDragon(
-		MoveStack* moveStackList,
+	static FORCE_INLINE DeliciousBanana* GeneratePieceMoves_N16_GoldHorseDragon(
+		DeliciousBanana* moveStackList,
 		const PieceMoveEvent ptEvent,
 		const Bitboard& target
 	) {
@@ -318,8 +318,8 @@ public:
 	/// <param name="target"></param>
 	/// <returns></returns>
 	template <const Color US>
-	static FORCE_INLINE MoveStack* GeneratePieceMoves_N08_King(
-		MoveStack* moveStackList,
+	static FORCE_INLINE DeliciousBanana* GeneratePieceMoves_N08_King(
+		DeliciousBanana* moveStackList,
 		const PieceMoveEvent ptEvent,
 		const Bitboard& target
 	) {

@@ -160,7 +160,7 @@ public:
 		Position& pos
 		)const override
 	{
-		ttMove = ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_pv_[0];
+		ttMove = ourCarriage.m_rootMovesByID[ourCarriage.m_pvIdx].m_pv_[0];
 	}
 
 

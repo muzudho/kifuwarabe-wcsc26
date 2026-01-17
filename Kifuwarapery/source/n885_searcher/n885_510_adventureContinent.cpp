@@ -114,13 +114,13 @@ void AdventureContinent::ExploreContinent(
 			!bookMoveScore.m_move.IsNone()
 			&&
 			std::find(
-				captainsRucksack.m_rootMoves.begin(),
-				captainsRucksack.m_rootMoves.end(),
+				captainsRucksack.m_rootMovesByID.begin(),
+				captainsRucksack.m_rootMovesByID.end(),
 				bookMoveScore.m_move
-			) != captainsRucksack.m_rootMoves.end()
+			) != captainsRucksack.m_rootMovesByID.end()
 		){
-			std::swap(captainsRucksack.m_rootMoves[0], *std::find(captainsRucksack.m_rootMoves.begin(),
-				captainsRucksack.m_rootMoves.end(),
+			std::swap(captainsRucksack.m_rootMovesByID[0], *std::find(captainsRucksack.m_rootMovesByID.begin(),
+				captainsRucksack.m_rootMovesByID.end(),
 				bookMoveScore.m_move));
 			SYNCCOUT << "info"
 				<< " score " << captainsRucksack.scoreToUSI(bookMoveScore.m_scoreIndex)
@@ -178,17 +178,17 @@ finalize:
 	SYNCCOUT << "info nodes " << pos.GetNodesSearched()
 		<< " time " << captainsRucksack.m_stopwatch.GetElapsed() << SYNCENDL;
 
-	if (!captainsRucksack.m_signals.m_stop && (captainsRucksack.m_limits.m_canPonder || captainsRucksack.m_limits.m_isInfinite)) {
-		captainsRucksack.m_signals.m_stopOnPonderHit = true;
-		pos.GetThisThread()->WaitFor(captainsRucksack.m_signals.m_stop);
+	if (!captainsRucksack.m_signals.m_isStop && (captainsRucksack.m_limits.m_canPonder || captainsRucksack.m_limits.m_isInfinite)) {
+		captainsRucksack.m_signals.m_isStopOnPonderHit = true;
+		pos.GetThisThread()->WaitFor(captainsRucksack.m_signals.m_isStop);
 	}
 
-	if (captainsRucksack.m_rootMoves[0].m_pv_[0].IsNone()) {
+	if (captainsRucksack.m_rootMovesByID[0].m_pv_[0].IsNone()) {
 		SYNCCOUT << "bestmove resign" << SYNCENDL;
 	}
 	else {
-		SYNCCOUT << "bestmove " << captainsRucksack.m_rootMoves[0].m_pv_[0].ToUSI()
-			<< " ponder " << captainsRucksack.m_rootMoves[0].m_pv_[1].ToUSI()
+		SYNCCOUT << "bestmove " << captainsRucksack.m_rootMovesByID[0].m_pv_[0].ToUSI()
+			<< " ponder " << captainsRucksack.m_rootMovesByID[0].m_pv_[1].ToUSI()
 			<< SYNCENDL;
 	}
 #endif

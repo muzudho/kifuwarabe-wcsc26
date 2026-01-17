@@ -29,7 +29,7 @@ const int g_MaxThreads = 64;
 ///		- ベクターを（持っているのではなく）継承していることに注意。
 ///		</pre>
 /// </summary>
-class MonkiesPub	// : public std::vector<MonkeyAbstract*>
+class MonkiesPub
 {
 
 
@@ -54,7 +54,7 @@ public:
 
 
 	/// <summary>
-	/// モンキーズ
+	/// お客の猿たち
 	/// </summary>
 	std::vector<MonkeyAbstract*> m_itemMonkies;
 
@@ -169,7 +169,7 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="limits"></param>
 	/// <param name="searchMoves"></param>
-	void StartThinking(
+	void StartClimbingTree(
 		const GameStats& gameStats,
 		const Position& pos,
 		const LimitsDuringGo& limits,

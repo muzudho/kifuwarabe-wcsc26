@@ -73,9 +73,11 @@ public:
 	StateStackPtr		m_setUpStates;
 
 	/// <summary>
-	/// ルート？ 前回の反復深化探索☆？（イテレーション）の結果が入っているみたいだぜ☆
+	///		<pre>
+	/// 反復深化探索をしていて、前回の反復深化探索（ID）の初手☆？の結果が入っているみたいだぜ☆（＾～＾）
+	///		</pre>
 	/// </summary>
-	std::vector<RootMove>		m_rootMoves;
+	std::vector<RootMove>		m_rootMovesByID;
 
 #if defined LEARN
 	/// <summary>

@@ -30,8 +30,8 @@ public:
 	/// <param name="dmEvent"></param>
 	/// <param name="haveHandArr"></param>
 	/// <returns></returns>
-	MoveStack* MakeDropMovesToRank9ExceptNL(
-		MoveStack* pMovestack,
+	DeliciousBanana* MakeDropMovesToRank9ExceptNL(
+		DeliciousBanana* pMovestack,
 		const DropMakerEvent& dmEvent,
 		Move haveHandArr[6]
 	) const override {
@@ -47,8 +47,8 @@ public:
 	/// <param name="dmEvent"></param>
 	/// <param name="haveHandArr"></param>
 	/// <returns></returns>
-	MoveStack* MakeDropMovesToRank8ExceptN(
-		MoveStack* pMovestack,
+	DeliciousBanana* MakeDropMovesToRank8ExceptN(
+		DeliciousBanana* pMovestack,
 		const DropMakerEvent& dmEvent,
 		Move haveHandArr[6]
 	) const override {
@@ -64,8 +64,8 @@ public:
 	/// <param name="dmEvent"></param>
 	/// <param name="haveHandArr"></param>
 	/// <returns></returns>
-	MoveStack* MakeDropMovesToRank1234567(
-		MoveStack* pMovestack,
+	DeliciousBanana* MakeDropMovesToRank1234567(
+		DeliciousBanana* pMovestack,
 		const DropMakerEvent& dmEvent,
 		Move haveHandArr[6]
 	) const override {

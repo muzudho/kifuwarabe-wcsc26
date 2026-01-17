@@ -32,8 +32,8 @@ public:
 	/// <param name="dmEvent"></param>
 	/// <param name="haveHandArr">これ打ムーブにできないかだぜ☆？（＾ｑ＾）</param>
 	/// <returns></returns>
-	virtual MoveStack* MakeDropMovesToRank9ExceptNL(
-		MoveStack* pMovestack,
+	virtual DeliciousBanana* MakeDropMovesToRank9ExceptNL(
+		DeliciousBanana* pMovestack,
 		const DropMakerEvent& dmEvent,
 		Move haveHandArr[6]) const = 0;
 
@@ -48,8 +48,8 @@ public:
 	/// <param name="dmEvent"></param>
 	/// <param name="haveHandArr">これ打ムーブにできないかだぜ☆？（＾ｑ＾）</param>
 	/// <returns></returns>
-	virtual MoveStack* MakeDropMovesToRank8ExceptN(
-		MoveStack* pMovestack,
+	virtual DeliciousBanana* MakeDropMovesToRank8ExceptN(
+		DeliciousBanana* pMovestack,
 		const DropMakerEvent& dmEvent,
 		Move haveHandArr[6]) const = 0;
 
@@ -64,8 +64,8 @@ public:
 	/// <param name="dmEvent"></param>
 	/// <param name="haveHandArr">これ打ムーブにできないかだぜ☆？（＾ｑ＾）</param>
 	/// <returns></returns>
-	virtual MoveStack* MakeDropMovesToRank1234567(
-		MoveStack* pMovestack,
+	virtual DeliciousBanana* MakeDropMovesToRank1234567(
+		DeliciousBanana* pMovestack,
 		const DropMakerEvent& dmEvent,
 		Move haveHandArr[6]) const = 0;
 };

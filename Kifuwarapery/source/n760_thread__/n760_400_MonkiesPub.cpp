@@ -152,45 +152,82 @@ void MonkiesPub::WaitForThinkFinished()
 /// </summary>
 /// <param name="position"></param>
 /// <param name="limits"></param>
-/// <param name="searchMoves"></param>
-void MonkiesPub::StartThinking(
+/// <param name="searchMoves">探索する指し手一覧（＾～＾）？</param>
+void MonkiesPub::StartClimbingTree(
 	const GameStats& gameStats,
 	const Position& position,
 	const LimitsDuringGo& limits,
 	const std::vector<Move>& searchMoves)
 {
-#if defined LEARN
-#else
-	WaitForThinkFinished();
-#endif
+	#if defined LEARN
+	#else
+		// 考え終わるのを待っている（＾～＾）？
+		WaitForThinkFinished();
+	#endif
 
-	position.GetOurCarriage()->m_stopwatch.Restart();
+	// ストップウォッチ計測開始
+	position.getOurCarriage()->m_stopwatch.Restart();
 
-	position.GetOurCarriage()->m_signals.m_stopOnPonderHit = position.GetOurCarriage()->m_signals.m_firstRootMove = false;
-	position.GetOurCarriage()->m_signals.m_stop = position.GetOurCarriage()->m_signals.m_failedLowAtRoot = false;
+	// 以下を偽にする
+	//		- ポンダーヒット
+	//		- 初手
+	//		- 停止信号
+	//		- 根のフェイルド・ロウ
+	position.getOurCarriage()->m_signals.m_isStopOnPonderHit
+		= position.getOurCarriage()->m_signals.m_isFirstRootMove
+			= position.getOurCarriage()->m_signals.m_isStop
+				= position.getOurCarriage()->m_signals.m_isFailedLowAtRoot
+					= false;
 
-	position.GetOurCarriage()->m_gameStats = gameStats;
-	position.GetOurCarriage()->m_rootPosition = position;
-	position.GetOurCarriage()->m_limits = limits;
-	position.GetOurCarriage()->m_rootMoves.clear();
+	// 対局データ
+	position.getOurCarriage()->m_gameStats = gameStats;
 
-#if defined LEARN
-	// searchMoves を直接使う。
-	GetPos.GetRucksack()->m_rootMoves.push_back(RootMove(position.GetRucksack()->m_ourMoves[0]));
+	// 根局面
+	position.getOurCarriage()->m_rootPosition = position;
 
-	// 浅い探索なので、thread 生成、破棄のコストが高い。余分な thread を生成せずに直接探索を呼び出す。
-	GetPos.GetRucksack()->Think(GetPos.GetRucksack());
-#else
-	const MovegenType MT = N08_Legal;
-	for (MoveList<MT> ml(position); !ml.IsEnd(); ++ml) {
-		if (searchMoves.empty()
-			|| std::find(searchMoves.begin(), searchMoves.end(), ml.GetMove()) != searchMoves.end())
-		{
-			position.GetOurCarriage()->m_rootMoves.push_back(RootMove(ml.GetMove()));
+	// リミットデータ
+	position.getOurCarriage()->m_limits = limits;
+
+	// 根の指し手リスト初期化
+	position.getOurCarriage()->m_rootMovesByID.clear();
+
+
+	#if defined LEARN
+
+
+		// searchMoves を直接使う。
+		GetPos.getOurCarriage()->m_rootMoves.push_back(RootMove(position.GetRucksack()->m_ourMoves[0]));
+
+		// 浅い探索なので、thread 生成、破棄のコストが高い。余分な thread を生成せずに直接探索を呼び出す。
+		GetPos.getOurCarriage()->Think(GetPos.GetRucksack());
+
+
+	#else
+
+
+		const MovegenType MT = N08_Legal;
+
+		// この局面の全ての指し手（＾～＾）？
+		for (MoveCollection<MT> moveList(position); !moveList.IsEnd(); ++moveList) {
+
+			if (
+				// 探索する指し手一覧が空か（＾～＾）？
+				searchMoves.empty()
+				||
+				// この局面の指し手の１つは、探索する指し手の最後の要素ではないとき（＾～＾）？
+				std::find(searchMoves.begin(), searchMoves.end(), moveList.GetMove()) != searchMoves.end())
+			{
+				// ルート・ムーブスの末尾に指し手を追加している（＾～＾）？
+				position.getOurCarriage()->m_rootMovesByID.push_back(RootMove(moveList.GetMove()));
+			}
 		}
-	}
 
-	this->GetFirstCaptain()->m_isMasterThread = true;
-	this->GetFirstCaptain()->NotifyOne();
-#endif
+		// マスタースレッドだ（＾～＾）？
+		this->GetFirstCaptain()->m_isMasterThread = true;
+
+		// 通知してる（＾～＾）？
+		this->GetFirstCaptain()->NotifyOne();
+
+
+	#endif
 }

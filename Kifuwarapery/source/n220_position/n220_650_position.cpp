@@ -309,7 +309,7 @@ const OurCarriage* Position::GetConstOurCarriage() const
 /// 
 /// </summary>
 /// <returns></returns>
-OurCarriage* Position::GetOurCarriage() const
+OurCarriage* Position::getOurCarriage() const
 {
 	return this->m_pOurCarriage_;
 }

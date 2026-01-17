@@ -29,7 +29,7 @@ public:
 	/// <param name="nmEvent"></param>
 	/// <returns></returns>
 	bool GetNext2Move(Move& resultMove, NextmoveEvent& nmEvent) const override {
-		MoveStack* pMoveStack = UtilMoveStack::PickBest(nmEvent.GetCurrMove(), nmEvent.GetLastMove());
+		DeliciousBanana* pMoveStack = UtilMoveStack::PickBest(nmEvent.GetCurrMove(), nmEvent.GetLastMove());
 		nmEvent.IncrementCurMove();
 
 		// todo: see が確実に駒打ちじゃないから、内部で駒打ちか判定してるのは少し無駄。

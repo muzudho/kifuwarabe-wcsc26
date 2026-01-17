@@ -60,7 +60,7 @@ public:
 	/// <param name="from"></param>
 	/// <param name="to"></param>
 	void Generate2RecaptureMoves_usWhite(
-		MoveStack* moveStackList,
+		DeliciousBanana* moveStackList,
 		const Position& pos,
 		const Square from,
 		const Square to
@@ -79,7 +79,7 @@ public:
 	/// <param name="from"></param>
 	/// <param name="to"></param>
 	void Generate2RecaptureMoves_usBlack(
-		MoveStack* moveStackList,
+		DeliciousBanana* moveStackList,
 		const Position& pos,
 		const Square from,
 		const Square to

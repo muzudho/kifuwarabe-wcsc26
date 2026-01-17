@@ -50,7 +50,7 @@ public:
 	///		</pre>
 	/// </summary>
 	virtual void Generate2RecaptureMoves_usWhite(
-		MoveStack* moveStackList,
+		DeliciousBanana* moveStackList,
 		const Position& pos,
 		const Square from,
 		const Square to) const = 0;
@@ -60,7 +60,7 @@ public:
 	///インターフェースのメソッド
 	/// </summary>
 	virtual void Generate2RecaptureMoves_usBlack(
-		MoveStack* moveStackList,
+		DeliciousBanana* moveStackList,
 		const Position& pos,
 		const Square from,
 		const Square to) const = 0;

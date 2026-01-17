@@ -34,8 +34,8 @@ public:
 	/// <param name="target"></param>
 	/// <returns></returns>
 	template<const bool isBishop,const Color US>
-	static FORCE_INLINE MoveStack* GenerateBishopOrRookMoves(
-		MoveStack* moveStackList,
+	static FORCE_INLINE DeliciousBanana* GenerateBishopOrRookMoves(
+		DeliciousBanana* moveStackList,
 		//const PieceType pt,
 		Move pieceTypeAsMove,
 		const PieceMoveEvent ptEvent,

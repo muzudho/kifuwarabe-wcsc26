@@ -244,7 +244,7 @@ inline ScoreIndex LVA(const PieceType pt) { return LVATable[pt]; }
 /// 
 /// </summary>
 void NextmoveEvent::ScoreCaptures() {
-	for (MoveStack* curr = GetCurrMove(); curr != GetLastMove(); ++curr) {
+	for (DeliciousBanana* curr = GetCurrMove(); curr != GetLastMove(); ++curr) {
 		const Move move = curr->m_move;
 		curr->m_score = PieceScore::GetPieceScore(GetPos().GetPiece(move.To())) - LVA(move.GetPieceTypeFrom());
 	}
@@ -255,7 +255,7 @@ void NextmoveEvent::ScoreCaptures() {
 /// 
 /// </summary>
 void NextmoveEvent::ScoreEvasions() {
-	for (MoveStack* curr = GetCurrMove(); curr != GetLastMove(); ++curr) {
+	for (DeliciousBanana* curr = GetCurrMove(); curr != GetLastMove(); ++curr) {
 		const Move move = curr->m_move;
 		const ScoreIndex seeScore = GetPos().GetSeeSign(move);
 		if (seeScore < 0) {

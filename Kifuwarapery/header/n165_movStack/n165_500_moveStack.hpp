@@ -4,9 +4,13 @@
 
 
 /// <summary>
+///		<pre>
+/// 指し手とスコア
 /// 
+///		- 旧名： `MoveStack`
+///		</pre>
 /// </summary>
-struct MoveStack {
+struct DeliciousBanana {
 
 
 	/// <summary>
@@ -27,7 +31,7 @@ struct MoveStack {
 /// <param name="f"></param>
 /// <param name="s"></param>
 /// <returns></returns>
-inline bool operator < (const MoveStack& f, const MoveStack& s) { return f.m_score < s.m_score; }
+inline bool operator < (const DeliciousBanana& f, const DeliciousBanana& s) { return f.m_score < s.m_score; }
 
 
 /// <summary>
@@ -36,4 +40,4 @@ inline bool operator < (const MoveStack& f, const MoveStack& s) { return f.m_sco
 /// <param name="f"></param>
 /// <param name="s"></param>
 /// <returns></returns>
-inline bool operator > (const MoveStack& f, const MoveStack& s) { return f.m_score > s.m_score; }
+inline bool operator > (const DeliciousBanana& f, const DeliciousBanana& s) { return f.m_score > s.m_score; }

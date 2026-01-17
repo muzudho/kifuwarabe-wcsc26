@@ -369,7 +369,7 @@ split_point_start:
 			alpha
 			);
 
-		if (ourCarriage.m_signals.m_stop || pThisThread->IsUselessNode()) { return score; }
+		if (ourCarriage.m_signals.m_isStop || pThisThread->IsUselessNode()) { return score; }
 
 		this->ExplorerPlainStep18b(
 			ourCarriage,

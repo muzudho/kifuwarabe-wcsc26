@@ -24,9 +24,9 @@ public:
 		SYNCCOUT << "info nodes " << pos.GetNodesSearched()
 			<< " time " << ourCarriage.m_stopwatch.GetElapsed() << SYNCENDL;
 
-		if (!ourCarriage.m_signals.m_stop && (ourCarriage.m_limits.m_canPonder || ourCarriage.m_limits.m_isInfinite)) {
-			ourCarriage.m_signals.m_stopOnPonderHit = true;
-			pos.GetThisThread()->WaitFor(ourCarriage.m_signals.m_stop);
+		if (!ourCarriage.m_signals.m_isStop && (ourCarriage.m_limits.m_canPonder || ourCarriage.m_limits.m_isInfinite)) {
+			ourCarriage.m_signals.m_isStopOnPonderHit = true;
+			pos.GetThisThread()->WaitFor(ourCarriage.m_signals.m_isStop);
 		}
 
 		SYNCCOUT << "bestmove win" << SYNCENDL;

@@ -20,5 +20,5 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="all"></param>
 	/// <returns></returns>
-	virtual MoveStack* GenerateMove(MoveStack* moveStackList, const Position& pos, bool all=false) const = 0;
+	virtual DeliciousBanana* GenerateMove(DeliciousBanana* moveStackList, const Position& pos, bool all=false) const = 0;
 };

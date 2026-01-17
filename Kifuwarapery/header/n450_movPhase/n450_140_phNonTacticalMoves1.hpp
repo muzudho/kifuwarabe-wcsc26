@@ -49,7 +49,7 @@ public:
 		nmEvent.SetLastMove(nmEvent.GetLastNonCapture());
 
 		if (static_cast<Depth>(3 * OnePly) <= nmEvent.GetDepth() ) {
-			std::sort(nmEvent.GetCurrMove(), nmEvent.GetLastMove(), std::greater<MoveStack>());
+			std::sort(nmEvent.GetCurrMove(), nmEvent.GetLastMove(), std::greater<DeliciousBanana>());
 		}
 	}
 };

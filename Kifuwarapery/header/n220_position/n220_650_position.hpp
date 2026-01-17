@@ -608,10 +608,14 @@ public:
 
 
 	/// <summary>
+	///		<pre>
 	/// わたしたちの馬車を取得
+	/// 
+	///		- 旧名： `ＧetRucksack`, `ＧetOurCarriage`
+	///		</pre>
 	/// </summary>
 	/// <returns></returns>
-	OurCarriage* GetOurCarriage() const;
+	OurCarriage* getOurCarriage() const;
 
 
 	/// <summary>

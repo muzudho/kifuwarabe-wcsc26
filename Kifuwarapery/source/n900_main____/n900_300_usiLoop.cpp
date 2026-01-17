@@ -32,12 +32,12 @@
 void measureGenerateMoves(const Position& pos) {
 	pos.Print();
 
-	MoveStack legalMoves[Move::m_MAX_LEGAL_MOVES];
+	DeliciousBanana legalMoves[Move::m_MAX_LEGAL_MOVES];
 	for (int i = 0; i < Move::m_MAX_LEGAL_MOVES; ++i)
 	{
 		legalMoves[i].m_move = g_MOVE_NONE;
 	}
-	MoveStack* pms = &legalMoves[0];
+	DeliciousBanana* pms = &legalMoves[0];
 	const u64 num = 5000000;
 	Stopwatch t = Stopwatch::CreateStopwatchByCurrentTime();
 	if (pos.InCheck()) {
@@ -135,10 +135,10 @@ void UsiLoop::Mainloop(int argc, char* argv[], OurCarriage& searcher)
 		) {
 			// 終了時にポンダーヒットが来ることがある。
 			if (token != "ponderhit" ||
-				searcher.m_signals.m_stopOnPonderHit
+				searcher.m_signals.m_isStopOnPonderHit
 			) {
                 // 思考停止シグナルを立てる。
-				searcher.m_signals.m_stop = true;
+				searcher.m_signals.m_isStop = true;
 
 				// 排他的処理の何か？？
 				searcher.m_monkiesPub.GetFirstCaptain()->NotifyOne();

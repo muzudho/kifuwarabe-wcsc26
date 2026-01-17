@@ -59,6 +59,9 @@ bool MonkeyAbstract::SetLastSplitNodeSlavesMask(MonkeyAbstract* master) const {
 // メイン・メソッド
 
 
+/// <summary>
+/// スリープのロックの通知☆（＾～＾）？
+/// </summary>
 void MonkeyAbstract::NotifyOne() {
 	std::unique_lock<Mutex> lock(m_sleepLock);
 	m_sleepCond.notify_one();

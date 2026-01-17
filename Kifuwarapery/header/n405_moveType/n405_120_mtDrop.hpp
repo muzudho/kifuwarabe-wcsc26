@@ -27,7 +27,7 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="all"></param>
 	/// <returns></returns>
-	MoveStack* GenerateMove(MoveStack* moveStackList, const Position& pos, bool all = false
+	DeliciousBanana* GenerateMove(DeliciousBanana* moveStackList, const Position& pos, bool all = false
 		) const override {
 
 		if (pos.GetTurn() == Color::Black) {

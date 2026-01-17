@@ -29,7 +29,7 @@ public:
 	/// <param name="nmEvent"></param>
 	/// <returns></returns>
 	bool GetNext2Move(Move& resultMove, NextmoveEvent& nmEvent) const override {
-		MoveStack* pMoveStack = UtilMoveStack::PickBest(nmEvent.GetCurrMove(), nmEvent.GetLastMove());
+		DeliciousBanana* pMoveStack = UtilMoveStack::PickBest(nmEvent.GetCurrMove(), nmEvent.GetLastMove());
 		nmEvent.IncrementCurMove();
 
 		if (pMoveStack->m_move != nmEvent.GetTranspositionTableMove()) {

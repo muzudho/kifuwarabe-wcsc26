@@ -75,8 +75,8 @@ public:
 	/// <param name="target"></param>
 	/// <returns></returns>
 	template<Color US,Color THEM>
-	MoveStack* GenerateDropMoves(
-		MoveStack* pMovestack,
+	DeliciousBanana* GenerateDropMoves(
+		DeliciousBanana* pMovestack,
 		const Position& pos,
 		const Bitboard& target
 	) {

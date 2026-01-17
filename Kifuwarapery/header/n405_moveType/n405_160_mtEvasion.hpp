@@ -29,7 +29,7 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="all"></param>
 	/// <returns></returns>
-	MoveStack* GenerateMove(MoveStack* moveStackList, const Position& pos, bool all = false
+	DeliciousBanana* GenerateMove(DeliciousBanana* moveStackList, const Position& pos, bool all = false
 		) const override {
 
 		if (pos.GetTurn() == Color::Black)
@@ -58,7 +58,7 @@ private:
 	/// <param name="all"></param>
 	/// <returns></returns>
 	template<Color US, Color THEM>
-	static inline MoveStack* GENERATE_MOVE_(MoveStack* moveStackList, const Position& pos, bool all = false
+	static inline DeliciousBanana* GENERATE_MOVE_(DeliciousBanana* moveStackList, const Position& pos, bool all = false
 		) {
 
 		assert(pos.IsOK());

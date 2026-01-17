@@ -71,11 +71,11 @@ public:
 		if (skill.enabled() && ourCarriage.m_pvSize < 3) {
 			ourCarriage.m_pvSize = 3;
 		}
-		ourCarriage.m_pvSize = std::min(ourCarriage.m_pvSize, ourCarriage.m_rootMoves.size());
+		ourCarriage.m_pvSize = std::min(ourCarriage.m_pvSize, ourCarriage.m_rootMovesByID.size());
 
 		// 指し手が無ければ負け
-		if (ourCarriage.m_rootMoves.empty()) {
-			ourCarriage.m_rootMoves.push_back(RootMove(g_MOVE_NONE));
+		if (ourCarriage.m_rootMovesByID.empty()) {
+			ourCarriage.m_rootMovesByID.push_back(RootMove(g_MOVE_NONE));
 			SYNCCOUT << "info depth 0 score "
 				<< ourCarriage.scoreToUSI(-ScoreMate0Ply)
 				<< SYNCENDL;
@@ -103,18 +103,18 @@ public:
 #endif
 
 		// 反復深化で探索を行う。
-		while (++depth <= g_maxPly && !ourCarriage.m_signals.m_stop && (!ourCarriage.m_limits.m_depth || depth <= ourCarriage.m_limits.m_depth)) {
+		while (++depth <= g_maxPly && !ourCarriage.m_signals.m_isStop && (!ourCarriage.m_limits.m_depth || depth <= ourCarriage.m_limits.m_depth)) {
 
 			// 前回の iteration の結果を全てコピー
-			for (size_t i = 0; i < ourCarriage.m_rootMoves.size(); ++i) {
-				ourCarriage.m_rootMoves[i].m_prevScore_ = ourCarriage.m_rootMoves[i].m_score_;
+			for (size_t i = 0; i < ourCarriage.m_rootMovesByID.size(); ++i) {
+				ourCarriage.m_rootMovesByID[i].m_prevScore_ = ourCarriage.m_rootMovesByID[i].m_score_;
 			}
 
 			prevBestMovePlyChanges = ourCarriage.GetBestMovePlyChanges();
 			ourCarriage.ZeroclearBestMovePlyChanges(); // 退避したので、ゼロクリアーするぜ☆（＾ｑ＾）
 
 			// Multi PV loop
-			for (ourCarriage.m_pvIdx = 0; ourCarriage.m_pvIdx < ourCarriage.m_pvSize && !ourCarriage.m_signals.m_stop; ++ourCarriage.m_pvIdx) {
+			for (ourCarriage.m_pvIdx = 0; ourCarriage.m_pvIdx < ourCarriage.m_pvSize && !ourCarriage.m_signals.m_isStop; ++ourCarriage.m_pvIdx) {
 #if defined LEARN
 				m_alpha = ourCarriage.m_alpha;
 				m_beta = ourCarriage.m_beta;
@@ -124,11 +124,11 @@ public:
 				if (
 					// 深さ５以上で
 					5 <= depth &&
-					abs(ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_prevScore_) < PieceScore::m_ScoreKnownWin
+					abs(ourCarriage.m_rootMovesByID[ourCarriage.m_pvIdx].m_prevScore_) < PieceScore::m_ScoreKnownWin
 					) {
 					delta = static_cast<ScoreIndex>(16);
-					alpha = ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_prevScore_ - delta;
-					beta = ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_prevScore_ + delta;
+					alpha = ourCarriage.m_rootMovesByID[ourCarriage.m_pvIdx].m_prevScore_ - delta;
+					beta = ourCarriage.m_rootMovesByID[ourCarriage.m_pvIdx].m_prevScore_ + delta;
 				}
 				else {
 					alpha = -ScoreInfinite;
@@ -148,11 +148,11 @@ public:
 					bestScore = g_NODEKIND_PROGRAMS[NodeKind::No0_Root]->ExplorePlain(ourCarriage, pos, flashlight + 1, alpha, beta, static_cast<Depth>(depth * OnePly), false);
 
 					// 先頭が最善手になるようにソート
-					UtilMoveStack::InsertionSort(ourCarriage.m_rootMoves.begin() + ourCarriage.m_pvIdx, ourCarriage.m_rootMoves.end());
+					UtilMoveStack::InsertionSort(ourCarriage.m_rootMovesByID.begin() + ourCarriage.m_pvIdx, ourCarriage.m_rootMovesByID.end());
 
 					for (size_t i = 0; i <= ourCarriage.m_pvIdx; ++i) {
 						flashlight->m_staticEvalRaw.m_p[0][0] = (flashlight + 1)->m_staticEvalRaw.m_p[0][0] = ScoreNotEvaluated;
-						ourCarriage.m_rootMoves[i].InsertPvInTT(pos);
+						ourCarriage.m_rootMovesByID[i].InsertPvInTT(pos);
 					}
 
 #if 0
@@ -167,7 +167,7 @@ public:
 					break;
 #endif
 
-					if (ourCarriage.m_signals.m_stop) { break; }
+					if (ourCarriage.m_signals.m_isStop) { break; }
 					if (alpha < bestScore && bestScore < beta) { break; }
 
 					if (
@@ -191,8 +191,8 @@ public:
 						delta += delta / 2;
 					}
 					else {
-						ourCarriage.m_signals.m_failedLowAtRoot = true;
-						ourCarriage.m_signals.m_stopOnPonderHit = false;
+						ourCarriage.m_signals.m_isFailedLowAtRoot = true;
+						ourCarriage.m_signals.m_isStopOnPonderHit = false;
 
 						alpha -= delta;
 						delta += delta / 2;
@@ -201,7 +201,7 @@ public:
 					assert(-ScoreInfinite <= alpha && beta <= ScoreInfinite);
 				}
 
-				UtilMoveStack::InsertionSort(ourCarriage.m_rootMoves.begin(), ourCarriage.m_rootMoves.begin() + ourCarriage.m_pvIdx + 1);
+				UtilMoveStack::InsertionSort(ourCarriage.m_rootMovesByID.begin(), ourCarriage.m_rootMovesByID.begin() + ourCarriage.m_pvIdx + 1);
 
 				if (
 					(
@@ -224,7 +224,7 @@ public:
 			if (
 				ourCarriage.m_limits.IsBrandnewTimeMgr() // 反復深化探索に潜るために真であることが必要☆
 				&&
-				!ourCarriage.m_signals.m_stopOnPonderHit
+				!ourCarriage.m_signals.m_isStopOnPonderHit
 			) {
 				bool stop = false;
 
@@ -254,7 +254,7 @@ public:
 					// ここは確実にバグらせないようにする。
 					&& -ScoreInfinite + 2 * PieceScore::m_capturePawn <= bestScore
 					&& (
-						ourCarriage.m_rootMoves.size() == 1
+						ourCarriage.m_rootMovesByID.size() == 1
 						||
 						// または、まだ反復深化探索していい時間が残ってるなら。
 						ourCarriage.m_timeMgr.CanIterativeDeepingTimeOk(ourCarriage.m_stopwatch.GetElapsed())
@@ -262,7 +262,7 @@ public:
 				) {
 					const ScoreIndex rBeta = bestScore - 2 * PieceScore::m_capturePawn;
 					(flashlight + 1)->m_staticEvalRaw.m_p[0][0] = ScoreNotEvaluated;
-					(flashlight + 1)->m_excludedMove = ourCarriage.m_rootMoves[0].m_pv_[0];
+					(flashlight + 1)->m_excludedMove = ourCarriage.m_rootMovesByID[0].m_pv_[0];
 					(flashlight + 1)->m_skipNullMove = true;
 
 
@@ -284,10 +284,10 @@ public:
 
 				if (stop) {
 					if (ourCarriage.m_limits.m_canPonder) {
-						ourCarriage.m_signals.m_stopOnPonderHit = true;
+						ourCarriage.m_signals.m_isStopOnPonderHit = true;
 					}
 					else {
-						ourCarriage.m_signals.m_stop = true;
+						ourCarriage.m_signals.m_isStop = true;
 					}
 				}
 			}

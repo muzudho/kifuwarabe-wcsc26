@@ -28,10 +28,10 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="all"></param>
 	/// <returns></returns>
-	MoveStack* GenerateMove(MoveStack* moveStackList, const Position& pos, bool all = false
+	DeliciousBanana* GenerateMove(DeliciousBanana* moveStackList, const Position& pos, bool all = false
 		) const override {
 		//Color us = pos.GetTurn();
-		MoveStack* curr = moveStackList;
+		DeliciousBanana* curr = moveStackList;
 		const Bitboard pinned = pos.GetPinnedBB();
 
 		moveStackList = pos.InCheck() ?

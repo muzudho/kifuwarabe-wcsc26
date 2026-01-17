@@ -13,20 +13,20 @@ public:
 	/// <summary>
     /// ポンダーヒットで探索を止めるかどうか☆
 	/// </summary>
-	bool m_stopOnPonderHit;
+	bool m_isStopOnPonderHit;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	bool m_firstRootMove;
+	bool m_isFirstRootMove;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	bool m_stop;
+	bool m_isStop;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	bool m_failedLowAtRoot;
+	bool m_isFailedLowAtRoot;
 };

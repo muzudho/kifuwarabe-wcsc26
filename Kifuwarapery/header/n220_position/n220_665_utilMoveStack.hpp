@@ -59,7 +59,7 @@ public:
 	/// <param name="currMove"></param>
 	/// <param name="lastMove"></param>
 	/// <returns></returns>
-	static inline MoveStack* PickBest(MoveStack* currMove, MoveStack* lastMove) {
+	static inline DeliciousBanana* PickBest(DeliciousBanana* currMove, DeliciousBanana* lastMove) {
 		std::swap(*currMove, *std::max_element(currMove, lastMove));
 		return currMove;
 	}

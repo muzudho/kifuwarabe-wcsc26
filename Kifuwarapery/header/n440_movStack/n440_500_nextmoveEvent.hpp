@@ -88,35 +88,35 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	MoveStack* GetCurrMove() const { return this->m_currMove_; }
+	DeliciousBanana* GetCurrMove() const { return this->m_currMove_; }
 
 
 	/// <summary>
 	/// 
 	/// </summary>
 	/// <param name="value"></param>
-	void SetCurrMove(MoveStack* value) { this->m_currMove_ = value; }
+	void SetCurrMove(DeliciousBanana* value) { this->m_currMove_ = value; }
 
 
 	/// <summary>
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	MoveStack* GetLastMove() const { return this->m_lastMove_; }
+	DeliciousBanana* GetLastMove() const { return this->m_lastMove_; }
 
 
 	/// <summary>
 	/// 
 	/// </summary>
 	/// <param name="value"></param>
-	void SetLastMove(MoveStack* value) { this->m_lastMove_ = value; }
+	void SetLastMove(DeliciousBanana* value) { this->m_lastMove_ = value; }
 
 
 	/// <summary>
 	/// 
 	/// </summary>
 	/// <param name="value"></param>
-	void SetLastMoveAndLastNonCaputre(MoveStack* value) {
+	void SetLastMoveAndLastNonCaputre(DeliciousBanana* value) {
 		this->m_lastMove_ = value;
 		this->m_lastNonCapture_ = value;
 	}
@@ -140,7 +140,7 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	MoveStack* GetEndBadCaptures() const { return this->m_endBadCaptures_; }
+	DeliciousBanana* GetEndBadCaptures() const { return this->m_endBadCaptures_; }
 
 
 	/// <summary>
@@ -153,7 +153,7 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	MoveStack* GetKillerMoves() const { return (MoveStack*)this->m_killerMoves_; }
+	DeliciousBanana* GetKillerMoves() const { return (DeliciousBanana*)this->m_killerMoves_; }
 
 
 	/// <summary>
@@ -161,7 +161,7 @@ public:
 	/// </summary>
 	/// <param name="index"></param>
 	/// <returns></returns>
-	MoveStack GetKillerMove(int index) const { return this->m_killerMoves_[index]; }
+	DeliciousBanana GetKillerMove(int index) const { return this->m_killerMoves_[index]; }
 
 
 	/// <summary>
@@ -182,7 +182,7 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	MoveStack* GetLegalMoves() { return this->m_legalMoves_; }
+	DeliciousBanana* GetLegalMoves() { return this->m_legalMoves_; }
 
 
 	/// <summary>
@@ -200,7 +200,7 @@ public:// もともと本当はプライベート・メソッド☆
 	//template <bool IsDrop> void ScoreNonCapturesMinusPro();
 	template <bool IsDrop>
 	void ScoreNonCapturesMinusPro() {
-		for (MoveStack* curr = GetCurrMove(); curr != GetLastMove(); ++curr) {
+		for (DeliciousBanana* curr = GetCurrMove(); curr != GetLastMove(); ++curr) {
 			const Move move = curr->m_move;
 			curr->m_score =
 				GetHistory().GetValue(IsDrop,
@@ -221,14 +221,14 @@ public:// もともと本当はプライベート・メソッド☆
 	/// [0] は番兵
 	/// </summary>
 	/// <returns></returns>
-	MoveStack* GetFirstMove() { return &m_legalMoves_[1]; }
+	DeliciousBanana* GetFirstMove() { return &m_legalMoves_[1]; }
 
 
 	/// <summary>
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	MoveStack* GetLastNonCapture() const { return m_lastNonCapture_; }
+	DeliciousBanana* GetLastNonCapture() const { return m_lastNonCapture_; }
 
 
 	/// <summary>
@@ -288,7 +288,7 @@ private:
 	/// <summary>
 	/// 
 	/// </summary>
-	MoveStack			m_killerMoves_[2];
+	DeliciousBanana			m_killerMoves_[2];
 
 	/// <summary>
 	/// 
@@ -308,25 +308,25 @@ private:
 	/// <summary>
 	/// 
 	/// </summary>
-	MoveStack*			m_currMove_;
+	DeliciousBanana*			m_currMove_;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	MoveStack*			m_lastMove_;
+	DeliciousBanana*			m_lastMove_;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	MoveStack*			m_lastNonCapture_;
+	DeliciousBanana*			m_lastNonCapture_;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	MoveStack*			m_endBadCaptures_;
+	DeliciousBanana*			m_endBadCaptures_;
 
 	/// <summary>
 	/// std::array にした方が良さそう。
 	/// </summary>
-	MoveStack			m_legalMoves_[Move::m_MAX_LEGAL_MOVES];
+	DeliciousBanana			m_legalMoves_[Move::m_MAX_LEGAL_MOVES];
 };

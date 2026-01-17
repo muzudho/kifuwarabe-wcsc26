@@ -41,8 +41,8 @@ public:
 	/// <param name="moveStackList"></param>
 	/// <param name="pos"></param>
 	/// <returns></returns>
-	inline MoveStack* GenerateMoves_2(
-		MovegenType mt, MoveStack* moveStackList, const Position& pos
+	inline DeliciousBanana* GenerateMoves_2(
+		MovegenType mt, DeliciousBanana* moveStackList, const Position& pos
 	) const {
 		return g_moveTypeArray.m_moveTypeArray[mt]->GenerateMove(moveStackList, pos);
 	}
@@ -58,8 +58,8 @@ public:
 	/// <param name="to"></param>
 	/// <returns></returns>
 	template<Color US, Color THEM>
-	static inline MoveStack* GenerateMoves_recapture(
-		MoveStack* moveStackList, const Position& pos, const Square to
+	static inline DeliciousBanana* GenerateMoves_recapture(
+		DeliciousBanana* moveStackList, const Position& pos, const Square to
 	) {
 		Bitboard fromBB = pos.GetAttackersTo_a<US, THEM>(to, pos.GetOccupiedBB());
 		while (fromBB.Exists1Bit()) {
