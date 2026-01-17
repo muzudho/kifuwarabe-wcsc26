@@ -110,6 +110,7 @@ ScoreNumber AdventureNodekindSplitedNodePv::explorePlain_n10(
 	int playedMoveCount;
 	Move bananaTtMove;
 	ScoreNumber bananaTtScore;
+	DeliciousBanana ttDeliciousBanana;
 
 	// step1
 	// initialize node

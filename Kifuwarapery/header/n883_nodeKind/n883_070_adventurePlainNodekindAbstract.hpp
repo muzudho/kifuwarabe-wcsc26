@@ -256,6 +256,42 @@ public:
 
 
 	/// <summary>
+	/// ttScore と ttMove でデリシャス・バナナ（＾～＾）！
+	/// </summary>
+	/// <param name="excludedMove"></param>
+	/// <param name="ppFlashlight"></param>
+	/// <param name="posKey"></param>
+	/// <param name="pos"></param>
+	/// <param name="ppTtEntry"></param>
+	/// <param name="ourCarriage"></param>
+	/// <param name="pTtEntry"></param>
+	/// <returns></returns>
+	virtual inline DeliciousBanana explorePlain_n200n405_getTtDeliciousBanana(
+		Move& excludedMove,
+		Flashlight** ppFlashlight,
+		Key& posKey,
+		Position& pos,
+		const TTEntry** ppTtEntry,
+		OurCarriage& ourCarriage,
+		const TTEntry* pTtEntry) const
+	{
+		DeliciousBanana banana;
+		banana.m_score = this->explorePlain_n200n350_getTtScore(
+			excludedMove,
+			ppFlashlight,
+			posKey,
+			pos,
+			&pTtEntry,	//セットされる☆
+			ourCarriage);
+		banana.m_move = this->explorePlain_n200n400_getTtMove(
+			ourCarriage,
+			pTtEntry,
+			pos);
+		return banana;
+	}
+
+
+	/// <summary>
 	/// PVノードか、非PVノードかで実行条件が変わるぜ☆（＾ｑ＾）
 	/// </summary>
 	/// <param name="isReturnWithScore"></param>
