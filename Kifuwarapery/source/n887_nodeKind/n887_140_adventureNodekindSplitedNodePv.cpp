@@ -25,10 +25,8 @@
 #include "../../header/n680_egOption/n680_240_engineOptionsMap.hpp"
 #include "../../header/n680_egOption/n680_300_engineOptionSetup.hpp"
 #include "../../header/n760_thread__/n760_400_MonkiesPub.hpp"
-
 #include "../../header/n800_learn___/n800_100_stopwatch.hpp"
 #include "../../header/n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
-
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 #include "../../header/n885_searcher/n885_310_adventureBattlefieldQsearchAbstract.hpp"
 #include "../../header/n885_searcher/n885_340_adventureBattlefieldQsearchPrograms.hpp"
@@ -119,7 +117,7 @@ ScoreIndex AdventureNodekindSplitedNodePv::explorePlain_n10(
 	inCheck = pos.InCheck();
 
 	bool isGotoSplitPointStart = false;
-	this->ExplorerPlainStep1a1InitializeNode(
+	this->explorePlain_n70_splitPointStart(
 		isGotoSplitPointStart,
 		pos,
 		&pSplitedNode,
@@ -367,17 +365,22 @@ split_point_start:
 			alpha,
 			&pSplitedNode
 			);
-		this->explorePlain_n380_nonPVRecursiveSearch(
-			ourCarriage,
-			doFullDepthSearch,
-			score,
-			newDepth,
-			givesCheck,
-			pos,
-			&pFlashlight,
-			alpha,
-			cutNode
-			);
+
+
+		#ifndef SHRINK_SPLITED_PV_NODE_EXPLORE_PLAIN_380_NON_PV_RECURSIVE_SEARCH
+			this->explorePlain_n380_nonPVRecursiveSearch(
+				ourCarriage,
+				doFullDepthSearch,
+				score,
+				newDepth,
+				givesCheck,
+				pos,
+				&pFlashlight,
+				alpha,
+				cutNode);
+		#endif
+
+
 		this->explorePlain_n400_betaLargeRecursiveSearch(
 			ourCarriage,
 			isPVMove,
@@ -387,25 +390,23 @@ split_point_start:
 			newDepth,
 			givesCheck,
 			pos,
-			&pFlashlight
-			);
+			&pFlashlight);
 
-		// step17
+
 		this->explorePlain_n420_undoMove(
 			pos,
-			move
-			);
+			move);
+
 
 		assert(-ScoreInfinite < score && score < ScoreInfinite);
 
-		// step18
-		this->ExplorerPlainStep18a(
+
+		this->explorePlain_n430_setAlpha(
 			&pSplitedNode,
 			bestScore,
-			alpha
-			);
-
+			alpha);
 		if (ourCarriage.m_signals.m_isIterationDeepingStop || pThisThread->IsUselessSplitedNode()) { return score; }
+
 
 		bool isBreak = false;
 		this->explorePlain_n460_updateAlpha(
@@ -419,12 +420,13 @@ split_point_start:
 			bestScore,
 			&pSplitedNode,
 			bestMove,
-			beta
-			);
+			beta);
 		if (isBreak) { break; }
 	}
 
+
 	if (this->getReturn_beforeN500()) { return bestScore; }
+
 
 	return bestScore;
 }

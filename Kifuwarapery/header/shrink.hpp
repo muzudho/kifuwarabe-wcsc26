@@ -59,9 +59,19 @@
 
 
 // バグは取れるけど、１手、２手しか読まなくなるぜ（＾～＾）
-//#define SHRINK_NON_PV_NODE_EXPLORE_PLAIN_NON_PV_RECURSIVE_SEARCH
+//#define SHRINK_NON_PV_NODE_EXPLORE_PLAIN_380_NON_PV_RECURSIVE_SEARCH
 
 
 // 猿を増やすの、止めるぜ（＾～＾）
 // シュリンクすると１手の深さしか読まなくなるようだぜ（＾～＾）
 //#define SHRINK_NON_PV_NODE_EXPLORE_PLAIN_FORK_NEW_MONKEY
+
+
+// 分岐ルートノード
+
+
+// 分岐本筋ノード
+
+#define SHRINK_SPLITED_PV_NODE_EXPLORE_PLAIN_380_NON_PV_RECURSIVE_SEARCH
+
+

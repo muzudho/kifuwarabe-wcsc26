@@ -455,7 +455,7 @@ iid_start:
 		#endif
 
 
-		#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_NON_PV_RECURSIVE_SEARCH
+		#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_380_NON_PV_RECURSIVE_SEARCH
 			this->explorePlain_n380_nonPVRecursiveSearch(
 				ourCarriage,
 				doFullDepthSearch,

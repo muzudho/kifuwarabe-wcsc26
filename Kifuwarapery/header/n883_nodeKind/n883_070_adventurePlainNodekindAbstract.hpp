@@ -82,7 +82,7 @@ public:
 	/// <param name="ttMove"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="ttScore"></param>
-	virtual inline void ExplorerPlainStep1a1InitializeNode(
+	virtual inline void explorePlain_n70_splitPointStart(
 		bool& isGotoSplitPointStart,
 		Position& pos,
 		SplitedNode** ppSplitedNode,
@@ -1439,7 +1439,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestScore"></param>
 	/// <param name="alpha"></param>
-	virtual inline void ExplorerPlainStep18a(
+	virtual inline void explorePlain_n430_setAlpha(
 		SplitedNode** ppSplitedNode,
 		ScoreIndex& bestScore,
 		ScoreIndex& alpha) const

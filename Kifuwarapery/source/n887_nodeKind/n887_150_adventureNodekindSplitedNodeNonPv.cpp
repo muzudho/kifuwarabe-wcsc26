@@ -116,7 +116,7 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::explorePlain_n10(
 	inCheck = pos.InCheck();
 
 	bool isGotoSplitPointStart = false;
-	this->ExplorerPlainStep1a1InitializeNode(
+	this->explorePlain_n70_splitPointStart(
 		isGotoSplitPointStart,
 		pos,
 		&pSplitedNode,
@@ -458,7 +458,7 @@ split_point_start:
 		assert(-ScoreInfinite < score && score < ScoreInfinite);
 
 		// step18
-		this->ExplorerPlainStep18a(
+		this->explorePlain_n430_setAlpha(
 			&pSplitedNode,
 			bestScore,
 			alpha
