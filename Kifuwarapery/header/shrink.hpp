@@ -36,7 +36,7 @@
 
 
 // これを定義してもバグは取れない（＾～＾）
-#define SHRINK_NP_NODEKIND_EXPLORE_PLAIN_200N600_NON_PV_RAZORING
+//#define SHRINK_NP_NODEKIND_EXPLORE_PLAIN_200N600_NON_PV_RAZORING
 
 
 // これを定義してもバグは取れない（＾～＾）
