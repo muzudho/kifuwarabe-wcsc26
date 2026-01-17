@@ -10,17 +10,17 @@
 
 // なんか分からんが再帰探索（＾～＾）
 // これを定義するとバグが取れるけど、指し手が全然ダメになるぜ（＾～＾）
-#define SHRINK_ROOT_NODE_EXPLORE_PLAIN_260_RECURSIVE_SEARCH
+//#define SHRINK_ROOT_NODE_EXPLORE_PLAIN_260_RECURSIVE_SEARCH
 
 
 // なんか分からんが再帰探索（＾～＾）
 // シュリンクすると１手の深さしか読まなくなるようだぜ（＾～＾）
-#define SHRINK_ROOT_NODE_EXPLORE_PLAIN_360_RECURSIVE_SEARCH
+//#define SHRINK_ROOT_NODE_EXPLORE_PLAIN_360_RECURSIVE_SEARCH
 
 
 // NonPV扱いで再帰するみたいなんだがなんだこれだぜ☆（＾～＾）？
 // シュリンクすると１手の深さしか読まなくなるようだぜ（＾～＾）しかも端歩をただ突くだけ（＾～＾）
-#define SHRINK_ROOT_NODE_EXPLORE_PLAIN_NON_PV_RECURSIVE_SEARCH
+//#define SHRINK_ROOT_NODE_EXPLORE_PLAIN_NON_PV_RECURSIVE_SEARCH
 
 
 // でかいβ値も深掘りしないぜ（＾～＾）
