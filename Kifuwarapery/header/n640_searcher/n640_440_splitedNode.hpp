@@ -64,7 +64,7 @@ struct SplitedNode {
 	/// <summary>
 	/// ベータ。
 	/// </summary>
-	ScoreIndex				m_beta;
+	ScoreNumber				m_beta;
 
 	/// <summary>
 	/// スプリット・ポイントは　ノード・タイプを持っている☆？（＾ｑ＾）
@@ -109,12 +109,12 @@ struct SplitedNode {
 	/// <summary>
 	/// 
 	/// </summary>
-	volatile ScoreIndex		m_alpha;
+	volatile ScoreNumber		m_alpha;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	volatile ScoreIndex		m_bestScore;
+	volatile ScoreNumber		m_bestScore;
 
 	/// <summary>
 	/// 

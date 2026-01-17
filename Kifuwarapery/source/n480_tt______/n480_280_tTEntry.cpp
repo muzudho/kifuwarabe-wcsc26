@@ -26,9 +26,9 @@ Depth TTEntry::GetDepth() const
 /// 
 /// </summary>
 /// <returns></returns>
-ScoreIndex TTEntry::GetScore() const
+ScoreNumber TTEntry::GetScore() const
 {
-	return static_cast<ScoreIndex>(this->m_score16_);
+	return static_cast<ScoreNumber>(this->m_score16_);
 }
 
 
@@ -66,9 +66,9 @@ u8 TTEntry::GetGeneration() const
 /// 
 /// </summary>
 /// <returns></returns>
-ScoreIndex TTEntry::GetEvalScore() const
+ScoreNumber TTEntry::GetEvalScore() const
 {
-	return static_cast<ScoreIndex>(this->m_evalScore_);
+	return static_cast<ScoreNumber>(this->m_evalScore_);
 }
 
 
@@ -92,7 +92,7 @@ void TTEntry::SetGeneration(const u8 g)
 /// <param name="bound"></param>
 /// <param name="generation"></param>
 /// <param name="evalScore"></param>
-void TTEntry::SetSave(const Depth depth, const ScoreIndex score, const Move move, const u32 posKeyHigh32, const Bound bound, const u8 generation, const ScoreIndex evalScore)
+void TTEntry::SetSave(const Depth depth, const ScoreNumber score, const Move move, const u32 posKeyHigh32, const Bound bound, const u8 generation, const ScoreNumber evalScore)
 {
 	this->m_key32_ = posKeyHigh32;
 	this->m_move16_ = static_cast<u16>(move.GetValue());

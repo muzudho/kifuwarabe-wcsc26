@@ -376,7 +376,7 @@ void Evaluation09::evaluateBody(Position& pos, Flashlight* ss) {
 /// </summary>
 /// <param name="pos"></param>
 /// <returns></returns>
-ScoreIndex Evaluation09::evaluateUnUseDiff(const Position& pos) {
+ScoreNumber Evaluation09::evaluateUnUseDiff(const Position& pos) {
 	int list0[EvalList::m_ListSize];
 	int list1[EvalList::m_ListSize];
 
@@ -441,7 +441,7 @@ ScoreIndex Evaluation09::evaluateUnUseDiff(const Position& pos) {
 	GetScore.GetP[2][0] += inaniwaScore(GetPos);
 #endif
 
-	return static_cast<ScoreIndex>(score.GetSum(pos.GetTurn()));
+	return static_cast<ScoreNumber>(score.GetSum(pos.GetTurn()));
 }
 
 
@@ -451,9 +451,9 @@ ScoreIndex Evaluation09::evaluateUnUseDiff(const Position& pos) {
 /// <param name="pos"></param>
 /// <param name="ss"></param>
 /// <returns></returns>
-ScoreIndex Evaluation09::evaluate(Position& pos, Flashlight* ss) {
+ScoreNumber Evaluation09::evaluate(Position& pos, Flashlight* ss) {
 	if (ss->m_staticEvalRaw.m_p[0][0] != ScoreNotEvaluated) {
-		const ScoreIndex score = static_cast<ScoreIndex>(ss->m_staticEvalRaw.GetSum(pos.GetTurn()));
+		const ScoreNumber score = static_cast<ScoreNumber>(ss->m_staticEvalRaw.GetSum(pos.GetTurn()));
 		assert(score == evaluateUnUseDiff(pos));
 		return score / g_FVScale;
 	}
@@ -463,8 +463,8 @@ ScoreIndex Evaluation09::evaluate(Position& pos, Flashlight* ss) {
 	entry.Decode();
 	if (entry.m_key == keyExcludeTurn) {
 		ss->m_staticEvalRaw = entry;
-		assert(static_cast<ScoreIndex>(ss->m_staticEvalRaw.GetSum(pos.GetTurn())) == evaluateUnUseDiff(pos));
-		return static_cast<ScoreIndex>(entry.GetSum(pos.GetTurn())) / g_FVScale;
+		assert(static_cast<ScoreNumber>(ss->m_staticEvalRaw.GetSum(pos.GetTurn())) == evaluateUnUseDiff(pos));
+		return static_cast<ScoreNumber>(entry.GetSum(pos.GetTurn())) / g_FVScale;
 	}
 
 	this->evaluateBody(pos, ss);
@@ -472,5 +472,5 @@ ScoreIndex Evaluation09::evaluate(Position& pos, Flashlight* ss) {
 	ss->m_staticEvalRaw.m_key = keyExcludeTurn;
 	ss->m_staticEvalRaw.Encode();
 	*g_evalTable[keyExcludeTurn] = ss->m_staticEvalRaw;
-	return static_cast<ScoreIndex>(ss->m_staticEvalRaw.GetSum(pos.GetTurn())) / g_FVScale;
+	return static_cast<ScoreNumber>(ss->m_staticEvalRaw.GetSum(pos.GetTurn())) / g_FVScale;
 }

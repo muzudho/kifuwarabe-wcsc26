@@ -29,5 +29,5 @@ struct BookEntry {
 	/// <summary>
 	/// 
 	/// </summary>
-	ScoreIndex	m_score;
+	ScoreNumber	m_score;
 };

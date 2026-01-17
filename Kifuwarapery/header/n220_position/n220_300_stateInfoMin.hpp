@@ -16,7 +16,7 @@ struct StateInfoMin {
 	/// <summary>
 	/// stocfish の npMaterial は 先手、後手の点数を配列で持っているけど、特に分ける必要は無い気がする。
 	/// </summary>
-	ScoreIndex m_material;
+	ScoreNumber m_material;
 
 	/// <summary>
 	/// 

@@ -22,7 +22,7 @@ public:
 	/// <summary>
 	/// 評価値
 	/// </summary>
-	const enum ScoreIndex m_scoreIndex;
+	const enum ScoreNumber m_scoreIndex;
 
 
 public:
@@ -33,7 +33,7 @@ public:
 	/// </summary>
 	/// <param name="move"></param>
 	/// <param name=""></param>
-	MoveAndScoreIndex(Move move, enum ScoreIndex scoreIndex);
+	MoveAndScoreIndex(Move move, enum ScoreNumber scoreIndex);
 	
 
 	/// <summary>

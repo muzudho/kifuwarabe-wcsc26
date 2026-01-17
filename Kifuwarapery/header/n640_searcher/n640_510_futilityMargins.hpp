@@ -17,7 +17,7 @@ public:
 	/// <summary>
 	/// [depth][moveCount]
 	/// </summary>
-	ScoreIndex m_FutilityMargins[16][64];
+	ScoreNumber m_FutilityMargins[16][64];
 
 
 public:
@@ -35,7 +35,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="moveCount"></param>
 	/// <returns></returns>
-	inline ScoreIndex GetFutilityMargin(const Depth depth, const int moveCount) {
+	inline ScoreNumber GetFutilityMargin(const Depth depth, const int moveCount) {
 		return (depth < 7 * OnePly ?
 			this->m_FutilityMargins[std::max(depth, Depth1)][std::min(moveCount, 63)]
 			: 2 * ScoreInfinite);

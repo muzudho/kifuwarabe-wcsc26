@@ -57,7 +57,7 @@ NextmoveEvent::NextmoveEvent(
 	const Depth depth,
 	const History& history,
 	Flashlight* pFlashlightBox,
-	const ScoreIndex beta
+	const ScoreNumber beta
 )
 	: m_pos_(pos), m_history_(history), m_depth_(depth)
 {
@@ -220,24 +220,24 @@ Move NextmoveEvent::GetNextMove_NonSplitedNode() {
 /// <summary>
 ///
 /// </summary>
-const ScoreIndex LVATable[g_PIECETYPE_NUM] = {
-	ScoreIndex(0),
-	ScoreIndex(1),
-	ScoreIndex(2),
-	ScoreIndex(3),
-	ScoreIndex(4),
-	ScoreIndex(7),
-	ScoreIndex(8),
-	ScoreIndex(6),
-	ScoreIndex(10000),
-	ScoreIndex(5),
-	ScoreIndex(5),
-	ScoreIndex(5),
-	ScoreIndex(5),
-	ScoreIndex(9),
-	ScoreIndex(10)
+const ScoreNumber LVATable[g_PIECETYPE_NUM] = {
+	ScoreNumber(0),
+	ScoreNumber(1),
+	ScoreNumber(2),
+	ScoreNumber(3),
+	ScoreNumber(4),
+	ScoreNumber(7),
+	ScoreNumber(8),
+	ScoreNumber(6),
+	ScoreNumber(10000),
+	ScoreNumber(5),
+	ScoreNumber(5),
+	ScoreNumber(5),
+	ScoreNumber(5),
+	ScoreNumber(9),
+	ScoreNumber(10)
 };
-inline ScoreIndex LVA(const PieceType pt) { return LVATable[pt]; }
+inline ScoreNumber LVA(const PieceType pt) { return LVATable[pt]; }
 
 
 /// <summary>
@@ -257,7 +257,7 @@ void NextmoveEvent::ScoreCaptures() {
 void NextmoveEvent::ScoreEvasions() {
 	for (DeliciousBanana* curr = GetCurrMove(); curr != GetLastMove(); ++curr) {
 		const Move move = curr->m_move;
-		const ScoreIndex seeScore = GetPos().GetSeeSign(move);
+		const ScoreNumber seeScore = GetPos().GetSeeSign(move);
 		if (seeScore < 0) {
 			curr->m_score = seeScore - History::m_MaxScore;
 		}

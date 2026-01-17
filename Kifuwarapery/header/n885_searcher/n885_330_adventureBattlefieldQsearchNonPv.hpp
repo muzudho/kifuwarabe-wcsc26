@@ -19,8 +19,8 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
 	virtual inline void DoAssert(
-		ScoreIndex alpha,
-		ScoreIndex beta
+		ScoreNumber alpha,
+		ScoreNumber beta
 		) const override {
 		assert(alpha == beta - 1);
 	}
@@ -32,8 +32,8 @@ public:
 	/// <param name="oldAlpha"></param>
 	/// <param name="alpha"></param>
 	virtual inline void SetOldAlpha(
-		ScoreIndex& oldAlpha,
-		ScoreIndex alpha
+		ScoreNumber& oldAlpha,
+		ScoreNumber alpha
 		) const override {
 		//スルー☆！（＾ｑ＾）
 	}
@@ -48,8 +48,8 @@ public:
 	/// <returns></returns>
 	virtual inline bool GetCondition01(
 		const TTEntry** ppTtEntry,
-		ScoreIndex beta,
-		ScoreIndex ttScore
+		ScoreNumber beta,
+		ScoreNumber ttScore
 		) const override {
 		// NonPVノードのとき☆（＾ｑ＾）
 		return beta <= ttScore ?
@@ -65,8 +65,8 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="bestScore"></param>
 	virtual inline void SetAlpha(
-		ScoreIndex& alpha,
-		ScoreIndex bestScore
+		ScoreNumber& alpha,
+		ScoreNumber bestScore
 		) const override {
 		// スルーするぜ☆！（＾ｑ＾）
 	}
@@ -92,11 +92,11 @@ public:
 		bool& givesCheck,
 		Move& move,
 		Move& ttMove,
-		ScoreIndex& futilityScore,
-		ScoreIndex& futilityBase,
+		ScoreNumber& futilityScore,
+		ScoreNumber& futilityBase,
 		Position& pos,
-		ScoreIndex& beta,
-		ScoreIndex& bestScore,
+		ScoreNumber& beta,
+		ScoreNumber& bestScore,
 		const Depth depth
 		)const override {
 		// 非PVノードのとき☆（＾ｑ＾）
@@ -183,11 +183,11 @@ public:
 	/// <param name="move"></param>
 	virtual inline void DoByNewScore(
 		bool& isReturnWithScore,
-		ScoreIndex& returnScore,
+		ScoreNumber& returnScore,
 		OurCarriage& ourCarriage,
-		ScoreIndex& score,
-		ScoreIndex& beta,
-		ScoreIndex& alpha,
+		ScoreNumber& score,
+		ScoreNumber& beta,
+		ScoreNumber& alpha,
 		Move& bestMove,
 		Key& posKey,
 		Flashlight** ppFlashlight,
@@ -211,8 +211,8 @@ public:
 	/// <param name="bestScore"></param>
 	/// <returns></returns>
 	virtual inline Bound GetBound01(
-		ScoreIndex& oldAlpha,
-		ScoreIndex& bestScore
+		ScoreNumber& oldAlpha,
+		ScoreNumber& bestScore
 		)const override {
 		return Bound::BoundUpper;
 	}

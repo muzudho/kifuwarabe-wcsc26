@@ -567,7 +567,7 @@ bool Position::InCheck() const
 /// 
 /// </summary>
 /// <returns></returns>
-ScoreIndex Position::GetMaterial() const
+ScoreNumber Position::GetMaterial() const
 {
 	return this->m_st_->m_material;
 }
@@ -577,7 +577,7 @@ ScoreIndex Position::GetMaterial() const
 /// 
 /// </summary>
 /// <returns></returns>
-ScoreIndex Position::GetMaterialDiff() const
+ScoreNumber Position::GetMaterialDiff() const
 {
 	return this->m_st_->m_material - this->m_st_->m_previous->m_material;
 }
@@ -814,7 +814,7 @@ bool Position::MoveIsLegal(const Move GetMove) const {
 /// <param name="asymmThreshold"></param>
 /// <returns></returns>
 template<Color US, Color THEM>
-ScoreIndex Position::GetSee1(const Move move, const int asymmThreshold) const {
+ScoreNumber Position::GetSee1(const Move move, const int asymmThreshold) const {
 	const Square to = move.To();
 	Square from;
 	PieceType ptCaptured;
@@ -823,7 +823,7 @@ ScoreIndex Position::GetSee1(const Move move, const int asymmThreshold) const {
 	Bitboard opponentAttackers;
 
 
-	ScoreIndex swapList[32];
+	ScoreNumber swapList[32];
 	if (move.IsDrop()) {
 		opponentAttackers = this->GetAttackersTo_clr(THEM, to, occ);
 		if (!opponentAttackers.Exists1Bit()) {
@@ -903,8 +903,8 @@ ScoreIndex Position::GetSee1(const Move move, const int asymmThreshold) const {
 	}
 	return swapList[0];
 }
-template ScoreIndex Position::GetSee1<Color::Black, Color::White>(const Move move, const int asymmThreshold) const;
-template ScoreIndex Position::GetSee1<Color::White, Color::Black>(const Move move, const int asymmThreshold) const;
+template ScoreNumber Position::GetSee1<Color::Black, Color::White>(const Move move, const int asymmThreshold) const;
+template ScoreNumber Position::GetSee1<Color::White, Color::Black>(const Move move, const int asymmThreshold) const;
 
 
 /// <summary>
@@ -912,12 +912,12 @@ template ScoreIndex Position::GetSee1<Color::White, Color::Black>(const Move mov
 /// </summary>
 /// <param name="move"></param>
 /// <returns></returns>
-ScoreIndex Position::GetSeeSign(const Move move) const {
+ScoreNumber Position::GetSeeSign(const Move move) const {
 	if (move.IsCapture()) {
 		const PieceType ptFrom = move.GetPieceTypeFrom();
 		const Square to = move.To();
 		if (PieceScore::GetCapturePieceScore(ptFrom) <= PieceScore::GetCapturePieceScore(GetPiece(to))) {
-			return static_cast<ScoreIndex>(1);
+			return static_cast<ScoreNumber>(1);
 		}
 	}
 	return
@@ -2886,8 +2886,8 @@ void Position::FindCheckers()
 /// 
 /// </summary>
 /// <returns></returns>
-ScoreIndex Position::ComputeMaterial() const {
-	ScoreIndex s = ScoreZero;
+ScoreNumber Position::ComputeMaterial() const {
+	ScoreNumber s = ScoreZero;
 	for (PieceType pt = N01_Pawn; pt < g_PIECETYPE_NUM; ++pt) {
 		const int num = this->GetBbOf20(pt, Black).PopCount() - this->GetBbOf20(pt, White).PopCount();
 		s += num * PieceScore::GetPieceScore(pt);

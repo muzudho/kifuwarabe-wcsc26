@@ -197,9 +197,9 @@ public:
 	void ForkNewMonkey(
 		Position& pos,
 		Flashlight* pFlashlightBox,
-		const ScoreIndex alpha,
-		const ScoreIndex beta,
-		ScoreIndex& bestScore,
+		const ScoreNumber alpha,
+		const ScoreNumber beta,
+		ScoreNumber& bestScore,
 		Move& bestMove,
 		const Depth depth,
 		const Move threatMove,

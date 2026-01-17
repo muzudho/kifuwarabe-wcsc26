@@ -60,7 +60,7 @@ public:
 	/// <summary>
 	/// 静的な評価値とは☆？
 	/// </summary>
-	ScoreIndex			m_staticEval;
+	ScoreNumber			m_staticEval;
 
 	/// <summary>
 	/// 一時的にヌル・ムーブをせずに検索させたいときのために設定するもの☆

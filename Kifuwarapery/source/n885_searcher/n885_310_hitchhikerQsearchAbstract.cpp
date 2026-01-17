@@ -20,13 +20,13 @@
 /// <param name="beta"></param>
 /// <param name="depth"></param>
 /// <returns></returns>
-ScoreIndex AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
+ScoreNumber AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 	OurCarriage& ourCarriage,
 	bool INCHECK,
 	Position& pos,
 	Flashlight* pFlashlight,
-	ScoreIndex alpha,
-	ScoreIndex beta,
+	ScoreNumber alpha,
+	ScoreNumber beta,
 	const Depth depth
 	) const {
 
@@ -41,12 +41,12 @@ ScoreIndex AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 	Move ttMove;
 	Move move;
 	Move bestMove;
-	ScoreIndex bestScore;
-	ScoreIndex score;
-	ScoreIndex ttScore;
-	ScoreIndex futilityScore;
-	ScoreIndex futilityBase;
-	ScoreIndex oldAlpha;
+	ScoreNumber bestScore;
+	ScoreNumber score;
+	ScoreNumber ttScore;
+	ScoreNumber futilityScore;
+	ScoreNumber futilityBase;
+	ScoreNumber oldAlpha;
 	bool givesCheck;
 	bool evasionPrunable;
 	Depth ttDepth;
@@ -204,7 +204,7 @@ ScoreIndex AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 			if (alpha < score) {
 				// PVノードのときは条件付きで手続きが変わるぜ☆（＾ｑ＾）
 				bool isReturnWithScore = false;
-				ScoreIndex returnScore = ScoreIndex::ScoreNone;
+				ScoreNumber returnScore = ScoreNumber::ScoreNone;
 				this->DoByNewScore(
 					isReturnWithScore,
 					returnScore,

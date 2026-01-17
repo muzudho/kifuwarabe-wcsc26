@@ -146,8 +146,8 @@ MoveAndScoreIndex Book::GetProbe(const Position& position, const std::string& fN
 	u32 sum = 0;
 	Move move = g_MOVE_NONE;//該当なしのときに使う値☆
 	const Key key = this->GetBookKey(position);
-	const ScoreIndex min_book_score = static_cast<ScoreIndex>(static_cast<int>(position.getOurCarriage()->m_engineOptions["Min_Book_Score"]));
-	ScoreIndex score = ScoreZero;
+	const ScoreNumber min_book_score = static_cast<ScoreNumber>(static_cast<int>(position.getOurCarriage()->m_engineOptions["Min_Book_Score"]));
+	ScoreNumber score = ScoreZero;
 
 	if (this->m_fileName_ != fName && !this->OpenBook(fName.c_str())) {
 		// 定跡ファイルが開けなかった場合☆
@@ -307,7 +307,7 @@ void MakeBook(GameStats& gameStats, Position& pos, std::istringstream& ssCmd) {
 					SetUpStates->pop();
 
 					// doMove してから search してるので点数が反転しているので直す。
-					const ScoreIndex score = -pos.GetConstOurCarriage()->m_rootMovesByID[0].m_score_;
+					const ScoreNumber score = -pos.GetConstOurCarriage()->m_rootMovesByID[0].m_score_;
 #else
 					const ScoreIndex GetScore = ScoreZero;
 #endif

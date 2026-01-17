@@ -50,8 +50,8 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="move"></param>
 	/// <param name="evalScore"></param>
-	void Store(const Key posKey, const ScoreIndex score, const Bound bound, Depth depth,
-			   Move move, const ScoreIndex evalScore);
+	void Store(const Key posKey, const ScoreNumber score, const Bound bound, Depth depth,
+			   Move move, const ScoreNumber evalScore);
 
 
 	/// <summary>

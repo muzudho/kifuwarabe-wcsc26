@@ -22,7 +22,7 @@ struct AdventurerSkill {
 	/// <param name="mr"></param>
 	AdventurerSkill(const int l, const int mr)
 		: m_level(l),
-		m_maxRandomScoreDiff(static_cast<ScoreIndex>(mr)),
+		m_maxRandomScoreDiff(static_cast<ScoreNumber>(mr)),
 		m_best(g_MOVE_NONE) {}
 
 
@@ -93,7 +93,7 @@ struct AdventurerSkill {
 	/// <summary>
 	/// ランダムな評価値の差分の最大値か☆？？
 	/// </summary>
-	ScoreIndex m_maxRandomScoreDiff;
+	ScoreNumber m_maxRandomScoreDiff;
 
 	/// <summary>
 	/// ベストムーブか☆？

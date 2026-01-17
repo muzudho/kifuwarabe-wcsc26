@@ -39,7 +39,7 @@ public:
 		const Depth depth,
 		const History& history,
 		Flashlight* pFlashlightBox,
-		const ScoreIndex beta
+		const ScoreNumber beta
 	);
 	NextmoveEvent(const Position& pos, Move ttm, const Depth depth, const History& history, const Square sq);
 	NextmoveEvent(const Position& pos, const Move ttm, const History& history, const PieceType pt);

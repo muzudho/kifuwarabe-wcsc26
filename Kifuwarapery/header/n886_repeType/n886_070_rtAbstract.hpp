@@ -23,7 +23,7 @@ public:
 	/// <param name="resultScore"></param>
 	/// <param name="pSearcher"></param>
 	/// <param name="pFlashlightBox"></param>
-	virtual std::pair<bool, ScoreIndex> IsStop(
+	virtual std::pair<bool, ScoreNumber> IsStop(
 		//bool& isReturn,
 		//ScoreIndex& resultScore,
 		const OurCarriage* pSearcher,

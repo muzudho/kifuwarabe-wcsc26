@@ -35,7 +35,7 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	ScoreIndex GetScore() const;
+	ScoreNumber GetScore() const;
 
 
 	/// <summary>
@@ -63,7 +63,7 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	ScoreIndex GetEvalScore() const;
+	ScoreNumber GetEvalScore() const;
 
 
 	/// <summary>
@@ -83,9 +83,9 @@ public:
 	/// <param name="bound"></param>
 	/// <param name="generation"></param>
 	/// <param name="evalScore"></param>
-	void SetSave(const Depth depth, const ScoreIndex score, const Move move,
+	void SetSave(const Depth depth, const ScoreNumber score, const Move move,
 		const u32 posKeyHigh32, const Bound bound, const u8 generation,
-		const ScoreIndex evalScore);
+		const ScoreNumber evalScore);
 
 
 private:

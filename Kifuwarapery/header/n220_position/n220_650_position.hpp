@@ -258,14 +258,14 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	ScoreIndex GetMaterial() const;
+	ScoreNumber GetMaterial() const;
 
 
 	/// <summary>
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	ScoreIndex GetMaterialDiff() const;
+	ScoreNumber GetMaterialDiff() const;
 
 
 	/// <summary>
@@ -424,7 +424,7 @@ public:
 	/// <param name="asymmThreshold"></param>
 	/// <returns></returns>
 	template<Color US, Color THEM>
-	ScoreIndex GetSee1(const Move move, const int asymmThreshold = 0) const;
+	ScoreNumber GetSee1(const Move move, const int asymmThreshold = 0) const;
 
 
 	/// <summary>
@@ -432,7 +432,7 @@ public:
 	/// </summary>
 	/// <param name="move"></param>
 	/// <returns></returns>
-	ScoreIndex GetSeeSign(const Move move) const;
+	ScoreNumber GetSeeSign(const Move move) const;
 
 
 	/// <summary>
@@ -1033,7 +1033,7 @@ private:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	ScoreIndex ComputeMaterial() const;
+	ScoreNumber ComputeMaterial() const;
 
 
 	/// <summary>

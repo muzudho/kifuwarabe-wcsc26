@@ -18,49 +18,49 @@ class PieceScore {
 
 public:
 
-	static const ScoreIndex m_pawn;
-	static const ScoreIndex m_lance;
-	static const ScoreIndex m_knight;
-	static const ScoreIndex m_silver;
-	static const ScoreIndex m_gold;
-	static const ScoreIndex m_bishop;
-	static const ScoreIndex m_rook;
-	static const ScoreIndex m_proPawn;
-	static const ScoreIndex m_proLance;
-	static const ScoreIndex m_proKnight;
-	static const ScoreIndex m_proSilver;
-	static const ScoreIndex m_horse;
-	static const ScoreIndex m_dragon;
+	static const ScoreNumber m_pawn;
+	static const ScoreNumber m_lance;
+	static const ScoreNumber m_knight;
+	static const ScoreNumber m_silver;
+	static const ScoreNumber m_gold;
+	static const ScoreNumber m_bishop;
+	static const ScoreNumber m_rook;
+	static const ScoreNumber m_proPawn;
+	static const ScoreNumber m_proLance;
+	static const ScoreNumber m_proKnight;
+	static const ScoreNumber m_proSilver;
+	static const ScoreNumber m_horse;
+	static const ScoreNumber m_dragon;
 
-	static const ScoreIndex m_king;
+	static const ScoreNumber m_king;
 
-	static const ScoreIndex m_capturePawn;
-	static const ScoreIndex m_captureLance;
-	static const ScoreIndex m_captureKnight;
-	static const ScoreIndex m_captureSilver;
-	static const ScoreIndex m_captureGold;
-	static const ScoreIndex m_captureBishop;
-	static const ScoreIndex m_captureRook;
-	static const ScoreIndex m_captureProPawn;
-	static const ScoreIndex m_captureProLance;
-	static const ScoreIndex m_captureProKnight;
-	static const ScoreIndex m_CaptureProSilverScore;
-	static const ScoreIndex m_CaptureHorseScore;
-	static const ScoreIndex m_CaptureDragonScore;
-	static const ScoreIndex m_CaptureKingScore;
+	static const ScoreNumber m_capturePawn;
+	static const ScoreNumber m_captureLance;
+	static const ScoreNumber m_captureKnight;
+	static const ScoreNumber m_captureSilver;
+	static const ScoreNumber m_captureGold;
+	static const ScoreNumber m_captureBishop;
+	static const ScoreNumber m_captureRook;
+	static const ScoreNumber m_captureProPawn;
+	static const ScoreNumber m_captureProLance;
+	static const ScoreNumber m_captureProKnight;
+	static const ScoreNumber m_CaptureProSilverScore;
+	static const ScoreNumber m_CaptureHorseScore;
+	static const ScoreNumber m_CaptureDragonScore;
+	static const ScoreNumber m_CaptureKingScore;
 
-	static const ScoreIndex m_PromotePawnScore;
-	static const ScoreIndex m_PromoteLanceScore;
-	static const ScoreIndex m_PromoteKnightScore;
-	static const ScoreIndex m_PromoteSilverScore;
-	static const ScoreIndex m_PromoteBishopScore;
-	static const ScoreIndex m_PromoteRookScore;
+	static const ScoreNumber m_PromotePawnScore;
+	static const ScoreNumber m_PromoteLanceScore;
+	static const ScoreNumber m_PromoteKnightScore;
+	static const ScoreNumber m_PromoteSilverScore;
+	static const ScoreNumber m_PromoteBishopScore;
+	static const ScoreNumber m_PromoteRookScore;
 
-	static const ScoreIndex m_ScoreKnownWin;
+	static const ScoreNumber m_ScoreKnownWin;
 
-	static const ScoreIndex m_PieceScore[Piece::N31_PieceNone];
-	static const ScoreIndex m_CapturePieceScore[Piece::N31_PieceNone];
-	static const ScoreIndex m_PromotePieceScore[7];
+	static const ScoreNumber m_PieceScore[Piece::N31_PieceNone];
+	static const ScoreNumber m_CapturePieceScore[Piece::N31_PieceNone];
+	static const ScoreNumber m_PromotePieceScore[7];
 
 
 public:
@@ -72,7 +72,7 @@ public:
 	/// </summary>
 	/// <param name="pt"></param>
 	/// <returns></returns>
-	inline static const ScoreIndex GetPieceScore(const PieceType pt) {
+	inline static const ScoreNumber GetPieceScore(const PieceType pt) {
 		return PieceScore::m_PieceScore[pt];
 	}
 
@@ -82,7 +82,7 @@ public:
 	/// </summary>
 	/// <param name="pc"></param>
 	/// <returns></returns>
-	inline static const ScoreIndex GetPieceScore(const Piece pc) {
+	inline static const ScoreNumber GetPieceScore(const Piece pc) {
 		return PieceScore::m_PieceScore[pc];
 	}
 
@@ -92,7 +92,7 @@ public:
 	/// </summary>
 	/// <param name="pc"></param>
 	/// <returns></returns>
-	inline static const ScoreIndex GetCapturePieceScore(const Piece pc) {
+	inline static const ScoreNumber GetCapturePieceScore(const Piece pc) {
 		return PieceScore::m_CapturePieceScore[pc];
 	}
 
@@ -103,7 +103,7 @@ public:
 	/// </summary>
 	/// <param name="pt"></param>
 	/// <returns></returns>
-	inline static const ScoreIndex GetCapturePieceScore(const PieceType pt) {
+	inline static const ScoreNumber GetCapturePieceScore(const PieceType pt) {
 		return PieceScore::m_CapturePieceScore[pt];
 	}
 
@@ -113,7 +113,7 @@ public:
 	/// </summary>
 	/// <param name="pt"></param>
 	/// <returns></returns>
-	inline static const ScoreIndex GetPromotePieceScore(const PieceType pt) {
+	inline static const ScoreNumber GetPromotePieceScore(const PieceType pt) {
 		assert(pt < PieceType::N07_Gold);
 		return PieceScore::m_PromotePieceScore[pt];
 	}

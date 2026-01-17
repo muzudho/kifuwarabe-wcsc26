@@ -37,10 +37,10 @@ public:
 		// ベストムーブは何手目かだろうかなんだぜ☆？（＾ｑ＾）？
 		Ply prevBestMovePlyChanges;
 
-		ScoreIndex bestScore = -ScoreInfinite;
-		ScoreIndex delta = -ScoreInfinite;
-		ScoreIndex alpha = -ScoreInfinite;
-		ScoreIndex beta = ScoreInfinite;
+		ScoreNumber bestScore = -ScoreInfinite;
+		ScoreNumber delta = -ScoreInfinite;
+		ScoreNumber alpha = -ScoreInfinite;
+		ScoreNumber beta = ScoreInfinite;
 		bool bestMoveNeverChanged = true;
 		int lastInfoTime = -1; // 将棋所のコンソールが詰まる問題への対処用
 
@@ -126,7 +126,7 @@ public:
 					5 <= depth &&
 					abs(ourCarriage.m_rootMovesByID[ourCarriage.m_pvIdx].m_prevScore_) < PieceScore::m_ScoreKnownWin
 					) {
-					delta = static_cast<ScoreIndex>(16);
+					delta = static_cast<ScoreNumber>(16);
 					alpha = ourCarriage.m_rootMovesByID[ourCarriage.m_pvIdx].m_prevScore_ - delta;
 					beta = ourCarriage.m_rootMovesByID[ourCarriage.m_pvIdx].m_prevScore_ + delta;
 				}
@@ -260,7 +260,7 @@ public:
 						ourCarriage.m_timeMgr.CanIterativeDeepingTimeOk(ourCarriage.m_stopwatch.GetElapsed())
 					)
 				) {
-					const ScoreIndex rBeta = bestScore - 2 * PieceScore::m_capturePawn;
+					const ScoreNumber rBeta = bestScore - 2 * PieceScore::m_capturePawn;
 					(flashlight + 1)->m_staticEvalRaw.m_p[0][0] = ScoreNotEvaluated;
 					(flashlight + 1)->m_excludedMove = ourCarriage.m_rootMovesByID[0].m_pv_[0];
 					(flashlight + 1)->m_skipNullMove = true;
@@ -271,7 +271,7 @@ public:
 					//────────────────────────────────────────────────────────────────────────────────
 
 
-					const ScoreIndex s = g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_n10(
+					const ScoreNumber s = g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_n10(
 						ourCarriage, pos, flashlight + 1, rBeta - 1, rBeta, (depth - 3) * OnePly, true);
 
 					(flashlight + 1)->m_skipNullMove = false;

@@ -37,12 +37,12 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="cutNode"></param>
 	/// <returns></returns>
-	virtual ScoreIndex explorePlain_n10(
+	virtual ScoreNumber explorePlain_n10(
 		OurCarriage& ourCarriage,
 		Position& pos,
 		Flashlight* pFlashlight,//サーチスタック
-		ScoreIndex alpha,
-		ScoreIndex beta,
+		ScoreNumber alpha,
+		ScoreNumber beta,
 		const Depth depth,
 		const bool cutNode
 		) const override;
@@ -54,8 +54,8 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
 	virtual inline void explorePlain_n100n800_assert(
-		ScoreIndex alpha,
-		ScoreIndex beta
+		ScoreNumber alpha,
+		ScoreNumber beta
 		) const override {
 		// PVノードはスルー☆！（＾ｑ＾）
 		assert(alpha == beta - 1);
@@ -82,10 +82,10 @@ public:
 		Flashlight** ppFlashlight,
 		Move& bestMove,
 		Move& threatMove,
-		ScoreIndex& bestScore,
+		ScoreNumber& bestScore,
 		Move& ttMove,
 		Move& excludedMove,
-		ScoreIndex& ttScore
+		ScoreNumber& ttScore
 		) const override
 	{
 		// 非スプリット・ポイントはスルー☆！（＾ｑ＾）
@@ -100,7 +100,7 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline std::pair<bool, ScoreIndex> explorePlain_n200n250_isStopByRepetetion(
+	virtual inline std::pair<bool, ScoreNumber> explorePlain_n200n250_isStopByRepetetion(
 		//bool& isReturnWithScore,
 		//ScoreIndex& returnScore,
 		Position& pos,
@@ -124,10 +124,10 @@ public:
 	/// <param name="beta"></param>
 	virtual inline void explorePlain_n200n300_returnWithScore(
 		bool& isReturnWithScore,
-		ScoreIndex& returnScore,
+		ScoreNumber& returnScore,
 		Flashlight** ppFlashlight,
-		ScoreIndex& alpha,
-		ScoreIndex& beta
+		ScoreNumber& alpha,
+		ScoreNumber& beta
 		)const override {
 		// ルートには無いぜ☆（＾ｑ＾）！
 		//UNREACHABLE;
@@ -166,12 +166,12 @@ public:
 	/// <param name="ttMove"></param>
 	virtual inline void explorePlain_n200n450_returnWithScore(
 		bool& isReturnWithScore,
-		ScoreIndex& returnScore,
+		ScoreNumber& returnScore,
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
 		const Depth depth,
-		ScoreIndex& ttScore,
-		ScoreIndex& beta,
+		ScoreNumber& ttScore,
+		ScoreNumber& beta,
 		Flashlight** ppFlashlight,
 		Move& ttMove
 		)const override {
@@ -189,8 +189,8 @@ public:
 	/// <returns></returns>
 	virtual inline bool GetConditionInStep4y(
 		const TTEntry* pTtEntry,
-		ScoreIndex& beta,
-		ScoreIndex& ttScore
+		ScoreNumber& beta,
+		ScoreNumber& ttScore
 		) const override {
 		return pTtEntry->GetBoundKind() == Bound::BoundExact;
 	}
@@ -212,13 +212,13 @@ public:
 	/// <param name="bestMove"></param>
 	virtual inline void explorePlain_n200n500_returnWithValue(
 		bool& isReturnWithScore,
-		ScoreIndex& returnScore,
+		ScoreNumber& returnScore,
 		OurCarriage& ourCarriage,
 		bool& inCheck,
 		Move& move,
 		Position& pos,
 		Flashlight** ppFlashlight,
-		ScoreIndex& bestScore,
+		ScoreNumber& bestScore,
 		Key& posKey,
 		const Depth depth,
 		Move& bestMove
@@ -242,11 +242,11 @@ public:
 	/// <param name="ppFlashlight"></param>
 	virtual inline void explorePlain_n200n600_nonPVRazoring(
 		bool& isReturnWithScore,
-		ScoreIndex& returnScore,
+		ScoreNumber& returnScore,
 		OurCarriage& ourCarriage,
 		const Depth depth,
-		ScoreIndex& eval,
-		ScoreIndex& beta,
+		ScoreNumber& eval,
+		ScoreNumber& beta,
 		Move& ttMove,
 		Position& pos,
 		Flashlight** ppFlashlight
@@ -266,11 +266,11 @@ public:
 	/// <param name="eval"></param>
 	virtual inline void explorePlain_n200n650_returnWithValue(
 		bool& isReturnWithScore,
-		ScoreIndex& returnScore,
+		ScoreNumber& returnScore,
 		Flashlight** ppFlashlight,
 		const Depth depth,
-		ScoreIndex& beta,
-		ScoreIndex& eval
+		ScoreNumber& beta,
+		ScoreNumber& eval
 		)const override {
 		// PVノードはスルー☆！（＾ｑ＾）
 	}
@@ -293,15 +293,15 @@ public:
 	/// <param name="threatMove"></param>
 	virtual inline void explorePlain_n200n700_nonPVRecursiveSearch(
 		bool& isReturnWithScore,
-		ScoreIndex& returnScore,
+		ScoreNumber& returnScore,
 		OurCarriage& ourCarriage,
 		Flashlight** ppFlashlight,
 		const Depth depth,
-		ScoreIndex& beta,
-		ScoreIndex& eval,
+		ScoreNumber& beta,
+		ScoreNumber& eval,
 		Position& pos,
 		StateInfo& st,
-		ScoreIndex& alpha,
+		ScoreNumber& alpha,
 		const bool cutNode,
 		Move& threatMove
 		)const override {
@@ -328,12 +328,12 @@ public:
 		OurCarriage& ourCarriage,
 		const Depth& depth,
 		Flashlight** ppFlashlight,
-		ScoreIndex& beta,
+		ScoreNumber& beta,
 		Move& move,
 		Position& pos,
 		Move& ttMove,
 		StateInfo& st,
-		ScoreIndex& score,
+		ScoreNumber& score,
 		const bool cutNode
 		)const override {
 		// 非PVノードはスルー☆！（＾ｑ＾）
@@ -357,11 +357,11 @@ public:
 		const Depth depth,
 		Move& ttMove,
 		bool& inCheck,
-		ScoreIndex& beta,
+		ScoreNumber& beta,
 		Flashlight** ppFlashlight,
 		OurCarriage& ourCarriage,
 		Position& pos,
-		ScoreIndex& alpha,
+		ScoreNumber& alpha,
 		const TTEntry** ppTtEntry,//セットされるぜ☆
 		Key& posKey
 		)const override
@@ -410,11 +410,11 @@ public:
 	/// </summary>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	virtual inline ScoreIndex getBeta_n140(
-		ScoreIndex beta
+	virtual inline ScoreNumber getBeta_n140(
+		ScoreNumber beta
 		) const override {
 		// PVノードの場合☆（＾ｑ＾）
-		return -ScoreIndex::ScoreInfinite;
+		return -ScoreNumber::ScoreInfinite;
 	}
 
 
@@ -431,8 +431,8 @@ public:
 	virtual inline void explorePlain_n200n900_beforeLoop_splitPointStart(
 		Move& ttMove,
 		const Depth depth,
-		ScoreIndex& score,
-		ScoreIndex& bestScore,
+		ScoreNumber& score,
+		ScoreNumber& bestScore,
 		bool& singularExtensionNode,
 		Move& excludedMove,
 		const TTEntry* pTtEntry
@@ -503,7 +503,7 @@ public:
 		bool& captureOrPawnPromotion,
 		bool& inCheck,
 		bool& dangerous,
-		ScoreIndex& bestScore,
+		ScoreNumber& bestScore,
 		Move& move,
 		Move& ttMove,
 		const Depth depth,
@@ -513,7 +513,7 @@ public:
 		SplitedNode** ppSplitedNode,
 		Depth& newDepth,
 		Flashlight** ppFlashlight,
-		ScoreIndex& beta
+		ScoreNumber& beta
 		) const override {
 		// PVノードはスルー☆！（＾ｑ＾）
 		//UNREACHABLE;
@@ -576,7 +576,7 @@ public:
 	/// <param name="bestScore"></param>
 	virtual inline void lockAndUpdateBestScore_n380(
 		SplitedNode** ppSplitedNode,
-		ScoreIndex& bestScore
+		ScoreNumber& bestScore
 	) const override {
 		// 非スプリット・ポイントではスルー☆！（＾ｑ＾）
 	}
@@ -613,7 +613,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="ppSplitedNode"></param>
 	virtual inline void updateAlpha_n500(
-		ScoreIndex& alpha,
+		ScoreNumber& alpha,
 		SplitedNode** ppSplitedNode
 		) const override {
 
@@ -647,7 +647,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	virtual inline void explorePlain_n600n700_setAlpha(
 		bool& doFullDepthSearch,
-		ScoreIndex& alpha,
+		ScoreNumber& alpha,
 		SplitedNode** ppSplitedNode
 		)const override {
 		// 非スプリットノードはスルー☆！（＾ｑ＾）
@@ -662,8 +662,8 @@ public:
 	/// <param name="beta"></param>
 	/// <returns></returns>
 	virtual inline bool isBetaLarge_n620(
-		ScoreIndex& score,
-		ScoreIndex& beta
+		ScoreNumber& score,
+		ScoreNumber& beta
 		) const override {
 		// ルートノードの場合☆（＾ｑ＾）
 		return true;
@@ -678,8 +678,8 @@ public:
 	/// <param name="alpha"></param>
 	virtual inline void explorePlain_n700n500_setAlpha(
 		SplitedNode** ppSplitedNode,
-		ScoreIndex& bestScore,
-		ScoreIndex& alpha
+		ScoreNumber& bestScore,
+		ScoreNumber& alpha
 		)const override {
 		// 非スプリット・ポイントはスルー☆！（＾ｑ＾）
 	}
@@ -704,13 +704,13 @@ public:
 		OurCarriage& ourCarriage,
 		Move& move,
 		bool& isPVMove,
-		ScoreIndex& alpha,
-		ScoreIndex& score,
+		ScoreNumber& alpha,
+		ScoreNumber& score,
 		Position& pos,
-		ScoreIndex& bestScore,
+		ScoreNumber& bestScore,
 		SplitedNode** ppSplitedNode,
 		Move& bestMove,
-		ScoreIndex& beta
+		ScoreNumber& beta
 		)const override {
 
 		if (bestScore < score) {
@@ -754,11 +754,11 @@ public:
 		OurCarriage& ourCarriage,
 		const Depth depth,
 		Monkey** ppThisThread,
-		ScoreIndex& bestScore,
-		ScoreIndex& beta,
+		ScoreNumber& bestScore,
+		ScoreNumber& beta,
 		Position& pos,
 		Flashlight** ppFlashlight,
-		ScoreIndex& alpha,
+		ScoreNumber& alpha,
 		Move& bestMove,
 		Move& threatMove,
 		int& moveCount,

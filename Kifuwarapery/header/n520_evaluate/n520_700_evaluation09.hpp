@@ -35,7 +35,7 @@ public:
 	/// </summary>
 	/// <param name="pos"></param>
 	/// <returns></returns>
-	ScoreIndex evaluateUnUseDiff(const Position& pos);
+	ScoreNumber evaluateUnUseDiff(const Position& pos);
 
 
 	/// <summary>
@@ -44,7 +44,7 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="ss"></param>
 	/// <returns></returns>
-	ScoreIndex evaluate(Position& pos, Flashlight* ss);
+	ScoreNumber evaluate(Position& pos, Flashlight* ss);
 
 
 private:

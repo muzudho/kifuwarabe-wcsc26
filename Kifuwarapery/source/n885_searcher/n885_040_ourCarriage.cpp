@@ -64,7 +64,7 @@ void OurCarriage::initializeOurCarriage_app10() {
 /// <param name="alpha"></param>
 /// <param name="beta"></param>
 /// <returns></returns>
-std::string OurCarriage::PvInfoToUSI(Position& pos, const Ply depth, const ScoreIndex alpha, const ScoreIndex beta) {
+std::string OurCarriage::PvInfoToUSI(Position& pos, const Ply depth, const ScoreNumber alpha, const ScoreNumber beta) {
 
 	// 思考時間（ミリ秒。読み筋表示用）
 	const int time = m_stopwatch.GetElapsed();
@@ -87,7 +87,7 @@ std::string OurCarriage::PvInfoToUSI(Position& pos, const Ply depth, const Score
 		}
 
 		const Ply d = (update ? depth : depth - 1);
-		const ScoreIndex s = (update ? m_rootMovesByID[i].m_score_ : m_rootMovesByID[i].m_prevScore_);
+		const ScoreNumber s = (update ? m_rootMovesByID[i].m_score_ : m_rootMovesByID[i].m_prevScore_);
 
 		ss << "info depth " << d
 		   << " seldepth " << selDepth

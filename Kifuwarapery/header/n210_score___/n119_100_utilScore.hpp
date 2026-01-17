@@ -26,8 +26,8 @@ public:
 	/// </summary>
 	/// <param name="ply"></param>
 	/// <returns></returns>
-	static inline ScoreIndex MateIn(const Ply ply) {
-		return ScoreMate0Ply - static_cast<ScoreIndex>(ply);
+	static inline ScoreNumber MateIn(const Ply ply) {
+		return ScoreMate0Ply - static_cast<ScoreNumber>(ply);
 	}
 
 
@@ -36,7 +36,7 @@ public:
 	/// </summary>
 	/// <param name="ply"></param>
 	/// <returns></returns>
-	static inline ScoreIndex MatedIn(const Ply ply) {
-		return -ScoreMate0Ply + static_cast<ScoreIndex>(ply);
+	static inline ScoreNumber MatedIn(const Ply ply) {
+		return -ScoreMate0Ply + static_cast<ScoreNumber>(ply);
 	}
 };

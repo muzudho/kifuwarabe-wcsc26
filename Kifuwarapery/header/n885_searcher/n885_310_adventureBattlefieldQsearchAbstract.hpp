@@ -31,13 +31,13 @@ public:
 	/// <param name="beta"></param>
 	/// <param name="depth"></param>
 	/// <returns></returns>
-	virtual ScoreIndex ExploreAsQsearch(
+	virtual ScoreNumber ExploreAsQsearch(
 		OurCarriage& ourCarriage,
 		bool INCHECK,
 		Position& pos,
 		Flashlight* ss,
-		ScoreIndex alpha,
-		ScoreIndex beta,
+		ScoreNumber alpha,
+		ScoreNumber beta,
 		const Depth depth
 		) const ;
 
@@ -50,8 +50,8 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
 	virtual inline void DoAssert(
-		ScoreIndex alpha,
-		ScoreIndex beta
+		ScoreNumber alpha,
+		ScoreNumber beta
 		) const = 0;
 
 
@@ -63,8 +63,8 @@ public:
 	/// <param name="oldAlpha"></param>
 	/// <param name="alpha"></param>
 	virtual inline void SetOldAlpha(
-		ScoreIndex& oldAlpha,
-		ScoreIndex alpha
+		ScoreNumber& oldAlpha,
+		ScoreNumber alpha
 		) const = 0;
 
 
@@ -79,8 +79,8 @@ public:
 	/// <returns></returns>
 	virtual inline bool GetCondition01(
 		const TTEntry** ppTtEntry,
-		ScoreIndex beta,
-		ScoreIndex ttScore
+		ScoreNumber beta,
+		ScoreNumber ttScore
 		) const = 0;
 
 
@@ -92,8 +92,8 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="bestScore"></param>
 	virtual inline void SetAlpha(
-		ScoreIndex& alpha,
-		ScoreIndex bestScore
+		ScoreNumber& alpha,
+		ScoreNumber bestScore
 		) const = 0;
 
 
@@ -119,11 +119,11 @@ public:
 		bool& givesCheck,
 		Move& move,
 		Move& ttMove,
-		ScoreIndex& futilityScore,
-		ScoreIndex& futilityBase,
+		ScoreNumber& futilityScore,
+		ScoreNumber& futilityBase,
 		Position& pos,
-		ScoreIndex& beta,
-		ScoreIndex& bestScore,
+		ScoreNumber& beta,
+		ScoreNumber& bestScore,
 		const Depth depth
 		)const = 0;
 
@@ -167,11 +167,11 @@ public:
 	/// <param name="move"></param>
 	virtual inline void DoByNewScore(
 		bool& isReturnWithScore,
-		ScoreIndex& returnScore,
+		ScoreNumber& returnScore,
 		OurCarriage& ourCarriage,
-		ScoreIndex& score,
-		ScoreIndex& beta,
-		ScoreIndex& alpha,
+		ScoreNumber& score,
+		ScoreNumber& beta,
+		ScoreNumber& alpha,
 		Move& bestMove,
 		Key& posKey,
 		Flashlight** ppFlashlight,
@@ -189,7 +189,7 @@ public:
 	/// <param name="bestScore"></param>
 	/// <returns></returns>
 	virtual inline Bound GetBound01(
-		ScoreIndex& oldAlpha,
-		ScoreIndex& bestScore
+		ScoreNumber& oldAlpha,
+		ScoreNumber& bestScore
 		)const = 0;
 };

@@ -66,12 +66,12 @@ AdventureNodekindSplitedNodeRoot g_NODEKIND_SPLITEDNODE_ROOT;
 /// <param name="depth"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-ScoreIndex AdventureNodekindSplitedNodeRoot::explorePlain_n10(
+ScoreNumber AdventureNodekindSplitedNodeRoot::explorePlain_n10(
 	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
-	ScoreIndex alpha,
-	ScoreIndex beta,
+	ScoreNumber alpha,
+	ScoreNumber beta,
 	const Depth depth,
 	const bool cutNode) const
 {
@@ -97,10 +97,10 @@ ScoreIndex AdventureNodekindSplitedNodeRoot::explorePlain_n10(
 	Move threatMove;
 	Depth newDepth;
 	Depth extension;
-	ScoreIndex bestScore;
-	ScoreIndex score;
-	ScoreIndex ttScore;
-	ScoreIndex eval;
+	ScoreNumber bestScore;
+	ScoreNumber score;
+	ScoreNumber ttScore;
+	ScoreNumber eval;
 	bool inCheck;
 	bool givesCheck;
 	bool isPVMove;	// 本筋の指し手かどうかかなあ（＾～＾）？
@@ -149,7 +149,7 @@ ScoreIndex AdventureNodekindSplitedNodeRoot::explorePlain_n10(
 
 
 	bool isReturnWithScore = false;
-	ScoreIndex returnScore = ScoreIndex::ScoreNone;
+	ScoreNumber returnScore = ScoreNumber::ScoreNone;
 
 	pos.SetNodesVisited(pos.GetNodesVisited() + 1);
 
