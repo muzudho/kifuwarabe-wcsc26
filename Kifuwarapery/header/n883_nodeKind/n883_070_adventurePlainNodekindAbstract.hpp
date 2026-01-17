@@ -185,7 +185,7 @@ public:
 	/// <param name="ppFlashlight"></param>
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
-	virtual inline void explorePlain_n200n300(
+	virtual inline void explorePlain_n200n300_returnWithScore(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
 		Flashlight** ppFlashlight,
@@ -266,7 +266,7 @@ public:
 	/// <param name="beta"></param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="ttMove"></param>
-	virtual inline void explorePlain_n200n450_returnStep4y(
+	virtual inline void explorePlain_n200n450_returnWithScore(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
 		OurCarriage& ourCarriage,

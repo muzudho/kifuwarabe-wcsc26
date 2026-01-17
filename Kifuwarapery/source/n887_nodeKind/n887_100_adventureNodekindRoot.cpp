@@ -287,7 +287,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 		// 指さずに探索処理
 
 
-		#ifndef SHRINK_ROOT_NODE_EXPLORE_PLAIN_260_RECURSIVE_SEARCH
+		#ifndef SHRINK_ROOT_NODE_EXPLORE_PLAIN_400N500_RECURSIVE_SEARCH
 			// なんか分からんが再帰探索（＾～＾）
 			this->explorePlain_n400n500_recursiveSearch(
 				ourCarriage,

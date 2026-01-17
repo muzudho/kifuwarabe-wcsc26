@@ -161,7 +161,7 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::explorePlain_n10(
 	ScoreIndex returnScore = ScoreNone;
 
 
-	this->explorePlain_n200n300(
+	this->explorePlain_n200n300_returnWithScore(
 		isReturnWithScore,
 		returnScore,
 		&pFlashlight,
@@ -190,7 +190,7 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::explorePlain_n10(
 		pos);
 
 
-	this->explorePlain_n200n450_returnStep4y(
+	this->explorePlain_n200n450_returnWithScore(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,

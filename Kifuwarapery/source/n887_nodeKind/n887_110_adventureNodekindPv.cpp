@@ -147,7 +147,7 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 
 
 	// step3
-	this->explorePlain_n200n300(
+	this->explorePlain_n200n300_returnWithScore(
 		isReturnWithScore,
 		returnScore,
 		&pFlashlight,
@@ -175,7 +175,7 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 		pTtEntry,
 		pos
 		);
-	this->explorePlain_n200n450_returnStep4y(
+	this->explorePlain_n200n450_returnWithScore(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,

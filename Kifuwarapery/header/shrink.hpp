@@ -9,7 +9,7 @@
 
 // なんか分からんが再帰探索（＾～＾）
 // これを定義するとバグが取れるけど、指し手が全然ダメになるぜ（＾～＾）
-//#define SHRINK_ROOT_NODE_EXPLORE_PLAIN_260_RECURSIVE_SEARCH
+//#define SHRINK_ROOT_NODE_EXPLORE_PLAIN_400N500_RECURSIVE_SEARCH
 
 
 // なんか分からんが再帰探索（＾～＾）
@@ -33,6 +33,9 @@
 
 
 // 非PVノード
+
+
+#define SHRINK_NON_PV_NODE_EXPLORE_PLAIN_200N600_NON_PV_RAZORING
 
 
 // これを定義してもバグは取れない（＾～＾）

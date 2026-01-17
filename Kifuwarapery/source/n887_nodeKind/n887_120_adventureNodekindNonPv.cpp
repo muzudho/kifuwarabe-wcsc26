@@ -132,20 +132,18 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 		//returnScore,
 		pos,
 		ourCarriage,
-		&pFlashlight
-		);
+		&pFlashlight);
 	bool isReturnWithScore = p.first;
 	ScoreIndex returnScore = p.second;
 	if (isReturnWithScore) { return returnScore; }
 
 
-	this->explorePlain_n200n300(
+	this->explorePlain_n200n300_returnWithScore(
 		isReturnWithScore,
 		returnScore,
 		&pFlashlight,
 		alpha,
-		beta
-		);
+		beta);
 	if (isReturnWithScore) { return returnScore; }
 
 
@@ -159,19 +157,17 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 		pos,
 		&pTtEntry,//セットされる☆
 		ourCarriage,
-		ttScore
-		);
+		ttScore);
 
 
 	this->explorePlain_n200n400_getTtMove(
 		ttMove,
 		ourCarriage,
 		pTtEntry,
-		pos
-		);
+		pos);
 
 
-	this->explorePlain_n200n450_returnStep4y(
+	this->explorePlain_n200n450_returnWithScore(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -180,8 +176,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 		ttScore,
 		beta,
 		&pFlashlight,
-		ttMove
-		);
+		ttMove);
 	if (isReturnWithScore) { return returnScore; }
 
 
@@ -196,8 +191,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 		bestScore,
 		posKey,
 		depth,
-		bestMove
-		);
+		bestMove);
 	if (isReturnWithScore) { return returnScore; }
 
 
@@ -212,23 +206,23 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 		pTtEntry,
 		ttScore,
 		posKey,
-		move
-		);
+		move);
 	if (isGotoIidStart) { goto iid_start; }
 
 
-	this->explorePlain_n200n600_nonPVRazoring(
-		isReturnWithScore,
-		returnScore,
-		ourCarriage,
-		depth,
-		eval,
-		beta,
-		ttMove,
-		pos,
-		&pFlashlight
-		);
-	if (isReturnWithScore) { return returnScore; }
+	#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_200N600_NON_PV_RAZORING
+		this->explorePlain_n200n600_nonPVRazoring(
+			isReturnWithScore,
+			returnScore,
+			ourCarriage,
+			depth,
+			eval,
+			beta,
+			ttMove,
+			pos,
+			&pFlashlight);
+		if (isReturnWithScore) { return returnScore; }
+	#endif
 
 
 	this->explorePlain_n200n650_returnWithValue(
