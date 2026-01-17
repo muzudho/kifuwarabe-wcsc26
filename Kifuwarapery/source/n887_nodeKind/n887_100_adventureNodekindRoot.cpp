@@ -141,14 +141,13 @@ ScoreNumber AdventureNodekindRoot::explorePlain_n10(
 
 
 	// トランスポジション・テーブルのスコアを取得した（＾～＾）？
-	this->explorePlain_n200n350_getTtScore(
+	bananaTtScore = this->explorePlain_n200n350_getTtScore(
 		excludedMove,
 		&pFlashlight,
 		posKey,
 		pos,
 		&pTtEntry,	//セットされる☆
-		ourCarriage,
-		bananaTtScore);	//セットされる☆
+		ourCarriage);
 	// なんか ttMove を取得した（＾～＾）？
 	this->explorePlain_n200n400_getTtMove(
 		bananaTtMove,

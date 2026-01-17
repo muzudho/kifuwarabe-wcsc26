@@ -218,14 +218,13 @@ public:
 	/// <param name="ppTtEntry"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="ttScore"></param>
-	virtual inline void explorePlain_n200n350_getTtScore(
+	virtual inline ScoreNumber explorePlain_n200n350_getTtScore(
 		Move& excludedMove,
 		Flashlight** ppFlashlight,
 		Key& posKey,
 		Position& pos,
 		const TTEntry** ppTtEntry,//セットされるぜ☆（＾ｑ＾）
-		OurCarriage& ourCarriage,
-		ScoreNumber& ttScore) const
+		OurCarriage& ourCarriage) const
 	{
 		// １つ前の手
 		excludedMove = (*ppFlashlight)->m_excludedMove;
@@ -237,7 +236,7 @@ public:
 		(*ppTtEntry) = ourCarriage.m_tt.Probe(posKey);
 
 		// トランスポジション・テーブルのスコアを取得した（＾～＾）？
-		ttScore = ((*ppTtEntry) != nullptr ? ourCarriage.ConvertScoreFromTT((*ppTtEntry)->GetScore(), (*ppFlashlight)->m_ply) : ScoreNone);
+		return ((*ppTtEntry) != nullptr ? ourCarriage.ConvertScoreFromTT((*ppTtEntry)->GetScore(), (*ppFlashlight)->m_ply) : ScoreNone);
 	}
 
 

@@ -154,14 +154,13 @@ ScoreNumber AdventureNodekindSplitedNodeRoot::explorePlain_n10(
 	pos.SetNodesVisited(pos.GetNodesVisited() + 1);
 
 
-	this->explorePlain_n200n350_getTtScore(
+	bananaTtScore = this->explorePlain_n200n350_getTtScore(
 		excludedMove,
 		&pFlashlight,
 		posKey,
 		pos,
 		&pTtEntry,//セットされる☆
-		ourCarriage,
-		bananaTtScore);
+		ourCarriage);
 	this->explorePlain_n200n400_getTtMove(
 		bananaTtMove,
 		ourCarriage,
