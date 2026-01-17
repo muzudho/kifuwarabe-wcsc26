@@ -1,7 +1,12 @@
 #pragma once
 #pragma once
 
+
 // 大平野の冒険をシュリンクするぜ（＾～＾）
+
+
+// NonPV扱いで再帰するみたいなんだがなんだこれだぜ☆（＾～＾）？
+#define SHRINK_EXPLORE_PLAIN_NON_PV_RECURSIVE_SEARCH
 
 
 // でかいβ値も深掘りしないぜ（＾～＾）

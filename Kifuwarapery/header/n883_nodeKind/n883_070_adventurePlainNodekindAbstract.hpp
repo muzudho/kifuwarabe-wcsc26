@@ -1321,7 +1321,7 @@ public:
 
 
 	/// <summary>
-	/// （＾ｑ＾）N02_NonPV扱いで実行するみたいなんだがなんだこれだぜ☆
+	/// （＾ｑ＾）N02_NonPV扱いで再帰するみたいなんだがなんだこれだぜ☆
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="doFullDepthSearch"></param>
@@ -1332,7 +1332,7 @@ public:
 	/// <param name="ppFlashlight"></param>
 	/// <param name="alpha"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void explorePlain_n380_nonPVAtukai(
+	virtual inline void explorePlain_n380_nonPVRecursiveSearch(
 		OurCarriage& ourCarriage,
 		bool& doFullDepthSearch,
 		ScoreIndex& score,

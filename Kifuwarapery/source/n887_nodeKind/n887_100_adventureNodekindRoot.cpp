@@ -320,17 +320,20 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 			pos,
 			doFullDepthSearch);
 
-		// step16
-		this->explorePlain_n380_nonPVAtukai(
-			ourCarriage,
-			doFullDepthSearch,
-			score,
-			newDepth,
-			givesCheck,
-			pos,
-			&pFlashlight,
-			alpha,
-			cutNode);
+
+		#ifndef SHRINK_EXPLORE_PLAIN_NON_PV_RECURSIVE_SEARCH
+			// NonPV扱いで再帰するみたいなんだがなんだこれだぜ☆（＾～＾）？
+			this->explorePlain_n380_nonPVRecursiveSearch(
+				ourCarriage,
+				doFullDepthSearch,
+				score,
+				newDepth,
+				givesCheck,
+				pos,
+				&pFlashlight,
+				alpha,
+				cutNode);
+		#endif
 
 
 		#ifndef SHRINK_EXPLORE_PLAIN_LARGE_BETA_RECURSIVE_SEARCH

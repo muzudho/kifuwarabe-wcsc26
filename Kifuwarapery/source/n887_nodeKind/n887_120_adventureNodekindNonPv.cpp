@@ -428,7 +428,7 @@ iid_start:
 			);
 
 		// step16
-		this->explorePlain_n380_nonPVAtukai(
+		this->explorePlain_n380_nonPVRecursiveSearch(
 			ourCarriage,
 			doFullDepthSearch,
 			score,

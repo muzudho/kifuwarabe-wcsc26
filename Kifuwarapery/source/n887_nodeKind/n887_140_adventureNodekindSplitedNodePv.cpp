@@ -367,7 +367,7 @@ split_point_start:
 			alpha,
 			&pSplitedNode
 			);
-		this->explorePlain_n380_nonPVAtukai(
+		this->explorePlain_n380_nonPVRecursiveSearch(
 			ourCarriage,
 			doFullDepthSearch,
 			score,

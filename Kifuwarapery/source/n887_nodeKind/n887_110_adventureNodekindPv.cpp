@@ -337,7 +337,7 @@ ScoreIndex AdventureNodekindPv::explorePlain_n10(
 			&pFlashlight
 			);
 
-		this->explorePlain_n380_nonPVAtukai(
+		this->explorePlain_n380_nonPVRecursiveSearch(
 			ourCarriage,
 			doFullDepthSearch,
 			score,
