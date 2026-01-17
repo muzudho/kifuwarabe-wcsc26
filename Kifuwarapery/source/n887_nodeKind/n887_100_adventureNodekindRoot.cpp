@@ -106,45 +106,57 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 
 	// step1
 	// initialize node
-	Monkey* pThisThread = pos.GetThisThread();
-	moveCount = playedMoveCount = 0;
-	inCheck = pos.InCheck();
+
+	// 対応付く猿（探索スレッド）
+	Monkey* pHandleMonkey = pos.GetHandleMonkey();
+	moveCount
+		= playedMoveCount
+			= 0;
+	inCheck = pos.InCheck();	// 王手されているか（＾～＾）？
 
 	//bool isGotoSplitPointStart = false;
 
-	this->ExplorerPlainStep1bSetMoveNone(
+	// 指し手をクリアーする（＾～＾）？
+	this->explorePlain_n80_setMoveNone(
 		bestScore,
 		&pFlashlight,
 		threatMove,
 		bestMove);
+
+	// ［本筋ノードでの最大手数］という情報を更新（＾～＾）
 	this->explorePlain_n90_updateMaxPly(
-		&pThisThread,
+		&pHandleMonkey,
 		pFlashlight);
 
 	//bool isReturnWithScore = false;
 	//ScoreIndex returnScore = ScoreIndex::ScoreNone;
 
+	// ［訪問ノード数］という情報を設定（＾～＾）
+	pos.SetNodesVisited(pos.GetNodesVisited() + 1);
 
-	pos.SetNodesSearched(pos.GetNodesSearched() + 1);
-
-	// step4
-	this->explorePlain_n100(
+	// トランスポジション・テーブルのスコアを取得した（＾～＾）？
+	this->explorePlain_n100_getTtScore(
 		excludedMove,
 		&pFlashlight,
 		posKey,
 		pos,
-		&pTtEntry,//セットされる☆
+		&pTtEntry,	//セットされる☆
 		ourCarriage,
-		ttScore);
-	this->explorePlain_n110(
+		ttScore);	//セットされる☆
+
+	// なんか ttMove を取得した（＾～＾）？
+	this->explorePlain_n110_getTtMove(
 		ttMove,
 		ourCarriage,
 		pTtEntry,
 		pos);
+	// ttScore と ttMove でデリシャス・バナナ（＾～＾）！
 
 	// step5
 	bool isGotoIidStart = false;//NonPVのとき使う☆
-	this->explorePlain_n120(
+
+	// なんか評価した（＾～＾）？
+	this->explorePlain_n120_eval(
 		isGotoIidStart,
 		ourCarriage,
 		eval,
@@ -165,6 +177,8 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 	// 内側の反復深化探索☆？（＾ｑ＾）
 //iid_start:
 	// step10
+
+	// なんか再帰的に探索してる（＾～＾）
 	this->explorePlain_n130_internalIterativeDeepening(
 		depth,
 		ttMove,
@@ -177,8 +191,9 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 		&pTtEntry,//セットされるぜ☆
 		posKey);
 
+
 //split_point_start:
-	NextmoveEvent mp(
+	NextmoveEvent nextMoveEvent(
 		pos,
 		ttMove,
 		depth,
@@ -186,8 +201,11 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 		pFlashlight,
 		this->getBeta_n140(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
 		);
-	const CheckInfo ci(pos);
 
+	// 王手情報（＾～＾）？
+	const CheckInfo checkInfo(pos);
+
+	// なんかセットしてる（＾～＾）
 	this->explorePlain_n150_beforeLoop_splitPointStart(
 		ttMove,
 		depth,
@@ -203,7 +221,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 	while (
 		!(
 			// スプリット・ポイントかどうかで、取ってくる指し手が変わる☆
-			move = this->getNextMove_n160(mp)
+			move = this->getNextMove_n160(nextMoveEvent)
 			).IsNone()
 		) {
 
@@ -216,7 +234,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 			isContinue,
 			pos,
 			move,
-			ci,
+			checkInfo,
 			moveCount,
 			&pSplitedNode
 			);
@@ -239,7 +257,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 			captureOrPawnPromotion,
 			move,
 			givesCheck,
-			ci,
+			checkInfo,
 			pos,
 			dangerous);
 
@@ -253,7 +271,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 			singularExtensionNode,
 			ttMove,
 			ttScore,
-			ci,
+			checkInfo,
 			depth,
 			&pFlashlight,
 			score,
@@ -280,7 +298,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 			pos,
 			move,
 			st,
-			ci,
+			checkInfo,
 			givesCheck,
 			&pFlashlight);
 
@@ -334,7 +352,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 
 		// step18
 
-		if (ourCarriage.m_signals.m_isIterationDeepingStop || pThisThread->IsUselessNode()) { return score; }
+		if (ourCarriage.m_signals.m_isIterationDeepingStop || pHandleMonkey->IsUselessNode()) { return score; }
 
 		this->explorePlain_n440(
 			ourCarriage,
@@ -358,23 +376,28 @@ ScoreIndex AdventureNodekindRoot::explorePlain_n10(
 			beta);
 		if (isBreak) { break; }
 
-		// step19 - さらに枝に別の猿を走らせる。
-		this->explorePlain_n480_forkNewMonkey(
-			isBreak,
-			ourCarriage,
-			depth,
-			&pThisThread,
-			bestScore,
-			beta,
-			pos,
-			&pFlashlight,
-			alpha,
-			bestMove,
-			threatMove,
-			moveCount,
-			mp,
-			cutNode);
-		if (isBreak) { break; }
+
+		#ifndef SHRINK_EXPLORE_PLAIN_FORK_NEW_MONKEY
+			// さらに枝に別の猿を走らせる。
+			this->explorePlain_n480_forkNewMonkey(
+				isBreak,
+				ourCarriage,
+				depth,
+				&pHandleMonkey,
+				bestScore,
+				beta,
+				pos,
+				&pFlashlight,
+				alpha,
+				bestMove,
+				threatMove,
+				moveCount,
+				nextMoveEvent,
+				cutNode);
+			if (isBreak) { break; }
+		#endif
+
+
 	}
 
 	if (this->getReturn_beforeN500()) { return bestScore; }

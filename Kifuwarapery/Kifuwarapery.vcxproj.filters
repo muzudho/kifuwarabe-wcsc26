@@ -1706,12 +1706,6 @@
     <ClCompile Include="source\n105_220_bonaDir_\n105_220_620_FileBonaDirection.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="source\n351_bonaDir_\n351_500_bonaDirArray.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n250_pieceTyp\n350_070_ptAbstract.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
     <ClCompile Include="source\n105_200_sqDistan\n105_200_twoSquaresDistanceKind.cpp">
       <Filter>source</Filter>
     </ClCompile>
@@ -1752,6 +1746,9 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="source\n340_bonaMove\n340_500_BonaMoveArray.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="header\shrink.hpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

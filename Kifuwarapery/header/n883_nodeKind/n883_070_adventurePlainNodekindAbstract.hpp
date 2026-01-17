@@ -112,13 +112,13 @@ public:
 
 
 	/// <summary>
-	/// オーバーライドが無い（＾～＾）？
+	/// 指し手をクリアーする（＾～＾）？
 	/// </summary>
 	/// <param name="bestScore"></param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="threatMove"></param>
 	/// <param name="bestMove"></param>
-	virtual inline void ExplorerPlainStep1bSetMoveNone(
+	virtual inline void explorePlain_n80_setMoveNone(
 		ScoreIndex& bestScore,
 		Flashlight** ppFlashlight,
 		Move& threatMove,
@@ -134,7 +134,7 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// ［本筋ノードでの最大手数］という情報を更新（＾～＾）
 	/// </summary>
 	/// <param name="ppThisThread"></param>
 	/// <param name="pFlashlight"></param>
@@ -201,7 +201,7 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// トランスポジション・テーブルのスコアを取得した（＾～＾）？
 	/// </summary>
 	/// <param name="excludedMove"></param>
 	/// <param name="ppFlashlight"></param>
@@ -210,7 +210,7 @@ public:
 	/// <param name="ppTtEntry"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="ttScore"></param>
-	virtual inline void explorePlain_n100(
+	virtual inline void explorePlain_n100_getTtScore(
 		Move& excludedMove,
 		Flashlight** ppFlashlight,
 		Key& posKey,
@@ -221,8 +221,14 @@ public:
 	{
 		// trans position table lookup
 		excludedMove = (*ppFlashlight)->m_excludedMove;
+
+		// 局面ハッシュ（＾～＾）？
 		posKey = (excludedMove.IsNone() ? pos.GetKey() : pos.GetExclusionKey());
+
+		// トランスポジション・テーブルをなんか探した（＾～＾）？
 		(*ppTtEntry) = ourCarriage.m_tt.Probe(posKey);
+
+		// トランスポジション・テーブルのスコアを取得した（＾～＾）？
 		ttScore = ((*ppTtEntry) != nullptr ? ourCarriage.ConvertScoreFromTT((*ppTtEntry)->GetScore(), (*ppFlashlight)->m_ply) : ScoreNone);
 	}
 
@@ -237,7 +243,7 @@ public:
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pTtEntry"></param>
 	/// <param name="pos"></param>
-	virtual inline void explorePlain_n110(
+	virtual inline void explorePlain_n110_getTtMove(
 		Move& ttMove,
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
@@ -381,7 +387,7 @@ public:
 	/// <param name="ttScore"></param>
 	/// <param name="posKey"></param>
 	/// <param name="move"></param>
-	virtual inline void explorePlain_n120(
+	virtual inline void explorePlain_n120_eval(
 		bool& isGotoIidStart,
 		OurCarriage& ourCarriage,
 		ScoreIndex& evalScore,
@@ -395,6 +401,7 @@ public:
 	{
 		// evaluate the position statically
 		Evaluation09 evaluation;
+
 		evalScore = (*ppFlashlight)->m_staticEval = evaluation.evaluate(pos, (*ppFlashlight)); // Bonanza の差分評価の為、evaluate() を常に呼ぶ。
 		if (inCheck) {
 			evalScore = (*ppFlashlight)->m_staticEval = ScoreNone;
@@ -402,6 +409,7 @@ public:
 			return;
 			//goto iid_start;
 		}
+
 		else if (pTtEntry != nullptr) {
 			if (
 				ttScore != ScoreNone

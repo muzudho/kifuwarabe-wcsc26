@@ -230,21 +230,25 @@ Move UsiOperation::CsaToMove(const Position& pos, const std::string& moveStr) {
 /// </summary>
 /// <param name="pos"></param>
 /// <param name="ssCmd"></param>
-void UsiOperation::SetPositionToOrangutans(Position& pos, std::istringstream& ssCmd) {
+void UsiOperation::SetPositionToOrangutans(Position& pos, std::istringstream& ssCmd)
+{
 	std::string token;
 	std::string sfen;
 
 	ssCmd >> token;
 
 	// 平手初期局面だぜ（＾▽＾）
-	if (token == "startpos") {
+	if (token == "startpos")
+	{
 		sfen = g_DefaultStartPositionSFEN;
 		ssCmd >> token; // "moves" が入力されるはず。
 	}
 
     // SFEN局面設定だぜ（＾▽＾）
-	else if (token == "sfen") {
-		while (ssCmd >> token && token != "moves") {
+	else if (token == "sfen")
+	{
+		while (ssCmd >> token && token != "moves")
+		{
 			sfen += token + " ";
 		}
 	}
@@ -258,7 +262,8 @@ void UsiOperation::SetPositionToOrangutans(Position& pos, std::istringstream& ss
 
 	Ply currentPly = pos.GetGamePly();
 
-	while (ssCmd >> token) {
+	while (ssCmd >> token)
+	{
         // 指し手文字列を Move に変換（＾▽＾）
 		const Move move = this->UsiToMove(pos, token);
 		if (move.IsNone()) { break; }

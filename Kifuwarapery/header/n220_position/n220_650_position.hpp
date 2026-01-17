@@ -492,14 +492,14 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	u64 GetNodesSearched() const;
+	u64 GetNodesVisited() const;
 
 
 	/// <summary>
 	/// 
 	/// </summary>
 	/// <param name="n"></param>
-	void SetNodesSearched(const u64 n);
+	void SetNodesVisited(const u64 n);
 
 
 	/// <summary>
@@ -514,7 +514,7 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	Monkey* GetThisThread() const;
+	Monkey* GetHandleMonkey() const;
 
 
 	/// <summary>
@@ -819,14 +819,22 @@ private:
 	Ply m_gamePly_;
 
 	/// <summary>
+	///		<pre>
+	/// 猿
 	/// 
+	///		- 対応付く探索スレッド
+	///		</pre>
 	/// </summary>
-	Monkey* m_thisThread_;
+	Monkey* m_handleMonkey_;
 
 	/// <summary>
+	///		<pre>
+	/// 訪問ノード数
 	/// 
+	///		- 旧名： `m_nodes_`
+	///		</pre>
 	/// </summary>
-	u64 m_nodes_;
+	u64 m_visitedNodes_;
 
 	/// <summary>
 	/// わたしたちの馬車

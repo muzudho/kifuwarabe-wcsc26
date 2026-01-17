@@ -58,7 +58,7 @@ u64 Bitboard::MergeP() const
 
 
 /// <summary>
-/// 
+/// ビットが１つでも立っているか
 /// </summary>
 /// <returns></returns>
 bool Bitboard::Exists1Bit() const

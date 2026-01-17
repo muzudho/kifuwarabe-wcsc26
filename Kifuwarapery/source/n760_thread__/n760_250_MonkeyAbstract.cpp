@@ -186,7 +186,7 @@ void Monkey::ForkNewMonkey(
 	--m_splitedNodesSize;
 	m_activeSplitedNode = splitedNode.m_pParentSplitedNode;
 	m_activePosition = &pos;
-	pos.SetNodesSearched(pos.GetNodesSearched() + splitedNode.m_nodes);
+	pos.SetNodesVisited(pos.GetNodesVisited() + splitedNode.m_nodes);
 	bestMove = splitedNode.m_bestMove;
 	bestScore = splitedNode.m_bestScore;
 

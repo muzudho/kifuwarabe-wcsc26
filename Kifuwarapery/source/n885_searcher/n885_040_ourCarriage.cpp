@@ -92,8 +92,8 @@ std::string OurCarriage::PvInfoToUSI(Position& pos, const Ply depth, const Score
 		ss << "info depth " << d
 		   << " seldepth " << selDepth
 		   << " score " << (i == m_pvIdx ? scoreToUSI(s, alpha, beta) : scoreToUSI(s))
-		   << " nodes " << pos.GetNodesSearched()
-		   << " nps " << (0 < time ? pos.GetNodesSearched() * 1000 / time : 0)
+		   << " nodes " << pos.GetNodesVisited()
+		   << " nps " << (0 < time ? pos.GetNodesVisited() * 1000 / time : 0)
 		   << " time " << time
 		   << " multipv " << i + 1
 		   << " pv ";
@@ -327,7 +327,7 @@ void OurCarriage::ChimpanzeeStopped() {
 		std::unique_lock<Mutex> lock(m_monkiesPub.m_mutex_);
 
 		// 訪問ノード数
-		nodes = m_rootPosition.GetNodesSearched();
+		nodes = m_rootPosition.GetNodesVisited();
 
 		for (size_t i = 0; i < m_monkiesPub.m_itemMonkies.size(); ++i)	// 猿の数だけ
 		{
@@ -352,7 +352,7 @@ void OurCarriage::ChimpanzeeStopped() {
 					Position* pos = m_monkiesPub.m_itemMonkies[index]->m_activePosition;
 					if (pos != nullptr) {
 						// 訪問ノード数追加
-						nodes += pos->GetNodesSearched();
+						nodes += pos->GetNodesVisited();
 					}
 				}
 			}
@@ -442,7 +442,7 @@ void Monkey::startMonkey_n10() {
 			m_activePosition = nullptr;
 			assert(pSplitedNode->m_slavesMask & (UINT64_C(1) << m_idx));
 			pSplitedNode->m_slavesMask ^= (UINT64_C(1) << m_idx);
-			pSplitedNode->m_nodes += pos.GetNodesSearched();
+			pSplitedNode->m_nodes += pos.GetNodesVisited();
 
 			if (this->m_pOurCarriage->m_monkiesPub.m_idleMonkeyIsSleep_
 				&& this != pSplitedNode->m_masterThread

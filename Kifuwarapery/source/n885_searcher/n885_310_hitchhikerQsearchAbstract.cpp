@@ -78,7 +78,7 @@ ScoreIndex AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 		return ttScore;
 	}
 
-	pos.SetNodesSearched(pos.GetNodesSearched() + 1);
+	pos.SetNodesVisited(pos.GetNodesVisited() + 1);
 
 	if (INCHECK) {
 		pFlashlight->m_staticEval = ScoreNone;

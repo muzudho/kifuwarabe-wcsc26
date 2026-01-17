@@ -131,22 +131,26 @@ Key Position::GetKeyExcludeTurn() const
 
 
 /// <summary>
-/// 
+/// 訪問ノード数
 /// </summary>
 /// <returns></returns>
-u64 Position::GetNodesSearched() const
+u64 Position::GetNodesVisited() const
 {
-	return this->m_nodes_;
+	return this->m_visitedNodes_;
 }
 
 
 /// <summary>
+///		<pre>
+/// 訪問ノード数を設定（＾～＾）
 /// 
+///		- 旧名： `SetNodesSearched`
+///		</pre>
 /// </summary>
 /// <param name="n"></param>
-void Position::SetNodesSearched(const u64 n)
+void Position::SetNodesVisited(const u64 n)
 {
-	this->m_nodes_ = n;
+	this->m_visitedNodes_ = n;
 }
 
 
@@ -182,12 +186,16 @@ Key Position::GetComputeKey() const
 
 
 /// <summary>
+///		<pre>
+/// 猿
 /// 
+///		- 対応付く探索スレッド
+///		</pre>
 /// </summary>
 /// <returns></returns>
-Monkey* Position::GetThisThread() const
+Monkey* Position::GetHandleMonkey() const
 {
-	return this->m_thisThread_;
+	return this->m_handleMonkey_;
 }
 
 
@@ -546,7 +554,7 @@ Bitboard Position::GetPrevCheckersBB() const
 
 
 /// <summary>
-/// 
+/// 王手されているか（＾～＾）？
 /// </summary>
 /// <returns></returns>
 bool Position::InCheck() const
@@ -2577,7 +2585,7 @@ Position::Position(const Position & pos)
 Position::Position(const Position & pos, Monkey * th)
 {
 	*this = pos;
-	this->m_thisThread_ = th;
+	this->m_handleMonkey_ = th;
 }
 
 
@@ -2604,7 +2612,7 @@ Position& Position::operator = (const Position& pos) {
 	memcpy(this, &pos, sizeof(Position));
 	this->m_startState_ = *this->m_st_;
 	this->m_st_ = &this->m_startState_;
-	this->m_nodes_ = 0;
+	this->m_visitedNodes_ = 0;
 
 	assert(IsOK());
 
@@ -2701,7 +2709,7 @@ void Position::SetPosition(const std::string& sfen, Monkey* pMonkey) {
 	this->SetEvalList();
 	this->FindCheckers();
 	this->m_st_->m_material = this->ComputeMaterial();
-	this->m_thisThread_ = pMonkey;
+	this->m_handleMonkey_ = pMonkey;
 
 	return;
 INCORRECT:

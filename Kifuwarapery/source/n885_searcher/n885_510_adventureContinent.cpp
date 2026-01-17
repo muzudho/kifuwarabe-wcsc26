@@ -94,7 +94,7 @@ void AdventureContinent::exploreContinent_n10(
 
 	const Ply book_ply = dist(g_randomTimeSeed);
 
-	pos.SetNodesSearched(0);
+	pos.SetNodesVisited(0);
 
 #if defined LEARN
 	captainsRucksack.m_ownerHerosPub[0]->m_searching = true;
@@ -175,12 +175,12 @@ void AdventureContinent::exploreContinent_n10(
 
 finalize:
 
-	SYNCCOUT << "info nodes " << pos.GetNodesSearched()
+	SYNCCOUT << "info nodes " << pos.GetNodesVisited()
 		<< " time " << captainsRucksack.m_stopwatch.GetElapsed() << SYNCENDL;
 
 	if (!captainsRucksack.m_signals.m_isIterationDeepingStop && (captainsRucksack.m_limits.m_canPonder || captainsRucksack.m_limits.m_isInfinite)) {
 		captainsRucksack.m_signals.m_isStopOnPonderHit = true;
-		pos.GetThisThread()->WaitFor(captainsRucksack.m_signals.m_isIterationDeepingStop);
+		pos.GetHandleMonkey()->WaitFor(captainsRucksack.m_signals.m_isIterationDeepingStop);
 	}
 
 	if (captainsRucksack.m_rootMovesByID[0].m_pv_[0].IsNone()) {

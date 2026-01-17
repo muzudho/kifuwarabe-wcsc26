@@ -141,7 +141,7 @@ public:
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pTtEntry"></param>
 	/// <param name="pos"></param>
-	virtual inline void explorePlain_n110(
+	virtual inline void explorePlain_n110_getTtMove(
 		Move& ttMove,
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
@@ -380,9 +380,12 @@ public:
 
 			(*ppFlashlight)->m_skipNullMove = true;
 
+
 			//────────────────────────────────────────────────────────────────────────────────
-			// 探索☆？（＾ｑ＾）
+			// 再帰的に探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
+
+
 			// PVノードの場合☆
 			g_NODEKIND_PROGRAMS[NodeKind::No1_PV]->explorePlain_n10(
 				ourCarriage, pos, (*ppFlashlight), alpha, beta, d, true);

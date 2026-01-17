@@ -111,7 +111,7 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::explorePlain_n10(
 
 	// step1
 	// initialize node
-	Monkey* pThisThread = pos.GetThisThread();
+	Monkey* pThisThread = pos.GetHandleMonkey();
 	moveCount = playedMoveCount = 0;
 	inCheck = pos.InCheck();
 
@@ -129,7 +129,7 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::explorePlain_n10(
 		ttScore);
 	if (isGotoSplitPointStart) { goto split_point_start; }
 
-	this->ExplorerPlainStep1bSetMoveNone(
+	this->explorePlain_n80_setMoveNone(
 		bestScore,
 		&pFlashlight,
 		threatMove,
@@ -162,10 +162,10 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::explorePlain_n10(
 		);
 	if (isReturnWithScore) { return returnScore; }
 
-	pos.SetNodesSearched(pos.GetNodesSearched() + 1);
+	pos.SetNodesVisited(pos.GetNodesVisited() + 1);
 
 	// step4
-	this->explorePlain_n100(
+	this->explorePlain_n100_getTtScore(
 		excludedMove,
 		&pFlashlight,
 		posKey,
@@ -174,7 +174,7 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::explorePlain_n10(
 		ourCarriage,
 		ttScore
 		);
-	this->explorePlain_n110(
+	this->explorePlain_n110_getTtMove(
 		ttMove,
 		ourCarriage,
 		pTtEntry,
@@ -210,7 +210,7 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::explorePlain_n10(
 
 	// step5
 	bool isGotoIidStart = false;//NonPVのとき使う☆
-	this->explorePlain_n120(
+	this->explorePlain_n120_eval(
 		isGotoIidStart,
 		ourCarriage,
 		eval,
