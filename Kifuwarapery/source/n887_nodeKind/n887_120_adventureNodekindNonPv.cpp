@@ -246,21 +246,22 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_n10(
 		);
 	if (isReturnWithScore) { return returnScore; }
 
-	// step9
-	this->ExplorerPlainStep9(
-		isReturnWithScore,
-		ourCarriage,
-		depth,
-		&pFlashlight,
-		beta,
-		move,
-		pos,
-		ttMove,
-		st,
-		score,
-		cutNode
-		);
-	if (isReturnWithScore) { return score; }
+	
+	#ifndef SHRINK_NON_PV_NODE_EXPLORE_PLAIN_127_RECURSIVE_SEARCH
+		this->explorePlain_n127_recursiveSearch(
+			isReturnWithScore,
+			ourCarriage,
+			depth,
+			&pFlashlight,
+			beta,
+			move,
+			pos,
+			ttMove,
+			st,
+			score,
+			cutNode);
+		if (isReturnWithScore) { return score; }
+	#endif
 
 
 	// 内側の反復深化探索☆？（＾ｑ＾）

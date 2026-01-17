@@ -35,7 +35,11 @@
 // 非PVノード
 
 
-#define SHRINK_NON_PV_NODE_EXPLORE_PLAIN_130_INTERNAL_ID
+#define SHRINK_NON_PV_NODE_EXPLORE_PLAIN_127_RECURSIVE_SEARCH
+
+
+// これを定義してもバグは取れない（＾～＾）
+//#define SHRINK_NON_PV_NODE_EXPLORE_PLAIN_130_INTERNAL_ID
 
 
 // これを定義してもバグは取れない（＾～＾）

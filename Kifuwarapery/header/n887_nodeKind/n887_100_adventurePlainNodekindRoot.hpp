@@ -323,7 +323,7 @@ public:
 	/// <param name="st"></param>
 	/// <param name="score"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void ExplorerPlainStep9(
+	virtual inline void explorePlain_n127_recursiveSearch(
 		bool& isReturnWithScore,
 		OurCarriage& ourCarriage,
 		const Depth& depth,
