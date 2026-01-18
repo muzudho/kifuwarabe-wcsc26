@@ -193,7 +193,7 @@ public:
 	/// <summary>
 	/// 初期化？
 	/// </summary>
-	void	Init();
+	void	initialize_10a500b_search();
 
 
 	/// <summary>
@@ -448,7 +448,7 @@ private:
 /// <summary>
 /// メイン関数で１回だけ呼ばれる。
 /// </summary>
-void InitSearchTable();
+void initialize_10a300b_searchTable();
 
 
 //────────────────────────────────────────────────────────────────────────────────

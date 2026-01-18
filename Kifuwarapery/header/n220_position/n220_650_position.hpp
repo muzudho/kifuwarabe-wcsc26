@@ -749,7 +749,7 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	static void InitZobrist();
+	static void initialize_10a310b_zobrist();
 
 
 private:

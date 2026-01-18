@@ -29,7 +29,7 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	void Initialize();
+	void initialize_10a190b_squareRelations();
 
 
 	/// <summary>

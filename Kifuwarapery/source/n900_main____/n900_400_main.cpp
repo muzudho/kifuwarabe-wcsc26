@@ -54,32 +54,32 @@ void Main01::initialize_10a()
 #ifndef SKIP_LONG_TIME_EVAL
 		// 長い時間が掛かる初期化処理をするか？
 		SYNCCOUT << "(^q^) 1- 1. 飛の利きビットボードの初期化！" << SYNCENDL;
-		g_rookAttackBb.InitRookAttacks();
+		g_rookAttackBb.initialize_10a100b_rookAttacks();
 #endif
 
 		SYNCCOUT << "(^q^) 1- 2. 角の利きビットボードの初期化！" << SYNCENDL;
-		g_bishopAttackBb.InitBishopAttacks();
+		g_bishopAttackBb.initialize_10a120b_bishopAttacks();
 
 		SYNCCOUT << "(^q^) 1- 3. 玉の利きビットボードの初期化！" << SYNCENDL;
-		g_kingAttackBb.Initialize();
+		g_kingAttackBb.initialize_10a130b_kingAttacks();
 
 		SYNCCOUT << "(^q^) 1- 4. 金の利きビットボードの初期化！" << SYNCENDL;
-		g_goldAttackBb.Initialize();
+		g_goldAttackBb.initialize_10a140b_goldAttacks();
 
 		SYNCCOUT << "(^q^) 1- 5. 銀の利きビットボードの初期化！" << SYNCENDL;
-		g_silverAttackBb.Initialize();
+		g_silverAttackBb.initialize_10a150b_silverAttacks();
 
 		SYNCCOUT << "(^q^) 1- 6. 歩の利きビットボードの初期化！" << SYNCENDL;
-		g_pawnAttackBb.Initialize();
+		g_pawnAttackBb.initialize_10a160b_pawnAttacks();
 
 		SYNCCOUT << "(^q^) 1- 7. 桂の利きビットボードの初期化！" << SYNCENDL;
-		g_knightAttackBb.Initialize();
+		g_knightAttackBb.initialize_10a170b_knightAttacks();
 
 		SYNCCOUT << "(^q^) 1- 8. 香の利きビットボードの初期化！" << SYNCENDL;
-		g_lanceAttackBb.Initialize();
+		g_lanceAttackBb.initialize_10a180b_lanceAttacks();
 
 		SYNCCOUT << "(^q^) 1- 9. ２つのマスの位置関係が［同筋］［同段］［同右肩上がり］［同右肩下がり］［その他］かを区別するビットボードの初期化！" << SYNCENDL;
-		g_squareRelation.Initialize();
+		g_squareRelation.initialize_10a190b_squareRelations();
 
 
 		// 障害物が無いときの利きの Bitboard
@@ -87,51 +87,51 @@ void Main01::initialize_10a()
 
 
 		SYNCCOUT << "(^q^) 1-10. 障害物が無いときの飛の利きビットボードの初期化！" << SYNCENDL;
-		g_rookAttackBb.InitializeToEdge();
+		g_rookAttackBb.initialize_10a200b_rookToEdge();
 
 		SYNCCOUT << "(^q^) 1-11. 障害物が無いときの角の利きビットボードの初期化！" << SYNCENDL;
-		g_bishopAttackBb.InitializeToEdge();
+		g_bishopAttackBb.Initialize_10a210b_bishopToEdge();
 
 		SYNCCOUT << "(^q^) 1-12. 障害物が無いときの香の利きビットボードの初期化！" << SYNCENDL;
-		g_lanceAttackBb.InitializeToEdge();
+		g_lanceAttackBb.initialize_10a220b_lanceToEdge();
 
 		SYNCCOUT << "(^q^) 1-13. ［飛車、角の元位置］と、［その利き］の２点のビットボード？の初期化！" << SYNCENDL;
-		g_betweenBb.Initialize();
+		g_betweenBb.Initialize_10a230b_between();
 
 		SYNCCOUT << "(^q^) 1-14. 金の王手？ビットボードの初期化！" << SYNCENDL;
-		g_goldAttackBb.InitCheckTableGold();
+		g_goldAttackBb.Initialize_10a240b_checkTableGold();
 
 		SYNCCOUT << "(^q^) 1-15. 銀の王手？ビットボードの初期化！" << SYNCENDL;
-		g_silverAttackBb.InitCheckTableSilver();
+		g_silverAttackBb.initialize_10a250b_checkTableSilver();
 
 		SYNCCOUT << "(^q^) 1-16. 桂の王手？ビットボードの初期化！" << SYNCENDL;
-		g_knightAttackBb.InitCheckTableKnight();
+		g_knightAttackBb.initialize_10a260b_checkTableKnight();
 
 		SYNCCOUT << "(^q^) 1-17. 香の王手？ビットボードの初期化！" << SYNCENDL;
-		g_lanceAttackBb.InitCheckTableLance();
+		g_lanceAttackBb.initialize_10a270b_checkTableLance();
 
 		SYNCCOUT << "(^q^) 1-18. ２点の距離初期化！" << SYNCENDL;
-		UtilSquareDistance::InitSquareDistance(g_squareDistance);
+		UtilSquareDistance::initialize_10a280b_squareDistance(g_squareDistance);
 
 		SYNCCOUT << "(^q^) I-19. 定跡初期化！" << SYNCENDL;
-		Book::Init();
+		Book::initialize_10a290b_book();
 
 		SYNCCOUT << "(^q^) 1-20. 検索テーブル初期化！" << SYNCENDL;
-		InitSearchTable();
+		initialize_10a300b_searchTable();
 	}
 
 	SYNCCOUT << "(^q^) 2   . 局面のゾブリストハッシュ初期化！" << SYNCENDL;
-	Position::InitZobrist();
+	Position::initialize_10a310b_zobrist();
 
 	SYNCCOUT << "(^q^) 3   . 探索部の初期化！" << SYNCENDL;
-	this->searcher->Init();
+	this->searcher->initialize_10a500b_search();
 
 
 	// 一時オブジェクトの生成と破棄
 
 
 	SYNCCOUT << "(^q^) 4   . 評価関数の初期化！" << SYNCENDL;
-	std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->Init(this->searcher->m_engineOptions["Eval_Dir"], true);
+	std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->initialize_10a600b(this->searcher->m_engineOptions["Eval_Dir"], true);
 
 	SYNCCOUT << "(^q^) 次は USIループへ！" << SYNCENDL;
 }
@@ -145,7 +145,7 @@ void Main01::initialize_10a()
 void Main01::body_50a(int argc, char* argv[])
 {
 	UsiLoop usiLoop;
-	usiLoop.Mainloop(argc, argv, *this->searcher);
+	usiLoop.mainloop_50a500b(argc, argv, *this->searcher);
 }
 
 
@@ -155,5 +155,5 @@ void Main01::body_50a(int argc, char* argv[])
 void Main01::finalize_90a()
 {
 	SYNCCOUT << "(^q^)main(6/6): threads.exit! ----> doUSICommandLoop" << SYNCENDL;
-	this->searcher->m_ownerHerosPub.Exit();
+	this->searcher->m_ownerHerosPub.exit_90a500b();
 }

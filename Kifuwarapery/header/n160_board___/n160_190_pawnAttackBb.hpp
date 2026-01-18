@@ -28,7 +28,7 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	void Initialize();
+	void initialize_10a160b_pawnAttacks();
 
 
 	/// <summary>

@@ -93,7 +93,7 @@ UsiLoop::UsiLoop()
 /// <param name="argc"></param>
 /// <param name="argv"></param>
 /// <param name="searcher"></param>
-void UsiLoop::Mainloop(int argc, char* argv[], OurCarriage& searcher)
+void UsiLoop::mainloop_50a500b(int argc, char* argv[], OurCarriage& searcher)
 {
 	GameStats gameStats{};	// こう書くと関数呼出しと思われてエラー： GameStats gameStats();
 	Position pos(g_DefaultStartPositionSFEN, searcher.m_ownerHerosPub.GetFirstCaptain(), &searcher);

@@ -158,14 +158,14 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	void InitRookAttacks();
+	void initialize_10a100b_rookAttacks();
 
 
 	/// <summary>
 	/// 障害物が無いときの利きの Bitboard
 	/// g_rookAttack, g_bishopAttack, g_lanceAttack を設定してから、この関数を呼ぶこと。
 	/// </summary>
-	void InitializeToEdge();
+	void initialize_10a200b_rookToEdge();
 
 
 	/// <summary>

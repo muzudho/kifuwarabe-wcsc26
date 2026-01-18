@@ -45,20 +45,20 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	void Initialize();
+	void initialize_10a180b_lanceAttacks();
 
 
 	/// <summary>
 	/// 
 	/// </summary>
-	void InitCheckTableLance();
+	void initialize_10a270b_checkTableLance();
 
 
 	/// <summary>
 	/// 障害物が無いときの利きの Bitboard
 	/// g_rookAttack, g_bishopAttack, g_lanceAttack を設定してから、この関数を呼ぶこと。
 	/// </summary>
-	void InitializeToEdge();
+	void initialize_10a220b_lanceToEdge();
 
 
 	/// <summary>

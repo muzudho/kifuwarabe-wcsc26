@@ -116,7 +116,7 @@ Bitboard BishopAttackBb::BishopAttackCalc(const Square square, const Bitboard& o
 /// <summary>
 /// 
 /// </summary>
-void BishopAttackBb::InitBishopAttacks()
+void BishopAttackBb::initialize_10a120b_bishopAttacks()
 {
 	// 角か、飛車か
 	auto* attacks = g_bishopAttackBb.m_controllBb_;
@@ -153,7 +153,7 @@ void BishopAttackBb::InitBishopAttacks()
 /// <summary>
 /// 
 /// </summary>
-void BishopAttackBb::InitializeToEdge()
+void BishopAttackBb::Initialize_10a210b_bishopToEdge()
 {
 	for (Square sq = I9; sq < SquareNum; ++sq) {
 		g_bishopAttackBb.m_controllBbToEdge_[sq] = g_bishopAttackBb.BishopAttack(Bitboard::CreateAllZeroBB(), sq);

@@ -33,13 +33,13 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	void Initialize();
+	void initialize_10a150b_silverAttacks();
 
 
 	/// <summary>
 	/// 
 	/// </summary>
-	void InitCheckTableSilver();
+	void initialize_10a250b_checkTableSilver();
 
 
 	/// <summary>

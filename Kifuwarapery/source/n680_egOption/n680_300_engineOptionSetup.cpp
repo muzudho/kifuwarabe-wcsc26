@@ -31,7 +31,7 @@ namespace {
 	/// <param name=""></param>
 	/// <param name="opt"></param>
 	void onEvalDir(OurCarriage*, const EngineOptionable& opt) {
-		std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->Init(opt, true);
+		std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->initialize_10a600b(opt, true);
 	}
 
 

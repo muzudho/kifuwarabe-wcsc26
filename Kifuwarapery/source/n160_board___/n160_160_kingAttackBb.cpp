@@ -12,7 +12,7 @@ KingAttackBb g_kingAttackBb;
 /// <summary>
 /// 
 /// </summary>
-void KingAttackBb::Initialize()
+void KingAttackBb::initialize_10a130b_kingAttacks()
 {
 	for (Square sq = I9; sq < SquareNum; ++sq)
 	{

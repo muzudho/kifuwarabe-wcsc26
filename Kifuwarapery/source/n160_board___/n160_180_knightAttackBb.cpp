@@ -16,7 +16,7 @@ KnightAttackBb g_knightAttackBb;
 /// <summary>
 /// 桂の利きを初期化するぜ☆（＾▽＾）
 /// </summary>
-void KnightAttackBb::Initialize()
+void KnightAttackBb::initialize_10a170b_knightAttacks()
 {
 	for (Color c = Black; c < g_COLOR_NUM; ++c) {
 		for (Square sq = I9; sq < SquareNum; ++sq) {
@@ -36,7 +36,7 @@ void KnightAttackBb::Initialize()
 /// <summary>
 /// 桂の王手チェックテーブルを初期化するぜ☆（＾▽＾）
 /// </summary>
-void KnightAttackBb::InitCheckTableKnight() {
+void KnightAttackBb::initialize_10a260b_checkTableKnight() {
 	for (Color color = Black; color < g_COLOR_NUM; ++color) {
 		const Color opponent = ConvColor::OPPOSITE_COLOR10b(color);//色はループで交互になるぜ☆（＾ｑ＾）
 		for (Square sq = I9; sq < SquareNum; ++sq) {

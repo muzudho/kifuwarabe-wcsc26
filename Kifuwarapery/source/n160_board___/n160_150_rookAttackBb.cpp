@@ -109,7 +109,7 @@ Bitboard RookAttackBb::RookAttackCalc(const Square square, const Bitboard& occup
 /// <summary>
 /// 飛車の利きビットボードの初期化。
 /// </summary>
-void RookAttackBb::InitRookAttacks()
+void RookAttackBb::initialize_10a100b_rookAttacks()
 {
 	auto* attacks = g_rookAttackBb.m_controllBb_;			// 飛車の利き
 	auto* attackIndex = g_rookAttackBb.m_rookAttackIndex;	// 飛車の利きのインデックス
@@ -145,7 +145,7 @@ void RookAttackBb::InitRookAttacks()
 /// <summary>
 /// 
 /// </summary>
-void RookAttackBb::InitializeToEdge()
+void RookAttackBb::initialize_10a200b_rookToEdge()
 {
 	for (Square sq = I9; sq < SquareNum; ++sq) {
 		g_rookAttackBb.m_controllBbToEdge_[sq] = g_rookAttackBb.GetControllBb(Bitboard::CreateAllZeroBB(), sq);

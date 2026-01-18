@@ -28,7 +28,7 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	void Initialize();
+	void Initialize_10a230b_between();
 
 
 	/// <summary>

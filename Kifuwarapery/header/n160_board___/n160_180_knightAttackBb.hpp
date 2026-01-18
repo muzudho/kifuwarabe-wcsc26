@@ -33,13 +33,13 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	void Initialize();
+	void initialize_10a170b_knightAttacks();
 
 
 	/// <summary>
 	/// 
 	/// </summary>
-	void InitCheckTableKnight();
+	void initialize_10a260b_checkTableKnight();
 
 
 	/// <summary>

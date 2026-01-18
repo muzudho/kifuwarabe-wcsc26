@@ -26,5 +26,5 @@ public:
 	/// <param name="argc"></param>
 	/// <param name="argv"></param>
 	/// <param name="searcher"></param>
-	void Mainloop(int argc, char* argv[], OurCarriage& searcher);
+	void mainloop_50a500b(int argc, char* argv[], OurCarriage& searcher);
 };
