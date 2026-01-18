@@ -422,7 +422,7 @@ public:
 	/// <param name="ttScore"></param>
 	/// <param name="posKey"></param>
 	/// <param name="move"></param>
-	virtual inline void explorePlain_10a520b500c500d500e500f500g200h550i_eval(
+	virtual inline void explorePlain_10a520b500c500d500e500f500g200h550i_evalScore(
 		bool& isGotoIidStart,
 		OurCarriage& ourCarriage,
 		ScoreNumber& evalScore,

@@ -202,7 +202,7 @@ ScoreNumber AdventureNodekindPv::explorePlain_10a520b500c500d500e500f500g_entry(
 
 	// step5
 	bool isGotoIidStart = false;//NonPVのとき使う☆
-	this->explorePlain_10a520b500c500d500e500f500g200h550i_eval(
+	this->explorePlain_10a520b500c500d500e500f500g200h550i_evalScore(
 		isGotoIidStart,
 		ourCarriage,
 		eval,
