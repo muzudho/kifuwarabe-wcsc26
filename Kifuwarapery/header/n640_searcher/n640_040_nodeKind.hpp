@@ -35,17 +35,17 @@ enum NodeKind {
 	No2_NonPV,
 
 	/// <summary>
-	/// 使ってないのでは（＾～＾）？
+	/// スプリットノードは使ってるが、この定数は使ってない（＾～＾）
 	/// </summary>
 	SplitedNodeNo0Root,
 
 	/// <summary>
-	/// 使ってないのでは（＾～＾）？
+	/// スプリットノードは使ってるが、この定数は使ってない（＾～＾）
 	/// </summary>
 	SplitedNodeNo1PV,
 
 	/// <summary>
-	/// 使ってないのでは（＾～＾）？
+	/// スプリットノードは使ってるが、この定数は使ってない（＾～＾）
 	/// </summary>
 	SplitedNodeNo2NonPV
 };
