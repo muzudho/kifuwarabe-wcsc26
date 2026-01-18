@@ -1469,7 +1469,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="score"></param>
 	/// <param name="pos"></param>
-	virtual inline void ExplorerPlainStep18b(
+	virtual inline void explorerPlain_10i700j115k_bestMovePlyChanges(
 		OurCarriage& ourCarriage,
 		Move& move,
 		bool& isPVMove,

@@ -512,14 +512,14 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="score"></param>
 	/// <param name="pos"></param>
-	virtual inline void ExplorerPlainStep18b(
+	virtual inline void explorerPlain_10i700j115k_bestMovePlyChanges(
 		OurCarriage& ourCarriage,
 		Move& move,
 		bool& isPVMove,
 		ScoreIndex& alpha,
 		ScoreIndex& score,
-		Position& pos
-		) const override {
+		Position& pos) const override
+	{
 		// 非ルートノードはスルー☆！（＾ｑ＾）
 		//UNREACHABLE;
 	}

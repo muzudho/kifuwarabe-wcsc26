@@ -368,7 +368,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_10i(
 		if (ourCarriage.m_signals.m_stop || pThisThread->IsUselessNode()) { return score; }
 
 
-		this->ExplorerPlainStep18b(
+		this->explorerPlain_10i700j115k_bestMovePlyChanges(
 			ourCarriage,
 			move,
 			isPVMove,
