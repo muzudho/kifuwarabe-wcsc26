@@ -473,18 +473,20 @@ FORCE_INLINE void		MonkiesPub::WakeUp(OurCarriage* ourCarriage) {
 	for (size_t i = 0; i < this->m_monkies.size(); ++i) {
 		(*this).m_monkies[i]->m_maxPly = 0;
 	}
-	// フラグを立てる☆？
-	this->m_isSleepWhileIdle_ = ourCarriage->m_engineOptions["Use_Sleeping_Threads"];
+
+	// ［手の空いてる猿は寝かす］フラグを立てる☆
+	this->m_isIdleMonkeyToSleep_ = ourCarriage->m_engineOptions["Use_Sleeping_Threads"];
 }
 
 
 /// <summary>
 ///		<pre>
-/// 寝ろ？
-/// 一箇所でしか呼ばないので、FORCE_INLINE
+/// 猿は寝てろ。
+/// 
+///		- 一箇所でしか呼ばないので、FORCE_INLINE
 ///		</pre>
 /// </summary>
 /// <returns></returns>
-FORCE_INLINE void		MonkiesPub::Sleep() {
-	this->m_isSleepWhileIdle_ = true;
+FORCE_INLINE void		MonkiesPub::SleepMonkies() {
+	this->m_isIdleMonkeyToSleep_ = true;
 }

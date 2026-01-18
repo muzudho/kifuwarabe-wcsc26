@@ -171,7 +171,7 @@ void AdventureContinent::ExploreContinent(
 #if defined LEARN
 #else
 	captainsRucksack.m_pub.GetCurrSubordinate()->m_lifetimeMilliseconds = 0; // timer を止める。
-	captainsRucksack.m_pub.Sleep();
+	captainsRucksack.m_pub.SleepMonkies();
 
 finalize:
 

@@ -46,12 +46,15 @@ void deleteThread(Monkie* th) {
 
 
 /// <summary>
-/// 最初の設定（初期化）を行うぜ☆（＾▽＾）
+///		<pre>
+/// 主に、チンパンジーとオラウータンのスレッドを用意するぜ（＾～＾）
+///		</pre>
 /// </summary>
 /// <param name="s"></param>
 void MonkiesPub::initialize_10a500b500c(OurCarriage* s)
 {
-	m_isSleepWhileIdle_ = true;
+	// 手の空いてる猿は寝てろ。
+	m_isIdleMonkeyToSleep_ = true;
 
 
 	#if defined LEARN
@@ -63,6 +66,7 @@ void MonkiesPub::initialize_10a500b500c(OurCarriage* s)
 
 	// オラウータンを追加
 	this->m_monkies.push_back(newThread<Orangutan>(s));
+
 	ReadUSIOptions(s);
 }
 

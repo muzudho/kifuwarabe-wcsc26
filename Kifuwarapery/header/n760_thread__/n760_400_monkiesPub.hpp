@@ -44,9 +44,9 @@ public:
 
 
 	/// <summary>
-	/// 寝ているか？
+	/// ［手の空いてる猿は寝かす］フラグ
 	/// </summary>
-	bool m_isSleepWhileIdle_;
+	bool m_isIdleMonkeyToSleep_;
 
 
 	// メイン・フィールド
@@ -130,7 +130,7 @@ public:
 	/// <summary>
 	/// 寝ろ？
 	/// </summary>
-	void Sleep();
+	void SleepMonkies();
 
 
 	/// <summary>

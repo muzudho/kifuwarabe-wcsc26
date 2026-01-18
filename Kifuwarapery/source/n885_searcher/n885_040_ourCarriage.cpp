@@ -374,7 +374,9 @@ void Monkie::workAsMonkey() {
 	assert(!thisSp || (thisSp->m_masterThread == this && m_isBeingSearched));
 
 	while (true) {
-		while ((!m_isBeingSearched && this->m_pOurCarriage->m_pub.m_isSleepWhileIdle_) || m_isEndOfSearch)
+
+		// ［手の空いてる猿は寝かす］フラグが立っているケースで。
+		while ((!m_isBeingSearched && this->m_pOurCarriage->m_pub.m_isIdleMonkeyToSleep_) || m_isEndOfSearch)
 		{
 			if (m_isEndOfSearch) {
 				assert(thisSp == nullptr);
@@ -422,13 +424,15 @@ void Monkie::workAsMonkey() {
 			pSplitedNode->m_slavesMask ^= (UINT64_C(1) << m_idx);
 			pSplitedNode->m_nodes += pos.GetNodesSearched();
 
-			if (this->m_pOurCarriage->m_pub.m_isSleepWhileIdle_
+			// ［手の空いてる猿は寝かす］フラグが立っているケースで
+			if (this->m_pOurCarriage->m_pub.m_isIdleMonkeyToSleep_
 				&& this != pSplitedNode->m_masterThread
 				&& !pSplitedNode->m_slavesMask)
 			{
 				assert(!pSplitedNode->m_masterThread->m_isBeingSearched);
 				pSplitedNode->m_masterThread->NotifyOne();
 			}
+
 			pSplitedNode->m_mutex.unlock();
 		}
 
