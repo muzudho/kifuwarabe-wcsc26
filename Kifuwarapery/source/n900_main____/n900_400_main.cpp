@@ -43,7 +43,7 @@ Main01::~Main01()
 /// <summary>
 /// 最初の設定（初期化）。
 /// </summary>
-void Main01::Initialize()
+void Main01::initialize_10a()
 {
 	//────────────────────────────────────────────────────────────────────────────────
 	// ビットボードとテーブルの初期化☆（＾ｑ＾）
@@ -142,7 +142,7 @@ void Main01::Initialize()
 /// </summary>
 /// <param name="argc"></param>
 /// <param name="argv"></param>
-void Main01::Body(int argc, char* argv[])
+void Main01::body_50a(int argc, char* argv[])
 {
 	UsiLoop usiLoop;
 	usiLoop.Mainloop(argc, argv, *this->searcher);
@@ -152,7 +152,7 @@ void Main01::Body(int argc, char* argv[])
 /// <summary>
 /// 事後処理。
 /// </summary>
-void Main01::Finalize()
+void Main01::finalize_90a()
 {
 	SYNCCOUT << "(^q^)main(6/6): threads.exit! ----> doUSICommandLoop" << SYNCENDL;
 	this->searcher->m_ownerHerosPub.Exit();

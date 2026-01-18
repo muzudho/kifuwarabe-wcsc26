@@ -25,7 +25,7 @@ public:
 public:
 	Main01();
 	~Main01();
-	void Initialize();
-	void Body(int argc, char* argv[]);
-	void Finalize();
+	void initialize_10a();
+	void body_50a(int argc, char* argv[]);
+	void finalize_90a();
 };
