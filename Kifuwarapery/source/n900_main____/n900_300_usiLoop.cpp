@@ -96,19 +96,19 @@ UsiLoop::UsiLoop()
 void UsiLoop::start_50a500b_mainloop(int argc, char* argv[], OurCarriage& searcher)
 {
 	GameStats gameStats{};	// こう書くと関数呼出しと思われてエラー： GameStats gameStats();
-	Position pos(g_DefaultStartPositionSFEN, searcher.m_monkiesPub.GetFirstMonkeyAsOrangutans(), &searcher);
+	Position pos(g_DefaultStartPositionSFEN, searcher.m_monkiesPub.getFirstMonkeyAsOrangutans(), &searcher);
 
 	std::string cmd;
 	std::string token;
 
-#if defined MPI_LEARN
-	boost::mpi::environment  env(argc, argv);
-	boost::mpi::communicator world;
-	if (world.m_rank() != 0) {
-		learn(GetPos, env, world);
-		return;
-	}
-#endif
+	#if defined MPI_LEARN
+		boost::mpi::environment  env(argc, argv);
+		boost::mpi::communicator world;
+		if (world.m_rank() != 0) {
+			learn(GetPos, env, world);
+			return;
+		}
+	#endif
 
 	for (int i = 1; i < argc; ++i)
 	{
@@ -132,81 +132,101 @@ void UsiLoop::start_50a500b_mainloop(int argc, char* argv[], OurCarriage& search
 			token == "stop" ||
 			token == "ponderhit" ||
 			token == "gameover"
-		) {
+		)
+		{
 			// 終了時にポンダーヒットが来ることがある。
 			if (token != "ponderhit" ||
 				searcher.m_signals.m_isStopOnPonderHit
-			) {
+			)
+			{
                 // 思考停止シグナルを立てる。
 				searcher.m_signals.m_isIterationDeepingStop = true;
 
-				// 排他的処理の何か？？
-				searcher.m_monkiesPub.GetFirstMonkeyAsOrangutans()->NotifyOne();
+				// 猿たちの先頭の１匹について、排他的処理の何か？？
+				searcher.m_monkiesPub.getFirstMonkeyAsOrangutans()->NotifyOne();
 			}
-			else {
+			else
+			{
 				// 相手の思考時間中に自分も思考するのを止める。
 				searcher.m_limits.m_canPonder = false;
 			}
 
             // ポンダーヒットのときに、ムーブタイムが０でなければ、消費した時間分、加算する。
-			if (token == "ponderhit" && searcher.m_limits.GetMoveTime() != 0) {
-				searcher.m_limits.IncreaseMoveTime( searcher.m_stopwatch.GetElapsed());
+			if (token == "ponderhit" && searcher.m_limits.GetMoveTime() != 0)
+			{
+				searcher.m_limits.increaseMoveTime( searcher.m_stopwatch.GetElapsed());
 			}
 		}
-		else if (token == "usinewgame") {
+		else if (token == "usinewgame")
+		{
 			searcher.m_tt.Clear();
-#if defined INANIWA_SHIFT
-			inaniwaFlag = NotInaniwa;
-#endif
-#if defined BISHOP_IN_DANGER
-			bishopInDangerFlag = NotBishopInDanger;
-#endif
+			#if defined INANIWA_SHIFT
+				inaniwaFlag = NotInaniwa;
+			#endif
+			#if defined BISHOP_IN_DANGER
+				bishopInDangerFlag = NotBishopInDanger;
+			#endif
 			for (int i = 0; i < 100; ++i)
 			{
 				g_randomTimeSeed(); // 最初は乱数に偏りがあるかも。少し回しておく。
 			}
 		}
-		else if (token == "usi") {
+		else if (token == "usi")
+		{
 			SYNCCOUT << "id name " << MyName << "\nid author (Derivation)Takahashi Satoshi (Base)Hiraoka Takuya\n" << searcher.m_engineOptions << "\nusiok" << SYNCENDL;
 		}
-		else if (token == "go") {
-			usiOperation.Go(gameStats, pos, ssCmd);
+		else if (token == "go")
+		{
+			usiOperation.go_50a500b500c(gameStats, pos, ssCmd);
 		}
-		else if (token == "isready") {
+		else if (token == "isready")
+		{
 			SYNCCOUT << "readyok" << SYNCENDL;
 		}
-		else if (token == "position") {
-			usiOperation.SetPositionToOrangutans(pos, ssCmd);
+		else if (token == "position")
+		{
+			usiOperation.setPositionToOrangutans(pos, ssCmd);
 		}
-		else if (token == "setoption") {
-			searcher.SetOption(ssCmd);
+		else if (token == "setoption")
+		{
+			searcher.setOption(ssCmd);
 		}
-#if defined LEARN
-		else if (token == "l") {
-			auto learner = std::unique_ptr<Learner>(new Learner);
-#if defined MPI_LEARN
-			learner->learn(GetPos, env, world);
-#else
-			learner->learn(GetPos, ssCmd);
-#endif
-		}
-#endif
-#if !defined MINIMUL
-		// 以下、デバッグ用
-		else if (token == "bench") { Benchmark(gameStats, pos); }
-		else if (token == "d") { pos.Print(); }
-		else if (token == "s") { measureGenerateMoves(pos); }
-		else if (token == "t") { std::cout <<
-			(
-				pos.GetTurn()==Color::Black
-				?
-				pos.GetMateMoveIn1Ply<Color::Black,Color::White>().ToCSA()
-				:
-				pos.GetMateMoveIn1Ply<Color::White,Color::Black>().ToCSA()
-			)			
-			<< std::endl; }
-		else if (token == "b") { MakeBook(gameStats, pos, ssCmd); }
-#endif
+
+
+		#if defined LEARN
+			else if (token == "l") {
+				auto learner = std::unique_ptr<Learner>(new Learner);
+
+
+				#if defined MPI_LEARN
+					learner->learn(GetPos, env, world);
+				#else
+					learner->learn(GetPos, ssCmd);
+				#endif
+
+
+			}
+		#endif
+
+
+		#if !defined MINIMUL
+			// 以下、デバッグ用
+			else if (token == "bench") { Benchmark(gameStats, pos); }
+			else if (token == "d") { pos.Print(); }
+			else if (token == "s") { measureGenerateMoves(pos); }
+			else if (token == "t") { std::cout <<
+				(
+					pos.getTurn()==Color::Black
+					?
+					pos.getMateMoveIn1Ply<Color::Black,Color::White>().ToCSA()
+					:
+					pos.getMateMoveIn1Ply<Color::White,Color::Black>().ToCSA()
+				)			
+				<< std::endl; }
+			else if (token == "b") { MakeBook(gameStats, pos, ssCmd); }
+		#endif
+
+
 		else { SYNCCOUT << "unknown command: " << cmd << SYNCENDL; }
 	} while (token != "quit" && argc == 1);
 
@@ -216,10 +236,10 @@ void UsiLoop::start_50a500b_mainloop(int argc, char* argv[], OurCarriage& search
 	if (searcher.m_engineOptions["Write_Synthesized_Eval"])
 	{
 		// シンセサイズド評価を書き出します。
-		KkKkpKppStorage1::WriteSynthesized(searcher.m_engineOptions["Eval_Dir"]);
+		KkKkpKppStorage1::writeSynthesized(searcher.m_engineOptions["Eval_Dir"]);
 	}
 
 	//────────────────────────────────────────────────────────────────────────────────
 
-	searcher.m_monkiesPub.WaitForThinkFinished();
+	searcher.m_monkiesPub.waitForThinkFinished();
 }

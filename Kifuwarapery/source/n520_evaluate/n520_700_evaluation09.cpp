@@ -169,7 +169,7 @@ bool Evaluation09::calcDifference(Position& pos, Flashlight* ss)
 		const Square sq_wk = pos.GetKingSquare(White);
 		diff.m_p[2] = KkKkpKppStorage1::KK[sq_bk][sq_wk];
 		diff.m_p[2][0] += pos.GetMaterial() * g_FVScale;
-		if (pos.GetTurn() == Black) {
+		if (pos.getTurn() == Black) {
 			const auto* ppkppw = KkKkpKppStorage1::KPP[ConvSquare::inverse_n10(sq_wk)];
 			const int* list1 = pos.GetPlist1();
 			diff.m_p[1][0] = 0;
@@ -305,7 +305,7 @@ int Evaluation09::make_list_unUseDiff(const Position& pos, int list0[EvalList::m
 void Evaluation09::evaluateBody(Position& pos, Flashlight* ss) {
 	if (this->calcDifference(pos, ss)) {
 		assert([&] {
-			const auto score = ss->m_staticEvalRaw.GetSum(pos.GetTurn());
+			const auto score = ss->m_staticEvalRaw.GetSum(pos.getTurn());
 			return (this->evaluateUnUseDiff(pos) == score);
 		}());
 		return;
@@ -367,7 +367,7 @@ void Evaluation09::evaluateBody(Position& pos, Flashlight* ss) {
 	ss->m_staticEvalRaw = sum;
 
 	//Evaluation09 evaluation;
-	assert(this->evaluateUnUseDiff(pos) == sum.GetSum(pos.GetTurn()));
+	assert(this->evaluateUnUseDiff(pos) == sum.GetSum(pos.getTurn()));
 }
 
 
@@ -441,7 +441,7 @@ ScoreNumber Evaluation09::evaluateUnUseDiff(const Position& pos) {
 	GetScore.GetP[2][0] += inaniwaScore(GetPos);
 #endif
 
-	return static_cast<ScoreNumber>(score.GetSum(pos.GetTurn()));
+	return static_cast<ScoreNumber>(score.GetSum(pos.getTurn()));
 }
 
 
@@ -453,7 +453,7 @@ ScoreNumber Evaluation09::evaluateUnUseDiff(const Position& pos) {
 /// <returns></returns>
 ScoreNumber Evaluation09::evaluate(Position& pos, Flashlight* ss) {
 	if (ss->m_staticEvalRaw.m_p[0][0] != ScoreNotEvaluated) {
-		const ScoreNumber score = static_cast<ScoreNumber>(ss->m_staticEvalRaw.GetSum(pos.GetTurn()));
+		const ScoreNumber score = static_cast<ScoreNumber>(ss->m_staticEvalRaw.GetSum(pos.getTurn()));
 		assert(score == evaluateUnUseDiff(pos));
 		return score / g_FVScale;
 	}
@@ -463,8 +463,8 @@ ScoreNumber Evaluation09::evaluate(Position& pos, Flashlight* ss) {
 	entry.Decode();
 	if (entry.m_key == keyExcludeTurn) {
 		ss->m_staticEvalRaw = entry;
-		assert(static_cast<ScoreNumber>(ss->m_staticEvalRaw.GetSum(pos.GetTurn())) == evaluateUnUseDiff(pos));
-		return static_cast<ScoreNumber>(entry.GetSum(pos.GetTurn())) / g_FVScale;
+		assert(static_cast<ScoreNumber>(ss->m_staticEvalRaw.GetSum(pos.getTurn())) == evaluateUnUseDiff(pos));
+		return static_cast<ScoreNumber>(entry.GetSum(pos.getTurn())) / g_FVScale;
 	}
 
 	this->evaluateBody(pos, ss);
@@ -472,5 +472,5 @@ ScoreNumber Evaluation09::evaluate(Position& pos, Flashlight* ss) {
 	ss->m_staticEvalRaw.m_key = keyExcludeTurn;
 	ss->m_staticEvalRaw.Encode();
 	*g_evalTable[keyExcludeTurn] = ss->m_staticEvalRaw;
-	return static_cast<ScoreNumber>(ss->m_staticEvalRaw.GetSum(pos.GetTurn())) / g_FVScale;
+	return static_cast<ScoreNumber>(ss->m_staticEvalRaw.GetSum(pos.getTurn())) / g_FVScale;
 }

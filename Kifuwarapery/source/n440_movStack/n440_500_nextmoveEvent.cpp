@@ -92,7 +92,7 @@ NextmoveEvent::NextmoveEvent(
 
 	this->m_ttMove_ = (!ttm.IsNone() &&
 		(
-			pos.GetTurn() == Color::Black
+			pos.getTurn() == Color::Black
 			?
 			pos.MoveIsPseudoLegal<Color::Black,Color::White>(ttm)
 			:
@@ -132,7 +132,7 @@ NextmoveEvent::NextmoveEvent(
 
 	m_ttMove_ = (!ttm.IsNone() &&
 		(
-			pos.GetTurn()==Color::Black
+			pos.getTurn()==Color::Black
 			?
 			pos.MoveIsPseudoLegal<Color::Black,Color::White>(ttm)
 			:
@@ -164,7 +164,7 @@ NextmoveEvent::NextmoveEvent(
 	m_captureThreshold_ = PieceScore::GetCapturePieceScore(pt);
 	m_ttMove_ = ((!ttm.IsNone() &&
 		(
-			pos.GetTurn()==Color::Black
+			pos.getTurn()==Color::Black
 			?
 			pos.MoveIsPseudoLegal<Color::Black,Color::White>(ttm)
 			:
@@ -174,7 +174,7 @@ NextmoveEvent::NextmoveEvent(
 
 	if (!m_ttMove_.IsNone() && (!m_ttMove_.IsCapture() ||
 		(
-			pos.GetTurn() == Color::Black
+			pos.getTurn() == Color::Black
 			?
 			pos.GetSee1<Color::Black,Color::White>(m_ttMove_)
 			:
@@ -269,7 +269,7 @@ void NextmoveEvent::ScoreEvasions() {
 			}
 		}
 		else {
-			curr->m_score = GetHistory().GetValue(move.IsDrop(), PieceExtensions::FROM_COLOR_AND_PIECE_TYPE10(GetPos().GetTurn(), move.GetPieceTypeFromOrDropped()), move.To());
+			curr->m_score = GetHistory().GetValue(move.IsDrop(), PieceExtensions::FROM_COLOR_AND_PIECE_TYPE10(GetPos().getTurn(), move.GetPieceTypeFromOrDropped()), move.To());
 		}
 	}
 }

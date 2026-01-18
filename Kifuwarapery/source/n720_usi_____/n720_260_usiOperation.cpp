@@ -67,7 +67,7 @@ const StringToPieceTypeCSA g_stringToPieceTypeCSA;
 /// </summary>
 /// <param name="pos"></param>
 /// <param name="ssCmd"></param>
-void UsiOperation::Go(GameStats& gameStats, const Position& pos, std::istringstream& ssCmd)
+void UsiOperation::go_50a500b500c(GameStats& gameStats, const Position& pos, std::istringstream& ssCmd)
 {
 	LimitsDuringGo limits;
 	std::vector<Move> moves;
@@ -230,7 +230,7 @@ Move UsiOperation::CsaToMove(const Position& pos, const std::string& moveStr) {
 /// </summary>
 /// <param name="pos"></param>
 /// <param name="ssCmd"></param>
-void UsiOperation::SetPositionToOrangutans(Position& pos, std::istringstream& ssCmd)
+void UsiOperation::setPositionToOrangutans(Position& pos, std::istringstream& ssCmd)
 {
 	std::string token;
 	std::string sfen;
@@ -255,7 +255,7 @@ void UsiOperation::SetPositionToOrangutans(Position& pos, std::istringstream& ss
 	else { return; }
 
     // オランウータン（メインスレッド）にポジションを覚えさすぜ（＾▽＾）
-	pos.SetPosition(sfen, pos.getOurCarriage()->m_monkiesPub.GetFirstMonkeyAsOrangutans());
+	pos.SetPosition(sfen, pos.getOurCarriage()->m_monkiesPub.getFirstMonkeyAsOrangutans());
 
     // 指し手を進めるぜ（＾▽＾）
 	pos.getOurCarriage()->m_setUpStates = StateStackPtr(new std::stack<StateInfo>());
@@ -272,7 +272,7 @@ void UsiOperation::SetPositionToOrangutans(Position& pos, std::istringstream& ss
 		pos.getOurCarriage()->m_setUpStates->push(StateInfo());
 
         // 指し手を指すぜ（＾▽＾）
-		pos.GetTurn() == Color::Black	// 自分は先手か？
+		pos.getTurn() == Color::Black	// 自分は先手か？
 			?
 			pos.DoMove<Color::Black,Color::White>(move, pos.getOurCarriage()->m_setUpStates->top())
 			:
@@ -338,7 +338,7 @@ Move UsiOperation::UsiToMoveBody(const Position& pos, const std::string& moveStr
 
 	if (
 		(
-            pos.GetTurn() == Color::Black	// 自分が先手か
+            pos.getTurn() == Color::Black	// 自分が先手か
 			?
 			pos.MoveIsPseudoLegal<Color::Black,Color::White>(move, true)
 			:
@@ -346,7 +346,7 @@ Move UsiOperation::UsiToMoveBody(const Position& pos, const std::string& moveStr
 		)		
 		&&
 		(
-			pos.GetTurn()==Color::Black
+			pos.getTurn()==Color::Black
 			?
 			pos.IsPseudoLegalMoveIsLegal<false, false,Color::Black,Color::White>(move, pos.GetPinnedBB())
 			:
@@ -407,7 +407,7 @@ Move UsiOperation::CsaToMoveBody(const Position& pos, const std::string& moveStr
 
 	if (
 		(
-			pos.GetTurn() == Color::Black	// 自分が先手か。
+			pos.getTurn() == Color::Black	// 自分が先手か。
 			?
             pos.MoveIsPseudoLegal<Color::Black, Color::White>(move, true) // 自分が先手のとき、疑似合法手かどうかのチェック☆
 			:
@@ -415,7 +415,7 @@ Move UsiOperation::CsaToMoveBody(const Position& pos, const std::string& moveStr
 		)		
 		&&
 		(
-            pos.GetTurn() == Color::Black	// 自分が先手か。
+            pos.getTurn() == Color::Black	// 自分が先手か。
 			?
             pos.IsPseudoLegalMoveIsLegal<false, false, Color::Black, Color::White>(move, pos.GetPinnedBB())	// 疑似合法手が合法手かどうかのチェック☆
 			:

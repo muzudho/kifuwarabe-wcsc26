@@ -122,11 +122,11 @@ Key Book::GetBookKey(const Position& pos) {
 		const Square sq = bb.PopFirstOneFromI9();
 		key ^= m_ZobPiece[pos.GetPiece(sq)][sq];
 	}
-	const Hand hand = pos.GetHand(pos.GetTurn());
+	const Hand hand = pos.GetHand(pos.getTurn());
 	for (HandPiece hp = HPawn; hp < HandPieceNum; ++hp) {
 		key ^= m_ZobHand[hp][hand.NumOf(hp)];
 	}
-	if (pos.GetTurn() == White) {
+	if (pos.getTurn() == White) {
 		key ^= m_ZobTurn;
 	}
 	return key;
@@ -255,7 +255,7 @@ void MakeBook(GameStats& gameStats, Position& pos, std::istringstream& ssCmd) {
 		}
 
 		// オランウータン（メインスレッド）にポジションを覚えさす。
-		pos.SetPosition(g_DefaultStartPositionSFEN, pos.getOurCarriage()->m_monkiesPub.GetFirstMonkeyAsOrangutans());
+		pos.SetPosition(g_DefaultStartPositionSFEN, pos.getOurCarriage()->m_monkiesPub.getFirstMonkeyAsOrangutans());
 
 		StateStackPtr SetUpStates = StateStackPtr(new std::stack<StateInfo>());
 		UsiOperation usiOperation;
@@ -269,7 +269,7 @@ void MakeBook(GameStats& gameStats, Position& pos, std::istringstream& ssCmd) {
 			}
 
 			line.erase(0, 6); // 先頭から6文字削除
-			if (pos.GetTurn() == saveColor) {
+			if (pos.getTurn() == saveColor) {
 				// 先手、後手の内、片方だけを記録する。
 				const Key key = Book::GetBookKey(pos);
 				bool isFind = false;
@@ -291,7 +291,7 @@ void MakeBook(GameStats& gameStats, Position& pos, std::istringstream& ssCmd) {
 				if (isFind == false) {
 #if defined MAKE_SEARCHED_BOOK
 					SetUpStates->push(StateInfo());
-					pos.GetTurn()==Color::Black	// 自分が先手か？
+					pos.getTurn()==Color::Black	// 自分が先手か？
 						?
 						pos.DoMove<Color::Black,Color::White>(move, SetUpStates->top())
 						:
@@ -300,8 +300,8 @@ void MakeBook(GameStats& gameStats, Position& pos, std::istringstream& ssCmd) {
 
 					std::istringstream ssCmd("byoyomi 1000");
 					UsiOperation usiOperation;
-					usiOperation.Go(gameStats, pos, ssCmd);
-					pos.getOurCarriage()->m_monkiesPub.WaitForThinkFinished();
+					usiOperation.go_50a500b500c(gameStats, pos, ssCmd);
+					pos.getOurCarriage()->m_monkiesPub.waitForThinkFinished();
 
 					pos.UndoMove(move);
 					SetUpStates->pop();
@@ -322,7 +322,7 @@ void MakeBook(GameStats& gameStats, Position& pos, std::istringstream& ssCmd) {
 			}
 			SetUpStates->push(StateInfo());
 
-            pos.GetTurn() == Color::Black	// 自分が先手か？
+            pos.getTurn() == Color::Black	// 自分が先手か？
 				?
 				pos.DoMove<Color::Black,Color::White>(move, SetUpStates->top())
 				:

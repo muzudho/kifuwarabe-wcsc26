@@ -55,7 +55,7 @@ Key Position::m_ZOB_EXCLUSION_;
 /// 手番を取得
 /// </summary>
 /// <returns></returns>
-Color Position::GetTurn() const
+Color Position::getTurn() const
 {
 	return this->m_turn_;
 }
@@ -526,7 +526,7 @@ Hand Position::GetHand(const Color c) const
 /// <returns></returns>
 Bitboard Position::GetPinnedBB() const
 {
-	if (this->GetTurn() == Color::Black)
+	if (this->getTurn() == Color::Black)
 	{
 		return this->GetHiddenCheckers<true, true, Color::Black, Color::White>();
 	}
@@ -925,7 +925,7 @@ ScoreNumber Position::GetSeeSign(const Move move) const {
 		}
 	}
 	return
-		this->GetTurn()
+		this->getTurn()
 		?
 		GetSee1<Color::Black, Color::White>(move)
 		:
@@ -1169,7 +1169,7 @@ void Position::DoMove(const Move move, StateInfo& newSt, const CheckInfo& ci, co
 	++m_st_->m_pliesFromNull;
 
 	m_turn_ = THEM;
-	m_st_->m_hand = GetHand(this->GetTurn());
+	m_st_->m_hand = GetHand(this->getTurn());
 
 	assert(IsOK());
 }
@@ -1186,7 +1186,7 @@ void Position::UndoMove(const Move move) {
 	assert(!move.IsNone());
 
 	// themとusが普段とは逆☆（＾ｑ＾）
-	const Color them = GetTurn();
+	const Color them = getTurn();
 	const Color us = ConvColor::OPPOSITE_COLOR10b(them);
 
 	const Square to = move.To();
@@ -1348,7 +1348,7 @@ namespace {
 		if (fromBB.Exists1Bit()) {
 			const Square ksq = pos.GetKingSquare(them);
 
-			const Bitboard dcBB = pos.GetTurn() == Color::Black
+			const Bitboard dcBB = pos.getTurn() == Color::Black
 				?
 				pos.DiscoveredCheckBB<Color::Black, Color::White, false>()
 				:
@@ -1407,7 +1407,7 @@ inline void Position::XorBBs(const PieceType pt, const Square sq, const Color c)
 /// <typeparam name="THEM"></typeparam>
 /// <returns></returns>
 template <Color US, Color THEM>
-Move Position::GetMateMoveIn1Ply() {
+Move Position::getMateMoveIn1Ply() {
 	const Square ksq = GetKingSquare(THEM);
 	const SquareDelta TDeltaS = (US == Black ? DeltaS : DeltaN);
 
@@ -2198,8 +2198,8 @@ silver_drop_end:
 
 	return g_MOVE_NONE;
 }
-template Move Position::GetMateMoveIn1Ply<Color::Black,Color::White>();
-template Move Position::GetMateMoveIn1Ply<Color::White,Color::Black>();
+template Move Position::getMateMoveIn1Ply<Color::Black,Color::White>();
+template Move Position::getMateMoveIn1Ply<Color::White,Color::Black>();
 
 
 /// <summary>
@@ -2268,7 +2268,7 @@ void Position::Print() const {
 	}
 	PrintHand(Black);
 	PrintHand(White);
-	std::cout << (GetTurn() == Black ? "+" : "-") << std::endl;
+	std::cout << (getTurn() == Black ? "+" : "-") << std::endl;
 	std::cout << std::endl;
 	std::cout << "key = " << GetKey() << std::endl;
 }
@@ -2429,7 +2429,7 @@ Key Position::GetComputeBoardKey() const {
 			result += this->GetZobrist(PieceExtensions::TO_PIECE_TYPE10(GetPiece(sq)), sq, PieceExtensions::TO_COLOR10(GetPiece(sq)));
 		}
 	}
-	if (this->GetTurn() == White) {
+	if (this->getTurn() == White) {
 		result ^= this->GetZobTurn();
 	}
 	return result;
@@ -2478,10 +2478,10 @@ RepetitionType Position::IsRepetition(const int checkMaxPly) const {
 			// 更に 2 手戻る。
 			stp = stp->m_previous->m_previous;
 			if (stp->GetKey() == this->m_st_->GetKey()) {
-				if (i <= this->m_st_->m_continuousCheck[this->GetTurn()]) {
+				if (i <= this->m_st_->m_continuousCheck[this->getTurn()]) {
 					return N03_RepetitionLose;
 				}
-				else if (i <= this->m_st_->m_continuousCheck[ConvColor::OPPOSITE_COLOR10b(this->GetTurn())]) {
+				else if (i <= this->m_st_->m_continuousCheck[ConvColor::OPPOSITE_COLOR10b(this->getTurn())]) {
 					return N02_RepetitionWin;
 				}
 #if defined BAN_BLACK_REPETITION
@@ -2703,12 +2703,12 @@ void Position::SetPosition(const std::string& sfen, Monkey* pMonkey) {
 
 	// 次の手が何手目か
 	textStream >> this->m_gamePly_;
-	this->m_gamePly_ = std::max(2 * (this->m_gamePly_ - 1), 0) + static_cast<int>(this->GetTurn() == White);
+	this->m_gamePly_ = std::max(2 * (this->m_gamePly_ - 1), 0) + static_cast<int>(this->getTurn() == White);
 
 	// 残り時間, hash key, (もし実装するなら)駒番号などをここで設定
 	this->m_st_->m_boardKey = this->GetComputeBoardKey();
 	this->m_st_->m_handKey = this->GetComputeHandKey();
-	this->m_st_->m_hand = this->GetHand(this->GetTurn());
+	this->m_st_->m_hand = this->GetHand(this->getTurn());
 
 	this->SetEvalList();
 	this->FindCheckers();
@@ -2750,7 +2750,7 @@ bool Position::IsMoveGivesCheck(const Move move, const CheckInfo& ci) const {
 		}
 
 		// Discovery Check ?
-		if (this->IsDiscoveredCheck(from, to, this->GetKingSquare(ConvColor::OPPOSITE_COLOR10b(GetTurn())), ci.m_dcBB)) {
+		if (this->IsDiscoveredCheck(from, to, this->GetKingSquare(ConvColor::OPPOSITE_COLOR10b(getTurn())), ci.m_dcBB)) {
 			return true;
 		}
 	}
@@ -2882,7 +2882,7 @@ Bitboard Position::GetAttackersToExceptKing(const Color c, const Square sq) cons
 /// </summary>
 void Position::FindCheckers()
 {
-	m_st_->m_checkersBB = GetAttackersToExceptKing(ConvColor::OPPOSITE_COLOR10b(GetTurn()), GetKingSquare(GetTurn()));
+	m_st_->m_checkersBB = GetAttackersToExceptKing(ConvColor::OPPOSITE_COLOR10b(getTurn()), GetKingSquare(getTurn()));
 }
 
 

@@ -387,11 +387,11 @@ public:
 		{
 			if (!(move =
 				(
-					pos.GetTurn()==Color::Black
+					pos.getTurn()==Color::Black
 					?
-					pos.GetMateMoveIn1Ply<Color::Black,Color::White>()
+					pos.getMateMoveIn1Ply<Color::Black,Color::White>()
 					:
-					pos.GetMateMoveIn1Ply<Color::White,Color::Black>()
+					pos.getMateMoveIn1Ply<Color::White,Color::Black>()
 					)				
 				).IsNone()) {
 				(*ppFlashlight)->m_staticEval = bestScore = UtilScore::MateIn((*ppFlashlight)->m_ply);
@@ -718,7 +718,7 @@ public:
 			const CheckInfo ci(pos);
 			while (!(move = mp.GetNextMove_NonSplitedNode()).IsNone()) {
 				if (
-					pos.GetTurn()==Color::Black
+					pos.getTurn()==Color::Black
 					?
 					pos.IsPseudoLegalMoveIsLegal<false, false, Color::Black, Color::White>(move, ci.m_pinned)
 					:
@@ -726,7 +726,7 @@ public:
 					) {
 					(*ppFlashlight)->m_currentMove = move;
 
-					pos.GetTurn()==Color::Black
+					pos.getTurn()==Color::Black
 						?
 						pos.DoMove<Color::Black,Color::White>(move, st, ci, pos.IsMoveGivesCheck(move, ci))
 						:
@@ -966,7 +966,7 @@ public:
 			&& move == ttMove
 			&&
 			(
-				pos.GetTurn() == Color::Black
+				pos.getTurn() == Color::Black
 					?
 					pos.IsPseudoLegalMoveIsLegal<false, false, Color::Black, Color::White>(move, ci.m_pinned)
 					:
@@ -1056,7 +1056,7 @@ public:
 					||
 					!
 					(
-						pos.GetTurn()==Color::Black
+						pos.getTurn()==Color::Black
 						?
 						ourCarriage.refutes<Color::Black,Color::White>(pos, move, threatMove)
 						:
@@ -1073,7 +1073,7 @@ public:
 			const Depth predictedDepth = this->getPredictedDepth_n290n500( newDepth, depth, moveCount);
 			// gain を 2倍にする。
 			const ScoreNumber futilityScore = (*ppFlashlight)->m_staticEval + g_futilityMargins.GetFutilityMargin(predictedDepth, moveCount)
-				+ 2 * ourCarriage.m_gains.GetValue(move.IsDrop(), PieceExtensions::FROM_COLOR_AND_PIECE_TYPE10(pos.GetTurn(), move.GetPieceTypeFromOrDropped()), move.To());
+				+ 2 * ourCarriage.m_gains.GetValue(move.IsDrop(), PieceExtensions::FROM_COLOR_AND_PIECE_TYPE10(pos.getTurn(), move.GetPieceTypeFromOrDropped()), move.To());
 
 			if (futilityScore < beta) {
 				bestScore = std::max(bestScore, futilityScore);
@@ -1157,7 +1157,7 @@ public:
 		// RootNode, SPNode はすでに合法手であることを確認済み。
 		if (!
 			(
-				pos.GetTurn()==Color::Black
+				pos.getTurn()==Color::Black
 				?
 				pos.IsPseudoLegalMoveIsLegal<false, false,Color::Black,Color::White>(move, ci.m_pinned)
 				:
@@ -1231,7 +1231,7 @@ public:
 		bool& givesCheck,
 		Flashlight** ppFlashlight) const
 	{
-		pos.GetTurn()==Color::Black
+		pos.getTurn()==Color::Black
 			?
 			pos.DoMove<Color::Black,Color::White>(move, st, ci, givesCheck)
 			:
@@ -1658,12 +1658,12 @@ public:
 				}
 
 				const ScoreNumber bonus = static_cast<ScoreNumber>(depth * depth);
-				const Piece pc1 = PieceExtensions::FROM_COLOR_AND_PIECE_TYPE10(pos.GetTurn(), bestMove.GetPieceTypeFromOrDropped());
+				const Piece pc1 = PieceExtensions::FROM_COLOR_AND_PIECE_TYPE10(pos.getTurn(), bestMove.GetPieceTypeFromOrDropped());
 				ourCarriage.m_history.Update(bestMove.IsDrop(), pc1, bestMove.To(), bonus);
 
 				for (int i = 0; i < playedMoveCount - 1; ++i) {
 					const Move m = movesSearched[i];
-					const Piece pc2 = PieceExtensions::FROM_COLOR_AND_PIECE_TYPE10(pos.GetTurn(), m.GetPieceTypeFromOrDropped());
+					const Piece pc2 = PieceExtensions::FROM_COLOR_AND_PIECE_TYPE10(pos.getTurn(), m.GetPieceTypeFromOrDropped());
 					ourCarriage.m_history.Update(m.IsDrop(), pc2, m.To(), -bonus);
 				}
 			}

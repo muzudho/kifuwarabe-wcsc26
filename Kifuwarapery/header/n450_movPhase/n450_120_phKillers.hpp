@@ -32,7 +32,7 @@ public:
 			&& move != nmEvent.GetTranspositionTableMove()
 			&&
 			(
-				nmEvent.GetPos().GetTurn()==Color::Black
+				nmEvent.GetPos().getTurn()==Color::Black
 				?
 				nmEvent.GetPos().MoveIsPseudoLegal<Color::Black,Color::White>(move, true)
 				:

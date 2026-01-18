@@ -37,7 +37,7 @@ public:
 
 			if (nmEvent.GetCaptureThreshold() <=
 				(
-					nmEvent.GetPos().GetTurn()==Color::Black
+					nmEvent.GetPos().getTurn()==Color::Black
 					?
 					nmEvent.GetPos().GetSee1<Color::Black,Color::White>(pMoveStack->m_move)
 					:

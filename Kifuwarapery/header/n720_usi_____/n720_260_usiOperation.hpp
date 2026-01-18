@@ -24,7 +24,7 @@ public:
 	/// </summary>
 	/// <param name="pos"></param>
 	/// <param name="ssCmd"></param>
-	void Go(GameStats& gameStats, const Position& pos, std::istringstream& ssCmd);
+	void go_50a500b500c(GameStats& gameStats, const Position& pos, std::istringstream& ssCmd);
 
 
 #if defined LEARN
@@ -37,7 +37,7 @@ public:
 	/// </summary>
 	/// <param name="pos"></param>
 	/// <param name="ssCmd"></param>
-	void SetPositionToOrangutans(Position& pos, std::istringstream& ssCmd);
+	void setPositionToOrangutans(Position& pos, std::istringstream& ssCmd);
 
 
 #if !defined NDEBUG

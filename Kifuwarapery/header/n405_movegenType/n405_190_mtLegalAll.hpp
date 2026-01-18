@@ -42,7 +42,7 @@ public:
 		while (curr != moveStackList) {
 			if (!
 				(
-					pos.GetTurn()==Color::Black
+					pos.getTurn()==Color::Black
 					?
 					pos.IsPseudoLegalMoveIsLegal<false, false, Color::Black, Color::White>(curr->m_move, pinned)
 					:

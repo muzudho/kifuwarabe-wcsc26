@@ -34,7 +34,7 @@ public:
 		bool isAll = false) const override
 	{
 		// 黒番
-		if (pos.GetTurn()==Color::Black)
+		if (pos.getTurn()==Color::Black)
 		{
 			pDeliBanana = MovegenTypeCapture::GENERATE_MOVE_<Color::Black, Color::White>(pDeliBanana, pos, isAll);
 		}

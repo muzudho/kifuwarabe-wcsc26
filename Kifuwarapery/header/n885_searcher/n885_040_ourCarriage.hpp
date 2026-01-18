@@ -227,7 +227,7 @@ public:
 	/// エンジン・オプション設定？
 	/// </summary>
 	/// <param name="ssCmd"></param>
-	void	SetOption(std::istringstream& ssCmd);
+	void	setOption(std::istringstream& ssCmd);
 
 
 	//private:
@@ -310,7 +310,7 @@ public://private:
 		}
 
 		const PieceType m1pt = first.GetPieceTypeFromOrDropped();
-		const Color us = pos.GetTurn();
+		const Color us = pos.getTurn();
 		const Bitboard occ = (second.IsDrop() ? pos.GetOccupiedBB() : pos.GetOccupiedBB() ^ g_setMaskBB.GetSetMaskBb(m2from));
 		const Bitboard m1att = UtilAttack::GetAttacksFrom(m1pt, us, m1to, occ);
 		if (g_setMaskBB.IsSet(&m1att, m2to)) { return true; }

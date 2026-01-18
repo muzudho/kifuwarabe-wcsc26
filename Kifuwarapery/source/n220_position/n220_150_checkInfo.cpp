@@ -23,11 +23,11 @@
 /// </summary>
 /// <param name="position"></param>
 CheckInfo::CheckInfo(const Position& position) {
-	const Color them = ConvColor::OPPOSITE_COLOR10b(position.GetTurn());
+	const Color them = ConvColor::OPPOSITE_COLOR10b(position.getTurn());
 	const Square ksq = position.GetKingSquare(them);
 
 	m_pinned = position.GetPinnedBB();
-	m_dcBB = position.GetTurn()==Color::Black
+	m_dcBB = position.getTurn()==Color::Black
 		?
 		position.DiscoveredCheckBB<Color::Black,Color::White>()
 		:

@@ -24,7 +24,7 @@ void Benchmark(GameStats& gameStats, Position& pos) {
 							 "name Max_Random_Score_Diff value 0"};
 	for (auto& str : options) {
 		std::istringstream is(str);
-		pos.getOurCarriage()->SetOption(is);
+		pos.getOurCarriage()->setOption(is);
 	}
 
 	std::ifstream ifs("benchmark.sfen");
@@ -34,10 +34,10 @@ void Benchmark(GameStats& gameStats, Position& pos) {
 		std::cout << sfen << std::endl;
 		std::istringstream ss_sfen(sfen);
 
-		usiOperation.SetPositionToOrangutans(pos, ss_sfen);
+		usiOperation.setPositionToOrangutans(pos, ss_sfen);
 
 		std::istringstream ss_go("byoyomi 10000");
-		usiOperation.Go(gameStats, pos, ss_go);
-		pos.getOurCarriage()->m_monkiesPub.WaitForThinkFinished();
+		usiOperation.go_50a500b500c(gameStats, pos, ss_go);
+		pos.getOurCarriage()->m_monkiesPub.waitForThinkFinished();
 	}
 }

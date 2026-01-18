@@ -30,7 +30,7 @@ public:
 	DeliciousBanana* GenerateMove(DeliciousBanana* moveStackList, const Position& pos, bool all = false
 		) const override {
 
-		if (pos.GetTurn() == Color::Black) {
+		if (pos.getTurn() == Color::Black) {
 			return g_dropMoveGenerator.GenerateDropMoves<Color::Black,Color::White>(
 				moveStackList,
 				pos,

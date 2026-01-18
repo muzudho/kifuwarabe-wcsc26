@@ -204,7 +204,7 @@ public:// もともと本当はプライベート・メソッド☆
 			const Move move = curr->m_move;
 			curr->m_score =
 				GetHistory().GetValue(IsDrop,
-					PieceExtensions::FROM_COLOR_AND_PIECE_TYPE10(GetPos().GetTurn(),
+					PieceExtensions::FROM_COLOR_AND_PIECE_TYPE10(GetPos().getTurn(),
 						(IsDrop ? move.GetPieceTypeDropped() : move.GetPieceTypeFrom())),
 					move.To());
 		}

@@ -471,7 +471,7 @@ public:
 		// DoStep11c
 		if (!
 			(
-				pos.GetTurn()==Color::Black
+				pos.getTurn()==Color::Black
 				?
 				pos.IsPseudoLegalMoveIsLegal<false, false,Color::Black,Color::White>(move, ci.m_pinned)
 				:

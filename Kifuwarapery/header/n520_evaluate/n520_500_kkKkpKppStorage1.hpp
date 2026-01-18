@@ -105,7 +105,7 @@ struct KkKkpKppStorage1 : public KkKkpKppStorageBase<std::array<s16, 2>, std::ar
 	/// 
 	/// </summary>
 	/// <param name="dirName"></param>
-	static void WriteSynthesized(const std::string& dirName) {
+	static void writeSynthesized(const std::string& dirName) {
 #define FOO(x) {														\
 			std::ofstream ofs((AppendSlashIfNone(dirName) + #x "_synthesized.bin").c_str(), std::ios::binary); \
 			ofs.write(reinterpret_cast<char*>(x), sizeof(x));			\

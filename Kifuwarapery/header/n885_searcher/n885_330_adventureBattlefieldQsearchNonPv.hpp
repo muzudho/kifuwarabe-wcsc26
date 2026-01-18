@@ -121,7 +121,7 @@ public:
 				&& depth < Depth0
 				&&
 				(
-					pos.GetTurn()==Color::Black
+					pos.getTurn()==Color::Black
 					?
 					pos.GetSee1<Color::Black,Color::White>(move, beta - futilityBase)
 					:

@@ -381,7 +381,7 @@ public:
 	/// 次の手番
 	/// </summary>
 	/// <returns></returns>
-	Color GetTurn() const;
+	Color getTurn() const;
 
 
 	/// <summary>
@@ -442,7 +442,7 @@ public:
 	/// <typeparam name="THEM"></typeparam>
 	/// <returns></returns>
 	template <Color US, Color THEM>
-	Move GetMateMoveIn1Ply();
+	Move getMateMoveIn1Ply();
 	//Move GetMateMoveIn1Ply();
 
 

@@ -90,7 +90,7 @@ public:
 	///		</pre>
 	/// </summary>
 	/// <returns></returns>
-	Orangutans* GetFirstMonkeyAsOrangutans() { return static_cast<Orangutans*>((*this).m_itemMonkies[0]); }
+	Orangutans* getFirstMonkeyAsOrangutans() { return static_cast<Orangutans*>((*this).m_itemMonkies[0]); }
 
 
 	/// <summary>
@@ -165,7 +165,7 @@ public:
 	/// <summary>
 	/// 考えが終わるまで待て？
 	/// </summary>
-	void WaitForThinkFinished();
+	void waitForThinkFinished();
 
 
 	/// <summary>

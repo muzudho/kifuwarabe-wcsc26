@@ -42,7 +42,7 @@ public:
 	/// </summary>
 	/// <param name="nmEvent"></param>
 	void GoNext2Phase(NextmoveEvent& nmEvent) override {
-		const Color us = nmEvent.GetPos().GetTurn();
+		const Color us = nmEvent.GetPos().getTurn();
 
 		nmEvent.SetLastMove(
 			us == Color::Black

@@ -87,11 +87,11 @@ ScoreNumber AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 	else {
 		if (!(move =
 			(
-				pos.GetTurn()==Color::Black
+				pos.getTurn()==Color::Black
 				?
-				pos.GetMateMoveIn1Ply<Color::Black,Color::White>()
+				pos.getMateMoveIn1Ply<Color::Black,Color::White>()
 				:
-				pos.GetMateMoveIn1Ply<Color::White, Color::Black>()
+				pos.getMateMoveIn1Ply<Color::White, Color::Black>()
 			)			
 			).IsNone()) {
 			return UtilScore::MateIn(pFlashlight->m_ply);
@@ -172,7 +172,7 @@ ScoreNumber AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 
 		if (!
 			(
-				pos.GetTurn()==Color::Black
+				pos.getTurn()==Color::Black
 				?
 				pos.IsPseudoLegalMoveIsLegal<false, false, Color::Black,Color::White>(move, ci.m_pinned)
 				:
@@ -184,7 +184,7 @@ ScoreNumber AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 
 		pFlashlight->m_currentMove = move;
 
-		pos.GetTurn()==Color::Black
+		pos.getTurn()==Color::Black
 			?
 			pos.DoMove<Color::Black,Color::White>(move, st, ci, givesCheck)
 			:

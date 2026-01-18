@@ -165,7 +165,7 @@ public:
 	/// ポンダーヒットをしたときに、ムーブタイムが０でなければ、消費した時間分、加算するのに使います。
 	/// </summary>
 	/// <param name="value"></param>
-	inline void IncreaseMoveTime(int value) {
+	inline void increaseMoveTime(int value) {
 		this->m_moveTime_ += value;
 	}
 

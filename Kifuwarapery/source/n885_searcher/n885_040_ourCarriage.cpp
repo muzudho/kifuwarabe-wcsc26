@@ -184,16 +184,16 @@ void Position::DoNullMove(bool DO, StateInfo& backUpSt) {
 	dst->m_boardKey      = src->m_boardKey;
 	dst->m_handKey       = src->m_handKey;
 	dst->m_pliesFromNull = src->m_pliesFromNull;
-	dst->m_hand = GetHand(GetTurn());
-	m_turn_ = ConvColor::OPPOSITE_COLOR10b(GetTurn());
+	dst->m_hand = GetHand(getTurn());
+	m_turn_ = ConvColor::OPPOSITE_COLOR10b(getTurn());
 
 	if (DO) {
 		m_st_->m_boardKey ^= GetZobTurn();
 		prefetch(GetConstOurCarriage()->m_tt.FirstEntry(m_st_->GetKey()));
 		m_st_->m_pliesFromNull = 0;
-		m_st_->m_continuousCheck[GetTurn()] = 0;
+		m_st_->m_continuousCheck[getTurn()] = 0;
 	}
-	m_st_->m_hand = GetHand(GetTurn());
+	m_st_->m_hand = GetHand(getTurn());
 
 	assert(IsOK());
 }
@@ -219,7 +219,7 @@ void RootMove::ExtractPvFromTT(Position& pos) {
 
 		assert(pos.MoveIsLegal(m_pv_[ply]));
 
-		pos.GetTurn()==Color::Black
+		pos.getTurn()==Color::Black
 			?
 			pos.DoMove<Color::Black,Color::White>(m_pv_[ply++], *st++)
 			:
@@ -231,7 +231,7 @@ void RootMove::ExtractPvFromTT(Position& pos) {
 		// このチェックは少し無駄。駒打ちのときはmove16toMove() 呼ばなくて良い。
 		&&
 		(
-			pos.GetTurn() == Color::Black
+			pos.getTurn() == Color::Black
 			?
 			pos.MoveIsPseudoLegal<Color::Black,Color::White>(m = UtilMoveStack::Move16toMove(tte->GetMove(), pos))
 			:
@@ -239,7 +239,7 @@ void RootMove::ExtractPvFromTT(Position& pos) {
 		)				
 		   &&
 				(
-					pos.GetTurn()==Color::Black
+					pos.getTurn()==Color::Black
 					?
 					pos.IsPseudoLegalMoveIsLegal<false, false,Color::Black,Color::White>(m, pos.GetPinnedBB())
 					:
@@ -276,7 +276,7 @@ void RootMove::InsertPvInTT(Position& pos) {
 
 		assert(pos.MoveIsLegal(m_pv_[ply]));
 
-		pos.GetTurn()==Color::Black
+		pos.getTurn()==Color::Black
 			?
 			pos.DoMove<Color::Black,Color::White>(m_pv_[ply++], *st++)
 			:
@@ -468,7 +468,7 @@ void Monkey::startMonkey_n10() {
 /// 
 /// </summary>
 /// <param name="ssCmd"></param>
-void OurCarriage::SetOption(std::istringstream& ssCmd) {
+void OurCarriage::setOption(std::istringstream& ssCmd) {
 	std::string token;
 	std::string name;
 	std::string value;

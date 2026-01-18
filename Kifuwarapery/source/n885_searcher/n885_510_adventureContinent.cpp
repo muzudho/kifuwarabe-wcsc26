@@ -63,7 +63,7 @@ void AdventureContinent::exploreContinent_n10(
 		isMoveTime0Clear,
 		captainsRucksack.m_limits,
 		pos.GetGamePly(),
-		pos.GetTurn(),
+		pos.getTurn(),
 		&captainsRucksack
 		);
 	if (isMoveTime0Clear) {
@@ -207,7 +207,7 @@ bool AdventureContinent::IsNyugyokuWin(const Position& pos) {
 
 	// この関数を呼び出すのは自分の手番のみとする。ponder では呼び出さない。
 
-	const Color us = pos.GetTurn();
+	const Color us = pos.getTurn();
 
 	// 敵陣のマスク
 	const Bitboard opponentsField = (us == Black ? g_inFrontMaskBb.GetInFrontMask(Black, Rank6) : g_inFrontMaskBb.GetInFrontMask(White, Rank4));
