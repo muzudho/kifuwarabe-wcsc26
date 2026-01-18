@@ -21,5 +21,5 @@ public:
 	/// </summary>
 	/// <param name="pMap"></param>
 	/// <param name="s"></param>
-	void Initialize( EngineOptionsMap* pMap, OurCarriage* s);
+	void initialize_10a500b100c( EngineOptionsMap* pMap, OurCarriage* s);
 };

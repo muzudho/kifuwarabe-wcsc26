@@ -748,7 +748,7 @@ public:
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		const Depth depth,
-		Soldier** ppThisThread,
+		Monkie** ppThisThread,
 		ScoreIndex& bestScore,
 		ScoreIndex& beta,
 		Position& pos,

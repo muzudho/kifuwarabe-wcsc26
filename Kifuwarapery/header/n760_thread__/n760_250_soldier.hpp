@@ -29,7 +29,7 @@ const int g_MaxSplitedNodesPerThread = 8;
 ///		- ゲームツリーを戦線拡大していくぜ☆！（＾ｑ＾）
 ///		</pre>
 /// </summary>
-class Soldier {
+class Monkie {
 
 
 public:
@@ -44,13 +44,13 @@ public:
 	/// 生成。
 	/// </summary>
 	/// <param name="s"></param>
-	explicit Soldier(OurCarriage* s);
+	explicit Monkie(OurCarriage* s);
 
 
 	/// <summary>
 	/// 破棄。
 	/// </summary>
-	virtual ~Soldier() {};
+	virtual ~Monkie() {};
 
 
 	// ========================================
@@ -139,7 +139,7 @@ public:
 	/// </summary>
 	/// <param name="master"></param>
 	/// <returns></returns>
-	bool SetLastSplitNodeSlavesMask(Soldier* master) const;
+	bool SetLastSplitNodeSlavesMask(Monkie* master) const;
 
 
 	/// <summary>

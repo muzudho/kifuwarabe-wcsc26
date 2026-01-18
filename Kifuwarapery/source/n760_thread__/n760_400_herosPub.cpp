@@ -25,7 +25,7 @@
 /// <returns></returns>
 template <typename T> T* newThread(OurCarriage* s) {
 	T* th = new T(s);
-	th->m_handle = std::thread(&Soldier::StartWorkerThread, th); // move constructor
+	th->m_handle = std::thread(&Monkie::StartWorkerThread, th); // move constructor
 	return th;
 }
 
@@ -34,7 +34,7 @@ template <typename T> T* newThread(OurCarriage* s) {
 /// 
 /// </summary>
 /// <param name="th"></param>
-void deleteThread(Soldier* th) {
+void deleteThread(Monkie* th) {
 	th->m_isEndOfSearch = true;
 	th->NotifyOne();
 	th->m_handle.join(); // Wait for thread termination
@@ -49,13 +49,20 @@ void deleteThread(Soldier* th) {
 /// 最初の設定（初期化）を行うぜ☆（＾▽＾）
 /// </summary>
 /// <param name="s"></param>
-void HerosPub::Init(OurCarriage* s) {
+void HerosPub::initialize_10a500b500c(OurCarriage* s)
+{
 	m_isSleepWhileIdle_ = true;
-#if defined LEARN
-#else
-	m_pSubordinate_ = newThread<Subordinate>(s);
-#endif
-	push_back(newThread<Captain>(s));
+
+
+	#if defined LEARN
+	#else
+		// チンパンジーを作成
+		m_pChimpanzee_ = newThread<Chimpanzee>(s);
+	#endif
+
+
+	// オラウータンを追加
+	push_back(newThread<Orangutan>(s));
 	ReadUSIOptions(s);
 }
 
@@ -67,7 +74,7 @@ void HerosPub::exit_90a500b() {
 #if defined LEARN
 #else
 	// checkTime() がデータにアクセスしないよう、先に timer_ を delete
-	deleteThread(m_pSubordinate_);
+	deleteThread(m_pChimpanzee_);
 #endif
 
 	for (auto elem : *this) {
@@ -98,7 +105,7 @@ void HerosPub::ReadUSIOptions(OurCarriage* searcher) {
 	assert(0 < numberOfThreads);
 
 	while (size() < numberOfThreads) {
-		push_back(newThread<Soldier>(searcher));
+		push_back(newThread<Monkie>(searcher));
 	}
 
 	while (numberOfThreads < size()) {
@@ -113,7 +120,7 @@ void HerosPub::ReadUSIOptions(OurCarriage* searcher) {
 /// </summary>
 /// <param name="master"></param>
 /// <returns></returns>
-Soldier* HerosPub::GetAvailableSlave(Soldier* master) const {
+Monkie* HerosPub::GetAvailableSlave(Monkie* master) const {
 	for (auto elem : *this) {
 		if (elem->SetLastSplitNodeSlavesMask(master)) {
 			return elem;
@@ -128,8 +135,8 @@ Soldier* HerosPub::GetAvailableSlave(Soldier* master) const {
 /// </summary>
 /// <param name="maxPly"></param>
 void HerosPub::SetCurrWorrior(const int maxPly) {
-	m_pSubordinate_->m_maxPly = maxPly;
-	m_pSubordinate_->NotifyOne(); // Wake up and restart the timer
+	m_pChimpanzee_->m_maxPly = maxPly;
+	m_pChimpanzee_->NotifyOne(); // Wake up and restart the timer
 }
 
 
@@ -138,7 +145,7 @@ void HerosPub::SetCurrWorrior(const int maxPly) {
 /// </summary>
 void HerosPub::WaitForThinkFinished()
 {
-	Captain* t = GetFirstCaptain();
+	Orangutan* t = GetFirstCaptain();
 	std::unique_lock<Mutex> lock(t->m_sleepLock);
 	m_sleepCond_.wait(lock, [&] { return !(t->m_isMasterThread); });
 }

@@ -11,7 +11,7 @@
 #include "../n640_searcher/n640_040_nodeKind.hpp"
 
 
-class Soldier;
+class Monkie;
 class SwordAbstract;
 
 
@@ -54,7 +54,7 @@ struct SplitedNode {
 	/// <summary>
 	/// マスター・スレッド☆
 	/// </summary>
-	Soldier*				m_masterThread;
+	Monkie*				m_masterThread;
 
 	/// <summary>
 	/// 深さ。

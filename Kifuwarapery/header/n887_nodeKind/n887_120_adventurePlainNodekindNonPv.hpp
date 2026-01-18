@@ -86,7 +86,7 @@ public:
 	/// <param name="ppThisThread"></param>
 	/// <param name="pFlashlight"></param>
 	inline void ExplorerPlainStep1c(
-		Soldier** ppThisThread,
+		Monkie** ppThisThread,
 		const Flashlight* pFlashlight
 		)const override {
 		// 非PVノードはスルー☆！（＾ｑ＾）
@@ -589,7 +589,7 @@ public:
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		const Depth depth,
-		Soldier** ppThisThread,
+		Monkie** ppThisThread,
 		ScoreIndex& bestScore,
 		ScoreIndex& beta,
 		Position& pos,
@@ -602,8 +602,8 @@ public:
 		const bool cutNode
 		)const override {
 
-		if (ourCarriage.m_ownerHerosPub.GetMinSplitDepth() <= depth
-			&& ourCarriage.m_ownerHerosPub.GetAvailableSlave(*ppThisThread)
+		if (ourCarriage.m_monkiesPub.GetMinSplitDepth() <= depth
+			&& ourCarriage.m_monkiesPub.GetAvailableSlave(*ppThisThread)
 			&& (*ppThisThread)->m_splitedNodesSize < g_MaxSplitedNodesPerThread)
 		{
 			assert(bestScore < beta);

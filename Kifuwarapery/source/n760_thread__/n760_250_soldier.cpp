@@ -16,7 +16,7 @@
 // ========================================
 
 
-Soldier::Soldier(OurCarriage* ourCarriage) /*: ＳｐｌｉｔＰｏｉｎｔｓ()*/ {
+Monkie::Monkie(OurCarriage* ourCarriage) /*: ＳｐｌｉｔＰｏｉｎｔｓ()*/ {
 	this->m_pOurCarriage = ourCarriage;
 	this->m_isEndOfSearch = false;
 	this->m_isBeingSearched = false;
@@ -24,7 +24,7 @@ Soldier::Soldier(OurCarriage* ourCarriage) /*: ＳｐｌｉｔＰｏｉｎｔｓ
 	this->m_maxPly = 0;
 	this->m_activeSplitedNode = nullptr;
 	this->m_activePosition = nullptr;
-	this->m_idx = ourCarriage->m_ownerHerosPub.size();
+	this->m_idx = ourCarriage->m_monkiesPub.size();
 }
 
 
@@ -45,7 +45,7 @@ Soldier::Soldier(OurCarriage* ourCarriage) /*: ＳｐｌｉｔＰｏｉｎｔｓ
 /// </summary>
 /// <param name="master"></param>
 /// <returns></returns>
-bool Soldier::SetLastSplitNodeSlavesMask(Soldier* master) const {
+bool Monkie::SetLastSplitNodeSlavesMask(Monkie* master) const {
 	if (m_isBeingSearched) { return false; }
 
 	// 分岐ノードの数。ローカルコピーし、次の瞬間に値が変わらないようにする。
@@ -59,7 +59,7 @@ bool Soldier::SetLastSplitNodeSlavesMask(Soldier* master) const {
 // メイン・メソッド
 
 
-void Soldier::NotifyOne() {
+void Monkie::NotifyOne() {
 	std::unique_lock<Mutex> lock(m_sleepLock);
 	m_sleepCond.notify_one();
 }
@@ -69,7 +69,7 @@ void Soldier::NotifyOne() {
 /// 
 /// </summary>
 /// <returns></returns>
-bool Soldier::IsUselessNode() const {
+bool Monkie::IsUselessNode() const {
 	for (SplitedNode* sp = m_activeSplitedNode; sp != nullptr; sp = sp->m_pParentSplitedNode) {
 		if (sp->m_isUselessNode) { return true; }
 	}
@@ -81,7 +81,7 @@ bool Soldier::IsUselessNode() const {
 /// 
 /// </summary>
 /// <param name="b"></param>
-void Soldier::WaitFor(volatile const bool& b) {
+void Monkie::WaitFor(volatile const bool& b) {
 	std::unique_lock<Mutex> lock(m_sleepLock);
 	m_sleepCond.wait(lock, [&] { return b; });
 }
@@ -104,7 +104,7 @@ void Soldier::WaitFor(volatile const bool& b) {
 /// <param name="pSword"></param>
 /// <param name="cutNode"></param>
 template <bool Fake>
-void Soldier::ForkNewFighter(
+void Monkie::ForkNewFighter(
 	Position& pos,
 	Flashlight* pFlashlightBox,
 	const ScoreIndex alpha,
@@ -121,7 +121,7 @@ void Soldier::ForkNewFighter(
 	assert(pos.IsOK());
 	assert(bestScore <= alpha && alpha < beta && beta <= ScoreInfinite);
 	assert(-ScoreInfinite < bestScore);
-	assert(this->m_pOurCarriage->m_ownerHerosPub.GetMinSplitDepth() <= depth);
+	assert(this->m_pOurCarriage->m_monkiesPub.GetMinSplitDepth() <= depth);
 
 	assert(m_isBeingSearched);
 	assert(m_splitedNodesSize < g_MaxSplitedNodesPerThread);
@@ -147,7 +147,7 @@ void Soldier::ForkNewFighter(
 	splitedNode.m_isUselessNode = false;
 	splitedNode.m_pFlashlightBox = pFlashlightBox;
 
-	this->m_pOurCarriage->m_ownerHerosPub.m_mutex_.lock();
+	this->m_pOurCarriage->m_monkiesPub.m_mutex_.lock();
 	splitedNode.m_mutex.lock();
 
 	++m_splitedNodesSize;
@@ -156,10 +156,10 @@ void Soldier::ForkNewFighter(
 
 	// thisThread が常に含まれるので 1
 	size_t slavesCount = 1;
-	Soldier* slave;
+	Monkie* slave;
 
-	while ((slave = this->m_pOurCarriage->m_ownerHerosPub.GetAvailableSlave(this)) != nullptr
-		&& ++slavesCount <= this->m_pOurCarriage->m_ownerHerosPub.m_maxThreadsPerSplitedNode_ && !Fake)
+	while ((slave = this->m_pOurCarriage->m_monkiesPub.GetAvailableSlave(this)) != nullptr
+		&& ++slavesCount <= this->m_pOurCarriage->m_monkiesPub.m_maxThreadsPerSplitedNode_ && !Fake)
 	{
 		splitedNode.m_slavesMask |= UINT64_C(1) << slave->m_idx;
 		slave->m_activeSplitedNode = &splitedNode;
@@ -169,11 +169,11 @@ void Soldier::ForkNewFighter(
 
 	if (1 < slavesCount || Fake) {
 		splitedNode.m_mutex.unlock();
-		this->m_pOurCarriage->m_ownerHerosPub.m_mutex_.unlock();
-		Soldier::StartWorkerThread();	// ワーカースレッド開始
+		this->m_pOurCarriage->m_monkiesPub.m_mutex_.unlock();
+		Monkie::StartWorkerThread();	// ワーカースレッド開始
 		assert(!m_isBeingSearched);
 		assert(!m_activePosition);
-		this->m_pOurCarriage->m_ownerHerosPub.m_mutex_.lock();
+		this->m_pOurCarriage->m_monkiesPub.m_mutex_.lock();
 		splitedNode.m_mutex.lock();
 	}
 
@@ -185,7 +185,7 @@ void Soldier::ForkNewFighter(
 	bestMove = splitedNode.m_bestMove;
 	bestScore = splitedNode.m_bestScore;
 
-	this->m_pOurCarriage->m_ownerHerosPub.m_mutex_.unlock();
+	this->m_pOurCarriage->m_monkiesPub.m_mutex_.unlock();
 	splitedNode.m_mutex.unlock();
 }
 
@@ -206,7 +206,7 @@ void Soldier::ForkNewFighter(
 /// <param name="pSword"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-template void Soldier::ForkNewFighter<true >(
+template void Monkie::ForkNewFighter<true >(
 	Position& pos,
 	Flashlight* ss,
 	const ScoreIndex alpha,
@@ -237,7 +237,7 @@ template void Soldier::ForkNewFighter<true >(
 /// <param name="pSword"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-template void Soldier::ForkNewFighter<false>(
+template void Monkie::ForkNewFighter<false>(
 	Position& pos,
 	Flashlight* ss,
 	const ScoreIndex alpha,

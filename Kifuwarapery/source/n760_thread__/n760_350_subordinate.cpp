@@ -11,7 +11,7 @@
 /// <summary>
 /// ワーカースレッド開始
 /// </summary>
-void Subordinate::StartWorkerThread() {
+void Chimpanzee::StartWorkerThread() {
 	while (!this->m_isEndOfSearch) {
 		{
 			std::unique_lock<Mutex> lock(this->m_sleepLock);

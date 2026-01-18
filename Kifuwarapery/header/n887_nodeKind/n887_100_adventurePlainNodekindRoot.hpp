@@ -783,7 +783,7 @@ public:
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		const Depth depth,
-		Soldier** ppThisThread,
+		Monkie** ppThisThread,
 		ScoreIndex& bestScore,
 		ScoreIndex& beta,
 		Position& pos,
@@ -797,9 +797,9 @@ public:
 		)const override {
 
 		if (
-			ourCarriage.m_ownerHerosPub.GetMinSplitDepth() <= depth
+			ourCarriage.m_monkiesPub.GetMinSplitDepth() <= depth
 			&&
-			ourCarriage.m_ownerHerosPub.GetAvailableSlave(*ppThisThread)
+			ourCarriage.m_monkiesPub.GetAvailableSlave(*ppThisThread)
 			&&
 			(*ppThisThread)->m_splitedNodesSize < g_MaxSplitedNodesPerThread)
 		{

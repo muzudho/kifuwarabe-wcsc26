@@ -139,7 +139,7 @@ public:
 	/// <summary>
 	/// スレッズ？
 	/// </summary>
-	HerosPub	m_ownerHerosPub;
+	HerosPub	m_monkiesPub;
 
 	/// <summary>
 	/// USIオプション？

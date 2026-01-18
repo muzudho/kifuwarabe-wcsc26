@@ -13,7 +13,7 @@ class OurCarriage;
 ///		- 元の名前：ＭａｉｎＴｈｒｅａｄ
 ///		</pre>
 /// </summary>
-class Captain : public Soldier {
+class Orangutan : public Monkie {
 
 
 public:
@@ -41,7 +41,7 @@ public:
     /// 生成☆（＾ｑ＾）
 	/// </summary>
 	/// <param name="s"></param>
-	explicit Captain(OurCarriage* s) : Soldier(s), m_isMasterThread(true) {}
+	explicit Orangutan(OurCarriage* s) : Monkie(s), m_isMasterThread(true) {}
 
 
 	// ========================================

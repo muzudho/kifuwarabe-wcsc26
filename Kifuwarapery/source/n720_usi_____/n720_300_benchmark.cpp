@@ -38,6 +38,6 @@ void Benchmark(GameStats& gameStats, Position& pos) {
 
 		std::istringstream ss_go("byoyomi 10000");
 		usiOperation.Go(gameStats, pos, ss_go);
-		pos.GetOurCarriage()->m_ownerHerosPub.WaitForThinkFinished();
+		pos.GetOurCarriage()->m_monkiesPub.WaitForThinkFinished();
 	}
 }

@@ -27,7 +27,7 @@ const int g_MaxThreads = 64;
 /// ベクター型。
 ///		</pre>
 /// </summary>
-class HerosPub : public std::vector<Soldier*> {
+class HerosPub : public std::vector<Monkie*> {
 
 
 public:
@@ -77,7 +77,7 @@ public:
 	/// メインスレッド？
 	/// </summary>
 	/// <returns></returns>
-	Captain* GetFirstCaptain() { return static_cast<Captain*>((*this)[0]); }
+	Orangutan* GetFirstCaptain() { return static_cast<Orangutan*>((*this)[0]); }
 
 
 	/// <summary>
@@ -91,7 +91,7 @@ public:
 	/// 現在の部下スレッド
 	/// </summary>
 	/// <returns></returns>
-	Subordinate* GetCurrSubordinate() { return this->m_pSubordinate_; }
+	Chimpanzee* GetCurrSubordinate() { return this->m_pChimpanzee_; }
 
 
 	// ========================================
@@ -103,7 +103,7 @@ public:
 	/// 初期化？
 	/// </summary>
 	/// <param name="s"></param>
-	void Init(OurCarriage* s);
+	void initialize_10a500b500c(OurCarriage* s);
 
 
 	/// <summary>
@@ -137,7 +137,7 @@ public:
 	/// </summary>
 	/// <param name="master"></param>
 	/// <returns></returns>
-	Soldier* GetAvailableSlave(Soldier* master) const;
+	Monkie* GetAvailableSlave(Monkie* master) const;
 
 
 	/// <summary>
@@ -179,7 +179,7 @@ private:
 	/// <summary>
 	/// タイマースレッド☆
 	/// </summary>
-	Subordinate* m_pSubordinate_;
+	Chimpanzee* m_pChimpanzee_;
 
 
 	/// <summary>

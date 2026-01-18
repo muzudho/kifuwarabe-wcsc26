@@ -49,10 +49,10 @@ extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 /// </summary>
 void OurCarriage::initialize_10a500b_search() {
 	EngineOptionSetup engineOptionSetup;
-	engineOptionSetup.Initialize( &m_engineOptions, this);
+	engineOptionSetup.initialize_10a500b100c( &m_engineOptions, this);
 
-	this->m_ownerHerosPub.Init(this);
-	this->m_tt.SetSize(this->m_engineOptions["USI_Hash"]);
+	this->m_monkiesPub.initialize_10a500b500c(this);
+	this->m_tt.setSize(this->m_engineOptions["USI_Hash"]);
 }
 
 
@@ -73,9 +73,9 @@ std::string OurCarriage::PvInfoToUSI(Position& pos, const Ply depth, const Score
 	Ply selDepth = 0; // 選択的に読んでいる部分の探索深さ。
 	std::stringstream ss;
 
-	for (size_t i = 0; i < m_ownerHerosPub.size(); ++i) {
-		if (selDepth < m_ownerHerosPub[i]->m_maxPly) {
-			selDepth = m_ownerHerosPub[i]->m_maxPly;
+	for (size_t i = 0; i < m_monkiesPub.size(); ++i) {
+		if (selDepth < m_monkiesPub[i]->m_maxPly) {
+			selDepth = m_monkiesPub[i]->m_maxPly;
 		}
 	}
 
@@ -317,19 +317,19 @@ void OurCarriage::CheckTime() {
 
 	s64 nodes = 0;
 	if (m_limits.m_visitedNodesNum) {
-		std::unique_lock<Mutex> lock(m_ownerHerosPub.m_mutex_);
+		std::unique_lock<Mutex> lock(m_monkiesPub.m_mutex_);
 
 		nodes = m_rootPosition.GetNodesSearched();
-		for (size_t i = 0; i < m_ownerHerosPub.size(); ++i) {
-			for (int j = 0; j < m_ownerHerosPub[i]->m_splitedNodesSize; ++j) {
-				SplitedNode& splitedNode = m_ownerHerosPub[i]->m_SplitedNodes[j];
+		for (size_t i = 0; i < m_monkiesPub.size(); ++i) {
+			for (int j = 0; j < m_monkiesPub[i]->m_splitedNodesSize; ++j) {
+				SplitedNode& splitedNode = m_monkiesPub[i]->m_SplitedNodes[j];
 				std::unique_lock<Mutex> spLock(splitedNode.m_mutex);
 				nodes += splitedNode.m_nodes;
 				u64 slvMask = splitedNode.m_slavesMask;
 				while (slvMask) {
 					const int index = firstOneFromLSB(slvMask);
 					slvMask &= slvMask - 1;
-					Position* pos = m_ownerHerosPub[index]->m_activePosition;
+					Position* pos = m_monkiesPub[index]->m_activePosition;
 					if (pos != nullptr) {
 						nodes += pos->GetNodesSearched();
 					}
@@ -369,12 +369,12 @@ void OurCarriage::CheckTime() {
 /// <summary>
 /// ワーカースレッド開始
 /// </summary>
-void Soldier::StartWorkerThread() {
+void Monkie::StartWorkerThread() {
 	SplitedNode* thisSp = m_splitedNodesSize ? m_activeSplitedNode : nullptr;
 	assert(!thisSp || (thisSp->m_masterThread == this && m_isBeingSearched));
 
 	while (true) {
-		while ((!m_isBeingSearched && this->m_pOurCarriage->m_ownerHerosPub.m_isSleepWhileIdle_) || m_isEndOfSearch)
+		while ((!m_isBeingSearched && this->m_pOurCarriage->m_monkiesPub.m_isSleepWhileIdle_) || m_isEndOfSearch)
 		{
 			if (m_isEndOfSearch) {
 				assert(thisSp == nullptr);
@@ -392,10 +392,10 @@ void Soldier::StartWorkerThread() {
 		if (m_isBeingSearched) {
 			assert(!m_isEndOfSearch);
 
-			this->m_pOurCarriage->m_ownerHerosPub.m_mutex_.lock();
+			this->m_pOurCarriage->m_monkiesPub.m_mutex_.lock();
 			assert(m_isBeingSearched);
 			SplitedNode* pSplitedNode = m_activeSplitedNode;
-			this->m_pOurCarriage->m_ownerHerosPub.m_mutex_.unlock();
+			this->m_pOurCarriage->m_monkiesPub.m_mutex_.unlock();
 
 			Flashlight ss[g_maxPlyPlus2];
 			Position pos(*pSplitedNode->m_position, this);
@@ -422,7 +422,7 @@ void Soldier::StartWorkerThread() {
 			pSplitedNode->m_slavesMask ^= (UINT64_C(1) << m_idx);
 			pSplitedNode->m_nodes += pos.GetNodesSearched();
 
-			if (this->m_pOurCarriage->m_ownerHerosPub.m_isSleepWhileIdle_
+			if (this->m_pOurCarriage->m_monkiesPub.m_isSleepWhileIdle_
 				&& this != pSplitedNode->m_masterThread
 				&& !pSplitedNode->m_slavesMask)
 			{

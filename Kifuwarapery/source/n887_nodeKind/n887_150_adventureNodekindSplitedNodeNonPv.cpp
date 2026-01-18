@@ -111,7 +111,7 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::ExplorePlain(
 
 	// step1
 	// initialize node
-	Soldier* pThisThread = pos.GetThisThread();
+	Monkie* pThisThread = pos.GetThisThread();
 	moveCount = playedMoveCount = 0;
 	inCheck = pos.InCheck();
 

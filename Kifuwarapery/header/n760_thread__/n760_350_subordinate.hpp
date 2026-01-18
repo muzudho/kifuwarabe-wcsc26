@@ -8,12 +8,13 @@ class OurCarriage;
 
 /// <summary>
 ///		<pre>
-/// 部下
+/// チンパンジー
 /// 
 ///		- 元の名前：　1. ＴｉｍｅｒＴｈｒｅａｄ, 2. Ｗarrior
+///		- 残り時間を管理する猿だぜ（＾～＾）
 ///		</pre>
 /// </summary>
-class Subordinate : public Soldier {
+class Chimpanzee : public Monkie {
 
 
 public:
@@ -39,7 +40,7 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="s"></param>
-	explicit Subordinate(OurCarriage* s) : Soldier(s), m_lifetimeMilliseconds(0) {}
+	explicit Chimpanzee(OurCarriage* s) : Monkie(s), m_lifetimeMilliseconds(0) {}
 
 
 	// ========================================

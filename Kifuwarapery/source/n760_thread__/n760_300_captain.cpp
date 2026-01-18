@@ -12,7 +12,7 @@
 /// <summary>
 /// ワーカースレッド開始☆（＾～＾）
 /// </summary>
-void Captain::StartWorkerThread() {
+void Orangutan::StartWorkerThread() {
 	while (true) {// エグジットするまで　ずっといるぜ☆
 		{
 			std::unique_lock<Mutex> lock(this->m_sleepLock);
@@ -20,7 +20,7 @@ void Captain::StartWorkerThread() {
 			while (!this->m_isMasterThread && !m_isEndOfSearch)
 			{
 				// UI 関連だから要らないのかも。
-				this->m_pOurCarriage->m_ownerHerosPub.m_sleepCond_.notify_one();
+				this->m_pOurCarriage->m_monkiesPub.m_sleepCond_.notify_one();
 				this->m_sleepCond.wait(lock);
 			}
 		}

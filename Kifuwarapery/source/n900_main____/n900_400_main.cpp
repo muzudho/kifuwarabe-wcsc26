@@ -155,5 +155,5 @@ void Main01::body_50a(int argc, char* argv[])
 void Main01::finalize_90a()
 {
 	SYNCCOUT << "(^q^)main(6/6): threads.exit! ----> doUSICommandLoop" << SYNCENDL;
-	this->searcher->m_ownerHerosPub.exit_90a500b();
+	this->searcher->m_monkiesPub.exit_90a500b();
 }
