@@ -58,5 +58,5 @@ public:
 	/// <summary>
 	/// 猿として働く（ワーカースレッド）
 	/// </summary>
-	virtual void workAsMonkey_10a520b500c500d() override;
+	virtual void workAsMonkey_10a500b500c500d500e() override;
 };

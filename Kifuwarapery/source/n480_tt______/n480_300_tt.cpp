@@ -6,7 +6,7 @@
 /// 
 /// </summary>
 /// <param name="mbSize">Mega Byte 指定</param>
-void TranspositionTable::SetSize(const size_t mbSize) {
+void TranspositionTable::setSize(const size_t mbSize) {
 	// 確保する要素数を取得する。
 	size_t newSize = (mbSize << 20) / sizeof(TTCluster);
 	newSize = std::max(static_cast<size_t>(1024), newSize); // 最小値は 1024 としておく。

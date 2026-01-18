@@ -23,9 +23,9 @@
 /// <typeparam name="T">キャプテン猿か、お使い猿</typeparam>
 /// <param name="s"></param>
 /// <returns></returns>
-template <typename MONKT> MONKT* initialize_10a520b500c_newMonkeyWithThread(OurCarriage* s) {
+template <typename MONKT> MONKT* initialize_10a500b500c500d_newMonkeyWithThread(OurCarriage* s) {
 	MONKT* monkey = new MONKT(s);
-	monkey->m_threadHandle = std::thread(&Monkey::workAsMonkey_10a520b500c500d, monkey); // move constructor
+	monkey->m_threadHandle = std::thread(&Monkey::workAsMonkey_10a500b500c500d500e, monkey); // move constructor
 	return monkey;
 }
 
@@ -49,7 +49,7 @@ void deleteThread(Monkey* th) {
 /// 最初の設定（初期化）を行うぜ☆（＾▽＾）
 /// </summary>
 /// <param name="s"></param>
-void MonkiesPub::initialize_10a520b_monkiePub(OurCarriage* s)
+void MonkiesPub::initialize_10a500b500c_monkiePub(OurCarriage* s)
 {
 	// 寝るフラグ？
 	this->m_idleMonkeyIsSleep_ = true;
@@ -57,11 +57,11 @@ void MonkiesPub::initialize_10a520b_monkiePub(OurCarriage* s)
 	#if defined LEARN
 	#else
 		// チンパンジー（残り時間監視）
-		this->m_pChimpanzee_ = initialize_10a520b500c_newMonkeyWithThread<Chimpanzee>(s);
+		this->m_pChimpanzee_ = initialize_10a500b500c500d_newMonkeyWithThread<Chimpanzee>(s);
 	#endif
 
 	// オラウータン（先頭の猿）
-	this->m_itemMonkies.push_back(initialize_10a520b500c_newMonkeyWithThread<Orangutans>(s));
+	this->m_itemMonkies.push_back(initialize_10a500b500c500d_newMonkeyWithThread<Orangutans>(s));
 
 	newAllMonkiesByUSIOptions(s);
 }
@@ -107,7 +107,7 @@ void MonkiesPub::newAllMonkiesByUSIOptions(OurCarriage* pOurCarriage) {
 	// 猿で埋める
 	while (this->m_itemMonkies.size() < numberOfMonkies)
 	{
-		this->m_itemMonkies.push_back(initialize_10a520b500c_newMonkeyWithThread<Monkey>(pOurCarriage));
+		this->m_itemMonkies.push_back(initialize_10a500b500c500d_newMonkeyWithThread<Monkey>(pOurCarriage));
 	}
 
 	// 多すぎる猿は消す

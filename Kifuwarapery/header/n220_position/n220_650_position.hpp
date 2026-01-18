@@ -752,7 +752,7 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	static void initialize_10a500b_zobrist();
+	static void initialize_10a490b_zobrist();
 
 
 private:

@@ -62,7 +62,7 @@ AdventureNodekindRoot g_NODEKIND_ROOT;
 /// <param name="depth"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e100f(
+ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック

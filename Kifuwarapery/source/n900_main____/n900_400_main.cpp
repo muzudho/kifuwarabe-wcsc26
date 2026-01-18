@@ -121,10 +121,10 @@ void App10::initialize_10a()
 	}
 
 	SYNCCOUT << "(^q^) 2   . 局面のゾブリストハッシュ初期化！" << SYNCENDL;
-	Position::initialize_10a500b_zobrist();
+	Position::initialize_10a490b_zobrist();
 
 	SYNCCOUT << "(^q^) 3   . 探索部の初期化！" << SYNCENDL;
-	this->searcher->initialize_10a520b_ourCarriage();
+	this->searcher->initialize_10a500b_ourCarriage();
 
 
 	// 一時オブジェクトの生成と破棄

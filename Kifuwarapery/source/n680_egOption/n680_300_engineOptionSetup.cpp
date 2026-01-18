@@ -14,7 +14,7 @@ namespace {
 	/// </summary>
 	/// <param name="s"></param>
 	/// <param name="opt"></param>
-	void onHashSize(OurCarriage* s, const EngineOptionable& opt) { s->m_tt.SetSize(opt); }
+	void onHashSize(OurCarriage* s, const EngineOptionable& opt) { s->m_tt.setSize(opt); }
 
 
 	/// <summary>
@@ -60,7 +60,7 @@ namespace {
 /// </summary>
 /// <param name="pMap"></param>
 /// <param name="pRucksack"></param>
-void EngineOptionSetup::initializeMonkiePub_app10(EngineOptionsMap* pMap, OurCarriage * pRucksack)
+void EngineOptionSetup::initialize_10a500b400c_monkiePub(EngineOptionsMap* pMap, OurCarriage * pRucksack)
 {
 	pMap->Put("USI_Hash"					, EngineOption(256, 1, 65536, onHashSize, pRucksack));
 	pMap->Put("Clear_Hash"					, EngineOption(onClearHash, pRucksack));

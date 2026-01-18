@@ -195,7 +195,7 @@ public:
 	/// <summary>
 	/// 初期化？
 	/// </summary>
-	void	initialize_10a520b_ourCarriage();
+	void	initialize_10a500b_ourCarriage();
 
 
 	/// <summary>

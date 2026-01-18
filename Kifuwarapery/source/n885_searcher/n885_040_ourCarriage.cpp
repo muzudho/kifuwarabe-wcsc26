@@ -47,12 +47,12 @@ extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 /// <summary>
 /// 最初の設定（初期化）を行うぜ☆（＾▽＾）
 /// </summary>
-void OurCarriage::initialize_10a520b_ourCarriage() {
+void OurCarriage::initialize_10a500b_ourCarriage() {
 	EngineOptionSetup engineOptionSetup;
-	engineOptionSetup.initializeMonkiePub_app10( &m_engineOptions, this);
+	engineOptionSetup.initialize_10a500b400c_monkiePub( &m_engineOptions, this);
 
-	this->m_monkiesPub.initialize_10a520b_monkiePub(this);
-	this->m_tt.SetSize(this->m_engineOptions["USI_Hash"]);
+	this->m_monkiesPub.initialize_10a500b500c_monkiePub(this);
+	this->m_tt.setSize(this->m_engineOptions["USI_Hash"]);
 }
 
 
@@ -391,7 +391,7 @@ void OurCarriage::ChimpanzeeStopped() {
 /// <summary>
 /// 猿として働く（ワーカースレッド）
 /// </summary>
-void Monkey::workAsMonkey_10a520b500c500d() {
+void Monkey::workAsMonkey_10a500b500c500d500e() {
 
 	SplitedNode* thisSplitedNode = m_splitedNodesSize ? m_activeSplitedNode : nullptr;
 	assert(!thisSplitedNode || (thisSplitedNode->m_masterThread == this && m_isBeingSearched));
@@ -439,7 +439,7 @@ void Monkey::workAsMonkey_10a520b500c500d() {
 
 
 			// スプリット・ポイント用の検索に変えるぜ☆（＾ｑ＾）
-			pSplitedNode->m_pSword01->workAsMonkey_10a520b500c500d500e_searchAsSplitedNode(
+			pSplitedNode->m_pSword01->workAsMonkey_10a500b500c500d500e500f_searchAsSplitedNode(
 				*pSplitedNode, *this->m_pOurCarriage, pos, flashlight);
 
 

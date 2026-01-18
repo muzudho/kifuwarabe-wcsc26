@@ -23,12 +23,11 @@ public:
 	/// <param name="searcher"></param>
 	/// <param name="pos"></param>
 	/// <param name="pFlashlight"></param>
-	virtual void workAsMonkey_10a520b500c500d500e_searchAsSplitedNode(
+	virtual void workAsMonkey_10a500b500c500d500e500f_searchAsSplitedNode(
 		SplitedNode& ownerSplitedNode,
 		OurCarriage& searcher,
 		Position& pos,
-		Flashlight* pFlashlight
-		) const override;
+		Flashlight* pFlashlight) const override;
 };
 
 

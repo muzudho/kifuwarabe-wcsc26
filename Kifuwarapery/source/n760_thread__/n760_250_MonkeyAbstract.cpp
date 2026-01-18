@@ -175,7 +175,7 @@ void Monkey::ForkNewMonkey(
 	if (1 < slavesCount || Fake) {
 		splitedNode.m_mutex.unlock();
 		this->m_pOurCarriage->m_monkiesPub.m_mutex_.unlock();
-		Monkey::workAsMonkey_10a520b500c500d();	// ワーカースレッド開始
+		Monkey::workAsMonkey_10a500b500c500d500e();	// ワーカースレッド開始
 		assert(!m_isBeingSearched);
 		assert(!m_activePosition);
 		this->m_pOurCarriage->m_monkiesPub.m_mutex_.lock();

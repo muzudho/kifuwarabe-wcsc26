@@ -32,7 +32,7 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="mbSize">Mega Byte 指定</param>
-	void SetSize(const size_t mbSize);
+	void setSize(const size_t mbSize);
 
 
 	/// <summary>

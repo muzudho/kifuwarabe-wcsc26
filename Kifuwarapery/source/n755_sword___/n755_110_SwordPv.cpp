@@ -12,23 +12,22 @@ const SwordPv g_SWORD_PV;
 /// <param name="ourCarriage"></param>
 /// <param name="pos"></param>
 /// <param name="pFlashlight"></param>
-void SwordPv::workAsMonkey_10a520b500c500d500e_searchAsSplitedNode(
+void SwordPv::workAsMonkey_10a500b500c500d500e500f_searchAsSplitedNode(
 	SplitedNode& ownerSplitedNode, 
 	OurCarriage& ourCarriage,
 	Position& pos,
-	Flashlight* pFlashlight
-	) const {
+	Flashlight* pFlashlight) const
+{
 	//────────────────────────────────────────────────────────────────────────────────
 	// 探索☆？（＾ｑ＾）
 	//────────────────────────────────────────────────────────────────────────────────
 	// スプリットポイントは検索を開始するぜ☆（＾ｑ＾）
-	g_NODEKIND_SPLITEDNODE_PV.explorePlain_10a520b500c500d500e100f(
+	g_NODEKIND_SPLITEDNODE_PV.explorePlain_10a520b500c500d500e500f500g(
 		ourCarriage,
 		pos,
 		pFlashlight + 1,
 		ownerSplitedNode.m_alpha,
 		ownerSplitedNode.m_beta,
 		ownerSplitedNode.m_depth,
-		ownerSplitedNode.m_cutNode
-		);
+		ownerSplitedNode.m_cutNode);
 }

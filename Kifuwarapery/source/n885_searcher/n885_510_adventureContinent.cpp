@@ -99,7 +99,7 @@ void AdventureContinent::exploreContinent_n10(
 #if defined LEARN
 	captainsRucksack.m_ownerHerosPub[0]->m_searching = true;
 #else
-	captainsRucksack.m_tt.SetSize(captainsRucksack.m_engineOptions["USI_Hash"]); // operator int() 呼び出し。
+	captainsRucksack.m_tt.setSize(captainsRucksack.m_engineOptions["USI_Hash"]); // operator int() 呼び出し。
 
 	SYNCCOUT << "info string book_ply " << book_ply << SYNCENDL;
 	if (

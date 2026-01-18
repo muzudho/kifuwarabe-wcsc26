@@ -12,7 +12,7 @@
 /// <summary>
 /// 猿として働く（ワーカースレッド）☆（＾～＾）
 /// </summary>
-void Orangutans::workAsMonkey_10a520b500c500d() {
+void Orangutans::workAsMonkey_10a500b500c500d500e() {
 	while (true)	// 探索が終わるまで　ずっといるぜ☆
 	{
 		{
