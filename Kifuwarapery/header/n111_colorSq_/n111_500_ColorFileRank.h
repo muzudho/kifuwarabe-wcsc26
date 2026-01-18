@@ -1,12 +1,16 @@
 ﻿#pragma once
+#include "../n105_100_color___/n105_100_100_color.hpp"
+#include "../n105_120_square__/n105_120_150_file.hpp"
+#include "../n105_120_square__/n105_120_200_rank.hpp"
 
-#include "../n105_color___/n105_100_color.hpp"
-#include "../n110_square__/n110_150_file.hpp"
-#include "../n110_square__/n110_200_rank.hpp"
+
+//────────────────────────────────────────────────────────────────────────────────
+// 手番、筋、段
+//────────────────────────────────────────────────────────────────────────────────
 
 
 /// <summary>
-/// 
+/// 手番、筋、段
 /// </summary>
 class ColorFileRank {
 

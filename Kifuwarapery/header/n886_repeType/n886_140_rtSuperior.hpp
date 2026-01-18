@@ -21,16 +21,19 @@ public:
 	/// <param name="resultScore"></param>
 	/// <param name="pSearcher"></param>
 	/// <param name="pFlashlightBox"></param>
-	void IsStop(
-		bool& isReturn,
-		ScoreIndex& resultScore,
+	std::pair<bool, ScoreIndex> IsStop(
+		//bool& isReturn,
+		//ScoreIndex& resultScore,
 		const OurCarriage* pSearcher,
 		const Flashlight* pFlashlightBox) const override
 	{
 		if (pFlashlightBox->m_ply != 2) {
-			isReturn = true;
-			resultScore = ScoreMateInMaxPly;
+			//isReturn = true;
+			//resultScore = ScoreMateInMaxPly;
+			return std::make_pair(true, ScoreMateInMaxPly);
 		}
+
+		return std::make_pair(false, ScoreNone);
 	}
 };
 

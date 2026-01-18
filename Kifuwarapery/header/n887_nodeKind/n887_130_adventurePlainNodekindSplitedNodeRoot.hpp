@@ -112,9 +112,9 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="ourCarriage"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void ExplorerPlainStep2_IsStopByRepetetion(
-		bool& isReturnWithScore,
-		ScoreIndex& returnScore,
+	virtual inline std::pair<bool, ScoreIndex> ExplorerPlainStep2_IsStopByRepetetion(
+		//bool& isReturnWithScore,
+		//ScoreIndex& returnScore,
 		Position& pos,
 		OurCarriage& ourCarriage,
 		Flashlight** ppFlashlight
@@ -122,6 +122,7 @@ public:
 	{
 		// ルートノードはスルー☆！（＾ｑ＾）
 		//UNREACHABLE;
+		return std::make_pair(false, ScoreNone);
 	}
 
 
@@ -593,7 +594,7 @@ public:
 	/// <param name="ppFlashlight"></param>
 	/// <param name="beta"></param>
 	/// <param name="ci"></param>
-	/// <param name="isPVMove"></param>
+	/// <param name="isPVMoveRef"></param>
 	/// <param name="playedMoveCount"></param>
 	/// <param name="movesSearched"></param>
 	virtual inline void ExplorerPlainStep13c(
@@ -614,13 +615,13 @@ public:
 		Flashlight** ppFlashlight,
 		ScoreIndex& beta,
 		const CheckInfo& ci,
-		bool& isPVMove,
+		bool& isPVMoveRef,
 		int& playedMoveCount,
 		Move movesSearched[64]
 		)const override {
 
 		// PVノードだぜ☆（＾ｑ＾）
-		isPVMove = (moveCount == 1);
+		isPVMoveRef = (moveCount == 1);
 		(*ppFlashlight)->m_currentMove = move;
 	}
 

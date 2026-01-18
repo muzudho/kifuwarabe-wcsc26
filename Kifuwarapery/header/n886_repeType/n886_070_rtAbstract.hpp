@@ -20,9 +20,9 @@ public:
 	/// <param name="resultScore"></param>
 	/// <param name="pSearcher"></param>
 	/// <param name="pFlashlightBox"></param>
-	virtual void IsStop(
-		bool& isReturn,
-		ScoreIndex& resultScore,
+	virtual std::pair<bool, ScoreIndex> IsStop(
+		//bool& isReturn,
+		//ScoreIndex& resultScore,
 		const OurCarriage* pSearcher,
 		const Flashlight* pFlashlightBox) const = 0;
 };

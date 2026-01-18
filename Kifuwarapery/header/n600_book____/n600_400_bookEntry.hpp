@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 
-#include "../../header/n080_common__/n080_100_common.hpp"
+#include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../../header/n119_score___/n119_090_scoreIndex.hpp"
 
 

@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include "../n080_common__/n080_100_common.hpp"
-#include "../n105_color___/n105_100_color.hpp"
-#include "../n110_square__/n110_100_square.hpp"
-#include "../n110_square__/n110_205_convRank.hpp"
+#include "../n080_100_sysWorld/n080_100_500_common.hpp"
+#include "../n105_100_color___/n105_100_100_color.hpp"
+#include "../n105_120_square__/n105_120_100_square.hpp"
+#include "../n105_120_square__/n105_120_205_convRank.hpp"
 #include "../n112_pieceTyp/n112_050_pieceType.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 #include "../n160_board___/n160_230_setMaskBB.hpp"

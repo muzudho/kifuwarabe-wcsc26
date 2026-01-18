@@ -1,7 +1,7 @@
 ﻿#include <iostream>
-#include "../../header/n110_square__/n110_150_file.hpp"
-#include "../../header/n110_square__/n110_200_rank.hpp"
-#include "../../header/n110_square__/n110_500_convSquare.hpp"
+#include "../../header/n105_120_square__/n105_120_150_file.hpp"
+#include "../../header/n105_120_square__/n105_120_200_rank.hpp"
+#include "../../header/n105_120_square__/n105_120_500_convSquare.hpp"
 #include "../../header/n160_board___/n160_230_setMaskBb.hpp"
 #include "../../header/n160_board___/n160_400_printBb.hpp"
 

@@ -1,5 +1,4 @@
 ﻿#pragma once
-
 #include <string>
 #include <sstream>
 #include "../n119_score___/n119_090_scoreIndex.hpp"
@@ -40,15 +39,20 @@ class OurCarriage {
 public:
 
 
+	// ========================================
+	// フィールド
+	// ========================================
+
+
 	/// <summary>
 	/// シグナル？
 	/// </summary>
-	volatile SignalsType m_signals;
+	volatile SignalsType		m_signals;
 
 	/// <summary>
 	/// 思考用の時間などの上限☆？
 	/// </summary>
-	LimitsDuringGo m_limits;
+	LimitsDuringGo		m_limits;
 
 	/// <summary>
 	///		<pre>
@@ -56,49 +60,106 @@ public:
 	/// 送られてきた棋譜。（現局面までの指し手のスタック）
 	///		</pre>
 	/// </summary>
-	std::vector<Move> m_ourMoves;
+	std::vector<Move>		m_ourMoves;
 
 	/// <summary>
 	/// 検索用タイマー？
 	/// </summary>
-	Stopwatch m_stopwatch;
+	Stopwatch		m_stopwatch;
 
 	/// <summary>
 	/// ステータス？
 	/// </summary>
-	StateStackPtr m_setUpStates;
+	StateStackPtr		m_setUpStates;
 
 	/// <summary>
 	/// ルート？ 前回の反復深化探索☆？（イテレーション）の結果が入っているみたいだぜ☆
 	/// </summary>
-	std::vector<RootMove> m_rootMoves;
+	std::vector<RootMove>		m_rootMoves;
 
 #if defined LEARN
 	/// <summary>
 	/// アルファ
 	/// </summary>
-	ScoreIndex m_alpha;
+	ScoreIndex		m_alpha;
 
 	/// <summary>
 	/// ベータ
 	/// </summary>
-	ScoreIndex m_beta;
+	ScoreIndex		m_beta;
 #endif
 
 	/// <summary>
 	/// 本譜のサイズ？
 	/// </summary>
-	size_t m_pvSize;
+	size_t		m_pvSize;
 
 	/// <summary>
 	/// インデックス？
 	/// </summary>
-	size_t m_pvIdx;
+	size_t		m_pvIdx;
 
 	/// <summary>
 	/// 時間管理
 	/// </summary>
-	TimeManager m_timeMgr;
+	TimeManager		m_timeMgr;
+
+	/// <summary>
+	/// ヒストリー？
+	/// </summary>
+	History		m_history;
+
+	/// <summary>
+	/// ゲインズ？
+	/// </summary>
+	Gains		m_gains;
+
+	/// <summary>
+	/// トランジション・テーブル。
+	/// </summary>
+	TranspositionTable		m_tt;
+
+#if defined INANIWA_SHIFT
+	InaniwaFlag		inaniwaFlag;
+#endif
+#if defined BISHOP_IN_DANGER
+	BishopInDangerFlag		bishopInDangerFlag;
+#endif
+
+	/// <summary>
+	/// ゲームの統計的なデータ。
+	/// </summary>
+	GameStats	m_gameStats;
+
+	/// <summary>
+	/// 開始局面？
+	/// </summary>
+	Position	m_rootPosition;
+
+	/// <summary>
+	/// スレッズ？
+	/// </summary>
+	HerosPub	m_ownerHerosPub;
+
+	/// <summary>
+	/// USIオプション？
+	/// </summary>
+	EngineOptionsMap	m_engineOptions;
+
+	/// <summary>
+	/// true にすると、シングルスレッドで動作する。デバッグ用。
+	/// </summary>
+	static const bool	FakeSplit = false;
+
+	/// <summary>
+	/// checkTime() を呼び出す最大間隔(msec)
+	/// </summary>
+	const int	TimerResolution = 5;
+
+
+	// ========================================
+	// メソッド
+	// ========================================
 
 
 	/// <summary>
@@ -121,7 +182,7 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// 本筋じゃないときに呼び出されるぜ（＾～＾）
 	/// </summary>
 	inline void IncreaseBestMovePlyChanges()
 	{
@@ -130,54 +191,9 @@ public:
 
 
 	/// <summary>
-	/// ヒストリー？
-	/// </summary>
-	History m_history;
-
-
-	/// <summary>
-	/// ゲインズ？
-	/// </summary>
-	Gains m_gains;
-
-
-	/// <summary>
-	/// トランジション・テーブル。
-	/// </summary>
-	TranspositionTable m_tt;
-
-#if defined INANIWA_SHIFT
-	InaniwaFlag				inaniwaFlag;
-#endif
-#if defined BISHOP_IN_DANGER
-	BishopInDangerFlag		bishopInDangerFlag;
-#endif
-
-	/// <summary>
-	/// ゲームの統計的なデータ。
-	/// </summary>
-	GameStats m_gameStats;
-
-	/// <summary>
-	/// 開始局面？
-	/// </summary>
-	Position m_rootPosition;
-
-	/// <summary>
-	/// スレッズ？
-	/// </summary>
-	HerosPub				m_ownerHerosPub;
-
-	/// <summary>
-	/// USIオプション？
-	/// </summary>
-	EngineOptionsMap		m_engineOptions;
-
-
-	/// <summary>
 	/// 初期化？
 	/// </summary>
-	void					Init();
+	void	Init();
 
 
 	/// <summary>
@@ -188,28 +204,28 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	std::string				PvInfoToUSI(Position& pos, const Ply depth, const ScoreIndex alpha, const ScoreIndex beta);
+	std::string		PvInfoToUSI(Position& pos, const Ply depth, const ScoreIndex alpha, const ScoreIndex beta);
 
 
 #if defined INANIWA_SHIFT
-	void					detectInaniwa(const Position& GetPos);
+	void	detectInaniwa(const Position& GetPos);
 #endif
 #if defined BISHOP_IN_DANGER
-	void						detectBishopInDanger(const Position& GetPos);
+	void	detectBishopInDanger(const Position& GetPos);
 #endif
 
 
 	/// <summary>
 	/// 時間チェック？
 	/// </summary>
-	void					CheckTime();
+	void	CheckTime();
 
 
 	/// <summary>
 	/// エンジン・オプション設定？
 	/// </summary>
 	/// <param name="ssCmd"></param>
-	void					SetOption(std::istringstream& ssCmd);
+	void	SetOption(std::istringstream& ssCmd);
 
 
 	//private:
@@ -222,7 +238,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	std::string scoreToUSI(const ScoreIndex score, const ScoreIndex alpha, const ScoreIndex beta) {
+	std::string		scoreToUSI(const ScoreIndex score, const ScoreIndex alpha, const ScoreIndex beta) {
 		std::stringstream ss;
 
 		if (abs(score) < ScoreMateInMaxPly) {
@@ -243,7 +259,7 @@ public:
 	//private:
 
 
-	inline std::string scoreToUSI(const ScoreIndex score) {
+	inline std::string		scoreToUSI(const ScoreIndex score) {
 		return scoreToUSI(score, -ScoreIndex::ScoreInfinite, ScoreIndex::ScoreInfinite);
 	}
 
@@ -252,32 +268,20 @@ public://private:
 
 
 	/// <summary>
-	/// true にすると、シングルスレッドで動作する。デバッグ用。
-	/// </summary>
-	static const bool FakeSplit = false;
-
-
-	/// <summary>
 	/// 
 	/// </summary>
 	/// <param name="d"></param>
 	/// <returns></returns>
-	inline ScoreIndex razorMargin(const Depth d) {
+	inline ScoreIndex	razorMargin(const Depth d) {
 		return static_cast<ScoreIndex>(512 + 16 * static_cast<int>(d));
 	}
 
 
 	/// <summary>
-	/// checkTime() を呼び出す最大間隔(msec)
-	/// </summary>
-	const int TimerResolution = 5;
-
-
-	/// <summary>
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	inline bool checkIsDangerous() {
+	inline bool		checkIsDangerous() {
 		// not implement
 		// 使用しないで良いかも知れない。
 		return false;
@@ -424,14 +428,20 @@ public://private:
 private:
 
 
+	// ========================================
+	// フィールド
+	// ========================================
+
+
 	/// <summary>
 	///		<pre>
 	/// ベストムーブ・チェンジスって何だぜ☆？（＾ｑ＾）
+	/// なんか１ずつ増えるみたいだが……（＾～＾）
 	/// 
 	///		- 元の名前：ｂｅｓｔＭｏｖｅＣｈａｎｇｅｓ
 	///		</pre>
 	/// </summary>
-	Ply						m_bestMovePlyChanges_;
+	Ply		m_bestMovePlyChanges_;
 };
 
 
@@ -454,7 +464,7 @@ void InitSearchTable();
 /// </summary>
 /// <param name="ourCarriage">わたしたちの馬車</param>
 /// <returns></returns>
-FORCE_INLINE void HerosPub::WakeUp(OurCarriage* ourCarriage) {
+FORCE_INLINE void		HerosPub::WakeUp(OurCarriage* ourCarriage) {
 	// 全員初期化☆？
 	for (size_t i = 0; i < size(); ++i) {
 		(*this)[i]->m_maxPly = 0;
@@ -471,6 +481,6 @@ FORCE_INLINE void HerosPub::WakeUp(OurCarriage* ourCarriage) {
 ///		</pre>
 /// </summary>
 /// <returns></returns>
-FORCE_INLINE void HerosPub::Sleep() {
+FORCE_INLINE void		HerosPub::Sleep() {
 	this->m_isSleepWhileIdle_ = true;
 }

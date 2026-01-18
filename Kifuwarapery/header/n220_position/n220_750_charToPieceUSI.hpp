@@ -3,7 +3,7 @@
 #include <stack>
 #include <memory>
 #include <map>
-#include "../n080_common__/n080_100_common.hpp"
+#include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n113_piece___/n113_205_convHandPiece.hpp"
 #include "../n113_piece___/n113_500_hand.hpp"
 #include "../n119_score___/n119_200_pieceScore.hpp"

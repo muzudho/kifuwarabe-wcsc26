@@ -143,6 +143,7 @@
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <DisableSpecificWarnings>4002;4067;4244;4267;4305;4521;4522;4800;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -156,18 +157,34 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="header\n080_common__\n080_200_utilProgram.hpp" />
-    <ClInclude Include="header\n105_color___\n105_100_color.hpp" />
-    <ClInclude Include="header\n105_color___\n105_500_convColor.hpp" />
-    <ClInclude Include="header\n110_square__\n110_155_convFile.hpp" />
-    <ClInclude Include="header\n110_square__\n110_205_convRank.hpp" />
-    <ClInclude Include="header\n110_square__\n110_250_squareDelta.hpp" />
-    <ClInclude Include="header\n110_square__\n110_100_square.hpp" />
-    <ClInclude Include="header\n110_square__\n110_150_file.hpp" />
-    <ClInclude Include="header\n110_square__\n110_200_rank.hpp" />
-    <ClInclude Include="header\n110_square__\n110_300_direction.hpp" />
-    <ClInclude Include="header\n110_square__\n110_400_squareRelation.hpp" />
-    <ClInclude Include="header\n110_square__\n110_500_convSquare.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_070_bmi2.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_071_sse.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_072_unreachable.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_074_asmcomment.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_076_int.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_079_count1s.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_080_putb.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_081_ioLock.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_082_eraser.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_083_unroller.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_084_cacheLineSize.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_085_prefetch.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_086_hashTable.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_087_random.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_088_mutex.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_089_endian.hpp" />
+    <ClInclude Include="header\n080_200_utilProg\n080_200_500_utilProgram.hpp" />
+    <ClInclude Include="header\n105_100_color___\n105_100_100_color.hpp" />
+    <ClInclude Include="header\n105_100_color___\n105_100_500_convColor.hpp" />
+    <ClInclude Include="header\n105_120_square__\n105_120_155_convFile.hpp" />
+    <ClInclude Include="header\n105_120_square__\n105_120_205_convRank.hpp" />
+    <ClInclude Include="header\n105_120_square__\n105_120_250_squareDelta.hpp" />
+    <ClInclude Include="header\n105_120_square__\n105_120_100_square.hpp" />
+    <ClInclude Include="header\n105_120_square__\n105_120_150_file.hpp" />
+    <ClInclude Include="header\n105_120_square__\n105_120_200_rank.hpp" />
+    <ClInclude Include="header\n105_120_square__\n105_120_300_direction.hpp" />
+    <ClInclude Include="header\n105_120_square__\n105_120_400_squareRelation.hpp" />
+    <ClInclude Include="header\n105_120_square__\n105_120_500_convSquare.hpp" />
     <ClInclude Include="header\n111_colorSq_\n111_500_ColorFileRank.h" />
     <ClInclude Include="header\n112_pieceTyp\n112_050_pieceType.hpp" />
     <ClInclude Include="header\n113_piece___\n113_105_convPieceType.hpp" />
@@ -222,15 +239,16 @@
     <ClInclude Include="header\n220_position\n220_665_utilMoveStack.hpp" />
     <ClInclude Include="header\n220_position\n220_750_charToPieceUSI.hpp" />
     <ClInclude Include="header\n220_position\n220_400_evalList.hpp" />
+    <ClInclude Include="header\n374_genMove_\n374_780_MoveGenerator100.hpp" />
     <ClInclude Include="header\n640_searcher\n640_040_nodeKind.hpp" />
     <ClInclude Include="header\n223_move____\n223_060_stats.hpp" />
     <ClInclude Include="header\n223_move____\n223_200_depth.hpp" />
     <ClInclude Include="header\n223_move____\n223_300_moveAndScoreIndex.hpp" />
     <ClInclude Include="header\n223_move____\n223_500_flashlight.hpp" />
     <ClInclude Include="header\n225_movPhase\n225_050_generateMovePhase.hpp" />
-    <ClInclude Include="header\n080_common__\n080_050_ifdef.hpp" />
-    <ClInclude Include="header\n080_common__\n080_100_common.hpp" />
-    <ClInclude Include="header\n080_common__\n080_150_overloadEnumOperators.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_050_ifdef.hpp" />
+    <ClInclude Include="header\n080_100_sysWorld\n080_100_500_common.hpp" />
+    <ClInclude Include="header\n080_150_overEnum\n080_150_500_overloadEnumOperators.hpp" />
     <ClInclude Include="header\n160_board___\n160_600_bitboardAll.hpp" />
     <ClInclude Include="header\n350_pieceTyp\n350_030_makePromoteMove.hpp" />
     <ClInclude Include="header\n350_pieceTyp\n350_040_ptEvent.hpp" />
@@ -418,13 +436,17 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="header\n080_100_sysWorld\n080_100_073_forceInline.hpp" />
+    <ClCompile Include="header\n080_100_sysWorld\n080_100_075_debugcerr.hpp" />
+    <ClCompile Include="header\n080_100_sysWorld\n080_100_077_binary.hpp" />
+    <ClCompile Include="header\n080_100_sysWorld\n080_100_078_lsbMsb.hpp" />
     <ClCompile Include="source\n165_movStack\n165_410_moveModels.cpp" />
     <ClCompile Include="source\n220_position\n220_645_gameStats.cpp" />
-    <ClCompile Include="source\n080_common__\n080_100_common.cpp" />
-    <ClCompile Include="source\n080_common__\n080_200_utilProgram.cpp" />
-    <ClCompile Include="source\n110_square\n110_150_file.cpp" />
-    <ClCompile Include="source\n110_square\n110_200_rank.cpp" />
-    <ClCompile Include="source\n110_square\n110_400_squareRelation.cpp" />
+    <ClCompile Include="source\n080_100_sysWorld\n080_100_500_common.cpp" />
+    <ClCompile Include="source\n080_200_utilProg\n080_200_500_utilProgram.cpp" />
+    <ClCompile Include="source\n105_120_square__\n105_120_150_file.cpp" />
+    <ClCompile Include="source\n105_120_square__\n105_120_200_rank.cpp" />
+    <ClCompile Include="source\n105_120_square__\n110_400_squareRelation.cpp" />
     <ClCompile Include="source\n111_colorSq_\n111_500_ColorFileRank.cpp" />
     <ClCompile Include="source\n113_piece___\n113_200_handPiece.cpp" />
     <ClCompile Include="source\n113_piece___\n113_500_hand.cpp" />

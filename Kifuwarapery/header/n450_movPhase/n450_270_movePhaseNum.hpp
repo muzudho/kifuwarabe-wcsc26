@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 
-#include "../n080_common__/n080_100_common.hpp"
+#include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
 #include "../n165_movStack/n165_500_moveStack.hpp"
 #include "../n440_movStack/n440_500_nextmoveEvent.hpp"

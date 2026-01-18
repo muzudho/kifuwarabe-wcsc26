@@ -374,7 +374,7 @@ public:
 	/// <param name="ppFlashlight"></param>
 	/// <param name="beta"></param>
 	/// <param name="ci"></param>
-	/// <param name="isPVMove"></param>
+	/// <param name="isPVMoveRef"></param>
 	/// <param name="playedMoveCount"></param>
 	/// <param name="movesSearched"></param>
 	virtual inline void ExplorerPlainStep13c(
@@ -395,13 +395,13 @@ public:
 		Flashlight** ppFlashlight,
 		ScoreIndex& beta,
 		const CheckInfo& ci,
-		bool& isPVMove,
+		bool& isPVMoveRef,
 		int& playedMoveCount,
 		Move movesSearched[64]
 		)const override {
 
 		// 非PVノードだぜ☆（＾ｑ＾）
-		isPVMove = false;
+		isPVMoveRef = false;
 		(*ppFlashlight)->m_currentMove = move;
 	}
 
@@ -493,7 +493,7 @@ public:
 	/// </summary>
 	/// <param name="ourCarriage"></param>
 	/// <param name="move"></param>
-	/// <param name="isPVMove"></param>
+	/// <param name="isPVMove">本筋の指し手かどうかかなあ（＾～＾）？</param>
 	/// <param name="alpha"></param>
 	/// <param name="score"></param>
 	/// <param name="pos"></param>

@@ -22,14 +22,15 @@ public:
 	/// <param name="resultScore"></param>
 	/// <param name="pSearcher"></param>
 	/// <param name="pFlashlightBox"></param>
-	void IsStop(
-		bool& isReturn,
-		ScoreIndex& resultScore,
+	std::pair<bool, ScoreIndex> IsStop(
+		//bool& isReturn,
+		//ScoreIndex& resultScore,
 		const OurCarriage* pSearcher,
 		const Flashlight* pFlashlightBox) const override
 	{
-		isReturn = true;
-		resultScore = UtilScore::MateIn(pFlashlightBox->m_ply);
+		//isReturn = true;
+		//resultScore = UtilScore::MateIn(pFlashlightBox->m_ply);
+		return std::make_pair(true, UtilScore::MateIn(pFlashlightBox->m_ply));
 	}
 };
 

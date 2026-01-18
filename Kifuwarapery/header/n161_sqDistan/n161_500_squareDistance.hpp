@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../n110_square__/n110_100_square.hpp"
+#include "../n105_120_square__/n105_120_100_square.hpp"
 
 
 /// <summary>

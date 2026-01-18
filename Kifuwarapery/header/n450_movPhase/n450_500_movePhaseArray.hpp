@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../n080_common__/n080_100_common.hpp"
+#include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 #include "../n225_movPhase/n225_050_generateMovePhase.hpp"
 #include "../n440_movStack/n440_500_nextmoveEvent.hpp"

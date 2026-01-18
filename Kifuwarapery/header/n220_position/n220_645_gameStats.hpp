@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../n080_common__/n080_100_common.hpp"
-#include "../n105_color___/n105_100_color.hpp"
+#include "../n080_100_sysWorld/n080_100_500_common.hpp"
+#include "../n105_100_color___/n105_100_100_color.hpp"
 
 
 /// <summary>

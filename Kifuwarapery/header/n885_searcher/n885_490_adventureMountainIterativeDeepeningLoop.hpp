@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../n080_common__/n080_100_common.hpp"
+#include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n119_score___/n119_090_scoreIndex.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n220_position/n220_665_utilMoveStack.hpp"
@@ -235,7 +235,7 @@ public:
 
 				// 次のイテレーションを回す時間が無いなら、ストップ
 				if (
-					!ourCarriage.m_timeMgr.IsTimeOk_CanIterativeDeeping(ourCarriage.m_stopwatch.GetElapsed())
+					!ourCarriage.m_timeMgr.CanIterativeDeepingTimeOk(ourCarriage.m_stopwatch.GetElapsed())
 					) {
 					stop = true;
 				}
@@ -257,7 +257,7 @@ public:
 						ourCarriage.m_rootMoves.size() == 1
 						||
 						// または、まだ反復深化探索していい時間が残ってるなら。
-						ourCarriage.m_timeMgr.IsTimeOk_CanIterativeDeeping(ourCarriage.m_stopwatch.GetElapsed())
+						ourCarriage.m_timeMgr.CanIterativeDeepingTimeOk(ourCarriage.m_stopwatch.GetElapsed())
 					)
 				) {
 					const ScoreIndex rBeta = bestScore - 2 * PieceScore::m_capturePawn;

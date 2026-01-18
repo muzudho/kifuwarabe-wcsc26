@@ -1,13 +1,17 @@
 ﻿#pragma once
-
 #include "../n113_piece___/n113_150_piece.hpp"
 #include "../n113_piece___/n113_205_convHandPiece.hpp"
 #include "n119_090_scoreIndex.hpp"
 #include "n119_100_utilScore.hpp"
 
 
+//────────────────────────────────────────────────────────────────────────────────
+// 駒の価値
+//────────────────────────────────────────────────────────────────────────────────
+
+
 /// <summary>
-/// 
+/// 駒の価値
 /// </summary>
 class PieceScore {
 

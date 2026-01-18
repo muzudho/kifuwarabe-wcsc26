@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <utility>  // std::pair用
 #include "../n640_searcher/n640_510_futilityMargins.hpp"
 #include "../n640_searcher/n640_520_futilityMoveCounts.hpp"
 #include "../n885_searcher/n885_340_adventureBattlefieldQsearchPrograms.hpp"
@@ -165,16 +166,19 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void ExplorerPlainStep2_IsStopByRepetetion(
-		bool& isReturnWithScore,
-		ScoreIndex& returnScore,
+	virtual inline std::pair<bool, ScoreIndex> ExplorerPlainStep2_IsStopByRepetetion(
+		//bool& isReturnWithScore,
+		//ScoreIndex& returnScore,
 		Position& pos,
 		OurCarriage& ourCarriage,
 		Flashlight** ppFlashlight) const
 	{
 		// stop と最大探索深さのチェック
-		g_repetitionTypes.m_ARRAY[pos.IsRepetition(16)]->IsStop(
-			isReturnWithScore, returnScore, &ourCarriage, (*ppFlashlight));
+		return g_repetitionTypes.m_ARRAY[pos.IsRepetition(16)]->IsStop(
+			//isReturnWithScore,
+			//returnScore,
+			&ourCarriage,
+			(*ppFlashlight));
 	}
 
 
@@ -1134,7 +1138,7 @@ public:
 	/// <param name="ppFlashlight"></param>
 	/// <param name="beta"></param>
 	/// <param name="ci"></param>
-	/// <param name="isPVMove"></param>
+	/// <param name="isPVMoveRef"></param>
 	/// <param name="playedMoveCount"></param>
 	/// <param name="movesSearched"></param>
 	virtual inline void ExplorerPlainStep13c(
@@ -1155,7 +1159,7 @@ public:
 		Flashlight** ppFlashlight,
 		ScoreIndex& beta,
 		const CheckInfo& ci,
-		bool& isPVMove,
+		bool& isPVMoveRef,
 		int& playedMoveCount,
 		Move movesSearched[64]
 		) const = 0;
@@ -1459,7 +1463,7 @@ public:
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="move"></param>
-	/// <param name="isPVMove"></param>
+	/// <param name="isPVMove">本筋の指し手かどうかかなあ（＾～＾）？</param>
 	/// <param name="alpha"></param>
 	/// <param name="score"></param>
 	/// <param name="pos"></param>
@@ -1472,7 +1476,9 @@ public:
 		Position& pos
 		) const
 	{
+		// ルート・ムーブのリストから、１つ選んでる（＾～＾）？
 		RootMove& rm = *std::find(ourCarriage.m_rootMoves.begin(), ourCarriage.m_rootMoves.end(), move);
+
 		if (isPVMove || alpha < score) {
 			// PV move or new best move
 			rm.m_score_ = score;
@@ -1487,7 +1493,7 @@ public:
 #endif
 			rm.ExtractPvFromTT(pos);
 
-			if (!isPVMove) {
+			if (!isPVMove) {	// 本筋じゃないとき（＾～＾）
 				ourCarriage.IncreaseBestMovePlyChanges();
 			}
 		}
