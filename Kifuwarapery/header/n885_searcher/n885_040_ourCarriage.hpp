@@ -168,7 +168,7 @@ public:
 	/// ベストムーブ・チェンジスって何だぜ☆？（＾ｑ＾）
 	/// </summary>
 	/// <returns></returns>
-	inline Ply GetBestMovePlyChanges()
+	inline Ply		GetBestMovePlyChanges()
 	{
 		return this->m_bestMovePlyChanges_;
 	}
@@ -177,7 +177,7 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	inline void ZeroclearBestMovePlyChanges()
+	inline void		ZeroclearBestMovePlyChanges()
 	{
 		this->m_bestMovePlyChanges_ = 0;
 	}
@@ -186,7 +186,7 @@ public:
 	/// <summary>
 	/// 本筋じゃないときに呼び出されるぜ（＾～＾）
 	/// </summary>
-	inline void IncreaseBestMovePlyChanges()
+	inline void		IncreaseBestMovePlyChanges()
 	{
 		++this->m_bestMovePlyChanges_;
 	}
@@ -297,7 +297,7 @@ public://private:
 	/// <param name="first"></param>
 	/// <param name="second"></param>
 	/// <returns></returns>
-	bool allows(const Position& pos, const Move first, const Move second) {
+	bool	allows(const Position& pos, const Move first, const Move second) {
 		const Square m1to = first.To();
 		const Square m1from = first.From();
 		const Square m2from = second.From();
@@ -326,7 +326,7 @@ public://private:
 	/// <param name="score"></param>
 	/// <param name="ply"></param>
 	/// <returns></returns>
-	ScoreNumber ConvertScoreToTT(const ScoreNumber score, const Ply ply) {
+	ScoreNumber		convertScoreToTT(const ScoreNumber score, const Ply ply) {
 		assert(score != ScoreNone);
 
 		return (
@@ -350,7 +350,7 @@ public://private:
 	/// <param name="s"></param>
 	/// <param name="ply"></param>
 	/// <returns></returns>
-	ScoreNumber ConvertScoreFromTT(const ScoreNumber s, const Ply ply) {
+	ScoreNumber		ConvertScoreFromTT(const ScoreNumber s, const Ply ply) {
 		return (s == ScoreNone ? ScoreNone
 			: ScoreMateInMaxPly <= s ? s - static_cast<ScoreNumber>(ply)
 			: s <= ScoreMatedInMaxPly ? s + static_cast<ScoreNumber>(ply)
@@ -368,7 +368,7 @@ public://private:
 	/// <param name="second"></param>
 	/// <returns></returns>
 	template<Color US, Color THEM>
-	bool refutes(const Position& pos, const Move first, const Move second) {
+	bool		refutes(const Position& pos, const Move first, const Move second) {
 		assert(pos.IsOK());
 
 		const Square m2to = second.To();
@@ -450,7 +450,7 @@ private:
 /// <summary>
 /// メイン関数で１回だけ呼ばれる。
 /// </summary>
-void initialize_10a480b_searchTable();
+void		initialize_10a480b_searchTable();
 
 
 //────────────────────────────────────────────────────────────────────────────────

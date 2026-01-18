@@ -112,7 +112,7 @@ ScoreNumber AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 
 		if (beta <= bestScore) {
 			if (pTtEntry == nullptr) {
-				ourCarriage.m_tt.Store(pos.GetKey(), ourCarriage.ConvertScoreToTT(bestScore, pFlashlight->m_ply), BoundLower,
+				ourCarriage.m_tt.Store(pos.GetKey(), ourCarriage.convertScoreToTT(bestScore, pFlashlight->m_ply), BoundLower,
 					DepthNone, g_MOVE_NONE, pFlashlight->m_staticEval);
 			}
 
@@ -227,7 +227,7 @@ ScoreNumber AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 
 	ourCarriage.m_tt.Store(
 		posKey,
-		ourCarriage.ConvertScoreToTT(bestScore, pFlashlight->m_ply),
+		ourCarriage.convertScoreToTT(bestScore, pFlashlight->m_ply),
 		this->GetBound01( oldAlpha, bestScore),
 		ttDepth,
 		bestMove,

@@ -62,7 +62,7 @@ AdventureNodekindNonPv g_NODEKIND_NON_PV;
 /// <param name="depth"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-ScoreNumber AdventureNodekindNonPv::explorePlain_n10(
+ScoreNumber AdventureNodekindNonPv::explorePlain_10a520b500c500d500e100f(
 	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック

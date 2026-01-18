@@ -9,9 +9,9 @@
 
 
 /// <summary>
-/// ワーカースレッド開始
+/// 猿として働く（ワーカースレッド）
 /// </summary>
-void Chimpanzee::startMonkey_n10() {
+void Chimpanzee::workAsMonkey_10a520b500c500d() {
 	while (!this->m_isEndOfSearch)	// 探索が終わっていない間
 	{
 		{

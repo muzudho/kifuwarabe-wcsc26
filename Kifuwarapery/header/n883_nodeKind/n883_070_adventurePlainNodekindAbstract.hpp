@@ -41,7 +41,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="cutNode"></param>
 	/// <returns></returns>
-	virtual ScoreNumber explorePlain_n10(
+	virtual ScoreNumber explorePlain_10a520b500c500d500e100f(
 		OurCarriage& ourCarriage,
 		Position& pos,
 		Flashlight* pFlashlight,//サーチスタック
@@ -395,7 +395,7 @@ public:
 					)				
 				).IsNone()) {
 				(*ppFlashlight)->m_staticEval = bestScore = UtilScore::MateIn((*ppFlashlight)->m_ply);
-				ourCarriage.m_tt.Store(posKey, ourCarriage.ConvertScoreToTT(bestScore, (*ppFlashlight)->m_ply), BoundExact, depth,
+				ourCarriage.m_tt.Store(posKey, ourCarriage.convertScoreToTT(bestScore, (*ppFlashlight)->m_ply), BoundExact, depth,
 					move, (*ppFlashlight)->m_staticEval);
 				bestMove = move;
 
@@ -619,7 +619,7 @@ public:
 				//────────────────────────────────────────────────────────────────────────────────
 				// 深さが２手（先後１組）未満なら　ふつーの探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				-g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_n10(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, depth - reduction, !cutNode)
+				-g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_10a520b500c500d500e100f(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, depth - reduction, !cutNode)
 			);
 
 			((*ppFlashlight) + 1)->m_skipNullMove = false;
@@ -642,7 +642,7 @@ public:
 				//────────────────────────────────────────────────────────────────────────────────
 				// 探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				const ScoreNumber s = g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_n10(ourCarriage, pos, (*ppFlashlight), alpha, beta, depth - reduction, false);
+				const ScoreNumber s = g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_10a520b500c500d500e100f(ourCarriage, pos, (*ppFlashlight), alpha, beta, depth - reduction, false);
 				(*ppFlashlight)->m_skipNullMove = false;
 
 				if (beta <= s) {
@@ -738,7 +738,7 @@ public:
 					//────────────────────────────────────────────────────────────────────────────────
 					// 探索☆？（＾ｑ＾）
 					//────────────────────────────────────────────────────────────────────────────────
-					score =	-g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_n10(ourCarriage, pos, (*ppFlashlight) + 1, -rbeta, -rbeta + 1, rdepth, !cutNode);
+					score =	-g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_10a520b500c500d500e100f(ourCarriage, pos, (*ppFlashlight) + 1, -rbeta, -rbeta + 1, rdepth, !cutNode);
 					pos.UndoMove(move);
 					if (rbeta <= score) {
 						isReturnWithScore = true;
@@ -984,7 +984,7 @@ public:
 			//────────────────────────────────────────────────────────────────────────────────
 			// 探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
-			score =	g_NODEKIND_PROGRAMS[No2_NonPV]->explorePlain_n10(ourCarriage, pos, (*ppFlashlight), rBeta - 1, rBeta, depth / 2, cutNode);
+			score =	g_NODEKIND_PROGRAMS[No2_NonPV]->explorePlain_10a520b500c500d500e100f(ourCarriage, pos, (*ppFlashlight), rBeta - 1, rBeta, depth / 2, cutNode);
 
 
 			(*ppFlashlight)->m_skipNullMove = false;
@@ -1301,7 +1301,7 @@ public:
 			// 探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			// PVS
-			score = -g_NODEKIND_PROGRAMS[No2_NonPV]->explorePlain_n10(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, d, true);
+			score = -g_NODEKIND_PROGRAMS[No2_NonPV]->explorePlain_10a520b500c500d500e100f(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, d, true);
 
 			doFullDepthSearch = (alpha < score && (*ppFlashlight)->m_reduction != Depth0);
 			(*ppFlashlight)->m_reduction = Depth0;
@@ -1393,7 +1393,7 @@ public:
 				//────────────────────────────────────────────────────────────────────────────────
 				// 探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				: -g_NODEKIND_PROGRAMS[No2_NonPV]->explorePlain_n10(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, newDepth, !cutNode));
+				: -g_NODEKIND_PROGRAMS[No2_NonPV]->explorePlain_10a520b500c500d500e100f(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, newDepth, !cutNode));
 		}
 	}
 
@@ -1435,7 +1435,7 @@ public:
 				//────────────────────────────────────────────────────────────────────────────────
 				// 再帰的探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				: -g_NODEKIND_PROGRAMS[No1_PV]->explorePlain_n10(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, newDepth, false));
+				: -g_NODEKIND_PROGRAMS[No1_PV]->explorePlain_10a520b500c500d500e100f(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, newDepth, false));
 		}
 	}
 
@@ -1648,7 +1648,7 @@ public:
 
 		if (beta <= bestScore) {
 			// failed high
-			ourCarriage.m_tt.Store(posKey, ourCarriage.ConvertScoreToTT(bestScore, (*ppFlashlight)->m_ply), BoundLower, depth,
+			ourCarriage.m_tt.Store(posKey, ourCarriage.convertScoreToTT(bestScore, (*ppFlashlight)->m_ply), BoundLower, depth,
 				bestMove, (*ppFlashlight)->m_staticEval);
 
 			if (!bestMove.IsCaptureOrPawnPromotion() && !inCheck) {
@@ -1672,7 +1672,7 @@ public:
 			// failed low or PV search
 			ourCarriage.m_tt.Store(
 				posKey,
-				ourCarriage.ConvertScoreToTT(bestScore, (*ppFlashlight)->m_ply),
+				ourCarriage.convertScoreToTT(bestScore, (*ppFlashlight)->m_ply),
 				this->getBound_n800n500(!bestMove.IsNone()),
 				depth,
 				bestMove,

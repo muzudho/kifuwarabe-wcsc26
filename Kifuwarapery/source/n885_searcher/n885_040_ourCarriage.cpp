@@ -51,7 +51,7 @@ void OurCarriage::initialize_10a520b_ourCarriage() {
 	EngineOptionSetup engineOptionSetup;
 	engineOptionSetup.initializeMonkiePub_app10( &m_engineOptions, this);
 
-	this->m_monkiesPub.initializeMonkiePub_app10(this);
+	this->m_monkiesPub.initialize_10a520b_monkiePub(this);
 	this->m_tt.SetSize(this->m_engineOptions["USI_Hash"]);
 }
 
@@ -389,29 +389,35 @@ void OurCarriage::ChimpanzeeStopped() {
 
 
 /// <summary>
-/// ワーカースレッド開始
+/// 猿として働く（ワーカースレッド）
 /// </summary>
-void Monkey::startMonkey_n10() {
-	SplitedNode* thisSp = m_splitedNodesSize ? m_activeSplitedNode : nullptr;
-	assert(!thisSp || (thisSp->m_masterThread == this && m_isBeingSearched));
+void Monkey::workAsMonkey_10a520b500c500d() {
 
-	while (true) {
+	SplitedNode* thisSplitedNode = m_splitedNodesSize ? m_activeSplitedNode : nullptr;
+	assert(!thisSplitedNode || (thisSplitedNode->m_masterThread == this && m_isBeingSearched));
+
+	while (true)
+	{
 		while ((!m_isBeingSearched && this->m_pOurCarriage->m_monkiesPub.m_idleMonkeyIsSleep_) || m_isEndOfSearch)
 		{
-			if (m_isEndOfSearch) {
-				assert(thisSp == nullptr);
+			// 探索が終わったら内側のループを抜ける
+			if (m_isEndOfSearch)
+			{
+				assert(thisSplitedNode == nullptr);
 				return;
 			}
 
 			std::unique_lock<Mutex> lock(m_sleepLock);
-			if (thisSp != nullptr && !thisSp->m_slavesMask) { break; }
+			if (thisSplitedNode != nullptr && !thisSplitedNode->m_slavesMask) { break; }
 
 			if (!m_isBeingSearched && !m_isEndOfSearch) {
 				m_sleepCond.wait(lock);
 			}
 		}
 
-		if (m_isBeingSearched) {
+		// 探索中
+		if (m_isBeingSearched)
+		{
 			assert(!m_isEndOfSearch);
 
 			this->m_pOurCarriage->m_monkiesPub.m_mutex_.lock();
@@ -419,11 +425,11 @@ void Monkey::startMonkey_n10() {
 			SplitedNode* pSplitedNode = m_activeSplitedNode;
 			this->m_pOurCarriage->m_monkiesPub.m_mutex_.unlock();
 
-			Flashlight ss[g_maxPlyPlus2];
+			Flashlight flashlight[g_maxPlyPlus2];
 			Position pos(*pSplitedNode->m_position, this);
 
-			memcpy(ss, pSplitedNode->m_pFlashlightBox - 1, 4 * sizeof(Flashlight));
-			(ss+1)->m_splitedNode = pSplitedNode;
+			memcpy(flashlight, pSplitedNode->m_pFlashlightBox - 1, 4 * sizeof(Flashlight));
+			(flashlight+1)->m_splitedNode = pSplitedNode;
 
 			pSplitedNode->m_mutex.lock();
 
@@ -433,8 +439,8 @@ void Monkey::startMonkey_n10() {
 
 
 			// スプリット・ポイント用の検索に変えるぜ☆（＾ｑ＾）
-			pSplitedNode->m_pSword01->GoSearch_AsSplitedNode(
-				*pSplitedNode, *this->m_pOurCarriage, pos, ss);
+			pSplitedNode->m_pSword01->workAsMonkey_10a520b500c500d500e_searchAsSplitedNode(
+				*pSplitedNode, *this->m_pOurCarriage, pos, flashlight);
 
 
 			assert(m_isBeingSearched);
@@ -454,10 +460,11 @@ void Monkey::startMonkey_n10() {
 			pSplitedNode->m_mutex.unlock();
 		}
 
-		if (thisSp != nullptr && !thisSp->m_slavesMask) {
-			thisSp->m_mutex.lock();
-			const bool finished = !thisSp->m_slavesMask;
-			thisSp->m_mutex.unlock();
+		if (thisSplitedNode != nullptr && !thisSplitedNode->m_slavesMask)
+		{
+			thisSplitedNode->m_mutex.lock();
+			const bool finished = !thisSplitedNode->m_slavesMask;
+			thisSplitedNode->m_mutex.unlock();
 			if (finished) { return; }
 		}
 	}

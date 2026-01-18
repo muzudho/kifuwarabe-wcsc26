@@ -37,7 +37,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="cutNode"></param>
 	/// <returns></returns>
-	virtual ScoreNumber explorePlain_n10(
+	virtual ScoreNumber explorePlain_10a520b500c500d500e100f(
 		OurCarriage& ourCarriage,
 		Position& pos,
 		Flashlight* pFlashlight,//サーチスタック
@@ -382,7 +382,7 @@ public:
 
 
 			// PVノードの場合☆
-			g_NODEKIND_PROGRAMS[NodeKind::No1_PV]->explorePlain_n10(
+			g_NODEKIND_PROGRAMS[NodeKind::No1_PV]->explorePlain_10a520b500c500d500e100f(
 				ourCarriage, pos, (*ppFlashlight), alpha, beta, d, true);
 
 			(*ppFlashlight)->m_skipNullMove = false;

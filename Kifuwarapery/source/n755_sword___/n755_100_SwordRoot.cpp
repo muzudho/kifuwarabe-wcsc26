@@ -12,7 +12,7 @@ const SwordRoot g_SWORD_ROOT;
 /// <param name="ourCarriage"></param>
 /// <param name="pos"></param>
 /// <param name="pFlashlight"></param>
-void SwordRoot::GoSearch_AsSplitedNode(
+void SwordRoot::workAsMonkey_10a520b500c500d500e_searchAsSplitedNode(
 	SplitedNode& ownerSplitedNode,
 	OurCarriage& ourCarriage,
 	Position& pos,
@@ -23,7 +23,7 @@ void SwordRoot::GoSearch_AsSplitedNode(
 	// 探索☆？（＾ｑ＾）
 	//────────────────────────────────────────────────────────────────────────────────
 	// スプリットポイントは検索を開始するぜ☆（＾ｑ＾）
-	g_NODEKIND_SPLITEDNODE_ROOT.explorePlain_n10(
+	g_NODEKIND_SPLITEDNODE_ROOT.explorePlain_10a520b500c500d500e100f(
 		ourCarriage,
 		pos,
 		pFlashlight + 1,

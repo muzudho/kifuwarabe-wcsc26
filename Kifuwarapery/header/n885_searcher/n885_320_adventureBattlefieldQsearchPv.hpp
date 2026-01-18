@@ -160,7 +160,7 @@ public:
 			// fail high
 			ourCarriage.m_tt.Store(
 				posKey,
-				ourCarriage.ConvertScoreToTT(score, (*ppFlashlight)->m_ply),
+				ourCarriage.convertScoreToTT(score, (*ppFlashlight)->m_ply),
 				Bound::BoundLower,
 				ttDepth,
 				move,

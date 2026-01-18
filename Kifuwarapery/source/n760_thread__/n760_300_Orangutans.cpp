@@ -10,9 +10,9 @@
 
 
 /// <summary>
-/// ワーカースレッド開始☆（＾～＾）
+/// 猿として働く（ワーカースレッド）☆（＾～＾）
 /// </summary>
-void Orangutans::startMonkey_n10() {
+void Orangutans::workAsMonkey_10a520b500c500d() {
 	while (true)	// 探索が終わるまで　ずっといるぜ☆
 	{
 		{

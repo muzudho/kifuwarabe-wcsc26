@@ -57,7 +57,7 @@ public:
 
 
 	/// <summary>
-	/// ワーカースレッド開始
+	/// 猿として働く（ワーカースレッド）
 	/// </summary>
-	virtual void startMonkey_n10() override;
+	virtual void workAsMonkey_10a520b500c500d() override;
 };

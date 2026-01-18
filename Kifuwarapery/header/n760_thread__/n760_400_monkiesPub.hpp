@@ -116,7 +116,7 @@ public:
 	/// 初期化？
 	/// </summary>
 	/// <param name="s"></param>
-	void initializeMonkiePub_app10(OurCarriage* s);
+	void initialize_10a520b_monkiePub(OurCarriage* s);
 
 
 	/// <summary>
