@@ -356,7 +356,7 @@ iid_start:
 
 
 		// 無駄枝狩り☆（＾▽＾）非PVだけ行う☆！
-		this->ExplorerPlainStep13a_FutilityPruning(
+		this->explorePlain_10i400j170k_futilityPruning(
 			isContinue,
 			ourCarriage,
 			captureOrPawnPromotion,

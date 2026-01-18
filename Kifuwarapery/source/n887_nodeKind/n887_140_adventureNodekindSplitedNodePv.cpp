@@ -75,8 +75,8 @@ ScoreIndex AdventureNodekindSplitedNodePv::explorePlain_10i(
 	ScoreIndex alpha,
 	ScoreIndex beta,
 	const Depth depth,
-	const bool cutNode
-	) const {
+	const bool cutNode) const
+{
 
 
 	// 事前処理
@@ -180,7 +180,6 @@ ScoreIndex AdventureNodekindSplitedNodePv::explorePlain_10i(
 	pos.setNodesSearched(pos.getNodesSearched() + 1);
 
 
-	// step4
 	this->explorePlain_10i200j200k_getTtScore(
 		excludedMove,
 		&pFlashlight,
@@ -194,6 +193,8 @@ ScoreIndex AdventureNodekindSplitedNodePv::explorePlain_10i(
 		ourCarriage,
 		pTtEntry,
 		pos);
+
+
 	this->explorePlain_10i200j240k_killerMove(
 		isReturnWithScore,
 		returnScore,
@@ -243,7 +244,6 @@ ScoreIndex AdventureNodekindSplitedNodePv::explorePlain_10i(
 
 	// 内側の反復深化探索☆？（＾ｑ＾）
 //iid_start:
-	// step10
 	this->explorerPlain_10i300j100k_internalIterativeDeepening(
 		depth,
 		ttMove,
@@ -254,8 +254,7 @@ ScoreIndex AdventureNodekindSplitedNodePv::explorePlain_10i(
 		pos,
 		alpha,
 		&pTtEntry,//セットされるぜ☆
-		posKey
-		);
+		posKey);
 
 
 split_point_start:
