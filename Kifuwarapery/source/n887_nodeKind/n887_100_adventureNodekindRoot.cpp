@@ -109,7 +109,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_10i(
 
 	// step1
 	// initialize node
-	Monkie* pThisThread = pos.GetThisThread();
+	Monkie* pHandleMonkey = pos.getHandleMonkey();	// 局面に対応する猿
 	moveCount = playedMoveCount = 0;
 	inCheck = pos.inCheck();
 
@@ -124,7 +124,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_10i(
 
 
 	this->explorePlain_10i200j140k_mapPly(
-		&pThisThread,
+		&pHandleMonkey,
 		pFlashlight);
 
 
@@ -237,14 +237,14 @@ ScoreIndex AdventureNodekindRoot::explorePlain_10i(
 		if (isContinue) { continue; }
 
 
-		this->ExplorerPlainStep11d_LoopHeader(
+		this->explorePlain_10i400j135k_isRootMoveEnd(
 			isContinue,
 			ourCarriage,
 			move);
 		if (isContinue) { continue; }
 
 
-		this->ExplorerPlainStep11e_LoopHeader(
+		this->explorerPlain_10i400j137k_displayInfo(
 			ourCarriage,
 			moveCount);
 
@@ -365,7 +365,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_10i(
 		assert(-ScoreInfinite < score && score < ScoreInfinite);
 
 
-		if (ourCarriage.m_signals.m_stop || pThisThread->IsUselessNode()) { return score; }
+		if (ourCarriage.m_signals.m_stop || pHandleMonkey->IsUselessNode()) { return score; }
 
 
 		this->explorerPlain_10i700j115k_bestMovePlyChanges(
@@ -397,7 +397,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_10i(
 			isBreak,
 			ourCarriage,
 			depth,
-			&pThisThread,
+			&pHandleMonkey,
 			bestScore,
 			beta,
 			pos,

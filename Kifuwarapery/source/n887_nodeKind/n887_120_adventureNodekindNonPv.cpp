@@ -110,7 +110,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_10i(
 
 	// step1
 	// initialize node
-	Monkie* pThisThread = pos.GetThisThread();
+	Monkie* pHandleMonkey = pos.getHandleMonkey();	// 局面に対応する猿
 	moveCount = playedMoveCount = 0;
 	inCheck = pos.inCheck();
 
@@ -463,7 +463,7 @@ iid_start:
 		assert(-ScoreInfinite < score && score < ScoreInfinite);
 
 
-		if (ourCarriage.m_signals.m_stop || pThisThread->IsUselessNode()) { return score; }
+		if (ourCarriage.m_signals.m_stop || pHandleMonkey->IsUselessNode()) { return score; }
 
 
 		this->explorerPlain_10i700j115k_bestMovePlyChanges(
@@ -495,7 +495,7 @@ iid_start:
 			isBreak,
 			ourCarriage,
 			depth,
-			&pThisThread,
+			&pHandleMonkey,
 			bestScore,
 			beta,
 			pos,

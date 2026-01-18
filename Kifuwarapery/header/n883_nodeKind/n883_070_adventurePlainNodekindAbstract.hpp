@@ -814,13 +814,14 @@ public:
 	/// <param name="isContinue"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="move"></param>
-	virtual inline void ExplorerPlainStep11d_LoopHeader(
+	virtual inline void explorePlain_10i400j135k_isRootMoveEnd(
 		bool& isContinue,
 		const OurCarriage& ourCarriage,
 		const Move& move
 		)const {
 		// ルートノードにのみある手続きだぜ☆！（＾ｑ＾）
-		if (std::find(ourCarriage.m_rootMoves.begin() + ourCarriage.m_pvIdx,
+		if (std::find(
+				ourCarriage.m_rootMoves.begin() + ourCarriage.m_pvIdx,
 				ourCarriage.m_rootMoves.end(),
 				move) == ourCarriage.m_rootMoves.end())
 		{
@@ -835,7 +836,7 @@ public:
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="moveCount"></param>
-	virtual inline void ExplorerPlainStep11e_LoopHeader(
+	virtual inline void explorerPlain_10i400j137k_displayInfo(
 		OurCarriage& ourCarriage,
 		int& moveCount) const
 	{

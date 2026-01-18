@@ -515,7 +515,7 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	Monkie* GetThisThread() const;
+	Monkie* getHandleMonkey() const;
 
 
 	/// <summary>

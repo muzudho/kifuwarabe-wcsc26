@@ -111,7 +111,7 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 
 	// step1
 	// initialize node
-	Monkie* pThisThread = pos.GetThisThread();
+	Monkie* pHandleMonkey = pos.getHandleMonkey();	// 局面に対応する猿
 	moveCount = playedMoveCount = 0;
 	inCheck = pos.inCheck();
 
@@ -485,7 +485,7 @@ split_point_start:
 			alpha
 			);
 
-		if (ourCarriage.m_signals.m_stop || pThisThread->IsUselessNode()) { return score; }
+		if (ourCarriage.m_signals.m_stop || pHandleMonkey->IsUselessNode()) { return score; }
 
 		bool isBreak = false;
 		this->explorePlain_10i700j120k_getBestUpdateAlpha(

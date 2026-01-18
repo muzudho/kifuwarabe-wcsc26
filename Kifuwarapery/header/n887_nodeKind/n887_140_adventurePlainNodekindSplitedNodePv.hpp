@@ -394,7 +394,7 @@ public:
 	/// <param name="isContinue"></param>
 	/// <param name="ourCarriage"></param>
 	/// <param name="move"></param>
-	virtual inline void ExplorerPlainStep11d_LoopHeader(
+	virtual inline void explorePlain_10i400j135k_isRootMoveEnd(
 		bool& isContinue,
 		const OurCarriage& ourCarriage,
 		const Move& move
@@ -409,7 +409,7 @@ public:
 	/// </summary>
 	/// <param name="ourCarriage"></param>
 	/// <param name="moveCount"></param>
-	virtual inline void ExplorerPlainStep11e_LoopHeader(
+	virtual inline void explorerPlain_10i400j137k_displayInfo(
 		OurCarriage& ourCarriage,
 		int& moveCount
 		) const override {

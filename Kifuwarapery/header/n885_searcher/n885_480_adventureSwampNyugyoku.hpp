@@ -26,7 +26,7 @@ public:
 
 		if (!ourCarriage.m_signals.m_stop && (ourCarriage.m_limits.m_canPonder || ourCarriage.m_limits.m_isInfinite)) {
 			ourCarriage.m_signals.m_stopOnPonderHit = true;
-			pos.GetThisThread()->WaitFor(ourCarriage.m_signals.m_stop);
+			pos.getHandleMonkey()->WaitFor(ourCarriage.m_signals.m_stop);
 		}
 
 		SYNCCOUT << "bestmove win" << SYNCENDL;

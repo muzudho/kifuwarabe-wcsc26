@@ -111,7 +111,7 @@ ScoreIndex AdventureNodekindPv::explorePlain_10i(
 
 	// step1
 	// initialize node
-	Monkie* pThisThread = pos.GetThisThread();
+	Monkie* pHandleMonkey = pos.getHandleMonkey();	// 局面に対応する猿
 	moveCount = playedMoveCount = 0;
 	inCheck = pos.inCheck();
 
@@ -127,7 +127,7 @@ ScoreIndex AdventureNodekindPv::explorePlain_10i(
 
 
 	this->explorePlain_10i200j140k_mapPly(
-		&pThisThread,
+		&pHandleMonkey,
 		pFlashlight);
 
 
@@ -404,7 +404,7 @@ ScoreIndex AdventureNodekindPv::explorePlain_10i(
 		assert(-ScoreInfinite < score && score < ScoreInfinite);
 
 
-		if (ourCarriage.m_signals.m_stop || pThisThread->IsUselessNode()) { return score; }
+		if (ourCarriage.m_signals.m_stop || pHandleMonkey->IsUselessNode()) { return score; }
 
 
 		bool isBreak = false;
@@ -428,7 +428,7 @@ ScoreIndex AdventureNodekindPv::explorePlain_10i(
 			isBreak,
 			ourCarriage,
 			depth,
-			&pThisThread,
+			&pHandleMonkey,
 			bestScore,
 			beta,
 			pos,

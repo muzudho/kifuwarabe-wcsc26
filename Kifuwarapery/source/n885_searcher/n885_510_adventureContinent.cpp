@@ -180,7 +180,7 @@ finalize:
 
 	if (!captainsRucksack.m_signals.m_stop && (captainsRucksack.m_limits.m_canPonder || captainsRucksack.m_limits.m_isInfinite)) {
 		captainsRucksack.m_signals.m_stopOnPonderHit = true;
-		pos.GetThisThread()->WaitFor(captainsRucksack.m_signals.m_stop);
+		pos.getHandleMonkey()->WaitFor(captainsRucksack.m_signals.m_stop);
 	}
 
 	if (captainsRucksack.m_rootMoves[0].m_pv_[0].IsNone()) {

@@ -185,7 +185,7 @@ Key Position::GetComputeKey() const
 /// 
 /// </summary>
 /// <returns></returns>
-Monkie* Position::GetThisThread() const
+Monkie* Position::getHandleMonkey() const
 {
 	return this->m_thisThread_;
 }
