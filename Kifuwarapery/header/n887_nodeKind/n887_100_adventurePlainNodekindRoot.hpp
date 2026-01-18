@@ -53,7 +53,7 @@ public:
 	/// </summary>
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
-	virtual inline void explorePlain_n100n800_assert(
+	virtual inline void explorePlain_10a520b500c500d500e500f500g100h800i_assert(
 		ScoreNumber alpha,
 		ScoreNumber beta
 		) const override {
@@ -75,7 +75,7 @@ public:
 	/// <param name="ttMove"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="ttScore"></param>
-	virtual inline void explorePlain_n100n900_splitPointStart(
+	virtual inline void explorePlain_10a520b500c500d500e500f500g100h900i_splitPointStart(
 		bool& isGotoSplitPointStart,
 		Position& pos,
 		SplitedNode** ppSplitedNode,
@@ -100,7 +100,7 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline std::pair<bool, ScoreNumber> explorePlain_n200n250_isStopByRepetetion(
+	virtual inline std::pair<bool, ScoreNumber> explorePlain_10a520b500c500d500e500f500g200h250i_isStopByRepetetion(
 		//bool& isReturnWithScore,
 		//ScoreIndex& returnScore,
 		Position& pos,
@@ -122,7 +122,7 @@ public:
 	/// <param name="ppFlashlight"></param>
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
-	virtual inline void explorePlain_n200n300_returnWithScore(
+	virtual inline void explorePlain_10a520b500c500d500e500f500g200h300i_returnWithScore(
 		bool& isReturnWithScore,
 		ScoreNumber& returnScore,
 		Flashlight** ppFlashlight,
@@ -160,7 +160,7 @@ public:
 	/// <param name="beta"></param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="ttMove"></param>
-	virtual inline std::tuple<bool, ScoreNumber> explorePlain_n200n450_returnWithScore(
+	virtual inline std::tuple<bool, ScoreNumber> explorePlain_10a520b500c500d500e500f500g200h450i_returnWithScore(
 		Flashlight** ppFlashlight,
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
@@ -205,7 +205,7 @@ public:
 	/// <param name="posKey"></param>
 	/// <param name="depth"></param>
 	/// <param name="bestMove"></param>
-	virtual inline void explorePlain_n200n500_returnWithValue(
+	virtual inline void explorePlain_10a520b500c500d500e500f500g200h500i_returnWithValue(
 		bool& isReturnWithScore,
 		ScoreNumber& returnScore,
 		OurCarriage& ourCarriage,
@@ -348,7 +348,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="ppTtEntry"></param>
 	/// <param name="posKey"></param>
-	virtual inline void explorePlain_n200n800_internalIterativeDeepening(
+	virtual inline void explorePlain_10a520b500c500d500e500f500g200h800i_internalIterativeDeepening(
 		const Depth depth,
 		Move& ttMove,
 		bool& inCheck,
@@ -405,7 +405,7 @@ public:
 	/// </summary>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	virtual inline ScoreNumber getBeta_n140(
+	virtual inline ScoreNumber explorerPlain_10a520b500c500d500e500f500g200h850i_getBeta(
 		ScoreNumber beta
 		) const override {
 		// PVノードの場合☆（＾ｑ＾）
@@ -423,7 +423,7 @@ public:
 	/// <param name="singularExtensionNode"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="pTtEntry"></param>
-	virtual inline void explorePlain_n200n900_beforeLoop_splitPointStart(
+	virtual inline void explorePlain_10a520b500c500d500e500f500g200h900i_beforeLoop_splitPointStart(
 		Move& ttMove,
 		const Depth depth,
 		ScoreNumber& score,
@@ -461,7 +461,7 @@ public:
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void explorePlain_n300n500_loopHeader(
+	virtual inline void explorePlain_10a520b500c500d500e500f500g300h500i_loopHeader(
 		bool& isContinue,
 		Position& pos,
 		Move& move,
@@ -581,7 +581,7 @@ public:
 	/// 本筋かどうか判定するぜ（＾～＾）
 	/// </summary>
 	/// <param name="moveCount"></param>
-	virtual inline bool explorePlain_n400n700_isPvMove(
+	virtual inline bool explorePlain_10a520b500c500d500e500f500g400h700i_isPvMove(
 		int moveCount) const override
 	{
 		return (moveCount == 1);	// PVノードだぜ☆！（＾ｑ＾）
@@ -593,7 +593,7 @@ public:
 	/// </summary>
 	/// <param name="move"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void explorePlain_n400n800_setMove(
+	virtual inline void explorePlain_10a520b500c500d500e500f500g400h800i_setMove(
 		Move move,
 		Flashlight** ppFlashlight) const override
 	{
@@ -640,7 +640,7 @@ public:
 	/// <param name="doFullDepthSearch"></param>
 	/// <param name="alpha"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void explorePlain_n600n700_setAlpha(
+	virtual inline void explorePlain_10a520b500c500d500e500f500g600h700i_setAlpha(
 		bool& doFullDepthSearch,
 		ScoreNumber& alpha,
 		SplitedNode** ppSplitedNode
@@ -671,7 +671,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestScore"></param>
 	/// <param name="alpha"></param>
-	virtual inline void explorePlain_n700n500_setAlpha(
+	virtual inline void explorePlain_10a520b500c500d500e500f500g700h500i_setAlpha(
 		SplitedNode** ppSplitedNode,
 		ScoreNumber& bestScore,
 		ScoreNumber& alpha
@@ -694,7 +694,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestMove"></param>
 	/// <param name="beta"></param>
-	virtual inline void explorePlain_n700n700_updateAlpha(
+	virtual inline void explorePlain_10a520b500c500d500e500f500g700h700i_updateAlpha(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		Move& move,
@@ -797,7 +797,7 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	virtual inline bool getReturn_n800n400() const override {
+	virtual inline bool isReturn_10a520b500c500d500e500f500g800h400i() const override {
 		// 非スプリット・ポイントは　ステップ２０を実行する前に途中抜けはしないぜ☆（＾ｑ＾）
 		return false;
 	}

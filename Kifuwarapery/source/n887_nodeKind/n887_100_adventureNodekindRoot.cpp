@@ -122,14 +122,14 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 
 
 	// 指し手をクリアーする（＾～＾）？
-	this->explorePlain_n200n150_setMoveNone(
+	this->explorePlain_10a520b500c500d500e500f500g200h150i_setMoveNone(
 		bestScore,
 		&pFlashlight,
 		threatMove,
 		bestMove);
 
 	// ［本筋ノードでの最大手数］という情報を更新（＾～＾）
-	this->explorePlain_n200n200_updateMaxPly(
+	this->explorePlain_10a520b500c500d500e500f500g200h200i_updateMaxPly(
 		&pHandleMonkey,
 		pFlashlight);
 
@@ -143,7 +143,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 
 	// ttScore と ttMove でデリシャス・バナナ（＾～＾）！
 	{
-		DeliciousBanana ttDeliciousBanana = this->explorePlain_n200n405_getTtDeliciousBanana(
+		DeliciousBanana ttDeliciousBanana = this->explorePlain_10a520b500c500d500e500f500g200h405i_getTtDeliciousBanana(
 			excludedMove,
 			&pFlashlight,
 			posKey,
@@ -161,7 +161,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 
 
 	// なんか評価した（＾～＾）？
-	this->explorePlain_n200n550_eval(
+	this->explorePlain_10a520b500c500d500e500f500g200h550i_eval(
 		isGotoIidStart,
 		ourCarriage,
 		eval,
@@ -184,7 +184,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 
 
 	// なんか再帰的に探索してる（＾～＾）
-	this->explorePlain_n200n800_internalIterativeDeepening(
+	this->explorePlain_10a520b500c500d500e500f500g200h800i_internalIterativeDeepening(
 		depth,
 		bananaTtMove,
 		inCheck,
@@ -204,7 +204,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 		depth,
 		ourCarriage.m_history,
 		pFlashlight,
-		this->getBeta_n140(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
+		this->explorerPlain_10a520b500c500d500e500f500g200h850i_getBeta(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
 		);
 
 
@@ -213,7 +213,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 
 
 	// なんかセットしてる（＾～＾）
-	this->explorePlain_n200n900_beforeLoop_splitPointStart(
+	this->explorePlain_10a520b500c500d500e500f500g200h900i_beforeLoop_splitPointStart(
 		bananaTtMove,
 		depth,
 		score,
@@ -242,7 +242,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 		bool isContinue = false;
 
 
-		this->explorePlain_n300n500_loopHeader(
+		this->explorePlain_10a520b500c500d500e500f500g300h500i_loopHeader(
 			isContinue,
 			pos,
 			move,
@@ -268,7 +268,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 			);
 
 
-		this->explorePlain_n300n900_loopHeader(
+		this->explorePlain_10a520b500c500d500e500f500g300h900i_loopHeader(
 			extension,
 			captureOrPawnPromotion,
 			move,
@@ -283,7 +283,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 
 		#ifndef SHRINK_R_NODEKIND_EXPLORE_PLAIN_400N500_RECURSIVE_SEARCH
 			// なんか分からんが再帰探索（＾～＾）
-			this->explorePlain_n400n500_recursiveSearch(
+			this->explorePlain_10a520b500c500d500e500f500g400h500i_recursiveSearch(
 				ourCarriage,
 				givesCheck,
 				pos,
@@ -303,11 +303,11 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 
 
 		// 本筋かどうか判定するぜ（＾～＾）
-		isPVMove = this->explorePlain_n400n700_isPvMove(moveCount);
+		isPVMove = this->explorePlain_10a520b500c500d500e500f500g400h700i_isPvMove(moveCount);
 
 
 		// 現在の指し手を覚えた（＾～＾）
-		this->explorePlain_n400n800_setMove(
+		this->explorePlain_10a520b500c500d500e500f500g400h800i_setMove(
 			move,
 			&pFlashlight);
 		if (isContinue) { continue; }
@@ -325,7 +325,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 
 
 		// １手指すぜ（＾～＾）
-		this->explorerPlain_n500n100_doMove(
+		this->explorerPlain_10a520b500c500d500e500f500g500h100i_doMove(
 			pos,
 			move,
 			stateInfo,
@@ -342,7 +342,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 
 		#ifndef SHRINK_R_NODEKIND_EXPLORE_PLAIN_500N500_RECURSIVE_SEARCH
 			// なんか分からんが再帰探索（＾～＾）
-			this->explorePlain_n500n500_recursiveSearch(
+			this->explorePlain_10a520b500c500d500e500f500g500h500i_recursiveSearch(
 				ourCarriage,
 				depth,
 				isPVMove,
@@ -366,7 +366,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 
 		#ifndef SHRINK_R_NODEKIND_EXPLORE_PLAIN_500N600_NON_PV_RECURSIVE_SEARCH
 			// NonPV扱いで再帰するみたいなんだがなんだこれだぜ☆（＾～＾）？
-			this->explorePlain_n500n600_nonPVRecursiveSearch(
+			this->explorePlain_10a520b500c500d500e500f500g500h600i_nonPVRecursiveSearch(
 				ourCarriage,
 				doFullDepthSearch,
 				score,
@@ -381,7 +381,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 
 		#ifndef SHRINK_R_NODEKIND_EXPLORE_PLAIN_600N900_LARGE_BETA_RECURSIVE_SEARCH
 			// 大きなβ値のときの深掘りか（＾～＾）？
-			this->explorePlain_n600n900_betaLargeRecursiveSearch(
+			this->explorePlain_10a520b500c500d500e500f500g600h900i_betaLargeRecursiveSearch(
 				ourCarriage,
 				isPVMove,
 				alpha,
@@ -397,7 +397,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 		// アンドゥ処理
 
 
-		this->explorePlain_n700n100_undoMove(
+		this->explorePlain_10a520b500c500d500e500f500g700h100i_undoMove(
 			pos,
 			move);
 
@@ -427,7 +427,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 		// アップデートα処理
 
 
-		this->explorePlain_n700n700_updateAlpha(
+		this->explorePlain_10a520b500c500d500e500f500g700h700i_updateAlpha(
 			isBreak,
 			ourCarriage,
 			move,
@@ -472,7 +472,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 	// ループ後処理
 
 
-	if (this->getReturn_n800n400()) { return bestScore; }
+	if (this->isReturn_10a520b500c500d500e500f500g800h400i()) { return bestScore; }
 
 
 	this->explorePlain_n800n500(

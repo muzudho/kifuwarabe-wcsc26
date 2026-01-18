@@ -78,7 +78,7 @@ ScoreNumber AdventureNodekindSplitedNodePv::explorePlain_10a520b500c500d500e500f
 
 
 	assert(-ScoreInfinite <= alpha && alpha < beta && beta <= ScoreInfinite);
-	this->explorePlain_n100n800_assert(
+	this->explorePlain_10a520b500c500d500e500f500g100h800i_assert(
 		alpha,
 		beta);
 	assert(Depth0 < depth);
@@ -120,7 +120,7 @@ ScoreNumber AdventureNodekindSplitedNodePv::explorePlain_10a520b500c500d500e500f
 
 
 	bool isGotoSplitPointStart = false;
-	this->explorePlain_n100n900_splitPointStart(
+	this->explorePlain_10a520b500c500d500e500f500g100h900i_splitPointStart(
 		isGotoSplitPointStart,
 		pos,
 		&pSplitedNode,
@@ -137,21 +137,21 @@ ScoreNumber AdventureNodekindSplitedNodePv::explorePlain_10a520b500c500d500e500f
 	// ヌル指し手セット
 
 
-	this->explorePlain_n200n150_setMoveNone(
+	this->explorePlain_10a520b500c500d500e500f500g200h150i_setMoveNone(
 		bestScore,
 		&pFlashlight,
 		threatMove,
 		bestMove);
 
 
-	this->explorePlain_n200n200_updateMaxPly(
+	this->explorePlain_10a520b500c500d500e500f500g200h200i_updateMaxPly(
 		&pThisThread,
 		pFlashlight);
 
 
 	// step2: 千日手による探索打切りの判断
 	{
-		auto p = this->explorePlain_n200n250_isStopByRepetetion(
+		auto p = this->explorePlain_10a520b500c500d500e500f500g200h250i_isStopByRepetetion(
 			//isReturnWithScore,
 			//returnScore,
 			pos,
@@ -167,7 +167,7 @@ ScoreNumber AdventureNodekindSplitedNodePv::explorePlain_10a520b500c500d500e500f
 	ScoreNumber returnScore = ScoreNone;
 
 
-	this->explorePlain_n200n300_returnWithScore(
+	this->explorePlain_10a520b500c500d500e500f500g200h300i_returnWithScore(
 		isReturnWithScore,
 		returnScore,
 		&pFlashlight,
@@ -181,7 +181,7 @@ ScoreNumber AdventureNodekindSplitedNodePv::explorePlain_10a520b500c500d500e500f
 
 	// ttScore と ttMove でデリシャス・バナナ（＾～＾）！
 	{
-		DeliciousBanana ttDeliciousBanana = this->explorePlain_n200n405_getTtDeliciousBanana(
+		DeliciousBanana ttDeliciousBanana = this->explorePlain_10a520b500c500d500e500f500g200h405i_getTtDeliciousBanana(
 			excludedMove,
 			&pFlashlight,
 			posKey,
@@ -194,7 +194,7 @@ ScoreNumber AdventureNodekindSplitedNodePv::explorePlain_10a520b500c500d500e500f
 	}
 
 
-	std::tie(isReturnWithScore, returnScore) = this->explorePlain_n200n450_returnWithScore(
+	std::tie(isReturnWithScore, returnScore) = this->explorePlain_10a520b500c500d500e500f500g200h450i_returnWithScore(
 		&pFlashlight,
 		ourCarriage,
 		pTtEntry,
@@ -205,7 +205,7 @@ ScoreNumber AdventureNodekindSplitedNodePv::explorePlain_10a520b500c500d500e500f
 	if (isReturnWithScore) { return returnScore; }
 
 
-	this->explorePlain_n200n500_returnWithValue(
+	this->explorePlain_10a520b500c500d500e500f500g200h500i_returnWithValue(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -221,7 +221,7 @@ ScoreNumber AdventureNodekindSplitedNodePv::explorePlain_10a520b500c500d500e500f
 
 
 	bool isGotoIidStart = false;//NonPVのとき使う☆
-	this->explorePlain_n200n550_eval(
+	this->explorePlain_10a520b500c500d500e500f500g200h550i_eval(
 		isGotoIidStart,
 		ourCarriage,
 		eval,
@@ -242,7 +242,7 @@ ScoreNumber AdventureNodekindSplitedNodePv::explorePlain_10a520b500c500d500e500f
 	// 内側の反復深化探索☆？（＾ｑ＾）
 //iid_start:
 	// step10
-	this->explorePlain_n200n800_internalIterativeDeepening(
+	this->explorePlain_10a520b500c500d500e500f500g200h800i_internalIterativeDeepening(
 		depth,
 		bananaTtMove,
 		inCheck,
@@ -256,20 +256,20 @@ ScoreNumber AdventureNodekindSplitedNodePv::explorePlain_10a520b500c500d500e500f
 
 
 split_point_start:
-	NextmoveEvent nextMoveEvent(
+	NextmoveEvent explorerPlain_10a520b500c500d500e500f500g300h100i_getNextMove(
 		pos,
 		bananaTtMove,
 		depth,
 		ourCarriage.m_history,
 		pFlashlight,
-		this->getBeta_n140(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
+		this->explorerPlain_10a520b500c500d500e500f500g200h850i_getBeta(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
 		);
 
 
 	const CheckInfo checkInfo(pos);
 
 
-	this->explorePlain_n200n900_beforeLoop_splitPointStart(
+	this->explorePlain_10a520b500c500d500e500f500g200h900i_beforeLoop_splitPointStart(
 		bananaTtMove,
 		depth,
 		score,
@@ -285,7 +285,7 @@ split_point_start:
 	while (
 		!(
 			// スプリット・ポイントかどうかで、取ってくる指し手が変わる☆
-			move = this->getNextMove_n160(nextMoveEvent)
+			move = this->getNextMove_n160(explorerPlain_10a520b500c500d500e500f500g300h100i_getNextMove)
 			).IsNone()
 		) {
 
@@ -299,7 +299,7 @@ split_point_start:
 		bool isContinue = false;
 
 
-		this->explorePlain_n300n500_loopHeader(
+		this->explorePlain_10a520b500c500d500e500f500g300h500i_loopHeader(
 			isContinue,
 			pos,
 			move,
@@ -309,7 +309,7 @@ split_point_start:
 		if (isContinue) { continue; }
 
 
-		this->explorePlain_n300n900_loopHeader(
+		this->explorePlain_10a520b500c500d500e500f500g300h900i_loopHeader(
 			extension,
 			captureOrPawnPromotion,
 			move,
@@ -322,7 +322,7 @@ split_point_start:
 		// 指さずに探索処理
 
 
-		this->explorePlain_n400n500_recursiveSearch(
+		this->explorePlain_10a520b500c500d500e500f500g400h500i_recursiveSearch(
 			ourCarriage,
 			givesCheck,
 			pos,
@@ -341,10 +341,10 @@ split_point_start:
 
 
 		// 本筋かどうか判定するぜ（＾～＾）
-		isPVMove = this->explorePlain_n400n700_isPvMove(moveCount);
+		isPVMove = this->explorePlain_10a520b500c500d500e500f500g400h700i_isPvMove(moveCount);
 
 
-		this->explorePlain_n400n800_setMove(
+		this->explorePlain_10a520b500c500d500e500f500g400h800i_setMove(
 			move,
 			&pFlashlight);
 		if (isContinue) { continue; }
@@ -353,7 +353,7 @@ split_point_start:
 		// ドゥムーブ処理
 
 
-		this->explorerPlain_n500n100_doMove(
+		this->explorerPlain_10a520b500c500d500e500f500g500h100i_doMove(
 			pos,
 			move,
 			st,
@@ -369,7 +369,7 @@ split_point_start:
 
 
 		#ifndef SHRINK_SPLITED__PV_NODE_EXPLORE_PLAIN_360_RECURSIVE_SEARCH
-			this->explorePlain_n500n500_recursiveSearch(
+			this->explorePlain_10a520b500c500d500e500f500g500h500i_recursiveSearch(
 				ourCarriage,
 				depth,
 				isPVMove,
@@ -391,14 +391,14 @@ split_point_start:
 		// 探索後処理
 
 
-		this->explorePlain_n600n700_setAlpha(
+		this->explorePlain_10a520b500c500d500e500f500g600h700i_setAlpha(
 			doFullDepthSearch,
 			alpha,
 			&pSplitedNode);
 
 
 		#ifndef SHRINK_SPLITED_PV_NODE_EXPLORE_PLAIN_380_NON_PV_RECURSIVE_SEARCH
-			this->explorePlain_n500n600_nonPVRecursiveSearch(
+			this->explorePlain_10a520b500c500d500e500f500g500h600i_nonPVRecursiveSearch(
 				ourCarriage,
 				doFullDepthSearch,
 				score,
@@ -411,7 +411,7 @@ split_point_start:
 		#endif
 
 
-		this->explorePlain_n600n900_betaLargeRecursiveSearch(
+		this->explorePlain_10a520b500c500d500e500f500g600h900i_betaLargeRecursiveSearch(
 			ourCarriage,
 			isPVMove,
 			alpha,
@@ -426,7 +426,7 @@ split_point_start:
 		// アンドゥ処理
 
 
-		this->explorePlain_n700n100_undoMove(
+		this->explorePlain_10a520b500c500d500e500f500g700h100i_undoMove(
 			pos,
 			move);
 
@@ -437,7 +437,7 @@ split_point_start:
 		assert(-ScoreInfinite < score && score < ScoreInfinite);
 
 
-		this->explorePlain_n700n500_setAlpha(
+		this->explorePlain_10a520b500c500d500e500f500g700h500i_setAlpha(
 			&pSplitedNode,
 			bestScore,
 			alpha);
@@ -448,7 +448,7 @@ split_point_start:
 
 
 		bool isBreak = false;
-		this->explorePlain_n700n700_updateAlpha(
+		this->explorePlain_10a520b500c500d500e500f500g700h700i_updateAlpha(
 			isBreak,
 			ourCarriage,
 			move,
@@ -472,7 +472,10 @@ split_point_start:
 	// ループ後処理
 
 
-	if (this->getReturn_n800n400()) { return bestScore; }
+	if (this->isReturn_10a520b500c500d500e500f500g800h400i()) { return bestScore; }
+
+
+	// ここで何か処理（＾～＾）？
 
 
 	return bestScore;

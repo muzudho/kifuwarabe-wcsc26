@@ -48,7 +48,7 @@ public:
 	/// </summary>
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
-	virtual inline void explorePlain_n100n800_assert(
+	virtual inline void explorePlain_10a520b500c500d500e500f500g100h800i_assert(
 		ScoreNumber alpha,
 		ScoreNumber beta) const override
 	{
@@ -255,7 +255,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="ppTtEntry"></param>
 	/// <param name="posKey"></param>
-	virtual inline void explorePlain_n200n800_internalIterativeDeepening(
+	virtual inline void explorePlain_10a520b500c500d500e500f500g200h800i_internalIterativeDeepening(
 		const Depth depth,
 		Move& ttMove,
 		bool& inCheck,
@@ -302,7 +302,7 @@ public:
 	/// </summary>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	virtual inline ScoreNumber getBeta_n140(
+	virtual inline ScoreNumber explorerPlain_10a520b500c500d500e500f500g200h850i_getBeta(
 		ScoreNumber beta) const override
 	{
 		// PVノードの場合☆（＾ｑ＾）
@@ -320,7 +320,7 @@ public:
 	/// <param name="singularExtensionNode"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="pTtEntry"></param>
-	virtual inline void explorePlain_n200n900_beforeLoop_splitPointStart(
+	virtual inline void explorePlain_10a520b500c500d500e500f500g200h900i_beforeLoop_splitPointStart(
 		Move& ttMove,
 		const Depth depth,
 		ScoreNumber& score,
@@ -358,7 +358,7 @@ public:
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void explorePlain_n300n500_loopHeader(
+	virtual inline void explorePlain_10a520b500c500d500e500f500g300h500i_loopHeader(
 		bool& isContinue,
 		Position& pos,
 		Move& move,
@@ -496,7 +496,7 @@ public:
 	/// 本筋かどうか判定するぜ（＾～＾）
 	/// </summary>
 	/// <param name="moveCount"></param>
-	virtual inline bool explorePlain_n400n700_isPvMove(
+	virtual inline bool explorePlain_10a520b500c500d500e500f500g400h700i_isPvMove(
 		int moveCount) const override
 	{
 		return (moveCount == 1);	// PVノードだぜ☆！（＾ｑ＾）
@@ -508,7 +508,7 @@ public:
 	/// </summary>
 	/// <param name="move"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void explorePlain_n400n800_setMove(
+	virtual inline void explorePlain_10a520b500c500d500e500f500g400h800i_setMove(
 		Move move,
 		Flashlight** ppFlashlight) const override
 	{
@@ -603,7 +603,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestMove"></param>
 	/// <param name="beta"></param>
-	virtual inline void explorePlain_n700n700_updateAlpha(
+	virtual inline void explorePlain_10a520b500c500d500e500f500g700h700i_updateAlpha(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		Move& move,
@@ -675,11 +675,11 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// スプリット・ポイントは　ステップ２０を実行する前に途中抜けするぜ☆（＾ｑ＾）
 	/// </summary>
 	/// <returns></returns>
-	virtual inline bool getReturn_n800n400() const override {
-		// スプリット・ポイントは　ステップ２０を実行する前に途中抜けするぜ☆（＾ｑ＾）
+	virtual inline bool isReturn_10a520b500c500d500e500f500g800h400i() const override
+	{
 		return true;
 	}
 
