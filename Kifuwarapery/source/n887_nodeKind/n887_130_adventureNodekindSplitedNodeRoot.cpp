@@ -114,9 +114,9 @@ ScoreNumber AdventureNodekindSplitedNodeRoot::explorePlain_10a520b500c500d500e50
 
 	// step1
 	// initialize node
-	Monkey* pThisThread = pos.GetHandleMonkey();
+	Monkey* pThisThread = pos.getHandleMonkey();
 	moveCount = playedMoveCount = 0;
-	inCheck = pos.InCheck();
+	inCheck = pos.inCheck();
 
 
 	bool isGotoSplitPointStart = false;
@@ -222,7 +222,7 @@ split_point_start:
 	const CheckInfo ci(pos);
 
 
-	this->explorePlain_10a520b500c500d500e500f500g200h900i_beforeLoop_splitPointStart(
+	this->explorePlain_10a520b500c500d500e500f500g200h900i_beforeLoopSplitPointStart(
 		bananaTtMove,
 		depth,
 		score,
@@ -238,7 +238,7 @@ split_point_start:
 	while (
 		!(
 			// スプリット・ポイントかどうかで、取ってくる指し手が変わる☆
-			move = this->getNextMove_n160(nextMoveEvent)
+			move = this->explorePlain_10a520b500c500d500e500f500g200h950i_getNextMove(nextMoveEvent)
 			).IsNone()
 	) {
 
@@ -262,14 +262,14 @@ split_point_start:
 		if (isContinue) { continue; }
 
 
-		this->explorePlain_n300n600_loopHeader(
+		this->explorePlain_10a520b500c500d500e500f500g300h600i_loopHeader(
 			isContinue,
 			ourCarriage,
 			move);
 		if (isContinue) { continue; }
 
 
-		this->explorePlain_n300n700_displayInfo(
+		this->explorePlain_10a520b500c500d500e500f500g300h700i_displayInfo(
 			ourCarriage,
 			moveCount);
 
@@ -408,7 +408,7 @@ split_point_start:
 		if (ourCarriage.m_signals.m_isIterationDeepingStop || pThisThread->IsUselessSplitedNode()) { return score; }
 
 
-		this->explorePlain_n700n600_findRootNode(
+		this->explorePlain_10a520b500c500d500e500f500g700h600i_findRootNode(
 			ourCarriage,
 			move,
 			isPVMove,

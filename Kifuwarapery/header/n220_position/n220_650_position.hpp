@@ -251,7 +251,7 @@ public:
 	/// 王手が掛かっているか。
 	/// </summary>
 	/// <returns></returns>
-	bool InCheck() const;
+	bool inCheck() const;
 
 
 	/// <summary>
@@ -514,7 +514,7 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	Monkey* GetHandleMonkey() const;
+	Monkey* getHandleMonkey() const;
 
 
 	/// <summary>

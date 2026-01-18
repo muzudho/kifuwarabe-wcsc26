@@ -30,7 +30,7 @@ ScoreNumber AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 	const Depth depth
 	) const {
 
-	assert(INCHECK == pos.InCheck());
+	assert(INCHECK == pos.inCheck());
 	assert(-ScoreInfinite <= alpha && alpha < beta && beta <= ScoreInfinite);
 	this->DoAssert(alpha,beta);
 	assert(depth <= Depth0);

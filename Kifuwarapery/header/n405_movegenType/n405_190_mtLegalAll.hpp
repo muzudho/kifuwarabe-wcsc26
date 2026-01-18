@@ -34,7 +34,7 @@ public:
 		DeliciousBanana* curr = moveStackList;
 		const Bitboard pinned = pos.GetPinnedBB();
 
-		moveStackList = pos.InCheck() ?
+		moveStackList = pos.inCheck() ?
 			MovegenTypeEvasion().GenerateMove( moveStackList, pos, true) :
 			MovegenTypeNonEvasion().GenerateMove( moveStackList, pos);
 

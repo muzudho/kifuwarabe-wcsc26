@@ -423,7 +423,7 @@ public:
 	/// <param name="singularExtensionNode"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="pTtEntry"></param>
-	virtual inline void explorePlain_10a520b500c500d500e500f500g200h900i_beforeLoop_splitPointStart(
+	virtual inline void explorePlain_10a520b500c500d500e500f500g200h900i_beforeLoopSplitPointStart(
 		Move& ttMove,
 		const Depth depth,
 		ScoreNumber& score,
@@ -443,7 +443,7 @@ public:
 	/// </summary>
 	/// <param name="mp"></param>
 	/// <returns></returns>
-	virtual inline Move getNextMove_n160(
+	virtual inline Move explorePlain_10a520b500c500d500e500f500g200h950i_getNextMove(
 		NextmoveEvent& mp) const override
 	{
 		// スプリットポイントの場合
@@ -597,7 +597,7 @@ public:
 	/// <param name="playedMoveCount"></param>
 	/// <param name="movesSearched"></param>
 	/// <param name="move"></param>
-	virtual inline void explorePlain_n400n900_memoryVariationMove(
+	virtual inline void explorePlain_10a520b500c500d500e500f500g400h900i_memoryVariationMove(
 		bool& captureOrPawnPromotion,
 		int& playedMoveCount,
 		Move movesSearched[64],
@@ -705,7 +705,7 @@ public:
 	/// <param name="moveCount"></param>
 	/// <param name="mp"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void explorePlain_n700n750_forkNewMonkey(
+	virtual inline void explorePlain_10a520b500c500d500e500f500g700h750i_forkNewMonkey(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		const Depth depth,
@@ -752,7 +752,7 @@ public:
 	/// <param name="inCheck"></param>
 	/// <param name="pos"></param>
 	/// <param name="movesSearched"></param>
-	inline void explorePlain_n800n500_workAtReturn(
+	inline void explorePlain_10a520b500c500d500e500f500g800h500i_workAtReturn(
 		int& moveCount,
 		Move& excludedMove,
 		OurCarriage& ourCarriage,

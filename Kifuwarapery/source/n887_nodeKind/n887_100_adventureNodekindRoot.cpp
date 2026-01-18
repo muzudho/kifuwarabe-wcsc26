@@ -109,11 +109,11 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 	// initialize node
 
 	// 対応付く猿（探索スレッド）
-	Monkey* pHandleMonkey = pos.GetHandleMonkey();
+	Monkey* pHandleMonkey = pos.getHandleMonkey();
 	moveCount
 		= playedMoveCount
 			= 0;
-	inCheck = pos.InCheck();	// 王手されているか（＾～＾）？
+	inCheck = pos.inCheck();	// 王手されているか（＾～＾）？
 
 	//bool isGotoSplitPointStart = false;
 
@@ -213,7 +213,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 
 
 	// なんかセットしてる（＾～＾）
-	this->explorePlain_10a520b500c500d500e500f500g200h900i_beforeLoop_splitPointStart(
+	this->explorePlain_10a520b500c500d500e500f500g200h900i_beforeLoopSplitPointStart(
 		bananaTtMove,
 		depth,
 		score,
@@ -228,7 +228,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 	while (
 		!(
 			// スプリット・ポイントかどうかで、取ってくる指し手が変わる☆
-			move = this->getNextMove_n160(nextMoveEvent)
+			move = this->explorePlain_10a520b500c500d500e500f500g200h950i_getNextMove(nextMoveEvent)
 			).IsNone()
 		) {
 
@@ -253,7 +253,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 		if (isContinue) { continue; }
 
 
-		this->explorePlain_n300n600_loopHeader(
+		this->explorePlain_10a520b500c500d500e500f500g300h600i_loopHeader(
 			isContinue,
 			ourCarriage,
 			move
@@ -262,7 +262,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 
 
 		// info 表示
-		this->explorePlain_n300n700_displayInfo(
+		this->explorePlain_10a520b500c500d500e500f500g300h700i_displayInfo(
 			ourCarriage,
 			moveCount
 			);
@@ -314,7 +314,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 
 
 		// 探索した変化を覚えてる（＾～＾）？
-		this->explorePlain_n400n900_memoryVariationMove(
+		this->explorePlain_10a520b500c500d500e500f500g400h900i_memoryVariationMove(
 			captureOrPawnPromotion,
 			playedMoveCount,
 			movesSearched,
@@ -412,7 +412,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 		if (ourCarriage.m_signals.m_isIterationDeepingStop || pHandleMonkey->IsUselessSplitedNode()) { return score; }
 
 
-		this->explorePlain_n700n600_findRootNode(
+		this->explorePlain_10a520b500c500d500e500f500g700h600i_findRootNode(
 			ourCarriage,
 			move,
 			isPVMove,
@@ -447,7 +447,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 
 		#ifndef SHRINK_R_NODEKIND_EXPLORE_PLAIN_700N750_FORK_NEW_MONKEY
 			// さらに枝に別の猿を走らせる。
-			this->explorePlain_n700n750_forkNewMonkey(
+			this->explorePlain_10a520b500c500d500e500f500g700h750i_forkNewMonkey(
 				isBreak,
 				ourCarriage,
 				depth,
@@ -478,7 +478,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 	// 木の戻り際で何かあればここで処理（＾～＾）
 
 
-	this->explorePlain_n800n500_workAtReturn(
+	this->explorePlain_10a520b500c500d500e500f500g800h500i_workAtReturn(
 		moveCount,
 		excludedMove,
 		ourCarriage,

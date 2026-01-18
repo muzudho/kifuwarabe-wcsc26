@@ -110,9 +110,9 @@ ScoreNumber AdventureNodekindPv::explorePlain_10a520b500c500d500e500f500g(
 
 	// step1
 	// initialize node
-	Monkey* pThisThread = pos.GetHandleMonkey();
+	Monkey* pThisThread = pos.getHandleMonkey();
 	moveCount = playedMoveCount = 0;
-	inCheck = pos.InCheck();
+	inCheck = pos.inCheck();
 
 	bool isGotoSplitPointStart = false;
 
@@ -252,7 +252,7 @@ ScoreNumber AdventureNodekindPv::explorePlain_10a520b500c500d500e500f500g(
 	const CheckInfo checkInfo(pos);
 
 
-	this->explorePlain_10a520b500c500d500e500f500g200h900i_beforeLoop_splitPointStart(
+	this->explorePlain_10a520b500c500d500e500f500g200h900i_beforeLoopSplitPointStart(
 		bananaTtMove,
 		depth,
 		score,
@@ -267,7 +267,7 @@ ScoreNumber AdventureNodekindPv::explorePlain_10a520b500c500d500e500f500g(
 	while (
 		!(
 			// スプリット・ポイントかどうかで、取ってくる指し手が変わる☆
-			move = this->getNextMove_n160(nextMoveEvent)
+			move = this->explorePlain_10a520b500c500d500e500f500g200h950i_getNextMove(nextMoveEvent)
 			).IsNone()
 		) {
 
@@ -340,7 +340,7 @@ ScoreNumber AdventureNodekindPv::explorePlain_10a520b500c500d500e500f500g(
 		if (isContinue) { continue; }
 
 
-		this->explorePlain_n400n900_memoryVariationMove(
+		this->explorePlain_10a520b500c500d500e500f500g400h900i_memoryVariationMove(
 			captureOrPawnPromotion,
 			playedMoveCount,
 			movesSearched,
@@ -431,7 +431,7 @@ ScoreNumber AdventureNodekindPv::explorePlain_10a520b500c500d500e500f500g(
 		// アップデートα後処理
 
 
-		this->explorePlain_n700n750_forkNewMonkey(
+		this->explorePlain_10a520b500c500d500e500f500g700h750i_forkNewMonkey(
 			isBreak,
 			ourCarriage,
 			depth,
@@ -459,7 +459,7 @@ ScoreNumber AdventureNodekindPv::explorePlain_10a520b500c500d500e500f500g(
 	// 木の戻り際で何かあればここで処理（＾～＾）
 
 
-	this->explorePlain_n800n500_workAtReturn(
+	this->explorePlain_10a520b500c500d500e500f500g800h500i_workAtReturn(
 		moveCount,
 		excludedMove,
 		ourCarriage,

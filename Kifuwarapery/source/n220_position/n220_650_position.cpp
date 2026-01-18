@@ -197,7 +197,7 @@ Key Position::GetComputeKey() const
 ///		</pre>
 /// </summary>
 /// <returns></returns>
-Monkey* Position::GetHandleMonkey() const
+Monkey* Position::getHandleMonkey() const
 {
 	return this->m_handleMonkey_;
 }
@@ -561,7 +561,7 @@ Bitboard Position::GetPrevCheckersBB() const
 /// 王手されているか（＾～＾）？
 /// </summary>
 /// <returns></returns>
-bool Position::InCheck() const
+bool Position::inCheck() const
 {
 	return this->GetCheckersBB().Exists1Bit();
 }
@@ -738,7 +738,7 @@ bool Position::MoveIsPseudoLegal(const Move move, const bool checkPawnDrop) cons
 		const PieceType ptFrom = move.GetPieceTypeDropped();
 		if (!this->GetHand<US>().Exists(HandPieceExtensions::FromPieceType(ptFrom)) || GetPiece(to) != N00_Empty) { return false; }
 
-		if (this->InCheck()) {
+		if (this->inCheck()) {
 			// 王手されているので、合駒でなければならない。
 			Bitboard target = this->GetCheckersBB();
 			const Square checksq = target.PopFirstOneFromI9();
@@ -763,7 +763,7 @@ bool Position::MoveIsPseudoLegal(const Move move, const bool checkPawnDrop) cons
 
 		if (!g_setMaskBB.IsSet(&UtilAttack::GetAttacksFrom(ptFrom, US, from, this->GetOccupiedBB()), to)) { return false; }
 
-		if (InCheck()) {
+		if (inCheck()) {
 			if (ptFrom == N08_King) {
 				Bitboard occ = GetOccupiedBB();
 				g_setMaskBB.ClearBit(&occ, from);

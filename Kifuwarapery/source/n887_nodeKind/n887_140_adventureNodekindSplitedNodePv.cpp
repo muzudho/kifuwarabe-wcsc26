@@ -114,9 +114,9 @@ ScoreNumber AdventureNodekindSplitedNodePv::explorePlain_10a520b500c500d500e500f
 
 	// step1
 	// initialize node
-	Monkey* pThisThread = pos.GetHandleMonkey();
+	Monkey* pThisThread = pos.getHandleMonkey();
 	moveCount = playedMoveCount = 0;
-	inCheck = pos.InCheck();
+	inCheck = pos.inCheck();
 
 
 	bool isGotoSplitPointStart = false;
@@ -269,7 +269,7 @@ split_point_start:
 	const CheckInfo checkInfo(pos);
 
 
-	this->explorePlain_10a520b500c500d500e500f500g200h900i_beforeLoop_splitPointStart(
+	this->explorePlain_10a520b500c500d500e500f500g200h900i_beforeLoopSplitPointStart(
 		bananaTtMove,
 		depth,
 		score,
@@ -285,7 +285,7 @@ split_point_start:
 	while (
 		!(
 			// スプリット・ポイントかどうかで、取ってくる指し手が変わる☆
-			move = this->getNextMove_n160(explorerPlain_10a520b500c500d500e500f500g300h100i_getNextMove)
+			move = this->explorePlain_10a520b500c500d500e500f500g200h950i_getNextMove(explorerPlain_10a520b500c500d500e500f500g300h100i_getNextMove)
 			).IsNone()
 		) {
 

@@ -40,7 +40,7 @@ void measureGenerateMoves(const Position& pos) {
 	DeliciousBanana* pms = &legalMoves[0];
 	const u64 num = 5000000;
 	Stopwatch t = Stopwatch::createStopwatchByCurrentTime();
-	if (pos.InCheck()) {
+	if (pos.inCheck()) {
 		for (u64 i = 0; i < num; ++i) {
 			pms = &legalMoves[0];
 			pms = g_moveGenerator200.generateDeliciousBanana_n2(N06_Evasion,pms, pos);

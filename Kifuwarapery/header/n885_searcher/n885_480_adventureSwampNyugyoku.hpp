@@ -26,7 +26,7 @@ public:
 
 		if (!ourCarriage.m_signals.m_isIterationDeepingStop && (ourCarriage.m_limits.m_canPonder || ourCarriage.m_limits.m_isInfinite)) {
 			ourCarriage.m_signals.m_isStopOnPonderHit = true;
-			pos.GetHandleMonkey()->WaitFor(ourCarriage.m_signals.m_isIterationDeepingStop);
+			pos.getHandleMonkey()->WaitFor(ourCarriage.m_signals.m_isIterationDeepingStop);
 		}
 
 		SYNCCOUT << "bestmove win" << SYNCENDL;

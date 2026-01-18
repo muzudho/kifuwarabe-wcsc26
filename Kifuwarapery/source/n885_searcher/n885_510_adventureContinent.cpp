@@ -180,7 +180,7 @@ finalize:
 
 	if (!captainsRucksack.m_signals.m_isIterationDeepingStop && (captainsRucksack.m_limits.m_canPonder || captainsRucksack.m_limits.m_isInfinite)) {
 		captainsRucksack.m_signals.m_isStopOnPonderHit = true;
-		pos.GetHandleMonkey()->WaitFor(captainsRucksack.m_signals.m_isIterationDeepingStop);
+		pos.getHandleMonkey()->WaitFor(captainsRucksack.m_signals.m_isIterationDeepingStop);
 	}
 
 	if (captainsRucksack.m_rootMovesByID[0].m_pv_[0].IsNone()) {
@@ -255,7 +255,7 @@ bool AdventureContinent::IsNyugyokuWin(const Position& pos) {
 	}
 
 	// 五 宣言側の玉に王手がかかっていない。
-	if (pos.InCheck())
+	if (pos.inCheck())
 	{
 		return false;
 	}

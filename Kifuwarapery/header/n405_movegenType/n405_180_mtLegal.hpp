@@ -63,7 +63,7 @@ private:
 		const Bitboard pinned = pos.GetPinnedBB();
 
 		// 要素の追加☆
-		moveStackList = pos.InCheck() ?
+		moveStackList = pos.inCheck() ?
 			MovegenTypeEvasion().GenerateMove(moveStackList, pos) :
 			MovegenTypeNonEvasion().GenerateMove(moveStackList, pos);
 

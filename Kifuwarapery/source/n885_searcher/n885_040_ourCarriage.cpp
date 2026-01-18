@@ -176,7 +176,7 @@ void OurCarriage::detectBishopInDanger(const Position& GetPos) {
 /// <param name="DO"></param>
 /// <param name="backUpSt"></param>
 void Position::DoNullMove(bool DO, StateInfo& backUpSt) {
-	assert(!InCheck());
+	assert(!inCheck());
 
 	StateInfo* src = (DO ? m_st_ : &backUpSt);
 	StateInfo* dst = (DO ? &backUpSt : m_st_);
