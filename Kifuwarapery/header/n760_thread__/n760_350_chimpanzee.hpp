@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "n760_250_soldier.hpp"
+#include "n760_250_monkie.hpp"
 
 
 class OurCarriage;

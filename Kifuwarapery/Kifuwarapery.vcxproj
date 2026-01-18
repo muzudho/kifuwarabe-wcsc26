@@ -397,9 +397,9 @@
     <ClInclude Include="header\n755_sword___\n755_100_SwordRoot.hpp" />
     <ClInclude Include="header\n755_sword___\n755_110_SwordPv.hpp" />
     <ClInclude Include="header\n755_sword___\n755_120_SwordNonPv.hpp" />
-    <ClInclude Include="header\n760_thread__\n760_250_soldier.hpp" />
-    <ClInclude Include="header\n760_thread__\n760_300_captain.hpp" />
-    <ClInclude Include="header\n760_thread__\n760_350_subordinate.hpp" />
+    <ClInclude Include="header\n760_thread__\n760_250_monkie.hpp" />
+    <ClInclude Include="header\n760_thread__\n760_300_orangutan.hpp" />
+    <ClInclude Include="header\n760_thread__\n760_350_chimpanzee.hpp" />
     <ClInclude Include="header\n760_thread__\n760_400_monkiesPub.hpp" />
     <ClInclude Include="header\n800_learn___\n800_100_stopwatch.hpp" />
     <ClInclude Include="header\n800_learn___\n800_500_learner.hpp" />
@@ -619,10 +619,10 @@
     <ClCompile Include="source\n755_sword___\n755_100_SwordRoot.cpp" />
     <ClCompile Include="source\n755_sword___\n755_110_SwordPv.cpp" />
     <ClCompile Include="source\n755_sword___\n755_120_SwordNonPv.cpp" />
-    <ClCompile Include="source\n760_thread__\n760_250_soldier.cpp" />
-    <ClCompile Include="source\n760_thread__\n760_300_captain.cpp" />
-    <ClCompile Include="source\n760_thread__\n760_350_subordinate.cpp" />
-    <ClCompile Include="source\n760_thread__\n760_400_herosPub.cpp" />
+    <ClCompile Include="source\n760_thread__\n760_250_monkie.cpp" />
+    <ClCompile Include="source\n760_thread__\n760_300_orangutan.cpp" />
+    <ClCompile Include="source\n760_thread__\n760_350_chimpanzee.cpp" />
+    <ClCompile Include="source\n760_thread__\n760_400_monkiePub.cpp" />
     <ClCompile Include="source\n800_learn___\n800_100_stopwatch.cpp" />
     <ClCompile Include="source\n883_nodeKind\n883_070_adventurePlainNodekindAbstract.cpp" />
     <ClCompile Include="source\n885_searcher\n885_040_ourCarriage.cpp" />

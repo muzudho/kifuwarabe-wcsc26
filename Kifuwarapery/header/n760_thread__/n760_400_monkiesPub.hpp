@@ -9,9 +9,9 @@
 #include "../n560_timeMgr_/n560_100_limitsDuringGo.hpp"
 #include "../n640_searcher/n640_040_nodeKind.hpp"
 #include "../n640_searcher/n640_440_splitedNode.hpp"
-#include "n760_250_soldier.hpp"
-#include "n760_300_captain.hpp"
-#include "n760_350_subordinate.hpp"
+#include "n760_250_monkie.hpp"
+#include "n760_300_orangutan.hpp"
+#include "n760_350_chimpanzee.hpp"
 
 
 // 依存関係の回避

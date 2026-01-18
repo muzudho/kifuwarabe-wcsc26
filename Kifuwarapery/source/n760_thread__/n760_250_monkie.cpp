@@ -7,7 +7,7 @@
 #include "../../header/n440_movStack/n440_500_nextmoveEvent.hpp"
 #include "../../header/n640_searcher/n640_040_nodeKind.hpp"
 #include "../../header/n640_searcher/n640_440_splitedNode.hpp"
-#include "../../header/n760_thread__/n760_250_soldier.hpp"
+#include "../../header/n760_thread__/n760_250_monkie.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 
 

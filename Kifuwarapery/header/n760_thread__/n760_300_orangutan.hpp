@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "n760_250_soldier.hpp"
+#include "n760_250_monkie.hpp"
 
 
 class OurCarriage;
@@ -8,9 +8,10 @@ class OurCarriage;
 
 /// <summary>
 ///		<pre>
-/// キャプテン☆（＾ｑ＾） わたしが名前を変えた☆（＾▽＾）
+/// オラウータン☆（＾ｑ＾） わたしが名前を変えた☆（＾▽＾）
 /// 
-///		- 元の名前：ＭａｉｎＴｈｒｅａｄ
+///		- 元の名前： `ＭainThread`
+///		- 先頭の猿だぜ（＾～＾）メインスレッド。
 ///		</pre>
 /// </summary>
 class Orangutan : public Monkie {
