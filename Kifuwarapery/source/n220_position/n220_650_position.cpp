@@ -134,7 +134,7 @@ Key Position::GetKeyExcludeTurn() const
 /// 
 /// </summary>
 /// <returns></returns>
-u64 Position::GetNodesSearched() const
+u64 Position::getNodesSearched() const
 {
 	return this->m_nodes_;
 }
@@ -144,7 +144,7 @@ u64 Position::GetNodesSearched() const
 /// 
 /// </summary>
 /// <param name="n"></param>
-void Position::SetNodesSearched(const u64 n)
+void Position::setNodesSearched(const u64 n)
 {
 	this->m_nodes_ = n;
 }
@@ -549,7 +549,7 @@ Bitboard Position::GetPrevCheckersBB() const
 /// 
 /// </summary>
 /// <returns></returns>
-bool Position::InCheck() const
+bool Position::inCheck() const
 {
 	return this->GetCheckersBB().Exists1Bit();
 }
@@ -726,7 +726,7 @@ bool Position::MoveIsPseudoLegal(const Move move, const bool checkPawnDrop) cons
 		const PieceType ptFrom = move.GetPieceTypeDropped();
 		if (!this->GetHand<US>().Exists(ConvHandPiece::FromPieceType(ptFrom)) || GetPiece(to) != N00_Empty) { return false; }
 
-		if (this->InCheck()) {
+		if (this->inCheck()) {
 			// 王手されているので、合駒でなければならない。
 			Bitboard target = this->GetCheckersBB();
 			const Square checksq = target.PopFirstOneFromI9();
@@ -751,7 +751,7 @@ bool Position::MoveIsPseudoLegal(const Move move, const bool checkPawnDrop) cons
 
 		if (!g_setMaskBb.IsSet(&UtilAttack::GetAttacksFrom(ptFrom, US, from, this->GetOccupiedBB()), to)) { return false; }
 
-		if (InCheck()) {
+		if (inCheck()) {
 			if (ptFrom == N08_King) {
 				Bitboard occ = GetOccupiedBB();
 				g_setMaskBb.ClearBit(&occ, from);

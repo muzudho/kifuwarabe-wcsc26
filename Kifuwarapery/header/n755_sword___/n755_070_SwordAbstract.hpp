@@ -27,7 +27,7 @@ public:
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pos"></param>
 	/// <param name="pFlashlight"></param>
-	virtual void GoSearch_AsSplitedNode(
+	virtual void startSearch_asSplitedNode(
 		SplitedNode& ownerSplitedNode,
 		OurCarriage& ourCarriage,
 		Position& pos,

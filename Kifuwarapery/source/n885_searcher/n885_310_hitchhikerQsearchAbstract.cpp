@@ -30,7 +30,7 @@ ScoreIndex AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 	const Depth depth
 	) const {
 
-	assert(INCHECK == pos.InCheck());
+	assert(INCHECK == pos.inCheck());
 	assert(-ScoreInfinite <= alpha && alpha < beta && beta <= ScoreInfinite);
 	this->DoAssert(alpha,beta);
 	assert(depth <= Depth0);
@@ -78,7 +78,7 @@ ScoreIndex AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 		return ttScore;
 	}
 
-	pos.SetNodesSearched(pos.GetNodesSearched() + 1);
+	pos.setNodesSearched(pos.getNodesSearched() + 1);
 
 	if (INCHECK) {
 		pFlashlight->m_staticEval = ScoreNone;

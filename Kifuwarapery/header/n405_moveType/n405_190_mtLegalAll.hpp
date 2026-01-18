@@ -34,7 +34,7 @@ public:
 		MoveStack* curr = moveStackList;
 		const Bitboard pinned = pos.GetPinnedBB();
 
-		moveStackList = pos.InCheck() ?
+		moveStackList = pos.inCheck() ?
 			MoveTypeEvasion().GenerateMove( moveStackList, pos, true) :
 			MoveTypeNonEvasion().GenerateMove( moveStackList, pos);
 

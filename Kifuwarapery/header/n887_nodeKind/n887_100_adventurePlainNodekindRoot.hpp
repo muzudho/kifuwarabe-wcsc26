@@ -37,7 +37,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="cutNode"></param>
 	/// <returns></returns>
-	virtual ScoreIndex ExplorePlain(
+	virtual ScoreIndex explorePlain_10i(
 		OurCarriage& ourCarriage,
 		Position& pos,
 		Flashlight* pFlashlight,//サーチスタック
@@ -53,7 +53,7 @@ public:
 	/// </summary>
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
-	virtual inline void AssertBeforeStep1(
+	virtual inline void explorePlain_10i100j100k_assertAtFirst(
 		ScoreIndex alpha,
 		ScoreIndex beta
 		) const override {
@@ -78,7 +78,7 @@ public:
 	/// <param name="ttMove"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="ttScore"></param>
-	virtual inline void ExplorerPlainStep1a(
+	virtual inline void explorePlain_10i200j100k_initializeNode(
 		bool& isGotoSplitPointStart,
 		int& moveCount,
 		int& playedMoveCount,
@@ -105,7 +105,7 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline std::pair<bool, ScoreIndex> ExplorerPlainStep2_IsStopByRepetetion(
+	virtual inline std::pair<bool, ScoreIndex> explorePlain_10i200j160k_isStopByRepetetion(
 		//bool& isReturnWithScore,
 		//ScoreIndex& returnScore,
 		Position& pos,
@@ -127,7 +127,7 @@ public:
 	/// <param name="ppFlashlight"></param>
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
-	virtual inline void ExplorerPlainStep3(
+	virtual inline void explorePlain_10i200j180k_checkAlpha(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
 		Flashlight** ppFlashlight,
@@ -146,7 +146,7 @@ public:
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pTtEntry"></param>
 	/// <param name="pos"></param>
-	virtual inline void ExplorerPlainStep4x(
+	virtual inline void explorePlain_10i200j220k_getTtMove(
 		Move& ttMove,
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
@@ -169,7 +169,7 @@ public:
 	/// <param name="beta"></param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="ttMove"></param>
-	virtual inline void ExplorerPlainStep4y(
+	virtual inline void explorePlain_10i200j240k_killerMove(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
 		OurCarriage& ourCarriage,
@@ -215,7 +215,7 @@ public:
 	/// <param name="posKey"></param>
 	/// <param name="depth"></param>
 	/// <param name="bestMove"></param>
-	virtual inline void ExplorerPlainStep4z(
+	virtual inline void explorePlain_10i200j260k_ttMove(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
 		OurCarriage& ourCarriage,
@@ -358,7 +358,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="ppTtEntry"></param>
 	/// <param name="posKey"></param>
-	virtual inline void ExplorerPlainStep10_InternalIterativeDeepening(
+	virtual inline void explorerPlain_10i300j100k_internalIterativeDeepening(
 		const Depth depth,
 		Move& ttMove,
 		bool& inCheck,
@@ -389,7 +389,7 @@ public:
 			// 探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			// PVノードの場合☆
-			g_NODEKIND_PROGRAMS[NodeKind::No1_PV]->ExplorePlain(
+			g_NODEKIND_PROGRAMS[NodeKind::No1_PV]->explorePlain_10i(
 				ourCarriage, pos, (*ppFlashlight), alpha, beta, d, true);
 
 			(*ppFlashlight)->m_skipNullMove = false;
@@ -425,7 +425,7 @@ public:
 	/// </summary>
 	/// <param name="mp"></param>
 	/// <returns></returns>
-	virtual inline Move GetNextMove_AtStep11(
+	virtual inline Move getNextMove_10i400j100k(
 		NextmoveEvent& mp
 		) const override {
 		// 非スプリットポイントの場合
@@ -443,7 +443,7 @@ public:
 	/// <param name="singularExtensionNode"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="pTtEntry"></param>
-	virtual inline void ExplorerPlainStep11a_BeforeLoop_SplitPointStart(
+	virtual inline void explorePlain_10i300j200k_beforeLoopSplitPointStart(
 		Move& ttMove,
 		const Depth depth,
 		ScoreIndex& score,
@@ -468,7 +468,7 @@ public:
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void ExplorerPlainStep11c_LoopHeader(
+	virtual inline void explorePlain_10i400j120k_resetScore(
 		bool& isContinue,
 		Position& pos,
 		Move& move,
@@ -607,7 +607,7 @@ public:
 	/// <param name="isPVMoveRef"></param>
 	/// <param name="playedMoveCount"></param>
 	/// <param name="movesSearched"></param>
-	virtual inline void ExplorerPlainStep13c(
+	virtual inline void explorePlain_10i400j180k_updateCurrentMove(
 		bool& isContinue,
 		OurCarriage& ourCarriage,
 		bool& captureOrPawnPromotion,

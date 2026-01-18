@@ -68,7 +68,7 @@ AdventureNodekindSplitedNodePv g_NODEKIND_SPLITEDNODE_PV;
 /// <param name="depth"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-ScoreIndex AdventureNodekindSplitedNodePv::ExplorePlain(
+ScoreIndex AdventureNodekindSplitedNodePv::explorePlain_10i(
 	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
@@ -78,12 +78,16 @@ ScoreIndex AdventureNodekindSplitedNodePv::ExplorePlain(
 	const bool cutNode
 	) const {
 
+
+	// 事前処理
+
+
 	assert(-ScoreInfinite <= alpha && alpha < beta && beta <= ScoreInfinite);
-	this->AssertBeforeStep1(
+	this->explorePlain_10i100j100k_assertAtFirst(
 		alpha,
-		beta
-		);
+		beta);
 	assert(Depth0 < depth);
+
 
 	// 途中で goto を使用している為、先に全部の変数を定義しておいた方が安全。
 	Move movesSearched[64];
@@ -112,14 +116,16 @@ ScoreIndex AdventureNodekindSplitedNodePv::ExplorePlain(
 	int moveCount;
 	int playedMoveCount;
 
+
 	// step1
 	// initialize node
 	Monkie* pThisThread = pos.GetThisThread();
 	moveCount = playedMoveCount = 0;
-	inCheck = pos.InCheck();
+	inCheck = pos.inCheck();
+
 
 	bool isGotoSplitPointStart = false;
-	this->ExplorerPlainStep1a(
+	this->explorePlain_10i200j100k_initializeNode(
 		isGotoSplitPointStart,
 		moveCount,
 		playedMoveCount,
@@ -132,67 +138,63 @@ ScoreIndex AdventureNodekindSplitedNodePv::ExplorePlain(
 		bestScore,
 		ttMove,
 		excludedMove,
-		ttScore
-		);
+		ttScore);
 	if (isGotoSplitPointStart) { goto split_point_start; }
 
-	this->ExplorerPlainStep1b(
+
+	this->explorePlain_10i200j120k_clearMove(
 		bestScore,
 		&pFlashlight,
 		threatMove,
-		bestMove
-		);
-	this->ExplorerPlainStep1c(
+		bestMove);
+	this->explorePlain_10i200j140k_mapPly(
 		&pThisThread,
-		pFlashlight
-		);
+		pFlashlight);
 
-	// step2: 千日手による探索打切りの判断
+
+	// 千日手による探索打切りの判断
 	{
-		auto p = this->ExplorerPlainStep2_IsStopByRepetetion(
-			//isReturnWithScore,
-			//returnScore,
+		auto p = this->explorePlain_10i200j160k_isStopByRepetetion(
 			pos,
 			ourCarriage,
-			&pFlashlight
-		);
+			&pFlashlight);
 		bool isReturnWithScore = p.first;
 		ScoreIndex returnScore = p.second;
 		if (isReturnWithScore) { return returnScore; }
 	}
 
+
 	bool isReturnWithScore = false;
 	ScoreIndex returnScore = ScoreNone;
 
-	// step3
-	this->ExplorerPlainStep3(
+
+	this->explorePlain_10i200j180k_checkAlpha(
 		isReturnWithScore,
 		returnScore,
 		&pFlashlight,
 		alpha,
-		beta
-		);
+		beta);
 	if (isReturnWithScore) { return returnScore; }
 
-	pos.SetNodesSearched(pos.GetNodesSearched() + 1);
+
+	pos.setNodesSearched(pos.getNodesSearched() + 1);
+
 
 	// step4
-	this->ExplorerPlainStep4(
+	this->explorePlain_10i200j200k_getTtScore(
 		excludedMove,
 		&pFlashlight,
 		posKey,
 		pos,
 		&pTtEntry,//セットされる☆
 		ourCarriage,
-		ttScore
-		);
-	this->ExplorerPlainStep4x(
+		ttScore);
+	this->explorePlain_10i200j220k_getTtMove(
 		ttMove,
 		ourCarriage,
 		pTtEntry,
-		pos
-		);
-	this->ExplorerPlainStep4y(
+		pos);
+	this->explorePlain_10i200j240k_killerMove(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -201,11 +203,11 @@ ScoreIndex AdventureNodekindSplitedNodePv::ExplorePlain(
 		ttScore,
 		beta,
 		&pFlashlight,
-		ttMove
-		);
+		ttMove);
 	if (isReturnWithScore) { return returnScore; }
 
-	this->ExplorerPlainStep4z(
+
+	this->explorePlain_10i200j260k_ttMove(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -216,13 +218,13 @@ ScoreIndex AdventureNodekindSplitedNodePv::ExplorePlain(
 		bestScore,
 		posKey,
 		depth,
-		bestMove
-		);
+		bestMove);
 	if (isReturnWithScore) { return returnScore; }
+
 
 	// step5
 	bool isGotoIidStart = false;//NonPVのとき使う☆
-	this->ExplorerPlainStep5(
+	this->explorePlain_10i200j280k_evelScore(
 		isGotoIidStart,
 		ourCarriage,
 		eval,
@@ -232,8 +234,7 @@ ScoreIndex AdventureNodekindSplitedNodePv::ExplorePlain(
 		pTtEntry,
 		ttScore,
 		posKey,
-		move
-		);
+		move);
 	/*
 	if (isGotoIidStart) {
 		goto iid_start;
@@ -243,7 +244,7 @@ ScoreIndex AdventureNodekindSplitedNodePv::ExplorePlain(
 	// 内側の反復深化探索☆？（＾ｑ＾）
 //iid_start:
 	// step10
-	this->ExplorerPlainStep10_InternalIterativeDeepening(
+	this->explorerPlain_10i300j100k_internalIterativeDeepening(
 		depth,
 		ttMove,
 		inCheck,
@@ -256,8 +257,11 @@ ScoreIndex AdventureNodekindSplitedNodePv::ExplorePlain(
 		posKey
 		);
 
+
 split_point_start:
-	NextmoveEvent mp(
+
+
+	NextmoveEvent nextmoveEvent(
 		pos,
 		ttMove,
 		depth,
@@ -265,9 +269,12 @@ split_point_start:
 		pFlashlight,
 		this->GetBetaAtStep11(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
 		);
-	const CheckInfo ci(pos);
 
-	this->ExplorerPlainStep11a_BeforeLoop_SplitPointStart(
+
+	const CheckInfo checkInfo(pos);
+
+
+	this->explorePlain_10i300j200k_beforeLoopSplitPointStart(
 		ttMove,
 		depth,
 		score,
@@ -277,42 +284,44 @@ split_point_start:
 		pTtEntry//pv,nonPv の２つで、nullptrはダメ☆
 		);
 
+
 	// step11
 	// Loop through moves
 	while (
 		!(
 			// スプリット・ポイントかどうかで、取ってくる指し手が変わる☆
-			move = this->GetNextMove_AtStep11(mp)
+			move = this->getNextMove_10i400j100k(nextmoveEvent)
 			).IsNone()
 		) {
 
-		// DoStep11b
+
 		if (move == excludedMove) { continue; }	// ムーブが一致していれば、次のループへ☆
+
 
 		bool isContinue = false;
 
-		this->ExplorerPlainStep11c_LoopHeader(
+
+		this->explorePlain_10i400j120k_resetScore(
 			isContinue,
 			pos,
 			move,
-			ci,
+			checkInfo,
 			moveCount,
-			&pSplitedNode
-			);
+			&pSplitedNode);
 		if (isContinue) { continue; }
 
-		this->ExplorerPlainStep11f_LoopHeader(
+
+		this->explorePlain_10i400j140k_resetState(
 			extension,
 			captureOrPawnPromotion,
 			move,
 			givesCheck,
-			ci,
+			checkInfo,
 			pos,
-			dangerous
-			);
+			dangerous);
 
-		// step12
-		this->ExplorerPlainStep12(
+
+		this->explorerPlain_10i400j160k_recursiveSearchA(
 			ourCarriage,
 			givesCheck,
 			pos,
@@ -321,16 +330,16 @@ split_point_start:
 			singularExtensionNode,
 			ttMove,
 			ttScore,
-			ci,
+			checkInfo,
 			depth,
 			&pFlashlight,
 			score,
 			cutNode,
 			beta,
-			newDepth
-			);
+			newDepth);
 
-		this->ExplorerPlainStep13c(
+
+		this->explorePlain_10i400j180k_updateCurrentMove(
 			isContinue,
 			ourCarriage,
 			captureOrPawnPromotion,
@@ -347,19 +356,19 @@ split_point_start:
 			newDepth,
 			&pFlashlight,
 			beta,
-			ci,
+			checkInfo,
 			isPVMove,
 			playedMoveCount,
-			movesSearched
-			);
+			movesSearched);
 		if (isContinue) { continue; }
+
 
 		// step14
 		this->ExplorerPlainStep14(
 			pos,
 			move,
 			st,
-			ci,
+			checkInfo,
 			givesCheck,
 			&pFlashlight
 			);

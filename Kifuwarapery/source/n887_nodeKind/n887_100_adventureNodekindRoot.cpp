@@ -62,7 +62,7 @@ AdventureNodekindRoot g_NODEKIND_ROOT;
 /// <param name="depth"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-ScoreIndex AdventureNodekindRoot::ExplorePlain(
+ScoreIndex AdventureNodekindRoot::explorePlain_10i(
 	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
@@ -108,17 +108,17 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 	// initialize node
 	Monkie* pThisThread = pos.GetThisThread();
 	moveCount = playedMoveCount = 0;
-	inCheck = pos.InCheck();
+	inCheck = pos.inCheck();
 
 	//bool isGotoSplitPointStart = false;
 
-	this->ExplorerPlainStep1b(
+	this->explorePlain_10i200j120k_clearMove(
 		bestScore,
 		&pFlashlight,
 		threatMove,
 		bestMove
 		);
-	this->ExplorerPlainStep1c(
+	this->explorePlain_10i200j140k_mapPly(
 		&pThisThread,
 		pFlashlight
 		);
@@ -127,10 +127,10 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 	//ScoreIndex returnScore = ScoreIndex::ScoreNone;
 
 
-	pos.SetNodesSearched(pos.GetNodesSearched() + 1);
+	pos.setNodesSearched(pos.getNodesSearched() + 1);
 
 	// step4
-	this->ExplorerPlainStep4(
+	this->explorePlain_10i200j200k_getTtScore(
 		excludedMove,
 		&pFlashlight,
 		posKey,
@@ -139,7 +139,7 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 		ourCarriage,
 		ttScore
 		);
-	this->ExplorerPlainStep4x(
+	this->explorePlain_10i200j220k_getTtMove(
 		ttMove,
 		ourCarriage,
 		pTtEntry,
@@ -148,7 +148,7 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 
 	// step5
 	bool isGotoIidStart = false;//NonPVのとき使う☆
-	this->ExplorerPlainStep5(
+	this->explorePlain_10i200j280k_evelScore(
 		isGotoIidStart,
 		ourCarriage,
 		eval,
@@ -170,7 +170,7 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 	// 内側の反復深化探索☆？（＾ｑ＾）
 //iid_start:
 	// step10
-	this->ExplorerPlainStep10_InternalIterativeDeepening(
+	this->explorerPlain_10i300j100k_internalIterativeDeepening(
 		depth,
 		ttMove,
 		inCheck,
@@ -194,7 +194,7 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 		);
 	const CheckInfo ci(pos);
 
-	this->ExplorerPlainStep11a_BeforeLoop_SplitPointStart(
+	this->explorePlain_10i300j200k_beforeLoopSplitPointStart(
 		ttMove,
 		depth,
 		score,
@@ -209,7 +209,7 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 	while (
 		!(
 			// スプリット・ポイントかどうかで、取ってくる指し手が変わる☆
-			move = this->GetNextMove_AtStep11(mp)
+			move = this->getNextMove_10i400j100k(mp)
 			).IsNone()
 		) {
 
@@ -218,7 +218,7 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 
 		bool isContinue = false;
 
-		this->ExplorerPlainStep11c_LoopHeader(
+		this->explorePlain_10i400j120k_resetScore(
 			isContinue,
 			pos,
 			move,
@@ -240,7 +240,7 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 			moveCount
 			);
 
-		this->ExplorerPlainStep11f_LoopHeader(
+		this->explorePlain_10i400j140k_resetState(
 			extension,
 			captureOrPawnPromotion,
 			move,
@@ -251,7 +251,7 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 			);
 
 		// step12
-		this->ExplorerPlainStep12(
+		this->explorerPlain_10i400j160k_recursiveSearchA(
 			ourCarriage,
 			givesCheck,
 			pos,
@@ -269,7 +269,7 @@ ScoreIndex AdventureNodekindRoot::ExplorePlain(
 			newDepth
 			);
 
-		this->ExplorerPlainStep13c(
+		this->explorePlain_10i400j180k_updateCurrentMove(
 			isContinue,
 			ourCarriage,
 			captureOrPawnPromotion,

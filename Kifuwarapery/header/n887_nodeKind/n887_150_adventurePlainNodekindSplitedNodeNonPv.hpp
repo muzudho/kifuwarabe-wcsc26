@@ -33,7 +33,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="cutNode"></param>
 	/// <returns></returns>
-	virtual ScoreIndex ExplorePlain(
+	virtual ScoreIndex explorePlain_10i(
 		OurCarriage& ourCarriage,
 		Position& pos,
 		Flashlight* pFlashlight,//サーチスタック
@@ -88,7 +88,7 @@ public:
 	/// </summary>
 	/// <param name="ppThisThread"></param>
 	/// <param name="pFlashlight"></param>
-	inline void ExplorerPlainStep1c(
+	inline void explorePlain_10i200j140k_mapPly(
 		Monkie** ppThisThread,
 		const Flashlight* pFlashlight
 		)const override {
@@ -104,7 +104,7 @@ public:
 	/// <param name="ourCarriage"></param>
 	/// <param name="pTtEntry"></param>
 	/// <param name="pos"></param>
-	virtual inline void ExplorerPlainStep4x(
+	virtual inline void explorePlain_10i200j220k_getTtMove(
 		Move& ttMove,
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
@@ -149,7 +149,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="ppTtEntry"></param>
 	/// <param name="posKey"></param>
-	virtual inline void ExplorerPlainStep10_InternalIterativeDeepening(
+	virtual inline void explorerPlain_10i300j100k_internalIterativeDeepening(
 		const Depth depth,
 		Move& ttMove,
 		bool& inCheck,
@@ -183,7 +183,7 @@ public:
 			// 探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			// 非PVノードの場合☆
-			g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->ExplorePlain(
+			g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_10i(
 				ourCarriage, pos, (*ppFlashlight), alpha, beta, d, true);
 
 			(*ppFlashlight)->m_skipNullMove = false;
@@ -218,7 +218,7 @@ public:
 	/// </summary>
 	/// <param name="mp"></param>
 	/// <returns></returns>
-	virtual inline Move GetNextMove_AtStep11(
+	virtual inline Move getNextMove_10i400j100k(
 		NextmoveEvent& mp
 		) const override {
 		// スプリットポイントの場合
@@ -236,7 +236,7 @@ public:
 	/// <param name="singularExtensionNode"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="pTtEntry"></param>
-	virtual inline void ExplorerPlainStep11a_BeforeLoop_SplitPointStart(
+	virtual inline void explorePlain_10i300j200k_beforeLoopSplitPointStart(
 		Move& ttMove,
 		const Depth depth,
 		ScoreIndex& score,
@@ -261,7 +261,7 @@ public:
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void ExplorerPlainStep11c_LoopHeader(
+	virtual inline void explorePlain_10i400j120k_resetScore(
 		bool& isContinue,
 		Position& pos,
 		Move& move,
@@ -377,7 +377,7 @@ public:
 	/// <param name="isPVMoveRef"></param>
 	/// <param name="playedMoveCount"></param>
 	/// <param name="movesSearched"></param>
-	virtual inline void ExplorerPlainStep13c(
+	virtual inline void explorePlain_10i400j180k_updateCurrentMove(
 		bool& isContinue,
 		OurCarriage& ourCarriage,
 		bool& captureOrPawnPromotion,

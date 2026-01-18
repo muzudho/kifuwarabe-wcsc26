@@ -252,7 +252,7 @@ public:
 	/// 王手が掛かっているか。
 	/// </summary>
 	/// <returns></returns>
-	bool InCheck() const;
+	bool inCheck() const;
 
 
 	/// <summary>
@@ -493,14 +493,14 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	u64 GetNodesSearched() const;
+	u64 getNodesSearched() const;
 
 
 	/// <summary>
 	/// 
 	/// </summary>
 	/// <param name="n"></param>
-	void SetNodesSearched(const u64 n);
+	void setNodesSearched(const u64 n);
 
 
 	/// <summary>

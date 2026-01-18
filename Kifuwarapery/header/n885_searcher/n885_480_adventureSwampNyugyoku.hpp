@@ -21,7 +21,7 @@ public:
 	/// <param name="pos"></param>
 	static inline void ExploreSwamp(OurCarriage& ourCarriage, const Position& pos)
 	{
-		SYNCCOUT << "info nodes " << pos.GetNodesSearched()
+		SYNCCOUT << "info nodes " << pos.getNodesSearched()
 			<< " time " << ourCarriage.m_stopwatch.GetElapsed() << SYNCENDL;
 
 		if (!ourCarriage.m_signals.m_stop && (ourCarriage.m_limits.m_canPonder || ourCarriage.m_limits.m_isInfinite)) {

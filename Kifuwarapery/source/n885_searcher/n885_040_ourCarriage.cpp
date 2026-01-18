@@ -92,8 +92,8 @@ std::string OurCarriage::PvInfoToUSI(Position& pos, const Ply depth, const Score
 		ss << "info depth " << d
 		   << " seldepth " << selDepth
 		   << " score " << (i == m_pvIdx ? scoreToUSI(s, alpha, beta) : scoreToUSI(s))
-		   << " nodes " << pos.GetNodesSearched()
-		   << " nps " << (0 < time ? pos.GetNodesSearched() * 1000 / time : 0)
+		   << " nodes " << pos.getNodesSearched()
+		   << " nps " << (0 < time ? pos.getNodesSearched() * 1000 / time : 0)
 		   << " time " << time
 		   << " multipv " << i + 1
 		   << " pv ";
@@ -176,7 +176,7 @@ void OurCarriage::detectBishopInDanger(const Position& GetPos) {
 /// <param name="DO"></param>
 /// <param name="backUpSt"></param>
 void Position::DoNullMove(bool DO, StateInfo& backUpSt) {
-	assert(!InCheck());
+	assert(!inCheck());
 
 	StateInfo* src = (DO ? m_st_ : &backUpSt);
 	StateInfo* dst = (DO ? &backUpSt : m_st_);
@@ -319,7 +319,7 @@ void OurCarriage::CheckTime() {
 	if (m_limits.m_visitedNodesNum) {
 		std::unique_lock<Mutex> lock(m_pub.m_mutex_);
 
-		nodes = m_rootPosition.GetNodesSearched();
+		nodes = m_rootPosition.getNodesSearched();
 		for (size_t i = 0; i < m_pub.m_monkies.size(); ++i) {
 			for (int j = 0; j < m_pub.m_monkies[i]->m_splitedNodesSize; ++j) {
 				SplitedNode& splitedNode = m_pub.m_monkies[i]->m_SplitedNodes[j];
@@ -331,7 +331,7 @@ void OurCarriage::CheckTime() {
 					slvMask &= slvMask - 1;
 					Position* pos = m_pub.m_monkies[index]->m_activePosition;
 					if (pos != nullptr) {
-						nodes += pos->GetNodesSearched();
+						nodes += pos->getNodesSearched();
 					}
 				}
 			}
@@ -413,7 +413,7 @@ void Monkie::workAsMonkey() {
 
 
 			// スプリット・ポイント用の検索に変えるぜ☆（＾ｑ＾）
-			pSplitedNode->m_pSword01->GoSearch_AsSplitedNode(
+			pSplitedNode->m_pSword01->startSearch_asSplitedNode(
 				*pSplitedNode, *this->m_pOurCarriage, pos, ss);
 
 
@@ -422,7 +422,7 @@ void Monkie::workAsMonkey() {
 			m_activePosition = nullptr;
 			assert(pSplitedNode->m_slavesMask & (UINT64_C(1) << m_idx));
 			pSplitedNode->m_slavesMask ^= (UINT64_C(1) << m_idx);
-			pSplitedNode->m_nodes += pos.GetNodesSearched();
+			pSplitedNode->m_nodes += pos.getNodesSearched();
 
 			// ［手の空いてる猿は寝かす］フラグが立っているケースで
 			if (this->m_pOurCarriage->m_pub.m_isIdleMonkeyToSleep_

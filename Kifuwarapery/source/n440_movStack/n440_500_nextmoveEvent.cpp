@@ -69,7 +69,7 @@ NextmoveEvent::NextmoveEvent(
 	this->m_endBadCaptures_ = this->m_legalMoves_ + Move::m_MAX_LEGAL_MOVES - 1;
 	this->m_pFlashlightBox_ = pFlashlightBox;
 
-	if (pos.InCheck()) {
+	if (pos.inCheck()) {
 		this->m_phase_ = N06_EvasionSearch;
 	}
 	else {
@@ -119,7 +119,7 @@ NextmoveEvent::NextmoveEvent(
 	assert(depth <= Depth0);
 	m_legalMoves_[0].m_score = INT_MAX; // 番兵のセット
 
-	if (pos.InCheck())
+	if (pos.inCheck())
 		m_phase_ = N10_QEvasionSearch;
 	// todo: ここで Stockfish は qcheck がある。
 	else if (DepthQRecaptures < depth)
@@ -155,7 +155,7 @@ NextmoveEvent::NextmoveEvent(
 )
 	: m_pos_(pos), m_history_(history), m_currMove_(GetFirstMove()), m_lastMove_(GetFirstMove())
 {
-	assert(!pos.InCheck());
+	assert(!pos.inCheck());
 
 	m_legalMoves_[0].m_score = INT_MAX; // 番兵のセット
 	m_phase_ = N12_ProbCut;

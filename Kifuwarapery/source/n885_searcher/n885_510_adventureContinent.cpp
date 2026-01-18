@@ -94,7 +94,7 @@ void AdventureContinent::ExploreContinent(
 
 	const Ply book_ply = dist(g_randomTimeSeed);
 
-	pos.SetNodesSearched(0);
+	pos.setNodesSearched(0);
 
 #if defined LEARN
 	captainsRucksack.m_ownerHerosPub[0]->m_searching = true;
@@ -175,7 +175,7 @@ void AdventureContinent::ExploreContinent(
 
 finalize:
 
-	SYNCCOUT << "info nodes " << pos.GetNodesSearched()
+	SYNCCOUT << "info nodes " << pos.getNodesSearched()
 		<< " time " << captainsRucksack.m_stopwatch.GetElapsed() << SYNCENDL;
 
 	if (!captainsRucksack.m_signals.m_stop && (captainsRucksack.m_limits.m_canPonder || captainsRucksack.m_limits.m_isInfinite)) {
@@ -255,7 +255,7 @@ bool AdventureContinent::IsNyugyokuWin(const Position& pos) {
 	}
 
 	// 五 宣言側の玉に王手がかかっていない。
-	if (pos.InCheck())
+	if (pos.inCheck())
 	{
 		return false;
 	}

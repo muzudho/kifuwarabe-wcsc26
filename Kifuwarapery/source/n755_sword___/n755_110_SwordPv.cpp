@@ -12,7 +12,7 @@ const SwordPv g_SWORD_PV;
 /// <param name="ourCarriage"></param>
 /// <param name="pos"></param>
 /// <param name="pFlashlight"></param>
-void SwordPv::GoSearch_AsSplitedNode(
+void SwordPv::startSearch_asSplitedNode(
 	SplitedNode& ownerSplitedNode, 
 	OurCarriage& ourCarriage,
 	Position& pos,
@@ -22,7 +22,7 @@ void SwordPv::GoSearch_AsSplitedNode(
 	// 探索☆？（＾ｑ＾）
 	//────────────────────────────────────────────────────────────────────────────────
 	// スプリットポイントは検索を開始するぜ☆（＾ｑ＾）
-	g_NODEKIND_SPLITEDNODE_PV.ExplorePlain(
+	g_NODEKIND_SPLITEDNODE_PV.explorePlain_10i(
 		ourCarriage,
 		pos,
 		pFlashlight + 1,

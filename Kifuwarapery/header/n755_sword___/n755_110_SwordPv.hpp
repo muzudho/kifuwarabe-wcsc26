@@ -23,7 +23,7 @@ public:
 	/// <param name="searcher"></param>
 	/// <param name="pos"></param>
 	/// <param name="pFlashlight"></param>
-	virtual void GoSearch_AsSplitedNode(
+	virtual void startSearch_asSplitedNode(
 		SplitedNode& ownerSplitedNode,
 		OurCarriage& searcher,
 		Position& pos,
