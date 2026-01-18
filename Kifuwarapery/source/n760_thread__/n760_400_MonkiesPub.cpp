@@ -70,7 +70,7 @@ void MonkiesPub::initializeMonkiePub_app10(OurCarriage* s)
 /// <summary>
 /// 
 /// </summary>
-void MonkiesPub::Exit() {
+void MonkiesPub::exit_90a500b() {
 	#if defined LEARN
 	#else
 		// checkTime() がデータにアクセスしないよう、先に timer_ を delete

@@ -33,7 +33,7 @@ Key Book::m_ZobTurn;
 /// <summary>
 /// 
 /// </summary>
-void Book::init_app10() {
+void Book::initialize_10a460b_book() {
 	for (Piece p = N00_Empty; p < N31_PieceNone; ++p) {
 		for (Square sq = I9; sq < SquareNum; ++sq) {
 			m_ZobPiece[p][sq] = m_mt64bit_.GetRandom();

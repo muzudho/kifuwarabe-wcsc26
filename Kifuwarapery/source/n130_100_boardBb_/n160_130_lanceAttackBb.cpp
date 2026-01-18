@@ -21,7 +21,7 @@ LanceAttackBb g_lanceAttackBb;
 /// <summary>
 /// 
 /// </summary>
-void LanceAttackBb::initialize_app10()
+void LanceAttackBb::initialize_10a240b_lanceAttacks_()
 {
 	// LanceBlockMask, g_lanceAttack の値を設定する。
 	for (Color c = Black; c < g_COLOR_NUM; ++c) {
@@ -42,7 +42,7 @@ void LanceAttackBb::initialize_app10()
 /// <summary>
 /// 
 /// </summary>
-void LanceAttackBb::initCheckTableLance_app10() {
+void LanceAttackBb::initialize_10a420b_checkTableLance() {
 	for (Color c = Black; c < g_COLOR_NUM; ++c) {
 		const Color opp = ConvColor::OPPOSITE_COLOR10b(c);//色はループで交互になるぜ☆（＾ｑ＾）
 		for (Square sq = I9; sq < SquareNum; ++sq) {
@@ -64,7 +64,7 @@ void LanceAttackBb::initCheckTableLance_app10() {
 /// <summary>
 /// 
 /// </summary>
-void LanceAttackBb::initializeToEdge_app10()
+void LanceAttackBb::initialize_10a320b_lanceToEdge()
 {
 	for (Square sq = I9; sq < SquareNum; ++sq) {
 		this->m_controllBbToEdge_[Black][sq] = this->GetControllBb(Bitboard::CreateAllZeroBB(), Black, sq);

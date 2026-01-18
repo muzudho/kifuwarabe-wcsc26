@@ -29,7 +29,7 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	void initialize_app10();
+	void initialize_10a200b_pawnAttacks_();
 
 
 	/// <summary>

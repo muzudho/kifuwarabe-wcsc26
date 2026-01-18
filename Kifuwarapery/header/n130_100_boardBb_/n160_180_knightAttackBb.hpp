@@ -34,13 +34,13 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	void initialize_app10();
+	void initialize_10a220b_knightAttacks_();
 
 
 	/// <summary>
 	/// 
 	/// </summary>
-	void initCheckTableKnight_app10();
+	void initialize_10a400b_checkTableKnight();
 
 
 	/// <summary>

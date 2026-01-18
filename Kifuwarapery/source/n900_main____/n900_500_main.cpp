@@ -46,10 +46,10 @@ int main01() {
 /// <param name="argv"></param>
 /// <returns></returns>
 int main(int argc, char* argv[]) {
-	App10 main01;
-	main01.initialize_app10();
-	main01.body_app10(argc, argv);
-	main01.finalize_app10();
+	App10 app10;
+	app10.initialize_10a();
+	app10.body_50a(argc, argv);
+	app10.finalize_90a();
 }
 
 

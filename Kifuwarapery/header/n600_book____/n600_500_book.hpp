@@ -43,7 +43,7 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	static void init_app10();
+	static void initialize_10a460b_book();
 
 
 	/// <summary>

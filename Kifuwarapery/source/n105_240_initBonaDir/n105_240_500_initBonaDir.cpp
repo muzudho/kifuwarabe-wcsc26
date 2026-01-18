@@ -12,7 +12,7 @@
 /// ２マス間の距離の種類。桂馬は 1 とする。
 /// </summary>
 /// <param name="squareDistance"></param>
-void TwoSquaresDistanceKindInitializer::initTwoSquaresDistanceKind_app10(TwoSquaresDistanceKind& squareDistance) {
+void TwoSquaresDistanceKindInitializer::initialize_10a440b_twoSquaresDistanceKind(TwoSquaresDistanceKind& squareDistance) {
 	for (Square sq0 = I9; sq0 < SquareNum; ++sq0) {
 		for (Square sq1 = I9; sq1 < SquareNum; ++sq1) {
 			// ボナンザの［向き］を使って、マス距離を更新

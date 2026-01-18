@@ -43,7 +43,7 @@ App10::~App10()
 /// <summary>
 /// 最初の設定（初期化）。
 /// </summary>
-void App10::initialize_app10()
+void App10::initialize_10a()
 {
 	//────────────────────────────────────────────────────────────────────────────────
 	// ビットボードとテーブルの初期化☆（＾ｑ＾）
@@ -54,32 +54,32 @@ void App10::initialize_app10()
 #ifndef SKIP_LONG_TIME_EVAL
 		// 長い時間が掛かる初期化処理をするか？
 		SYNCCOUT << "(^q^) 1- 1. 飛の利きビットボードの初期化！" << SYNCENDL;
-		g_rookAttackBb.initRookAttacks_app10();
+		g_rookAttackBb.initialize_10a100b_rookAttacks_();
 #endif
 
 		SYNCCOUT << "(^q^) 1- 2. 角の利きビットボードの初期化！" << SYNCENDL;
-		g_bishopAttackBb.initBishopAttacks_app10();
+		g_bishopAttackBb.initialize_10a120b_bishopAttacks_();
 
 		SYNCCOUT << "(^q^) 1- 3. 玉の利きビットボードの初期化！" << SYNCENDL;
-		g_kingAttackBb.initialize_app10();
+		g_kingAttackBb.initialize_10a140b_kingAttacks_();
 
 		SYNCCOUT << "(^q^) 1- 4. 金の利きビットボードの初期化！" << SYNCENDL;
-		g_goldAttackBb.initialize_app10();
+		g_goldAttackBb.initialize_10a160b_goldAttacks_();
 
 		SYNCCOUT << "(^q^) 1- 5. 銀の利きビットボードの初期化！" << SYNCENDL;
-		g_silverAttackBb.initialize_app10();
+		g_silverAttackBb.initialize_10a180b_silverAttacks_();
 
 		SYNCCOUT << "(^q^) 1- 6. 歩の利きビットボードの初期化！" << SYNCENDL;
-		g_pawnAttackBb.initialize_app10();
+		g_pawnAttackBb.initialize_10a200b_pawnAttacks_();
 
 		SYNCCOUT << "(^q^) 1- 7. 桂の利きビットボードの初期化！" << SYNCENDL;
-		g_knightAttackBb.initialize_app10();
+		g_knightAttackBb.initialize_10a220b_knightAttacks_();
 
 		SYNCCOUT << "(^q^) 1- 8. 香の利きビットボードの初期化！" << SYNCENDL;
-		g_lanceAttackBb.initialize_app10();
+		g_lanceAttackBb.initialize_10a240b_lanceAttacks_();
 
 		SYNCCOUT << "(^q^) 1- 9. ２つのマスの位置関係が［同筋］［同段］［同右肩上がり］［同右肩下がり］［その他］かを区別するビットボードの初期化！" << SYNCENDL;
-		g_squareRelation.initialize_app10();
+		g_squareRelation.initialize_10a260b_squareRelations_();
 
 
 		// 障害物が無いときの利きの Bitboard
@@ -87,51 +87,51 @@ void App10::initialize_app10()
 
 
 		SYNCCOUT << "(^q^) 1-10. 障害物が無いときの飛の利きビットボードの初期化！" << SYNCENDL;
-		g_rookAttackBb.initializeToEdge_app10();
+		g_rookAttackBb.initialize_10a280b_rookToEdge();
 
 		SYNCCOUT << "(^q^) 1-11. 障害物が無いときの角の利きビットボードの初期化！" << SYNCENDL;
-		g_bishopAttackBb.initializeToEdge_app10();
+		g_bishopAttackBb.initialize_10a300b_bishopToEdge();
 
 		SYNCCOUT << "(^q^) 1-12. 障害物が無いときの香の利きビットボードの初期化！" << SYNCENDL;
-		g_lanceAttackBb.initializeToEdge_app10();
+		g_lanceAttackBb.initialize_10a320b_lanceToEdge();
 
 		SYNCCOUT << "(^q^) 1-13. ［飛車、角の元位置］と、［その利き］の２点のビットボード？の初期化！" << SYNCENDL;
-		g_betweenBb.initialize_app10();
+		g_betweenBb.initialize_10a340b_between();
 
 		SYNCCOUT << "(^q^) 1-14. 金の王手？ビットボードの初期化！" << SYNCENDL;
-		g_goldAttackBb.initCheckTableGold_app10();
+		g_goldAttackBb.initialize_10a360b_checkTableGold();
 
 		SYNCCOUT << "(^q^) 1-15. 銀の王手？ビットボードの初期化！" << SYNCENDL;
-		g_silverAttackBb.initCheckTableSilver_app10();
+		g_silverAttackBb.initialize_10a380b_checkTableSilver();
 
 		SYNCCOUT << "(^q^) 1-16. 桂の王手？ビットボードの初期化！" << SYNCENDL;
-		g_knightAttackBb.initCheckTableKnight_app10();
+		g_knightAttackBb.initialize_10a400b_checkTableKnight();
 
 		SYNCCOUT << "(^q^) 1-17. 香の王手？ビットボードの初期化！" << SYNCENDL;
-		g_lanceAttackBb.initCheckTableLance_app10();
+		g_lanceAttackBb.initialize_10a420b_checkTableLance();
 
 		SYNCCOUT << "(^q^) 1-18. ２点の距離初期化！" << SYNCENDL;
-		TwoSquaresDistanceKindInitializer::initTwoSquaresDistanceKind_app10(g_twoSquaresDistanceKind);
+		TwoSquaresDistanceKindInitializer::initialize_10a440b_twoSquaresDistanceKind(g_twoSquaresDistanceKind);
 
 		SYNCCOUT << "(^q^) I-19. 定跡初期化！" << SYNCENDL;
-		Book::init_app10();
+		Book::initialize_10a460b_book();
 
 		SYNCCOUT << "(^q^) 1-20. 検索テーブル初期化！" << SYNCENDL;
-		initSearchTable_app10();
+		initialize_10a480b_searchTable();
 	}
 
 	SYNCCOUT << "(^q^) 2   . 局面のゾブリストハッシュ初期化！" << SYNCENDL;
-	Position::initZobrist_app10();
+	Position::initialize_10a500b_zobrist();
 
 	SYNCCOUT << "(^q^) 3   . 探索部の初期化！" << SYNCENDL;
-	this->searcher->initializeOurCarriage_app10();
+	this->searcher->initialize_10a520b_ourCarriage();
 
 
 	// 一時オブジェクトの生成と破棄
 
 
 	SYNCCOUT << "(^q^) 4   . 評価関数の初期化！" << SYNCENDL;
-	std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->init_app10(this->searcher->m_engineOptions["Eval_Dir"], true);
+	std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->initialize_10a540b_kkKkpKppStorage(this->searcher->m_engineOptions["Eval_Dir"], true);
 
 	SYNCCOUT << "(^q^) 次は USIループへ！" << SYNCENDL;
 }
@@ -142,18 +142,18 @@ void App10::initialize_app10()
 /// </summary>
 /// <param name="argc"></param>
 /// <param name="argv"></param>
-void App10::body_app10(int argc, char* argv[])
+void App10::body_50a(int argc, char* argv[])
 {
 	UsiLoop usiLoop;
-	usiLoop.Mainloop(argc, argv, *this->searcher);
+	usiLoop.start_50a500b_mainloop(argc, argv, *this->searcher);
 }
 
 
 /// <summary>
 /// 事後処理。
 /// </summary>
-void App10::finalize_app10()
+void App10::finalize_90a()
 {
 	SYNCCOUT << "(^q^)main(6/6): threads.exit! ----> doUSICommandLoop" << SYNCENDL;
-	this->searcher->m_monkiesPub.Exit();
+	this->searcher->m_monkiesPub.exit_90a500b();
 }

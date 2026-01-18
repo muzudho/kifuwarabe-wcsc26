@@ -35,13 +35,13 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void initialize_app10();
+	void initialize_10a180b_silverAttacks_();
 
 
 	/// <summary>
 	/// 銀で王手ビットボード初期化
 	/// </summary>
-	void initCheckTableSilver_app10();
+	void initialize_10a380b_checkTableSilver();
 
 
 	/// <summary>

@@ -47,7 +47,7 @@ extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 /// <summary>
 /// 最初の設定（初期化）を行うぜ☆（＾▽＾）
 /// </summary>
-void OurCarriage::initializeOurCarriage_app10() {
+void OurCarriage::initialize_10a520b_ourCarriage() {
 	EngineOptionSetup engineOptionSetup;
 	engineOptionSetup.initializeMonkiePub_app10( &m_engineOptions, this);
 
@@ -294,7 +294,7 @@ void RootMove::InsertPvInTT(Position& pos) {
 /// <summary>
 /// 
 /// </summary>
-void initSearchTable_app10() {
+void initialize_10a480b_searchTable() {
 	// todo: パラメータは改善の余地あり。
 
 	g_reductions.Initialize();

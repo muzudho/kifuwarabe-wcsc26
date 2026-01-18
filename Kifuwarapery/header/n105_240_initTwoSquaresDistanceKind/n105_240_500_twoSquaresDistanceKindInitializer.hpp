@@ -15,5 +15,5 @@ public:
 	/// ２マス間の距離の種類。桂馬は 1 とする。
 	/// </summary>
 	/// <param name="squareDistance"></param>
-	static void initTwoSquaresDistanceKind_app10(TwoSquaresDistanceKind& squareDistance);
+	static void initialize_10a440b_twoSquaresDistanceKind(TwoSquaresDistanceKind& squareDistance);
 };

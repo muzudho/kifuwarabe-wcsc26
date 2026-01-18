@@ -25,7 +25,7 @@ public:
 public:
 	App10();
 	~App10();
-	void initialize_app10();
-	void body_app10(int argc, char* argv[]);
-	void finalize_app10();
+	void initialize_10a();
+	void body_50a(int argc, char* argv[]);
+	void finalize_90a();
 };

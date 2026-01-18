@@ -122,7 +122,7 @@ public:
 	/// <summary>
 	/// 終了？
 	/// </summary>
-	void Exit();
+	void exit_90a500b();
 
 
 	/// <summary>

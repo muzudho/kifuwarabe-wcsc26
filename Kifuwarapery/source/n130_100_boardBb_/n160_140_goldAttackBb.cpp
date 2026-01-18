@@ -15,7 +15,7 @@ GoldAttackBb g_goldAttackBb;
 /// <summary>
 /// 
 /// </summary>
-void GoldAttackBb::initialize_app10()
+void GoldAttackBb::initialize_10a160b_goldAttacks_()
 {
 	for (Color c = Black; c < g_COLOR_NUM; ++c)
 		for (Square sq = I9; sq < SquareNum; ++sq)
@@ -31,7 +31,7 @@ void GoldAttackBb::initialize_app10()
 /// <summary>
 /// 王手？テーブル・ビットボード初期化
 /// </summary>
-void GoldAttackBb::initCheckTableGold_app10() {
+void GoldAttackBb::initialize_10a360b_checkTableGold() {
 	for (Color c = Black; c < g_COLOR_NUM; ++c) {	// 手番の色
 		const Color opp = ConvColor::OPPOSITE_COLOR10b(c);	// 相手の色☆（＾ｑ＾）
 		for (Square sq = I9; sq < SquareNum; ++sq) {

@@ -2205,7 +2205,7 @@ template Move Position::GetMateMoveIn1Ply<Color::White,Color::Black>();
 /// <summary>
 /// Zobristハッシュ用の乱数キーを初期化します。盤上の各駒タイプ・各マス・各色に対する鍵(m_ZOBRIST_)、持ち駒用の鍵(m_ZOB_HAND_)、および除外用の鍵(m_ZOB_EXCLUSION_)を擬似乱数で設定します。生成された各値は最下位ビットをクリアしており（g_mt64bit.GetRandom() & ~UINT64_C(1)）、zobTurn_などと衝突しないようにしています。
 /// </summary>
-void Position::initZobrist_app10() {
+void Position::initialize_10a500b_zobrist() {
 	// zobTurn_ は 1 であり、その他は 1桁目を使わない。
 	// zobTurn のみ xor で更新する為、他の桁に影響しないようにする為。
 	// hash値の更新は普通は全て xor を使うが、持ち駒の更新の為に +, - を使用した方が都合が良い。

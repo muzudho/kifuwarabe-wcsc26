@@ -45,7 +45,7 @@ struct KkKkpKppStorage1 : public KkKkpKppStorageBase<std::array<s16, 2>, std::ar
 	/// </summary>
 	/// <param name="dirName"></param>
 	/// <param name="Synthesized"></param>
-	void init_app10(const std::string& dirName, const bool Synthesized) {
+	void initialize_10a540b_kkKkpKppStorage(const std::string& dirName, const bool Synthesized) {
 		// 合成された評価関数バイナリがあればそちらを使う。
 		if (Synthesized) {
 			if (ReadSynthesized(dirName))

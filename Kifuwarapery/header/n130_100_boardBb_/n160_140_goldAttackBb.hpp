@@ -35,12 +35,12 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	void initialize_app10();
+	void initialize_10a160b_goldAttacks_();
 
 	/// <summary>
 	/// チェック・テーブル
 	/// </summary>
-	void initCheckTableGold_app10();
+	void initialize_10a360b_checkTableGold();
 
 	/// <summary>
 	/// 利きビットボード取得

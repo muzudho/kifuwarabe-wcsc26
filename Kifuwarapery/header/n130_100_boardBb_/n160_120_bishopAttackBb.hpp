@@ -138,14 +138,14 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	void initBishopAttacks_app10();
+	void initialize_10a120b_bishopAttacks_();
 
 
 	/// <summary>
 	/// 障害物が無いときの利きの Bitboard
 	/// g_rookAttack, g_bishopAttack, g_lanceAttack を設定してから、この関数を呼ぶこと。
 	/// </summary>
-	void initializeToEdge_app10();
+	void initialize_10a300b_bishopToEdge();
 
 
 	/// <summary>

@@ -12,7 +12,7 @@ BetweenBb g_betweenBb;
 /// <summary>
 /// 最初の設定（初期化）を行うぜ☆（＾▽＾）
 /// </summary>
-void BetweenBb::initialize_app10() {
+void BetweenBb::initialize_10a340b_between() {
 	for (Square sq1 = I9; sq1 < SquareNum; ++sq1) {
 		for (Square sq2 = I9; sq2 < SquareNum; ++sq2) {
 			// 既定値、空ビットボード。

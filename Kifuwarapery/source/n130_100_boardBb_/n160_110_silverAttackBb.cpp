@@ -16,7 +16,7 @@ SilverAttackBb g_silverAttackBb;
 /// <summary>
 /// 
 /// </summary>
-void SilverAttackBb::initialize_app10()
+void SilverAttackBb::initialize_10a180b_silverAttacks_()
 {
 	for (Color c = Black; c < g_COLOR_NUM; ++c)
 		for (Square sq = I9; sq < SquareNum; ++sq)
@@ -31,7 +31,7 @@ void SilverAttackBb::initialize_app10()
 /// <summary>
 /// 対局開始時
 /// </summary>
-void SilverAttackBb::initCheckTableSilver_app10() {
+void SilverAttackBb::initialize_10a380b_checkTableSilver() {
 	for (Color c = Black; c < g_COLOR_NUM; ++c) {
 		const Color opp = ConvColor::OPPOSITE_COLOR10b(c);//色はループで交互になるぜ☆（＾ｑ＾）
 		for (Square sq = I9; sq < SquareNum; ++sq) {

@@ -195,7 +195,7 @@ public:
 	/// <summary>
 	/// 初期化？
 	/// </summary>
-	void	initializeOurCarriage_app10();
+	void	initialize_10a520b_ourCarriage();
 
 
 	/// <summary>
@@ -450,7 +450,7 @@ private:
 /// <summary>
 /// メイン関数で１回だけ呼ばれる。
 /// </summary>
-void initSearchTable_app10();
+void initialize_10a480b_searchTable();
 
 
 //────────────────────────────────────────────────────────────────────────────────
