@@ -205,7 +205,7 @@ public:
 	/// </summary>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	virtual inline ScoreIndex GetBetaAtStep11(
+	virtual inline ScoreIndex getBeta_10i300j150k(
 		ScoreIndex beta
 		) const override {
 		// 非PVノードの場合☆（＾ｑ＾）
@@ -342,7 +342,7 @@ public:
 	/// <param name="move"></param>
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
-	virtual inline void ExplorerPlainStep13b(
+	virtual inline void explorePlain_10i400j180k_isContinue(
 		bool& isContinue,
 		Position& pos,
 		Move& move,
@@ -413,7 +413,7 @@ public:
 	/// <param name="playedMoveCount"></param>
 	/// <param name="movesSearched"></param>
 	/// <param name="move"></param>
-	virtual inline void ExplorerPlainStep13d(
+	virtual inline void explorerPlain_10i400j200k_updateMoveSearched(
 		bool& captureOrPawnPromotion,
 		int& playedMoveCount,
 		Move movesSearched[64],
@@ -572,7 +572,7 @@ public:
 	/// <param name="moveCount"></param>
 	/// <param name="mp"></param>
 	/// <param name="cutNode"></param>
-	inline void ExplorerPlainStep19(
+	inline void explorePlain_10i700j140k_forkNewMonkey(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		const Depth depth,
@@ -619,7 +619,7 @@ public:
 	/// <param name="inCheck"></param>
 	/// <param name="pos"></param>
 	/// <param name="movesSearched"></param>
-	inline void ExplorerPlainStep20(
+	inline void explorePlain_10i800j200k_backwardProcess(
 		int& moveCount,
 		Move& excludedMove,
 		OurCarriage& ourCarriage,

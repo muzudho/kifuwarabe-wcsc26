@@ -286,7 +286,7 @@ iid_start:
 		depth,
 		ourCarriage.m_history,
 		pFlashlight,
-		this->GetBetaAtStep11(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
+		this->getBeta_10i300j150k(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
 		);
 	const CheckInfo ci(pos);
 
@@ -375,7 +375,7 @@ iid_start:
 			);
 		if (isContinue) { continue; }
 
-		this->ExplorerPlainStep13b(
+		this->explorePlain_10i400j180k_isContinue(
 			isContinue,
 			pos,
 			move,
@@ -408,7 +408,7 @@ iid_start:
 			);
 		if (isContinue) { continue; }
 
-		this->ExplorerPlainStep13d(
+		this->explorerPlain_10i400j200k_updateMoveSearched(
 			captureOrPawnPromotion,
 			playedMoveCount,
 			movesSearched,
@@ -494,7 +494,7 @@ iid_start:
 		if (isBreak) { break; }
 
 		// step19
-		this->ExplorerPlainStep19(
+		this->explorePlain_10i700j140k_forkNewMonkey(
 			isBreak,
 			ourCarriage,
 			depth,
@@ -517,7 +517,7 @@ iid_start:
 
 
 	// あれば、ここで帰り際の処理（＾～＾）
-	this->ExplorerPlainStep20(
+	this->explorePlain_10i800j200k_backwardProcess(
 		moveCount,
 		excludedMove,
 		ourCarriage,

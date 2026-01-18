@@ -191,7 +191,7 @@ public:
 	/// <param name="pSword"></param>
 	/// <param name="cutNode"></param>
 	template <bool Fake>
-	void ForkNewFighter(
+	void ForkNewMonkey(
 		Position& pos,
 		Flashlight* pFlashlightBox,
 		const ScoreIndex alpha,

@@ -267,7 +267,7 @@ split_point_start:
 		depth,
 		ourCarriage.m_history,
 		pFlashlight,
-		this->GetBetaAtStep11(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
+		this->getBeta_10i300j150k(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
 		);
 
 

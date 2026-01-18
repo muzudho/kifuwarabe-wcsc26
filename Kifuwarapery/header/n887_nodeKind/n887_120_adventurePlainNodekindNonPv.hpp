@@ -198,7 +198,7 @@ public:
 	/// </summary>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	virtual inline ScoreIndex GetBetaAtStep11(
+	virtual inline ScoreIndex getBeta_10i300j150k(
 		ScoreIndex beta
 		) const override {
 		// 非PVノードの場合☆（＾ｑ＾）
@@ -585,7 +585,7 @@ public:
 	/// <param name="moveCount"></param>
 	/// <param name="mp"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void ExplorerPlainStep19(
+	virtual inline void explorePlain_10i700j140k_forkNewMonkey(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		const Depth depth,
@@ -607,7 +607,7 @@ public:
 			&& (*ppThisThread)->m_splitedNodesSize < g_MaxSplitedNodesPerThread)
 		{
 			assert(bestScore < beta);
-			(*ppThisThread)->ForkNewFighter<OurCarriage::FakeSplit>(
+			(*ppThisThread)->ForkNewMonkey<OurCarriage::FakeSplit>(
 				pos,
 				*ppFlashlight,
 				alpha,

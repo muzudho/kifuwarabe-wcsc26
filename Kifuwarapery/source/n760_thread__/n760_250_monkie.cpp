@@ -104,7 +104,7 @@ void Monkie::WaitFor(volatile const bool& b) {
 /// <param name="pSword"></param>
 /// <param name="cutNode"></param>
 template <bool Fake>
-void Monkie::ForkNewFighter(
+void Monkie::ForkNewMonkey(
 	Position& pos,
 	Flashlight* pFlashlightBox,
 	const ScoreIndex alpha,
@@ -206,7 +206,7 @@ void Monkie::ForkNewFighter(
 /// <param name="pSword"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-template void Monkie::ForkNewFighter<true >(
+template void Monkie::ForkNewMonkey<true >(
 	Position& pos,
 	Flashlight* ss,
 	const ScoreIndex alpha,
@@ -237,7 +237,7 @@ template void Monkie::ForkNewFighter<true >(
 /// <param name="pSword"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-template void Monkie::ForkNewFighter<false>(
+template void Monkie::ForkNewMonkey<false>(
 	Position& pos,
 	Flashlight* ss,
 	const ScoreIndex alpha,
