@@ -277,7 +277,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_10i(
 			newDepth);
 
 
-		this->explorePlain_10i400j180k_updateCurrentMove(
+		this->explorePlain_10i400j200k_updateCurrentMove(
 			isContinue,
 			ourCarriage,
 			captureOrPawnPromotion,
@@ -301,7 +301,7 @@ ScoreIndex AdventureNodekindRoot::explorePlain_10i(
 		if (isContinue) { continue; }
 
 
-		this->explorerPlain_10i400j200k_updateMoveSearched(
+		this->explorerPlain_10i400j220k_updateMoveSearched(
 			captureOrPawnPromotion,
 			playedMoveCount,
 			movesSearched,

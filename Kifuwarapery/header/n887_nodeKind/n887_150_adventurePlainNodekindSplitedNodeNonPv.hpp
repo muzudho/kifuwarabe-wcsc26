@@ -16,7 +16,8 @@
 /// <summary>
 /// 
 /// </summary>
-class AdventureNodekindSplitedNodeNonPv : public AdventureNodekindAbstract {
+class AdventureNodekindSplitedNodeNonPv : public AdventureNodekindAbstract
+{
 
 
 public:
@@ -124,7 +125,7 @@ public:
 	/// <param name="beta"></param>
 	/// <param name="ttScore"></param>
 	/// <returns></returns>
-	virtual inline bool GetConditionInStep4y(
+	virtual inline bool getCondition_10i200j240k100L(
 		const TTEntry* pTtEntry,
 		ScoreIndex& beta,
 		ScoreIndex& ttScore
@@ -216,19 +217,6 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="mp"></param>
-	/// <returns></returns>
-	virtual inline Move getNextMove_10i400j100k(
-		NextmoveEvent& mp
-		) const override {
-		// スプリットポイントの場合
-		return mp.GetNextMove_SplitedNode();
-	};
-
-
-	/// <summary>
-	/// 
-	/// </summary>
 	/// <param name="ttMove"></param>
 	/// <param name="depth"></param>
 	/// <param name="score"></param>
@@ -244,12 +232,25 @@ public:
 		bool& singularExtensionNode,
 		Move& excludedMove,
 		const TTEntry* pTtEntry
-		)const override
+	)const override
 	{
 		// ルートでない場合はこういう感じ☆（＾ｑ＾）
 		score = bestScore;
 		singularExtensionNode = false;
 	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="mp"></param>
+	/// <returns></returns>
+	virtual inline Move getNextMove_10i400j100k(
+		NextmoveEvent& mp
+		) const override {
+		// スプリットポイントの場合
+		return mp.GetNextMove_SplitedNode();
+	};
 
 
 	/// <summary>
@@ -324,7 +325,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="moveCount"></param>
 	/// <returns></returns>
-	virtual inline const Depth GetPredictedDepthInStep13a(
+	virtual inline const Depth getPredictedDepth_10i400j170k100L(
 		Depth& newDepth,
 		const Depth depth,
 		int& moveCount
@@ -377,7 +378,7 @@ public:
 	/// <param name="isPVMoveRef"></param>
 	/// <param name="playedMoveCount"></param>
 	/// <param name="movesSearched"></param>
-	virtual inline void explorePlain_10i400j180k_updateCurrentMove(
+	virtual inline void explorePlain_10i400j200k_updateCurrentMove(
 		bool& isContinue,
 		OurCarriage& ourCarriage,
 		bool& captureOrPawnPromotion,
@@ -413,7 +414,7 @@ public:
 	/// <param name="playedMoveCount"></param>
 	/// <param name="movesSearched"></param>
 	/// <param name="move"></param>
-	virtual inline void explorerPlain_10i400j200k_updateMoveSearched(
+	virtual inline void explorerPlain_10i400j220k_updateMoveSearched(
 		bool& captureOrPawnPromotion,
 		int& playedMoveCount,
 		Move movesSearched[64],
@@ -479,7 +480,7 @@ public:
 	/// <param name="score"></param>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	virtual inline bool IsBetaLargeAtStep16c(
+	virtual inline bool isBetaLarge_10i600j140k100L(
 		ScoreIndex& score,
 		ScoreIndex& beta
 		) const override {
@@ -551,7 +552,6 @@ public:
 				return;
 			}
 		}
-
 	}
 
 
@@ -645,7 +645,7 @@ public:
 	/// </summary>
 	/// <param name="bestMoveExists"></param>
 	/// <returns></returns>
-	inline Bound GetBoundAtStep20(bool bestMoveExists) const override {
+	inline Bound getBound_10i800j200k600L(bool bestMoveExists) const override {
 		return Bound::BoundUpper;
 	}
 };

@@ -208,7 +208,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_10i(
 	if (isGotoIidStart) { goto iid_start; }
 
 
-	this->ExplorerPlainStep6_NonPV(
+	this->explorePlain_10i200j300k_nonPV(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -221,7 +221,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_10i(
 	if (isReturnWithScore) { return returnScore; }
 
 
-	this->ExplorerPlainStep7(
+	this->explorePlain_10i200j320k(
 		isReturnWithScore,
 		returnScore,
 		&pFlashlight,
@@ -231,7 +231,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_10i(
 	if (isReturnWithScore) { return returnScore; }
 
 
-	this->ExplorerPlainStep8_NonPV(
+	this->explorePlain_10i200j340k_nonPV(
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
@@ -247,7 +247,7 @@ ScoreIndex AdventureNodekindNonPv::explorePlain_10i(
 	if (isReturnWithScore) { return returnScore; }
 
 
-	this->ExplorerPlainStep9(
+	this->explorePlain_10i200j360k(
 		isReturnWithScore,
 		ourCarriage,
 		depth,
@@ -385,7 +385,7 @@ iid_start:
 		if (isContinue) { continue; }
 
 
-		this->explorePlain_10i400j180k_updateCurrentMove(
+		this->explorePlain_10i400j200k_updateCurrentMove(
 			isContinue,
 			ourCarriage,
 			captureOrPawnPromotion,
@@ -409,7 +409,7 @@ iid_start:
 		if (isContinue) { continue; }
 
 
-		this->explorerPlain_10i400j200k_updateMoveSearched(
+		this->explorerPlain_10i400j220k_updateMoveSearched(
 			captureOrPawnPromotion,
 			playedMoveCount,
 			movesSearched,

@@ -192,7 +192,7 @@ public:
 	/// <param name="beta"></param>
 	/// <param name="ttScore"></param>
 	/// <returns></returns>
-	virtual inline bool GetConditionInStep4y(
+	virtual inline bool getCondition_10i200j240k100L(
 		const TTEntry* pTtEntry,
 		ScoreIndex& beta,
 		ScoreIndex& ttScore
@@ -245,7 +245,7 @@ public:
 	/// <param name="ttMove"></param>
 	/// <param name="pos"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void ExplorerPlainStep6_NonPV(
+	virtual inline void explorePlain_10i200j300k_nonPV(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
 		OurCarriage& ourCarriage,
@@ -269,7 +269,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="beta"></param>
 	/// <param name="eval"></param>
-	virtual inline void ExplorerPlainStep7(
+	virtual inline void explorePlain_10i200j320k(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
 		Flashlight** ppFlashlight,
@@ -296,7 +296,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="cutNode"></param>
 	/// <param name="threatMove"></param>
-	virtual inline void ExplorerPlainStep8_NonPV(
+	virtual inline void explorePlain_10i200j340k_nonPV(
 		bool& isReturnWithScore,
 		ScoreIndex& returnScore,
 		OurCarriage& ourCarriage,
@@ -328,7 +328,7 @@ public:
 	/// <param name="st"></param>
 	/// <param name="score"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void ExplorerPlainStep9(
+	virtual inline void explorePlain_10i200j360k(
 		bool& isReturnWithScore,
 		OurCarriage& ourCarriage,
 		const Depth& depth,
@@ -423,19 +423,6 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="mp"></param>
-	/// <returns></returns>
-	virtual inline Move getNextMove_10i400j100k(
-		NextmoveEvent& mp
-		) const override {
-		// 非スプリットポイントの場合
-		return mp.GetNextMove_NonSplitedNode();
-	};
-
-
-	/// <summary>
-	/// 
-	/// </summary>
 	/// <param name="ttMove"></param>
 	/// <param name="depth"></param>
 	/// <param name="score"></param>
@@ -450,13 +437,25 @@ public:
 		ScoreIndex& bestScore,
 		bool& singularExtensionNode,
 		Move& excludedMove,
-		const TTEntry* pTtEntry
-		)const override
+		const TTEntry* pTtEntry) const override
 	{
 		// ルートはこういう感じ☆（＾ｑ＾）
 		score = bestScore;
 		singularExtensionNode = false;
 	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="mp"></param>
+	/// <returns></returns>
+	virtual inline Move getNextMove_10i400j100k(
+		NextmoveEvent& mp
+		) const override {
+		// 非スプリットポイントの場合
+		return mp.GetNextMove_NonSplitedNode();
+	};
 
 
 	/// <summary>
@@ -529,7 +528,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="moveCount"></param>
 	/// <returns></returns>
-	virtual inline const Depth GetPredictedDepthInStep13a(
+	virtual inline const Depth getPredictedDepth_10i400j170k100L(
 		Depth& newDepth,
 		const Depth depth,
 		int& moveCount
@@ -543,7 +542,7 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void LockInStep13a(
+	virtual inline void lock_10i400j170k300L(
 		SplitedNode** ppSplitedNode
 		) const override
 	{
@@ -556,7 +555,7 @@ public:
 	/// </summary>
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestScore"></param>
-	virtual inline void LockAndUpdateBestScoreInStep13a(
+	virtual inline void lockAndUpdateBestScore_10i400j170k200L(
 		SplitedNode** ppSplitedNode,
 		ScoreIndex& bestScore
 		) const override {
@@ -607,7 +606,7 @@ public:
 	/// <param name="isPVMoveRef"></param>
 	/// <param name="playedMoveCount"></param>
 	/// <param name="movesSearched"></param>
-	virtual inline void explorePlain_10i400j180k_updateCurrentMove(
+	virtual inline void explorePlain_10i400j200k_updateCurrentMove(
 		bool& isContinue,
 		OurCarriage& ourCarriage,
 		bool& captureOrPawnPromotion,
@@ -691,7 +690,7 @@ public:
 	/// <param name="score"></param>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	virtual inline bool IsBetaLargeAtStep16c(
+	virtual inline bool isBetaLarge_10i600j140k100L(
 		ScoreIndex& score,
 		ScoreIndex& beta
 		) const override {
@@ -843,7 +842,7 @@ public:
 	/// </summary>
 	/// <param name="bestMoveExists"></param>
 	/// <returns></returns>
-	virtual inline Bound GetBoundAtStep20(bool bestMoveExists) const override {
+	virtual inline Bound getBound_10i800j200k600L(bool bestMoveExists) const override {
 		return bestMoveExists ? Bound::BoundExact : Bound::BoundUpper;
 	}
 };

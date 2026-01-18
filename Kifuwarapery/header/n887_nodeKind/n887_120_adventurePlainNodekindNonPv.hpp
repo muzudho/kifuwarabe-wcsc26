@@ -121,7 +121,7 @@ public:
 	/// <param name="beta"></param>
 	/// <param name="ttScore"></param>
 	/// <returns></returns>
-	virtual inline bool GetConditionInStep4y(
+	virtual inline bool getCondition_10i200j240k100L(
 		const TTEntry* pTtEntry,
 		ScoreIndex& beta,
 		ScoreIndex& ttScore
@@ -209,19 +209,6 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="mp"></param>
-	/// <returns></returns>
-	virtual inline Move getNextMove_10i400j100k(
-		NextmoveEvent& mp
-		) const override {
-		// 非スプリットポイントの場合
-		return mp.GetNextMove_NonSplitedNode();
-	};
-
-
-	/// <summary>
-	/// 
-	/// </summary>
 	/// <param name="ttMove"></param>
 	/// <param name="depth"></param>
 	/// <param name="score"></param>
@@ -236,8 +223,7 @@ public:
 		ScoreIndex& bestScore,
 		bool& singularExtensionNode,
 		Move& excludedMove,
-		const TTEntry* pTtEntry
-		)const override
+		const TTEntry* pTtEntry) const override
 	{
 		// ルートでない場合はこういう感じ☆（＾ｑ＾）
 		score = bestScore;
@@ -247,6 +233,19 @@ public:
 			&& (pTtEntry->GetBoundKind() & Bound::BoundLower)
 			&& depth - 3 * Depth::OnePly <= pTtEntry->GetDepth();
 	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="mp"></param>
+	/// <returns></returns>
+	virtual inline Move getNextMove_10i400j100k(
+		NextmoveEvent& mp) const override
+	{
+		// 非スプリットポイントの場合
+		return mp.GetNextMove_NonSplitedNode();
+	};
 
 
 	/// <summary>
@@ -307,7 +306,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="moveCount"></param>
 	/// <returns></returns>
-	virtual inline const Depth GetPredictedDepthInStep13a(
+	virtual inline const Depth getPredictedDepth_10i400j170k100L(
 		Depth& newDepth,
 		const Depth depth,
 		int& moveCount
@@ -321,10 +320,11 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void LockInStep13a(
-		SplitedNode** ppSplitedNode
-		) const override
-	{
+	/// <param name="bestScore"></param>
+	virtual inline void lockAndUpdateBestScore_10i400j170k200L(
+		SplitedNode** ppSplitedNode,
+		ScoreIndex& bestScore
+	) const override {
 		// 非スプリット・ポイントではスルー☆！（＾ｑ＾）
 	}
 
@@ -333,11 +333,10 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="ppSplitedNode"></param>
-	/// <param name="bestScore"></param>
-	virtual inline void LockAndUpdateBestScoreInStep13a(
-		SplitedNode** ppSplitedNode,
-		ScoreIndex& bestScore
-		) const override {
+	virtual inline void lock_10i400j170k300L(
+		SplitedNode** ppSplitedNode
+		) const override
+	{
 		// 非スプリット・ポイントではスルー☆！（＾ｑ＾）
 	}
 
@@ -365,7 +364,7 @@ public:
 	/// <param name="isPVMoveRef"></param>
 	/// <param name="playedMoveCount"></param>
 	/// <param name="movesSearched"></param>
-	virtual inline void explorePlain_10i400j180k_updateCurrentMove(
+	virtual inline void explorePlain_10i400j200k_updateCurrentMove(
 		bool& isContinue,
 		OurCarriage& ourCarriage,
 		bool& captureOrPawnPromotion,
@@ -395,20 +394,6 @@ public:
 
 
 	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="alpha"></param>
-	/// <param name="ppSplitedNode"></param>
-	virtual inline void updateAlpha_10i500j500k200L(
-		ScoreIndex& alpha,
-		SplitedNode** ppSplitedNode
-		) const override {
-
-		// 非スプリットノードではスルー☆！（＾ｑ＾）
-	}
-
-
-	/// <summary>
 	/// Pvノードかどうかで手続きが変わるぜ☆！（＾ｑ＾）
 	/// </summary>
 	/// <param name="ppFlashlight"></param>
@@ -420,12 +405,26 @@ public:
 		const Depth depth,
 		int& moveCount,
 		const bool cutNode
-		) const override {
+	) const override {
 		// 非Pvノードのとき☆！（＾ｑ＾）
 		(*ppFlashlight)->m_reduction = g_reductions.DoReduction_NotPvNode(depth, moveCount);
 		if (cutNode) {
 			(*ppFlashlight)->m_reduction += Depth::OnePly;
 		}
+	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="alpha"></param>
+	/// <param name="ppSplitedNode"></param>
+	virtual inline void updateAlpha_10i500j500k200L(
+		ScoreIndex& alpha,
+		SplitedNode** ppSplitedNode
+		) const override {
+
+		// 非スプリットノードではスルー☆！（＾ｑ＾）
 	}
 
 
@@ -479,7 +478,7 @@ public:
 	/// <param name="score"></param>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	virtual inline bool IsBetaLargeAtStep16c(
+	virtual inline bool isBetaLarge_10i600j140k100L(
 		ScoreIndex& score,
 		ScoreIndex& beta
 		) const override {
@@ -564,7 +563,6 @@ public:
 				return;
 			}
 		}
-
 	}
 
 
@@ -646,7 +644,7 @@ public:
 	/// </summary>
 	/// <param name="bestMoveExists"></param>
 	/// <returns></returns>
-	inline Bound GetBoundAtStep20(bool bestMoveExists) const override {
+	inline Bound getBound_10i800j200k600L(bool bestMoveExists) const override {
 		return Bound::BoundUpper;
 	}
 };

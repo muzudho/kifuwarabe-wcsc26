@@ -338,7 +338,7 @@ split_point_start:
 			newDepth);
 
 
-		this->explorePlain_10i400j180k_updateCurrentMove(
+		this->explorePlain_10i400j200k_updateCurrentMove(
 			isContinue,
 			ourCarriage,
 			captureOrPawnPromotion,
