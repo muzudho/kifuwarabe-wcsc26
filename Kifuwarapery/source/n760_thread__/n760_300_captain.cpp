@@ -12,7 +12,7 @@
 /// <summary>
 /// ワーカースレッド開始☆（＾～＾）
 /// </summary>
-void Orangutan::StartWorkerThread() {
+void Orangutan::workAsMonkey() {
 	while (true) {// エグジットするまで　ずっといるぜ☆
 		{
 			std::unique_lock<Mutex> lock(this->m_sleepLock);

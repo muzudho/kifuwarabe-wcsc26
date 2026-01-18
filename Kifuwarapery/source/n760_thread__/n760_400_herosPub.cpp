@@ -23,10 +23,10 @@
 /// <typeparam name="T"></typeparam>
 /// <param name="s"></param>
 /// <returns></returns>
-template <typename T> T* newThread(OurCarriage* s) {
-	T* th = new T(s);
-	th->m_handle = std::thread(&Monkie::StartWorkerThread, th); // move constructor
-	return th;
+template <typename MONKIE> MONKIE* newThread(OurCarriage* s) {
+	MONKIE* monkie = new MONKIE(s);
+	monkie->m_handleThread = std::thread(&Monkie::workAsMonkey, monkie); // move constructor
+	return monkie;
 }
 
 
@@ -37,7 +37,7 @@ template <typename T> T* newThread(OurCarriage* s) {
 void deleteThread(Monkie* th) {
 	th->m_isEndOfSearch = true;
 	th->NotifyOne();
-	th->m_handle.join(); // Wait for thread termination
+	th->m_handleThread.join(); // Wait for thread termination
 	delete th;
 }
 
@@ -62,7 +62,7 @@ void HerosPub::initialize_10a500b500c(OurCarriage* s)
 
 
 	// オラウータンを追加
-	push_back(newThread<Orangutan>(s));
+	this->m_monkies.push_back(newThread<Orangutan>(s));
 	ReadUSIOptions(s);
 }
 
@@ -77,7 +77,7 @@ void HerosPub::exit_90a500b() {
 	deleteThread(m_pChimpanzee_);
 #endif
 
-	for (auto elem : *this) {
+	for (auto elem : (*this).m_monkies) {
 		deleteThread(elem);
 	}
 }
@@ -104,13 +104,13 @@ void HerosPub::ReadUSIOptions(OurCarriage* searcher) {
 	) * OnePly;
 	assert(0 < numberOfThreads);
 
-	while (size() < numberOfThreads) {
-		push_back(newThread<Monkie>(searcher));
+	while (this->m_monkies.size() < numberOfThreads) {
+		this->m_monkies.push_back(newThread<Monkie>(searcher));
 	}
 
-	while (numberOfThreads < size()) {
-		deleteThread(back());
-		pop_back();
+	while (numberOfThreads < this->m_monkies.size()) {
+		deleteThread(this->m_monkies.back());
+		this->m_monkies.pop_back();
 	}
 }
 
@@ -121,7 +121,7 @@ void HerosPub::ReadUSIOptions(OurCarriage* searcher) {
 /// <param name="master"></param>
 /// <returns></returns>
 Monkie* HerosPub::GetAvailableSlave(Monkie* master) const {
-	for (auto elem : *this) {
+	for (auto elem : (*this).m_monkies) {
 		if (elem->SetLastSplitNodeSlavesMask(master)) {
 			return elem;
 		}

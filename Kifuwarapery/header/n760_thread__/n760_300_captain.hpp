@@ -52,5 +52,5 @@ public:
 	/// <summary>
 	/// ワーカースレッド開始
 	/// </summary>
-	virtual void StartWorkerThread() override;
+	virtual void workAsMonkey() override;
 };

@@ -106,9 +106,9 @@ public:
 	ConditionVariable m_sleepCond;
 
 	/// <summary>
-	/// 
+	/// 猿に紐づくスレッド
 	/// </summary>
-	std::thread m_handle;
+	std::thread m_handleThread;
 
 	/// <summary>
 	/// 
@@ -155,7 +155,7 @@ public:
 	/// <summary>
 	/// ワーカースレッド開始
 	/// </summary>
-	virtual void StartWorkerThread();
+	virtual void workAsMonkey();
 
 
 	/// <summary>

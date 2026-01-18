@@ -23,11 +23,13 @@ const int g_MaxThreads = 64;
 
 /// <summary>
 ///		<pre>
-/// 元の名前：　ＴｈｒｅａｄＰｏｏｌ
-/// ベクター型。
+/// 猿酒場
+/// 
+///		- 旧名： `ＴhreadPool`
 ///		</pre>
 /// </summary>
-class HerosPub : public std::vector<Monkie*> {
+class HerosPub
+{
 
 
 public:
@@ -48,6 +50,12 @@ public:
 
 
 	// メイン・フィールド
+
+
+	/// <summary>
+	/// 猿たち
+	/// </summary>
+	std::vector<Monkie*> m_monkies;
 
 
 	/// <summary>
@@ -77,7 +85,7 @@ public:
 	/// メインスレッド？
 	/// </summary>
 	/// <returns></returns>
-	Orangutan* GetFirstCaptain() { return static_cast<Orangutan*>((*this)[0]); }
+	Orangutan* GetFirstCaptain() { return static_cast<Orangutan*>((*this).m_monkies[0]); }
 
 
 	/// <summary>

@@ -24,7 +24,7 @@ Monkie::Monkie(OurCarriage* ourCarriage) /*: ＳｐｌｉｔＰｏｉｎｔｓ()
 	this->m_maxPly = 0;
 	this->m_activeSplitedNode = nullptr;
 	this->m_activePosition = nullptr;
-	this->m_idx = ourCarriage->m_monkiesPub.size();
+	this->m_idx = ourCarriage->m_monkiesPub.m_monkies.size();
 }
 
 
@@ -170,7 +170,7 @@ void Monkie::ForkNewFighter(
 	if (1 < slavesCount || Fake) {
 		splitedNode.m_mutex.unlock();
 		this->m_pOurCarriage->m_monkiesPub.m_mutex_.unlock();
-		Monkie::StartWorkerThread();	// ワーカースレッド開始
+		Monkie::workAsMonkey();	// ワーカースレッド開始
 		assert(!m_isBeingSearched);
 		assert(!m_activePosition);
 		this->m_pOurCarriage->m_monkiesPub.m_mutex_.lock();

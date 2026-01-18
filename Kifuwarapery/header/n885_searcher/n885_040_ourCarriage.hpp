@@ -466,8 +466,8 @@ void initialize_10a300b_searchTable();
 /// <returns></returns>
 FORCE_INLINE void		HerosPub::WakeUp(OurCarriage* ourCarriage) {
 	// 全員初期化☆？
-	for (size_t i = 0; i < size(); ++i) {
-		(*this)[i]->m_maxPly = 0;
+	for (size_t i = 0; i < this->m_monkies.size(); ++i) {
+		(*this).m_monkies[i]->m_maxPly = 0;
 	}
 	// フラグを立てる☆？
 	this->m_isSleepWhileIdle_ = ourCarriage->m_engineOptions["Use_Sleeping_Threads"];
