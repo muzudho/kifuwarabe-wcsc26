@@ -642,7 +642,7 @@ public:
 	/// </summary>
 	/// <param name="alpha"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void UpdateAlphaInStep15(
+	virtual inline void updateAlpha_10i500j500k200L(
 		ScoreIndex& alpha,
 		SplitedNode** ppSplitedNode
 		) const override {
@@ -658,7 +658,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void SetReductionInStep15(
+	virtual inline void setReduction_10i500j500k100L(
 		Flashlight** ppFlashlight,
 		const Depth depth,
 		int& moveCount,
@@ -675,7 +675,7 @@ public:
 	/// <param name="doFullDepthSearch"></param>
 	/// <param name="alpha"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void ExplorerPlainStep16a(
+	virtual inline void explorePlain_10i600j100k_updateAlpha(
 		bool& doFullDepthSearch,
 		ScoreIndex& alpha,
 		SplitedNode** ppSplitedNode
@@ -706,7 +706,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestScore"></param>
 	/// <param name="alpha"></param>
-	virtual inline void ExplorerPlainStep18a(
+	virtual inline void explorePlain_10i700j100k_getAlpha(
 		SplitedNode** ppSplitedNode,
 		ScoreIndex& bestScore,
 		ScoreIndex& alpha
@@ -729,7 +729,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestMove"></param>
 	/// <param name="beta"></param>
-	virtual inline void ExplorerPlainStep18c(
+	virtual inline void explorePlain_10i700j120k_getBestUpdateAlpha(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		Move& move,
@@ -832,7 +832,7 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	virtual inline bool GetReturnBeforeStep20() const override {
+	virtual inline bool isReturnBeforeLastProcess_10i800j100k() const override {
 		// 非スプリット・ポイントは　ステップ２０を実行する前に途中抜けはしないぜ☆（＾ｑ＾）
 		return false;
 	}

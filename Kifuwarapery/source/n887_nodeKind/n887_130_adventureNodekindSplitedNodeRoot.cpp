@@ -318,7 +318,7 @@ split_point_start:
 		if (isContinue) { continue; }
 
 		// step14
-		this->ExplorerPlainStep14(
+		this->explorePlain_10i500j100k_doMove(
 			pos,
 			move,
 			st,
@@ -328,7 +328,7 @@ split_point_start:
 			);
 
 		// step15
-		this->ExplorerPlainStep15(
+		this->explorePlain_10i500j500k_recursiveSearch(
 			ourCarriage,
 			depth,
 			isPVMove,
@@ -347,12 +347,12 @@ split_point_start:
 			);
 
 		// step16
-		this->ExplorerPlainStep16a(
+		this->explorePlain_10i600j100k_updateAlpha(
 			doFullDepthSearch,
 			alpha,
 			&pSplitedNode
 			);
-		this->ExplorerPlainStep16b_NonPVAtukai(
+		this->explorePlain_10i600j120k_getScoreNonPV(
 			ourCarriage,
 			doFullDepthSearch,
 			score,
@@ -363,7 +363,7 @@ split_point_start:
 			alpha,
 			cutNode
 			);
-		this->ExplorerPlainStep16c(
+		this->explorerPlain_10i600j140k_getScore(
 			ourCarriage,
 			isPVMove,
 			alpha,
@@ -376,7 +376,7 @@ split_point_start:
 			);
 
 		// step17
-		this->ExplorerPlainStep17(
+		this->explorerPlain_10i600j160k_undoMove(
 			pos,
 			move
 			);
@@ -384,7 +384,7 @@ split_point_start:
 		assert(-ScoreInfinite < score && score < ScoreInfinite);
 
 		// step18
-		this->ExplorerPlainStep18a(
+		this->explorePlain_10i700j100k_getAlpha(
 			&pSplitedNode,
 			bestScore,
 			alpha
@@ -401,7 +401,7 @@ split_point_start:
 			pos
 			);
 		bool isBreak = false;
-		this->ExplorerPlainStep18c(
+		this->explorePlain_10i700j120k_getBestUpdateAlpha(
 			isBreak,
 			ourCarriage,
 			move,
@@ -418,7 +418,12 @@ split_point_start:
 		if (isBreak) { break; }
 	}
 
-	if (this->GetReturnBeforeStep20()) { return bestScore; }
+
+	if (this->isReturnBeforeLastProcess_10i800j100k()) { return bestScore; }
+
+
+	// あれば、ここで帰り際の処理（＾～＾）
+
 
 	return bestScore;
 }

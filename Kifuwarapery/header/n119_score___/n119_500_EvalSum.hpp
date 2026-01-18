@@ -121,6 +121,9 @@ struct EvalSum {
 	}
 
 	union {
+		/// <summary>
+		/// pって何だ（＾～＾）？
+		/// </summary>
 		std::array<std::array<s32, 2>, 3> m_p;
 		struct {
 			u64 m_data[3];

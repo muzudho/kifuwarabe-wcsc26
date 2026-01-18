@@ -431,7 +431,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void SetReductionInStep15(
+	virtual inline void setReduction_10i500j500k100L(
 		Flashlight** ppFlashlight,
 		const Depth depth,
 		int& moveCount,
@@ -457,7 +457,7 @@ public:
 	/// <param name="givesCheck"></param>
 	/// <param name="pos"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void ExplorerPlainStep16c(
+	virtual inline void explorerPlain_10i600j140k_getScore(
 		OurCarriage& ourCarriage,
 		bool& isPVMove,
 		ScoreIndex& alpha,
@@ -524,7 +524,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestMove"></param>
 	/// <param name="beta"></param>
-	virtual inline void ExplorerPlainStep18c(
+	virtual inline void explorePlain_10i700j120k_getBestUpdateAlpha(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		Move& move,
@@ -596,7 +596,7 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	virtual inline bool GetReturnBeforeStep20() const override {
+	virtual inline bool isReturnBeforeLastProcess_10i800j100k() const override {
 		// スプリット・ポイントは　ステップ２０を実行する前に途中抜けするぜ☆（＾ｑ＾）
 		return true;
 	}

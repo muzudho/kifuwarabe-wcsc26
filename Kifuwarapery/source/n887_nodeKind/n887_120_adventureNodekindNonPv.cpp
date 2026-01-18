@@ -416,7 +416,7 @@ iid_start:
 			);
 
 		// step14
-		this->ExplorerPlainStep14(
+		this->explorePlain_10i500j100k_doMove(
 			pos,
 			move,
 			st,
@@ -426,7 +426,7 @@ iid_start:
 			);
 
 		// step15
-		this->ExplorerPlainStep15(
+		this->explorePlain_10i500j500k_recursiveSearch(
 			ourCarriage,
 			depth,
 			isPVMove,
@@ -445,7 +445,7 @@ iid_start:
 			);
 
 		// step16
-		this->ExplorerPlainStep16b_NonPVAtukai(
+		this->explorePlain_10i600j120k_getScoreNonPV(
 			ourCarriage,
 			doFullDepthSearch,
 			score,
@@ -458,7 +458,7 @@ iid_start:
 			);
 
 		// step17
-		this->ExplorerPlainStep17(
+		this->explorerPlain_10i600j160k_undoMove(
 			pos,
 			move
 			);
@@ -478,7 +478,7 @@ iid_start:
 			pos
 			);
 		bool isBreak = false;
-		this->ExplorerPlainStep18c(
+		this->explorePlain_10i700j120k_getBestUpdateAlpha(
 			isBreak,
 			ourCarriage,
 			move,
@@ -513,9 +513,10 @@ iid_start:
 		if (isBreak) { break; }
 	}
 
-	if (this->GetReturnBeforeStep20()) { return bestScore; }
+	if (this->isReturnBeforeLastProcess_10i800j100k()) { return bestScore; }
 
-	// step20
+
+	// あれば、ここで帰り際の処理（＾～＾）
 	this->ExplorerPlainStep20(
 		moveCount,
 		excludedMove,
@@ -530,8 +531,8 @@ iid_start:
 		bestMove,
 		inCheck,
 		pos,
-		movesSearched
-		);
+		movesSearched);
+
 
 	return bestScore;
 }
