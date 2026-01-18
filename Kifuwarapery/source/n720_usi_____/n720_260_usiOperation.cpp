@@ -85,8 +85,8 @@ void UsiOperation::go_50a500b500c(GameStats& gameStats, const Position& pos, std
 		{
 			long long milliseconds;
 			ssCmd >> milliseconds;
-			limits.SetTimeLeftFromStream(Color::Black, milliseconds);
-			gameStats.SetTimeLeftFromStream(Color::Black, milliseconds);
+			limits.setTimeLeftFromStream(Color::Black, milliseconds);
+			gameStats.setTimeLeftFromStream(Color::Black, milliseconds);
 		}
 
         // 後手の残り時間（ミリ秒）
@@ -94,8 +94,8 @@ void UsiOperation::go_50a500b500c(GameStats& gameStats, const Position& pos, std
 		{
 			long long milliseconds;
 			ssCmd >> milliseconds;
-			limits.SetTimeLeftFromStream(Color::White, milliseconds);
-			gameStats.SetTimeLeftFromStream(Color::White, milliseconds);
+			limits.setTimeLeftFromStream(Color::White, milliseconds);
+			gameStats.setTimeLeftFromStream(Color::White, milliseconds);
 		}
 
         // 時間無制限で思考だぜ（＾▽＾）
@@ -105,11 +105,11 @@ void UsiOperation::go_50a500b500c(GameStats& gameStats, const Position& pos, std
 		else if (token == "byoyomi" ||
 				 token == "movetime"   ) {
 			// btime wtime の後に byoyomi が来る前提になっているので良くない。
-			limits.SetMoveTimeFromStream(ssCmd);
-			if (limits.GetMoveTime() != 0) {
+			limits.setMoveTimeFromStream(ssCmd);
+			if (limits.getMoveTime() != 0) {
 //#if !defined(FISCHER_RULE)
 				// フィッシャー・ルールでないときは、秒読みがあるのだろう☆（＾ｑ＾）
-				limits.DecrementMoveTime( pos.getOurCarriage()->m_engineOptions["Byoyomi_Margin"]);
+				limits.decrementMoveTime( pos.getOurCarriage()->m_engineOptions["Byoyomi_Margin"]);
 //#endif
 			}
 		}
@@ -143,7 +143,7 @@ void UsiOperation::go_50a500b500c(GameStats& gameStats, const Position& pos, std
 	pos.getOurCarriage()->m_ourMoves = moves;
 
 	// 木登り（思考）を開始☆
-	pos.getOurCarriage()->m_monkiesPub.startClimbingTree_n10(gameStats, pos, limits, moves);
+	pos.getOurCarriage()->m_monkiesPub.go_50a500b500c500d_awakeMonkies(gameStats, pos, limits, moves);
 }
 
 

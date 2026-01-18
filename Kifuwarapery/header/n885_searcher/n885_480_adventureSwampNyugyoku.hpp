@@ -22,7 +22,7 @@ public:
 	static inline void ExploreSwamp(OurCarriage& ourCarriage, const Position& pos)
 	{
 		SYNCCOUT << "info nodes " << pos.GetNodesVisited()
-			<< " time " << ourCarriage.m_stopwatch.GetElapsed() << SYNCENDL;
+			<< " time " << ourCarriage.m_stopwatch.getElapsed() << SYNCENDL;
 
 		if (!ourCarriage.m_signals.m_isIterationDeepingStop && (ourCarriage.m_limits.m_canPonder || ourCarriage.m_limits.m_isInfinite)) {
 			ourCarriage.m_signals.m_isStopOnPonderHit = true;

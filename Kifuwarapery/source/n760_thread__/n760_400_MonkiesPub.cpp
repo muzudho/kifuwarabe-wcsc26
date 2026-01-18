@@ -156,12 +156,14 @@ void MonkiesPub::waitForThinkFinished()
 
 
 /// <summary>
-/// 思考開始
+///		<pre>
+/// 猿を起こします☆（＾～＾）
+///		</pre>
 /// </summary>
 /// <param name="position"></param>
 /// <param name="limits"></param>
 /// <param name="searchMoves">探索する指し手一覧（＾～＾）？</param>
-void MonkiesPub::startClimbingTree_n10(
+void MonkiesPub::go_50a500b500c500d_awakeMonkies(
 	const GameStats& gameStats,
 	const Position& position,
 	const LimitsDuringGo& limits,
@@ -174,7 +176,7 @@ void MonkiesPub::startClimbingTree_n10(
 	#endif
 
 	// ストップウォッチ計測開始
-	position.getOurCarriage()->m_stopwatch.Restart();
+	position.getOurCarriage()->m_stopwatch.restart();
 
 	// 以下を偽にする
 	//		- ポンダーヒット
@@ -207,7 +209,7 @@ void MonkiesPub::startClimbingTree_n10(
 		GetPos.getOurCarriage()->m_rootMoves.push_back(RootMove(position.GetRucksack()->m_ourMoves[0]));
 
 		// 浅い探索なので、thread 生成、破棄のコストが高い。余分な thread を生成せずに直接探索を呼び出す。
-		GetPos.getOurCarriage()->Think(GetPos.GetRucksack());
+		GetPos.getOurCarriage()->Think(GetPos.GetOurCarriage());
 
 
 	#else

@@ -29,7 +29,7 @@ GameStats::GameStats()
 /// </summary>
 /// <param name="us"></param>
 /// <param name="ssCmd"></param>
-void GameStats::SetTimeLeftFromStream(Color us, long long milliseconds)
+void GameStats::setTimeLeftFromStream(Color us, long long milliseconds)
 {
 	this->m_times[us].push_back(milliseconds);
 }

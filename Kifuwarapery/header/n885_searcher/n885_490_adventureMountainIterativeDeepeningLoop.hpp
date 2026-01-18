@@ -172,11 +172,11 @@ public:
 
 					if (
 						// 思考時間が3秒経過するまで、読み筋を出力しないぜ☆！（＾ｑ＾）
-						3000 < ourCarriage.m_stopwatch.GetElapsed()
+						3000 < ourCarriage.m_stopwatch.getElapsed()
 						// 将棋所のコンソールが詰まるのを防ぐ。
-						&& (depth < 10 || lastInfoTime + 200 < ourCarriage.m_stopwatch.GetElapsed()))
+						&& (depth < 10 || lastInfoTime + 200 < ourCarriage.m_stopwatch.getElapsed()))
 					{
-						lastInfoTime = ourCarriage.m_stopwatch.GetElapsed();
+						lastInfoTime = ourCarriage.m_stopwatch.getElapsed();
 						SYNCCOUT << ourCarriage.PvInfoToUSI(pos, depth, alpha, beta) << SYNCENDL;
 					}
 
@@ -207,12 +207,12 @@ public:
 					(
 						ourCarriage.m_pvIdx + 1 == ourCarriage.m_pvSize ||
 						// 思考時間が3秒経過するまで、読み筋を出力しないぜ☆！（＾ｑ＾）
-						3000 < ourCarriage.m_stopwatch.GetElapsed()
+						3000 < ourCarriage.m_stopwatch.getElapsed()
 					)
 					// 将棋所のコンソールが詰まるのを防ぐ。
-					&& (depth < 10 || lastInfoTime + 200 < ourCarriage.m_stopwatch.GetElapsed()))
+					&& (depth < 10 || lastInfoTime + 200 < ourCarriage.m_stopwatch.getElapsed()))
 				{
-					lastInfoTime = ourCarriage.m_stopwatch.GetElapsed();
+					lastInfoTime = ourCarriage.m_stopwatch.getElapsed();
 					SYNCCOUT << ourCarriage.PvInfoToUSI(pos, depth, alpha, beta) << SYNCENDL;
 				}
 			}
@@ -235,7 +235,7 @@ public:
 
 				// 次のイテレーションを回す時間が無いなら、ストップ
 				if (
-					!ourCarriage.m_timeMgr.CanIterativeDeepingTimeOk(ourCarriage.m_stopwatch.GetElapsed())
+					!ourCarriage.m_timeMgr.CanIterativeDeepingTimeOk(ourCarriage.m_stopwatch.getElapsed())
 					) {
 					stop = true;
 				}
@@ -257,7 +257,7 @@ public:
 						ourCarriage.m_rootMovesByID.size() == 1
 						||
 						// または、まだ反復深化探索していい時間が残ってるなら。
-						ourCarriage.m_timeMgr.CanIterativeDeepingTimeOk(ourCarriage.m_stopwatch.GetElapsed())
+						ourCarriage.m_timeMgr.CanIterativeDeepingTimeOk(ourCarriage.m_stopwatch.getElapsed())
 					)
 				) {
 					const ScoreNumber rBeta = bestScore - 2 * PieceScore::m_capturePawn;

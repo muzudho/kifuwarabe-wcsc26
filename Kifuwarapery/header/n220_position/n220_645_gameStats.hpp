@@ -37,7 +37,7 @@ public:
 	/// </summary>
 	/// <param name="us"></param>
 	/// <param name="ssCmd"></param>
-	void SetTimeLeftFromStream(Color us, long long milliseconds);
+	void setTimeLeftFromStream(Color us, long long milliseconds);
 
 
 	// ========================================

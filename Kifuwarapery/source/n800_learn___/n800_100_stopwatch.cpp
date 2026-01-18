@@ -4,7 +4,7 @@
 /// <summary>
 /// 再スタート☆
 /// </summary>
-void Stopwatch::Restart()
+void Stopwatch::restart()
 {
 	this->m_start_ = std::chrono::system_clock::now();
 }
@@ -14,7 +14,7 @@ void Stopwatch::Restart()
 /// 経過ミリ秒☆
 /// </summary>
 /// <returns></returns>
-int Stopwatch::GetElapsed() const
+int Stopwatch::getElapsed() const
 {
 	using std::chrono::duration_cast;
 	using std::chrono::milliseconds;
@@ -30,9 +30,9 @@ int Stopwatch::GetElapsed() const
 /// 
 /// </summary>
 /// <returns></returns>
-Stopwatch Stopwatch::CreateStopwatchByCurrentTime()
+Stopwatch Stopwatch::createStopwatchByCurrentTime()
 {
 	Stopwatch t;
-	t.Restart();
+	t.restart();
 	return t;
 }

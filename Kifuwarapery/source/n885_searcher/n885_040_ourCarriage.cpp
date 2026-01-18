@@ -67,7 +67,7 @@ void OurCarriage::initialize_10a520b_ourCarriage() {
 std::string OurCarriage::PvInfoToUSI(Position& pos, const Ply depth, const ScoreNumber alpha, const ScoreNumber beta) {
 
 	// 思考時間（ミリ秒。読み筋表示用）
-	const int time = m_stopwatch.GetElapsed();
+	const int time = m_stopwatch.getElapsed();
 
 	const size_t usiPVSize = m_pvSize;
 	Ply selDepth = 0; // 選択的に読んでいる部分の探索深さ。
@@ -360,7 +360,7 @@ void OurCarriage::ChimpanzeeStopped() {
 	}
 
 	// 経過時間☆？
-	const int elapsed = m_stopwatch.GetElapsed();
+	const int elapsed = m_stopwatch.getElapsed();
 
 	// まだ最初の指し手☆？（＾～＾）？
 	const bool isStillAtFirstMove =
@@ -378,7 +378,7 @@ void OurCarriage::ChimpanzeeStopped() {
 	if (
 		(m_limits.IsBrandnewTimeMgr() && noMoreTime)//反復深化探索をしたいときに、もう時間がない☆？（＾ｑ＾）
 		||
-		(m_limits.GetMoveTime() != 0 && m_limits.GetMoveTime() < elapsed)
+		(m_limits.getMoveTime() != 0 && m_limits.getMoveTime() < elapsed)
 		||
 		(m_limits.m_visitedNodesNum != 0 && m_limits.m_visitedNodesNum < nodes)
 	){

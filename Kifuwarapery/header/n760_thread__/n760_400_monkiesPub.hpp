@@ -174,7 +174,7 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="limits"></param>
 	/// <param name="searchMoves"></param>
-	void startClimbingTree_n10(
+	void go_50a500b500c500d_awakeMonkies(
 		const GameStats& gameStats,
 		const Position& pos,
 		const LimitsDuringGo& limits,

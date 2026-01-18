@@ -229,16 +229,16 @@ void TimeManager::Initialize(
 	}
 
 
-	if (limits.GetMoveTime() != 0) {//（＾ｑ＾）いつも　０　な気がするぜ☆
+	if (limits.getMoveTime() != 0) {//（＾ｑ＾）いつも　０　な気がするぜ☆
 		// こんなとこ、実行されないんじゃないかだぜ☆？（＾ｑ＾）？
-		if (this->GetPlanPayBothPlayersSeconds() < limits.GetMoveTime()) {
-			this->SetPlanPayOwnSeconds( std::min(limits.GetMillisecondsLeft(us), limits.GetMoveTime()) - this->GetPredictOpponentPaySeconds() );
+		if (this->GetPlanPayBothPlayersSeconds() < limits.getMoveTime()) {
+			this->SetPlanPayOwnSeconds( std::min(limits.GetMillisecondsLeft(us), limits.getMoveTime()) - this->GetPredictOpponentPaySeconds() );
 		}
-		if (this->GetSaidaiEnchoTime() < limits.GetMoveTime()) {
-			this->SetSaidaiEnchoTime( std::min(limits.GetMillisecondsLeft(us), limits.GetMoveTime()) );
+		if (this->GetSaidaiEnchoTime() < limits.getMoveTime()) {
+			this->SetSaidaiEnchoTime( std::min(limits.GetMillisecondsLeft(us), limits.getMoveTime()) );
 		}
-		this->IncreasePlanPayOwnSeconds( limits.GetMoveTime());
-		this->IncreaseSaidaiEnchoTime( limits.GetMoveTime());
+		this->IncreasePlanPayOwnSeconds( limits.getMoveTime());
+		this->IncreaseSaidaiEnchoTime( limits.getMoveTime());
 		if (limits.GetMillisecondsLeft(us) != 0) {
 			isMoveTime0Clear = true;
 		}
@@ -247,7 +247,7 @@ void TimeManager::Initialize(
 	// ここは仕様になく、勝手に表示している情報だぜ（＾▽＾）
 	//旧表示：optimum_search_time
 	//旧表示：maximum_search_time	
-	SYNCCOUT << "info string old limits move time " << limits.GetMoveTime() << SYNCENDL;
+	SYNCCOUT << "info string old limits move time " << limits.getMoveTime() << SYNCENDL;
 	// SYNCCOUT << "info string limits inc time " << limits.GetIncrement(us) << SYNCENDL; // 加算時間はちゃんと取得できていたぜ☆
 	SYNCCOUT << "info string think seconds budget " << this->GetPlanThinkSeconds()
 		<< " ( plan think seconds " << this->GetPlanPayOwnSeconds()

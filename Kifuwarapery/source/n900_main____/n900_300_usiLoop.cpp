@@ -39,7 +39,7 @@ void measureGenerateMoves(const Position& pos) {
 	}
 	DeliciousBanana* pms = &legalMoves[0];
 	const u64 num = 5000000;
-	Stopwatch t = Stopwatch::CreateStopwatchByCurrentTime();
+	Stopwatch t = Stopwatch::createStopwatchByCurrentTime();
 	if (pos.InCheck()) {
 		for (u64 i = 0; i < num; ++i) {
 			pms = &legalMoves[0];
@@ -56,7 +56,7 @@ void measureGenerateMoves(const Position& pos) {
 			//			pms = generateMoves<Legal>(pms, pos);
 		}
 	}
-	const int elapsed = t.GetElapsed();
+	const int elapsed = t.getElapsed();
 	std::cout << "elapsed = " << elapsed << " [msec]" << std::endl;
 	if (elapsed != 0) {
 		std::cout << "times/s = " << num * 1000 / elapsed << " [times/sec]" << std::endl;
@@ -152,9 +152,9 @@ void UsiLoop::start_50a500b_mainloop(int argc, char* argv[], OurCarriage& search
 			}
 
             // ポンダーヒットのときに、ムーブタイムが０でなければ、消費した時間分、加算する。
-			if (token == "ponderhit" && searcher.m_limits.GetMoveTime() != 0)
+			if (token == "ponderhit" && searcher.m_limits.getMoveTime() != 0)
 			{
-				searcher.m_limits.increaseMoveTime( searcher.m_stopwatch.GetElapsed());
+				searcher.m_limits.increaseMoveTime( searcher.m_stopwatch.getElapsed());
 			}
 		}
 		else if (token == "usinewgame")

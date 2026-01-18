@@ -102,7 +102,7 @@ public:
 			|
 			this->m_visitedNodesNum
 			|
-			this->GetMoveTime()
+			this->getMoveTime()
 			|
 			static_cast<int>(this->m_isInfinite)
 			);
@@ -139,7 +139,7 @@ public:
 	/// </summary>
 	/// <param name="us"></param>
 	/// <param name="ssCmd"></param>
-	inline void SetTimeLeftFromStream(Color us, long long milliseconds) {
+	inline void setTimeLeftFromStream(Color us, long long milliseconds) {
 		this->m_millisecondsLeft[us] = milliseconds;
 	}
 
@@ -148,7 +148,7 @@ public:
 	/// USI原案にあって、将棋所で実装されていない謎の［ムーブタイム］を取得☆（＾ｑ＾）
 	/// </summary>
 	/// <returns></returns>
-	inline int GetMoveTime() const {
+	inline int getMoveTime() const {
 		return this->m_moveTime_;
 	}
 
@@ -174,7 +174,7 @@ public:
 	/// go byoyomi 等の場合に、マージン分減らすのに使う☆？
 	/// </summary>
 	/// <param name="value"></param>
-	inline void DecrementMoveTime(int value) {
+	inline void decrementMoveTime(int value) {
 		this->m_moveTime_ -= value;
 	}
 
@@ -183,7 +183,7 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="ssCmd"></param>
-	inline void SetMoveTimeFromStream(std::istringstream& ssCmd) {
+	inline void setMoveTimeFromStream(std::istringstream& ssCmd) {
 		ssCmd >> this->m_moveTime_;
 	}
 

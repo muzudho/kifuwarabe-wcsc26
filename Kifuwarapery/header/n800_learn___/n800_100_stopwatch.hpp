@@ -16,21 +16,21 @@ public:
 	/// <summary>
 	/// ストップ・ウォッチの再起動
 	/// </summary>
-	void Restart();
+	void restart();
 
 
 	/// <summary>
 	/// 経過時間
 	/// </summary>
 	/// <returns></returns>
-	int GetElapsed() const;
+	int getElapsed() const;
 
 
 	/// <summary>
 	/// 現在時刻で開始したストップ・ウォッチの取得
 	/// </summary>
 	/// <returns></returns>
-	static Stopwatch CreateStopwatchByCurrentTime();
+	static Stopwatch createStopwatchByCurrentTime();
 
 
 private:

@@ -69,7 +69,7 @@ void AdventureContinent::exploreContinent_n10(
 	if (isMoveTime0Clear) {
 		captainsRucksack.m_limits.ZeroClearMoveTime();
 	}
-	SYNCCOUT << "info string limits move time = " << captainsRucksack.m_limits.GetMoveTime() << SYNCENDL;//旧表示はなかった☆
+	SYNCCOUT << "info string limits move time = " << captainsRucksack.m_limits.getMoveTime() << SYNCENDL;//旧表示はなかった☆
 
 
 	//────────────────────────────────────────────────────────────────────────────────
@@ -176,7 +176,7 @@ void AdventureContinent::exploreContinent_n10(
 finalize:
 
 	SYNCCOUT << "info nodes " << pos.GetNodesVisited()
-		<< " time " << captainsRucksack.m_stopwatch.GetElapsed() << SYNCENDL;
+		<< " time " << captainsRucksack.m_stopwatch.getElapsed() << SYNCENDL;
 
 	if (!captainsRucksack.m_signals.m_isIterationDeepingStop && (captainsRucksack.m_limits.m_canPonder || captainsRucksack.m_limits.m_isInfinite)) {
 		captainsRucksack.m_signals.m_isStopOnPonderHit = true;
