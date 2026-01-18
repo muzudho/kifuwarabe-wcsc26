@@ -528,5 +528,8 @@ split_point_start:
 	if (this->isReturn_10a520b500c500d500e500f500g800h400i()) { return bestScore; }
 
 
+	// 木の戻り際で何かあればここで処理（＾～＾）
+
+
 	return bestScore;
 }

@@ -752,7 +752,7 @@ public:
 	/// <param name="inCheck"></param>
 	/// <param name="pos"></param>
 	/// <param name="movesSearched"></param>
-	inline void explorePlain_n800n500(
+	inline void explorePlain_n800n500_workAtReturn(
 		int& moveCount,
 		Move& excludedMove,
 		OurCarriage& ourCarriage,

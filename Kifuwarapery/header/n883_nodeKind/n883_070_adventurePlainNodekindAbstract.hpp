@@ -1604,7 +1604,11 @@ public:
 
 
 	/// <summary>
+	///		<pre>
+	/// 木を戻り際の何か処理（＾～＾）
 	/// 
+	///		- 分岐ノードでは呼び出されないぜ（＾～＾）
+	///		</pre>
 	/// </summary>
 	/// <param name="moveCount"></param>
 	/// <param name="excludedMove"></param>
@@ -1620,7 +1624,7 @@ public:
 	/// <param name="inCheck"></param>
 	/// <param name="pos"></param>
 	/// <param name="movesSearched"></param>
-	virtual inline void explorePlain_n800n500(
+	virtual inline void explorePlain_n800n500_workAtReturn(
 		int& moveCount,
 		Move& excludedMove,
 		OurCarriage& ourCarriage,
@@ -1636,20 +1640,28 @@ public:
 		Position& pos,
 		Move movesSearched[64]) const
 	{
-		if (moveCount == 0) {
+		if (moveCount == 0)
+		{
 			bestScore = !excludedMove.IsNone() ? alpha : UtilScore::MatedIn((*ppFlashlight)->m_ply);
 			return;
 		}
 
-		if (bestScore == -ScoreInfinite) {
+		if (bestScore == -ScoreInfinite)
+		{
 			assert(playedMoveCount == 0);
 			bestScore = alpha;
 		}
 
-		if (beta <= bestScore) {
+		if (beta <= bestScore)
+		{
 			// failed high
-			ourCarriage.m_tt.Store(posKey, ourCarriage.convertScoreToTT(bestScore, (*ppFlashlight)->m_ply), BoundLower, depth,
-				bestMove, (*ppFlashlight)->m_staticEval);
+			ourCarriage.m_tt.Store(
+				posKey,
+				ourCarriage.convertScoreToTT(bestScore, (*ppFlashlight)->m_ply),
+				BoundLower,
+				depth,
+				bestMove,
+				(*ppFlashlight)->m_staticEval);
 
 			if (!bestMove.IsCaptureOrPawnPromotion() && !inCheck) {
 				if (bestMove != (*ppFlashlight)->m_killers[0]) {
@@ -1668,7 +1680,8 @@ public:
 				}
 			}
 		}
-		else {
+		else
+		{
 			// failed low or PV search
 			ourCarriage.m_tt.Store(
 				posKey,
