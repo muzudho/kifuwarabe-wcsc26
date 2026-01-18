@@ -149,7 +149,7 @@ public:
 	/// カットオフが起こったノードだ
 	/// </summary>
 	/// <returns></returns>
-	bool IsUselessSplitedNode() const;
+	bool isUselessSplitedNode() const;
 
 
 	// メイン・メソッド

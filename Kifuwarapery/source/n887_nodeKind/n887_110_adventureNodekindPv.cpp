@@ -62,15 +62,15 @@ AdventureNodekindPv g_NODEKIND_PV;
 /// <param name="depth"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-ScoreNumber AdventureNodekindPv::explorePlain_10a520b500c500d500e500f500g(
+ScoreNumber AdventureNodekindPv::explorePlain_10a520b500c500d500e500f500g_entry(
 	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
 	ScoreNumber alpha,
 	ScoreNumber beta,
 	const Depth depth,
-	const bool cutNode
-	) const {
+	const bool cutNode) const
+{
 
 
 	assert(-ScoreInfinite <= alpha && alpha < beta && beta <= ScoreInfinite);
@@ -157,7 +157,7 @@ ScoreNumber AdventureNodekindPv::explorePlain_10a520b500c500d500e500f500g(
 	if (isReturnWithScore) { return returnScore; }
 
 
-	pos.SetNodesVisited(pos.GetNodesVisited() + 1);
+	pos.setNodesVisited(pos.getNodesVisited() + 1);
 
 
 	// ttScore と ttMove でデリシャス・バナナ（＾～＾）！
@@ -406,7 +406,7 @@ ScoreNumber AdventureNodekindPv::explorePlain_10a520b500c500d500e500f500g(
 		assert(-ScoreInfinite < score && score < ScoreInfinite);
 
 
-		if (ourCarriage.m_signals.m_isIterationDeepingStop || pThisThread->IsUselessSplitedNode()) { return score; }
+		if (ourCarriage.m_signals.m_isIterationDeepingStop || pThisThread->isUselessSplitedNode()) { return score; }
 
 
 		// アップデートα処理
@@ -453,7 +453,7 @@ ScoreNumber AdventureNodekindPv::explorePlain_10a520b500c500d500e500f500g(
 	// ループ後処理
 
 
-	if (this->isReturn_10a520b500c500d500e500f500g800h400i()) { return bestScore; }
+	if (this->explorePlain_10a520b500c500d500e500f500g800h400i_isReturn()) { return bestScore; }
 
 
 	// 木の戻り際で何かあればここで処理（＾～＾）

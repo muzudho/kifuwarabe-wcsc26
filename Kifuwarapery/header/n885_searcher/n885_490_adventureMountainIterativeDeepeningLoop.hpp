@@ -145,7 +145,7 @@ public:
 					//────────────────────────────────────────────────────────────────────────────────
 					// 探索☆？（＾ｑ＾）　１回目のぐるんぐるんだぜ～☆　ルート～☆
 					//────────────────────────────────────────────────────────────────────────────────
-					bestScore = g_NODEKIND_PROGRAMS[NodeKind::No0_Root]->explorePlain_10a520b500c500d500e500f500g(ourCarriage, pos, flashlight + 1, alpha, beta, static_cast<Depth>(depth * OnePly), false);
+					bestScore = g_NODEKIND_PROGRAMS[NodeKind::No0_Root]->explorePlain_10a520b500c500d500e500f500g_entry(ourCarriage, pos, flashlight + 1, alpha, beta, static_cast<Depth>(depth * OnePly), false);
 
 					// 先頭が最善手になるようにソート
 					UtilMoveStack::InsertionSort(ourCarriage.m_rootMovesByID.begin() + ourCarriage.m_pvIdx, ourCarriage.m_rootMovesByID.end());
@@ -271,7 +271,7 @@ public:
 					//────────────────────────────────────────────────────────────────────────────────
 
 
-					const ScoreNumber s = g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_10a520b500c500d500e500f500g(
+					const ScoreNumber s = g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_10a520b500c500d500e500f500g_entry(
 						ourCarriage, pos, flashlight + 1, rBeta - 1, rBeta, (depth - 3) * OnePly, true);
 
 					(flashlight + 1)->m_skipNullMove = false;

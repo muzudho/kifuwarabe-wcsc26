@@ -23,7 +23,7 @@ void SwordRoot::workAsMonkey_10a500b500c500d500e500f_searchAsSplitedNode(
 	// 探索☆？（＾ｑ＾）
 	//────────────────────────────────────────────────────────────────────────────────
 	// スプリットポイントは検索を開始するぜ☆（＾ｑ＾）
-	g_NODEKIND_SPLITEDNODE_ROOT.explorePlain_10a520b500c500d500e500f500g(
+	g_NODEKIND_SPLITEDNODE_ROOT.explorePlain_10a520b500c500d500e500f500g_entry(
 		ourCarriage,
 		pos,
 		pFlashlight + 1,

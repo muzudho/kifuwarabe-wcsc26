@@ -78,7 +78,7 @@ ScoreNumber AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 		return ttScore;
 	}
 
-	pos.SetNodesVisited(pos.GetNodesVisited() + 1);
+	pos.setNodesVisited(pos.getNodesVisited() + 1);
 
 	if (INCHECK) {
 		pFlashlight->m_staticEval = ScoreNone;

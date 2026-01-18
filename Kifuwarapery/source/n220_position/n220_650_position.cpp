@@ -138,7 +138,7 @@ Key Position::GetKeyExcludeTurn() const
 /// 訪問ノード数
 /// </summary>
 /// <returns></returns>
-u64 Position::GetNodesVisited() const
+u64 Position::getNodesVisited() const
 {
 	return this->m_visitedNodes_;
 }
@@ -152,7 +152,7 @@ u64 Position::GetNodesVisited() const
 ///		</pre>
 /// </summary>
 /// <param name="n"></param>
-void Position::SetNodesVisited(const u64 n)
+void Position::setNodesVisited(const u64 n)
 {
 	this->m_visitedNodes_ = n;
 }

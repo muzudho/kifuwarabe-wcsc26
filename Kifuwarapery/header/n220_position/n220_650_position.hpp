@@ -492,14 +492,14 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	u64 GetNodesVisited() const;
+	u64 getNodesVisited() const;
 
 
 	/// <summary>
 	/// 
 	/// </summary>
 	/// <param name="n"></param>
-	void SetNodesVisited(const u64 n);
+	void setNodesVisited(const u64 n);
 
 
 	/// <summary>

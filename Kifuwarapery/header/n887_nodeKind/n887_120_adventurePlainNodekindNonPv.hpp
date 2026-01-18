@@ -34,7 +34,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="cutNode"></param>
 	/// <returns></returns>
-	virtual ScoreNumber explorePlain_10a520b500c500d500e500f500g(
+	virtual ScoreNumber explorePlain_10a520b500c500d500e500f500g_entry(
 		OurCarriage& ourCarriage,
 		Position& pos,
 		Flashlight* pFlashlight,//サーチスタック
@@ -171,7 +171,7 @@ public:
 			// 探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			// 非PVノードの場合☆
-			g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_10a520b500c500d500e500f500g(
+			g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_10a520b500c500d500e500f500g_entry(
 				ourCarriage, pos, (*ppFlashlight), alpha, beta, d, true);
 
 			(*ppFlashlight)->m_skipNullMove = false;
@@ -599,7 +599,7 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	virtual inline bool isReturn_10a520b500c500d500e500f500g800h400i() const override {
+	virtual inline bool explorePlain_10a520b500c500d500e500f500g800h400i_isReturn() const override {
 		// 非スプリット・ポイントは　ステップ２０を実行する前に途中抜けはしないぜ☆（＾ｑ＾）
 		return false;
 	}

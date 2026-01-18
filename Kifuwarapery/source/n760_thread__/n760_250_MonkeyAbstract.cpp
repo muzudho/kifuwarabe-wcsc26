@@ -72,7 +72,7 @@ void Monkey::NotifyOne() {
 /// （カットオフされた）役に立たない分岐ノード
 /// </summary>
 /// <returns></returns>
-bool Monkey::IsUselessSplitedNode() const {
+bool Monkey::isUselessSplitedNode() const {
 	for (SplitedNode* spNode = m_activeSplitedNode; spNode != nullptr; spNode = spNode->m_pParentSplitedNode) {
 		if (spNode->m_isUselessNode) { return true; }
 	}
@@ -186,7 +186,7 @@ void Monkey::ForkNewMonkey(
 	--m_splitedNodesSize;
 	m_activeSplitedNode = splitedNode.m_pParentSplitedNode;
 	m_activePosition = &pos;
-	pos.SetNodesVisited(pos.GetNodesVisited() + splitedNode.m_nodes);
+	pos.setNodesVisited(pos.getNodesVisited() + splitedNode.m_nodes);
 	bestMove = splitedNode.m_bestMove;
 	bestScore = splitedNode.m_bestScore;
 

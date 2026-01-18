@@ -62,7 +62,7 @@ AdventureNodekindRoot g_NODEKIND_ROOT;
 /// <param name="depth"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
+ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g_entry(
 	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
@@ -138,7 +138,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 	//ScoreIndex returnScore = ScoreIndex::ScoreNone;
 
 	// ［訪問ノード数］という情報を設定（＾～＾）
-	pos.SetNodesVisited(pos.GetNodesVisited() + 1);
+	pos.setNodesVisited(pos.getNodesVisited() + 1);
 
 
 	// ttScore と ttMove でデリシャス・バナナ（＾～＾）！
@@ -409,7 +409,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 
 
 		// ［反復深化探索］を止める信号が立っていたり、カットオフされた使われていないノードのとき
-		if (ourCarriage.m_signals.m_isIterationDeepingStop || pHandleMonkey->IsUselessSplitedNode()) { return score; }
+		if (ourCarriage.m_signals.m_isIterationDeepingStop || pHandleMonkey->isUselessSplitedNode()) { return score; }
 
 
 		this->explorePlain_10a520b500c500d500e500f500g700h600i_findRootNode(
@@ -472,7 +472,7 @@ ScoreNumber AdventureNodekindRoot::explorePlain_10a520b500c500d500e500f500g(
 	// ループ後処理
 
 
-	if (this->isReturn_10a520b500c500d500e500f500g800h400i()) { return bestScore; }
+	if (this->explorePlain_10a520b500c500d500e500f500g800h400i_isReturn()) { return bestScore; }
 
 
 	// 木の戻り際で何かあればここで処理（＾～＾）
