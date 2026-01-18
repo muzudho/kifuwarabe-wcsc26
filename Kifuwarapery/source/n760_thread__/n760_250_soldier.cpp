@@ -24,7 +24,7 @@ Monkie::Monkie(OurCarriage* ourCarriage) /*: ＳｐｌｉｔＰｏｉｎｔｓ()
 	this->m_maxPly = 0;
 	this->m_activeSplitedNode = nullptr;
 	this->m_activePosition = nullptr;
-	this->m_idx = ourCarriage->m_monkiesPub.m_monkies.size();
+	this->m_idx = ourCarriage->m_pub.m_monkies.size();
 }
 
 
@@ -121,7 +121,7 @@ void Monkie::ForkNewFighter(
 	assert(pos.IsOK());
 	assert(bestScore <= alpha && alpha < beta && beta <= ScoreInfinite);
 	assert(-ScoreInfinite < bestScore);
-	assert(this->m_pOurCarriage->m_monkiesPub.GetMinSplitDepth() <= depth);
+	assert(this->m_pOurCarriage->m_pub.GetMinSplitDepth() <= depth);
 
 	assert(m_isBeingSearched);
 	assert(m_splitedNodesSize < g_MaxSplitedNodesPerThread);
@@ -147,7 +147,7 @@ void Monkie::ForkNewFighter(
 	splitedNode.m_isUselessNode = false;
 	splitedNode.m_pFlashlightBox = pFlashlightBox;
 
-	this->m_pOurCarriage->m_monkiesPub.m_mutex_.lock();
+	this->m_pOurCarriage->m_pub.m_mutex_.lock();
 	splitedNode.m_mutex.lock();
 
 	++m_splitedNodesSize;
@@ -158,8 +158,8 @@ void Monkie::ForkNewFighter(
 	size_t slavesCount = 1;
 	Monkie* slave;
 
-	while ((slave = this->m_pOurCarriage->m_monkiesPub.GetAvailableSlave(this)) != nullptr
-		&& ++slavesCount <= this->m_pOurCarriage->m_monkiesPub.m_maxThreadsPerSplitedNode_ && !Fake)
+	while ((slave = this->m_pOurCarriage->m_pub.GetAvailableSlave(this)) != nullptr
+		&& ++slavesCount <= this->m_pOurCarriage->m_pub.m_maxThreadsPerSplitedNode_ && !Fake)
 	{
 		splitedNode.m_slavesMask |= UINT64_C(1) << slave->m_idx;
 		slave->m_activeSplitedNode = &splitedNode;
@@ -169,11 +169,11 @@ void Monkie::ForkNewFighter(
 
 	if (1 < slavesCount || Fake) {
 		splitedNode.m_mutex.unlock();
-		this->m_pOurCarriage->m_monkiesPub.m_mutex_.unlock();
+		this->m_pOurCarriage->m_pub.m_mutex_.unlock();
 		Monkie::workAsMonkey();	// ワーカースレッド開始
 		assert(!m_isBeingSearched);
 		assert(!m_activePosition);
-		this->m_pOurCarriage->m_monkiesPub.m_mutex_.lock();
+		this->m_pOurCarriage->m_pub.m_mutex_.lock();
 		splitedNode.m_mutex.lock();
 	}
 
@@ -185,7 +185,7 @@ void Monkie::ForkNewFighter(
 	bestMove = splitedNode.m_bestMove;
 	bestScore = splitedNode.m_bestScore;
 
-	this->m_pOurCarriage->m_monkiesPub.m_mutex_.unlock();
+	this->m_pOurCarriage->m_pub.m_mutex_.unlock();
 	splitedNode.m_mutex.unlock();
 }
 

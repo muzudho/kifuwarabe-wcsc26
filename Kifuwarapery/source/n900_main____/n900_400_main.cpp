@@ -16,7 +16,7 @@
 #include "../../header/n480_tt______/n480_300_tt.hpp"
 #include "../../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
 #include "../../header/n600_book____/n600_500_book.hpp"
-#include "../../header/n760_thread__/n760_400_herosPub.hpp"
+#include "../../header/n760_thread__/n760_400_monkiesPub.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 #include "..\..\header\n900_main____/n900_300_usiLoop.hpp"
 #include "..\..\header\n900_main____\n900_400_main01.hpp"
@@ -155,5 +155,5 @@ void Main01::body_50a(int argc, char* argv[])
 void Main01::finalize_90a()
 {
 	SYNCCOUT << "(^q^)main(6/6): threads.exit! ----> doUSICommandLoop" << SYNCENDL;
-	this->searcher->m_monkiesPub.exit_90a500b();
+	this->searcher->m_pub.exit_90a500b();
 }

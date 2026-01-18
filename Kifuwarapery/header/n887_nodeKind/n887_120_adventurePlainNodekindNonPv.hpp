@@ -602,8 +602,8 @@ public:
 		const bool cutNode
 		)const override {
 
-		if (ourCarriage.m_monkiesPub.GetMinSplitDepth() <= depth
-			&& ourCarriage.m_monkiesPub.GetAvailableSlave(*ppThisThread)
+		if (ourCarriage.m_pub.GetMinSplitDepth() <= depth
+			&& ourCarriage.m_pub.GetAvailableSlave(*ppThisThread)
 			&& (*ppThisThread)->m_splitedNodesSize < g_MaxSplitedNodesPerThread)
 		{
 			assert(bestScore < beta);

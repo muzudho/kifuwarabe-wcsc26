@@ -16,7 +16,7 @@
 #include "../n640_searcher/n640_450_rootMove.hpp"
 #include "../n680_egOption/n680_240_engineOptionsMap.hpp"
 #include "../n640_searcher/n640_440_splitedNode.hpp"
-#include "../n760_thread__/n760_400_herosPub.hpp"
+#include "../n760_thread__/n760_400_monkiesPub.hpp"
 #include "../n800_learn___/n800_100_stopwatch.hpp"
 #include "n885_510_adventureContinent.hpp"
 
@@ -137,9 +137,13 @@ public:
 	Position	m_rootPosition;
 
 	/// <summary>
-	/// スレッズ？
+	///		<pre>
+	/// 猿酒場
+	/// 
+	///		- スレッドプール
+	///		</pre>
 	/// </summary>
-	HerosPub	m_monkiesPub;
+	MonkiesPub	m_pub;
 
 	/// <summary>
 	/// USIオプション？
@@ -464,7 +468,7 @@ void initialize_10a300b_searchTable();
 /// </summary>
 /// <param name="ourCarriage">わたしたちの馬車</param>
 /// <returns></returns>
-FORCE_INLINE void		HerosPub::WakeUp(OurCarriage* ourCarriage) {
+FORCE_INLINE void		MonkiesPub::WakeUp(OurCarriage* ourCarriage) {
 	// 全員初期化☆？
 	for (size_t i = 0; i < this->m_monkies.size(); ++i) {
 		(*this).m_monkies[i]->m_maxPly = 0;
@@ -481,6 +485,6 @@ FORCE_INLINE void		HerosPub::WakeUp(OurCarriage* ourCarriage) {
 ///		</pre>
 /// </summary>
 /// <returns></returns>
-FORCE_INLINE void		HerosPub::Sleep() {
+FORCE_INLINE void		MonkiesPub::Sleep() {
 	this->m_isSleepWhileIdle_ = true;
 }

@@ -5,7 +5,7 @@
 #include "../../header/n560_timeMgr_/n560_100_limitsDuringGo.hpp"
 #include "../../header/n640_searcher/n640_450_rootMove.hpp"
 #include "../../header/n760_thread__/n760_250_soldier.hpp"
-#include "../../header/n760_thread__/n760_400_herosPub.hpp"
+#include "../../header/n760_thread__/n760_400_monkiesPub.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 
 
@@ -49,7 +49,7 @@ void deleteThread(Monkie* th) {
 /// 最初の設定（初期化）を行うぜ☆（＾▽＾）
 /// </summary>
 /// <param name="s"></param>
-void HerosPub::initialize_10a500b500c(OurCarriage* s)
+void MonkiesPub::initialize_10a500b500c(OurCarriage* s)
 {
 	m_isSleepWhileIdle_ = true;
 
@@ -70,7 +70,7 @@ void HerosPub::initialize_10a500b500c(OurCarriage* s)
 /// <summary>
 /// 
 /// </summary>
-void HerosPub::exit_90a500b() {
+void MonkiesPub::exit_90a500b() {
 #if defined LEARN
 #else
 	// checkTime() がデータにアクセスしないよう、先に timer_ を delete
@@ -87,7 +87,7 @@ void HerosPub::exit_90a500b() {
 /// 
 /// </summary>
 /// <param name="searcher"></param>
-void HerosPub::ReadUSIOptions(OurCarriage* searcher) {
+void MonkiesPub::ReadUSIOptions(OurCarriage* searcher) {
 
 	this->m_maxThreadsPerSplitedNode_ = searcher->m_engineOptions["Max_Threads_per_Split_Point"];
 
@@ -120,7 +120,7 @@ void HerosPub::ReadUSIOptions(OurCarriage* searcher) {
 /// </summary>
 /// <param name="master"></param>
 /// <returns></returns>
-Monkie* HerosPub::GetAvailableSlave(Monkie* master) const {
+Monkie* MonkiesPub::GetAvailableSlave(Monkie* master) const {
 	for (auto elem : (*this).m_monkies) {
 		if (elem->SetLastSplitNodeSlavesMask(master)) {
 			return elem;
@@ -134,7 +134,7 @@ Monkie* HerosPub::GetAvailableSlave(Monkie* master) const {
 /// 元の引数名はｍｓｅｃ☆
 /// </summary>
 /// <param name="maxPly"></param>
-void HerosPub::SetCurrWorrior(const int maxPly) {
+void MonkiesPub::SetCurrWorrior(const int maxPly) {
 	m_pChimpanzee_->m_maxPly = maxPly;
 	m_pChimpanzee_->NotifyOne(); // Wake up and restart the timer
 }
@@ -143,7 +143,7 @@ void HerosPub::SetCurrWorrior(const int maxPly) {
 /// <summary>
 /// 
 /// </summary>
-void HerosPub::WaitForThinkFinished()
+void MonkiesPub::WaitForThinkFinished()
 {
 	Orangutan* t = GetFirstCaptain();
 	std::unique_lock<Mutex> lock(t->m_sleepLock);
@@ -157,7 +157,7 @@ void HerosPub::WaitForThinkFinished()
 /// <param name="position"></param>
 /// <param name="limits"></param>
 /// <param name="searchMoves"></param>
-void HerosPub::StartThinking(
+void MonkiesPub::StartThinking(
 	const GameStats& gameStats,
 	const Position& position,
 	const LimitsDuringGo& limits,

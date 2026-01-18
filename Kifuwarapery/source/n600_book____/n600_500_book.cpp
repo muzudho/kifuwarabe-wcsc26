@@ -254,7 +254,7 @@ void MakeBook(GameStats& gameStats, Position& pos, std::istringstream& ssCmd) {
 			return;
 		}
 
-		pos.Set(g_DefaultStartPositionSFEN, pos.GetOurCarriage()->m_monkiesPub.GetFirstCaptain());
+		pos.Set(g_DefaultStartPositionSFEN, pos.GetOurCarriage()->m_pub.GetFirstCaptain());
 		StateStackPtr SetUpStates = StateStackPtr(new std::stack<StateInfo>());
 		UsiOperation usiOperation;
 		while (!line.empty()) {
@@ -299,7 +299,7 @@ void MakeBook(GameStats& gameStats, Position& pos, std::istringstream& ssCmd) {
 					std::istringstream ssCmd("byoyomi 1000");
 					UsiOperation usiOperation;
 					usiOperation.Go(gameStats, pos, ssCmd);
-					pos.GetOurCarriage()->m_monkiesPub.WaitForThinkFinished();
+					pos.GetOurCarriage()->m_pub.WaitForThinkFinished();
 
 					pos.UndoMove(move);
 					SetUpStates->pop();

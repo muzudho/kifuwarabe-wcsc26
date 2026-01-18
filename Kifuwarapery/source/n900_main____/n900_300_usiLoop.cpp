@@ -96,7 +96,7 @@ UsiLoop::UsiLoop()
 void UsiLoop::mainloop_50a500b(int argc, char* argv[], OurCarriage& searcher)
 {
 	GameStats gameStats{};	// こう書くと関数呼出しと思われてエラー： GameStats gameStats();
-	Position pos(g_DefaultStartPositionSFEN, searcher.m_monkiesPub.GetFirstCaptain(), &searcher);
+	Position pos(g_DefaultStartPositionSFEN, searcher.m_pub.GetFirstCaptain(), &searcher);
 
 	std::string cmd;
 	std::string token;
@@ -141,7 +141,7 @@ void UsiLoop::mainloop_50a500b(int argc, char* argv[], OurCarriage& searcher)
 				searcher.m_signals.m_stop = true;
 
 				// 排他的処理の何か？？
-				searcher.m_monkiesPub.GetFirstCaptain()->NotifyOne();
+				searcher.m_pub.GetFirstCaptain()->NotifyOne();
 			}
 			else {
 				// 相手の思考時間中に自分も思考するのを止める。
@@ -221,5 +221,5 @@ void UsiLoop::mainloop_50a500b(int argc, char* argv[], OurCarriage& searcher)
 
 	//────────────────────────────────────────────────────────────────────────────────
 
-	searcher.m_monkiesPub.WaitForThinkFinished();
+	searcher.m_pub.WaitForThinkFinished();
 }

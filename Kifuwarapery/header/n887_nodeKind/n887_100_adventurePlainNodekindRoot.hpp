@@ -793,13 +793,13 @@ public:
 		Move& threatMove,
 		int& moveCount,
 		NextmoveEvent& mp,
-		const bool cutNode
-		)const override {
+		const bool cutNode) const override
+	{
 
 		if (
-			ourCarriage.m_monkiesPub.GetMinSplitDepth() <= depth
+			ourCarriage.m_pub.GetMinSplitDepth() <= depth
 			&&
-			ourCarriage.m_monkiesPub.GetAvailableSlave(*ppThisThread)
+			ourCarriage.m_pub.GetAvailableSlave(*ppThisThread)
 			&&
 			(*ppThisThread)->m_splitedNodesSize < g_MaxSplitedNodesPerThread)
 		{

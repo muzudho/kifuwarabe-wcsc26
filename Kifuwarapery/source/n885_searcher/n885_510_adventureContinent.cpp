@@ -22,7 +22,7 @@
 #include "../../header/n640_searcher/n640_520_futilityMoveCounts.hpp"
 #include "../../header/n680_egOption/n680_240_engineOptionsMap.hpp"
 #include "../../header/n680_egOption/n680_300_engineOptionSetup.hpp"
-#include "../../header/n760_thread__/n760_400_herosPub.hpp"
+#include "../../header/n760_thread__/n760_400_monkiesPub.hpp"
 #include "../../header/n800_learn___/n800_100_stopwatch.hpp"
 #include "../../header/n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
@@ -132,10 +132,10 @@ void AdventureContinent::ExploreContinent(
 	}
 
 	// 全スレッドの初期化か何か☆？
-	captainsRucksack.m_monkiesPub.WakeUp(&captainsRucksack);
+	captainsRucksack.m_pub.WakeUp(&captainsRucksack);
 
 	// 下級戦士の寿命（ミリ秒）を設定するぜ☆
-	captainsRucksack.m_monkiesPub.GetCurrSubordinate()->m_lifetimeMilliseconds =
+	captainsRucksack.m_pub.GetCurrSubordinate()->m_lifetimeMilliseconds =
 		(
 			captainsRucksack.m_limits.IsBrandnewTimeMgr() ? // 反復深化をしたい☆？（＾ｑ＾）
 			// する場合
@@ -151,7 +151,7 @@ void AdventureContinent::ExploreContinent(
 				100
 			);
 
-	captainsRucksack.m_monkiesPub.GetCurrSubordinate()->NotifyOne();
+	captainsRucksack.m_pub.GetCurrSubordinate()->NotifyOne();
 
 #if defined INANIWA_SHIFT
 	detectInaniwa(GetPos);
@@ -170,8 +170,8 @@ void AdventureContinent::ExploreContinent(
 
 #if defined LEARN
 #else
-	captainsRucksack.m_monkiesPub.GetCurrSubordinate()->m_lifetimeMilliseconds = 0; // timer を止める。
-	captainsRucksack.m_monkiesPub.Sleep();
+	captainsRucksack.m_pub.GetCurrSubordinate()->m_lifetimeMilliseconds = 0; // timer を止める。
+	captainsRucksack.m_pub.Sleep();
 
 finalize:
 
