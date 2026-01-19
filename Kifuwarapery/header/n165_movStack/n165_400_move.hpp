@@ -31,12 +31,27 @@ class Move {
 public:
 
 
+	// ========================================
+	// 生成と破棄
+	// ========================================
+
+
 	/// <summary>
 	/// 生成
 	/// </summary>
 	Move();
 
+
 	explicit Move(const u32 u) : m_value(u) {}
+
+
+	/// <summary>
+	/// コピーコンストラクタ
+	/// </summary>
+	/// <param name="m"></param>
+	Move(const Move& m) { m_value = m.m_value; }
+
+	Move(const volatile Move& m) { m_value = m.m_value; }
 
 
 	/// <summary>
@@ -50,10 +65,6 @@ public:
 
 	// volatile Move& 型の *this を返すとなぜか警告が出るので、const Move& 型の m を返すことにする。
 	const Move& operator = (const Move& m) volatile { m_value = m.m_value; return m; }
-
-	Move(const Move& m) { m_value = m.m_value; }
-
-	Move(const volatile Move& m) { m_value = m.m_value; }
 
 
 	/// <summary>

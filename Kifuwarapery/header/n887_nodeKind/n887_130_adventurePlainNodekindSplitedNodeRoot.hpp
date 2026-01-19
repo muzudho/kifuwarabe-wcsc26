@@ -150,18 +150,16 @@ public:
 	/// <summary>
 	/// ルートノードか、それ以外かで　値が分かれるぜ☆（＾ｑ＾）
 	/// </summary>
-	/// <param name="ttMove"></param>
 	/// <param name="ourCarriage"></param>
 	/// <param name="pTtEntry"></param>
 	/// <param name="pos"></param>
-	virtual inline void explorePlain_10i200j220k_getTtMove(
-		Move& ttMove,
+	virtual inline std::unique_ptr<Move> explorePlain_10i200j220k_getTtMove(
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
 		Position& pos
 		)const override
 	{
-		ttMove = ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_pv_[0];
+		return std::make_unique<Move>(ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_pv_[0]);
 	}
 
 

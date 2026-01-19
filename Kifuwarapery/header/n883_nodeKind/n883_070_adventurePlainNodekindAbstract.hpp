@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <utility>  // std::pair用
+#include <memory>  // unique_ptr 用
 #include "../n640_searcher/n640_510_futilityMargins.hpp"
 #include "../n640_searcher/n640_520_futilityMoveCounts.hpp"
 #include "../n885_searcher/n885_340_adventureBattlefieldQsearchPrograms.hpp"
@@ -224,32 +225,29 @@ public:
 	/// <param name="ppTtEntry"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="ttScore"></param>
-	virtual inline void explorePlain_10i200j200k_getTtScore(
+	virtual inline ScoreValue explorePlain_10i200j200k_getTtScore(
 		Move& excludedMove,
 		Flashlight** ppFlashlight,
 		Key& posKey,
 		Position& pos,
 		const TTEntry** ppTtEntry,//セットされるぜ☆（＾ｑ＾）
-		OurCarriage& ourCarriage,
-		ScoreValue& ttScore
-	)const {
+		OurCarriage& ourCarriage) const
+	{
 		// trans position table lookup
 		excludedMove = (*ppFlashlight)->m_excludedMove;
 		posKey = (excludedMove.IsNone() ? pos.GetKey() : pos.GetExclusionKey());
 		(*ppTtEntry) = ourCarriage.m_tt.Probe(posKey);
-		ttScore = ((*ppTtEntry) != nullptr ? ourCarriage.ConvertScoreFromTT((*ppTtEntry)->GetScore(), (*ppFlashlight)->m_ply) : ScoreNone);
+		return ((*ppTtEntry) != nullptr ? ourCarriage.ConvertScoreFromTT((*ppTtEntry)->GetScore(), (*ppFlashlight)->m_ply) : ScoreNone);
 	}
 
 
 	/// <summary>
 	/// ルートノードか、それ以外かで　値が分かれるぜ☆（＾ｑ＾）
 	/// </summary>
-	/// <param name="ttMove"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pTtEntry"></param>
 	/// <param name="pos"></param>
-	virtual inline void explorePlain_10i200j220k_getTtMove(
-		Move& ttMove,
+	virtual inline std::unique_ptr<Move> explorePlain_10i200j220k_getTtMove(
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
 		Position& pos

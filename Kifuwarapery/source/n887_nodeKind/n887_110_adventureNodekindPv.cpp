@@ -90,13 +90,11 @@ ScoreValue AdventureNodekindPv::explorePlain_10i(
 	Move ttMove;
 	Move move;
 	Move excludedMove;
-	Move bestMove;
 	Move threatMove;
 	Depth newDepth;
 	Depth extension;
 	ScoreValue bestScore;
 	ScoreValue score;
-	ScoreValue ttScore;
 	ScoreValue eval;
 	bool inCheck;
 	bool givesCheck;
@@ -107,6 +105,9 @@ ScoreValue AdventureNodekindPv::explorePlain_10i(
 	bool doFullDepthSearch;
 	int moveCount;
 	int playedMoveCount;
+	Move bestMove;
+	ScoreValue ttScore;
+	std::unique_ptr<Move> pTtMove;  // 宣言だけ（デフォルトnull）
 
 
 	// step1
@@ -158,19 +159,18 @@ ScoreValue AdventureNodekindPv::explorePlain_10i(
 
 
 	// step4
-	this->explorePlain_10i200j200k_getTtScore(
+	ttScore = this->explorePlain_10i200j200k_getTtScore(
 		excludedMove,
 		&pFlashlight,
 		posKey,
 		pos,
 		&pTtEntry,//セットされる☆
-		ourCarriage,
-		ttScore);
-	this->explorePlain_10i200j220k_getTtMove(
-		ttMove,
+		ourCarriage);
+	pTtMove = this->explorePlain_10i200j220k_getTtMove(
 		ourCarriage,
 		pTtEntry,
 		pos);
+	ttMove = *pTtMove.get();	// コピー作成
 
 
 	this->explorePlain_10i200j240k_killerMove(

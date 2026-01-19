@@ -105,16 +105,18 @@ public:
 	/// <param name="ourCarriage"></param>
 	/// <param name="pTtEntry"></param>
 	/// <param name="pos"></param>
-	virtual inline void explorePlain_10i200j220k_getTtMove(
-		Move& ttMove,
+	virtual inline std::unique_ptr<Move> explorePlain_10i200j220k_getTtMove(
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
 		Position& pos
 		)const override
 	{
-		ttMove = pTtEntry != nullptr ?
-			UtilMoveStack::Move16toMove(pTtEntry->GetMove(), pos) :
-			g_MOVE_NONE;
+		return pTtEntry != nullptr
+			?
+				std::make_unique<Move>(UtilMoveStack::Move16toMove(pTtEntry->GetMove(), pos))
+			:
+				std::make_unique<Move>(g_MOVE_NONE)
+			;
 	}
 
 

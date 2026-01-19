@@ -91,7 +91,6 @@ ScoreValue AdventureNodekindSplitedNodeRoot::explorePlain_10i(
 	const TTEntry* pTtEntry = nullptr;//(^q^)トランスポジション・テーブル・エントリー☆？
 	SplitedNode* pSplitedNode = nullptr;//(^q^)
 	Key posKey;
-	Move ttMove;
 	Move move;
 	Move excludedMove;
 	Move bestMove;
@@ -100,7 +99,6 @@ ScoreValue AdventureNodekindSplitedNodeRoot::explorePlain_10i(
 	Depth extension;
 	ScoreValue bestScore;
 	ScoreValue score;
-	ScoreValue ttScore;
 	ScoreValue eval;
 	bool inCheck;
 	bool givesCheck;
@@ -111,6 +109,9 @@ ScoreValue AdventureNodekindSplitedNodeRoot::explorePlain_10i(
 	bool doFullDepthSearch;
 	int moveCount;
 	int playedMoveCount;
+	Move ttMove;
+	ScoreValue ttScore;
+	std::unique_ptr<Move> pTtMove;  // 宣言だけ（デフォルトnull）
 
 	// step1
 	// initialize node
@@ -153,19 +154,18 @@ ScoreValue AdventureNodekindSplitedNodeRoot::explorePlain_10i(
 	pos.setNodesSearched(pos.getNodesSearched() + 1);
 
 
-	this->explorePlain_10i200j200k_getTtScore(
+	ttScore = this->explorePlain_10i200j200k_getTtScore(
 		excludedMove,
 		&pFlashlight,
 		posKey,
 		pos,
 		&pTtEntry,//セットされる☆
-		ourCarriage,
-		ttScore);
-	this->explorePlain_10i200j220k_getTtMove(
-		ttMove,
+		ourCarriage);
+	pTtMove = this->explorePlain_10i200j220k_getTtMove(
 		ourCarriage,
 		pTtEntry,
 		pos);
+	ttMove = *pTtMove.get();	// コピー作成
 
 
 	bool isGotoIidStart = false;//NonPVのとき使う☆
