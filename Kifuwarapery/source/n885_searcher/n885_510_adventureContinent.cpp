@@ -8,7 +8,7 @@
 #include "../../header/n220_position/n220_650_position.hpp"
 #include "../../header/n220_position/n220_665_utilMoveStack.hpp"
 #include "../../header/n220_position/n220_750_charToPieceUSI.hpp"
-#include "../../header/n223_move____/n223_300_moveAndScoreIndex.hpp"
+#include "../../header/n223_move____/n223_300_DeliciousBanana.hpp"
 #include "../../header/n350_pieceTyp/n350_030_makePromoteMove.hpp"
 #include "../../header/n350_pieceTyp/n350_500_ptPrograms.hpp"
 #include "../../header/n440_movStack/n440_500_nextmoveEvent.hpp"
@@ -107,24 +107,24 @@ void AdventureContinent::ExploreContinent(
 		captainsRucksack.m_engineOptions["OwnBook"] &&
 		pos.GetGamePly() <= book_ply
 	) {
-		const MoveAndScoreIndex bookMoveScore = book.GetProbe(
+		const DeliciousBanana bookBanana = book.GetProbe(
 			pos, captainsRucksack.m_engineOptions["Book_File"], captainsRucksack.m_engineOptions["Best_Book_Move"]);
 
 		if (
-			!bookMoveScore.m_move.IsNone()
+			!bookBanana.m_move.IsNone()
 			&&
 			std::find(
 				captainsRucksack.m_rootMoves.begin(),
 				captainsRucksack.m_rootMoves.end(),
-				bookMoveScore.m_move
+				bookBanana.m_move
 			) != captainsRucksack.m_rootMoves.end()
 		){
 			std::swap(captainsRucksack.m_rootMoves[0], *std::find(captainsRucksack.m_rootMoves.begin(),
 				captainsRucksack.m_rootMoves.end(),
-				bookMoveScore.m_move));
+				bookBanana.m_move));
 			SYNCCOUT << "info"
-				<< " score " << captainsRucksack.scoreToUSI(bookMoveScore.m_scoreIndex)
-				<< " pv " << bookMoveScore.m_move.ToUSI()
+				<< " score " << captainsRucksack.scoreToUSI(bookBanana.m_scoreValue)
+				<< " pv " << bookBanana.m_move.ToUSI()
 				<< SYNCENDL;
 
 			goto finalize;

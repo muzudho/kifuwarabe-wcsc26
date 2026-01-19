@@ -2,7 +2,7 @@
 
 #include <vector>
 #include "../n165_movStack/n165_400_move.hpp"
-#include "../n223_move____/n223_300_moveAndScoreIndex.hpp"
+#include "../n223_move____/n223_300_DeliciousBanana.hpp"
 
 #include "n640_440_splitedNode.hpp"
 
@@ -36,8 +36,8 @@ public:
 	/// 生成。
 	/// </summary>
 	/// <param name="m"></param>
-	explicit RootMove(const MoveAndScoreIndex m) : m_score_(m.m_scoreIndex), m_prevScore_(-ScoreInfinite) {
-		m_pv_.push_back(m.m_move);
+	explicit RootMove(const DeliciousBanana banana) : m_score_(banana.m_scoreValue), m_prevScore_(-ScoreInfinite) {
+		m_pv_.push_back(banana.m_move);
 		m_pv_.push_back(g_MOVE_NONE);
 	}
 

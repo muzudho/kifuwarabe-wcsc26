@@ -930,7 +930,7 @@
     <ClInclude Include="header\n119_score___\n119_090_ScoreValue.hpp">
       <Filter>header\n119_score___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n223_move____\n223_300_moveAndScoreIndex.hpp">
+    <ClInclude Include="header\n223_move____\n223_300_DeliciousBanana.hpp">
       <Filter>header\n223_move____</Filter>
     </ClInclude>
     <ClInclude Include="header\n350_pieceTyp\n350_040_ptEvent.hpp">

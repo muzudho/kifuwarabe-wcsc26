@@ -244,7 +244,7 @@
     <ClInclude Include="header\n640_searcher\n640_040_nodeKind.hpp" />
     <ClInclude Include="header\n223_move____\n223_060_stats.hpp" />
     <ClInclude Include="header\n223_move____\n223_200_depth.hpp" />
-    <ClInclude Include="header\n223_move____\n223_300_moveAndScoreIndex.hpp" />
+    <ClInclude Include="header\n223_move____\n223_300_DeliciousBanana.hpp" />
     <ClInclude Include="header\n223_move____\n223_500_flashlight.hpp" />
     <ClInclude Include="header\n225_movPhase\n225_050_generateMovePhase.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_050_ifdef.hpp" />

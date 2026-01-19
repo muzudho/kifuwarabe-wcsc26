@@ -1,4 +1,4 @@
-﻿#include "../../header/n223_move____/n223_300_moveAndScoreIndex.hpp"
+﻿#include "../../header/n223_move____/n223_300_DeliciousBanana.hpp"
 
 
 /// <summary>
@@ -6,12 +6,10 @@
 /// </summary>
 /// <param name="move"></param>
 /// <param name="score"></param>
-MoveAndScoreIndex::MoveAndScoreIndex(Move move, ScoreValue score):
+DeliciousBanana::DeliciousBanana(Move move, ScoreValue scoreValue):
 	m_move(move),
-	m_scoreIndex(score)
+	m_scoreValue(scoreValue)
 {
-	//this->m_move = move;
-	//this->m_score = score;
 }
 
 
@@ -20,7 +18,7 @@ MoveAndScoreIndex::MoveAndScoreIndex(Move move, ScoreValue score):
 /// </summary>
 /// <param name=""></param>
 /// <returns></returns>
-Move MoveAndScoreIndex::GetMove(void)
+Move DeliciousBanana::GetMove(void)
 {
 	return this->m_move;
 }

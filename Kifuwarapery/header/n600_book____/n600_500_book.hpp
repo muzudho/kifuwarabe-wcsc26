@@ -6,7 +6,7 @@
 #include <fstream>
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n113_piece___/n113_150_piece.hpp"
-#include "../n223_move____/n223_300_moveAndScoreIndex.hpp"
+#include "../n223_move____/n223_300_DeliciousBanana.hpp"
 #include "../n600_book____/n600_100_mt64bit.hpp"
 
 
@@ -37,7 +37,7 @@ public:
 	/// <param name="fName"></param>
 	/// <param name="pickBest"></param>
 	/// <returns></returns>
-	MoveAndScoreIndex GetProbe(const Position& pos, const std::string& fName, const bool pickBest);
+	DeliciousBanana GetProbe(const Position& pos, const std::string& fName, const bool pickBest);
 
 
 	/// <summary>

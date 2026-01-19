@@ -140,18 +140,18 @@ Key Book::GetBookKey(const Position& pos) {
 /// <param name="fName"></param>
 /// <param name="pickBest"></param>
 /// <returns></returns>
-MoveAndScoreIndex Book::GetProbe(const Position& position, const std::string& fName, const bool pickBest) {
+DeliciousBanana Book::GetProbe(const Position& position, const std::string& fName, const bool pickBest) {
 	BookEntry entry;
 	u16 best = 0;
 	u32 sum = 0;
 	Move move = g_MOVE_NONE;//該当なしのときに使う値☆
 	const Key key = this->GetBookKey(position);
 	const ScoreValue min_book_score = static_cast<ScoreValue>(static_cast<int>(position.GetOurCarriage()->m_engineOptions["Min_Book_Score"]));
-	ScoreValue score = ScoreZero;
+	ScoreValue scoreValue = ScoreZero;
 
 	if (this->m_fileName_ != fName && !this->OpenBook(fName.c_str())) {
 		// 定跡ファイルが開けなかった場合☆
-		return MoveAndScoreIndex(g_MOVE_NONE, ScoreNone);
+		return DeliciousBanana(g_MOVE_NONE, ScoreNone);
 	}
 
 	Binary_search(key);
@@ -184,11 +184,11 @@ MoveAndScoreIndex Book::GetProbe(const Position& position, const std::string& fN
 					move = UtilMovePos::MakeCaptureMove( fromMove, from, to, position);
 				}
 			}
-			score = entry.m_score;
+			scoreValue = entry.m_score;
 		}
 	}
 
-	return MoveAndScoreIndex(move, score);
+	return DeliciousBanana(move, scoreValue);
 }
 
 
