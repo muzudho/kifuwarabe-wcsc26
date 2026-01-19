@@ -1,4 +1,4 @@
-﻿#include "../../header/n119_score___/n119_090_Sweetness.hpp"
+﻿#include "../../header/n119_500_sweetnes/n119_090_Sweetness.hpp"
 #include "../../header/n165_movStack/n165_400_move.hpp"
 #include "../../header/n165_movStack/n165_500_moveStack.hpp"
 #include "../../header/n165_movStack/n165_600_convMove.hpp"
@@ -259,10 +259,10 @@ void NextmoveEvent::SweetnessEvasions() {
 		const Move move = curr->m_move;
 		const Sweetness seeScore = GetPos().GetSeeSign(move);
 		if (seeScore < 0) {
-			curr->m_sweetness = seeScore - History::m_MaxScore;
+			curr->m_sweetness = seeScore - History::m_maxSweetness;
 		}
 		else if (move.IsCaptureOrPromotion()) {
-			curr->m_sweetness = PieceSweetness::getSweetnessByCapturePiece(GetPos().GetPiece(move.To())) + History::m_MaxScore;
+			curr->m_sweetness = PieceSweetness::getSweetnessByCapturePiece(GetPos().GetPiece(move.To())) + History::m_maxSweetness;
 			if (move.IsPromotion()) {
 				const PieceType pt = ConvPiece::TO_PIECE_TYPE10(GetPos().GetPiece(move.From()));
 				curr->m_sweetness += PieceSweetness::getSweetnessByPromotePiece(pt);

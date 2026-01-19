@@ -42,12 +42,12 @@ public:
 	/// </summary>
 	/// <param name="ppTtEntry"></param>
 	/// <param name="beta"></param>
-	/// <param name="ttScore"></param>
+	/// <param name="ttSweetness"></param>
 	/// <returns></returns>
 	virtual inline bool GetCondition01(
 		const TTEntry** ppTtEntry,
 		Sweetness beta,
-		Sweetness ttScore
+		Sweetness ttSweetness
 		) const override {
 		// PVノードのとき☆（＾ｑ＾）
 		return (*ppTtEntry)->GetBoundKind() == Bound::BoundExact;
@@ -58,14 +58,14 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="alpha"></param>
-	/// <param name="bestScore"></param>
+	/// <param name="bestSweetness"></param>
 	virtual inline void SetAlpha(
 		Sweetness& alpha,
-		Sweetness bestScore
+		Sweetness bestSweetness
 		) const override {
 		// PVノードのとき☆（＾ｑ＾）
-		if (alpha < bestScore) {
-			alpha = bestScore;
+		if (alpha < bestSweetness) {
+			alpha = bestSweetness;
 		}
 	}
 
@@ -82,7 +82,7 @@ public:
 	/// <param name="futilityBase"></param>
 	/// <param name="pos"></param>
 	/// <param name="beta"></param>
-	/// <param name="bestScore"></param>
+	/// <param name="bestSweetness"></param>
 	/// <param name="depth"></param>
 	virtual inline void DoFutilityPruning01(
 		bool& isContinue,
@@ -94,7 +94,7 @@ public:
 		Sweetness& futilityBase,
 		Position& pos,
 		Sweetness& beta,
-		Sweetness& bestScore,
+		Sweetness& bestSweetness,
 		const Depth depth
 		)const override {
 		// スルーだぜ☆！（＾ｑ＾）
@@ -125,10 +125,10 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="isReturnWithScore"></param>
-	/// <param name="returnScore"></param>
+	/// <param name="isReturnWithSweetness"></param>
+	/// <param name="returnSweetness"></param>
 	/// <param name="ourCarriage"></param>
-	/// <param name="score"></param>
+	/// <param name="sweetness"></param>
 	/// <param name="beta"></param>
 	/// <param name="alpha"></param>
 	/// <param name="bestMove"></param>
@@ -137,10 +137,10 @@ public:
 	/// <param name="ttDepth"></param>
 	/// <param name="move"></param>
 	virtual inline void DoByNewScore(
-		bool& isReturnWithScore,
-		Sweetness& returnScore,
+		bool& isReturnWithSweetness,
+		Sweetness& returnSweetness,
 		OurCarriage& ourCarriage,
-		Sweetness& score,
+		Sweetness& sweetness,
 		Sweetness& beta,
 		Sweetness& alpha,
 		Move& bestMove,
@@ -151,25 +151,25 @@ public:
 		)const override {
 		if (
 			// PVノードのときは条件付きで別手続きがあるぜ☆（＾ｑ＾）
-			score < beta
+			sweetness < beta
 			) {
-			alpha = score;
+			alpha = sweetness;
 			bestMove = move;
 		}
 		else {
 			// fail high
 			ourCarriage.m_tt.Store(
 				posKey,
-				ourCarriage.ConvertScoreToTT(score, (*ppFlashlight)->m_ply),
+				ourCarriage.ConvertScoreToTT(sweetness, (*ppFlashlight)->m_ply),
 				Bound::BoundLower,
 				ttDepth,
 				move,
 				(*ppFlashlight)->m_staticEval
 			);
-			isReturnWithScore = true;
-			returnScore = score;
+			isReturnWithSweetness = true;
+			returnSweetness = sweetness;
 			return;
-			//return score;
+			//return sweetness;
 		}
 	}
 
@@ -178,7 +178,7 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="oldAlpha"></param>
-	/// <param name="bestScore"></param>
+	/// <param name="bestSweetness"></param>
 	/// <returns></returns>
 	virtual inline Bound GetBound01(
 		Sweetness& oldAlpha,

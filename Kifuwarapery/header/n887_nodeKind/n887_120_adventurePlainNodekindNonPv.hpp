@@ -321,7 +321,7 @@ public:
 	/// </summary>
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestScore"></param>
-	virtual inline void lockAndUpdateBestScore_10i400j170k200L(
+	virtual inline void lockAndUpdateBestSweetness_10i400j170k200L(
 		SplitedNode** ppSplitedNode,
 		Sweetness& bestScore
 	) const override {

@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../n119_score___/n119_090_Sweetness.hpp"
+#include "../n119_500_sweetnes/n119_090_Sweetness.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n220_position/n220_665_utilMoveStack.hpp"
 #include "../n223_move____/n223_200_depth.hpp"
@@ -66,7 +66,7 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="ttMove"></param>
-	/// <param name="ttScore"></param>
+	/// <param name="ttSweetness"></param>
 	/// <param name="isGotoSplitPointStart"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="playedMoveCount"></param>
@@ -76,11 +76,11 @@ public:
 	/// <param name="ppFlashlight"></param>
 	/// <param name="bestMove"></param>
 	/// <param name="threatMove"></param>
-	/// <param name="bestScore"></param>
+	/// <param name="bestSweetness"></param>
 	/// <param name="excludedMove"></param>
 	virtual inline void explorePlain_10i200j100k_initializeNode(
 		Move& ttMove,
-		Sweetness& ttScore,
+		Sweetness& ttSweetness,
 		bool& isGotoSplitPointStart,
 		int& moveCount,
 		int& playedMoveCount,
@@ -90,7 +90,7 @@ public:
 		Flashlight** ppFlashlight,
 		Move& bestMove,
 		Move& threatMove,
-		Sweetness& bestScore,
+		Sweetness& bestSweetness,
 		Move& excludedMove) const override
 	{
 		// 非スプリット・ポイントはスルー☆！（＾ｑ＾）
@@ -100,14 +100,10 @@ public:
 	/// <summary>
 	/// 千日手による探索打切りの判断
 	/// </summary>
-	/// <param name="isReturnWithScore"></param>
-	/// <param name="returnScore"></param>
 	/// <param name="pos"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="ppFlashlight"></param>
 	virtual inline std::pair<bool, Sweetness> explorePlain_10i200j160k_isStopByRepetetion(
-		//bool& isReturnWithScore,
-		//ScoreIndex& returnScore,
 		Position& pos,
 		OurCarriage& ourCarriage,
 		Flashlight** ppFlashlight
@@ -122,14 +118,14 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="isReturnWithScore"></param>
-	/// <param name="returnScore"></param>
+	/// <param name="isReturnWithSweetness"></param>
+	/// <param name="returnSweetness"></param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
 	virtual inline void explorePlain_10i200j180k_checkAlpha(
-		bool& isReturnWithScore,
-		Sweetness& returnScore,
+		bool& isReturnWithSweetness,
+		Sweetness& returnSweetness,
 		Flashlight** ppFlashlight,
 		Sweetness& alpha,
 		Sweetness& beta
@@ -158,9 +154,9 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="ttMove"></param>
-	/// <param name="ttScore"></param>
-	/// <param name="isReturnWithScore"></param>
-	/// <param name="returnScore"></param>
+	/// <param name="ttSweetness"></param>
+	/// <param name="isReturnWithSweetness"></param>
+	/// <param name="returnSweetness"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pTtEntry"></param>
 	/// <param name="depth"></param>
@@ -168,9 +164,9 @@ public:
 	/// <param name="ppFlashlight"></param>
 	virtual inline void explorePlain_10i200j240k_killerMove(
 		Move& ttMove,
-		Sweetness& ttScore,
-		bool& isReturnWithScore,
-		Sweetness& returnScore,
+		Sweetness& ttSweetness,
+		bool& isReturnWithSweetness,
+		Sweetness& returnSweetness,
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
 		const Depth depth,
@@ -187,12 +183,12 @@ public:
 	/// </summary>
 	/// <param name="pTtEntry"></param>
 	/// <param name="beta"></param>
-	/// <param name="ttScore"></param>
+	/// <param name="ttSweetness"></param>
 	/// <returns></returns>
 	virtual inline bool getCondition_10i200j240k100L(
 		const TTEntry* pTtEntry,
 		Sweetness& beta,
-		Sweetness& ttScore
+		Sweetness& ttSweetness
 		) const override {
 		return pTtEntry->GetBoundKind() == Bound::BoundExact;
 	}
@@ -201,26 +197,26 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="isReturnWithScore"></param>
-	/// <param name="returnScore"></param>
+	/// <param name="isReturnWithSweetness"></param>
+	/// <param name="returnSweetness"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="inCheck"></param>
 	/// <param name="move"></param>
 	/// <param name="pos"></param>
 	/// <param name="ppFlashlight"></param>
-	/// <param name="bestScore"></param>
+	/// <param name="bestSweetness"></param>
 	/// <param name="posKey"></param>
 	/// <param name="depth"></param>
 	/// <param name="bestMove"></param>
 	virtual inline void explorePlain_10i200j260k_ttMove(
-		bool& isReturnWithScore,
-		Sweetness& returnScore,
+		bool& isReturnWithSweetness,
+		Sweetness& returnSweetness,
 		OurCarriage& ourCarriage,
 		bool& inCheck,
 		Move& move,
 		Position& pos,
 		Flashlight** ppFlashlight,
-		Sweetness& bestScore,
+		Sweetness& bestSweetness,
 		Key& posKey,
 		const Depth depth,
 		Move& bestMove
@@ -233,8 +229,8 @@ public:
 	/// <summary>
 	/// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
 	/// </summary>
-	/// <param name="isReturnWithScore"></param>
-	/// <param name="returnScore"></param>
+	/// <param name="isReturnWithSweetness"></param>
+	/// <param name="returnSweetness"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="depth"></param>
 	/// <param name="eval"></param>
@@ -243,8 +239,8 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="ppFlashlight"></param>
 	virtual inline void explorePlain_10i200j300k_nonPV(
-		bool& isReturnWithScore,
-		Sweetness& returnScore,
+		bool& isReturnWithSweetness,
+		Sweetness& returnSweetness,
 		OurCarriage& ourCarriage,
 		const Depth depth,
 		Sweetness& eval,
@@ -260,15 +256,15 @@ public:
 	/// <summary>
 	/// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
 	/// </summary>
-	/// <param name="isReturnWithScore"></param>
-	/// <param name="returnScore"></param>
+	/// <param name="isReturnWithSweetness"></param>
+	/// <param name="returnSweetness"></param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="depth"></param>
 	/// <param name="beta"></param>
 	/// <param name="eval"></param>
 	virtual inline void explorePlain_10i200j320k(
-		bool& isReturnWithScore,
-		Sweetness& returnScore,
+		bool& isReturnWithSweetness,
+		Sweetness& returnSweetness,
 		Flashlight** ppFlashlight,
 		const Depth depth,
 		Sweetness& beta,
@@ -281,8 +277,8 @@ public:
 	/// <summary>
 	/// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
 	/// </summary>
-	/// <param name="isReturnWithScore"></param>
-	/// <param name="returnScore"></param>
+	/// <param name="isReturnWithSweetness"></param>
+	/// <param name="returnSweetness"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="depth"></param>
@@ -294,8 +290,8 @@ public:
 	/// <param name="cutNode"></param>
 	/// <param name="threatMove"></param>
 	virtual inline void explorePlain_10i200j340k_nonPV(
-		bool& isReturnWithScore,
-		Sweetness& returnScore,
+		bool& isReturnWithSweetness,
+		Sweetness& returnSweetness,
 		OurCarriage& ourCarriage,
 		Flashlight** ppFlashlight,
 		const Depth depth,
@@ -314,7 +310,7 @@ public:
 	/// <summary>
 	/// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
 	/// </summary>
-	/// <param name="isReturnWithScore"></param>
+	/// <param name="isReturnWithSweetness"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="depth"></param>
 	/// <param name="ppFlashlight"></param>
@@ -323,10 +319,10 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="ttMove"></param>
 	/// <param name="st"></param>
-	/// <param name="score"></param>
+	/// <param name="sweetness"></param>
 	/// <param name="cutNode"></param>
 	virtual inline void explorePlain_10i200j360k(
-		bool& isReturnWithScore,
+		bool& isReturnWithSweetness,
 		OurCarriage& ourCarriage,
 		const Depth& depth,
 		Flashlight** ppFlashlight,
@@ -335,7 +331,7 @@ public:
 		Position& pos,
 		Move& ttMove,
 		StateInfo& st,
-		Sweetness& score,
+		Sweetness& sweetness,
 		const bool cutNode
 		)const override {
 		// 非PVノードはスルー☆！（＾ｑ＾）
@@ -422,22 +418,22 @@ public:
 	/// </summary>
 	/// <param name="ttMove"></param>
 	/// <param name="depth"></param>
-	/// <param name="score"></param>
-	/// <param name="bestScore"></param>
+	/// <param name="sweetness"></param>
+	/// <param name="bestSweetness"></param>
 	/// <param name="singularExtensionNode"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="pTtEntry"></param>
 	virtual inline void explorePlain_10i300j200k_beforeLoopSplitPointStart(
 		Move& ttMove,
 		const Depth depth,
-		Sweetness& score,
-		Sweetness& bestScore,
+		Sweetness& sweetness,
+		Sweetness& bestSweetness,
 		bool& singularExtensionNode,
 		Move& excludedMove,
 		const TTEntry* pTtEntry) const override
 	{
 		// ルートはこういう感じ☆（＾ｑ＾）
-		score = bestScore;
+		sweetness = bestSweetness;
 		singularExtensionNode = false;
 	}
 
@@ -484,7 +480,7 @@ public:
 	/// <param name="captureOrPawnPromotion"></param>
 	/// <param name="inCheck"></param>
 	/// <param name="dangerous"></param>
-	/// <param name="bestScore"></param>
+	/// <param name="bestSweetness"></param>
 	/// <param name="move"></param>
 	/// <param name="ttMove"></param>
 	/// <param name="depth"></param>
@@ -501,7 +497,7 @@ public:
 		bool& captureOrPawnPromotion,
 		bool& inCheck,
 		bool& dangerous,
-		Sweetness& bestScore,
+		Sweetness& bestSweetness,
 		Move& move,
 		Move& ttMove,
 		const Depth depth,
@@ -551,10 +547,10 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="ppSplitedNode"></param>
-	/// <param name="bestScore"></param>
-	virtual inline void lockAndUpdateBestScore_10i400j170k200L(
+	/// <param name="bestSweetness"></param>
+	virtual inline void lockAndUpdateBestSweetness_10i400j170k200L(
 		SplitedNode** ppSplitedNode,
-		Sweetness& bestScore
+		Sweetness& bestSweetness
 		) const override {
 		// 非スプリット・ポイントではスルー☆！（＾ｑ＾）
 	}
@@ -588,7 +584,7 @@ public:
 	/// <param name="captureOrPawnPromotion"></param>
 	/// <param name="inCheck"></param>
 	/// <param name="dangerous"></param>
-	/// <param name="bestScore"></param>
+	/// <param name="bestSweetness"></param>
 	/// <param name="move"></param>
 	/// <param name="ttMove"></param>
 	/// <param name="depth"></param>
@@ -609,7 +605,7 @@ public:
 		bool& captureOrPawnPromotion,
 		bool& inCheck,
 		bool& dangerous,
-		Sweetness& bestScore,
+		Sweetness& bestSweetness,
 		Move& move,
 		Move& ttMove,
 		const Depth depth,
@@ -684,11 +680,11 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="score"></param>
+	/// <param name="sweetness"></param>
 	/// <param name="beta"></param>
 	/// <returns></returns>
 	virtual inline bool isBetaLarge_10i600j140k100L(
-		Sweetness& score,
+		Sweetness& sweetness,
 		Sweetness& beta
 		) const override {
 		// ルートノードの場合☆（＾ｑ＾）
@@ -700,11 +696,11 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="ppSplitedNode"></param>
-	/// <param name="bestScore"></param>
+	/// <param name="bestSweetness"></param>
 	/// <param name="alpha"></param>
 	virtual inline void explorePlain_10i700j100k_getAlpha(
 		SplitedNode** ppSplitedNode,
-		Sweetness& bestScore,
+		Sweetness& bestSweetness,
 		Sweetness& alpha
 		)const override {
 		// 非スプリット・ポイントはスルー☆！（＾ｑ＾）
@@ -719,9 +715,9 @@ public:
 	/// <param name="move"></param>
 	/// <param name="isPVMove"></param>
 	/// <param name="alpha"></param>
-	/// <param name="score"></param>
+	/// <param name="sweetness"></param>
 	/// <param name="pos"></param>
-	/// <param name="bestScore"></param>
+	/// <param name="bestSweetness"></param>
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestMove"></param>
 	/// <param name="beta"></param>
@@ -731,23 +727,23 @@ public:
 		Move& move,
 		bool& isPVMove,
 		Sweetness& alpha,
-		Sweetness& score,
+		Sweetness& sweetness,
 		Position& pos,
-		Sweetness& bestScore,
+		Sweetness& bestSweetness,
 		SplitedNode** ppSplitedNode,
 		Move& bestMove,
 		Sweetness& beta
 		)const override {
 
-		if (bestScore < score) {
-			bestScore = score;
+		if (bestSweetness < sweetness) {
+			bestSweetness = sweetness;
 
-			if (alpha < score) {
+			if (alpha < sweetness) {
 				bestMove = move;
 
 				// （＾ｑ＾）ＰＶノードの場合☆
-				if (score < beta) {
-					alpha = score;
+				if (sweetness < beta) {
+					alpha = sweetness;
 				}
 				else {
 					isBreak = true;
@@ -765,7 +761,7 @@ public:
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="depth"></param>
 	/// <param name="ppThisThread"></param>
-	/// <param name="bestScore"></param>
+	/// <param name="bestSweetness"></param>
 	/// <param name="beta"></param>
 	/// <param name="pos"></param>
 	/// <param name="ppFlashlight"></param>
@@ -780,7 +776,7 @@ public:
 		OurCarriage& ourCarriage,
 		const Depth depth,
 		Monkie** ppThisThread,
-		Sweetness& bestScore,
+		Sweetness& bestSweetness,
 		Sweetness& beta,
 		Position& pos,
 		Flashlight** ppFlashlight,
@@ -799,13 +795,13 @@ public:
 			&&
 			(*ppThisThread)->m_splitedNodesSize < g_MaxSplitedNodesPerThread)
 		{
-			assert(bestScore < beta);
+			assert(bestSweetness < beta);
 			(*ppThisThread)->ForkNewMonkey<OurCarriage::FakeSplit>(
 				pos,
 				*ppFlashlight,
 				alpha,
 				beta,
-				bestScore,
+				bestSweetness,
 				bestMove,
 				depth,
 				threatMove,
@@ -815,7 +811,7 @@ public:
 				cutNode
 				);
 
-			if (beta <= bestScore) {
+			if (beta <= bestSweetness) {
 				isBreak = true;
 				return;
 			}

@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../../header/n119_score___/n119_090_Sweetness.hpp"
+#include "../../header/n119_500_sweetnes/n119_090_Sweetness.hpp"
 #include "../../header/n165_movStack/n165_400_move.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 
@@ -22,7 +22,7 @@ struct AdventurerSkill {
 	/// <param name="mr"></param>
 	AdventurerSkill(const int l, const int mr)
 		: m_level(l),
-		m_maxRandomScoreDiff(static_cast<Sweetness>(mr)),
+		m_maxRandomSweetnessDiff(static_cast<Sweetness>(mr)),
 		m_best(g_MOVE_NONE) {}
 
 
@@ -52,7 +52,7 @@ struct AdventurerSkill {
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	bool enabled() const { return m_level < 20 || m_maxRandomScoreDiff != SweetnessZero; }
+	bool enabled() const { return m_level < 20 || m_maxRandomSweetnessDiff != SweetnessZero; }
 
 
 	/// <summary>
@@ -70,10 +70,10 @@ struct AdventurerSkill {
 	/// <returns></returns>
 	Move pickMove(OurCarriage* s) {
 		// level については未対応。max_random_score_diff についてのみ対応する。
-		if (m_maxRandomScoreDiff != SweetnessZero) {
+		if (m_maxRandomSweetnessDiff != SweetnessZero) {
 			size_t i = 1;
 			for (; i < s->m_pvSize; ++i) {
-				if (m_maxRandomScoreDiff < s->m_rootMoves[0].m_sweetness_ - s->m_rootMoves[i].m_sweetness_) { break; }
+				if (m_maxRandomSweetnessDiff < s->m_rootMoves[0].m_sweetness_ - s->m_rootMoves[i].m_sweetness_) { break; }
 			}
 			// 0 から i-1 までの間でランダムに選ぶ。
 			std::uniform_int_distribution<size_t> dist(0, i - 1);
@@ -93,7 +93,7 @@ struct AdventurerSkill {
 	/// <summary>
 	/// ランダムな評価値の差分の最大値か☆？？
 	/// </summary>
-	Sweetness m_maxRandomScoreDiff;
+	Sweetness m_maxRandomSweetnessDiff;
 
 	/// <summary>
 	/// ベストムーブか☆？

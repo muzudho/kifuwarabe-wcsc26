@@ -3,7 +3,7 @@
 #include "../n105_120_square__/n105_120_100_square.hpp"
 #include "../n105_120_square__/n105_120_500_convSquare.hpp"
 #include "../n113_piece___/n113_150_piece.hpp"
-#include "../n119_score___/n119_090_Sweetness.hpp"
+#include "../n119_500_sweetnes/n119_090_Sweetness.hpp"
 
 
 /// <summary>
@@ -18,7 +18,7 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	static const Sweetness m_MaxScore = static_cast<Sweetness>(2000);
+	static const Sweetness m_maxSweetness = static_cast<Sweetness>(2000);
 
 
 	/// <summary>
@@ -52,7 +52,7 @@ public:
 		if (Gain) {
 			this->m_table_[isDrop][pc][to] = std::max(s, GetValue(isDrop, pc, to) - 1);
 		}
-		else if (abs(GetValue(isDrop, pc, to) + s) < m_MaxScore) {
+		else if (abs(GetValue(isDrop, pc, to) + s) < m_maxSweetness) {
 			this->m_table_[isDrop][pc][to] += s;
 		}
 	}

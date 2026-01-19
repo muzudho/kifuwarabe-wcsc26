@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "../n105_100_color___/n105_100_500_convColor.hpp"
-#include "../n119_score___/n119_100_utilScore.hpp"
+#include "../n119_500_sweetnes/n119_100_UtilSweetness.hpp"
 #include "../n220_position/n220_250_changedLists.hpp"
 
 

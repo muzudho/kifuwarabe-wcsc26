@@ -6,7 +6,7 @@
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n113_piece___/n113_205_convHandPiece.hpp"
 #include "../n113_piece___/n113_500_hand.hpp"
-#include "../n119_score___/n119_200_PieceSweetness.hpp"
+#include "../n119_500_sweetnes/n119_200_PieceSweetness.hpp"
 #include "../n160_board___/n160_110_silverAttackBb.hpp"
 #include "../n160_board___/n160_120_bishopAttackBb.hpp"
 #include "../n160_board___/n160_130_lanceAttackBb.hpp"

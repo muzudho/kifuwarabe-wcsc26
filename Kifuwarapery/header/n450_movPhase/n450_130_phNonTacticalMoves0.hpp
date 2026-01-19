@@ -6,7 +6,7 @@
 #include "../n165_movStack/n165_500_moveStack.hpp"
 #include "../n220_position/n220_665_utilMoveStack.hpp"
 #include "../n407_moveGen_/n407_800_moveGenerator200.hpp"
-#include "../n440_movStack/n440_400_hasPositiveScore.hpp"
+#include "../n440_movStack/n440_400_hasPositiveSweetness.hpp"
 #include "../n440_movStack/n440_500_nextmoveEvent.hpp"
 #include "n450_070_movePhaseAbstract.hpp"
 

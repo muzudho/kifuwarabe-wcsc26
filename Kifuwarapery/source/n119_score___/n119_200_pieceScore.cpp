@@ -1,5 +1,5 @@
 ﻿#include "../../header/n105_100_color___/n105_100_500_convColor.hpp"
-#include "../../header/n119_score___/n119_200_PieceSweetness.hpp"
+#include "../../header/n119_500_sweetnes/n119_200_PieceSweetness.hpp"
 
 
 const Sweetness PieceSweetness::m_pawn = static_cast<Sweetness>(100 * 9 / 10);

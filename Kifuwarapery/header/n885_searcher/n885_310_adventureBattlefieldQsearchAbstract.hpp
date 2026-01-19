@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include <algorithm>	//std::max
-#include "../n119_score___/n119_090_Sweetness.hpp"
+#include "../n119_500_sweetnes/n119_090_Sweetness.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n223_move____/n223_200_depth.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"
@@ -140,10 +140,10 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="isReturnWithScore"></param>
-	/// <param name="returnScore"></param>
+	/// <param name="isReturnWithSweetness"></param>
+	/// <param name="returnSweetness"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
-	/// <param name="score"></param>
+	/// <param name="sweetness"></param>
 	/// <param name="beta"></param>
 	/// <param name="alpha"></param>
 	/// <param name="bestMove"></param>
@@ -152,10 +152,10 @@ public:
 	/// <param name="ttDepth"></param>
 	/// <param name="move"></param>
 	virtual inline void DoByNewScore(
-		bool& isReturnWithScore,
-		Sweetness& returnScore,
+		bool& isReturnWithSweetness,
+		Sweetness& returnSweetness,
 		OurCarriage& ourCarriage,
-		Sweetness& score,
+		Sweetness& sweetness,
 		Sweetness& beta,
 		Sweetness& alpha,
 		Move& bestMove,

@@ -1,7 +1,7 @@
 ﻿#pragma once
 
-#include "../n119_score___/n119_090_Sweetness.hpp"	//Ply, Sweetness
-#include "../n119_score___/n119_500_EvalSum.hpp"
+#include "../n119_500_sweetnes/n119_090_Sweetness.hpp"	//Ply, Sweetness
+#include "../n119_500_sweetnes/n119_500_EvalSum.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
 #include "../n223_move____/n223_200_depth.hpp"
 

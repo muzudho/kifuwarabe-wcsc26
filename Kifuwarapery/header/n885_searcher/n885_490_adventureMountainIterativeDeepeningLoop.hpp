@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../n119_score___/n119_090_Sweetness.hpp"
+#include "../n119_500_sweetnes/n119_090_Sweetness.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n220_position/n220_665_utilMoveStack.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"
@@ -63,7 +63,7 @@ public:
 		AdventurerSkill skill(ourCarriage.m_engineOptions["Skill_Level"], ourCarriage.m_engineOptions["Max_Random_Score_Diff"]);
 
 		if (ourCarriage.m_engineOptions["Max_Random_Score_Diff_Ply"] < pos.GetGamePly()) {
-			skill.m_maxRandomScoreDiff = SweetnessZero;
+			skill.m_maxRandomSweetnessDiff = SweetnessZero;
 			ourCarriage.m_pvSize = 1;
 			assert(!skill.enabled()); // level による設定が出来るようになるまでは、これで良い。
 		}

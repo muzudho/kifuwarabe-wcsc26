@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <string>
 #include <sstream>
-#include "../n119_score___/n119_090_Sweetness.hpp"
+#include "../n119_500_sweetnes/n119_090_Sweetness.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 #include "../n160_board___/n160_130_lanceAttackBb.hpp"
 #include "../n160_board___/n160_150_rookAttackBb.hpp"
@@ -238,23 +238,23 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="score"></param>
+	/// <param name="sweetness"></param>
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	std::string		scoreToUSI(const Sweetness score, const Sweetness alpha, const Sweetness beta) {
+	std::string		scoreToUSI(const Sweetness sweetness, const Sweetness alpha, const Sweetness beta) {
 		std::stringstream ss;
 
-		if (abs(score) < SweetnessMateInMaxPly) {
+		if (abs(sweetness) < SweetnessMateInMaxPly) {
 			// cp は centi pawn の略
-			ss << "cp " << score * 100 / PieceSweetness::m_pawn;
+			ss << "cp " << sweetness * 100 / PieceSweetness::m_pawn;
 		}
 		else {
 			// mate の後には、何手で詰むかを表示する。
-			ss << "mate " << (0 < score ? SweetnessMate0Ply - score : -SweetnessMate0Ply - score);
+			ss << "mate " << (0 < sweetness ? SweetnessMate0Ply - sweetness : -SweetnessMate0Ply - sweetness);
 		}
 
-		ss << (beta <= score ? " lowerbound" : score <= alpha ? " upperbound" : "");
+		ss << (beta <= sweetness ? " lowerbound" : sweetness <= alpha ? " upperbound" : "");
 
 		return ss.str();
 	}
@@ -325,7 +325,7 @@ public://private:
 	/// <summary>
 	/// トランスポジション・テーブル用にスコアを変更する？
 	/// </summary>
-	/// <param name="score"></param>
+	/// <param name="sweetness"></param>
 	/// <param name="ply"></param>
 	/// <returns></returns>
 	Sweetness ConvertScoreToTT(const Sweetness score, const Ply ply) {

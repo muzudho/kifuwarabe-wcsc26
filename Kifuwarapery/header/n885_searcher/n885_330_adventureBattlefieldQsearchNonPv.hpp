@@ -44,15 +44,15 @@ public:
 	/// </summary>
 	/// <param name="ppTtEntry"></param>
 	/// <param name="beta"></param>
-	/// <param name="ttScore"></param>
+	/// <param name="ttSweetness"></param>
 	/// <returns></returns>
 	virtual inline bool GetCondition01(
 		const TTEntry** ppTtEntry,
 		Sweetness beta,
-		Sweetness ttScore
+		Sweetness ttSweetness
 		) const override {
 		// NonPVノードのとき☆（＾ｑ＾）
-		return beta <= ttScore ?
+		return beta <= ttSweetness ?
 			((*ppTtEntry)->GetBoundKind() & BoundLower)
 			:
 			((*ppTtEntry)->GetBoundKind() & BoundUpper);
@@ -63,10 +63,10 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="alpha"></param>
-	/// <param name="bestScore"></param>
+	/// <param name="bestSweetness"></param>
 	virtual inline void SetAlpha(
 		Sweetness& alpha,
-		Sweetness bestScore
+		Sweetness bestSweetness
 		) const override {
 		// スルーするぜ☆！（＾ｑ＾）
 	}
@@ -80,11 +80,11 @@ public:
 	/// <param name="givesCheck"></param>
 	/// <param name="move"></param>
 	/// <param name="ttMove"></param>
-	/// <param name="futilityScore"></param>
+	/// <param name="futilitySweetness"></param>
 	/// <param name="futilityBase"></param>
 	/// <param name="pos"></param>
 	/// <param name="beta"></param>
-	/// <param name="bestScore"></param>
+	/// <param name="bestSweetness"></param>
 	/// <param name="depth"></param>
 	virtual inline void DoFutilityPruning01(
 		bool& isContinue,
@@ -92,11 +92,11 @@ public:
 		bool& givesCheck,
 		Move& move,
 		Move& ttMove,
-		Sweetness& futilityScore,
+		Sweetness& futilitySweetness,
 		Sweetness& futilityBase,
 		Position& pos,
 		Sweetness& beta,
-		Sweetness& bestScore,
+		Sweetness& bestSweetness,
 		const Depth depth
 		)const override {
 		// 非PVノードのとき☆（＾ｑ＾）
@@ -104,14 +104,14 @@ public:
 			&& !givesCheck
 			&& move != ttMove)
 		{
-			futilityScore =
+			futilitySweetness =
 				futilityBase + PieceSweetness::getSweetnessByCapturePiece(pos.GetPiece(move.To()));
 			if (move.IsPromotion()) {
-				futilityScore += PieceSweetness::getSweetnessByPromotePiece(move.GetPieceTypeFrom());
+				futilitySweetness += PieceSweetness::getSweetnessByPromotePiece(move.GetPieceTypeFrom());
 			}
 
-			if (futilityScore < beta) {
-				bestScore = std::max(bestScore, futilityScore);
+			if (futilitySweetness < beta) {
+				bestSweetness = std::max(bestSweetness, futilitySweetness);
 				isContinue = true;
 				return;
 			}
@@ -129,7 +129,7 @@ public:
 					)
 				<= SweetnessZero)
 			{
-				bestScore = std::max(bestScore, futilityBase);
+				bestSweetness = std::max(bestSweetness, futilityBase);
 				isContinue = true;
 				return;
 			}
@@ -208,7 +208,7 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="oldAlpha"></param>
-	/// <param name="bestScore"></param>
+	/// <param name="bestSweetness"></param>
 	/// <returns></returns>
 	virtual inline Bound GetBound01(
 		Sweetness& oldAlpha,

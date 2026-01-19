@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../n119_score___/n119_090_Sweetness.hpp"
+#include "../n119_500_sweetnes/n119_090_Sweetness.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
 
 
@@ -9,7 +9,7 @@
 /// おいしいバナナ
 /// 
 ///		- 指し手と、評価値。
-///		- 旧名： `MoveAndScoreIndex`
+///		- 旧名： `MoveAndＳcoreIndex`
 ///		</pre>
 /// </summary>
 class DeliciousBanana {
