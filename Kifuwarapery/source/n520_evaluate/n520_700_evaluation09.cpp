@@ -97,7 +97,7 @@ std::array<s32, 2> Evaluation09::doawhite(const Position& pos, const int index[2
 /// </summary>
 /// <param name="GetPos"></param>
 /// <returns></returns>
-ScoreIndex Evaluation09::inaniwaScoreBody(const Position& GetPos) {
+ScoreIndex Evaluation09::inaniwaSweetnessBody(const Position& GetPos) {
 	ScoreIndex GetScore = ScoreZero;
 	if (GetPos.GetConstRucksack()->inaniwaFlag == InaniwaIsBlack) {
 		if (GetPos.GetPiece(B9) == N19_WKnight) { GetScore += 700 * g_FVScale; }
@@ -138,9 +138,9 @@ ScoreIndex Evaluation09::inaniwaScoreBody(const Position& GetPos) {
 /// </summary>
 /// <param name="GetPos"></param>
 /// <returns></returns>
-inline ScoreIndex Evaluation09::inaniwaScore(const Position& GetPos) {
+inline ScoreIndex Evaluation09::inaniwaSweetness(const Position& GetPos) {
 	if (GetPos.GetConstRucksack()->inaniwaFlag == NotInaniwa) return ScoreZero;
-	return inaniwaScoreBody(GetPos);
+	return inaniwaSweetnessBody(GetPos);
 }
 
 
@@ -362,7 +362,7 @@ void Evaluation09::evaluateBody(Position& pos, Flashlight* ss) {
 
 	sum.m_p[2][0] += pos.GetMaterial() * g_FVScale;
 #if defined INANIWA_SHIFT
-	GetSum.GetP[2][0] += inaniwaScore(GetPos);
+	GetSum.GetP[2][0] += inaniwaSweetness(GetPos);
 #endif
 	ss->m_staticEvalRaw = sum;
 
@@ -438,7 +438,7 @@ Sweetness Evaluation09::evaluateUnUseDiff(const Position& pos) {
 	score.m_p[2][0] += pos.GetMaterial() * g_FVScale;
 
 #if defined INANIWA_SHIFT
-	GetScore.GetP[2][0] += inaniwaScore(GetPos);
+	GetScore.GetP[2][0] += inaniwaSweetness(GetPos);
 #endif
 
 	return static_cast<Sweetness>(score.GetSum(pos.GetTurn()));

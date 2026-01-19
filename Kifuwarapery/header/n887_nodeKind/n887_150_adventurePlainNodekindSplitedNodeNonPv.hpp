@@ -542,7 +542,7 @@ public:
 		)const override {
 
 		if (bestScore < score) {
-			bestScore = (*ppSplitedNode)->m_bestScore = score;
+			bestScore = (*ppSplitedNode)->m_bestSweetness = score;
 
 			if (alpha < score) {
 				bestMove = (*ppSplitedNode)->m_bestMove = move;

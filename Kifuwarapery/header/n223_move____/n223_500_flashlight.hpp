@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../n119_score___/n119_090_Sweetness.hpp"	//Ply,ScoreIndex
+#include "../n119_score___/n119_090_Sweetness.hpp"	//Ply, Sweetness
 #include "../n119_score___/n119_500_EvalSum.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
 #include "../n223_move____/n223_200_depth.hpp"
@@ -68,7 +68,7 @@ public:
 	bool			m_skipNullMove;
 
 	/// <summary>
-	/// 評価関数の差分計算用、値が入っていないときは [0] を ScoreNotEvaluated にしておく。
+	/// 評価関数の差分計算用、値が入っていないときは [0] を SweetnessNotEvaluated にしておく。
 	/// 常に Black 側から見た評価値を入れておく。
 	/// 0: 双玉に対する評価値, 1: 先手玉に対する評価値, 2: 後手玉に対する評価値
 	/// </summary>

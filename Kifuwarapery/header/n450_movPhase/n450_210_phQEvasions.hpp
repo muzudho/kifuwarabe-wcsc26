@@ -46,7 +46,7 @@ public:
 	void GoNext2Phase(NextmoveEvent& nmEvent) override {
 		nmEvent.SetLastMove(g_moveGenerator200.GenerateMoves_2(N06_Evasion,nmEvent.GetCurrMove(), nmEvent.GetPos()));
 		if (nmEvent.GetCurrMove() + 1 < nmEvent.GetLastMove()) {
-			nmEvent.ScoreEvasions();
+			nmEvent.SweetnessEvasions();
 		}
 	}
 };

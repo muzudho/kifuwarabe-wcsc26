@@ -4,7 +4,7 @@
 
 
 /// <summary>
-/// 
+/// TODO: デリシャス・バナナに似ている（＾～＾）？
 /// </summary>
 struct MoveStack {
 
@@ -15,9 +15,9 @@ struct MoveStack {
 	Move m_move;
 
 	/// <summary>
-	/// 
+	/// 評価値
 	/// </summary>
-	int m_score;
+	int m_sweetness;
 };
 
 
@@ -27,7 +27,7 @@ struct MoveStack {
 /// <param name="f"></param>
 /// <param name="s"></param>
 /// <returns></returns>
-inline bool operator < (const MoveStack& f, const MoveStack& s) { return f.m_score < s.m_score; }
+inline bool operator < (const MoveStack& f, const MoveStack& s) { return f.m_sweetness < s.m_sweetness; }
 
 
 /// <summary>
@@ -36,4 +36,4 @@ inline bool operator < (const MoveStack& f, const MoveStack& s) { return f.m_sco
 /// <param name="f"></param>
 /// <param name="s"></param>
 /// <returns></returns>
-inline bool operator > (const MoveStack& f, const MoveStack& s) { return f.m_score > s.m_score; }
+inline bool operator > (const MoveStack& f, const MoveStack& s) { return f.m_sweetness > s.m_sweetness; }

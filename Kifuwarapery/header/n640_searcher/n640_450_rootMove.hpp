@@ -26,7 +26,7 @@ public:
 	/// 生成。
 	/// </summary>
 	/// <param name="m"></param>
-	explicit RootMove(const Move m) : m_score_(-SweetnessInfinite), m_prevScore_(-SweetnessInfinite) {
+	explicit RootMove(const Move m) : m_sweetness_(-SweetnessInfinite), m_prevSweetness_(-SweetnessInfinite) {
 		m_pv_.push_back(m);
 		m_pv_.push_back(g_MOVE_NONE);
 	}
@@ -36,7 +36,7 @@ public:
 	/// 生成。
 	/// </summary>
 	/// <param name="m"></param>
-	explicit RootMove(const DeliciousBanana banana) : m_score_(banana.m_sweetness), m_prevScore_(-SweetnessInfinite) {
+	explicit RootMove(const DeliciousBanana banana) : m_sweetness_(banana.m_sweetness), m_prevSweetness_(-SweetnessInfinite) {
 		m_pv_.push_back(banana.m_move);
 		m_pv_.push_back(g_MOVE_NONE);
 	}
@@ -48,7 +48,7 @@ public:
 	/// <param name="m"></param>
 	/// <returns></returns>
 	bool operator < (const RootMove& m) const {
-		return m_score_ < m.m_score_;
+		return m_sweetness_ < m.m_sweetness_;
 	}
 
 
@@ -82,12 +82,12 @@ public:
 	/// <summary>
 	/// 評価値
 	/// </summary>
-	Sweetness m_score_;
+	Sweetness m_sweetness_;
 
 	/// <summary>
 	/// 前の評価値
 	/// </summary>
-	Sweetness m_prevScore_;
+	Sweetness m_prevSweetness_;
 
 	/// <summary>
 	/// 指し手のスタック

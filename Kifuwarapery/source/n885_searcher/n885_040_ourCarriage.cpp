@@ -1,5 +1,5 @@
 ﻿#include <iostream>
-#include "../../header/n119_score___/n119_200_pieceScore.hpp"
+#include "../../header/n119_score___/n119_200_PieceSweetness.hpp"
 #include "../../header/n160_board___/n160_106_inFrontMaskBb.hpp"
 #include "../../header/n160_board___/n160_220_queenAttackBb.hpp"
 #include "../../header/n160_board___/n160_230_setMaskBb.hpp"
@@ -87,7 +87,7 @@ std::string OurCarriage::PvInfoToUSI(Position& pos, const Ply depth, const Sweet
 		}
 
 		const Ply d = (update ? depth : depth - 1);
-		const Sweetness s = (update ? m_rootMoves[i].m_score_ : m_rootMoves[i].m_prevScore_);
+		const Sweetness s = (update ? m_rootMoves[i].m_sweetness_ : m_rootMoves[i].m_prevSweetness_);
 
 		ss << "info depth " << d
 		   << " seldepth " << selDepth

@@ -73,7 +73,7 @@ struct AdventurerSkill {
 		if (m_maxRandomScoreDiff != SweetnessZero) {
 			size_t i = 1;
 			for (; i < s->m_pvSize; ++i) {
-				if (m_maxRandomScoreDiff < s->m_rootMoves[0].m_score_ - s->m_rootMoves[i].m_score_) { break; }
+				if (m_maxRandomScoreDiff < s->m_rootMoves[0].m_sweetness_ - s->m_rootMoves[i].m_sweetness_) { break; }
 			}
 			// 0 から i-1 までの間でランダムに選ぶ。
 			std::uniform_int_distribution<size_t> dist(0, i - 1);

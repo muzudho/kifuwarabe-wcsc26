@@ -8,7 +8,7 @@
 #include "../../header/n113_piece___/n113_150_piece.hpp"
 #include "../../header/n113_piece___/n113_155_convPiece.hpp"
 #include "../../header/n119_score___/n119_090_Sweetness.hpp"
-#include "../../header/n119_score___/n119_200_pieceScore.hpp"
+#include "../../header/n119_score___/n119_200_PieceSweetness.hpp"
 #include "../../header/n160_board___/n160_100_bitboard.hpp"
 #include "../../header/n160_board___/n160_170_goldAndSilverAttackBb.hpp"
 #include "../../header/n160_board___/n160_230_setMaskBb.hpp"
@@ -832,16 +832,16 @@ Sweetness Position::GetSee1(const Move move, const int asymmThreshold) const {
 		if (!opponentAttackers.Exists1Bit()) {
 			if (move.IsPromotion()) {
 				const PieceType ptFrom = move.GetPieceTypeFrom();
-				return PieceScore::GetCapturePieceScore(move.GetCap()) + PieceScore::GetPromotePieceScore(ptFrom);
+				return PieceSweetness::getSweetnessByCapturePiece(move.GetCap()) + PieceSweetness::getSweetnessByPromotePiece(ptFrom);
 			}
-			return PieceScore::GetCapturePieceScore(move.GetCap());
+			return PieceSweetness::getSweetnessByCapturePiece(move.GetCap());
 		}
 		attackers = opponentAttackers | this->GetAttackersTo_clr(US, to, occ);
-		swapList[0] = PieceScore::GetCapturePieceScore(move.GetCap());
+		swapList[0] = PieceSweetness::getSweetnessByCapturePiece(move.GetCap());
 		ptCaptured = move.GetPieceTypeFrom();
 		if (move.IsPromotion()) {
 			const PieceType ptFrom = move.GetPieceTypeFrom();
-			swapList[0] += PieceScore::GetPromotePieceScore(ptFrom);
+			swapList[0] += PieceSweetness::getSweetnessByPromotePiece(ptFrom);
 			ptCaptured += PTPromote;
 		}
 	}
@@ -850,7 +850,7 @@ Sweetness Position::GetSee1(const Move move, const int asymmThreshold) const {
 	int slIndex = 1;
 	Color iCurrTurn = THEM; // ループ中にひっくり返るぜ☆（＾ｑ＾）
 	do {
-		swapList[slIndex] = -swapList[slIndex - 1] + PieceScore::GetCapturePieceScore(ptCaptured);
+		swapList[slIndex] = -swapList[slIndex - 1] + PieceSweetness::getSweetnessByCapturePiece(ptCaptured);
 
 		// 再帰関数のスタート地点だぜ☆！（＾ｑ＾）
 		// todo: 実際に移動した方向を基にattackersを更新すれば、template, inline を使用しなくても良さそう。
@@ -875,7 +875,7 @@ Sweetness Position::GetSee1(const Move move, const int asymmThreshold) const {
 
 		if (ptCaptured == N08_King) {
 			if (opponentAttackers.Exists1Bit()) {
-				swapList[slIndex++] = PieceScore::m_CaptureKingScore;
+				swapList[slIndex++] = PieceSweetness::m_captureKing;
 			}
 			break;
 		}
@@ -884,7 +884,7 @@ Sweetness Position::GetSee1(const Move move, const int asymmThreshold) const {
 	if (asymmThreshold) {
 		for (int i = 0; i < slIndex; i += 2) {
 			if (swapList[i] < asymmThreshold) {
-				swapList[i] = -PieceScore::m_CaptureKingScore;
+				swapList[i] = -PieceSweetness::m_captureKing;
 			}
 		}
 	}
@@ -908,7 +908,7 @@ Sweetness Position::GetSeeSign(const Move move) const {
 	if (move.IsCapture()) {
 		const PieceType ptFrom = move.GetPieceTypeFrom();
 		const Square to = move.To();
-		if (PieceScore::GetCapturePieceScore(ptFrom) <= PieceScore::GetCapturePieceScore(GetPiece(to))) {
+		if (PieceSweetness::getSweetnessByCapturePiece(ptFrom) <= PieceSweetness::getSweetnessByCapturePiece(GetPiece(to))) {
 			return static_cast<Sweetness>(1);
 		}
 	}
@@ -1091,8 +1091,8 @@ void Position::DoMove(const Move move, StateInfo& newSt, const CheckInfo& ci, co
 			m_st_->m_cl.m_clistpair[1].m_newlist[1] = m_evalList_.m_list1[toListIndex];
 
 			m_st_->m_material += (US == Black ?
-				PieceScore::GetCapturePieceScore(ptCaptured) :
-				-PieceScore::GetCapturePieceScore(ptCaptured)
+				PieceSweetness::getSweetnessByCapturePiece(ptCaptured) :
+				-PieceSweetness::getSweetnessByCapturePiece(ptCaptured)
 			);
 		}
 		prefetch(GetConstOurCarriage()->m_tt.FirstEntry(boardKey + handKey));
@@ -1122,8 +1122,8 @@ void Position::DoMove(const Move move, StateInfo& newSt, const CheckInfo& ci, co
 
 		if (move.IsPromotion()) {
 			m_st_->m_material += (US == Black ?
-				(PieceScore::GetPieceScore(ptTo) - PieceScore::GetPieceScore(ptFrom))
-				: -(PieceScore::GetPieceScore(ptTo) - PieceScore::GetPieceScore(ptFrom)));
+				(PieceSweetness::getSweetnessByPiece(ptTo) - PieceSweetness::getSweetnessByPiece(ptFrom))
+				: -(PieceSweetness::getSweetnessByPiece(ptTo) - PieceSweetness::getSweetnessByPiece(ptFrom)));
 		}
 
 		if (moveIsCheck) {
@@ -2873,11 +2873,11 @@ Sweetness Position::ComputeMaterial() const {
 	Sweetness s = SweetnessZero;
 	for (PieceType pt = N01_Pawn; pt < g_PIECETYPE_NUM; ++pt) {
 		const int num = this->GetBbOf20(pt, Black).PopCount() - this->GetBbOf20(pt, White).PopCount();
-		s += num * PieceScore::GetPieceScore(pt);
+		s += num * PieceSweetness::getSweetnessByPiece(pt);
 	}
 	for (PieceType pt = N01_Pawn; pt < N08_King; ++pt) {
 		const int num = GetHand(Black).NumOf(ConvHandPiece::FromPieceType(pt)) - GetHand(White).NumOf(ConvHandPiece::FromPieceType(pt));
-		s += num * PieceScore::GetPieceScore(pt);
+		s += num * PieceSweetness::getSweetnessByPiece(pt);
 	}
 	return s;
 }

@@ -32,10 +32,10 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// 評価値取得
 	/// </summary>
 	/// <returns></returns>
-	Sweetness GetScore() const;
+	Sweetness GetSweetness() const;
 
 
 	/// <summary>
@@ -63,7 +63,7 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	Sweetness GetEvalScore() const;
+	Sweetness GetEvalSweetness() const;
 
 
 	/// <summary>
@@ -77,15 +77,15 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="depth"></param>
-	/// <param name="score"></param>
+	/// <param name="sweetness">評価値</param>
 	/// <param name="move"></param>
 	/// <param name="posKeyHigh32"></param>
 	/// <param name="bound"></param>
 	/// <param name="generation"></param>
-	/// <param name="evalScore"></param>
-	void SetSave(const Depth depth, const Sweetness score, const Move move,
+	/// <param name="evalSweetness">評価値</param>
+	void SetSave(const Depth depth, const Sweetness sweetness, const Move move,
 		const u32 posKeyHigh32, const Bound bound, const u8 generation,
-		const Sweetness evalScore);
+		const Sweetness evalSweetness);
 
 
 private:
@@ -116,9 +116,9 @@ private:
 
 
 	/// <summary>
-	/// 
+	/// 評価値
 	/// </summary>
-	s16 m_score16_;
+	s16 m_sweetness16_;
 
 
 	/// <summary>
@@ -128,7 +128,7 @@ private:
 
 
 	/// <summary>
-	/// 
+	/// 評価値
 	/// </summary>
-	s16 m_evalScore_;
+	s16 m_evalSweetness_;
 };

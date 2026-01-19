@@ -51,7 +51,7 @@ public:
 			:
 			g_moveGenerator200.GenerateMoves_recapture<Color::White, Color::Black>(nmEvent.GetFirstMove(), nmEvent.GetPos(), nmEvent.GetRecaptureSquare())
 		);//<Recapture>
-		nmEvent.ScoreCaptures();
+		nmEvent.SweetnessCaptures();
 	}
 };
 

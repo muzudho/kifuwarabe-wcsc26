@@ -15,17 +15,17 @@ enum Bound {
 	BoundNone = 0,
 
 	/// <summary>
-	/// fail low  で正しい score が分からない。alpha 以下が確定という意味。
+	/// fail low  で正しい評価値が分からない。alpha 以下が確定という意味。
 	/// </summary>
 	BoundUpper = Binary< 1>::value,
 
 	/// <summary>
-	/// fail high で正しい score が分からない。beta 以上が確定という意味。
+	/// fail high で正しい評価値が分からない。beta 以上が確定という意味。
 	/// </summary>
 	BoundLower = Binary<10>::value,
 
 	/// <summary>
-	/// alpha と beta の間に score がある。
+	/// alpha と beta の間に評価値がある。
 	/// </summary>
 	BoundExact = Binary<11>::value
 };

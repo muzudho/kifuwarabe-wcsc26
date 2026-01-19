@@ -101,7 +101,7 @@ public:
 		*ppSplitedNode = (*ppFlashlight)->m_splitedNode;
 		bestMove = (*ppSplitedNode)->m_bestMove;
 		threatMove = (*ppSplitedNode)->m_threatMove;
-		bestScore = (*ppSplitedNode)->m_bestScore;
+		bestScore = (*ppSplitedNode)->m_bestSweetness;
 		//tte = nullptr;
 		ttMove = excludedMove = g_MOVE_NONE;
 		ttScore = SweetnessNone;
@@ -109,7 +109,7 @@ public:
 		Evaluation09 evaluation;
 		evaluation.evaluate(pos, *ppFlashlight);
 
-		assert(-SweetnessInfinite < (*ppSplitedNode)->m_bestScore && 0 < (*ppSplitedNode)->m_moveCount);
+		assert(-SweetnessInfinite < (*ppSplitedNode)->m_bestSweetness && 0 < (*ppSplitedNode)->m_moveCount);
 
 		isGotoSplitPointStart = true;
 		return;
@@ -200,8 +200,8 @@ public:
 		Sweetness& beta) const
 	{
 		// ルート以外のみで行われる手続きだぜ☆（＾ｑ＾）！
-		alpha = std::max(UtilScore::MatedIn((*ppFlashlight)->m_ply), alpha);
-		beta = std::min(UtilScore::MateIn((*ppFlashlight)->m_ply + 1), beta);
+		alpha = std::max(UtilSweetness::MatedIn((*ppFlashlight)->m_ply), alpha);
+		beta = std::min(UtilSweetness::MateIn((*ppFlashlight)->m_ply + 1), beta);
 		if (beta <= alpha)
 		{
 			isReturnWithScore = true;
@@ -234,7 +234,7 @@ public:
 		excludedMove = (*ppFlashlight)->m_excludedMove;
 		posKey = (excludedMove.IsNone() ? pos.GetKey() : pos.GetExclusionKey());
 		(*ppTtEntry) = ourCarriage.m_tt.Probe(posKey);
-		return ((*ppTtEntry) != nullptr ? ourCarriage.ConvertScoreFromTT((*ppTtEntry)->GetScore(), (*ppFlashlight)->m_ply) : SweetnessNone);
+		return ((*ppTtEntry) != nullptr ? ourCarriage.ConvertScoreFromTT((*ppTtEntry)->GetSweetness(), (*ppFlashlight)->m_ply) : SweetnessNone);
 	}
 
 
@@ -358,7 +358,7 @@ public:
 					pos.GetMateMoveIn1Ply<Color::White,Color::Black>()
 					)				
 				).IsNone()) {
-				(*ppFlashlight)->m_staticEval = bestScore = UtilScore::MateIn((*ppFlashlight)->m_ply);
+				(*ppFlashlight)->m_staticEval = bestScore = UtilSweetness::MateIn((*ppFlashlight)->m_ply);
 				ourCarriage.m_tt.Store(posKey, ourCarriage.ConvertScoreToTT(bestScore, (*ppFlashlight)->m_ply), BoundExact, depth,
 					move, (*ppFlashlight)->m_staticEval);
 				bestMove = move;
@@ -564,7 +564,7 @@ public:
 			(*ppFlashlight)->m_currentMove = g_MOVE_NULL;
 			Depth reduction = static_cast<Depth>(3) * OnePly + depth / 4;
 
-			if (beta < eval - PieceScore::m_pawn) {
+			if (beta < eval - PieceSweetness::m_pawn) {
 				reduction += OnePly;
 			}
 
@@ -922,7 +922,7 @@ public:
 					:
 					pos.IsPseudoLegalMoveIsLegal<false, false, Color::White, Color::Black>(move, ci.m_pinned)
 			)
-			&& abs(ttScore) < PieceScore::m_ScoreKnownWin)
+			&& abs(ttScore) < PieceSweetness::m_sweetnessKnownWin)
 		{
 			assert(ttScore != SweetnessNone);
 
@@ -1067,8 +1067,8 @@ public:
 	) const {
 
 		(*ppSplitedNode)->m_mutex.lock();
-		if ((*ppSplitedNode)->m_bestScore < bestScore) {
-			(*ppSplitedNode)->m_bestScore = bestScore;
+		if ((*ppSplitedNode)->m_bestSweetness < bestScore) {
+			(*ppSplitedNode)->m_bestSweetness = bestScore;
 		}
 	}
 
@@ -1449,7 +1449,7 @@ public:
 		) const
 	{
 		(*ppSplitedNode)->m_mutex.lock();
-		bestScore = (*ppSplitedNode)->m_bestScore;
+		bestScore = (*ppSplitedNode)->m_bestSweetness;
 		alpha = (*ppSplitedNode)->m_alpha;
 	}
 
@@ -1477,7 +1477,7 @@ public:
 
 		if (isPVMove || alpha < score) {
 			// PV move or new best move
-			rm.m_score_ = score;
+			rm.m_sweetness_ = score;
 #if defined BISHOP_IN_DANGER
 			if ((bishopInDangerFlag == BlackBishopInDangerIn28 && GetMove.ToCSA() == "0082KA")
 				|| (bishopInDangerFlag == WhiteBishopInDangerIn28 && GetMove.ToCSA() == "0028KA")
@@ -1494,7 +1494,7 @@ public:
 			}
 		}
 		else {
-			rm.m_score_ = -SweetnessInfinite;
+			rm.m_sweetness_ = -SweetnessInfinite;
 		}
 	}
 
@@ -1602,7 +1602,7 @@ public:
 		Move movesSearched[64]) const
 	{
 		if (moveCount == 0) {
-			bestScore = !excludedMove.IsNone() ? alpha : UtilScore::MatedIn((*ppFlashlight)->m_ply);
+			bestScore = !excludedMove.IsNone() ? alpha : UtilSweetness::MatedIn((*ppFlashlight)->m_ply);
 			return;
 		}
 

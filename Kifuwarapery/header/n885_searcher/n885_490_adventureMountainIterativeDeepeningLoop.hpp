@@ -107,7 +107,7 @@ public:
 
 			// 前回の iteration の結果を全てコピー
 			for (size_t i = 0; i < ourCarriage.m_rootMoves.size(); ++i) {
-				ourCarriage.m_rootMoves[i].m_prevScore_ = ourCarriage.m_rootMoves[i].m_score_;
+				ourCarriage.m_rootMoves[i].m_prevSweetness_ = ourCarriage.m_rootMoves[i].m_sweetness_;
 			}
 
 			prevBestMovePlyChanges = ourCarriage.GetBestMovePlyChanges();
@@ -124,11 +124,11 @@ public:
 				if (
 					// 深さ５以上で
 					5 <= depth &&
-					abs(ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_prevScore_) < PieceScore::m_ScoreKnownWin
+					abs(ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_prevSweetness_) < PieceSweetness::m_sweetnessKnownWin
 					) {
 					delta = static_cast<Sweetness>(16);
-					alpha = ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_prevScore_ - delta;
-					beta = ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_prevScore_ + delta;
+					alpha = ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_prevSweetness_ - delta;
+					beta = ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_prevSweetness_ + delta;
 				}
 				else {
 					alpha = -SweetnessInfinite;
@@ -181,7 +181,7 @@ public:
 					}
 
 					// fail high/low のとき、aspiration window を広げる。
-					if (PieceScore::m_ScoreKnownWin <= abs(bestScore)) {
+					if (PieceSweetness::m_sweetnessKnownWin <= abs(bestScore)) {
 						// 勝ち(負け)だと判定したら、最大の幅で探索を試してみる。
 						alpha = -SweetnessInfinite;
 						beta = SweetnessInfinite;
@@ -252,7 +252,7 @@ public:
 					&& bestMoveNeverChanged
 					&& ourCarriage.m_pvSize == 1
 					// ここは確実にバグらせないようにする。
-					&& -SweetnessInfinite + 2 * PieceScore::m_capturePawn <= bestScore
+					&& -SweetnessInfinite + 2 * PieceSweetness::m_capturePawn <= bestScore
 					&& (
 						ourCarriage.m_rootMoves.size() == 1
 						||
@@ -260,7 +260,7 @@ public:
 						ourCarriage.m_timeMgr.CanIterativeDeepingTimeOk(ourCarriage.m_stopwatch.GetElapsed())
 					)
 				) {
-					const Sweetness rBeta = bestScore - 2 * PieceScore::m_capturePawn;
+					const Sweetness rBeta = bestScore - 2 * PieceSweetness::m_capturePawn;
 					(flashlight + 1)->m_staticEvalRaw.m_p[0][0] = SweetnessNotEvaluated;
 					(flashlight + 1)->m_excludedMove = ourCarriage.m_rootMoves[0].m_pv_[0];
 					(flashlight + 1)->m_skipNullMove = true;

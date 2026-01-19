@@ -46,9 +46,9 @@ struct EvalSum {
 	/// <param name="c"></param>
 	/// <returns></returns>
 	s32 GetSum(const Color c) const {
-		const s32 scoreBoard = m_p[0][0] - m_p[1][0] + m_p[2][0];
-		const s32 scoreTurn = m_p[0][1] + m_p[1][1] + m_p[2][1];
-		return (c == Black ? scoreBoard : -scoreBoard) + scoreTurn;
+		const s32 sweetnessBoard = m_p[0][0] - m_p[1][0] + m_p[2][0];
+		const s32 sweetnessTurn = m_p[0][1] + m_p[1][1] + m_p[2][1];
+		return (c == Black ? sweetnessBoard : -sweetnessBoard) + sweetnessTurn;
 	}
 
 

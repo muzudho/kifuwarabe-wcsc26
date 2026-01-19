@@ -31,7 +31,7 @@ public:
 	{
 		//isReturn = true;
 		//resultScore = UtilScore::MatedIn(pFlashlightBox->m_ply);
-		return std::make_pair(true, UtilScore::MatedIn(pFlashlightBox->m_ply));
+		return std::make_pair(true, UtilSweetness::MatedIn(pFlashlightBox->m_ply));
 	}
 };
 

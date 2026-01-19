@@ -195,14 +195,14 @@ public:
 public:// もともと本当はプライベート・メソッド☆
 
 	// template <bool IsDrop>
-	// void NextmoveEvent::ScoreNonCapturesMinusPro() {
+	// void NextmoveEvent::SweetnessNonCapturesMinusPro() {
 	//
-	//template <bool IsDrop> void ScoreNonCapturesMinusPro();
+	//template <bool IsDrop> void SweetnessNonCapturesMinusPro();
 	template <bool IsDrop>
-	void ScoreNonCapturesMinusPro() {
+	void SweetnessNonCapturesMinusPro() {
 		for (MoveStack* curr = GetCurrMove(); curr != GetLastMove(); ++curr) {
 			const Move move = curr->m_move;
-			curr->m_score =
+			curr->m_sweetness =
 				GetHistory().GetValue(IsDrop,
 					ConvPiece::FROM_COLOR_AND_PIECE_TYPE10(GetPos().GetTurn(),
 						(IsDrop ? move.GetPieceTypeDropped() : move.GetPieceTypeFrom())),
@@ -214,7 +214,7 @@ public:// もともと本当はプライベート・メソッド☆
 	/// <summary>
 	/// 
 	/// </summary>
-	void ScoreCaptures();
+	void SweetnessCaptures();
 
 
 	/// <summary>
@@ -234,7 +234,7 @@ public:// もともと本当はプライベート・メソッド☆
 	/// <summary>
 	/// 
 	/// </summary>
-	void ScoreEvasions();
+	void SweetnessEvasions();
 
 
 private:

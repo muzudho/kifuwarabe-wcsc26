@@ -30,7 +30,7 @@ public:
 	{
 		//isReturn = true;
 		//resultScore = UtilScore::MateIn(pFlashlightBox->m_ply);
-		return std::make_pair(true, UtilScore::MateIn(pFlashlightBox->m_ply));
+		return std::make_pair(true, UtilSweetness::MateIn(pFlashlightBox->m_ply));
 	}
 };
 

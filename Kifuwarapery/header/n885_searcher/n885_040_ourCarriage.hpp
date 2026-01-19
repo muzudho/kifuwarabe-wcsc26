@@ -247,7 +247,7 @@ public:
 
 		if (abs(score) < SweetnessMateInMaxPly) {
 			// cp は centi pawn の略
-			ss << "cp " << score * 100 / PieceScore::m_pawn;
+			ss << "cp " << score * 100 / PieceSweetness::m_pawn;
 		}
 		else {
 			// mate の後には、何手で詰むかを表示する。
@@ -383,7 +383,7 @@ public://private:
 			second.IsCaptureOrPromotion()
 			&& (
 				//(pos.GetPieceScore(second.GetCap()) <= pos.GetPieceScore(m2ptFrom))
-				(PieceScore::GetPieceScore(second.GetCap()) <= PieceScore::GetPieceScore(m2ptFrom))
+				(PieceSweetness::getSweetnessByPiece(second.GetCap()) <= PieceSweetness::getSweetnessByPiece(m2ptFrom))
 				||
 				m2ptFrom == N08_King
 				)

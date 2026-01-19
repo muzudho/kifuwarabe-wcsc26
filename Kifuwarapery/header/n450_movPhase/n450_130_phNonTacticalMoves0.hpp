@@ -51,14 +51,14 @@ public:
 	void GoNext2Phase(NextmoveEvent& nmEvent) override {
 		nmEvent.SetLastMove(g_moveGenerator200.GenerateMoves_2(N04_NonCaptureMinusPro,nmEvent.GetCurrMove(), nmEvent.GetPos()));
 
-		nmEvent.ScoreNonCapturesMinusPro<false>();
+		nmEvent.SweetnessNonCapturesMinusPro<false>();
 		nmEvent.SetCurrMove(nmEvent.GetLastMove());
 
 		nmEvent.SetLastMoveAndLastNonCaputre(g_moveGenerator200.GenerateMoves_2(N02_Drop,nmEvent.GetCurrMove(), nmEvent.GetPos()));
-		nmEvent.ScoreNonCapturesMinusPro<true>();
+		nmEvent.SweetnessNonCapturesMinusPro<true>();
 
 		nmEvent.SetCurrMove(nmEvent.GetFirstMove());
-		nmEvent.SetLastMove(std::partition(nmEvent.GetCurrMove(), nmEvent.GetLastNonCapture(), HasPositiveScore()));
+		nmEvent.SetLastMove(std::partition(nmEvent.GetCurrMove(), nmEvent.GetLastNonCapture(), HasPositiveSweetness()));
 
 		// 要素数は10個くらいまでであることが多い。要素数が少ないので、insertionSort() を使用する。
 		UtilMoveStack::InsertionSort<MoveStack*, true>(nmEvent.GetCurrMove(), nmEvent.GetLastMove());

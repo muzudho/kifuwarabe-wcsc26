@@ -182,7 +182,7 @@ public:
 	/// <param name="pFlashlightBox"></param>
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
-	/// <param name="bestScore"></param>
+	/// <param name="bestSweetness"></param>
 	/// <param name="bestMove"></param>
 	/// <param name="depth"></param>
 	/// <param name="threatMove"></param>
@@ -196,7 +196,7 @@ public:
 		Flashlight* pFlashlightBox,
 		const Sweetness alpha,
 		const Sweetness beta,
-		Sweetness& bestScore,
+		Sweetness& bestSweetness,
 		Move& bestMove,
 		const Depth depth,
 		const Move threatMove,

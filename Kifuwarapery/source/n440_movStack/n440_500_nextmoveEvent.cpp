@@ -63,7 +63,7 @@ NextmoveEvent::NextmoveEvent(
 {
 	assert(Depth0 < depth);
 
-	this->m_legalMoves_[0].m_score = INT_MAX; // 番兵のセット
+	this->m_legalMoves_[0].m_sweetness = INT_MAX; // 番兵のセット
 	this->m_currMove_ = this->m_lastMove_ = GetFirstMove();
 	this->m_captureThreshold_ = 0;
 	this->m_endBadCaptures_ = this->m_legalMoves_ + Move::m_MAX_LEGAL_MOVES - 1;
@@ -80,10 +80,10 @@ NextmoveEvent::NextmoveEvent(
 
 		if (
 			this->m_pFlashlightBox_ != nullptr &&
-			this->m_pFlashlightBox_->m_staticEval < beta - PieceScore::m_capturePawn &&
+			this->m_pFlashlightBox_->m_staticEval < beta - PieceSweetness::m_capturePawn &&
 			depth < 3 * OnePly
 		) {
-			this->m_captureThreshold_ = -PieceScore::m_capturePawn;
+			this->m_captureThreshold_ = -PieceSweetness::m_capturePawn;
 		}
 		else if (m_pFlashlightBox_ != nullptr && beta < this->m_pFlashlightBox_->m_staticEval) {
 			this->m_captureThreshold_ = beta - this->m_pFlashlightBox_->m_staticEval;
@@ -117,7 +117,7 @@ NextmoveEvent::NextmoveEvent(
 	: m_pos_(pos), m_history_(history), m_currMove_(GetFirstMove()), m_lastMove_(GetFirstMove())
 {
 	assert(depth <= Depth0);
-	m_legalMoves_[0].m_score = INT_MAX; // 番兵のセット
+	m_legalMoves_[0].m_sweetness = INT_MAX; // 番兵のセット
 
 	if (pos.inCheck())
 		m_phase_ = N10_QEvasionSearch;
@@ -157,11 +157,11 @@ NextmoveEvent::NextmoveEvent(
 {
 	assert(!pos.inCheck());
 
-	m_legalMoves_[0].m_score = INT_MAX; // 番兵のセット
+	m_legalMoves_[0].m_sweetness = INT_MAX; // 番兵のセット
 	m_phase_ = N12_ProbCut;
 
 	//m_captureThreshold_ = pos.GetCapturePieceScore(pt);
-	m_captureThreshold_ = PieceScore::GetCapturePieceScore(pt);
+	m_captureThreshold_ = PieceSweetness::getSweetnessByCapturePiece(pt);
 	m_ttMove_ = ((!ttm.IsNone() &&
 		(
 			pos.GetTurn()==Color::Black
@@ -243,10 +243,10 @@ inline Sweetness LVA(const PieceType pt) { return LVATable[pt]; }
 /// <summary>
 /// 
 /// </summary>
-void NextmoveEvent::ScoreCaptures() {
+void NextmoveEvent::SweetnessCaptures() {
 	for (MoveStack* curr = GetCurrMove(); curr != GetLastMove(); ++curr) {
 		const Move move = curr->m_move;
-		curr->m_score = PieceScore::GetPieceScore(GetPos().GetPiece(move.To())) - LVA(move.GetPieceTypeFrom());
+		curr->m_sweetness = PieceSweetness::getSweetnessByPiece(GetPos().GetPiece(move.To())) - LVA(move.GetPieceTypeFrom());
 	}
 }
 
@@ -254,22 +254,22 @@ void NextmoveEvent::ScoreCaptures() {
 /// <summary>
 /// 
 /// </summary>
-void NextmoveEvent::ScoreEvasions() {
+void NextmoveEvent::SweetnessEvasions() {
 	for (MoveStack* curr = GetCurrMove(); curr != GetLastMove(); ++curr) {
 		const Move move = curr->m_move;
 		const Sweetness seeScore = GetPos().GetSeeSign(move);
 		if (seeScore < 0) {
-			curr->m_score = seeScore - History::m_MaxScore;
+			curr->m_sweetness = seeScore - History::m_MaxScore;
 		}
 		else if (move.IsCaptureOrPromotion()) {
-			curr->m_score = PieceScore::GetCapturePieceScore(GetPos().GetPiece(move.To())) + History::m_MaxScore;
+			curr->m_sweetness = PieceSweetness::getSweetnessByCapturePiece(GetPos().GetPiece(move.To())) + History::m_MaxScore;
 			if (move.IsPromotion()) {
 				const PieceType pt = ConvPiece::TO_PIECE_TYPE10(GetPos().GetPiece(move.From()));
-				curr->m_score += PieceScore::GetPromotePieceScore(pt);
+				curr->m_sweetness += PieceSweetness::getSweetnessByPromotePiece(pt);
 			}
 		}
 		else {
-			curr->m_score = GetHistory().GetValue(move.IsDrop(), ConvPiece::FROM_COLOR_AND_PIECE_TYPE10(GetPos().GetTurn(), move.GetPieceTypeFromOrDropped()), move.To());
+			curr->m_sweetness = GetHistory().GetValue(move.IsDrop(), ConvPiece::FROM_COLOR_AND_PIECE_TYPE10(GetPos().GetTurn(), move.GetPieceTypeFromOrDropped()), move.To());
 		}
 	}
 }

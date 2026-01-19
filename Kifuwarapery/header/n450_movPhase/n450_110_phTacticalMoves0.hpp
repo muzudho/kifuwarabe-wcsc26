@@ -63,7 +63,7 @@ public:
 	/// <param name="nmEvent"></param>
 	void GoNext2Phase(NextmoveEvent& nmEvent) override {
 		nmEvent.SetLastMove(g_moveGenerator200.GenerateMoves_2(N03_CapturePlusPro,nmEvent.GetCurrMove(), nmEvent.GetPos()) );
-		nmEvent.ScoreCaptures();
+		nmEvent.SweetnessCaptures();
 	}
 };
 

@@ -327,7 +327,7 @@
     <ClInclude Include="header\n119_score___\n119_100_utilScore.hpp">
       <Filter>header\n119_score___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n119_score___\n119_200_pieceScore.hpp">
+    <ClInclude Include="header\n119_score___\n119_200_PieceSweetness.hpp">
       <Filter>header\n119_score___</Filter>
     </ClInclude>
     <ClInclude Include="header\n160_board___\n160_600_bitboardAll.hpp">

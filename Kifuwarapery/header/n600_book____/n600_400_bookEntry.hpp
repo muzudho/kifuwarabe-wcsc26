@@ -27,7 +27,7 @@ struct BookEntry {
 	u16		m_count;
 
 	/// <summary>
-	/// 
+	/// 評価値
 	/// </summary>
-	Sweetness	m_score;
+	Sweetness	m_sweetness;
 };

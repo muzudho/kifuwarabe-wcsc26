@@ -52,7 +52,7 @@ public:
 
 
 	/// <summary>
-	/// 最も score の高い moveStack のポインタを返す。
+	/// 最も評価値の高い moveStack のポインタを返す。
 	/// MoveStack の数が多いとかなり時間がかかるので、
 	/// 駒打ちを含むときに使用してはならない。
 	/// </summary>

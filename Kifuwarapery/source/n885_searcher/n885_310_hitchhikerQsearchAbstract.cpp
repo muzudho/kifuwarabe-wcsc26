@@ -63,7 +63,7 @@ Sweetness AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 	posKey = pos.GetKey();
 	pTtEntry = ourCarriage.m_tt.Probe(posKey);
 	ttMove = (pTtEntry != nullptr ? UtilMoveStack::Move16toMove(pTtEntry->GetMove(), pos) : g_MOVE_NONE);
-	ttScore = (pTtEntry != nullptr ? ourCarriage.ConvertScoreFromTT(pTtEntry->GetScore(), pFlashlight->m_ply) : SweetnessNone);
+	ttScore = (pTtEntry != nullptr ? ourCarriage.ConvertScoreFromTT(pTtEntry->GetSweetness(), pFlashlight->m_ply) : SweetnessNone);
 
 	if (pTtEntry != nullptr
 		&& ttDepth <= pTtEntry->GetDepth()
@@ -94,12 +94,12 @@ Sweetness AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 				pos.GetMateMoveIn1Ply<Color::White, Color::Black>()
 			)			
 			).IsNone()) {
-			return UtilScore::MateIn(pFlashlight->m_ply);
+			return UtilSweetness::MateIn(pFlashlight->m_ply);
 		}
 
 		if (pTtEntry != nullptr) {
 			if (
-				(pFlashlight->m_staticEval = bestScore = pTtEntry->GetEvalScore()) == SweetnessNone
+				(pFlashlight->m_staticEval = bestScore = pTtEntry->GetEvalSweetness()) == SweetnessNone
 				) {
 				Evaluation09 evaluation;
 				pFlashlight->m_staticEval = bestScore = evaluation.evaluate(pos, pFlashlight);
@@ -223,7 +223,7 @@ Sweetness AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 		}
 	}
 
-	if (INCHECK && bestScore == -SweetnessInfinite) { return UtilScore::MatedIn(pFlashlight->m_ply); }
+	if (INCHECK && bestScore == -SweetnessInfinite) { return UtilSweetness::MatedIn(pFlashlight->m_ply); }
 
 	ourCarriage.m_tt.Store(
 		posKey,

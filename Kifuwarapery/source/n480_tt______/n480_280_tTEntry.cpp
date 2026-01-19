@@ -26,9 +26,9 @@ Depth TTEntry::GetDepth() const
 /// 
 /// </summary>
 /// <returns></returns>
-Sweetness TTEntry::GetScore() const
+Sweetness TTEntry::GetSweetness() const
 {
-	return static_cast<Sweetness>(this->m_score16_);
+	return static_cast<Sweetness>(this->m_sweetness16_);
 }
 
 
@@ -66,9 +66,9 @@ u8 TTEntry::GetGeneration() const
 /// 
 /// </summary>
 /// <returns></returns>
-Sweetness TTEntry::GetEvalScore() const
+Sweetness TTEntry::GetEvalSweetness() const
 {
-	return static_cast<Sweetness>(this->m_evalScore_);
+	return static_cast<Sweetness>(this->m_evalSweetness_);
 }
 
 
@@ -98,7 +98,7 @@ void TTEntry::SetSave(const Depth depth, const Sweetness score, const Move move,
 	this->m_move16_ = static_cast<u16>(move.GetValue());
 	this->m_bound_ = static_cast<u8>(bound);
 	this->m_generation8_ = generation;
-	this->m_score16_ = static_cast<s16>(score);
+	this->m_sweetness16_ = static_cast<s16>(score);
 	this->m_depth16_ = static_cast<s16>(depth);
-	this->m_evalScore_ = static_cast<s16>(evalScore);
+	this->m_evalSweetness_ = static_cast<s16>(evalScore);
 }

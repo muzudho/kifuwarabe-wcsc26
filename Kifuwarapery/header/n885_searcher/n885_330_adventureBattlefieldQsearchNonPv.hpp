@@ -105,9 +105,9 @@ public:
 			&& move != ttMove)
 		{
 			futilityScore =
-				futilityBase + PieceScore::GetCapturePieceScore(pos.GetPiece(move.To()));
+				futilityBase + PieceSweetness::getSweetnessByCapturePiece(pos.GetPiece(move.To()));
 			if (move.IsPromotion()) {
-				futilityScore += PieceScore::GetPromotePieceScore(move.GetPieceTypeFrom());
+				futilityScore += PieceSweetness::getSweetnessByPromotePiece(move.GetPieceTypeFrom());
 			}
 
 			if (futilityScore < beta) {

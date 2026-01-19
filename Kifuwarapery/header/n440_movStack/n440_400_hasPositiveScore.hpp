@@ -6,7 +6,7 @@
 /// <summary>
 /// 
 /// </summary>
-struct HasPositiveScore {
+struct HasPositiveSweetness {
 
 
 	/// <summary>
@@ -15,6 +15,6 @@ struct HasPositiveScore {
 	/// <param name="ms"></param>
 	/// <returns></returns>
 	bool operator () (const MoveStack& ms) {
-		return 0 < ms.m_score;
+		return 0 < ms.m_sweetness;
 	}
 };

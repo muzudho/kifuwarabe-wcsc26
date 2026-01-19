@@ -112,9 +112,9 @@ struct SplitedNode {
 	volatile Sweetness		m_alpha;
 
 	/// <summary>
-	/// 
+	/// 評価値
 	/// </summary>
-	volatile Sweetness		m_bestScore;
+	volatile Sweetness		m_bestSweetness;
 
 	/// <summary>
 	/// 

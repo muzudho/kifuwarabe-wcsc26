@@ -139,7 +139,7 @@ void Monkie::ForkNewMonkey(
 	splitedNode.m_beta = beta;
 	splitedNode.m_pSword01 = pSword;	// ノード・タイプ（実行するプログラム）を切り替える変数みたいだぜ☆（＾ｑ＾）
 	splitedNode.m_cutNode = cutNode;
-	splitedNode.m_bestScore = bestScore;
+	splitedNode.m_bestSweetness = bestScore;
 	splitedNode.m_pNextmoveEvent = &mp;
 	splitedNode.m_moveCount = moveCount;
 	splitedNode.m_position = &pos;
@@ -183,7 +183,7 @@ void Monkie::ForkNewMonkey(
 	m_activePosition = &pos;
 	pos.setNodesSearched(pos.getNodesSearched() + splitedNode.m_nodes);
 	bestMove = splitedNode.m_bestMove;
-	bestScore = splitedNode.m_bestScore;
+	bestScore = splitedNode.m_bestSweetness;
 
 	this->m_pOurCarriage->m_pub.m_mutex_.unlock();
 	splitedNode.m_mutex.unlock();

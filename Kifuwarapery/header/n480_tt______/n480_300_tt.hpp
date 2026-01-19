@@ -45,13 +45,13 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="posKey"></param>
-	/// <param name="score"></param>
+	/// <param name="sweetness">評価値</param>
 	/// <param name="bound"></param>
 	/// <param name="depth"></param>
 	/// <param name="move"></param>
-	/// <param name="evalScore"></param>
-	void Store(const Key posKey, const Sweetness score, const Bound bound, Depth depth,
-			   Move move, const Sweetness evalScore);
+	/// <param name="evalSweetness">評価値</param>
+	void Store(const Key posKey, const Sweetness sweetness, const Bound bound, Depth depth,
+			   Move move, const Sweetness evalSweetness);
 
 
 	/// <summary>

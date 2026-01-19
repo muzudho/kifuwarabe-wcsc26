@@ -41,8 +41,8 @@ public:
 	/// 生成
 	/// </summary>
 	/// <param name="move"></param>
-	/// <param name=""></param>
-	DeliciousBanana(Move move, enum Sweetness scoreValue);
+	/// <param name="sweetness">評価値</param>
+	DeliciousBanana(Move move, enum Sweetness sweetness);
 	
 
 	/// <summary>

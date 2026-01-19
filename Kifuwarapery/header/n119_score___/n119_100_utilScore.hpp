@@ -15,7 +15,7 @@ using Ply = int;
 /// <summary>
 /// メートを算出
 /// </summary>
-class UtilScore {
+class UtilSweetness {
 
 
 public:
