@@ -1,4 +1,4 @@
-﻿#include "../../header/n119_score___/n119_090_ScoreValue.hpp"
+﻿#include "../../header/n119_score___/n119_090_Sweetness.hpp"
 #include "../../header/n165_movStack/n165_400_move.hpp"
 #include "../../header/n165_movStack/n165_500_moveStack.hpp"
 #include "../../header/n165_movStack/n165_600_convMove.hpp"
@@ -57,7 +57,7 @@ NextmoveEvent::NextmoveEvent(
 	const Depth depth,
 	const History& history,
 	Flashlight* pFlashlightBox,
-	const ScoreValue beta
+	const Sweetness beta
 )
 	: m_pos_(pos), m_history_(history), m_depth_(depth)
 {
@@ -220,24 +220,24 @@ Move NextmoveEvent::GetNextMove_NonSplitedNode() {
 /// <summary>
 ///
 /// </summary>
-const ScoreValue LVATable[g_PIECETYPE_NUM] = {
-	ScoreValue(0),
-	ScoreValue(1),
-	ScoreValue(2),
-	ScoreValue(3),
-	ScoreValue(4),
-	ScoreValue(7),
-	ScoreValue(8),
-	ScoreValue(6),
-	ScoreValue(10000),
-	ScoreValue(5),
-	ScoreValue(5),
-	ScoreValue(5),
-	ScoreValue(5),
-	ScoreValue(9),
-	ScoreValue(10)
+const Sweetness LVATable[g_PIECETYPE_NUM] = {
+	Sweetness(0),
+	Sweetness(1),
+	Sweetness(2),
+	Sweetness(3),
+	Sweetness(4),
+	Sweetness(7),
+	Sweetness(8),
+	Sweetness(6),
+	Sweetness(10000),
+	Sweetness(5),
+	Sweetness(5),
+	Sweetness(5),
+	Sweetness(5),
+	Sweetness(9),
+	Sweetness(10)
 };
-inline ScoreValue LVA(const PieceType pt) { return LVATable[pt]; }
+inline Sweetness LVA(const PieceType pt) { return LVATable[pt]; }
 
 
 /// <summary>
@@ -257,7 +257,7 @@ void NextmoveEvent::ScoreCaptures() {
 void NextmoveEvent::ScoreEvasions() {
 	for (MoveStack* curr = GetCurrMove(); curr != GetLastMove(); ++curr) {
 		const Move move = curr->m_move;
-		const ScoreValue seeScore = GetPos().GetSeeSign(move);
+		const Sweetness seeScore = GetPos().GetSeeSign(move);
 		if (seeScore < 0) {
 			curr->m_score = seeScore - History::m_MaxScore;
 		}

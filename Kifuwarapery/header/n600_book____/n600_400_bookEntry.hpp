@@ -2,7 +2,7 @@
 
 
 #include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../../header/n119_score___/n119_090_ScoreValue.hpp"
+#include "../../header/n119_score___/n119_090_Sweetness.hpp"
 
 
 /// <summary>
@@ -29,5 +29,5 @@ struct BookEntry {
 	/// <summary>
 	/// 
 	/// </summary>
-	ScoreValue	m_score;
+	Sweetness	m_score;
 };

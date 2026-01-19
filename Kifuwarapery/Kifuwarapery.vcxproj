@@ -196,7 +196,7 @@
     <ClInclude Include="header\n119_score___\n119_050_bound.hpp" />
     <ClInclude Include="header\n119_score___\n119_055_utilBound.hpp" />
     <ClInclude Include="header\n119_score___\n119_085_ply.hpp" />
-    <ClInclude Include="header\n119_score___\n119_090_ScoreValue.hpp" />
+    <ClInclude Include="header\n119_score___\n119_090_Sweetness.hpp" />
     <ClInclude Include="header\n119_score___\n119_100_utilScore.hpp" />
     <ClInclude Include="header\n119_score___\n119_200_pieceScore.hpp" />
     <ClInclude Include="header\n119_score___\n119_500_EvalSum.hpp" />

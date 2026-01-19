@@ -3,7 +3,7 @@
 
 #include <string>
 #include <sstream>
-#include "../n119_score___/n119_090_ScoreValue.hpp"
+#include "../n119_score___/n119_090_Sweetness.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 #include "../n160_board___/n160_130_lanceAttackBb.hpp"
 #include "../n160_board___/n160_150_rookAttackBb.hpp"

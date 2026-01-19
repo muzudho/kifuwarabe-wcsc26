@@ -69,14 +69,14 @@ void EngineOptionSetup::initialize_10a500b100c(EngineOptionsMap* pMap, OurCarria
 	pMap->Put("OwnBook"						, EngineOption(true));
 	pMap->Put("Min_Book_Ply"				, EngineOption(SHRT_MAX, 0, SHRT_MAX));
 	pMap->Put("Max_Book_Ply"				, EngineOption(SHRT_MAX, 0, SHRT_MAX));
-	pMap->Put("Min_Book_Score"				, EngineOption(-180, -ScoreInfinite, ScoreInfinite));
+	pMap->Put("Min_Book_Score"				, EngineOption(-180, -SweetnessInfinite, SweetnessInfinite));
 	pMap->Put("Eval_Dir"					, EngineOption("20151105", onEvalDir));
 	pMap->Put("Write_Synthesized_Eval"		, EngineOption(false));
 	pMap->Put("USI_Ponder"					, EngineOption(true));
 	pMap->Put("Byoyomi_Margin"				, EngineOption(500, 0, INT_MAX));//元の値：0.5秒☆？（＾ｑ＾）
 	pMap->Put("MultiPV"						, EngineOption(1, 1, Move::m_MAX_LEGAL_MOVES));
 	pMap->Put("Skill_Level"					, EngineOption(20, 0, 20));
-	pMap->Put("Max_Random_Score_Diff"		, EngineOption(0, 0, ScoreMate0Ply));
+	pMap->Put("Max_Random_Score_Diff"		, EngineOption(0, 0, SweetnessMate0Ply));
 	pMap->Put("Max_Random_Score_Diff_Ply"	, EngineOption(40, 0, SHRT_MAX));
 
 	//────────────────────────────────────────────────────────────────────────────────

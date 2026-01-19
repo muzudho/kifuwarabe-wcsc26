@@ -1,6 +1,6 @@
 ﻿#include <mutex>
 #include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../../header/n119_score___/n119_090_ScoreValue.hpp"
+#include "../../header/n119_score___/n119_090_Sweetness.hpp"
 #include "../../header/n165_movStack/n165_400_move.hpp"
 #include "../../header/n220_position/n220_650_position.hpp"
 #include "../../header/n223_move____/n223_200_depth.hpp"
@@ -107,9 +107,9 @@ template <bool Fake>
 void Monkie::ForkNewMonkey(
 	Position& pos,
 	Flashlight* pFlashlightBox,
-	const ScoreValue alpha,
-	const ScoreValue beta,
-	ScoreValue& bestScore,
+	const Sweetness alpha,
+	const Sweetness beta,
+	Sweetness& bestScore,
 	Move& bestMove,
 	const Depth depth,
 	const Move threatMove,
@@ -119,8 +119,8 @@ void Monkie::ForkNewMonkey(
 	const bool cutNode)
 {
 	assert(pos.IsOK());
-	assert(bestScore <= alpha && alpha < beta && beta <= ScoreInfinite);
-	assert(-ScoreInfinite < bestScore);
+	assert(bestScore <= alpha && alpha < beta && beta <= SweetnessInfinite);
+	assert(-SweetnessInfinite < bestScore);
 	assert(this->m_pOurCarriage->m_pub.GetMinSplitDepth() <= depth);
 
 	assert(m_isBeingSearched);
@@ -209,9 +209,9 @@ void Monkie::ForkNewMonkey(
 template void Monkie::ForkNewMonkey<true >(
 	Position& pos,
 	Flashlight* ss,
-	const ScoreValue alpha,
-	const ScoreValue beta,
-	ScoreValue& bestScore,
+	const Sweetness alpha,
+	const Sweetness beta,
+	Sweetness& bestScore,
 	Move& bestMove,
 	const Depth depth,
 	const Move threatMove,
@@ -240,9 +240,9 @@ template void Monkie::ForkNewMonkey<true >(
 template void Monkie::ForkNewMonkey<false>(
 	Position& pos,
 	Flashlight* ss,
-	const ScoreValue alpha,
-	const ScoreValue beta,
-	ScoreValue& bestScore,
+	const Sweetness alpha,
+	const Sweetness beta,
+	Sweetness& bestScore,
 	Move& bestMove,
 	const Depth depth,
 	const Move threatMove,

@@ -15,7 +15,7 @@ void FutilityMargins::Initialize()
 	for (int iDepth = 1; iDepth < 16; ++iDepth) {
 		for (int iMoveCount = 0; iMoveCount < 64; ++iMoveCount) {
 			this->m_FutilityMargins[iDepth][iMoveCount] =
-				static_cast<ScoreValue>(
+				static_cast<Sweetness>(
 					112 * static_cast<int>(
 						log(
 							static_cast<double>(iDepth*iDepth) / 2

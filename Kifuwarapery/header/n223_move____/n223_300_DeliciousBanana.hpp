@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../n119_score___/n119_090_ScoreValue.hpp"
+#include "../n119_score___/n119_090_Sweetness.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
 
 
@@ -25,9 +25,13 @@ public:
 
 
 	/// <summary>
-	/// 評価値
+	///		<pre>
+	/// 甘さ
+	/// 
+	///		- 評価値
+	///		</pre>
 	/// </summary>
-	const enum ScoreValue m_scoreValue;
+	const enum Sweetness m_sweetness;
 
 
 public:
@@ -38,7 +42,7 @@ public:
 	/// </summary>
 	/// <param name="move"></param>
 	/// <param name=""></param>
-	DeliciousBanana(Move move, enum ScoreValue scoreValue);
+	DeliciousBanana(Move move, enum Sweetness scoreValue);
 	
 
 	/// <summary>

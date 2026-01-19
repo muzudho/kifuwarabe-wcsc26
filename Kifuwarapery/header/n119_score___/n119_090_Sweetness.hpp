@@ -10,19 +10,23 @@
 
 
 /// <summary>
-/// 評価値
+///		<pre>
+/// 甘さ
+/// 
+///		- 評価値
+///		</pre>
 /// </summary>
-enum ScoreValue {
-	ScoreZero = 0,
-	ScoreDraw = 0,
-	ScoreMaxEvaluate = 30000,
-	ScoreMateLong = 30002,
-	ScoreMate1Ply = 32599,
-	ScoreMate0Ply = 32600,
-	ScoreMateInMaxPly = ScoreMate0Ply - g_maxPly,
-	ScoreMatedInMaxPly = -ScoreMateInMaxPly,
-	ScoreInfinite = 32601,
-	ScoreNotEvaluated = INT_MAX,
-	ScoreNone = 32602
+enum Sweetness {
+	SweetnessZero = 0,
+	SweetnessDraw = 0,
+	SweetnessMaxEvaluate = 30000,
+	SweetnessMateLong = 30002,
+	SweetnessMate1Ply = 32599,
+	SweetnessMate0Ply = 32600,
+	SweetnessMateInMaxPly = SweetnessMate0Ply - g_maxPly,
+	SweetnessMatedInMaxPly = -SweetnessMateInMaxPly,
+	SweetnessInfinite = 32601,
+	SweetnessNotEvaluated = INT_MAX,
+	SweetnessNone = 32602
 };
-OverloadEnumOperators(ScoreValue);
+OverloadEnumOperators(Sweetness);

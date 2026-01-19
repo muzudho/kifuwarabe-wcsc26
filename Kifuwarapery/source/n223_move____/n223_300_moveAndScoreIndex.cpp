@@ -6,9 +6,9 @@
 /// </summary>
 /// <param name="move"></param>
 /// <param name="score"></param>
-DeliciousBanana::DeliciousBanana(Move move, ScoreValue scoreValue):
+DeliciousBanana::DeliciousBanana(Move move, Sweetness scoreValue):
 	m_move(move),
-	m_scoreValue(scoreValue)
+	m_sweetness(scoreValue)
 {
 }
 

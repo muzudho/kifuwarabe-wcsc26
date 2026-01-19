@@ -65,18 +65,18 @@ AdventureNodekindSplitedNodeNonPv g_NODEKIND_SPLITEDNODE_NON_PV;
 /// <param name="depth"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-ScoreValue AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
+Sweetness AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
-	ScoreValue alpha,
-	ScoreValue beta,
+	Sweetness alpha,
+	Sweetness beta,
 	const Depth depth,
 	const bool cutNode) const
 {
 
 
-	assert(-ScoreInfinite <= alpha && alpha < beta && beta <= ScoreInfinite);
+	assert(-SweetnessInfinite <= alpha && alpha < beta && beta <= SweetnessInfinite);
 	this->explorePlain_10i100j100k_assertAtFirst(
 		alpha,
 		beta);
@@ -95,9 +95,9 @@ ScoreValue AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 	Move threatMove;
 	Depth newDepth;
 	Depth extension;
-	ScoreValue bestScore;
-	ScoreValue score;
-	ScoreValue eval;
+	Sweetness bestScore;
+	Sweetness score;
+	Sweetness eval;
 	bool inCheck;
 	bool givesCheck;
 	bool isPVMove;
@@ -108,7 +108,7 @@ ScoreValue AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 	int moveCount;
 	int playedMoveCount;
 	Move ttMove;
-	ScoreValue ttScore;
+	Sweetness ttScore;
 	std::unique_ptr<Move> pTtMove;  // 宣言だけ（デフォルトnull）
 
 	// step1
@@ -149,12 +149,12 @@ ScoreValue AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 			ourCarriage,
 			&pFlashlight);
 		bool isReturnWithScore = p.first;
-		ScoreValue returnScore = p.second;
+		Sweetness returnScore = p.second;
 		if (isReturnWithScore) { return returnScore; }
 	}
 
 	bool isReturnWithScore = false;
-	ScoreValue returnScore = ScoreNone;
+	Sweetness returnScore = SweetnessNone;
 
 
 	this->explorePlain_10i200j180k_checkAlpha(
@@ -481,7 +481,7 @@ split_point_start:
 		// 一手戻した後
 
 
-		assert(-ScoreInfinite < score && score < ScoreInfinite);
+		assert(-SweetnessInfinite < score && score < SweetnessInfinite);
 
 
 		this->explorePlain_10i700j100k_getAlpha(

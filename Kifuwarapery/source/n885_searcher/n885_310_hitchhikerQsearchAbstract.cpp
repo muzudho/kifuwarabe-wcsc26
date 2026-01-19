@@ -1,4 +1,4 @@
-﻿#include "../../header/n119_score___/n119_090_ScoreValue.hpp"
+﻿#include "../../header/n119_score___/n119_090_Sweetness.hpp"
 #include "../../header/n220_position/n220_650_position.hpp"
 #include "../../header/n220_position/n220_665_utilMoveStack.hpp"
 #include "../../header/n223_move____/n223_200_depth.hpp"
@@ -20,18 +20,18 @@
 /// <param name="beta"></param>
 /// <param name="depth"></param>
 /// <returns></returns>
-ScoreValue AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
+Sweetness AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 	OurCarriage& ourCarriage,
 	bool INCHECK,
 	Position& pos,
 	Flashlight* pFlashlight,
-	ScoreValue alpha,
-	ScoreValue beta,
+	Sweetness alpha,
+	Sweetness beta,
 	const Depth depth
 	) const {
 
 	assert(INCHECK == pos.inCheck());
-	assert(-ScoreInfinite <= alpha && alpha < beta && beta <= ScoreInfinite);
+	assert(-SweetnessInfinite <= alpha && alpha < beta && beta <= SweetnessInfinite);
 	this->DoAssert(alpha,beta);
 	assert(depth <= Depth0);
 
@@ -41,12 +41,12 @@ ScoreValue AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 	Move ttMove;
 	Move move;
 	Move bestMove;
-	ScoreValue bestScore;
-	ScoreValue score;
-	ScoreValue ttScore;
-	ScoreValue futilityScore;
-	ScoreValue futilityBase;
-	ScoreValue oldAlpha;
+	Sweetness bestScore;
+	Sweetness score;
+	Sweetness ttScore;
+	Sweetness futilityScore;
+	Sweetness futilityBase;
+	Sweetness oldAlpha;
 	bool givesCheck;
 	bool evasionPrunable;
 	Depth ttDepth;
@@ -56,18 +56,18 @@ ScoreValue AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 	pFlashlight->m_currentMove = bestMove = g_MOVE_NONE;
 	pFlashlight->m_ply = (pFlashlight - 1)->m_ply + 1;
 
-	if (g_maxPly < pFlashlight->m_ply) { return ScoreDraw; }
+	if (g_maxPly < pFlashlight->m_ply) { return SweetnessDraw; }
 
 	ttDepth = ((INCHECK || DepthQChecks <= depth) ? DepthQChecks : DepthQNoChecks);
 
 	posKey = pos.GetKey();
 	pTtEntry = ourCarriage.m_tt.Probe(posKey);
 	ttMove = (pTtEntry != nullptr ? UtilMoveStack::Move16toMove(pTtEntry->GetMove(), pos) : g_MOVE_NONE);
-	ttScore = (pTtEntry != nullptr ? ourCarriage.ConvertScoreFromTT(pTtEntry->GetScore(), pFlashlight->m_ply) : ScoreNone);
+	ttScore = (pTtEntry != nullptr ? ourCarriage.ConvertScoreFromTT(pTtEntry->GetScore(), pFlashlight->m_ply) : SweetnessNone);
 
 	if (pTtEntry != nullptr
 		&& ttDepth <= pTtEntry->GetDepth()
-		&& ttScore != ScoreNone // アクセス競合が起きたときのみ、ここに引っかかる。
+		&& ttScore != SweetnessNone // アクセス競合が起きたときのみ、ここに引っかかる。
 		&& this->GetCondition01(
 			&pTtEntry,
 			beta,
@@ -81,8 +81,8 @@ ScoreValue AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 	pos.setNodesSearched(pos.getNodesSearched() + 1);
 
 	if (INCHECK) {
-		pFlashlight->m_staticEval = ScoreNone;
-		bestScore = futilityBase = -ScoreInfinite;
+		pFlashlight->m_staticEval = SweetnessNone;
+		bestScore = futilityBase = -SweetnessInfinite;
 	}
 	else {
 		if (!(move =
@@ -99,7 +99,7 @@ ScoreValue AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 
 		if (pTtEntry != nullptr) {
 			if (
-				(pFlashlight->m_staticEval = bestScore = pTtEntry->GetEvalScore()) == ScoreNone
+				(pFlashlight->m_staticEval = bestScore = pTtEntry->GetEvalScore()) == SweetnessNone
 				) {
 				Evaluation09 evaluation;
 				pFlashlight->m_staticEval = bestScore = evaluation.evaluate(pos, pFlashlight);
@@ -156,7 +156,7 @@ ScoreValue AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 		if (isContinue) { continue; }
 
 		evasionPrunable = (INCHECK
-			&& ScoreMatedInMaxPly < bestScore
+			&& SweetnessMatedInMaxPly < bestScore
 			&& !move.IsCaptureOrPawnPromotion());
 
 		// 非PVノードのとき☆（＾ｑ＾）
@@ -191,12 +191,12 @@ ScoreValue AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 			pos.DoMove<Color::White,Color::Black>(move, st, ci, givesCheck)
 			;
 
-		(pFlashlight + 1)->m_staticEvalRaw.m_p[0][0] = ScoreNotEvaluated;
+		(pFlashlight + 1)->m_staticEvalRaw.m_p[0][0] = SweetnessNotEvaluated;
 		score = // 再帰関数☆（＾ｑ＾）
 			-this->ExploreAsQsearch(ourCarriage, givesCheck, pos, pFlashlight + 1, -beta, -alpha, depth - OnePly);
 		pos.UndoMove(move);
 
-		assert(-ScoreInfinite < score && score < ScoreInfinite);
+		assert(-SweetnessInfinite < score && score < SweetnessInfinite);
 
 		if (bestScore < score) {
 			bestScore = score;
@@ -204,7 +204,7 @@ ScoreValue AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 			if (alpha < score) {
 				// PVノードのときは条件付きで手続きが変わるぜ☆（＾ｑ＾）
 				bool isReturnWithScore = false;
-				ScoreValue returnScore = ScoreValue::ScoreNone;
+				Sweetness returnScore = Sweetness::SweetnessNone;
 				this->DoByNewScore(
 					isReturnWithScore,
 					returnScore,
@@ -223,7 +223,7 @@ ScoreValue AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 		}
 	}
 
-	if (INCHECK && bestScore == -ScoreInfinite) { return UtilScore::MatedIn(pFlashlight->m_ply); }
+	if (INCHECK && bestScore == -SweetnessInfinite) { return UtilScore::MatedIn(pFlashlight->m_ply); }
 
 	ourCarriage.m_tt.Store(
 		posKey,
@@ -234,7 +234,7 @@ ScoreValue AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 		pFlashlight->m_staticEval
 	);
 
-	assert(-ScoreInfinite < bestScore && bestScore < ScoreInfinite);
+	assert(-SweetnessInfinite < bestScore && bestScore < SweetnessInfinite);
 
 	return bestScore;
 }

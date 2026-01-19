@@ -7,7 +7,7 @@
 #include "../../header/n112_pieceTyp/n112_050_pieceType.hpp"
 #include "../../header/n113_piece___/n113_150_piece.hpp"
 #include "../../header/n113_piece___/n113_155_convPiece.hpp"
-#include "../../header/n119_score___/n119_090_ScoreValue.hpp"
+#include "../../header/n119_score___/n119_090_Sweetness.hpp"
 #include "../../header/n119_score___/n119_200_pieceScore.hpp"
 #include "../../header/n160_board___/n160_100_bitboard.hpp"
 #include "../../header/n160_board___/n160_170_goldAndSilverAttackBb.hpp"
@@ -559,7 +559,7 @@ bool Position::inCheck() const
 /// 
 /// </summary>
 /// <returns></returns>
-ScoreValue Position::GetMaterial() const
+Sweetness Position::GetMaterial() const
 {
 	return this->m_st_->m_material;
 }
@@ -569,7 +569,7 @@ ScoreValue Position::GetMaterial() const
 /// 
 /// </summary>
 /// <returns></returns>
-ScoreValue Position::GetMaterialDiff() const
+Sweetness Position::GetMaterialDiff() const
 {
 	return this->m_st_->m_material - this->m_st_->m_previous->m_material;
 }
@@ -806,7 +806,7 @@ bool Position::MoveIsLegal(const Move GetMove) const {
 /// <param name="asymmThreshold"></param>
 /// <returns></returns>
 template<Color US, Color THEM>
-ScoreValue Position::GetSee1(const Move move, const int asymmThreshold) const {
+Sweetness Position::GetSee1(const Move move, const int asymmThreshold) const {
 	const Square to = move.To();
 	Square from;
 	PieceType ptCaptured;
@@ -815,14 +815,14 @@ ScoreValue Position::GetSee1(const Move move, const int asymmThreshold) const {
 	Bitboard opponentAttackers;
 
 
-	ScoreValue swapList[32];
+	Sweetness swapList[32];
 	if (move.IsDrop()) {
 		opponentAttackers = this->GetAttackersTo_clr(THEM, to, occ);
 		if (!opponentAttackers.Exists1Bit()) {
-			return ScoreZero;
+			return SweetnessZero;
 		}
 		attackers = opponentAttackers | this->GetAttackersTo_clr(US, to, occ);
-		swapList[0] = ScoreZero;
+		swapList[0] = SweetnessZero;
 		ptCaptured = move.GetPieceTypeDropped();
 	}
 	else {
@@ -895,8 +895,8 @@ ScoreValue Position::GetSee1(const Move move, const int asymmThreshold) const {
 	}
 	return swapList[0];
 }
-template ScoreValue Position::GetSee1<Color::Black, Color::White>(const Move move, const int asymmThreshold) const;
-template ScoreValue Position::GetSee1<Color::White, Color::Black>(const Move move, const int asymmThreshold) const;
+template Sweetness Position::GetSee1<Color::Black, Color::White>(const Move move, const int asymmThreshold) const;
+template Sweetness Position::GetSee1<Color::White, Color::Black>(const Move move, const int asymmThreshold) const;
 
 
 /// <summary>
@@ -904,12 +904,12 @@ template ScoreValue Position::GetSee1<Color::White, Color::Black>(const Move mov
 /// </summary>
 /// <param name="move"></param>
 /// <returns></returns>
-ScoreValue Position::GetSeeSign(const Move move) const {
+Sweetness Position::GetSeeSign(const Move move) const {
 	if (move.IsCapture()) {
 		const PieceType ptFrom = move.GetPieceTypeFrom();
 		const Square to = move.To();
 		if (PieceScore::GetCapturePieceScore(ptFrom) <= PieceScore::GetCapturePieceScore(GetPiece(to))) {
-			return static_cast<ScoreValue>(1);
+			return static_cast<Sweetness>(1);
 		}
 	}
 	return
@@ -2869,8 +2869,8 @@ void Position::FindCheckers()
 /// 
 /// </summary>
 /// <returns></returns>
-ScoreValue Position::ComputeMaterial() const {
-	ScoreValue s = ScoreZero;
+Sweetness Position::ComputeMaterial() const {
+	Sweetness s = SweetnessZero;
 	for (PieceType pt = N01_Pawn; pt < g_PIECETYPE_NUM; ++pt) {
 		const int num = this->GetBbOf20(pt, Black).PopCount() - this->GetBbOf20(pt, White).PopCount();
 		s += num * PieceScore::GetPieceScore(pt);

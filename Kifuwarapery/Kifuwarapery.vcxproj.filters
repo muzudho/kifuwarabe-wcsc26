@@ -927,7 +927,7 @@
     <ClInclude Include="header\n113_piece___\n113_155_convPiece.hpp">
       <Filter>header\n113_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n119_score___\n119_090_ScoreValue.hpp">
+    <ClInclude Include="header\n119_score___\n119_090_Sweetness.hpp">
       <Filter>header\n119_score___</Filter>
     </ClInclude>
     <ClInclude Include="header\n223_move____\n223_300_DeliciousBanana.hpp">

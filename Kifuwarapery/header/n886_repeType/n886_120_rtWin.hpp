@@ -1,5 +1,5 @@
 #pragma once
-#include "../n119_score___/n119_090_ScoreValue.hpp"
+#include "../n119_score___/n119_090_Sweetness.hpp"
 #include "../n119_score___/n119_100_utilScore.hpp"
 #include "n886_070_rtAbstract.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"// &参照は使えない。*参照は使える。
@@ -22,7 +22,7 @@ public:
 	/// <param name="resultScore"></param>
 	/// <param name="pSearcher"></param>
 	/// <param name="pFlashlightBox"></param>
-	std::pair<bool, ScoreValue> IsStop(
+	std::pair<bool, Sweetness> IsStop(
 		//bool& isReturn,
 		//ScoreIndex& resultScore,
 		const OurCarriage* pSearcher,

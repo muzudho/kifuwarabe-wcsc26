@@ -34,12 +34,12 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="cutNode"></param>
 	/// <returns></returns>
-	virtual ScoreValue explorePlain_10i(
+	virtual Sweetness explorePlain_10i(
 		OurCarriage& ourCarriage,
 		Position& pos,
 		Flashlight* pFlashlight,//サーチスタック
-		ScoreValue alpha,
-		ScoreValue beta,
+		Sweetness alpha,
+		Sweetness beta,
 		const Depth depth,
 		const bool cutNode
 		) const override;
@@ -129,8 +129,8 @@ public:
 	/// <returns></returns>
 	virtual inline bool getCondition_10i200j240k100L(
 		const TTEntry* pTtEntry,
-		ScoreValue& beta,
-		ScoreValue& ttScore
+		Sweetness& beta,
+		Sweetness& ttScore
 		) const override {
 		return  beta <= ttScore ?
 			(pTtEntry->GetBoundKind() & Bound::BoundLower)
@@ -156,11 +156,11 @@ public:
 		const Depth depth,
 		Move& ttMove,
 		bool& inCheck,
-		ScoreValue& beta,
+		Sweetness& beta,
 		Flashlight** ppFlashlight,
 		OurCarriage& ourCarriage,
 		Position& pos,
-		ScoreValue& alpha,
+		Sweetness& alpha,
 		const TTEntry** ppTtEntry,//セットされるぜ☆
 		Key& posKey
 		)const override
@@ -172,7 +172,7 @@ public:
 			&& ttMove.IsNone()
 			// 非PVノードの場合、さらに条件☆
 			&& (
-				!inCheck && beta <= (*ppFlashlight)->m_staticEval + static_cast<ScoreValue>(256)
+				!inCheck && beta <= (*ppFlashlight)->m_staticEval + static_cast<Sweetness>(256)
 				)
 			)
 		{
@@ -208,8 +208,8 @@ public:
 	/// </summary>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	virtual inline ScoreValue getBeta_10i300j150k(
-		ScoreValue beta
+	virtual inline Sweetness getBeta_10i300j150k(
+		Sweetness beta
 		) const override {
 		// 非PVノードの場合☆（＾ｑ＾）
 		return beta;
@@ -229,8 +229,8 @@ public:
 	virtual inline void explorePlain_10i300j200k_beforeLoopSplitPointStart(
 		Move& ttMove,
 		const Depth depth,
-		ScoreValue& score,
-		ScoreValue& bestScore,
+		Sweetness& score,
+		Sweetness& bestScore,
 		bool& singularExtensionNode,
 		Move& excludedMove,
 		const TTEntry* pTtEntry
@@ -386,7 +386,7 @@ public:
 		bool& captureOrPawnPromotion,
 		bool& inCheck,
 		bool& dangerous,
-		ScoreValue& bestScore,
+		Sweetness& bestScore,
 		Move& move,
 		Move& ttMove,
 		const Depth depth,
@@ -396,7 +396,7 @@ public:
 		SplitedNode** ppSplitedNode,
 		Depth& newDepth,
 		Flashlight** ppFlashlight,
-		ScoreValue& beta,
+		Sweetness& beta,
 		const CheckInfo& ci,
 		bool& isPVMoveRef,
 		int& playedMoveCount,
@@ -463,9 +463,9 @@ public:
 	virtual inline void explorerPlain_10i600j140k_getScore(
 		OurCarriage& ourCarriage,
 		bool& isPVMove,
-		ScoreValue& alpha,
-		ScoreValue& score,
-		ScoreValue& beta,
+		Sweetness& alpha,
+		Sweetness& score,
+		Sweetness& beta,
 		Depth& newDepth,
 		bool& givesCheck,
 		Position& pos,
@@ -483,8 +483,8 @@ public:
 	/// <param name="beta"></param>
 	/// <returns></returns>
 	virtual inline bool isBetaLarge_10i600j140k100L(
-		ScoreValue& score,
-		ScoreValue& beta
+		Sweetness& score,
+		Sweetness& beta
 		) const override {
 		// 非ルートノードの場合☆（＾ｑ＾）
 		return score < beta;
@@ -504,8 +504,8 @@ public:
 		OurCarriage& ourCarriage,
 		Move& move,
 		bool& isPVMove,
-		ScoreValue& alpha,
-		ScoreValue& score,
+		Sweetness& alpha,
+		Sweetness& score,
 		Position& pos
 		) const override {
 		// 非ルートノードはスルー☆！（＾ｑ＾）
@@ -532,13 +532,13 @@ public:
 		OurCarriage& ourCarriage,
 		Move& move,
 		bool& isPVMove,
-		ScoreValue& alpha,
-		ScoreValue& score,
+		Sweetness& alpha,
+		Sweetness& score,
 		Position& pos,
-		ScoreValue& bestScore,
+		Sweetness& bestScore,
 		SplitedNode** ppSplitedNode,
 		Move& bestMove,
-		ScoreValue& beta
+		Sweetness& beta
 		)const override {
 
 		if (bestScore < score) {
@@ -579,11 +579,11 @@ public:
 		OurCarriage& ourCarriage,
 		const Depth depth,
 		Monkie** ppThisThread,
-		ScoreValue& bestScore,
-		ScoreValue& beta,
+		Sweetness& bestScore,
+		Sweetness& beta,
 		Position& pos,
 		Flashlight** ppFlashlight,
-		ScoreValue& alpha,
+		Sweetness& alpha,
 		Move& bestMove,
 		Move& threatMove,
 		int& moveCount,
@@ -625,11 +625,11 @@ public:
 		int& moveCount,
 		Move& excludedMove,
 		OurCarriage& ourCarriage,
-		ScoreValue& alpha,
+		Sweetness& alpha,
 		Flashlight** ppFlashlight,//サーチスタック
-		ScoreValue& bestScore,
+		Sweetness& bestScore,
 		int& playedMoveCount,
-		ScoreValue& beta,
+		Sweetness& beta,
 		Key& posKey,
 		const Depth depth,
 		Move& bestMove,

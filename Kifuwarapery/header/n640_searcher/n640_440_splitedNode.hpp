@@ -2,7 +2,7 @@
 
 
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"	//Mutexなど
-#include "../n119_score___/n119_090_ScoreValue.hpp"
+#include "../n119_score___/n119_090_Sweetness.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n223_move____/n223_200_depth.hpp"
@@ -64,7 +64,7 @@ struct SplitedNode {
 	/// <summary>
 	/// ベータ。
 	/// </summary>
-	ScoreValue				m_beta;
+	Sweetness				m_beta;
 
 	/// <summary>
 	/// スプリット・ポイントは　ノード・タイプを持っている☆？（＾ｑ＾）
@@ -109,12 +109,12 @@ struct SplitedNode {
 	/// <summary>
 	/// 
 	/// </summary>
-	volatile ScoreValue		m_alpha;
+	volatile Sweetness		m_alpha;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	volatile ScoreValue		m_bestScore;
+	volatile Sweetness		m_bestScore;
 
 	/// <summary>
 	/// 

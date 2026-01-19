@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 
-#include "../n119_score___/n119_090_ScoreValue.hpp"
+#include "../n119_score___/n119_090_Sweetness.hpp"
 #include "../n223_move____/n223_200_depth.hpp"
 
 
@@ -17,7 +17,7 @@ public:
 	/// <summary>
 	/// [depth][moveCount]
 	/// </summary>
-	ScoreValue m_FutilityMargins[16][64];
+	Sweetness m_FutilityMargins[16][64];
 
 
 public:
@@ -35,10 +35,10 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="moveCount"></param>
 	/// <returns></returns>
-	inline ScoreValue GetFutilityMargin(const Depth depth, const int moveCount) {
+	inline Sweetness GetFutilityMargin(const Depth depth, const int moveCount) {
 		return (depth < 7 * OnePly ?
 			this->m_FutilityMargins[std::max(depth, Depth1)][std::min(moveCount, 63)]
-			: 2 * ScoreInfinite);
+			: 2 * SweetnessInfinite);
 	}
 };
 

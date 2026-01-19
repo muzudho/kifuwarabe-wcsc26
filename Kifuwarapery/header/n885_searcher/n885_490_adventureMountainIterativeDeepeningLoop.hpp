@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../n119_score___/n119_090_ScoreValue.hpp"
+#include "../n119_score___/n119_090_Sweetness.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n220_position/n220_665_utilMoveStack.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"
@@ -37,10 +37,10 @@ public:
 		// ベストムーブは何手目かだろうかなんだぜ☆？（＾ｑ＾）？
 		Ply prevBestMovePlyChanges;
 
-		ScoreValue bestScore = -ScoreInfinite;
-		ScoreValue delta = -ScoreInfinite;
-		ScoreValue alpha = -ScoreInfinite;
-		ScoreValue beta = ScoreInfinite;
+		Sweetness bestScore = -SweetnessInfinite;
+		Sweetness delta = -SweetnessInfinite;
+		Sweetness alpha = -SweetnessInfinite;
+		Sweetness beta = SweetnessInfinite;
 		bool bestMoveNeverChanged = true;
 		int lastInfoTime = -1; // 将棋所のコンソールが詰まる問題への対処用
 
@@ -63,7 +63,7 @@ public:
 		AdventurerSkill skill(ourCarriage.m_engineOptions["Skill_Level"], ourCarriage.m_engineOptions["Max_Random_Score_Diff"]);
 
 		if (ourCarriage.m_engineOptions["Max_Random_Score_Diff_Ply"] < pos.GetGamePly()) {
-			skill.m_maxRandomScoreDiff = ScoreZero;
+			skill.m_maxRandomScoreDiff = SweetnessZero;
 			ourCarriage.m_pvSize = 1;
 			assert(!skill.enabled()); // level による設定が出来るようになるまでは、これで良い。
 		}
@@ -77,7 +77,7 @@ public:
 		if (ourCarriage.m_rootMoves.empty()) {
 			ourCarriage.m_rootMoves.push_back(RootMove(g_MOVE_NONE));
 			SYNCCOUT << "info depth 0 score "
-				<< ourCarriage.scoreToUSI(-ScoreMate0Ply)
+				<< ourCarriage.scoreToUSI(-SweetnessMate0Ply)
 				<< SYNCENDL;
 
 			return;
@@ -126,13 +126,13 @@ public:
 					5 <= depth &&
 					abs(ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_prevScore_) < PieceScore::m_ScoreKnownWin
 					) {
-					delta = static_cast<ScoreValue>(16);
+					delta = static_cast<Sweetness>(16);
 					alpha = ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_prevScore_ - delta;
 					beta = ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_prevScore_ + delta;
 				}
 				else {
-					alpha = -ScoreInfinite;
-					beta = ScoreInfinite;
+					alpha = -SweetnessInfinite;
+					beta = SweetnessInfinite;
 				}
 #endif
 
@@ -140,7 +140,7 @@ public:
 				// fail high/low になったなら、今度は window 幅を広げて、再探索を行う。
 				while (true) {
 					// 探索を行う。
-					flashlight->m_staticEvalRaw.m_p[0][0] = (flashlight + 1)->m_staticEvalRaw.m_p[0][0] = ScoreNotEvaluated;
+					flashlight->m_staticEvalRaw.m_p[0][0] = (flashlight + 1)->m_staticEvalRaw.m_p[0][0] = SweetnessNotEvaluated;
 
 					//────────────────────────────────────────────────────────────────────────────────
 					// 探索☆？（＾ｑ＾）　１回目のぐるんぐるんだぜ～☆　ルート～☆
@@ -151,7 +151,7 @@ public:
 					UtilMoveStack::InsertionSort(ourCarriage.m_rootMoves.begin() + ourCarriage.m_pvIdx, ourCarriage.m_rootMoves.end());
 
 					for (size_t i = 0; i <= ourCarriage.m_pvIdx; ++i) {
-						flashlight->m_staticEvalRaw.m_p[0][0] = (flashlight + 1)->m_staticEvalRaw.m_p[0][0] = ScoreNotEvaluated;
+						flashlight->m_staticEvalRaw.m_p[0][0] = (flashlight + 1)->m_staticEvalRaw.m_p[0][0] = SweetnessNotEvaluated;
 						ourCarriage.m_rootMoves[i].InsertPvInTT(pos);
 					}
 
@@ -183,8 +183,8 @@ public:
 					// fail high/low のとき、aspiration window を広げる。
 					if (PieceScore::m_ScoreKnownWin <= abs(bestScore)) {
 						// 勝ち(負け)だと判定したら、最大の幅で探索を試してみる。
-						alpha = -ScoreInfinite;
-						beta = ScoreInfinite;
+						alpha = -SweetnessInfinite;
+						beta = SweetnessInfinite;
 					}
 					else if (beta <= bestScore) {
 						beta += delta;
@@ -198,7 +198,7 @@ public:
 						delta += delta / 2;
 					}
 
-					assert(-ScoreInfinite <= alpha && beta <= ScoreInfinite);
+					assert(-SweetnessInfinite <= alpha && beta <= SweetnessInfinite);
 				}
 
 				UtilMoveStack::InsertionSort(ourCarriage.m_rootMoves.begin(), ourCarriage.m_rootMoves.begin() + ourCarriage.m_pvIdx + 1);
@@ -252,7 +252,7 @@ public:
 					&& bestMoveNeverChanged
 					&& ourCarriage.m_pvSize == 1
 					// ここは確実にバグらせないようにする。
-					&& -ScoreInfinite + 2 * PieceScore::m_capturePawn <= bestScore
+					&& -SweetnessInfinite + 2 * PieceScore::m_capturePawn <= bestScore
 					&& (
 						ourCarriage.m_rootMoves.size() == 1
 						||
@@ -260,8 +260,8 @@ public:
 						ourCarriage.m_timeMgr.CanIterativeDeepingTimeOk(ourCarriage.m_stopwatch.GetElapsed())
 					)
 				) {
-					const ScoreValue rBeta = bestScore - 2 * PieceScore::m_capturePawn;
-					(flashlight + 1)->m_staticEvalRaw.m_p[0][0] = ScoreNotEvaluated;
+					const Sweetness rBeta = bestScore - 2 * PieceScore::m_capturePawn;
+					(flashlight + 1)->m_staticEvalRaw.m_p[0][0] = SweetnessNotEvaluated;
 					(flashlight + 1)->m_excludedMove = ourCarriage.m_rootMoves[0].m_pv_[0];
 					(flashlight + 1)->m_skipNullMove = true;
 
@@ -271,7 +271,7 @@ public:
 					//────────────────────────────────────────────────────────────────────────────────
 
 
-					const ScoreValue s = g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_10i(
+					const Sweetness s = g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_10i(
 						ourCarriage, pos, flashlight + 1, rBeta - 1, rBeta, (depth - 3) * OnePly, true);
 
 					(flashlight + 1)->m_skipNullMove = false;

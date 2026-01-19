@@ -1,4 +1,4 @@
-﻿#include "../../header/n119_score___/n119_090_ScoreValue.hpp"
+﻿#include "../../header/n119_score___/n119_090_Sweetness.hpp"
 #include "../../header/n480_tt______/n480_280_tTEntry.hpp"
 
 
@@ -26,9 +26,9 @@ Depth TTEntry::GetDepth() const
 /// 
 /// </summary>
 /// <returns></returns>
-ScoreValue TTEntry::GetScore() const
+Sweetness TTEntry::GetScore() const
 {
-	return static_cast<ScoreValue>(this->m_score16_);
+	return static_cast<Sweetness>(this->m_score16_);
 }
 
 
@@ -66,9 +66,9 @@ u8 TTEntry::GetGeneration() const
 /// 
 /// </summary>
 /// <returns></returns>
-ScoreValue TTEntry::GetEvalScore() const
+Sweetness TTEntry::GetEvalScore() const
 {
-	return static_cast<ScoreValue>(this->m_evalScore_);
+	return static_cast<Sweetness>(this->m_evalScore_);
 }
 
 
@@ -92,7 +92,7 @@ void TTEntry::SetGeneration(const u8 g)
 /// <param name="bound"></param>
 /// <param name="generation"></param>
 /// <param name="evalScore"></param>
-void TTEntry::SetSave(const Depth depth, const ScoreValue score, const Move move, const u32 posKeyHigh32, const Bound bound, const u8 generation, const ScoreValue evalScore)
+void TTEntry::SetSave(const Depth depth, const Sweetness score, const Move move, const u32 posKeyHigh32, const Bound bound, const u8 generation, const Sweetness evalScore)
 {
 	this->m_key32_ = posKeyHigh32;
 	this->m_move16_ = static_cast<u16>(move.GetValue());

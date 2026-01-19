@@ -17,8 +17,8 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
 	virtual inline void DoAssert(
-		ScoreValue alpha,
-		ScoreValue beta
+		Sweetness alpha,
+		Sweetness beta
 		) const override {
 		//スルー☆！（＾ｑ＾）
 	}
@@ -30,8 +30,8 @@ public:
 	/// <param name="oldAlpha"></param>
 	/// <param name="alpha"></param>
 	virtual inline void SetOldAlpha(
-		ScoreValue& oldAlpha,
-		ScoreValue alpha
+		Sweetness& oldAlpha,
+		Sweetness alpha
 		) const override {
 		oldAlpha = alpha;
 	}
@@ -46,8 +46,8 @@ public:
 	/// <returns></returns>
 	virtual inline bool GetCondition01(
 		const TTEntry** ppTtEntry,
-		ScoreValue beta,
-		ScoreValue ttScore
+		Sweetness beta,
+		Sweetness ttScore
 		) const override {
 		// PVノードのとき☆（＾ｑ＾）
 		return (*ppTtEntry)->GetBoundKind() == Bound::BoundExact;
@@ -60,8 +60,8 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="bestScore"></param>
 	virtual inline void SetAlpha(
-		ScoreValue& alpha,
-		ScoreValue bestScore
+		Sweetness& alpha,
+		Sweetness bestScore
 		) const override {
 		// PVノードのとき☆（＾ｑ＾）
 		if (alpha < bestScore) {
@@ -90,11 +90,11 @@ public:
 		bool& givesCheck,
 		Move& move,
 		Move& ttMove,
-		ScoreValue& futilityScore,
-		ScoreValue& futilityBase,
+		Sweetness& futilityScore,
+		Sweetness& futilityBase,
 		Position& pos,
-		ScoreValue& beta,
-		ScoreValue& bestScore,
+		Sweetness& beta,
+		Sweetness& bestScore,
 		const Depth depth
 		)const override {
 		// スルーだぜ☆！（＾ｑ＾）
@@ -138,11 +138,11 @@ public:
 	/// <param name="move"></param>
 	virtual inline void DoByNewScore(
 		bool& isReturnWithScore,
-		ScoreValue& returnScore,
+		Sweetness& returnScore,
 		OurCarriage& ourCarriage,
-		ScoreValue& score,
-		ScoreValue& beta,
-		ScoreValue& alpha,
+		Sweetness& score,
+		Sweetness& beta,
+		Sweetness& alpha,
 		Move& bestMove,
 		Key& posKey,
 		Flashlight** ppFlashlight,
@@ -181,8 +181,8 @@ public:
 	/// <param name="bestScore"></param>
 	/// <returns></returns>
 	virtual inline Bound GetBound01(
-		ScoreValue& oldAlpha,
-		ScoreValue& bestScore
+		Sweetness& oldAlpha,
+		Sweetness& bestScore
 		)const override {
 		return (oldAlpha < bestScore) ?
 			Bound::BoundExact

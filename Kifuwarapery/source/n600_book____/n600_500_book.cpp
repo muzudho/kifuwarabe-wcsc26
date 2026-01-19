@@ -146,12 +146,12 @@ DeliciousBanana Book::GetProbe(const Position& position, const std::string& fNam
 	u32 sum = 0;
 	Move move = g_MOVE_NONE;//該当なしのときに使う値☆
 	const Key key = this->GetBookKey(position);
-	const ScoreValue min_book_score = static_cast<ScoreValue>(static_cast<int>(position.GetOurCarriage()->m_engineOptions["Min_Book_Score"]));
-	ScoreValue scoreValue = ScoreZero;
+	const Sweetness min_book_score = static_cast<Sweetness>(static_cast<int>(position.GetOurCarriage()->m_engineOptions["Min_Book_Score"]));
+	Sweetness scoreValue = SweetnessZero;
 
 	if (this->m_fileName_ != fName && !this->OpenBook(fName.c_str())) {
 		// 定跡ファイルが開けなかった場合☆
-		return DeliciousBanana(g_MOVE_NONE, ScoreNone);
+		return DeliciousBanana(g_MOVE_NONE, SweetnessNone);
 	}
 
 	Binary_search(key);
@@ -305,7 +305,7 @@ void MakeBook(GameStats& gameStats, Position& pos, std::istringstream& ssCmd) {
 					SetUpStates->pop();
 
 					// doMove してから search してるので点数が反転しているので直す。
-					const ScoreValue score = -pos.GetConstOurCarriage()->m_rootMoves[0].m_score_;
+					const Sweetness score = -pos.GetConstOurCarriage()->m_rootMoves[0].m_score_;
 #else
 					const ScoreIndex GetScore = ScoreZero;
 #endif

@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <string>
 #include <sstream>
-#include "../n119_score___/n119_090_ScoreValue.hpp"
+#include "../n119_score___/n119_090_Sweetness.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 #include "../n160_board___/n160_130_lanceAttackBb.hpp"
 #include "../n160_board___/n160_150_rookAttackBb.hpp"
@@ -208,7 +208,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	std::string		PvInfoToUSI(Position& pos, const Ply depth, const ScoreValue alpha, const ScoreValue beta);
+	std::string		PvInfoToUSI(Position& pos, const Ply depth, const Sweetness alpha, const Sweetness beta);
 
 
 #if defined INANIWA_SHIFT
@@ -242,16 +242,16 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	std::string		scoreToUSI(const ScoreValue score, const ScoreValue alpha, const ScoreValue beta) {
+	std::string		scoreToUSI(const Sweetness score, const Sweetness alpha, const Sweetness beta) {
 		std::stringstream ss;
 
-		if (abs(score) < ScoreMateInMaxPly) {
+		if (abs(score) < SweetnessMateInMaxPly) {
 			// cp は centi pawn の略
 			ss << "cp " << score * 100 / PieceScore::m_pawn;
 		}
 		else {
 			// mate の後には、何手で詰むかを表示する。
-			ss << "mate " << (0 < score ? ScoreMate0Ply - score : -ScoreMate0Ply - score);
+			ss << "mate " << (0 < score ? SweetnessMate0Ply - score : -SweetnessMate0Ply - score);
 		}
 
 		ss << (beta <= score ? " lowerbound" : score <= alpha ? " upperbound" : "");
@@ -263,8 +263,8 @@ public:
 	//private:
 
 
-	inline std::string		scoreToUSI(const ScoreValue score) {
-		return scoreToUSI(score, -ScoreValue::ScoreInfinite, ScoreValue::ScoreInfinite);
+	inline std::string		scoreToUSI(const Sweetness score) {
+		return scoreToUSI(score, -Sweetness::SweetnessInfinite, Sweetness::SweetnessInfinite);
 	}
 
 
@@ -276,8 +276,8 @@ public://private:
 	/// </summary>
 	/// <param name="d"></param>
 	/// <returns></returns>
-	inline ScoreValue	razorMargin(const Depth d) {
-		return static_cast<ScoreValue>(512 + 16 * static_cast<int>(d));
+	inline Sweetness	razorMargin(const Depth d) {
+		return static_cast<Sweetness>(512 + 16 * static_cast<int>(d));
 	}
 
 
@@ -328,18 +328,18 @@ public://private:
 	/// <param name="score"></param>
 	/// <param name="ply"></param>
 	/// <returns></returns>
-	ScoreValue ConvertScoreToTT(const ScoreValue score, const Ply ply) {
-		assert(score != ScoreNone);
+	Sweetness ConvertScoreToTT(const Sweetness score, const Ply ply) {
+		assert(score != SweetnessNone);
 
 		return (
 			// mate表示をするとき☆
-			ScoreMateInMaxPly <= score ?
+			SweetnessMateInMaxPly <= score ?
 			// スコアの土台に、手数（mate）を乗せるぜ☆！
-			score + static_cast<ScoreValue>(ply)
+			score + static_cast<Sweetness>(ply)
 			:
-			score <= ScoreMatedInMaxPly ?
+			score <= SweetnessMatedInMaxPly ?
 			// 先後逆のときも、手数を乗せる（マイナスをもっと引く）のは同じ☆
-			score - static_cast<ScoreValue>(ply)
+			score - static_cast<Sweetness>(ply)
 			// それ以外のときは、そのままスコア表示。
 			: score
 		);
@@ -352,10 +352,10 @@ public://private:
 	/// <param name="s"></param>
 	/// <param name="ply"></param>
 	/// <returns></returns>
-	ScoreValue ConvertScoreFromTT(const ScoreValue s, const Ply ply) {
-		return (s == ScoreNone ? ScoreNone
-			: ScoreMateInMaxPly <= s ? s - static_cast<ScoreValue>(ply)
-			: s <= ScoreMatedInMaxPly ? s + static_cast<ScoreValue>(ply)
+	Sweetness ConvertScoreFromTT(const Sweetness s, const Ply ply) {
+		return (s == SweetnessNone ? SweetnessNone
+			: SweetnessMateInMaxPly <= s ? s - static_cast<Sweetness>(ply)
+			: s <= SweetnessMatedInMaxPly ? s + static_cast<Sweetness>(ply)
 			: s);
 	}
 
@@ -422,7 +422,7 @@ public://private:
 		if (!second.IsDrop()
 			&& ConvPieceType::IS_SLIDER10(m2ptFrom)
 			&& g_setMaskBb.IsSet(&g_betweenBb.GetBetweenBB(second.From(), m2to), first.To())
-			&& ScoreZero <= pos.GetSeeSign(first))
+			&& SweetnessZero <= pos.GetSeeSign(first))
 		{ return true; }
 
 		return false;

@@ -64,7 +64,7 @@ void OurCarriage::initialize_10a500b_search() {
 /// <param name="alpha"></param>
 /// <param name="beta"></param>
 /// <returns></returns>
-std::string OurCarriage::PvInfoToUSI(Position& pos, const Ply depth, const ScoreValue alpha, const ScoreValue beta) {
+std::string OurCarriage::PvInfoToUSI(Position& pos, const Ply depth, const Sweetness alpha, const Sweetness beta) {
 
 	// 思考時間（ミリ秒。読み筋表示用）
 	const int time = m_stopwatch.GetElapsed();
@@ -87,7 +87,7 @@ std::string OurCarriage::PvInfoToUSI(Position& pos, const Ply depth, const Score
 		}
 
 		const Ply d = (update ? depth : depth - 1);
-		const ScoreValue s = (update ? m_rootMoves[i].m_score_ : m_rootMoves[i].m_prevScore_);
+		const Sweetness s = (update ? m_rootMoves[i].m_score_ : m_rootMoves[i].m_prevScore_);
 
 		ss << "info depth " << d
 		   << " seldepth " << selDepth
@@ -271,7 +271,7 @@ void RootMove::InsertPvInTT(Position& pos) {
 		if (tte == nullptr
 			|| UtilMoveStack::Move16toMove(tte->GetMove(), pos) != m_pv_[ply])
 		{
-			pos.GetOurCarriage()->m_tt.Store(pos.GetKey(), ScoreNone, BoundNone, DepthNone, m_pv_[ply], ScoreNone);
+			pos.GetOurCarriage()->m_tt.Store(pos.GetKey(), SweetnessNone, BoundNone, DepthNone, m_pv_[ply], SweetnessNone);
 		}
 
 		assert(pos.MoveIsLegal(m_pv_[ply]));

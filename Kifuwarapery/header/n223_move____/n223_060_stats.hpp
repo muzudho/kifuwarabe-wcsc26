@@ -3,7 +3,7 @@
 #include "../n105_120_square__/n105_120_100_square.hpp"
 #include "../n105_120_square__/n105_120_500_convSquare.hpp"
 #include "../n113_piece___/n113_150_piece.hpp"
-#include "../n119_score___/n119_090_ScoreValue.hpp"
+#include "../n119_score___/n119_090_Sweetness.hpp"
 
 
 /// <summary>
@@ -18,7 +18,7 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	static const ScoreValue m_MaxScore = static_cast<ScoreValue>(2000);
+	static const Sweetness m_MaxScore = static_cast<Sweetness>(2000);
 
 
 	/// <summary>
@@ -34,7 +34,7 @@ public:
 	/// <param name="pc"></param>
 	/// <param name="to"></param>
 	/// <returns></returns>
-	ScoreValue GetValue(const bool isDrop, const Piece pc, const Square to) const {
+	Sweetness GetValue(const bool isDrop, const Piece pc, const Square to) const {
 		assert(0 < pc && pc < N31_PieceNone);
 		assert(ConvSquare::CONTAINS_OF10(to));
 		return this->m_table_[isDrop][pc][to];
@@ -48,7 +48,7 @@ public:
 	/// <param name="pc"></param>
 	/// <param name="to"></param>
 	/// <param name="s"></param>
-	void Update(const bool isDrop, const Piece pc, const Square to, const ScoreValue s) {
+	void Update(const bool isDrop, const Piece pc, const Square to, const Sweetness s) {
 		if (Gain) {
 			this->m_table_[isDrop][pc][to] = std::max(s, GetValue(isDrop, pc, to) - 1);
 		}
@@ -64,5 +64,5 @@ private:
 	/// <summary>
 	/// [isDrop][piece][square] とする。
 	/// </summary>
-	ScoreValue m_table_[2][N31_PieceNone][SquareNum];
+	Sweetness m_table_[2][N31_PieceNone][SquareNum];
 };

@@ -26,7 +26,7 @@ public:
 	/// 生成。
 	/// </summary>
 	/// <param name="m"></param>
-	explicit RootMove(const Move m) : m_score_(-ScoreInfinite), m_prevScore_(-ScoreInfinite) {
+	explicit RootMove(const Move m) : m_score_(-SweetnessInfinite), m_prevScore_(-SweetnessInfinite) {
 		m_pv_.push_back(m);
 		m_pv_.push_back(g_MOVE_NONE);
 	}
@@ -36,7 +36,7 @@ public:
 	/// 生成。
 	/// </summary>
 	/// <param name="m"></param>
-	explicit RootMove(const DeliciousBanana banana) : m_score_(banana.m_scoreValue), m_prevScore_(-ScoreInfinite) {
+	explicit RootMove(const DeliciousBanana banana) : m_score_(banana.m_sweetness), m_prevScore_(-SweetnessInfinite) {
 		m_pv_.push_back(banana.m_move);
 		m_pv_.push_back(g_MOVE_NONE);
 	}
@@ -82,12 +82,12 @@ public:
 	/// <summary>
 	/// 評価値
 	/// </summary>
-	ScoreValue m_score_;
+	Sweetness m_score_;
 
 	/// <summary>
 	/// 前の評価値
 	/// </summary>
-	ScoreValue m_prevScore_;
+	Sweetness m_prevScore_;
 
 	/// <summary>
 	/// 指し手のスタック

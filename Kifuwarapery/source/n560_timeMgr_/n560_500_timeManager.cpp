@@ -1,5 +1,5 @@
 ﻿#include <algorithm> // std::min
-#include "../../header/n119_score___/n119_090_ScoreValue.hpp"
+#include "../../header/n119_score___/n119_090_Sweetness.hpp"
 #include "../../header/n560_timeMgr_/n560_100_limitsDuringGo.hpp"
 #include "../../header/n560_timeMgr_/n560_500_timeManager.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"

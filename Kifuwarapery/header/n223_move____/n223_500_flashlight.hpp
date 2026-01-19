@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../n119_score___/n119_090_ScoreValue.hpp"	//Ply,ScoreIndex
+#include "../n119_score___/n119_090_Sweetness.hpp"	//Ply,ScoreIndex
 #include "../n119_score___/n119_500_EvalSum.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
 #include "../n223_move____/n223_200_depth.hpp"
@@ -60,7 +60,7 @@ public:
 	/// <summary>
 	/// 静的な評価値とは☆？
 	/// </summary>
-	ScoreValue			m_staticEval;
+	Sweetness			m_staticEval;
 
 	/// <summary>
 	/// 一時的にヌル・ムーブをせずに検索させたいときのために設定するもの☆
