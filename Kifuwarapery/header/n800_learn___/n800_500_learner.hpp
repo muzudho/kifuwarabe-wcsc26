@@ -516,29 +516,29 @@ private:
 			auto& gameMoves = bookMovesDatum_[i];
 			for (auto& bmd : gameMoves) {
 				if (bmd.useLearning) {
-					GetPos.GetOurCarriage()->m_alpha = -ScoreMaxEvaluate;
-					GetPos.GetOurCarriage()->m_beta  =  ScoreMaxEvaluate;
+					GetPos.GetOurCarriage()->m_alpha = -SweetnessMaxEvaluate;
+					GetPos.GetOurCarriage()->m_beta  =  SweetnessMaxEvaluate;
 					Go(GetPos, dist(mt), bmd.GetMove);
-					const ScoreIndex recordScore = GetPos.GetOurCarriage()->m_rootMoves[0].m_score_;
+					const Sweetness recordSweetness = GetPos.GetOurCarriage()->m_rootMoves[0].m_sweetness_;
 					++moveCount_;
 					bmd.otherPVExist = false;
 					bmd.pvBuffer.Clear();
-					if (abs(recordScore) < ScoreMaxEvaluate) {
+					if (abs(recordSweetness) < SweetnessMaxEvaluate) {
 						int recordIsNth = 0; // 正解の手が何番目に良い手か。0から数える。
 						auto& recordPv = GetPos.GetOurCarriage()->m_rootMoves[0].m_pv_;
 						bmd.pvBuffer.insert(std::IsEnd(bmd.pvBuffer), std::begin(recordPv), std::IsEnd(recordPv));
 						const auto recordPVSize = bmd.pvBuffer.m_size();
 						for (MoveList<N09_LegalAll> ml(GetPos); !ml.IsEnd(); ++ml) {
 							if (ml.GetMove() != bmd.GetMove) {
-								GetPos.GetOurCarriage()->m_alpha = recordScore - FVWindow;
-								GetPos.GetOurCarriage()->m_beta  = recordScore + FVWindow;
+								GetPos.GetOurCarriage()->m_alpha = recordSweetness - FVWindow;
+								GetPos.GetOurCarriage()->m_beta  = recordSweetness + FVWindow;
 								Go(GetPos, dist(mt), ml.GetMove());
-								const ScoreIndex GetScore = GetPos.GetOurCarriage()->m_rootMoves[0].m_score_;
-								if (GetPos.GetOurCarriage()->m_alpha < GetScore && GetScore < GetPos.GetOurCarriage()->m_beta) {
+								const Sweetness GetSweetness = GetPos.GetOurCarriage()->m_rootMoves[0].m_sweetness_;
+								if (GetPos.GetOurCarriage()->m_alpha < GetSweetness && GetSweetness < GetPos.GetOurCarriage()->m_beta) {
 									auto& pv = GetPos.GetOurCarriage()->m_rootMoves[0].m_pv_;
 									bmd.pvBuffer.insert(std::IsEnd(bmd.pvBuffer), std::begin(pv), std::IsEnd(pv));
 								}
-								if (recordScore < GetScore)
+								if (recordSweetness < GetSweetness)
 									++recordIsNth;
 							}
 						}
@@ -706,9 +706,9 @@ private:
 						GetPos.DoMove(bmd.pvBuffer[recordPVIndex], m_setUpStates->top());
 					}
 					// evaluate() の差分計算を無効化する。
-					m_pFlashlightBox[0].m_staticEvalRaw.GetP[0][0] = m_pFlashlightBox[1].m_staticEvalRaw.GetP[0][0] = ScoreNotEvaluated;
-					const ScoreIndex recordScore = (rootColor == GetPos.GetTurn() ? evaluate(GetPos, m_pFlashlightBox+1) : -evaluate(GetPos, m_pFlashlightBox+1));
-					PRINT_PV(std::cout << ", score: " << recordScore << std::endl);
+					m_pFlashlightBox[0].m_staticEvalRaw.GetP[0][0] = m_pFlashlightBox[1].m_staticEvalRaw.GetP[0][0] = SweetnessNotEvaluated;
+					const Sweetness recordSweetness = (rootColor == GetPos.GetTurn() ? evaluate(GetPos, m_pFlashlightBox+1) : -evaluate(GetPos, m_pFlashlightBox+1));
+					PRINT_PV(std::cout << ", score: " << recordSweetness << std::endl);
 					for (int jj = recordPVIndex - 1; 0 <= jj; --jj) {
 						GetPos.UndoMove(bmd.pvBuffer[jj]);
 					}
@@ -721,12 +721,12 @@ private:
 							m_setUpStates->push(StateInfo());
 							GetPos.DoMove(bmd.pvBuffer[otherPVIndex], m_setUpStates->top());
 						}
-						m_pFlashlightBox[0].m_staticEvalRaw.GetP[0][0] = m_pFlashlightBox[1].m_staticEvalRaw.GetP[0][0] = ScoreNotEvaluated;
-						const ScoreIndex GetScore = (rootColor == GetPos.GetTurn() ? evaluate(GetPos, m_pFlashlightBox+1) : -evaluate(GetPos, m_pFlashlightBox+1));
-						const auto diff = GetScore - recordScore;
+						m_pFlashlightBox[0].m_staticEvalRaw.GetP[0][0] = m_pFlashlightBox[1].m_staticEvalRaw.GetP[0][0] = SweetnessNotEvaluated;
+						const Sweetness GetSweetness = (rootColor == GetPos.GetTurn() ? evaluate(GetPos, m_pFlashlightBox+1) : -evaluate(GetPos, m_pFlashlightBox+1));
+						const auto diff = GetSweetness - recordSweetness;
 						const double dsig = dsigmoid(diff);
 						std::array<double, 2> dT = {{(rootColor == Black ? dsig : -dsig), dsig}};
-						PRINT_PV(std::cout << ", score: " << GetScore << ", dT: " << dT[0] << std::endl);
+						PRINT_PV(std::cout << ", score: " << GetSweetness << ", dT: " << dT[0] << std::endl);
 						sum_dT += dT;
 						dT[0] = -dT[0];
 						dT[1] = (GetPos.GetTurn() == rootColor ? -dT[1] : dT[1]);
@@ -810,7 +810,7 @@ private:
 	/// <summary>
 	/// 
 	/// </summary>
-	static const ScoreIndex FVWindow = static_cast<ScoreIndex>(256);
+	static const Sweetness FVWindow = static_cast<Sweetness>(256);
 
 	/// <summary>
 	/// 
