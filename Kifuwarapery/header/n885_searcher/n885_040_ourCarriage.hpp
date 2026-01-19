@@ -81,12 +81,12 @@ public:
 	/// <summary>
 	/// アルファ
 	/// </summary>
-	ScoreIndex		m_alpha;
+	Sweetness		m_alpha;
 
 	/// <summary>
 	/// ベータ
 	/// </summary>
-	ScoreIndex		m_beta;
+	Sweetness		m_beta;
 #endif
 
 	/// <summary>
@@ -242,7 +242,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	std::string		scoreToUSI(const Sweetness sweetness, const Sweetness alpha, const Sweetness beta) {
+	std::string		sweetnessToUSI(const Sweetness sweetness, const Sweetness alpha, const Sweetness beta) {
 		std::stringstream ss;
 
 		if (abs(sweetness) < SweetnessMateInMaxPly) {
@@ -263,8 +263,8 @@ public:
 	//private:
 
 
-	inline std::string		scoreToUSI(const Sweetness score) {
-		return scoreToUSI(score, -Sweetness::SweetnessInfinite, Sweetness::SweetnessInfinite);
+	inline std::string		sweetnessToUSI(const Sweetness sweetness) {
+		return sweetnessToUSI(sweetness, -Sweetness::SweetnessInfinite, Sweetness::SweetnessInfinite);
 	}
 
 
@@ -328,20 +328,20 @@ public://private:
 	/// <param name="sweetness"></param>
 	/// <param name="ply"></param>
 	/// <returns></returns>
-	Sweetness ConvertScoreToTT(const Sweetness score, const Ply ply) {
-		assert(score != SweetnessNone);
+	Sweetness ConvertSweetnessToTT(const Sweetness sweetness, const Ply ply) {
+		assert(sweetness != SweetnessNone);
 
 		return (
 			// mate表示をするとき☆
-			SweetnessMateInMaxPly <= score ?
+			SweetnessMateInMaxPly <= sweetness ?
 			// スコアの土台に、手数（mate）を乗せるぜ☆！
-			score + static_cast<Sweetness>(ply)
+			sweetness + static_cast<Sweetness>(ply)
 			:
-			score <= SweetnessMatedInMaxPly ?
+			sweetness <= SweetnessMatedInMaxPly ?
 			// 先後逆のときも、手数を乗せる（マイナスをもっと引く）のは同じ☆
-			score - static_cast<Sweetness>(ply)
+			sweetness - static_cast<Sweetness>(ply)
 			// それ以外のときは、そのままスコア表示。
-			: score
+			: sweetness
 		);
 	}
 
@@ -352,7 +352,7 @@ public://private:
 	/// <param name="s"></param>
 	/// <param name="ply"></param>
 	/// <returns></returns>
-	Sweetness ConvertScoreFromTT(const Sweetness s, const Ply ply) {
+	Sweetness ConvertSweetnessFromTT(const Sweetness s, const Ply ply) {
 		return (s == SweetnessNone ? SweetnessNone
 			: SweetnessMateInMaxPly <= s ? s - static_cast<Sweetness>(ply)
 			: s <= SweetnessMatedInMaxPly ? s + static_cast<Sweetness>(ply)
@@ -382,7 +382,7 @@ public://private:
 		if (
 			second.IsCaptureOrPromotion()
 			&& (
-				//(pos.GetPieceScore(second.GetCap()) <= pos.GetPieceScore(m2ptFrom))
+				//(pos.GetPieceSweetness(second.GetCap()) <= pos.GetPieceSweetness(m2ptFrom))
 				(PieceSweetness::getSweetnessByPiece(second.GetCap()) <= PieceSweetness::getSweetnessByPiece(m2ptFrom))
 				||
 				m2ptFrom == N08_King

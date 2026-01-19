@@ -151,7 +151,7 @@ Sweetness AdventureNodekindNonPv::explorePlain_10i(
 	pos.setNodesSearched(pos.getNodesSearched() + 1);
 
 
-	ttScore = this->explorePlain_10i200j200k_getTtScore(
+	ttScore = this->explorePlain_10i200j200k_getTtSweetness(
 		excludedMove,
 		&pFlashlight,
 		posKey,
@@ -194,7 +194,7 @@ Sweetness AdventureNodekindNonPv::explorePlain_10i(
 
 
 	bool isGotoIidStart = false;//NonPVのとき使う☆
-	this->explorePlain_10i200j280k_evelScore(
+	this->explorePlain_10i200j280k_evelSweetness(
 		isGotoIidStart,
 		ourCarriage,
 		eval,
@@ -317,7 +317,7 @@ iid_start:
 		bool isContinue = false;
 
 
-		this->explorePlain_10i400j120k_resetScore(
+		this->explorePlain_10i400j120k_resetSweetness(
 			isContinue,
 			pos,
 			move,
@@ -443,7 +443,7 @@ iid_start:
 			doFullDepthSearch);
 
 
-		this->explorePlain_10i600j120k_getScoreNonPV(
+		this->explorePlain_10i600j120k_getSweetnessNonPV(
 			ourCarriage,
 			doFullDepthSearch,
 			score,

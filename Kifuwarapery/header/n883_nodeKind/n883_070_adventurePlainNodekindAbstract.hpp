@@ -125,13 +125,13 @@ public:
 	/// <param name="threatMove"></param>
 	/// <param name="bestMove"></param>
 	virtual inline void explorePlain_10i200j120k_clearMove(
-		Sweetness& bestScore,
+		Sweetness& bestSweetness,
 		Flashlight** ppFlashlight,
 		Move& threatMove,
 		Move& bestMove
 		)const {
 
-		bestScore = -SweetnessInfinite;
+		bestSweetness = -SweetnessInfinite;
 		(*ppFlashlight)->m_currentMove = threatMove = bestMove = ((*ppFlashlight) + 1)->m_excludedMove = g_MOVE_NONE;
 		(*ppFlashlight)->m_ply = ((*ppFlashlight) - 1)->m_ply + 1;
 		((*ppFlashlight) + 1)->m_skipNullMove = false;
@@ -163,14 +163,10 @@ public:
 	///		- ルートノード以外が実行するぜ☆（＾ｑ＾）
 	///		</pre>
 	/// </summary>
-	/// <param name="isReturnWithSweetness"></param>
-	/// <param name="returnSweetness"></param>
 	/// <param name="pos"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="ppFlashlight"></param>
 	virtual inline std::pair<bool, Sweetness> explorePlain_10i200j160k_isStopByRepetetion(
-		//bool& isReturnWithSweetness,
-		//ScoreIndex& returnSweetness,
 		Position& pos,
 		OurCarriage& ourCarriage,
 		Flashlight** ppFlashlight) const
@@ -193,7 +189,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
 	virtual inline void explorePlain_10i200j180k_checkAlpha(
-		bool& isReturnWithScore,
+		bool& isReturnWithSweetness,
 		Sweetness& returnSweetness,
 		Flashlight** ppFlashlight,
 		Sweetness& alpha,
@@ -204,7 +200,7 @@ public:
 		beta = std::min(UtilSweetness::MateIn((*ppFlashlight)->m_ply + 1), beta);
 		if (beta <= alpha)
 		{
-			isReturnWithScore = true;
+			isReturnWithSweetness = true;
 			returnSweetness = alpha;
 			return;
 			//return alpha;
@@ -222,7 +218,7 @@ public:
 	/// <param name="ppTtEntry"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="ttSweetness"></param>
-	virtual inline Sweetness explorePlain_10i200j200k_getTtScore(
+	virtual inline Sweetness explorePlain_10i200j200k_getTtSweetness(
 		Move& excludedMove,
 		Flashlight** ppFlashlight,
 		Key& posKey,
@@ -234,7 +230,7 @@ public:
 		excludedMove = (*ppFlashlight)->m_excludedMove;
 		posKey = (excludedMove.IsNone() ? pos.GetKey() : pos.GetExclusionKey());
 		(*ppTtEntry) = ourCarriage.m_tt.Probe(posKey);
-		return ((*ppTtEntry) != nullptr ? ourCarriage.ConvertScoreFromTT((*ppTtEntry)->GetSweetness(), (*ppFlashlight)->m_ply) : SweetnessNone);
+		return ((*ppTtEntry) != nullptr ? ourCarriage.ConvertSweetnessFromTT((*ppTtEntry)->GetSweetness(), (*ppFlashlight)->m_ply) : SweetnessNone);
 	}
 
 
@@ -266,8 +262,8 @@ public:
 	virtual inline void explorePlain_10i200j240k_killerMove(
 		Move& ttMove,
 		Sweetness& ttSweetness,
-		bool& isReturnWithScore,
-		Sweetness& returnScore,
+		bool& isReturnWithSweetness,
+		Sweetness& returnSweetness,
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
 		const Depth depth,
@@ -296,8 +292,8 @@ public:
 				(*ppFlashlight)->m_killers[0] = ttMove;
 			}
 
-			isReturnWithScore = true;
-			returnScore = ttSweetness;
+			isReturnWithSweetness = true;
+			returnSweetness = ttSweetness;
 			return;
 			//return ttSweetness;
 		}
@@ -314,7 +310,7 @@ public:
 	virtual inline bool getCondition_10i200j240k100L(
 		const TTEntry* pTtEntry,
 		Sweetness& beta,
-		Sweetness& ttScore
+		Sweetness& ttSweetness
 		) const = 0;
 
 
@@ -359,7 +355,7 @@ public:
 					)				
 				).IsNone()) {
 				(*ppFlashlight)->m_staticEval = bestSweetness = UtilSweetness::MateIn((*ppFlashlight)->m_ply);
-				ourCarriage.m_tt.Store(posKey, ourCarriage.ConvertScoreToTT(bestSweetness, (*ppFlashlight)->m_ply), BoundExact, depth,
+				ourCarriage.m_tt.Store(posKey, ourCarriage.ConvertSweetnessToTT(bestSweetness, (*ppFlashlight)->m_ply), BoundExact, depth,
 					move, (*ppFlashlight)->m_staticEval);
 				bestMove = move;
 
@@ -386,7 +382,7 @@ public:
 	/// <param name="ttSweetness"></param>
 	/// <param name="posKey"></param>
 	/// <param name="move"></param>
-	virtual inline void explorePlain_10i200j280k_evelScore(
+	virtual inline void explorePlain_10i200j280k_evelSweetness(
 		bool& isGotoIidStart,
 		OurCarriage& ourCarriage,
 		Sweetness& evalSweetness,
@@ -456,8 +452,8 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="ppFlashlight"></param>
 	virtual inline void explorePlain_10i200j300k_nonPV(
-		bool& isReturnWithScore,
-		Sweetness& returnScore,
+		bool& isReturnWithSweetness,
+		Sweetness& returnSweetness,
 		OurCarriage& ourCarriage,
 		const Depth depth,
 		Sweetness& eval,
@@ -478,8 +474,8 @@ public:
 			const Sweetness s = AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[No2_NonPV]->ExploreAsQsearch(
 				ourCarriage, false, pos, (*ppFlashlight), rbeta - 1, rbeta, Depth0);
 			if (s < rbeta) {
-				isReturnWithScore = true;
-				returnScore = s;
+				isReturnWithSweetness = true;
+				returnSweetness = s;
 				return;
 				//return s;
 			}
@@ -497,8 +493,8 @@ public:
 	/// <param name="beta"></param>
 	/// <param name="eval"></param>
 	virtual inline void explorePlain_10i200j320k(
-		bool& isReturnWithScore,
-		Sweetness& returnScore,
+		bool& isReturnWithSweetness,
+		Sweetness& returnSweetness,
 		Flashlight** ppFlashlight,
 		const Depth depth,
 		Sweetness& beta,
@@ -512,8 +508,8 @@ public:
 			&& beta <= eval - g_futilityMargins.m_FutilityMargins[depth][0]
 			&& abs(beta) < SweetnessMateInMaxPly)
 		{
-			bool isReturnWithScore = true;
-			returnScore = eval - g_futilityMargins.m_FutilityMargins[depth][0];
+			bool isReturnWithSweetness = true;
+			returnSweetness = eval - g_futilityMargins.m_FutilityMargins[depth][0];
 			//return eval - g_futilityMargins.m_FutilityMargins[depth][0];
 			return;
 		}
@@ -572,7 +568,7 @@ public:
 			((*ppFlashlight) + 1)->m_staticEvalRaw = (*ppFlashlight)->m_staticEvalRaw; // 評価値の差分評価の為。
 			((*ppFlashlight) + 1)->m_skipNullMove = true;
 
-			Sweetness nullScore = (depth - reduction < OnePly ?
+			Sweetness nullSweetness = (depth - reduction < OnePly ?
 				//────────────────────────────────────────────────────────────────────────────────
 				// 深さが２手（先後１組）以上なら　クイックな探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
@@ -588,16 +584,16 @@ public:
 			((*ppFlashlight) + 1)->m_skipNullMove = false;
 			pos.DoNullMove(false, st);
 
-			if (beta <= nullScore) {
-				if (SweetnessMateInMaxPly <= nullScore) {
-					nullScore = beta;
+			if (beta <= nullSweetness) {
+				if (SweetnessMateInMaxPly <= nullSweetness) {
+					nullSweetness = beta;
 				}
 
 				if (depth < 6 * OnePly) {
 					isReturnWithSweetness = true;
-					returnSweetness = nullScore;
+					returnSweetness = nullSweetness;
 					return;
-					//return nullScore;
+					//return nullSweetness;
 				}
 
 				(*ppFlashlight)->m_skipNullMove = true;
@@ -610,9 +606,9 @@ public:
 
 				if (beta <= s) {
 					isReturnWithSweetness = true;
-					returnSweetness = nullScore;
+					returnSweetness = nullSweetness;
 					return;
-					//return nullScore;
+					//return nullSweetness;
 				}
 			}
 			else {
@@ -648,7 +644,7 @@ public:
 	/// <param name="sweetness"></param>
 	/// <param name="cutNode"></param>
 	virtual inline void explorePlain_10i200j360k(
-		bool& isReturnWithScore,
+		bool& isReturnWithSweetness,
 		OurCarriage& ourCarriage,
 		const Depth& depth,
 		Flashlight** ppFlashlight,
@@ -657,7 +653,7 @@ public:
 		Position& pos,
 		Move& ttMove,
 		StateInfo& st,
-		Sweetness& score,
+		Sweetness& sweetness,
 		const bool cutNode
 		)const {
 
@@ -702,10 +698,10 @@ public:
 					//────────────────────────────────────────────────────────────────────────────────
 					// 探索☆？（＾ｑ＾）
 					//────────────────────────────────────────────────────────────────────────────────
-					score =	-g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -rbeta, -rbeta + 1, rdepth, !cutNode);
+					sweetness =	-g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -rbeta, -rbeta + 1, rdepth, !cutNode);
 					pos.UndoMove(move);
-					if (rbeta <= score) {
-						isReturnWithScore = true;
+					if (rbeta <= sweetness) {
+						isReturnWithSweetness = true;
 						return;
 						//return sweetness;
 					}
@@ -791,7 +787,7 @@ public:
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void explorePlain_10i400j120k_resetScore(
+	virtual inline void explorePlain_10i400j120k_resetSweetness(
 		bool& isContinue,
 		Position& pos,
 		Move& move,
@@ -896,11 +892,11 @@ public:
 		Depth& extension,
 		bool& singularExtensionNode,
 		Move& ttMove,
-		Sweetness& ttScore,
+		Sweetness& ttSweetness,
 		const CheckInfo& ci,
 		const Depth depth,
 		Flashlight** ppFlashlight,
-		Sweetness& score,
+		Sweetness& sweetness,
 		const bool cutNode,
 		Sweetness& beta,
 		Depth& newDepth) const
@@ -922,21 +918,21 @@ public:
 					:
 					pos.IsPseudoLegalMoveIsLegal<false, false, Color::White, Color::Black>(move, ci.m_pinned)
 			)
-			&& abs(ttScore) < PieceSweetness::m_sweetnessKnownWin)
+			&& abs(ttSweetness) < PieceSweetness::m_sweetnessKnownWin)
 		{
-			assert(ttScore != SweetnessNone);
+			assert(ttSweetness != SweetnessNone);
 
-			const Sweetness rBeta = ttScore - static_cast<Sweetness>(depth);
+			const Sweetness rBeta = ttSweetness - static_cast<Sweetness>(depth);
 			(*ppFlashlight)->m_excludedMove = move;
 			(*ppFlashlight)->m_skipNullMove = true;
 			//────────────────────────────────────────────────────────────────────────────────
 			// 探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
-			score =	g_NODEKIND_PROGRAMS[No2_NonPV]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight), rBeta - 1, rBeta, depth / 2, cutNode);
+			sweetness =	g_NODEKIND_PROGRAMS[No2_NonPV]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight), rBeta - 1, rBeta, depth / 2, cutNode);
 			(*ppFlashlight)->m_skipNullMove = false;
 			(*ppFlashlight)->m_excludedMove = g_MOVE_NONE;
 
-			if (score < rBeta) {
+			if (sweetness < rBeta) {
 				//extension = OnePly;
 				extension = (beta <= rBeta ? OnePly + OnePly / 2 : OnePly);
 			}
@@ -1018,11 +1014,11 @@ public:
 			// sweetness based pruning
 			const Depth predictedDepth = this->getPredictedDepth_10i400j170k100L( newDepth, depth, moveCount);
 			// gain を 2倍にする。
-			const Sweetness futilityScore = (*ppFlashlight)->m_staticEval + g_futilityMargins.GetFutilityMargin(predictedDepth, moveCount)
+			const Sweetness futilitySweetness = (*ppFlashlight)->m_staticEval + g_futilityMargins.GetFutilityMargin(predictedDepth, moveCount)
 				+ 2 * ourCarriage.m_gains.GetValue(move.IsDrop(), ConvPiece::FROM_COLOR_AND_PIECE_TYPE10(pos.GetTurn(), move.GetPieceTypeFromOrDropped()), move.To());
 
-			if (futilityScore < beta) {
-				bestSweetness = std::max(bestSweetness, futilityScore);
+			if (futilitySweetness < beta) {
+				bestSweetness = std::max(bestSweetness, futilitySweetness);
 				this->lockAndUpdateBestSweetness_10i400j170k200L(
 					ppSplitedNode,
 					bestSweetness
@@ -1063,12 +1059,12 @@ public:
 	/// <param name="bestSweetness"></param>
 	virtual inline void lockAndUpdateBestSweetness_10i400j170k200L(
 		SplitedNode** ppSplitedNode,
-		Sweetness& bestScore
+		Sweetness& bestSweetness
 	) const {
 
 		(*ppSplitedNode)->m_mutex.lock();
-		if ((*ppSplitedNode)->m_bestSweetness < bestScore) {
-			(*ppSplitedNode)->m_bestSweetness = bestScore;
+		if ((*ppSplitedNode)->m_bestSweetness < bestSweetness) {
+			(*ppSplitedNode)->m_bestSweetness = bestSweetness;
 		}
 	}
 
@@ -1146,7 +1142,7 @@ public:
 		bool& captureOrPawnPromotion,
 		bool& inCheck,
 		bool& dangerous,
-		Sweetness& bestScore,
+		Sweetness& bestSweetness,
 		Move& move,
 		Move& ttMove,
 		const Depth depth,
@@ -1343,10 +1339,10 @@ public:
 	/// <param name="ppFlashlight"></param>
 	/// <param name="alpha"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void explorePlain_10i600j120k_getScoreNonPV(
+	virtual inline void explorePlain_10i600j120k_getSweetnessNonPV(
 		OurCarriage& ourCarriage,
 		bool& doFullDepthSearch,
-		Sweetness& score,
+		Sweetness& sweetness,
 		Depth& newDepth,
 		bool& givesCheck,
 		Position& pos,
@@ -1357,7 +1353,7 @@ public:
 		// full depth search
 		// PVS
 		if (doFullDepthSearch) {
-			score = (newDepth < OnePly ?
+			sweetness = (newDepth < OnePly ?
 				(givesCheck ? -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[No2_NonPV]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0)
 					: -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[No2_NonPV]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0))
 				//────────────────────────────────────────────────────────────────────────────────
@@ -1383,11 +1379,11 @@ public:
 	/// <param name="givesCheck"></param>
 	/// <param name="pos"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void explorerPlain_10i600j140k_getScore(
+	virtual inline void explorerPlain_10i600j140k_getSweetness(
 		OurCarriage& ourCarriage,
 		bool& isPVMove,
 		Sweetness& alpha,
-		Sweetness& score,
+		Sweetness& sweetness,
 		Sweetness& beta,
 		Depth& newDepth,
 		bool& givesCheck,
@@ -1397,9 +1393,9 @@ public:
 		// 通常の探索
 		if (
 			isPVMove ||
-			(alpha < score && this->isBetaLarge_10i600j140k100L(score,beta))
+			(alpha < sweetness && this->isBetaLarge_10i600j140k100L(sweetness,beta))
 		) {
-			score = (newDepth < OnePly ?
+			sweetness = (newDepth < OnePly ?
 				(givesCheck ? -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[No1_PV]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
 					: -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[No1_PV]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0))
 				//────────────────────────────────────────────────────────────────────────────────
@@ -1444,12 +1440,12 @@ public:
 	/// <param name="alpha"></param>
 	virtual inline void explorePlain_10i700j100k_getAlpha(
 		SplitedNode** ppSplitedNode,
-		Sweetness& bestScore,
+		Sweetness& bestSweetness,
 		Sweetness& alpha
 		) const
 	{
 		(*ppSplitedNode)->m_mutex.lock();
-		bestScore = (*ppSplitedNode)->m_bestSweetness;
+		bestSweetness = (*ppSplitedNode)->m_bestSweetness;
 		alpha = (*ppSplitedNode)->m_alpha;
 	}
 
@@ -1468,23 +1464,23 @@ public:
 		Move& move,
 		bool& isPVMove,
 		Sweetness& alpha,
-		Sweetness& score,
+		Sweetness& sweetness,
 		Position& pos
 		) const
 	{
 		// ルート・ムーブのリストから、１つ選んでる（＾～＾）？
 		RootMove& rm = *std::find(ourCarriage.m_rootMoves.begin(), ourCarriage.m_rootMoves.end(), move);
 
-		if (isPVMove || alpha < score) {
+		if (isPVMove || alpha < sweetness) {
 			// PV move or new best move
-			rm.m_sweetness_ = score;
+			rm.m_sweetness_ = sweetness;
 #if defined BISHOP_IN_DANGER
 			if ((bishopInDangerFlag == BlackBishopInDangerIn28 && GetMove.ToCSA() == "0082KA")
 				|| (bishopInDangerFlag == WhiteBishopInDangerIn28 && GetMove.ToCSA() == "0028KA")
 				|| (bishopInDangerFlag == BlackBishopInDangerIn78 && GetMove.ToCSA() == "0032KA")
 				|| (bishopInDangerFlag == WhiteBishopInDangerIn78 && GetMove.ToCSA() == "0078KA"))
 			{
-				rm.m_score_ -= m_engineOptions["Danger_Demerit_Score"];
+				rm.m_sweetness_ -= m_engineOptions["Danger_Demerit_Score"];
 			}
 #endif
 			rm.ExtractPvFromTT(pos);
@@ -1519,9 +1515,9 @@ public:
 		Move& move,
 		bool& isPVMove,
 		Sweetness& alpha,
-		Sweetness& score,
+		Sweetness& sweetness,
 		Position& pos,
-		Sweetness& bestScore,
+		Sweetness& bestSweetness,
 		SplitedNode** ppSplitedNode,
 		Move& bestMove,
 		Sweetness& beta) const = 0;
@@ -1591,7 +1587,7 @@ public:
 		OurCarriage& ourCarriage,
 		Sweetness& alpha,
 		Flashlight** ppFlashlight,//サーチスタック
-		Sweetness& bestScore,
+		Sweetness& bestSweetness,
 		int& playedMoveCount,
 		Sweetness& beta,
 		Key& posKey,
@@ -1602,18 +1598,18 @@ public:
 		Move movesSearched[64]) const
 	{
 		if (moveCount == 0) {
-			bestScore = !excludedMove.IsNone() ? alpha : UtilSweetness::MatedIn((*ppFlashlight)->m_ply);
+			bestSweetness = !excludedMove.IsNone() ? alpha : UtilSweetness::MatedIn((*ppFlashlight)->m_ply);
 			return;
 		}
 
-		if (bestScore == -SweetnessInfinite) {
+		if (bestSweetness == -SweetnessInfinite) {
 			assert(playedMoveCount == 0);
-			bestScore = alpha;
+			bestSweetness = alpha;
 		}
 
-		if (beta <= bestScore) {
+		if (beta <= bestSweetness) {
 			// failed high
-			ourCarriage.m_tt.Store(posKey, ourCarriage.ConvertScoreToTT(bestScore, (*ppFlashlight)->m_ply), BoundLower, depth,
+			ourCarriage.m_tt.Store(posKey, ourCarriage.ConvertSweetnessToTT(bestSweetness, (*ppFlashlight)->m_ply), BoundLower, depth,
 				bestMove, (*ppFlashlight)->m_staticEval);
 
 			if (!bestMove.IsCaptureOrPawnPromotion() && !inCheck) {
@@ -1637,7 +1633,7 @@ public:
 			// failed low or PV search
 			ourCarriage.m_tt.Store(
 				posKey,
-				ourCarriage.ConvertScoreToTT(bestScore, (*ppFlashlight)->m_ply),
+				ourCarriage.ConvertSweetnessToTT(bestSweetness, (*ppFlashlight)->m_ply),
 				this->getBound_10i800j200k600L(!bestMove.IsNone()),
 				depth,
 				bestMove,
@@ -1645,7 +1641,7 @@ public:
 			);
 		}
 
-		assert(-Sweetness::SweetnessInfinite < bestScore && bestScore < Sweetness::SweetnessInfinite);
+		assert(-Sweetness::SweetnessInfinite < bestSweetness && bestSweetness < Sweetness::SweetnessInfinite);
 	}
 
 

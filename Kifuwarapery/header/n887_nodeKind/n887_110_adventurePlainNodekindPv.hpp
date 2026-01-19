@@ -364,7 +364,7 @@ public:
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void explorePlain_10i400j120k_resetScore(
+	virtual inline void explorePlain_10i400j120k_resetSweetness(
 		bool& isContinue,
 		Position& pos,
 		Move& move,

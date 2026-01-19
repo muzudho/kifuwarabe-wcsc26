@@ -181,7 +181,7 @@ Sweetness AdventureNodekindSplitedNodePv::explorePlain_10i(
 	pos.setNodesSearched(pos.getNodesSearched() + 1);
 
 
-	ttScore = this->explorePlain_10i200j200k_getTtScore(
+	ttScore = this->explorePlain_10i200j200k_getTtSweetness(
 		excludedMove,
 		&pFlashlight,
 		posKey,
@@ -225,7 +225,7 @@ Sweetness AdventureNodekindSplitedNodePv::explorePlain_10i(
 
 	// step5
 	bool isGotoIidStart = false;//NonPVのとき使う☆
-	this->explorePlain_10i200j280k_evelScore(
+	this->explorePlain_10i200j280k_evelSweetness(
 		isGotoIidStart,
 		ourCarriage,
 		eval,
@@ -300,7 +300,7 @@ split_point_start:
 		bool isContinue = false;
 
 
-		this->explorePlain_10i400j120k_resetScore(
+		this->explorePlain_10i400j120k_resetSweetness(
 			isContinue,
 			pos,
 			move,
@@ -400,7 +400,7 @@ split_point_start:
 			&pSplitedNode);
 
 
-		this->explorePlain_10i600j120k_getScoreNonPV(
+		this->explorePlain_10i600j120k_getSweetnessNonPV(
 			ourCarriage,
 			doFullDepthSearch,
 			score,
@@ -412,7 +412,7 @@ split_point_start:
 			cutNode);
 
 
-		this->explorerPlain_10i600j140k_getScore(
+		this->explorerPlain_10i600j140k_getSweetness(
 			ourCarriage,
 			isPVMove,
 			alpha,

@@ -63,7 +63,7 @@ Sweetness AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 	posKey = pos.GetKey();
 	pTtEntry = ourCarriage.m_tt.Probe(posKey);
 	ttMove = (pTtEntry != nullptr ? UtilMoveStack::Move16toMove(pTtEntry->GetMove(), pos) : g_MOVE_NONE);
-	ttScore = (pTtEntry != nullptr ? ourCarriage.ConvertScoreFromTT(pTtEntry->GetSweetness(), pFlashlight->m_ply) : SweetnessNone);
+	ttScore = (pTtEntry != nullptr ? ourCarriage.ConvertSweetnessFromTT(pTtEntry->GetSweetness(), pFlashlight->m_ply) : SweetnessNone);
 
 	if (pTtEntry != nullptr
 		&& ttDepth <= pTtEntry->GetDepth()
@@ -112,7 +112,7 @@ Sweetness AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 
 		if (beta <= bestScore) {
 			if (pTtEntry == nullptr) {
-				ourCarriage.m_tt.Store(pos.GetKey(), ourCarriage.ConvertScoreToTT(bestScore, pFlashlight->m_ply), BoundLower,
+				ourCarriage.m_tt.Store(pos.GetKey(), ourCarriage.ConvertSweetnessToTT(bestScore, pFlashlight->m_ply), BoundLower,
 					DepthNone, g_MOVE_NONE, pFlashlight->m_staticEval);
 			}
 
@@ -227,7 +227,7 @@ Sweetness AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 
 	ourCarriage.m_tt.Store(
 		posKey,
-		ourCarriage.ConvertScoreToTT(bestScore, pFlashlight->m_ply),
+		ourCarriage.ConvertSweetnessToTT(bestScore, pFlashlight->m_ply),
 		this->GetBound01( oldAlpha, bestScore),
 		ttDepth,
 		bestMove,

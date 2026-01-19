@@ -195,7 +195,7 @@ public:
 		Move move
 		)const override {
 		// fail high
-		ourCarriage.m_tt.Store(posKey, ourCarriage.ConvertScoreToTT(score, (*ppFlashlight)->m_ply), Bound::BoundLower,
+		ourCarriage.m_tt.Store(posKey, ourCarriage.ConvertSweetnessToTT(score, (*ppFlashlight)->m_ply), Bound::BoundLower,
 			ttDepth, move, (*ppFlashlight)->m_staticEval);
 		isReturnWithScore = true;
 		returnScore = score;

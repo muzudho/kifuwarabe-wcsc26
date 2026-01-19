@@ -91,7 +91,7 @@ std::string OurCarriage::PvInfoToUSI(Position& pos, const Ply depth, const Sweet
 
 		ss << "info depth " << d
 		   << " seldepth " << selDepth
-		   << " score " << (i == m_pvIdx ? scoreToUSI(s, alpha, beta) : scoreToUSI(s))
+		   << " score " << (i == m_pvIdx ? sweetnessToUSI(s, alpha, beta) : sweetnessToUSI(s))
 		   << " nodes " << pos.getNodesSearched()
 		   << " nps " << (0 < time ? pos.getNodesSearched() * 1000 / time : 0)
 		   << " time " << time

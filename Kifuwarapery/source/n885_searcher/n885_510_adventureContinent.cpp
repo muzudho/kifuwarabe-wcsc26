@@ -123,7 +123,7 @@ void AdventureContinent::ExploreContinent(
 				captainsRucksack.m_rootMoves.end(),
 				bookBanana.m_move));
 			SYNCCOUT << "info"
-				<< " score " << captainsRucksack.scoreToUSI(bookBanana.m_sweetness)
+				<< " score " << captainsRucksack.sweetnessToUSI(bookBanana.m_sweetness)
 				<< " pv " << bookBanana.m_move.ToUSI()
 				<< SYNCENDL;
 

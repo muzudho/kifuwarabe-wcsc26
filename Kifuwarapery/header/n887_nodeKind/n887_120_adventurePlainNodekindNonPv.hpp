@@ -257,7 +257,7 @@ public:
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void explorePlain_10i400j120k_resetScore(
+	virtual inline void explorePlain_10i400j120k_resetSweetness(
 		bool& isContinue,
 		Position& pos,
 		Move& move,
@@ -456,7 +456,7 @@ public:
 	/// <param name="givesCheck"></param>
 	/// <param name="pos"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void explorerPlain_10i600j140k_getScore(
+	virtual inline void explorerPlain_10i600j140k_getSweetness(
 		OurCarriage& ourCarriage,
 		bool& isPVMove,
 		Sweetness& alpha,

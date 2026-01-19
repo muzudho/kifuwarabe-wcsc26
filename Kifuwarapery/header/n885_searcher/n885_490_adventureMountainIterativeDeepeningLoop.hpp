@@ -77,7 +77,7 @@ public:
 		if (ourCarriage.m_rootMoves.empty()) {
 			ourCarriage.m_rootMoves.push_back(RootMove(g_MOVE_NONE));
 			SYNCCOUT << "info depth 0 score "
-				<< ourCarriage.scoreToUSI(-SweetnessMate0Ply)
+				<< ourCarriage.sweetnessToUSI(-SweetnessMate0Ply)
 				<< SYNCENDL;
 
 			return;
