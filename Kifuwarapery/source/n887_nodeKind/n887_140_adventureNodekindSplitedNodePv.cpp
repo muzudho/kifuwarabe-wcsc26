@@ -127,6 +127,8 @@ ScoreValue AdventureNodekindSplitedNodePv::explorePlain_10i(
 
 	bool isGotoSplitPointStart = false;
 	this->explorePlain_10i200j100k_initializeNode(
+		ttMove,
+		ttScore,
 		isGotoSplitPointStart,
 		moveCount,
 		playedMoveCount,
@@ -137,9 +139,7 @@ ScoreValue AdventureNodekindSplitedNodePv::explorePlain_10i(
 		bestMove,
 		threatMove,
 		bestScore,
-		ttMove,
-		excludedMove,
-		ttScore);
+		excludedMove);
 	if (isGotoSplitPointStart) { goto split_point_start; }
 
 
@@ -196,15 +196,15 @@ ScoreValue AdventureNodekindSplitedNodePv::explorePlain_10i(
 
 
 	this->explorePlain_10i200j240k_killerMove(
+		ttMove,
+		ttScore,
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
 		pTtEntry,
 		depth,
-		ttScore,
 		beta,
-		&pFlashlight,
-		ttMove);
+		&pFlashlight);
 	if (isReturnWithScore) { return returnScore; }
 
 

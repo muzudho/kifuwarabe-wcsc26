@@ -67,6 +67,8 @@ public:
 	///		- スプリット・ポイントのみ実行☆（＾ｑ＾）
 	///		</pre>
 	/// </summary>
+	/// <param name="ttMove"></param>
+	/// <param name="ttScore"></param>
 	/// <param name="isGotoSplitPointStart"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="playedMoveCount"></param>
@@ -77,10 +79,10 @@ public:
 	/// <param name="bestMove"></param>
 	/// <param name="threatMove"></param>
 	/// <param name="bestScore"></param>
-	/// <param name="ttMove"></param>
 	/// <param name="excludedMove"></param>
-	/// <param name="ttScore"></param>
 	virtual inline void explorePlain_10i200j100k_initializeNode(
+		Move& ttMove,
+		ScoreValue& ttScore,
 		bool& isGotoSplitPointStart,
 		int& moveCount,
 		int& playedMoveCount,
@@ -91,11 +93,7 @@ public:
 		Move& bestMove,
 		Move& threatMove,
 		ScoreValue& bestScore,
-		Move& ttMove,
-		Move& excludedMove,
-		ScoreValue& ttScore
-		)const// = 0;
-	// /*
+		Move& excludedMove) const
 	{
 
 		// initialize node
@@ -117,7 +115,6 @@ public:
 		return;
 		//goto split_point_start;
 	}
-	//*/
 
 
 	/// <summary>
@@ -257,26 +254,26 @@ public:
 	/// <summary>
 	/// PVノードか、非PVノードかで実行条件が変わるぜ☆（＾ｑ＾）
 	/// </summary>
+	/// <param name="ttMove"></param>
+	/// <param name="ttScore"></param>
 	/// <param name="isReturnWithScore"></param>
 	/// <param name="returnScore"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pTtEntry"></param>
 	/// <param name="depth"></param>
-	/// <param name="ttScore"></param>
 	/// <param name="beta"></param>
 	/// <param name="ppFlashlight"></param>
-	/// <param name="ttMove"></param>
 	virtual inline void explorePlain_10i200j240k_killerMove(
+		Move& ttMove,
+		ScoreValue& ttScore,
 		bool& isReturnWithScore,
 		ScoreValue& returnScore,
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
 		const Depth depth,
-		ScoreValue& ttScore,
 		ScoreValue& beta,
-		Flashlight** ppFlashlight,
-		Move& ttMove
-		)const {
+		Flashlight** ppFlashlight) const
+	{
 
 		// ルートノード以外だけにある手続きだぜ☆（＾ｑ＾）
 		if (pTtEntry != nullptr

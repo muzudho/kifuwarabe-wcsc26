@@ -166,15 +166,15 @@ ScoreValue AdventureNodekindNonPv::explorePlain_10i(
 
 
 	this->explorePlain_10i200j240k_killerMove(
+		ttMove,
+		ttScore,
 		isReturnWithScore,
 		returnScore,
 		ourCarriage,
 		pTtEntry,
 		depth,
-		ttScore,
 		beta,
-		&pFlashlight,
-		ttMove);
+		&pFlashlight);
 	if (isReturnWithScore) { return returnScore; }
 
 

@@ -62,6 +62,8 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
+	/// <param name="ttMove"></param>
+	/// <param name="ttScore"></param>
 	/// <param name="isGotoSplitPointStart"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="playedMoveCount"></param>
@@ -72,10 +74,10 @@ public:
 	/// <param name="bestMove"></param>
 	/// <param name="threatMove"></param>
 	/// <param name="bestScore"></param>
-	/// <param name="ttMove"></param>
 	/// <param name="excludedMove"></param>
-	/// <param name="ttScore"></param>
 	virtual inline void explorePlain_10i200j100k_initializeNode(
+		Move& ttMove,
+		ScoreValue& ttScore,
 		bool& isGotoSplitPointStart,
 		int& moveCount,
 		int& playedMoveCount,
@@ -86,10 +88,8 @@ public:
 		Move& bestMove,
 		Move& threatMove,
 		ScoreValue& bestScore,
-		Move& ttMove,
-		Move& excludedMove,
-		ScoreValue& ttScore
-		)const override {
+		Move& excludedMove) const override
+	{
 		// 非スプリット・ポイントはスルー☆！（＾ｑ＾）
 	}
 
