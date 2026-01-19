@@ -78,7 +78,7 @@ public:
 	/// <param name="givesCheck"></param>
 	/// <param name="move"></param>
 	/// <param name="ttMove"></param>
-	/// <param name="futilityScore"></param>
+	/// <param name="futilitySweetness"></param>
 	/// <param name="futilityBase"></param>
 	/// <param name="pos"></param>
 	/// <param name="beta"></param>
@@ -90,7 +90,7 @@ public:
 		bool& givesCheck,
 		Move& move,
 		Move& ttMove,
-		Sweetness& futilityScore,
+		Sweetness& futilitySweetness,
 		Sweetness& futilityBase,
 		Position& pos,
 		Sweetness& beta,
@@ -136,7 +136,7 @@ public:
 	/// <param name="ppFlashlight"></param>
 	/// <param name="ttDepth"></param>
 	/// <param name="move"></param>
-	virtual inline void DoByNewScore(
+	virtual inline void doByNewSweetness(
 		bool& isReturnWithSweetness,
 		Sweetness& returnSweetness,
 		OurCarriage& ourCarriage,
@@ -182,9 +182,9 @@ public:
 	/// <returns></returns>
 	virtual inline Bound GetBound01(
 		Sweetness& oldAlpha,
-		Sweetness& bestScore
+		Sweetness& bestSweetness
 		)const override {
-		return (oldAlpha < bestScore) ?
+		return (oldAlpha < bestSweetness) ?
 			Bound::BoundExact
 			:
 			Bound::BoundUpper

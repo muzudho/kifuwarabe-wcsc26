@@ -86,19 +86,19 @@ void TTEntry::SetGeneration(const u8 g)
 /// 
 /// </summary>
 /// <param name="depth"></param>
-/// <param name="score"></param>
+/// <param name="sweetness"></param>
 /// <param name="move"></param>
 /// <param name="posKeyHigh32"></param>
 /// <param name="bound"></param>
 /// <param name="generation"></param>
-/// <param name="evalScore"></param>
-void TTEntry::SetSave(const Depth depth, const Sweetness score, const Move move, const u32 posKeyHigh32, const Bound bound, const u8 generation, const Sweetness evalScore)
+/// <param name="evalSweetness"></param>
+void TTEntry::SetSave(const Depth depth, const Sweetness sweetness, const Move move, const u32 posKeyHigh32, const Bound bound, const u8 generation, const Sweetness evalSweetness)
 {
 	this->m_key32_ = posKeyHigh32;
 	this->m_move16_ = static_cast<u16>(move.GetValue());
 	this->m_bound_ = static_cast<u8>(bound);
 	this->m_generation8_ = generation;
-	this->m_sweetness16_ = static_cast<s16>(score);
+	this->m_sweetness16_ = static_cast<s16>(sweetness);
 	this->m_depth16_ = static_cast<s16>(depth);
-	this->m_evalSweetness_ = static_cast<s16>(evalScore);
+	this->m_evalSweetness_ = static_cast<s16>(evalSweetness);
 }

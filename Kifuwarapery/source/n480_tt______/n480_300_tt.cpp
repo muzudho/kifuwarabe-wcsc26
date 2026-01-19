@@ -38,18 +38,18 @@ void TranspositionTable::Clear() {
 /// 
 /// </summary>
 /// <param name="posKey"></param>
-/// <param name="score"></param>
+/// <param name="sweetness"></param>
 /// <param name="bound"></param>
 /// <param name="depth"></param>
 /// <param name="move"></param>
-/// <param name="evalScore"></param>
+/// <param name="evalSweetness"></param>
 void TranspositionTable::Store(
 	const Key posKey,
-	const Sweetness score,
+	const Sweetness sweetness,
 	const Bound bound,
 	Depth depth,
 	Move move,
-	const Sweetness evalScore
+	const Sweetness evalSweetness
 ){
 	TTEntry* tte = FirstEntry(posKey);
 	TTEntry* replace = tte;
@@ -67,8 +67,8 @@ void TranspositionTable::Store(
 				move = tte->GetMove();
 			}
 
-			tte->SetSave(depth, score, move, posKeyHigh32,
-					  bound, this->GetGeneration(), evalScore);
+			tte->SetSave(depth, sweetness, move, posKeyHigh32,
+					  bound, this->GetGeneration(), evalSweetness);
 			return;
 		}
 
@@ -80,8 +80,8 @@ void TranspositionTable::Store(
 			replace = tte;
 		}
 	}
-	replace->SetSave(depth, score, move, posKeyHigh32,
-				  bound, this->GetGeneration(), evalScore);
+	replace->SetSave(depth, sweetness, move, posKeyHigh32,
+				  bound, this->GetGeneration(), evalSweetness);
 }
 
 

@@ -97,39 +97,39 @@ std::array<s32, 2> Evaluation09::doawhite(const Position& pos, const int index[2
 /// </summary>
 /// <param name="GetPos"></param>
 /// <returns></returns>
-ScoreIndex Evaluation09::inaniwaSweetnessBody(const Position& GetPos) {
-	ScoreIndex GetScore = ScoreZero;
+Sweetness Evaluation09::inaniwaSweetnessBody(const Position& GetPos) {
+	Sweetness GetSweetness = SweetnessZero;
 	if (GetPos.GetConstRucksack()->inaniwaFlag == InaniwaIsBlack) {
-		if (GetPos.GetPiece(B9) == N19_WKnight) { GetScore += 700 * g_FVScale; }
-		if (GetPos.GetPiece(H9) == N19_WKnight) { GetScore += 700 * g_FVScale; }
-		if (GetPos.GetPiece(A7) == N19_WKnight) { GetScore += 700 * g_FVScale; }
-		if (GetPos.GetPiece(I7) == N19_WKnight) { GetScore += 700 * g_FVScale; }
-		if (GetPos.GetPiece(C7) == N19_WKnight) { GetScore += 400 * g_FVScale; }
-		if (GetPos.GetPiece(G7) == N19_WKnight) { GetScore += 400 * g_FVScale; }
-		if (GetPos.GetPiece(B5) == N19_WKnight) { GetScore += 700 * g_FVScale; }
-		if (GetPos.GetPiece(H5) == N19_WKnight) { GetScore += 700 * g_FVScale; }
-		if (GetPos.GetPiece(D5) == N19_WKnight) { GetScore += 100 * g_FVScale; }
-		if (GetPos.GetPiece(F5) == N19_WKnight) { GetScore += 100 * g_FVScale; }
-		if (GetPos.GetPiece(E3) == N01_BPawn) { GetScore += 200 * g_FVScale; }
-		if (GetPos.GetPiece(E4) == N01_BPawn) { GetScore += 200 * g_FVScale; }
-		if (GetPos.GetPiece(E5) == N01_BPawn) { GetScore += 200 * g_FVScale; }
+		if (GetPos.GetPiece(B9) == N19_WKnight) { GetSweetness += 700 * g_FVScale; }
+		if (GetPos.GetPiece(H9) == N19_WKnight) { GetSweetness += 700 * g_FVScale; }
+		if (GetPos.GetPiece(A7) == N19_WKnight) { GetSweetness += 700 * g_FVScale; }
+		if (GetPos.GetPiece(I7) == N19_WKnight) { GetSweetness += 700 * g_FVScale; }
+		if (GetPos.GetPiece(C7) == N19_WKnight) { GetSweetness += 400 * g_FVScale; }
+		if (GetPos.GetPiece(G7) == N19_WKnight) { GetSweetness += 400 * g_FVScale; }
+		if (GetPos.GetPiece(B5) == N19_WKnight) { GetSweetness += 700 * g_FVScale; }
+		if (GetPos.GetPiece(H5) == N19_WKnight) { GetSweetness += 700 * g_FVScale; }
+		if (GetPos.GetPiece(D5) == N19_WKnight) { GetSweetness += 100 * g_FVScale; }
+		if (GetPos.GetPiece(F5) == N19_WKnight) { GetSweetness += 100 * g_FVScale; }
+		if (GetPos.GetPiece(E3) == N01_BPawn) { GetSweetness += 200 * g_FVScale; }
+		if (GetPos.GetPiece(E4) == N01_BPawn) { GetSweetness += 200 * g_FVScale; }
+		if (GetPos.GetPiece(E5) == N01_BPawn) { GetSweetness += 200 * g_FVScale; }
 	} else {
 		assert(GetPos.GetConstRucksack()->inaniwaFlag == InaniwaIsWhite);
-		if (GetPos.GetPiece(B1) == N03_BKnight) { GetScore -= 700 * g_FVScale; }
-		if (GetPos.GetPiece(H1) == N03_BKnight) { GetScore -= 700 * g_FVScale; }
-		if (GetPos.GetPiece(A3) == N03_BKnight) { GetScore -= 700 * g_FVScale; }
-		if (GetPos.GetPiece(I3) == N03_BKnight) { GetScore -= 700 * g_FVScale; }
-		if (GetPos.GetPiece(C3) == N03_BKnight) { GetScore -= 400 * g_FVScale; }
-		if (GetPos.GetPiece(G3) == N03_BKnight) { GetScore -= 400 * g_FVScale; }
-		if (GetPos.GetPiece(B5) == N03_BKnight) { GetScore -= 700 * g_FVScale; }
-		if (GetPos.GetPiece(H5) == N03_BKnight) { GetScore -= 700 * g_FVScale; }
-		if (GetPos.GetPiece(D5) == N03_BKnight) { GetScore -= 100 * g_FVScale; }
-		if (GetPos.GetPiece(F5) == N03_BKnight) { GetScore -= 100 * g_FVScale; }
-		if (GetPos.GetPiece(E7) == N17_WPawn) { GetScore -= 200 * g_FVScale; }
-		if (GetPos.GetPiece(E6) == N17_WPawn) { GetScore -= 200 * g_FVScale; }
-		if (GetPos.GetPiece(E5) == N17_WPawn) { GetScore -= 200 * g_FVScale; }
+		if (GetPos.GetPiece(B1) == N03_BKnight) { GetSweetness -= 700 * g_FVScale; }
+		if (GetPos.GetPiece(H1) == N03_BKnight) { GetSweetness -= 700 * g_FVScale; }
+		if (GetPos.GetPiece(A3) == N03_BKnight) { GetSweetness -= 700 * g_FVScale; }
+		if (GetPos.GetPiece(I3) == N03_BKnight) { GetSweetness -= 700 * g_FVScale; }
+		if (GetPos.GetPiece(C3) == N03_BKnight) { GetSweetness -= 400 * g_FVScale; }
+		if (GetPos.GetPiece(G3) == N03_BKnight) { GetSweetness -= 400 * g_FVScale; }
+		if (GetPos.GetPiece(B5) == N03_BKnight) { GetSweetness -= 700 * g_FVScale; }
+		if (GetPos.GetPiece(H5) == N03_BKnight) { GetSweetness -= 700 * g_FVScale; }
+		if (GetPos.GetPiece(D5) == N03_BKnight) { GetSweetness -= 100 * g_FVScale; }
+		if (GetPos.GetPiece(F5) == N03_BKnight) { GetSweetness -= 100 * g_FVScale; }
+		if (GetPos.GetPiece(E7) == N17_WPawn) { GetSweetness -= 200 * g_FVScale; }
+		if (GetPos.GetPiece(E6) == N17_WPawn) { GetSweetness -= 200 * g_FVScale; }
+		if (GetPos.GetPiece(E5) == N17_WPawn) { GetSweetness -= 200 * g_FVScale; }
 	}
-	return GetScore;
+	return GetSweetness;
 }
 
 
@@ -138,8 +138,8 @@ ScoreIndex Evaluation09::inaniwaSweetnessBody(const Position& GetPos) {
 /// </summary>
 /// <param name="GetPos"></param>
 /// <returns></returns>
-inline ScoreIndex Evaluation09::inaniwaSweetness(const Position& GetPos) {
-	if (GetPos.GetConstRucksack()->inaniwaFlag == NotInaniwa) return ScoreZero;
+inline Sweetness Evaluation09::inaniwaSweetness(const Position& GetPos) {
+	if (GetPos.GetConstRucksack()->inaniwaFlag == NotInaniwa) return SweetnessZero;
 	return inaniwaSweetnessBody(GetPos);
 }
 
@@ -305,8 +305,8 @@ int Evaluation09::make_list_unUseDiff(const Position& pos, int list0[EvalList::m
 void Evaluation09::evaluateBody(Position& pos, Flashlight* ss) {
 	if (this->calcDifference(pos, ss)) {
 		assert([&] {
-			const auto score = ss->m_staticEvalRaw.GetSum(pos.GetTurn());
-			return (this->evaluateUnUseDiff(pos) == score);
+			const auto sweetness = ss->m_staticEvalRaw.GetSum(pos.GetTurn());
+			return (this->evaluateUnUseDiff(pos) == sweetness);
 		}());
 		return;
 	}
@@ -414,13 +414,13 @@ Sweetness Evaluation09::evaluateUnUseDiff(const Position& pos) {
 	const auto* ppkppb = KkKkpKppStorage1::KPP[sq_bk];
 	const auto* ppkppw = KkKkpKppStorage1::KPP[ConvSquare::INVERSE10(sq_wk)];
 
-	EvalSum score;
-	score.m_p[2] = KkKkpKppStorage1::KK[sq_bk][sq_wk];
+	EvalSum sweetness;
+	sweetness.m_p[2] = KkKkpKppStorage1::KK[sq_bk][sq_wk];
 
-	score.m_p[0][0] = 0;
-	score.m_p[0][1] = 0;
-	score.m_p[1][0] = 0;
-	score.m_p[1][1] = 0;
+	sweetness.m_p[0][0] = 0;
+	sweetness.m_p[0][1] = 0;
+	sweetness.m_p[1][0] = 0;
+	sweetness.m_p[1][1] = 0;
 	for (int i = 0; i < nlist; ++i) {
 		const int k0 = list0[i];
 		const int k1 = list1[i];
@@ -429,19 +429,19 @@ Sweetness Evaluation09::evaluateUnUseDiff(const Position& pos) {
 		for (int j = 0; j < i; ++j) {
 			const int l0 = list0[j];
 			const int l1 = list1[j];
-			score.m_p[0] += pkppb[l0];
-			score.m_p[1] += pkppw[l1];
+			sweetness.m_p[0] += pkppb[l0];
+			sweetness.m_p[1] += pkppw[l1];
 		}
-		score.m_p[2] += KkKkpKppStorage1::KKP[sq_bk][sq_wk][k0];
+		sweetness.m_p[2] += KkKkpKppStorage1::KKP[sq_bk][sq_wk][k0];
 	}
 
-	score.m_p[2][0] += pos.GetMaterial() * g_FVScale;
+	sweetness.m_p[2][0] += pos.GetMaterial() * g_FVScale;
 
 #if defined INANIWA_SHIFT
-	GetScore.GetP[2][0] += inaniwaSweetness(GetPos);
+	GetSweetness.GetP[2][0] += inaniwaSweetness(GetPos);
 #endif
 
-	return static_cast<Sweetness>(score.GetSum(pos.GetTurn()));
+	return static_cast<Sweetness>(sweetness.GetSum(pos.GetTurn()));
 }
 
 
@@ -453,9 +453,9 @@ Sweetness Evaluation09::evaluateUnUseDiff(const Position& pos) {
 /// <returns></returns>
 Sweetness Evaluation09::evaluate(Position& pos, Flashlight* ss) {
 	if (ss->m_staticEvalRaw.m_p[0][0] != SweetnessNotEvaluated) {
-		const Sweetness score = static_cast<Sweetness>(ss->m_staticEvalRaw.GetSum(pos.GetTurn()));
-		assert(score == evaluateUnUseDiff(pos));
-		return score / g_FVScale;
+		const Sweetness sweetness = static_cast<Sweetness>(ss->m_staticEvalRaw.GetSum(pos.GetTurn()));
+		assert(sweetness == evaluateUnUseDiff(pos));
+		return sweetness / g_FVScale;
 	}
 
 	const Key keyExcludeTurn = pos.GetKeyExcludeTurn();

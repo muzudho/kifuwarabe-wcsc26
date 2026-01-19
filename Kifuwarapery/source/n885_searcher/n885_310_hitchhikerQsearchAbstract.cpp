@@ -41,10 +41,10 @@ Sweetness AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 	Move ttMove;
 	Move move;
 	Move bestMove;
-	Sweetness bestScore;
-	Sweetness score;
-	Sweetness ttScore;
-	Sweetness futilityScore;
+	Sweetness bestSweetness;
+	Sweetness sweetness;
+	Sweetness ttSweetness;
+	Sweetness futilitySweetness;
 	Sweetness futilityBase;
 	Sweetness oldAlpha;
 	bool givesCheck;
@@ -63,26 +63,26 @@ Sweetness AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 	posKey = pos.GetKey();
 	pTtEntry = ourCarriage.m_tt.Probe(posKey);
 	ttMove = (pTtEntry != nullptr ? UtilMoveStack::Move16toMove(pTtEntry->GetMove(), pos) : g_MOVE_NONE);
-	ttScore = (pTtEntry != nullptr ? ourCarriage.ConvertSweetnessFromTT(pTtEntry->GetSweetness(), pFlashlight->m_ply) : SweetnessNone);
+	ttSweetness = (pTtEntry != nullptr ? ourCarriage.ConvertSweetnessFromTT(pTtEntry->GetSweetness(), pFlashlight->m_ply) : SweetnessNone);
 
 	if (pTtEntry != nullptr
 		&& ttDepth <= pTtEntry->GetDepth()
-		&& ttScore != SweetnessNone // アクセス競合が起きたときのみ、ここに引っかかる。
+		&& ttSweetness != SweetnessNone // アクセス競合が起きたときのみ、ここに引っかかる。
 		&& this->GetCondition01(
 			&pTtEntry,
 			beta,
-			ttScore
+			ttSweetness
 			)
 	){
 		pFlashlight->m_currentMove = ttMove;
-		return ttScore;
+		return ttSweetness;
 	}
 
 	pos.setNodesSearched(pos.getNodesSearched() + 1);
 
 	if (INCHECK) {
 		pFlashlight->m_staticEval = SweetnessNone;
-		bestScore = futilityBase = -SweetnessInfinite;
+		bestSweetness = futilityBase = -SweetnessInfinite;
 	}
 	else {
 		if (!(move =
@@ -99,30 +99,30 @@ Sweetness AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 
 		if (pTtEntry != nullptr) {
 			if (
-				(pFlashlight->m_staticEval = bestScore = pTtEntry->GetEvalSweetness()) == SweetnessNone
+				(pFlashlight->m_staticEval = bestSweetness = pTtEntry->GetEvalSweetness()) == SweetnessNone
 				) {
 				Evaluation09 evaluation;
-				pFlashlight->m_staticEval = bestScore = evaluation.evaluate(pos, pFlashlight);
+				pFlashlight->m_staticEval = bestSweetness = evaluation.evaluate(pos, pFlashlight);
 			}
 		}
 		else {
 			Evaluation09 evaluation;
-			pFlashlight->m_staticEval = bestScore = evaluation.evaluate(pos, pFlashlight);
+			pFlashlight->m_staticEval = bestSweetness = evaluation.evaluate(pos, pFlashlight);
 		}
 
-		if (beta <= bestScore) {
+		if (beta <= bestSweetness) {
 			if (pTtEntry == nullptr) {
-				ourCarriage.m_tt.Store(pos.GetKey(), ourCarriage.ConvertSweetnessToTT(bestScore, pFlashlight->m_ply), BoundLower,
+				ourCarriage.m_tt.Store(pos.GetKey(), ourCarriage.ConvertSweetnessToTT(bestSweetness, pFlashlight->m_ply), BoundLower,
 					DepthNone, g_MOVE_NONE, pFlashlight->m_staticEval);
 			}
 
-			return bestScore;
+			return bestSweetness;
 		}
 
 		// PVノードのとき☆（＾ｑ＾）
-		this->SetAlpha(alpha, bestScore);
+		this->SetAlpha(alpha, bestSweetness);
 
-		futilityBase = bestScore + 128; // todo: 128 より大きくて良いと思う。
+		futilityBase = bestSweetness + 128; // todo: 128 より大きくて良いと思う。
 	}
 
 	Evaluation09 evaluation;
@@ -146,17 +146,17 @@ Sweetness AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 			givesCheck,
 			move,
 			ttMove,
-			futilityScore,
+			futilitySweetness,
 			futilityBase,
 			pos,
 			beta,
-			bestScore,
+			bestSweetness,
 			depth
 			);
 		if (isContinue) { continue; }
 
 		evasionPrunable = (INCHECK
-			&& SweetnessMatedInMaxPly < bestScore
+			&& SweetnessMatedInMaxPly < bestSweetness
 			&& !move.IsCaptureOrPawnPromotion());
 
 		// 非PVノードのとき☆（＾ｑ＾）
@@ -192,24 +192,24 @@ Sweetness AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 			;
 
 		(pFlashlight + 1)->m_staticEvalRaw.m_p[0][0] = SweetnessNotEvaluated;
-		score = // 再帰関数☆（＾ｑ＾）
+		sweetness = // 再帰関数☆（＾ｑ＾）
 			-this->ExploreAsQsearch(ourCarriage, givesCheck, pos, pFlashlight + 1, -beta, -alpha, depth - OnePly);
 		pos.UndoMove(move);
 
-		assert(-SweetnessInfinite < score && score < SweetnessInfinite);
+		assert(-SweetnessInfinite < sweetness && sweetness < SweetnessInfinite);
 
-		if (bestScore < score) {
-			bestScore = score;
+		if (bestSweetness < sweetness) {
+			bestSweetness = sweetness;
 
-			if (alpha < score) {
+			if (alpha < sweetness) {
 				// PVノードのときは条件付きで手続きが変わるぜ☆（＾ｑ＾）
-				bool isReturnWithScore = false;
-				Sweetness returnScore = Sweetness::SweetnessNone;
-				this->DoByNewScore(
-					isReturnWithScore,
-					returnScore,
+				bool isReturnWithSweetness = false;
+				Sweetness returnSweetness = Sweetness::SweetnessNone;
+				this->doByNewSweetness(
+					isReturnWithSweetness,
+					returnSweetness,
 					ourCarriage,
-					score,
+					sweetness,
 					beta,
 					alpha,
 					bestMove,
@@ -218,23 +218,23 @@ Sweetness AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 					ttDepth,
 					move
 					);
-				if (isReturnWithScore) { return returnScore; }
+				if (isReturnWithSweetness) { return returnSweetness; }
 			}
 		}
 	}
 
-	if (INCHECK && bestScore == -SweetnessInfinite) { return UtilSweetness::MatedIn(pFlashlight->m_ply); }
+	if (INCHECK && bestSweetness == -SweetnessInfinite) { return UtilSweetness::MatedIn(pFlashlight->m_ply); }
 
 	ourCarriage.m_tt.Store(
 		posKey,
-		ourCarriage.ConvertSweetnessToTT(bestScore, pFlashlight->m_ply),
-		this->GetBound01( oldAlpha, bestScore),
+		ourCarriage.ConvertSweetnessToTT(bestSweetness, pFlashlight->m_ply),
+		this->GetBound01( oldAlpha, bestSweetness),
 		ttDepth,
 		bestMove,
 		pFlashlight->m_staticEval
 	);
 
-	assert(-SweetnessInfinite < bestScore && bestScore < SweetnessInfinite);
+	assert(-SweetnessInfinite < bestSweetness && bestSweetness < SweetnessInfinite);
 
-	return bestScore;
+	return bestSweetness;
 }

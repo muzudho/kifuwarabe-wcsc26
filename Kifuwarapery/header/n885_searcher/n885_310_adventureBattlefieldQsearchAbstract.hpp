@@ -69,12 +69,12 @@ public:
 	/// </summary>
 	/// <param name="ppTtEntry"></param>
 	/// <param name="beta"></param>
-	/// <param name="ttScore"></param>
+	/// <param name="ttSweetness"></param>
 	/// <returns></returns>
 	virtual inline bool GetCondition01(
 		const TTEntry** ppTtEntry,
 		Sweetness beta,
-		Sweetness ttScore
+		Sweetness ttSweetness
 		) const = 0;
 
 
@@ -82,10 +82,10 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="alpha"></param>
-	/// <param name="bestScore"></param>
+	/// <param name="bestSweetness"></param>
 	virtual inline void SetAlpha(
 		Sweetness& alpha,
-		Sweetness bestScore
+		Sweetness bestSweetness
 		) const = 0;
 
 
@@ -97,11 +97,11 @@ public:
 	/// <param name="givesCheck"></param>
 	/// <param name="move"></param>
 	/// <param name="ttMove"></param>
-	/// <param name="futilityScore"></param>
+	/// <param name="futilitySweetness"></param>
 	/// <param name="futilityBase"></param>
 	/// <param name="pos"></param>
 	/// <param name="beta"></param>
-	/// <param name="bestScore"></param>
+	/// <param name="bestSweetness"></param>
 	/// <param name="depth"></param>
 	virtual inline void DoFutilityPruning01(
 		bool& isContinue,
@@ -109,11 +109,11 @@ public:
 		bool& givesCheck,
 		Move& move,
 		Move& ttMove,
-		Sweetness& futilityScore,
+		Sweetness& futilitySweetness,
 		Sweetness& futilityBase,
 		Position& pos,
 		Sweetness& beta,
-		Sweetness& bestScore,
+		Sweetness& bestSweetness,
 		const Depth depth
 		)const = 0;
 
@@ -151,7 +151,7 @@ public:
 	/// <param name="ppFlashlight"></param>
 	/// <param name="ttDepth"></param>
 	/// <param name="move"></param>
-	virtual inline void DoByNewScore(
+	virtual inline void doByNewSweetness(
 		bool& isReturnWithSweetness,
 		Sweetness& returnSweetness,
 		OurCarriage& ourCarriage,
@@ -170,10 +170,10 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="oldAlpha"></param>
-	/// <param name="bestScore"></param>
+	/// <param name="bestSweetness"></param>
 	/// <returns></returns>
 	virtual inline Bound GetBound01(
 		Sweetness& oldAlpha,
-		Sweetness& bestScore
+		Sweetness& bestSweetness
 		)const = 0;
 };

@@ -69,7 +69,7 @@ struct AdventurerSkill {
 	/// <param name="s"></param>
 	/// <returns></returns>
 	Move pickMove(OurCarriage* s) {
-		// level については未対応。max_random_score_diff についてのみ対応する。
+		// level については未対応。max_random_weetness_diff についてのみ対応する。
 		if (m_maxRandomSweetnessDiff != SweetnessZero) {
 			size_t i = 1;
 			for (; i < s->m_pvSize; ++i) {

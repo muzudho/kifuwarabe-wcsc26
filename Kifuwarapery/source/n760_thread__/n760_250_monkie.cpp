@@ -95,7 +95,7 @@ void Monkie::WaitFor(volatile const bool& b) {
 /// <param name="pFlashlightBox"></param>
 /// <param name="alpha"></param>
 /// <param name="beta"></param>
-/// <param name="bestScore"></param>
+/// <param name="bestSweetness"></param>
 /// <param name="bestMove"></param>
 /// <param name="depth"></param>
 /// <param name="threatMove"></param>
@@ -109,7 +109,7 @@ void Monkie::ForkNewMonkey(
 	Flashlight* pFlashlightBox,
 	const Sweetness alpha,
 	const Sweetness beta,
-	Sweetness& bestScore,
+	Sweetness& bestSweetness,
 	Move& bestMove,
 	const Depth depth,
 	const Move threatMove,
@@ -119,8 +119,8 @@ void Monkie::ForkNewMonkey(
 	const bool cutNode)
 {
 	assert(pos.IsOK());
-	assert(bestScore <= alpha && alpha < beta && beta <= SweetnessInfinite);
-	assert(-SweetnessInfinite < bestScore);
+	assert(bestSweetness <= alpha && alpha < beta && beta <= SweetnessInfinite);
+	assert(-SweetnessInfinite < bestSweetness);
 	assert(this->m_pOurCarriage->m_pub.GetMinSplitDepth() <= depth);
 
 	assert(m_isBeingSearched);
@@ -139,7 +139,7 @@ void Monkie::ForkNewMonkey(
 	splitedNode.m_beta = beta;
 	splitedNode.m_pSword01 = pSword;	// ノード・タイプ（実行するプログラム）を切り替える変数みたいだぜ☆（＾ｑ＾）
 	splitedNode.m_cutNode = cutNode;
-	splitedNode.m_bestSweetness = bestScore;
+	splitedNode.m_bestSweetness = bestSweetness;
 	splitedNode.m_pNextmoveEvent = &mp;
 	splitedNode.m_moveCount = moveCount;
 	splitedNode.m_position = &pos;
@@ -183,7 +183,7 @@ void Monkie::ForkNewMonkey(
 	m_activePosition = &pos;
 	pos.setNodesSearched(pos.getNodesSearched() + splitedNode.m_nodes);
 	bestMove = splitedNode.m_bestMove;
-	bestScore = splitedNode.m_bestSweetness;
+	bestSweetness = splitedNode.m_bestSweetness;
 
 	this->m_pOurCarriage->m_pub.m_mutex_.unlock();
 	splitedNode.m_mutex.unlock();
@@ -197,7 +197,7 @@ void Monkie::ForkNewMonkey(
 /// <param name="ss"></param>
 /// <param name="alpha"></param>
 /// <param name="beta"></param>
-/// <param name="bestScore"></param>
+/// <param name="bestSweetness"></param>
 /// <param name="bestMove"></param>
 /// <param name="depth"></param>
 /// <param name="threatMove"></param>
@@ -211,7 +211,7 @@ template void Monkie::ForkNewMonkey<true >(
 	Flashlight* ss,
 	const Sweetness alpha,
 	const Sweetness beta,
-	Sweetness& bestScore,
+	Sweetness& bestSweetness,
 	Move& bestMove,
 	const Depth depth,
 	const Move threatMove,
@@ -228,7 +228,7 @@ template void Monkie::ForkNewMonkey<true >(
 /// <param name="ss"></param>
 /// <param name="alpha"></param>
 /// <param name="beta"></param>
-/// <param name="bestScore"></param>
+/// <param name="bestSweetness"></param>
 /// <param name="bestMove"></param>
 /// <param name="depth"></param>
 /// <param name="threatMove"></param>
@@ -242,7 +242,7 @@ template void Monkie::ForkNewMonkey<false>(
 	Flashlight* ss,
 	const Sweetness alpha,
 	const Sweetness beta,
-	Sweetness& bestScore,
+	Sweetness& bestSweetness,
 	Move& bestMove,
 	const Depth depth,
 	const Move threatMove,

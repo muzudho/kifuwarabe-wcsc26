@@ -1,7 +1,7 @@
 ﻿#include "../../header/n640_searcher/n640_510_futilityMargins.hpp"
 
 
-//ScoreIndex g_FutilityMargins[16][64]; // [depth][moveCount]
+//Sweetness g_FutilityMargins[16][64]; // [depth][moveCount]
 FutilityMargins g_futilityMargins;
 
 

@@ -89,8 +89,8 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 	Move threatMove;
 	Depth newDepth;
 	Depth extension;
-	Sweetness bestScore;
-	Sweetness score;
+	Sweetness bestSweetness;
+	Sweetness sweetness;
 	Sweetness eval;
 	bool inCheck;
 	bool givesCheck;
@@ -102,7 +102,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 	int moveCount;
 	int playedMoveCount;
 	Move ttMove;
-	Sweetness ttScore;
+	Sweetness ttSweetness;
 	std::unique_ptr<Move> pTtMove;  // 宣言だけ（デフォルトnull）
 
 
@@ -116,7 +116,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 
 
 	this->explorePlain_10i200j120k_clearMove(
-		bestScore,
+		bestSweetness,
 		&pFlashlight,
 		threatMove,
 		bestMove);
@@ -127,14 +127,14 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 		pFlashlight);
 
 
-	//bool isReturnWithScore = false;
-	//ScoreIndex returnScore = ScoreIndex::ScoreNone;
+	//bool isReturnWithSweetness = false;
+	//Sweetness returnSweetness = Sweetness::SweetnessNone;
 
 
 	pos.setNodesSearched(pos.getNodesSearched() + 1);
 
 
-	ttScore = this->explorePlain_10i200j200k_getTtSweetness(
+	ttSweetness = this->explorePlain_10i200j200k_getTtSweetness(
 		excludedMove,
 		&pFlashlight,
 		posKey,
@@ -158,7 +158,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 		pos,
 		inCheck,
 		pTtEntry,
-		ttScore,
+		ttSweetness,
 		posKey,
 		move);
 	/*
@@ -201,8 +201,8 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 	this->explorePlain_10i300j200k_beforeLoopSplitPointStart(
 		ttMove,
 		depth,
-		score,
-		bestScore,
+		sweetness,
+		bestSweetness,
 		singularExtensionNode,
 		excludedMove,
 		pTtEntry//pv,nonPv の２つで、nullptrはダメ☆
@@ -265,11 +265,11 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 			extension,
 			singularExtensionNode,
 			ttMove,
-			ttScore,
+			ttSweetness,
 			checkInfo,
 			depth,
 			&pFlashlight,
-			score,
+			sweetness,
 			cutNode,
 			beta,
 			newDepth);
@@ -281,7 +281,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 			captureOrPawnPromotion,
 			inCheck,
 			dangerous,
-			bestScore,
+			bestSweetness,
 			move,
 			ttMove,
 			depth,
@@ -328,7 +328,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 			newDepth,
 			alpha,
 			&pSplitedNode,
-			score,
+			sweetness,
 			pos,
 			doFullDepthSearch);
 
@@ -336,7 +336,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 		this->explorePlain_10i600j120k_getSweetnessNonPV(
 			ourCarriage,
 			doFullDepthSearch,
-			score,
+			sweetness,
 			newDepth,
 			givesCheck,
 			pos,
@@ -347,7 +347,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 			ourCarriage,
 			isPVMove,
 			alpha,
-			score,
+			sweetness,
 			beta,
 			newDepth,
 			givesCheck,
@@ -360,10 +360,10 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 			move);
 
 
-		assert(-SweetnessInfinite < score && score < SweetnessInfinite);
+		assert(-SweetnessInfinite < sweetness && sweetness < SweetnessInfinite);
 
 
-		if (ourCarriage.m_signals.m_stop || pHandleMonkey->IsUselessNode()) { return score; }
+		if (ourCarriage.m_signals.m_stop || pHandleMonkey->IsUselessNode()) { return sweetness; }
 
 
 		this->explorerPlain_10i700j115k_bestMovePlyChanges(
@@ -371,7 +371,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 			move,
 			isPVMove,
 			alpha,
-			score,
+			sweetness,
 			pos);
 
 
@@ -382,9 +382,9 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 			move,
 			isPVMove,
 			alpha,
-			score,
+			sweetness,
 			pos,
-			bestScore,
+			bestSweetness,
 			&pSplitedNode,
 			bestMove,
 			beta);
@@ -396,7 +396,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 			ourCarriage,
 			depth,
 			&pHandleMonkey,
-			bestScore,
+			bestSweetness,
 			beta,
 			pos,
 			&pFlashlight,
@@ -410,7 +410,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 	}
 
 
-	if (this->isReturnBeforeLastProcess_10i800j100k()) { return bestScore; }
+	if (this->isReturnBeforeLastProcess_10i800j100k()) { return bestSweetness; }
 
 
 	// あれば、ここで帰り際の処理（＾～＾）
@@ -420,7 +420,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 		ourCarriage,
 		alpha,
 		&pFlashlight,
-		bestScore,
+		bestSweetness,
 		playedMoveCount,
 		beta,
 		posKey,
@@ -431,5 +431,5 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 		movesSearched);
 
 
-	return bestScore;
+	return bestSweetness;
 }

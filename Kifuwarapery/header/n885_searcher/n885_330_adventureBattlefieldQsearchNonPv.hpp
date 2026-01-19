@@ -170,10 +170,10 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="isReturnWithScore"></param>
-	/// <param name="returnScore"></param>
+	/// <param name="isReturnWithSweetness"></param>
+	/// <param name="returnSweetness"></param>
 	/// <param name="ourCarriage"></param>
-	/// <param name="score"></param>
+	/// <param name="sweetness"></param>
 	/// <param name="beta"></param>
 	/// <param name="alpha"></param>
 	/// <param name="bestMove"></param>
@@ -181,11 +181,11 @@ public:
 	/// <param name="ppFlashlight"></param>
 	/// <param name="ttDepth"></param>
 	/// <param name="move"></param>
-	virtual inline void DoByNewScore(
-		bool& isReturnWithScore,
-		Sweetness& returnScore,
+	virtual inline void doByNewSweetness(
+		bool& isReturnWithSweetness,
+		Sweetness& returnSweetness,
 		OurCarriage& ourCarriage,
-		Sweetness& score,
+		Sweetness& sweetness,
 		Sweetness& beta,
 		Sweetness& alpha,
 		Move& bestMove,
@@ -195,12 +195,12 @@ public:
 		Move move
 		)const override {
 		// fail high
-		ourCarriage.m_tt.Store(posKey, ourCarriage.ConvertSweetnessToTT(score, (*ppFlashlight)->m_ply), Bound::BoundLower,
+		ourCarriage.m_tt.Store(posKey, ourCarriage.ConvertSweetnessToTT(sweetness, (*ppFlashlight)->m_ply), Bound::BoundLower,
 			ttDepth, move, (*ppFlashlight)->m_staticEval);
-		isReturnWithScore = true;
-		returnScore = score;
+		isReturnWithSweetness = true;
+		returnSweetness = sweetness;
 		return;
-		//return score;
+		//return sweetness;
 	}
 
 
@@ -212,7 +212,7 @@ public:
 	/// <returns></returns>
 	virtual inline Bound GetBound01(
 		Sweetness& oldAlpha,
-		Sweetness& bestScore
+		Sweetness& bestSweetness
 		)const override {
 		return Bound::BoundUpper;
 	}

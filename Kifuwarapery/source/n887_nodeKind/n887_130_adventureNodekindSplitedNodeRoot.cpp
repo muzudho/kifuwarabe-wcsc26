@@ -97,8 +97,8 @@ Sweetness AdventureNodekindSplitedNodeRoot::explorePlain_10i(
 	Move threatMove;
 	Depth newDepth;
 	Depth extension;
-	Sweetness bestScore;
-	Sweetness score;
+	Sweetness bestSweetness;
+	Sweetness sweetness;
 	Sweetness eval;
 	bool inCheck;
 	bool givesCheck;
@@ -110,7 +110,7 @@ Sweetness AdventureNodekindSplitedNodeRoot::explorePlain_10i(
 	int moveCount;
 	int playedMoveCount;
 	Move ttMove;
-	Sweetness ttScore;
+	Sweetness ttSweetness;
 	std::unique_ptr<Move> pTtMove;  // 宣言だけ（デフォルトnull）
 
 	// step1
@@ -123,7 +123,7 @@ Sweetness AdventureNodekindSplitedNodeRoot::explorePlain_10i(
 	bool isGotoSplitPointStart = false;
 	this->explorePlain_10i200j100k_initializeNode(
 		ttMove,
-		ttScore,
+		ttSweetness,
 		isGotoSplitPointStart,
 		moveCount,
 		playedMoveCount,
@@ -133,13 +133,13 @@ Sweetness AdventureNodekindSplitedNodeRoot::explorePlain_10i(
 		&pFlashlight,
 		bestMove,
 		threatMove,
-		bestScore,
+		bestSweetness,
 		excludedMove);
 	if (isGotoSplitPointStart) { goto split_point_start; }
 
 
 	this->explorePlain_10i200j120k_clearMove(
-		bestScore,
+		bestSweetness,
 		&pFlashlight,
 		threatMove,
 		bestMove);
@@ -148,13 +148,13 @@ Sweetness AdventureNodekindSplitedNodeRoot::explorePlain_10i(
 		pFlashlight);
 
 
-	bool isReturnWithScore = false;
-	Sweetness returnScore = Sweetness::SweetnessNone;
+	bool isReturnWithSweetness = false;
+	Sweetness returnSweetness = Sweetness::SweetnessNone;
 
 	pos.setNodesSearched(pos.getNodesSearched() + 1);
 
 
-	ttScore = this->explorePlain_10i200j200k_getTtSweetness(
+	ttSweetness = this->explorePlain_10i200j200k_getTtSweetness(
 		excludedMove,
 		&pFlashlight,
 		posKey,
@@ -177,7 +177,7 @@ Sweetness AdventureNodekindSplitedNodeRoot::explorePlain_10i(
 		pos,
 		inCheck,
 		pTtEntry,
-		ttScore,
+		ttSweetness,
 		posKey,
 		move);
 	/*
@@ -219,8 +219,8 @@ split_point_start:
 	this->explorePlain_10i300j200k_beforeLoopSplitPointStart(
 		ttMove,
 		depth,
-		score,
-		bestScore,
+		sweetness,
+		bestSweetness,
 		singularExtensionNode,
 		excludedMove,
 		pTtEntry//pv,nonPv の２つで、nullptrはダメ☆
@@ -283,11 +283,11 @@ split_point_start:
 			extension,
 			singularExtensionNode,
 			ttMove,
-			ttScore,
+			ttSweetness,
 			checkInfo,
 			depth,
 			&pFlashlight,
-			score,
+			sweetness,
 			cutNode,
 			beta,
 			newDepth);
@@ -299,7 +299,7 @@ split_point_start:
 			captureOrPawnPromotion,
 			inCheck,
 			dangerous,
-			bestScore,
+			bestSweetness,
 			move,
 			ttMove,
 			depth,
@@ -339,7 +339,7 @@ split_point_start:
 			newDepth,
 			alpha,
 			&pSplitedNode,
-			score,
+			sweetness,
 			pos,
 			doFullDepthSearch);
 
@@ -351,7 +351,7 @@ split_point_start:
 		this->explorePlain_10i600j120k_getSweetnessNonPV(
 			ourCarriage,
 			doFullDepthSearch,
-			score,
+			sweetness,
 			newDepth,
 			givesCheck,
 			pos,
@@ -362,7 +362,7 @@ split_point_start:
 			ourCarriage,
 			isPVMove,
 			alpha,
-			score,
+			sweetness,
 			beta,
 			newDepth,
 			givesCheck,
@@ -375,16 +375,16 @@ split_point_start:
 			move);
 
 
-		assert(-SweetnessInfinite < score && score < SweetnessInfinite);
+		assert(-SweetnessInfinite < sweetness && sweetness < SweetnessInfinite);
 
 
 		this->explorePlain_10i700j100k_getAlpha(
 			&pSplitedNode,
-			bestScore,
+			bestSweetness,
 			alpha);
 
 
-		if (ourCarriage.m_signals.m_stop || pHandleMonkey->IsUselessNode()) { return score; }
+		if (ourCarriage.m_signals.m_stop || pHandleMonkey->IsUselessNode()) { return sweetness; }
 
 
 		this->explorerPlain_10i700j115k_bestMovePlyChanges(
@@ -392,7 +392,7 @@ split_point_start:
 			move,
 			isPVMove,
 			alpha,
-			score,
+			sweetness,
 			pos);
 
 
@@ -403,9 +403,9 @@ split_point_start:
 			move,
 			isPVMove,
 			alpha,
-			score,
+			sweetness,
 			pos,
-			bestScore,
+			bestSweetness,
 			&pSplitedNode,
 			bestMove,
 			beta);
@@ -415,11 +415,11 @@ split_point_start:
 	}
 
 
-	if (this->isReturnBeforeLastProcess_10i800j100k()) { return bestScore; }
+	if (this->isReturnBeforeLastProcess_10i800j100k()) { return bestSweetness; }
 
 
 	// あれば、ここで帰り際の処理（＾～＾）
 
 
-	return bestScore;
+	return bestSweetness;
 }

@@ -37,7 +37,7 @@ public:
 		// ベストムーブは何手目かだろうかなんだぜ☆？（＾ｑ＾）？
 		Ply prevBestMovePlyChanges;
 
-		Sweetness bestScore = -SweetnessInfinite;
+		Sweetness bestSweetness = -SweetnessInfinite;
 		Sweetness delta = -SweetnessInfinite;
 		Sweetness alpha = -SweetnessInfinite;
 		Sweetness beta = SweetnessInfinite;
@@ -145,7 +145,7 @@ public:
 					//────────────────────────────────────────────────────────────────────────────────
 					// 探索☆？（＾ｑ＾）　１回目のぐるんぐるんだぜ～☆　ルート～☆
 					//────────────────────────────────────────────────────────────────────────────────
-					bestScore = g_NODEKIND_PROGRAMS[NodeKind::No0_Root]->explorePlain_10i(ourCarriage, pos, flashlight + 1, alpha, beta, static_cast<Depth>(depth * OnePly), false);
+					bestSweetness = g_NODEKIND_PROGRAMS[NodeKind::No0_Root]->explorePlain_10i(ourCarriage, pos, flashlight + 1, alpha, beta, static_cast<Depth>(depth * OnePly), false);
 
 					// 先頭が最善手になるようにソート
 					UtilMoveStack::InsertionSort(ourCarriage.m_rootMoves.begin() + ourCarriage.m_pvIdx, ourCarriage.m_rootMoves.end());
@@ -157,7 +157,7 @@ public:
 
 #if 0
 					// 詰みを発見したら即指す。
-					if (ScoreMateInMaxPly <= abs(ourCarriage.m_bestScore) && abs(ourCarriage.m_bestScore) < ScoreInfinite) {
+					if (SweetnessMateInMaxPly <= abs(ourCarriage.m_bestSweetness) && abs(ourCarriage.m_bestSweetness) < SweetnessInfinite) {
 						SYNCCOUT << PvInfoToUSI(GetPos, ourCarriage.m_ply, ourCarriage.m_alpha, ourCarriage.m_beta) << SYNCENDL;
 						ourCarriage.m_signals.m_stop = true;
 					}
@@ -168,7 +168,7 @@ public:
 #endif
 
 					if (ourCarriage.m_signals.m_stop) { break; }
-					if (alpha < bestScore && bestScore < beta) { break; }
+					if (alpha < bestSweetness && bestSweetness < beta) { break; }
 
 					if (
 						// 思考時間が3秒経過するまで、読み筋を出力しないぜ☆！（＾ｑ＾）
@@ -181,12 +181,12 @@ public:
 					}
 
 					// fail high/low のとき、aspiration window を広げる。
-					if (PieceSweetness::m_sweetnessKnownWin <= abs(bestScore)) {
+					if (PieceSweetness::m_sweetnessKnownWin <= abs(bestSweetness)) {
 						// 勝ち(負け)だと判定したら、最大の幅で探索を試してみる。
 						alpha = -SweetnessInfinite;
 						beta = SweetnessInfinite;
 					}
-					else if (beta <= bestScore) {
+					else if (beta <= bestSweetness) {
 						beta += delta;
 						delta += delta / 2;
 					}
@@ -252,7 +252,7 @@ public:
 					&& bestMoveNeverChanged
 					&& ourCarriage.m_pvSize == 1
 					// ここは確実にバグらせないようにする。
-					&& -SweetnessInfinite + 2 * PieceSweetness::m_capturePawn <= bestScore
+					&& -SweetnessInfinite + 2 * PieceSweetness::m_capturePawn <= bestSweetness
 					&& (
 						ourCarriage.m_rootMoves.size() == 1
 						||
@@ -260,7 +260,7 @@ public:
 						ourCarriage.m_timeMgr.CanIterativeDeepingTimeOk(ourCarriage.m_stopwatch.GetElapsed())
 					)
 				) {
-					const Sweetness rBeta = bestScore - 2 * PieceSweetness::m_capturePawn;
+					const Sweetness rBeta = bestSweetness - 2 * PieceSweetness::m_capturePawn;
 					(flashlight + 1)->m_staticEvalRaw.m_p[0][0] = SweetnessNotEvaluated;
 					(flashlight + 1)->m_excludedMove = ourCarriage.m_rootMoves[0].m_pv_[0];
 					(flashlight + 1)->m_skipNullMove = true;

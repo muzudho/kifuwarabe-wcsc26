@@ -92,8 +92,8 @@ Sweetness AdventureNodekindNonPv::explorePlain_10i(
 	Move threatMove;
 	Depth newDepth;
 	Depth extension;
-	Sweetness bestScore;
-	Sweetness score;
+	Sweetness bestSweetness;
+	Sweetness sweetness;
 	Sweetness eval;
 	bool inCheck;
 	bool givesCheck;
@@ -105,7 +105,7 @@ Sweetness AdventureNodekindNonPv::explorePlain_10i(
 	int moveCount;
 	int playedMoveCount;
 	Move ttMove;
-	Sweetness ttScore;
+	Sweetness ttSweetness;
 	std::unique_ptr<Move> pTtMove;  // 宣言だけ（デフォルトnull）
 
 
@@ -119,7 +119,7 @@ Sweetness AdventureNodekindNonPv::explorePlain_10i(
 
 
 	this->explorePlain_10i200j120k_clearMove(
-		bestScore,
+		bestSweetness,
 		&pFlashlight,
 		threatMove,
 		bestMove);
@@ -127,31 +127,31 @@ Sweetness AdventureNodekindNonPv::explorePlain_10i(
 
 	// step2: 千日手による探索打切りの判断
 	auto p = this->explorePlain_10i200j160k_isStopByRepetetion(
-		//isReturnWithScore,
-		//returnScore,
+		//isReturnWithSweetness,
+		//returnSweetness,
 		pos,
 		ourCarriage,
 		&pFlashlight);
 
 
-	bool isReturnWithScore = p.first;
-	Sweetness returnScore = p.second;
-	if (isReturnWithScore) { return returnScore; }
+	bool isReturnWithSweetness = p.first;
+	Sweetness returnSweetness = p.second;
+	if (isReturnWithSweetness) { return returnSweetness; }
 
 
 	this->explorePlain_10i200j180k_checkAlpha(
-		isReturnWithScore,
-		returnScore,
+		isReturnWithSweetness,
+		returnSweetness,
 		&pFlashlight,
 		alpha,
 		beta);
-	if (isReturnWithScore) { return returnScore; }
+	if (isReturnWithSweetness) { return returnSweetness; }
 
 
 	pos.setNodesSearched(pos.getNodesSearched() + 1);
 
 
-	ttScore = this->explorePlain_10i200j200k_getTtSweetness(
+	ttSweetness = this->explorePlain_10i200j200k_getTtSweetness(
 		excludedMove,
 		&pFlashlight,
 		posKey,
@@ -167,30 +167,30 @@ Sweetness AdventureNodekindNonPv::explorePlain_10i(
 
 	this->explorePlain_10i200j240k_killerMove(
 		ttMove,
-		ttScore,
-		isReturnWithScore,
-		returnScore,
+		ttSweetness,
+		isReturnWithSweetness,
+		returnSweetness,
 		ourCarriage,
 		pTtEntry,
 		depth,
 		beta,
 		&pFlashlight);
-	if (isReturnWithScore) { return returnScore; }
+	if (isReturnWithSweetness) { return returnSweetness; }
 
 
 	this->explorePlain_10i200j260k_ttMove(
-		isReturnWithScore,
-		returnScore,
+		isReturnWithSweetness,
+		returnSweetness,
 		ourCarriage,
 		inCheck,
 		move,
 		pos,
 		&pFlashlight,
-		bestScore,
+		bestSweetness,
 		posKey,
 		depth,
 		bestMove);
-	if (isReturnWithScore) { return returnScore; }
+	if (isReturnWithSweetness) { return returnSweetness; }
 
 
 	bool isGotoIidStart = false;//NonPVのとき使う☆
@@ -202,15 +202,15 @@ Sweetness AdventureNodekindNonPv::explorePlain_10i(
 		pos,
 		inCheck,
 		pTtEntry,
-		ttScore,
+		ttSweetness,
 		posKey,
 		move);
 	if (isGotoIidStart) { goto iid_start; }
 
 
 	this->explorePlain_10i200j300k_nonPV(
-		isReturnWithScore,
-		returnScore,
+		isReturnWithSweetness,
+		returnSweetness,
 		ourCarriage,
 		depth,
 		eval,
@@ -218,22 +218,22 @@ Sweetness AdventureNodekindNonPv::explorePlain_10i(
 		ttMove,
 		pos,
 		&pFlashlight);
-	if (isReturnWithScore) { return returnScore; }
+	if (isReturnWithSweetness) { return returnSweetness; }
 
 
 	this->explorePlain_10i200j320k(
-		isReturnWithScore,
-		returnScore,
+		isReturnWithSweetness,
+		returnSweetness,
 		&pFlashlight,
 		depth,
 		beta,
 		eval);
-	if (isReturnWithScore) { return returnScore; }
+	if (isReturnWithSweetness) { return returnSweetness; }
 
 
 	this->explorePlain_10i200j340k_nonPV(
-		isReturnWithScore,
-		returnScore,
+		isReturnWithSweetness,
+		returnSweetness,
 		ourCarriage,
 		&pFlashlight,
 		depth,
@@ -244,11 +244,11 @@ Sweetness AdventureNodekindNonPv::explorePlain_10i(
 		alpha,
 		cutNode,
 		threatMove);
-	if (isReturnWithScore) { return returnScore; }
+	if (isReturnWithSweetness) { return returnSweetness; }
 
 
 	this->explorePlain_10i200j360k(
-		isReturnWithScore,
+		isReturnWithSweetness,
 		ourCarriage,
 		depth,
 		&pFlashlight,
@@ -257,9 +257,9 @@ Sweetness AdventureNodekindNonPv::explorePlain_10i(
 		pos,
 		ttMove,
 		st,
-		score,
+		sweetness,
 		cutNode);
-	if (isReturnWithScore) { return score; }
+	if (isReturnWithSweetness) { return sweetness; }
 
 
 	// 内側の反復深化探索☆？（＾ｑ＾）
@@ -292,8 +292,8 @@ iid_start:
 	this->explorePlain_10i300j200k_beforeLoopSplitPointStart(
 		ttMove,
 		depth,
-		score,
-		bestScore,
+		sweetness,
+		bestSweetness,
 		singularExtensionNode,
 		excludedMove,
 		pTtEntry//pv,nonPv の２つで、nullptrはダメ☆
@@ -345,11 +345,11 @@ iid_start:
 			extension,
 			singularExtensionNode,
 			ttMove,
-			ttScore,
+			ttSweetness,
 			checkInfo,
 			depth,
 			&pFlashlight,
-			score,
+			sweetness,
 			cutNode,
 			beta,
 			newDepth);
@@ -362,7 +362,7 @@ iid_start:
 			captureOrPawnPromotion,
 			inCheck,
 			dangerous,
-			bestScore,
+			bestSweetness,
 			move,
 			ttMove,
 			depth,
@@ -391,7 +391,7 @@ iid_start:
 			captureOrPawnPromotion,
 			inCheck,
 			dangerous,
-			bestScore,
+			bestSweetness,
 			move,
 			ttMove,
 			depth,
@@ -438,7 +438,7 @@ iid_start:
 			newDepth,
 			alpha,
 			&pSplitedNode,
-			score,
+			sweetness,
 			pos,
 			doFullDepthSearch);
 
@@ -446,7 +446,7 @@ iid_start:
 		this->explorePlain_10i600j120k_getSweetnessNonPV(
 			ourCarriage,
 			doFullDepthSearch,
-			score,
+			sweetness,
 			newDepth,
 			givesCheck,
 			pos,
@@ -460,10 +460,10 @@ iid_start:
 			move);
 
 
-		assert(-SweetnessInfinite < score && score < SweetnessInfinite);
+		assert(-SweetnessInfinite < sweetness && sweetness < SweetnessInfinite);
 
 
-		if (ourCarriage.m_signals.m_stop || pHandleMonkey->IsUselessNode()) { return score; }
+		if (ourCarriage.m_signals.m_stop || pHandleMonkey->IsUselessNode()) { return sweetness; }
 
 
 		this->explorerPlain_10i700j115k_bestMovePlyChanges(
@@ -471,7 +471,7 @@ iid_start:
 			move,
 			isPVMove,
 			alpha,
-			score,
+			sweetness,
 			pos);
 
 
@@ -482,9 +482,9 @@ iid_start:
 			move,
 			isPVMove,
 			alpha,
-			score,
+			sweetness,
 			pos,
-			bestScore,
+			bestSweetness,
 			&pSplitedNode,
 			bestMove,
 			beta);
@@ -496,7 +496,7 @@ iid_start:
 			ourCarriage,
 			depth,
 			&pHandleMonkey,
-			bestScore,
+			bestSweetness,
 			beta,
 			pos,
 			&pFlashlight,
@@ -510,7 +510,7 @@ iid_start:
 	}
 
 
-	if (this->isReturnBeforeLastProcess_10i800j100k()) { return bestScore; }
+	if (this->isReturnBeforeLastProcess_10i800j100k()) { return bestSweetness; }
 
 
 	// あれば、ここで帰り際の処理（＾～＾）
@@ -520,7 +520,7 @@ iid_start:
 		ourCarriage,
 		alpha,
 		&pFlashlight,
-		bestScore,
+		bestSweetness,
 		playedMoveCount,
 		beta,
 		posKey,
@@ -531,5 +531,5 @@ iid_start:
 		movesSearched);
 
 
-	return bestScore;
+	return bestSweetness;
 }

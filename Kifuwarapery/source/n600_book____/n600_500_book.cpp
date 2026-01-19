@@ -146,8 +146,8 @@ DeliciousBanana Book::GetProbe(const Position& position, const std::string& fNam
 	u32 sum = 0;
 	Move move = g_MOVE_NONE;//該当なしのときに使う値☆
 	const Key key = this->GetBookKey(position);
-	const Sweetness min_book_score = static_cast<Sweetness>(static_cast<int>(position.GetOurCarriage()->m_engineOptions["Min_Book_Score"]));
-	Sweetness scoreValue = SweetnessZero;
+	const Sweetness min_book_sweetness = static_cast<Sweetness>(static_cast<int>(position.GetOurCarriage()->m_engineOptions["Min_Book_Score"]));
+	Sweetness sweetnessValue = SweetnessZero;
 
 	if (this->m_fileName_ != fName && !this->OpenBook(fName.c_str())) {
 		// 定跡ファイルが開けなかった場合☆
@@ -163,7 +163,7 @@ DeliciousBanana Book::GetProbe(const Position& position, const std::string& fNam
 
 		// 指された確率に従って手が選択される。
 		// count が大きい順に並んでいる必要はない。
-		if (min_book_score <= entry.m_sweetness
+		if (min_book_sweetness <= entry.m_sweetness
 			&& ((m_random_.GetRandom() % sum < entry.m_count)
 				|| (pickBest && entry.m_count == best)))
 		{
@@ -184,11 +184,11 @@ DeliciousBanana Book::GetProbe(const Position& position, const std::string& fNam
 					move = UtilMovePos::MakeCaptureMove( fromMove, from, to, position);
 				}
 			}
-			scoreValue = entry.m_sweetness;
+			sweetnessValue = entry.m_sweetness;
 		}
 	}
 
-	return DeliciousBanana(move, scoreValue);
+	return DeliciousBanana(move, sweetnessValue);
 }
 
 
@@ -305,13 +305,13 @@ void MakeBook(GameStats& gameStats, Position& pos, std::istringstream& ssCmd) {
 					SetUpStates->pop();
 
 					// doMove してから search してるので点数が反転しているので直す。
-					const Sweetness score = -pos.GetConstOurCarriage()->m_rootMoves[0].m_sweetness_;
+					const Sweetness sweetness = -pos.GetConstOurCarriage()->m_rootMoves[0].m_sweetness_;
 #else
-					const ScoreIndex GetScore = ScoreZero;
+					const Sweetness GetSweetness = SweetnessZero;
 #endif
 					// 未登録の手
 					BookEntry be;
-					be.m_sweetness = score;
+					be.m_sweetness = sweetness;
 					be.m_key = key;
 					be.m_fromToPro = static_cast<u16>(move.ProFromAndTo());
 					be.m_count = 1;

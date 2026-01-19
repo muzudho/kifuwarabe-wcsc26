@@ -160,7 +160,7 @@ NextmoveEvent::NextmoveEvent(
 	m_legalMoves_[0].m_sweetness = INT_MAX; // 番兵のセット
 	m_phase_ = N12_ProbCut;
 
-	//m_captureThreshold_ = pos.GetCapturePieceScore(pt);
+	//m_captureThreshold_ = pos.GetCapturePieceSweetness(pt);
 	m_captureThreshold_ = PieceSweetness::getSweetnessByCapturePiece(pt);
 	m_ttMove_ = ((!ttm.IsNone() &&
 		(
@@ -257,9 +257,9 @@ void NextmoveEvent::SweetnessCaptures() {
 void NextmoveEvent::SweetnessEvasions() {
 	for (MoveStack* curr = GetCurrMove(); curr != GetLastMove(); ++curr) {
 		const Move move = curr->m_move;
-		const Sweetness seeScore = GetPos().GetSeeSign(move);
-		if (seeScore < 0) {
-			curr->m_sweetness = seeScore - History::m_maxSweetness;
+		const Sweetness seeSweetness = GetPos().GetSeeSign(move);
+		if (seeSweetness < 0) {
+			curr->m_sweetness = seeSweetness - History::m_maxSweetness;
 		}
 		else if (move.IsCaptureOrPromotion()) {
 			curr->m_sweetness = PieceSweetness::getSweetnessByCapturePiece(GetPos().GetPiece(move.To())) + History::m_maxSweetness;
