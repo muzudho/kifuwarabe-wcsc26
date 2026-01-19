@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../../header/n119_score___/n119_090_scoreIndex.hpp"
+#include "../../header/n119_score___/n119_090_ScoreValue.hpp"
 #include "../../header/n165_movStack/n165_400_move.hpp"
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 
@@ -22,7 +22,7 @@ struct AdventurerSkill {
 	/// <param name="mr"></param>
 	AdventurerSkill(const int l, const int mr)
 		: m_level(l),
-		m_maxRandomScoreDiff(static_cast<ScoreIndex>(mr)),
+		m_maxRandomScoreDiff(static_cast<ScoreValue>(mr)),
 		m_best(g_MOVE_NONE) {}
 
 
@@ -93,7 +93,7 @@ struct AdventurerSkill {
 	/// <summary>
 	/// ランダムな評価値の差分の最大値か☆？？
 	/// </summary>
-	ScoreIndex m_maxRandomScoreDiff;
+	ScoreValue m_maxRandomScoreDiff;
 
 	/// <summary>
 	/// ベストムーブか☆？

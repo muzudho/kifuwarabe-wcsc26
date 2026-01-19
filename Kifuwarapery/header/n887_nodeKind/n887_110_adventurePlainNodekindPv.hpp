@@ -34,12 +34,12 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="cutNode"></param>
 	/// <returns></returns>
-	virtual ScoreIndex explorePlain_10i(
+	virtual ScoreValue explorePlain_10i(
 		OurCarriage& ourCarriage,
 		Position& pos,
 		Flashlight* pFlashlight,//サーチスタック
-		ScoreIndex alpha,
-		ScoreIndex beta,
+		ScoreValue alpha,
+		ScoreValue beta,
 		const Depth depth,
 		const bool cutNode
 		) const override;
@@ -51,8 +51,8 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
 	virtual inline void explorePlain_10i100j100k_assertAtFirst(
-		ScoreIndex alpha,
-		ScoreIndex beta
+		ScoreValue alpha,
+		ScoreValue beta
 		) const override {
 		// PVノードはスルー☆！（＾ｑ＾）
 		assert(alpha == beta - 1);
@@ -85,10 +85,10 @@ public:
 		Flashlight** ppFlashlight,
 		Move& bestMove,
 		Move& threatMove,
-		ScoreIndex& bestScore,
+		ScoreValue& bestScore,
 		Move& ttMove,
 		Move& excludedMove,
-		ScoreIndex& ttScore
+		ScoreValue& ttScore
 		)const override {
 		// 非スプリット・ポイントはスルー☆！（＾ｑ＾）
 	}
@@ -123,8 +123,8 @@ public:
 	/// <returns></returns>
 	virtual inline bool getCondition_10i200j240k100L(
 		const TTEntry* pTtEntry,
-		ScoreIndex& beta,
-		ScoreIndex& ttScore
+		ScoreValue& beta,
+		ScoreValue& ttScore
 		) const override {
 		return pTtEntry->GetBoundKind() == Bound::BoundExact;
 	}
@@ -144,11 +144,11 @@ public:
 	/// <param name="ppFlashlight"></param>
 	virtual inline void explorePlain_10i200j300k_nonPV(
 		bool& isReturnWithScore,
-		ScoreIndex& returnScore,
+		ScoreValue& returnScore,
 		OurCarriage& ourCarriage,
 		const Depth depth,
-		ScoreIndex& eval,
-		ScoreIndex& beta,
+		ScoreValue& eval,
+		ScoreValue& beta,
 		Move& ttMove,
 		Position& pos,
 		Flashlight** ppFlashlight
@@ -168,11 +168,11 @@ public:
 	/// <param name="eval"></param>
 	virtual inline void explorePlain_10i200j320k(
 		bool& isReturnWithScore,
-		ScoreIndex& returnScore,
+		ScoreValue& returnScore,
 		Flashlight** ppFlashlight,
 		const Depth depth,
-		ScoreIndex& beta,
-		ScoreIndex& eval
+		ScoreValue& beta,
+		ScoreValue& eval
 		)const override {
 		// PVノードはスルー☆！（＾ｑ＾）
 	}
@@ -195,15 +195,15 @@ public:
 	/// <param name="threatMove"></param>
 	virtual inline void explorePlain_10i200j340k_nonPV(
 		bool& isReturnWithScore,
-		ScoreIndex& returnScore,
+		ScoreValue& returnScore,
 		OurCarriage& ourCarriage,
 		Flashlight** ppFlashlight,
 		const Depth depth,
-		ScoreIndex& beta,
-		ScoreIndex& eval,
+		ScoreValue& beta,
+		ScoreValue& eval,
 		Position& pos,
 		StateInfo& st,
-		ScoreIndex& alpha,
+		ScoreValue& alpha,
 		const bool cutNode,
 		Move& threatMove
 		)const override {
@@ -230,12 +230,12 @@ public:
 		OurCarriage& ourCarriage,
 		const Depth& depth,
 		Flashlight** ppFlashlight,
-		ScoreIndex& beta,
+		ScoreValue& beta,
 		Move& move,
 		Position& pos,
 		Move& ttMove,
 		StateInfo& st,
-		ScoreIndex& score,
+		ScoreValue& score,
 		const bool cutNode
 		)const override {
 		// 非PVノードはスルー☆！（＾ｑ＾）
@@ -259,11 +259,11 @@ public:
 		const Depth depth,
 		Move& ttMove,
 		bool& inCheck,
-		ScoreIndex& beta,
+		ScoreValue& beta,
 		Flashlight** ppFlashlight,
 		OurCarriage& ourCarriage,
 		Position& pos,
-		ScoreIndex& alpha,
+		ScoreValue& alpha,
 		const TTEntry** ppTtEntry,//セットされるぜ☆
 		Key& posKey
 		)const override
@@ -303,11 +303,11 @@ public:
 	/// </summary>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	virtual inline ScoreIndex getBeta_10i300j150k(
-		ScoreIndex beta
+	virtual inline ScoreValue getBeta_10i300j150k(
+		ScoreValue beta
 		) const override {
 		// PVノードの場合☆（＾ｑ＾）
-		return -ScoreIndex::ScoreInfinite;
+		return -ScoreValue::ScoreInfinite;
 	}
 
 
@@ -324,8 +324,8 @@ public:
 	virtual inline void explorePlain_10i300j200k_beforeLoopSplitPointStart(
 		Move& ttMove,
 		const Depth depth,
-		ScoreIndex& score,
-		ScoreIndex& bestScore,
+		ScoreValue& score,
+		ScoreValue& bestScore,
 		bool& singularExtensionNode,
 		Move& excludedMove,
 		const TTEntry* pTtEntry
@@ -430,7 +430,7 @@ public:
 		bool& captureOrPawnPromotion,
 		bool& inCheck,
 		bool& dangerous,
-		ScoreIndex& bestScore,
+		ScoreValue& bestScore,
 		Move& move,
 		Move& ttMove,
 		const Depth depth,
@@ -440,7 +440,7 @@ public:
 		SplitedNode** ppSplitedNode,
 		Depth& newDepth,
 		Flashlight** ppFlashlight,
-		ScoreIndex& beta
+		ScoreValue& beta
 		) const override {
 		// PVノードはスルー☆！（＾ｑ＾）
 		//UNREACHABLE;
@@ -471,7 +471,7 @@ public:
 	/// <param name="bestScore"></param>
 	virtual inline void lockAndUpdateBestScore_10i400j170k200L(
 		SplitedNode** ppSplitedNode,
-		ScoreIndex& bestScore
+		ScoreValue& bestScore
 	) const override {
 		// 非スプリット・ポイントではスルー☆！（＾ｑ＾）
 	}
@@ -518,7 +518,7 @@ public:
 		bool& captureOrPawnPromotion,
 		bool& inCheck,
 		bool& dangerous,
-		ScoreIndex& bestScore,
+		ScoreValue& bestScore,
 		Move& move,
 		Move& ttMove,
 		const Depth depth,
@@ -528,7 +528,7 @@ public:
 		SplitedNode** ppSplitedNode,
 		Depth& newDepth,
 		Flashlight** ppFlashlight,
-		ScoreIndex& beta,
+		ScoreValue& beta,
 		const CheckInfo& ci,
 		bool& isPVMoveRef,
 		int& playedMoveCount,
@@ -565,7 +565,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="ppSplitedNode"></param>
 	virtual inline void updateAlpha_10i500j500k200L(
-		ScoreIndex& alpha,
+		ScoreValue& alpha,
 		SplitedNode** ppSplitedNode
 		) const override {
 
@@ -581,7 +581,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	virtual inline void explorePlain_10i600j100k_updateAlpha(
 		bool& doFullDepthSearch,
-		ScoreIndex& alpha,
+		ScoreValue& alpha,
 		SplitedNode** ppSplitedNode
 		)const override {
 		// 非スプリットノードはスルー☆！（＾ｑ＾）
@@ -596,8 +596,8 @@ public:
 	/// <param name="beta"></param>
 	/// <returns></returns>
 	virtual inline bool isBetaLarge_10i600j140k100L(
-		ScoreIndex& score,
-		ScoreIndex& beta
+		ScoreValue& score,
+		ScoreValue& beta
 		) const override {
 		// 非ルートノードの場合☆（＾ｑ＾）
 		return score < beta;
@@ -612,8 +612,8 @@ public:
 	/// <param name="alpha"></param>
 	virtual inline void explorePlain_10i700j100k_getAlpha(
 		SplitedNode** ppSplitedNode,
-		ScoreIndex& bestScore,
-		ScoreIndex& alpha
+		ScoreValue& bestScore,
+		ScoreValue& alpha
 		)const override {
 		// 非スプリット・ポイントはスルー☆！（＾ｑ＾）
 	}
@@ -632,8 +632,8 @@ public:
 		OurCarriage& ourCarriage,
 		Move& move,
 		bool& isPVMove,
-		ScoreIndex& alpha,
-		ScoreIndex& score,
+		ScoreValue& alpha,
+		ScoreValue& score,
 		Position& pos
 		) const override {
 		// 非ルートノードはスルー☆！（＾ｑ＾）
@@ -660,13 +660,13 @@ public:
 		OurCarriage& ourCarriage,
 		Move& move,
 		bool& isPVMove,
-		ScoreIndex& alpha,
-		ScoreIndex& score,
+		ScoreValue& alpha,
+		ScoreValue& score,
 		Position& pos,
-		ScoreIndex& bestScore,
+		ScoreValue& bestScore,
 		SplitedNode** ppSplitedNode,
 		Move& bestMove,
-		ScoreIndex& beta
+		ScoreValue& beta
 		)const override {
 
 		if (bestScore < score) {
@@ -711,11 +711,11 @@ public:
 		OurCarriage& ourCarriage,
 		const Depth depth,
 		Monkie** ppThisThread,
-		ScoreIndex& bestScore,
-		ScoreIndex& beta,
+		ScoreValue& bestScore,
+		ScoreValue& beta,
 		Position& pos,
 		Flashlight** ppFlashlight,
-		ScoreIndex& alpha,
+		ScoreValue& alpha,
 		Move& bestMove,
 		Move& threatMove,
 		int& moveCount,

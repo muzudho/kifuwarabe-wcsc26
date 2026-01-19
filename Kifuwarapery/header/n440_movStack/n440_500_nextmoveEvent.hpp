@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "../n113_piece___/n113_155_convPiece.hpp"
-#include "../n119_score___/n119_090_scoreIndex.hpp"
+#include "../n119_score___/n119_090_ScoreValue.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
 #include "../n165_movStack/n165_500_moveStack.hpp"
@@ -39,7 +39,7 @@ public:
 		const Depth depth,
 		const History& history,
 		Flashlight* pFlashlightBox,
-		const ScoreIndex beta
+		const ScoreValue beta
 	);
 	NextmoveEvent(const Position& pos, Move ttm, const Depth depth, const History& history, const Square sq);
 	NextmoveEvent(const Position& pos, const Move ttm, const History& history, const PieceType pt);

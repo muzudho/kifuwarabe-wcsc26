@@ -62,12 +62,12 @@ AdventureNodekindRoot g_NODEKIND_ROOT;
 /// <param name="depth"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-ScoreIndex AdventureNodekindRoot::explorePlain_10i(
+ScoreValue AdventureNodekindRoot::explorePlain_10i(
 	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
-	ScoreIndex alpha,
-	ScoreIndex beta,
+	ScoreValue alpha,
+	ScoreValue beta,
 	const Depth depth,
 	const bool cutNode) const
 {
@@ -90,10 +90,10 @@ ScoreIndex AdventureNodekindRoot::explorePlain_10i(
 	Move threatMove;
 	Depth newDepth;
 	Depth extension;
-	ScoreIndex bestScore;
-	ScoreIndex score;
-	ScoreIndex ttScore;
-	ScoreIndex eval;
+	ScoreValue bestScore;
+	ScoreValue score;
+	ScoreValue ttScore;
+	ScoreValue eval;
 	bool inCheck;
 	bool givesCheck;
 

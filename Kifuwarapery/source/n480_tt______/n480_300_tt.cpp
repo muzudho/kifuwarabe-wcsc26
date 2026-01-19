@@ -45,11 +45,11 @@ void TranspositionTable::Clear() {
 /// <param name="evalScore"></param>
 void TranspositionTable::Store(
 	const Key posKey,
-	const ScoreIndex score,
+	const ScoreValue score,
 	const Bound bound,
 	Depth depth,
 	Move move,
-	const ScoreIndex evalScore
+	const ScoreValue evalScore
 ){
 	TTEntry* tte = FirstEntry(posKey);
 	TTEntry* replace = tte;

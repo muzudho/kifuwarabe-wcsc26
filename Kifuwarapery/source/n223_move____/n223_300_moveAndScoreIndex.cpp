@@ -6,7 +6,7 @@
 /// </summary>
 /// <param name="move"></param>
 /// <param name="score"></param>
-MoveAndScoreIndex::MoveAndScoreIndex(Move move, ScoreIndex score):
+MoveAndScoreIndex::MoveAndScoreIndex(Move move, ScoreValue score):
 	m_move(move),
 	m_scoreIndex(score)
 {

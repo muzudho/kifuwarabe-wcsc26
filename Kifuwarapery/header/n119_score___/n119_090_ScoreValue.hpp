@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include "../n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../n080_150_overEnum/n080_150_500_overloadEnumOperators.hpp"
-#include "n119_055_utilBound.hpp"
+#include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"	// INT_MAX
+#include "../../header/n080_150_overEnum/n080_150_500_overloadEnumOperators.hpp"	// OverloadEnumOperators
+#include "../../header/n119_score___/n119_085_ply.hpp"	// g_maxPly
 
 
 //────────────────────────────────────────────────────────────────────────────────
@@ -9,24 +9,10 @@
 //────────────────────────────────────────────────────────────────────────────────
 
 
-using Ply = int;
-
-
-/// <summary>
-/// 
-/// </summary>
-const Ply g_maxPly = 128;
-
-/// <summary>
-/// 
-/// </summary>
-const Ply g_maxPlyPlus2 = g_maxPly + 2;
-
-
 /// <summary>
 /// 評価値
 /// </summary>
-enum ScoreIndex {
+enum ScoreValue {
 	ScoreZero = 0,
 	ScoreDraw = 0,
 	ScoreMaxEvaluate = 30000,
@@ -39,4 +25,4 @@ enum ScoreIndex {
 	ScoreNotEvaluated = INT_MAX,
 	ScoreNone = 32602
 };
-OverloadEnumOperators(ScoreIndex);
+OverloadEnumOperators(ScoreValue);

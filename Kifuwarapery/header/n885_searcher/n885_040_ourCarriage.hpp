@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <string>
 #include <sstream>
-#include "../n119_score___/n119_090_scoreIndex.hpp"
+#include "../n119_score___/n119_090_ScoreValue.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 #include "../n160_board___/n160_130_lanceAttackBb.hpp"
 #include "../n160_board___/n160_150_rookAttackBb.hpp"
@@ -208,7 +208,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	std::string		PvInfoToUSI(Position& pos, const Ply depth, const ScoreIndex alpha, const ScoreIndex beta);
+	std::string		PvInfoToUSI(Position& pos, const Ply depth, const ScoreValue alpha, const ScoreValue beta);
 
 
 #if defined INANIWA_SHIFT
@@ -242,7 +242,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	std::string		scoreToUSI(const ScoreIndex score, const ScoreIndex alpha, const ScoreIndex beta) {
+	std::string		scoreToUSI(const ScoreValue score, const ScoreValue alpha, const ScoreValue beta) {
 		std::stringstream ss;
 
 		if (abs(score) < ScoreMateInMaxPly) {
@@ -263,8 +263,8 @@ public:
 	//private:
 
 
-	inline std::string		scoreToUSI(const ScoreIndex score) {
-		return scoreToUSI(score, -ScoreIndex::ScoreInfinite, ScoreIndex::ScoreInfinite);
+	inline std::string		scoreToUSI(const ScoreValue score) {
+		return scoreToUSI(score, -ScoreValue::ScoreInfinite, ScoreValue::ScoreInfinite);
 	}
 
 
@@ -276,8 +276,8 @@ public://private:
 	/// </summary>
 	/// <param name="d"></param>
 	/// <returns></returns>
-	inline ScoreIndex	razorMargin(const Depth d) {
-		return static_cast<ScoreIndex>(512 + 16 * static_cast<int>(d));
+	inline ScoreValue	razorMargin(const Depth d) {
+		return static_cast<ScoreValue>(512 + 16 * static_cast<int>(d));
 	}
 
 
@@ -328,18 +328,18 @@ public://private:
 	/// <param name="score"></param>
 	/// <param name="ply"></param>
 	/// <returns></returns>
-	ScoreIndex ConvertScoreToTT(const ScoreIndex score, const Ply ply) {
+	ScoreValue ConvertScoreToTT(const ScoreValue score, const Ply ply) {
 		assert(score != ScoreNone);
 
 		return (
 			// mate表示をするとき☆
 			ScoreMateInMaxPly <= score ?
 			// スコアの土台に、手数（mate）を乗せるぜ☆！
-			score + static_cast<ScoreIndex>(ply)
+			score + static_cast<ScoreValue>(ply)
 			:
 			score <= ScoreMatedInMaxPly ?
 			// 先後逆のときも、手数を乗せる（マイナスをもっと引く）のは同じ☆
-			score - static_cast<ScoreIndex>(ply)
+			score - static_cast<ScoreValue>(ply)
 			// それ以外のときは、そのままスコア表示。
 			: score
 		);
@@ -352,10 +352,10 @@ public://private:
 	/// <param name="s"></param>
 	/// <param name="ply"></param>
 	/// <returns></returns>
-	ScoreIndex ConvertScoreFromTT(const ScoreIndex s, const Ply ply) {
+	ScoreValue ConvertScoreFromTT(const ScoreValue s, const Ply ply) {
 		return (s == ScoreNone ? ScoreNone
-			: ScoreMateInMaxPly <= s ? s - static_cast<ScoreIndex>(ply)
-			: s <= ScoreMatedInMaxPly ? s + static_cast<ScoreIndex>(ply)
+			: ScoreMateInMaxPly <= s ? s - static_cast<ScoreValue>(ply)
+			: s <= ScoreMatedInMaxPly ? s + static_cast<ScoreValue>(ply)
 			: s);
 	}
 

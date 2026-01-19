@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include <algorithm>	//std::max
-#include "../n119_score___/n119_090_scoreIndex.hpp"
+#include "../n119_score___/n119_090_ScoreValue.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n223_move____/n223_200_depth.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"
@@ -31,13 +31,13 @@ public:
 	/// <param name="beta"></param>
 	/// <param name="depth"></param>
 	/// <returns></returns>
-	virtual ScoreIndex ExploreAsQsearch(
+	virtual ScoreValue ExploreAsQsearch(
 		OurCarriage& ourCarriage,
 		bool INCHECK,
 		Position& pos,
 		Flashlight* ss,
-		ScoreIndex alpha,
-		ScoreIndex beta,
+		ScoreValue alpha,
+		ScoreValue beta,
 		const Depth depth
 		) const ;
 
@@ -48,8 +48,8 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
 	virtual inline void DoAssert(
-		ScoreIndex alpha,
-		ScoreIndex beta
+		ScoreValue alpha,
+		ScoreValue beta
 		) const = 0;
 
 
@@ -59,8 +59,8 @@ public:
 	/// <param name="oldAlpha"></param>
 	/// <param name="alpha"></param>
 	virtual inline void SetOldAlpha(
-		ScoreIndex& oldAlpha,
-		ScoreIndex alpha
+		ScoreValue& oldAlpha,
+		ScoreValue alpha
 		) const = 0;
 
 
@@ -73,8 +73,8 @@ public:
 	/// <returns></returns>
 	virtual inline bool GetCondition01(
 		const TTEntry** ppTtEntry,
-		ScoreIndex beta,
-		ScoreIndex ttScore
+		ScoreValue beta,
+		ScoreValue ttScore
 		) const = 0;
 
 
@@ -84,8 +84,8 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="bestScore"></param>
 	virtual inline void SetAlpha(
-		ScoreIndex& alpha,
-		ScoreIndex bestScore
+		ScoreValue& alpha,
+		ScoreValue bestScore
 		) const = 0;
 
 
@@ -109,11 +109,11 @@ public:
 		bool& givesCheck,
 		Move& move,
 		Move& ttMove,
-		ScoreIndex& futilityScore,
-		ScoreIndex& futilityBase,
+		ScoreValue& futilityScore,
+		ScoreValue& futilityBase,
 		Position& pos,
-		ScoreIndex& beta,
-		ScoreIndex& bestScore,
+		ScoreValue& beta,
+		ScoreValue& bestScore,
 		const Depth depth
 		)const = 0;
 
@@ -153,11 +153,11 @@ public:
 	/// <param name="move"></param>
 	virtual inline void DoByNewScore(
 		bool& isReturnWithScore,
-		ScoreIndex& returnScore,
+		ScoreValue& returnScore,
 		OurCarriage& ourCarriage,
-		ScoreIndex& score,
-		ScoreIndex& beta,
-		ScoreIndex& alpha,
+		ScoreValue& score,
+		ScoreValue& beta,
+		ScoreValue& alpha,
 		Move& bestMove,
 		Key& posKey,
 		Flashlight** ppFlashlight,
@@ -173,7 +173,7 @@ public:
 	/// <param name="bestScore"></param>
 	/// <returns></returns>
 	virtual inline Bound GetBound01(
-		ScoreIndex& oldAlpha,
-		ScoreIndex& bestScore
+		ScoreValue& oldAlpha,
+		ScoreValue& bestScore
 		)const = 0;
 };

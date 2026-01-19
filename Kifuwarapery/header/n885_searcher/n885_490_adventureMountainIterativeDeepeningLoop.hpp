@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../n119_score___/n119_090_scoreIndex.hpp"
+#include "../n119_score___/n119_090_ScoreValue.hpp"
 #include "../n220_position/n220_650_position.hpp"
 #include "../n220_position/n220_665_utilMoveStack.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"
@@ -37,10 +37,10 @@ public:
 		// ベストムーブは何手目かだろうかなんだぜ☆？（＾ｑ＾）？
 		Ply prevBestMovePlyChanges;
 
-		ScoreIndex bestScore = -ScoreInfinite;
-		ScoreIndex delta = -ScoreInfinite;
-		ScoreIndex alpha = -ScoreInfinite;
-		ScoreIndex beta = ScoreInfinite;
+		ScoreValue bestScore = -ScoreInfinite;
+		ScoreValue delta = -ScoreInfinite;
+		ScoreValue alpha = -ScoreInfinite;
+		ScoreValue beta = ScoreInfinite;
 		bool bestMoveNeverChanged = true;
 		int lastInfoTime = -1; // 将棋所のコンソールが詰まる問題への対処用
 
@@ -126,7 +126,7 @@ public:
 					5 <= depth &&
 					abs(ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_prevScore_) < PieceScore::m_ScoreKnownWin
 					) {
-					delta = static_cast<ScoreIndex>(16);
+					delta = static_cast<ScoreValue>(16);
 					alpha = ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_prevScore_ - delta;
 					beta = ourCarriage.m_rootMoves[ourCarriage.m_pvIdx].m_prevScore_ + delta;
 				}
@@ -260,7 +260,7 @@ public:
 						ourCarriage.m_timeMgr.CanIterativeDeepingTimeOk(ourCarriage.m_stopwatch.GetElapsed())
 					)
 				) {
-					const ScoreIndex rBeta = bestScore - 2 * PieceScore::m_capturePawn;
+					const ScoreValue rBeta = bestScore - 2 * PieceScore::m_capturePawn;
 					(flashlight + 1)->m_staticEvalRaw.m_p[0][0] = ScoreNotEvaluated;
 					(flashlight + 1)->m_excludedMove = ourCarriage.m_rootMoves[0].m_pv_[0];
 					(flashlight + 1)->m_skipNullMove = true;
@@ -271,7 +271,7 @@ public:
 					//────────────────────────────────────────────────────────────────────────────────
 
 
-					const ScoreIndex s = g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_10i(
+					const ScoreValue s = g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_10i(
 						ourCarriage, pos, flashlight + 1, rBeta - 1, rBeta, (depth - 3) * OnePly, true);
 
 					(flashlight + 1)->m_skipNullMove = false;

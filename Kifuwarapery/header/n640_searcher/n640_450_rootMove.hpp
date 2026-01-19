@@ -82,12 +82,12 @@ public:
 	/// <summary>
 	/// 評価値
 	/// </summary>
-	ScoreIndex m_score_;
+	ScoreValue m_score_;
 
 	/// <summary>
 	/// 前の評価値
 	/// </summary>
-	ScoreIndex m_prevScore_;
+	ScoreValue m_prevScore_;
 
 	/// <summary>
 	/// 指し手のスタック

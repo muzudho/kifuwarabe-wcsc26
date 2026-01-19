@@ -900,18 +900,6 @@
     <ClInclude Include="header\n223_move____\n223_500_flashlight.hpp">
       <Filter>header\n223_move____</Filter>
     </ClInclude>
-    <ClInclude Include="header\n760_thread__\n760_350_subordinate.hpp">
-      <Filter>header\n760_thread__</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n760_thread__\n760_400_herosPub.hpp">
-      <Filter>header\n760_thread__</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n760_thread__\n760_300_captain.hpp">
-      <Filter>header\n760_thread__</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n760_thread__\n760_250_soldier.hpp">
-      <Filter>header\n760_thread__</Filter>
-    </ClInclude>
     <ClInclude Include="header\n885_searcher\n885_490_adventureMountainIterativeDeepeningLoop.hpp">
       <Filter>header\n885_searcher</Filter>
     </ClInclude>
@@ -939,7 +927,7 @@
     <ClInclude Include="header\n113_piece___\n113_155_convPiece.hpp">
       <Filter>header\n113_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n119_score___\n119_090_scoreIndex.hpp">
+    <ClInclude Include="header\n119_score___\n119_090_ScoreValue.hpp">
       <Filter>header\n119_score___</Filter>
     </ClInclude>
     <ClInclude Include="header\n223_move____\n223_300_moveAndScoreIndex.hpp">
@@ -1073,6 +1061,21 @@
     </ClInclude>
     <ClInclude Include="header\n374_genMove_\n374_780_MoveGenerator100.hpp">
       <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n760_thread__\n760_250_monkie.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n760_thread__\n760_300_orangutan.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n760_thread__\n760_350_chimpanzee.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n760_thread__\n760_400_monkiesPub.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n119_score___\n119_085_ply.hpp">
+      <Filter>header\n119_score___</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1595,18 +1598,6 @@
     <ClCompile Include="source\n800_learn___\n800_100_stopwatch.cpp">
       <Filter>source\n800_learn___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n760_thread__\n760_350_subordinate.cpp">
-      <Filter>source\n760_thread__</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n760_thread__\n760_400_herosPub.cpp">
-      <Filter>source\n760_thread__</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n760_thread__\n760_300_captain.cpp">
-      <Filter>source\n760_thread__</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n760_thread__\n760_250_soldier.cpp">
-      <Filter>source\n760_thread__</Filter>
-    </ClCompile>
     <ClCompile Include="source\n885_searcher\n885_490_adventureMountainIterativeDeepeningLoop.cpp">
       <Filter>source\n885_searcher</Filter>
     </ClCompile>
@@ -1701,6 +1692,18 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="header\n080_100_sysWorld\n080_100_078_lsbMsb.hpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n760_thread__\n760_250_monkie.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n760_thread__\n760_300_orangutan.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n760_thread__\n760_350_chimpanzee.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\n760_thread__\n760_400_monkiePub.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../n119_score___/n119_090_scoreIndex.hpp"
+#include "../n119_score___/n119_090_ScoreValue.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
 
 
@@ -22,7 +22,7 @@ public:
 	/// <summary>
 	/// 評価値
 	/// </summary>
-	const enum ScoreIndex m_scoreIndex;
+	const enum ScoreValue m_scoreIndex;
 
 
 public:
@@ -33,7 +33,7 @@ public:
 	/// </summary>
 	/// <param name="move"></param>
 	/// <param name=""></param>
-	MoveAndScoreIndex(Move move, enum ScoreIndex scoreIndex);
+	MoveAndScoreIndex(Move move, enum ScoreValue scoreIndex);
 	
 
 	/// <summary>

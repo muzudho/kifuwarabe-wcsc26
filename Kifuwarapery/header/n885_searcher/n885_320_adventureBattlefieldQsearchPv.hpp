@@ -17,8 +17,8 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
 	virtual inline void DoAssert(
-		ScoreIndex alpha,
-		ScoreIndex beta
+		ScoreValue alpha,
+		ScoreValue beta
 		) const override {
 		//スルー☆！（＾ｑ＾）
 	}
@@ -30,8 +30,8 @@ public:
 	/// <param name="oldAlpha"></param>
 	/// <param name="alpha"></param>
 	virtual inline void SetOldAlpha(
-		ScoreIndex& oldAlpha,
-		ScoreIndex alpha
+		ScoreValue& oldAlpha,
+		ScoreValue alpha
 		) const override {
 		oldAlpha = alpha;
 	}
@@ -46,8 +46,8 @@ public:
 	/// <returns></returns>
 	virtual inline bool GetCondition01(
 		const TTEntry** ppTtEntry,
-		ScoreIndex beta,
-		ScoreIndex ttScore
+		ScoreValue beta,
+		ScoreValue ttScore
 		) const override {
 		// PVノードのとき☆（＾ｑ＾）
 		return (*ppTtEntry)->GetBoundKind() == Bound::BoundExact;
@@ -60,8 +60,8 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="bestScore"></param>
 	virtual inline void SetAlpha(
-		ScoreIndex& alpha,
-		ScoreIndex bestScore
+		ScoreValue& alpha,
+		ScoreValue bestScore
 		) const override {
 		// PVノードのとき☆（＾ｑ＾）
 		if (alpha < bestScore) {
@@ -90,11 +90,11 @@ public:
 		bool& givesCheck,
 		Move& move,
 		Move& ttMove,
-		ScoreIndex& futilityScore,
-		ScoreIndex& futilityBase,
+		ScoreValue& futilityScore,
+		ScoreValue& futilityBase,
 		Position& pos,
-		ScoreIndex& beta,
-		ScoreIndex& bestScore,
+		ScoreValue& beta,
+		ScoreValue& bestScore,
 		const Depth depth
 		)const override {
 		// スルーだぜ☆！（＾ｑ＾）
@@ -138,11 +138,11 @@ public:
 	/// <param name="move"></param>
 	virtual inline void DoByNewScore(
 		bool& isReturnWithScore,
-		ScoreIndex& returnScore,
+		ScoreValue& returnScore,
 		OurCarriage& ourCarriage,
-		ScoreIndex& score,
-		ScoreIndex& beta,
-		ScoreIndex& alpha,
+		ScoreValue& score,
+		ScoreValue& beta,
+		ScoreValue& alpha,
 		Move& bestMove,
 		Key& posKey,
 		Flashlight** ppFlashlight,
@@ -181,8 +181,8 @@ public:
 	/// <param name="bestScore"></param>
 	/// <returns></returns>
 	virtual inline Bound GetBound01(
-		ScoreIndex& oldAlpha,
-		ScoreIndex& bestScore
+		ScoreValue& oldAlpha,
+		ScoreValue& bestScore
 		)const override {
 		return (oldAlpha < bestScore) ?
 			Bound::BoundExact

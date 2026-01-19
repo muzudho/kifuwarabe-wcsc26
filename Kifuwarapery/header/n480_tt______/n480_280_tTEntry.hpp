@@ -2,7 +2,7 @@
 
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n119_score___/n119_050_bound.hpp"
-#include "../n119_score___/n119_090_scoreIndex.hpp"
+#include "../n119_score___/n119_090_ScoreValue.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
 #include "../n165_movStack/n165_600_convMove.hpp"
 #include "../n223_move____/n223_200_depth.hpp"
@@ -35,7 +35,7 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	ScoreIndex GetScore() const;
+	ScoreValue GetScore() const;
 
 
 	/// <summary>
@@ -63,7 +63,7 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	ScoreIndex GetEvalScore() const;
+	ScoreValue GetEvalScore() const;
 
 
 	/// <summary>
@@ -83,9 +83,9 @@ public:
 	/// <param name="bound"></param>
 	/// <param name="generation"></param>
 	/// <param name="evalScore"></param>
-	void SetSave(const Depth depth, const ScoreIndex score, const Move move,
+	void SetSave(const Depth depth, const ScoreValue score, const Move move,
 		const u32 posKeyHigh32, const Bound bound, const u8 generation,
-		const ScoreIndex evalScore);
+		const ScoreValue evalScore);
 
 
 private:

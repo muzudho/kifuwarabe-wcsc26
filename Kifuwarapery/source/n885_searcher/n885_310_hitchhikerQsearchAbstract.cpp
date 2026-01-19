@@ -1,4 +1,4 @@
-﻿#include "../../header/n119_score___/n119_090_scoreIndex.hpp"
+﻿#include "../../header/n119_score___/n119_090_ScoreValue.hpp"
 #include "../../header/n220_position/n220_650_position.hpp"
 #include "../../header/n220_position/n220_665_utilMoveStack.hpp"
 #include "../../header/n223_move____/n223_200_depth.hpp"
@@ -20,13 +20,13 @@
 /// <param name="beta"></param>
 /// <param name="depth"></param>
 /// <returns></returns>
-ScoreIndex AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
+ScoreValue AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 	OurCarriage& ourCarriage,
 	bool INCHECK,
 	Position& pos,
 	Flashlight* pFlashlight,
-	ScoreIndex alpha,
-	ScoreIndex beta,
+	ScoreValue alpha,
+	ScoreValue beta,
 	const Depth depth
 	) const {
 
@@ -41,12 +41,12 @@ ScoreIndex AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 	Move ttMove;
 	Move move;
 	Move bestMove;
-	ScoreIndex bestScore;
-	ScoreIndex score;
-	ScoreIndex ttScore;
-	ScoreIndex futilityScore;
-	ScoreIndex futilityBase;
-	ScoreIndex oldAlpha;
+	ScoreValue bestScore;
+	ScoreValue score;
+	ScoreValue ttScore;
+	ScoreValue futilityScore;
+	ScoreValue futilityBase;
+	ScoreValue oldAlpha;
 	bool givesCheck;
 	bool evasionPrunable;
 	Depth ttDepth;
@@ -204,7 +204,7 @@ ScoreIndex AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 			if (alpha < score) {
 				// PVノードのときは条件付きで手続きが変わるぜ☆（＾ｑ＾）
 				bool isReturnWithScore = false;
-				ScoreIndex returnScore = ScoreIndex::ScoreNone;
+				ScoreValue returnScore = ScoreValue::ScoreNone;
 				this->DoByNewScore(
 					isReturnWithScore,
 					returnScore,

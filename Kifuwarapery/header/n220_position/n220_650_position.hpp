@@ -7,7 +7,7 @@
 #include "../n112_pieceTyp/n112_050_pieceType.hpp"
 #include "../n113_piece___/n113_150_piece.hpp"
 #include "../n113_piece___/n113_500_hand.hpp"
-#include "../n119_score___/n119_090_scoreIndex.hpp"
+#include "../n119_score___/n119_090_ScoreValue.hpp"
 #include "../n119_score___/n119_200_pieceScore.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 #include "../n160_board___/n160_102_FileMaskBb.hpp"
@@ -259,14 +259,14 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	ScoreIndex GetMaterial() const;
+	ScoreValue GetMaterial() const;
 
 
 	/// <summary>
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	ScoreIndex GetMaterialDiff() const;
+	ScoreValue GetMaterialDiff() const;
 
 
 	/// <summary>
@@ -425,7 +425,7 @@ public:
 	/// <param name="asymmThreshold"></param>
 	/// <returns></returns>
 	template<Color US, Color THEM>
-	ScoreIndex GetSee1(const Move move, const int asymmThreshold = 0) const;
+	ScoreValue GetSee1(const Move move, const int asymmThreshold = 0) const;
 
 
 	/// <summary>
@@ -433,7 +433,7 @@ public:
 	/// </summary>
 	/// <param name="move"></param>
 	/// <returns></returns>
-	ScoreIndex GetSeeSign(const Move move) const;
+	ScoreValue GetSeeSign(const Move move) const;
 
 
 	/// <summary>
@@ -1022,7 +1022,7 @@ private:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	ScoreIndex ComputeMaterial() const;
+	ScoreValue ComputeMaterial() const;
 
 
 	/// <summary>

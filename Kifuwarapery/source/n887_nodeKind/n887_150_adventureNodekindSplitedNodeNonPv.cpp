@@ -65,12 +65,12 @@ AdventureNodekindSplitedNodeNonPv g_NODEKIND_SPLITEDNODE_NON_PV;
 /// <param name="depth"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-ScoreIndex AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
+ScoreValue AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
-	ScoreIndex alpha,
-	ScoreIndex beta,
+	ScoreValue alpha,
+	ScoreValue beta,
 	const Depth depth,
 	const bool cutNode) const
 {
@@ -96,10 +96,10 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 	Move threatMove;
 	Depth newDepth;
 	Depth extension;
-	ScoreIndex bestScore;
-	ScoreIndex score;
-	ScoreIndex ttScore;
-	ScoreIndex eval;
+	ScoreValue bestScore;
+	ScoreValue score;
+	ScoreValue ttScore;
+	ScoreValue eval;
 	bool inCheck;
 	bool givesCheck;
 	bool isPVMove;
@@ -148,12 +148,12 @@ ScoreIndex AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 			ourCarriage,
 			&pFlashlight);
 		bool isReturnWithScore = p.first;
-		ScoreIndex returnScore = p.second;
+		ScoreValue returnScore = p.second;
 		if (isReturnWithScore) { return returnScore; }
 	}
 
 	bool isReturnWithScore = false;
-	ScoreIndex returnScore = ScoreNone;
+	ScoreValue returnScore = ScoreNone;
 
 
 	this->explorePlain_10i200j180k_checkAlpha(
