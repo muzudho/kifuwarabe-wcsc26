@@ -195,7 +195,7 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// 一手詰めならそのバナナ採用☆（＾～＾）
 	/// </summary>
 	/// <param name="isReturnWithSweetness"></param>
 	/// <param name="returnSweetness"></param>
@@ -208,8 +208,9 @@ public:
 	/// <param name="posKey"></param>
 	/// <param name="depth"></param>
 	/// <param name="bestMove"></param>
-	virtual inline void explorePlain_10i200j260k_ttMove(
+	virtual inline void explorePlain_10i200j260k_returnIfMateMoveIn1Ply(
 		bool& isReturnWithSweetness,
+		Move& bestMove,
 		Sweetness& returnSweetness,
 		OurCarriage& ourCarriage,
 		bool& inCheck,
@@ -218,9 +219,8 @@ public:
 		Flashlight** ppFlashlight,
 		Sweetness& bestSweetness,
 		Key& posKey,
-		const Depth depth,
-		Move& bestMove
-		)const override {
+		const Depth depth) const override
+	{
 		// ルートノードはスルー☆！（＾ｑ＾）
 		//UNREACHABLE;
 	}

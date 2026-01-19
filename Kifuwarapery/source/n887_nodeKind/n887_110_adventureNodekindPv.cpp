@@ -184,8 +184,10 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 	if (isReturnWithSweetness) { return returnSweetness; }
 
 
-	this->explorePlain_10i200j260k_ttMove(
+	// 一手詰めならそのバナナ採用☆（＾～＾）
+	this->explorePlain_10i200j260k_returnIfMateMoveIn1Ply(
 		isReturnWithSweetness,
+		bestMove,
 		returnSweetness,
 		ourCarriage,
 		inCheck,
@@ -194,8 +196,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 		&pFlashlight,
 		bestSweetness,
 		posKey,
-		depth,
-		bestMove);
+		depth);
 	if (isReturnWithSweetness) { return returnSweetness; }
 
 
