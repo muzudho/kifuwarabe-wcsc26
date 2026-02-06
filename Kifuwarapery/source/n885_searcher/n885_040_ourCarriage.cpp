@@ -370,7 +370,9 @@ void OurCarriage::CheckTime() {
 /// ワーカースレッド開始
 /// </summary>
 void Monkie::workAsMonkey() {
+	// ［一緒に走る猿］の数が０でなければ、［活性・猿たちが分かれた場所］を取得☆（＾～＾）
 	MonkeySplitedPlace* thisSp = m_numberOfMonkeysRunningTogether ? m_activeMonkeySplitedPlace : nullptr;
+
 	assert(!thisSp || (thisSp->m_masterThread == this && m_isBeingSearched));
 
 	while (true) {
@@ -413,7 +415,10 @@ void Monkie::workAsMonkey() {
 
 			// ［一緒に走る猿］が分かれた場所で。探索を開始するぜ（＾～＾）
 			monkeySplitedPlace->m_pWhistle01->blowWhistle_asMonkeySplitedPlace(
-				*monkeySplitedPlace, *this->m_pOurCarriage, pos, ss);
+				*monkeySplitedPlace,
+				*this->m_pOurCarriage,
+				pos,
+				ss);
 
 
 			assert(m_isBeingSearched);

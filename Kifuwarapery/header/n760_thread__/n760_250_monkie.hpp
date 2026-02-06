@@ -79,7 +79,7 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// ［一緒に走る猿たちが分かれた所］の配列
 	/// </summary>
 	MonkeySplitedPlace m_MonkeySplitedPlaces[g_MaxNumberOfMonkeysRunningTogether];
 
@@ -114,7 +114,11 @@ public:
 	std::thread m_handleThread;
 
 	/// <summary>
+	///		<pre>
+	/// ［一緒に走る猿たちが分かれた所］
 	/// 
+	///		- 親要素になる（＾～＾）？
+	///		</pre>
 	/// </summary>
 	MonkeySplitedPlace* volatile m_activeMonkeySplitedPlace;
 

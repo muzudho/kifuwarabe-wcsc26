@@ -17,17 +17,17 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// ２枚の玉を除いた駒の数（＾～＾）？
 	/// </summary>
 	static const int m_ListSize = 38;
 
 	/// <summary>
-	/// 
+	/// リスト０って何だぜ☆（＾～＾）？
 	/// </summary>
 	int m_list0[m_ListSize];
 
 	/// <summary>
-	/// 
+	/// リスト１って何だぜ☆（＾～＾）？
 	/// </summary>
 	int m_list1[m_ListSize];
 

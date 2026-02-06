@@ -1169,7 +1169,7 @@ void Position::UndoMove(const Move move) {
 	const Color them = GetTurn();
 	const Color us = ConvColor::OPPOSITE_COLOR10b(them);
 
-	const Square to = move.To();
+	const Square to = move.To();	// 移動先マス☆（＾～＾）
 	m_turn_ = us;
 	// ここで先に turn_ を戻したので、以下、move は us の指し手とする。
 	if (move.IsDrop()) {

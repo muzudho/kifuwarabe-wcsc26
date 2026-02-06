@@ -70,6 +70,7 @@ void Monkie::NotifyOne() {
 /// </summary>
 /// <returns></returns>
 bool Monkie::IsUselessNode() const {
+	// 親へ、親へと遡るぜ（＾～＾）！
 	for (MonkeySplitedPlace* sp = m_activeMonkeySplitedPlace; sp != nullptr; sp = sp->m_pParentMonkeySplitedPlace) {
 		if (sp->m_isUselessNode) { return true; }
 	}

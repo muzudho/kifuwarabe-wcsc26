@@ -14,9 +14,9 @@ class OurCarriage;
 
 
 #if 0
-#define PRINT_PV(x) x
+	#define PRINT_PV(x) x
 #else
-#define PRINT_PV(x)
+	#define PRINT_PV(x)
 #endif
 
 
@@ -26,38 +26,60 @@ class OurCarriage;
 struct RawEvaluater {
 
 	/// <summary>
-    /// ［玉位置］［駒１］［駒２］
+	///		<pre>
+	/// ＫＰＰ
+	/// 
+	///		- つまり、［玉位置］［駒１］［駒２］（＾～＾）
+	///		</pre>
 	/// </summary>
 	std::array<float, 2> kpp_raw[SquareNum][fe_end][fe_end];
 
 	/// <summary>
-    /// ［玉位置］［玉位置］［駒］
+	///		<pre>
+	/// ＫＫＰ
+	/// 
+	///		- つまり、［玉位置］［玉位置］［駒］（＾～＾）
+	///		</pre>
 	/// </summary>
 	std::array<float, 2> kkp_raw[SquareNum][SquareNum][fe_end];
 
 	/// <summary>
-    /// ［玉位置］［玉位置］
+	///		<pre>
+	/// ＫＫ
+	/// 
+	///		- つまり、［玉位置］［玉位置］（＾～＾）
+	///		</pre>
 	/// </summary>
 	std::array<float, 2> kk_raw[SquareNum][SquareNum];
 
 
 	/// <summary>
-	/// 
+	///		<pre>
+	/// パラメーターをインクリメントする（＾～＾）？
+	///		</pre>
 	/// </summary>
 	/// <param name="GetPos"></param>
 	/// <param name="dinc"></param>
-	void incParam(const Position& GetPos, const std::array<double, 2>& dinc) {
-		const Square sq_bk = GetPos.GetKingSquare(Black);
-		const Square sq_wk = GetPos.GetKingSquare(White);
+	void incParam(
+		const Position& GetPos,
+		const std::array<double, 2>& dinc)
+	{
+		const Square sq_bk = GetPos.GetKingSquare(Black);	// 黒玉のマス番号
+		const Square sq_wk = GetPos.GetKingSquare(White);	// 白玉のマス番号
 		const int* GetList0 = GetPos.GetCplist0();
 		const int* GetList1 = GetPos.GetCplist1();
+
+		// 増やす数。すごく小さい数
 		const std::array<float, 2> f = {{static_cast<float>(dinc[0] / g_FVScale), static_cast<float>(dinc[1] / g_FVScale)}};
 
 		kk_raw[sq_bk][sq_wk] += f;
-		for (int i = 0; i < GetPos.GetNlist(); ++i) {
+
+		for (int i = 0; i < GetPos.GetNlist(); ++i)
+		{
 			const int k0 = GetList0[i];
 			const int k1 = GetList1[i];
-			for (int j = 0; j < i; ++j) {
+			for (int j = 0; j < i; ++j)
+			{
 				const int l0 = GetList0[j];
 				const int l1 = GetList1[j];
 				kpp_raw[sq_bk         ][k0][l0] += f;

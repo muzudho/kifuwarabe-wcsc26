@@ -18,7 +18,7 @@ class WhistleAbstract;
 /// <summary>
 ///		<pre>
 /// スプリット・ポイント
-/// 猿たちが分かれたところ☆（＾ｑ＾）？
+/// ［一緒に走る猿たちが分かれた所］☆（＾ｑ＾）
 /// 
 ///		- 旧名： `ＳplitPoint`
 ///		</pre>
@@ -89,7 +89,7 @@ struct MonkeySplitedPlace {
 	NextmoveEvent*		m_pNextmoveEvent;
 
 	/// <summary>
-	/// 
+	/// 親要素☆（＾～＾）
 	/// </summary>
 	MonkeySplitedPlace*		m_pParentMonkeySplitedPlace;
 
