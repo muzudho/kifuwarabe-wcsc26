@@ -1,13 +1,13 @@
 ﻿#pragma once
 
 
-#include "n755_070_SwordAbstract.hpp"
+#include "n755_070_WhistleAbstract.hpp"
 
 
 /// <summary>
 /// 
 /// </summary>
-class SwordNonPv : public SwordAbstract {
+class SwordPv : public SwordAbstract {
 
 
 public:
@@ -35,4 +35,4 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern const SwordNonPv g_SWORD_NON_PV;
+extern const SwordPv g_SWORD_PV;

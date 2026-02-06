@@ -7,7 +7,7 @@
 #include "../n640_searcher/n640_040_nodeKind.hpp"
 #include "../n640_searcher/n640_440_splitedNode.hpp"
 #include "../n640_searcher/n640_500_reductions.hpp"
-#include "../n755_whistle_/n755_100_SwordRoot.hpp"
+#include "../n755_whistle_/n755_100_WhistleRoot.hpp"
 #include "../n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
 #include "../n885_searcher/n885_040_ourCarriage.hpp"
 #include "../n887_nodeKind/n887_100_adventurePlainNodekindRoot.hpp"

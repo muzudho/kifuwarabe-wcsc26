@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "n755_070_SwordAbstract.hpp"
+#include "n755_070_WhistleAbstract.hpp"
 
 
 /// <summary>
