@@ -85,7 +85,7 @@ public:
 	/// </summary>
 	/// <param name="ppThisThread"></param>
 	/// <param name="pFlashlight"></param>
-	inline void explorePlain_10i1040j_mapPly(
+	inline void explorePlain_10i1040j_updateMaxPly(
 		Monkie** ppThisThread,
 		const Flashlight* pFlashlight
 		)const override {

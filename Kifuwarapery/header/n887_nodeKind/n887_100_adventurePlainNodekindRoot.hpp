@@ -53,7 +53,7 @@ public:
 	/// </summary>
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
-	virtual inline void explorePlain_10i1010j_assertAtFirst(
+	virtual inline void explorePlain_10i1010j_alphaIsBetaMinusOne(
 		Sweetness alpha,
 		Sweetness beta
 		) const override {

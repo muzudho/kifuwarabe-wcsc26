@@ -83,10 +83,10 @@ Sweetness AdventureNodekindSplitedNodeRoot::explorePlain_10i(
 
 
 	assert(-SweetnessInfinite <= alpha && alpha < beta && beta <= SweetnessInfinite);
-	this->explorePlain_10i1010j_assertAtFirst(
+	// αは　β－１　なのかだぜ（＾～＾）？
+	this->explorePlain_10i1010j_alphaIsBetaMinusOne(
 		alpha,
-		beta
-		);
+		beta);
 	assert(Depth0 < depth);
 
 
@@ -126,6 +126,8 @@ Sweetness AdventureNodekindSplitedNodeRoot::explorePlain_10i(
 
 
 	bool isGotoSplitPointStart = false;
+
+	// ノードの初期化する
 	this->explorePlain_10i1020j_initializeNode(
 		ttMove,
 		ttSweetness,
@@ -142,14 +144,15 @@ Sweetness AdventureNodekindSplitedNodeRoot::explorePlain_10i(
 		excludedMove);
 	if (isGotoSplitPointStart) { goto split_point_start; }
 
-
+	// 指し手の初期化する
 	this->explorePlain_10i1030j_clearMove(
 		bestSweetness,
 		&pFlashlight,
 		threatMove,
 		bestMove);
 
-	this->explorePlain_10i1040j_mapPly(
+	// （必要なら）最大Plyを更新
+	this->explorePlain_10i1040j_updateMaxPly(
 		&pHandleMonkey,
 		pFlashlight);
 
@@ -159,7 +162,7 @@ Sweetness AdventureNodekindSplitedNodeRoot::explorePlain_10i(
 
 	pos.setNodesSearched(pos.getNodesSearched() + 1);
 
-
+	// トランスポジション・テーブルの指し手の［評価値］取得
 	ttSweetness = this->explorePlain_10i1100j_getTtSweetness(
 		excludedMove,
 		&pFlashlight,
@@ -167,13 +170,16 @@ Sweetness AdventureNodekindSplitedNodeRoot::explorePlain_10i(
 		pos,
 		&pTtEntry,//セットされる☆
 		ourCarriage);
+	// トランスポジション・テーブルの指し手の［指し手］取得
 	pTtMove = this->explorePlain_10i1110j_getTtMove(
 		ourCarriage,
 		pTtEntry,
 		pos);
 	ttMove = *pTtMove.get();	// コピー作成
 
+	// キラームーブは調べない
 
+	// なんか［評価値］をどうにかしてる
 	bool isGotoIidStart = false;//NonPVのとき使う☆
 	this->explorePlain_10i1200j_evelSweetness(
 		isGotoIidStart,

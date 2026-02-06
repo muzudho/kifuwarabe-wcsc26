@@ -51,7 +51,7 @@ public:
 	/// </summary>
 	/// <param name="alpha"></param>
 	/// <param name="beta"></param>
-	virtual inline void explorePlain_10i1010j_assertAtFirst(
+	virtual inline void explorePlain_10i1010j_alphaIsBetaMinusOne(
 		Sweetness alpha,
 		Sweetness beta
 		) const {
@@ -145,7 +145,7 @@ public:
 	/// </summary>
 	/// <param name="ppThisThread"></param>
 	/// <param name="pFlashlight"></param>
-	virtual inline void explorePlain_10i1040j_mapPly(
+	virtual inline void explorePlain_10i1040j_updateMaxPly(
 		Monkie** ppThisThread,
 		const Flashlight* pFlashlight
 		)const {
@@ -392,8 +392,8 @@ public:
 		const TTEntry* pTtEntry,
 		Sweetness& ttSweetness,
 		Key& posKey,
-		Move& move
-	)const {
+		Move& move) const
+	{
 		// evaluate the position statically
 		Evaluation09 evaluation;
 		evalSweetness = (*ppFlashlight)->m_staticEval = evaluation.evaluate(pos, (*ppFlashlight)); // Bonanza の差分評価の為、evaluate() を常に呼ぶ。

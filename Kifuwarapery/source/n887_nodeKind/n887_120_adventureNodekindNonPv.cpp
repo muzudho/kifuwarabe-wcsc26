@@ -79,7 +79,8 @@ Sweetness AdventureNodekindNonPv::explorePlain_10i(
 
 
 	assert(-SweetnessInfinite <= alpha && alpha < beta && beta <= SweetnessInfinite);
-	this->explorePlain_10i1010j_assertAtFirst(
+	// αは　β－１　なのかだぜ（＾～＾）？
+	this->explorePlain_10i1010j_alphaIsBetaMinusOne(
 		alpha,
 		beta);
 	assert(Depth0 < depth);
@@ -122,15 +123,18 @@ Sweetness AdventureNodekindNonPv::explorePlain_10i(
 
 	bool isGotoSplitPointStart = false;
 
+	// ノードの初期化しない
 
+	// 指し手の初期化する
 	this->explorePlain_10i1030j_clearMove(
 		bestSweetness,
 		&pFlashlight,
 		threatMove,
 		bestMove);
 
+	// 最大Plyの更新はしない
 
-	// step2: 千日手による探索打切りの判断
+	// 千日手による探索打切りの判断
 	auto p = this->explorePlain_10i1080j_isStopByRepetetion(
 		//isReturnWithSweetness,
 		//returnSweetness,
@@ -143,7 +147,7 @@ Sweetness AdventureNodekindNonPv::explorePlain_10i(
 	Sweetness returnSweetness = p.second;
 	if (isReturnWithSweetness) { return returnSweetness; }
 
-
+	// βよりαが上回ったら、それを取る
 	this->explorePlain_10i1090j_checkAlpha(
 		isReturnWithSweetness,
 		returnSweetness,
@@ -155,7 +159,7 @@ Sweetness AdventureNodekindNonPv::explorePlain_10i(
 
 	pos.setNodesSearched(pos.getNodesSearched() + 1);
 
-
+	// トランスポジション・テーブルの指し手の［評価値］取得
 	ttSweetness = this->explorePlain_10i1100j_getTtSweetness(
 		excludedMove,
 		&pFlashlight,
@@ -163,13 +167,14 @@ Sweetness AdventureNodekindNonPv::explorePlain_10i(
 		pos,
 		&pTtEntry,//セットされる☆
 		ourCarriage);
+	// トランスポジション・テーブルの指し手の［指し手］取得
 	pTtMove = this->explorePlain_10i1110j_getTtMove(
 		ourCarriage,
 		pTtEntry,
 		pos);
 	ttMove = *pTtMove.get();	// コピー作成
 
-
+	// （有れば）キラームーブを採用
 	this->explorePlain_10i1180j_killerMove(
 		ttMove,
 		ttSweetness,
@@ -181,7 +186,6 @@ Sweetness AdventureNodekindNonPv::explorePlain_10i(
 		beta,
 		&pFlashlight);
 	if (isReturnWithSweetness) { return returnSweetness; }
-
 
 	// 一手詰めならそのバナナ採用☆（＾～＾）
 	this->explorePlain_10i1190j_returnIfMateMoveIn1Ply(
@@ -198,7 +202,7 @@ Sweetness AdventureNodekindNonPv::explorePlain_10i(
 		depth);
 	if (isReturnWithSweetness) { return returnSweetness; }
 
-
+	// なんか［評価値］をどうにかしてる
 	bool isGotoIidStart = false;//NonPVのとき使う☆
 	this->explorePlain_10i1200j_evelSweetness(
 		isGotoIidStart,
