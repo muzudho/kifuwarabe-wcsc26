@@ -89,7 +89,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 	Move movesSearched[64];
 	StateInfo st;
 	const TTEntry* pTtEntry = nullptr;//(^q^)トランスポジション・テーブル・エントリー☆？
-	MonkeySplitedPlace* pSplitedNode = nullptr;//(^q^)
+	MonkeySplitedPlace* pMonkeySplitedPlace = nullptr;//(^q^)
 	Key posKey;
 	Move ttMove;
 	Move move;
@@ -288,7 +288,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 			move,
 			checkInfo,
 			moveCount,
-			&pSplitedNode);
+			&pMonkeySplitedPlace);
 		if (isContinue) { continue; }
 
 
@@ -342,7 +342,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 			moveCount,
 			threatMove,
 			pos,
-			&pSplitedNode,
+			&pMonkeySplitedPlace,
 			newDepth,
 			&pFlashlight,
 			beta,
@@ -438,7 +438,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 			sweetness,
 			pos,
 			bestSweetness,
-			&pSplitedNode,
+			&pMonkeySplitedPlace,
 			bestMove,
 			beta);
 		if (isBreak) { break; }

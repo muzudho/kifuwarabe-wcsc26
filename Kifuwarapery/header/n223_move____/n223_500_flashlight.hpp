@@ -28,7 +28,7 @@ public:
 	/// <summary>
 	/// 分岐ノードか☆
 	/// </summary>
-	MonkeySplitedPlace*	m_splitedNode;
+	MonkeySplitedPlace*	m_monkeySplitedPlace;
 
 	/// <summary>
 	/// 手数か☆？

@@ -403,7 +403,7 @@ void Monkie::workAsMonkey() {
 			Position pos(*monkeySplitedPlace->m_position, this);
 
 			memcpy(ss, monkeySplitedPlace->m_pFlashlightBox - 1, 4 * sizeof(Flashlight));
-			(ss+1)->m_splitedNode = monkeySplitedPlace;
+			(ss+1)->m_monkeySplitedPlace = monkeySplitedPlace;
 
 			monkeySplitedPlace->m_mutex.lock();
 
@@ -412,7 +412,7 @@ void Monkie::workAsMonkey() {
 			m_activePosition = &pos;
 
 			// ［一緒に走る猿］が分かれた場所で。探索を開始するぜ（＾～＾）
-			monkeySplitedPlace->m_pSword01->startSearch_asSplitedNode(
+			monkeySplitedPlace->m_pSword01->startSearch_asMonkeySplitedPlace(
 				*monkeySplitedPlace, *this->m_pOurCarriage, pos, ss);
 
 

@@ -70,7 +70,7 @@ void Monkie::NotifyOne() {
 /// </summary>
 /// <returns></returns>
 bool Monkie::IsUselessNode() const {
-	for (MonkeySplitedPlace* sp = m_activeSplitedNode; sp != nullptr; sp = sp->m_pParentSplitedNode) {
+	for (MonkeySplitedPlace* sp = m_activeSplitedNode; sp != nullptr; sp = sp->m_pParentMonkeySplitedPlace) {
 		if (sp->m_isUselessNode) { return true; }
 	}
 	return false;
@@ -130,7 +130,7 @@ void Monkie::ForkNewMonkey(
 	MonkeySplitedPlace& splitedNode = m_SplitedNodes[m_numberOfMonkeysRunningTogether];
 
 	splitedNode.m_masterThread = this;
-	splitedNode.m_pParentSplitedNode = m_activeSplitedNode;
+	splitedNode.m_pParentMonkeySplitedPlace = m_activeSplitedNode;
 	splitedNode.m_slavesMask = UINT64_C(1) << m_idx;
 	splitedNode.m_depth = depth;
 	splitedNode.m_bestMove = bestMove;
@@ -179,7 +179,7 @@ void Monkie::ForkNewMonkey(
 
 	m_isBeingSearched = true;
 	--m_numberOfMonkeysRunningTogether;
-	m_activeSplitedNode = splitedNode.m_pParentSplitedNode;
+	m_activeSplitedNode = splitedNode.m_pParentMonkeySplitedPlace;
 	m_activePosition = &pos;
 	pos.setNodesSearched(pos.getNodesSearched() + splitedNode.m_nodes);
 	bestMove = splitedNode.m_bestMove;

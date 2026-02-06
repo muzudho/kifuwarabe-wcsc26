@@ -14,7 +14,7 @@ const SwordNonPv g_SWORD_NON_PV;
 /// <param name="ourCarriage"></param>
 /// <param name="pos"></param>
 /// <param name="pFlashlight"></param>
-void SwordNonPv::startSearch_asSplitedNode(
+void SwordNonPv::startSearch_asMonkeySplitedPlace(
 	MonkeySplitedPlace& ownerSplitedNode, 
 	OurCarriage& ourCarriage,
 	Position& pos,

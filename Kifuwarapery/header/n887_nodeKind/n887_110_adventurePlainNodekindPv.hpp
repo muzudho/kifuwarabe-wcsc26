@@ -351,7 +351,7 @@ public:
 		NextmoveEvent& mp
 		) const override {
 		// 非スプリットポイントの場合
-		return mp.GetNextMove_NonSplitedNode();
+		return mp.GetNextMove_NonMonkeySplitedPlace();
 	};
 
 

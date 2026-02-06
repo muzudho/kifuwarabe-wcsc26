@@ -49,14 +49,14 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	Move GetNextMove_SplitedNode();
+	Move GetNextMove_MonkeySplitedPlace();
 
 
 	/// <summary>
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	Move GetNextMove_NonSplitedNode();
+	Move GetNextMove_NonMonkeySplitedPlace();
 
 
 	/// <summary>

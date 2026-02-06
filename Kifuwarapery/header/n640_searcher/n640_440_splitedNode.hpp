@@ -91,7 +91,7 @@ struct MonkeySplitedPlace {
 	/// <summary>
 	/// 
 	/// </summary>
-	MonkeySplitedPlace*		m_pParentSplitedNode;
+	MonkeySplitedPlace*		m_pParentMonkeySplitedPlace;
 
 	/// <summary>
 	/// 

@@ -95,7 +95,7 @@ Sweetness AdventureNodekindMonkeySplitedPlacePv::explorePlain_10i(
 	Move movesSearched[64];
 	StateInfo st;
 	const TTEntry* pTtEntry = nullptr;//(^q^)トランスポジション・テーブル・エントリー☆？
-	MonkeySplitedPlace* pSplitedNode = nullptr;//(^q^)
+	MonkeySplitedPlace* pMonkeySplitedPlace = nullptr;//(^q^)
 	Key posKey;
 	Move move;
 	Move excludedMove;
@@ -135,7 +135,7 @@ Sweetness AdventureNodekindMonkeySplitedPlacePv::explorePlain_10i(
 		playedMoveCount,
 		inCheck,
 		pos,
-		&pSplitedNode,
+		&pMonkeySplitedPlace,
 		&pFlashlight,
 		bestMove,
 		threatMove,
@@ -318,7 +318,7 @@ split_point_start:
 			move,
 			checkInfo,
 			moveCount,
-			&pSplitedNode);
+			&pMonkeySplitedPlace);
 		if (isContinue) { continue; }
 
 
@@ -363,7 +363,7 @@ split_point_start:
 			moveCount,
 			threatMove,
 			pos,
-			&pSplitedNode,
+			&pMonkeySplitedPlace,
 			newDepth,
 			&pFlashlight,
 			beta,
@@ -407,7 +407,7 @@ split_point_start:
 			cutNode,
 			newDepth,
 			alpha,
-			&pSplitedNode,
+			&pMonkeySplitedPlace,
 			sweetness,
 			pos,
 			doFullDepthSearch);
@@ -424,7 +424,7 @@ split_point_start:
 		this->explorePlain_10i3010j_updateAlpha(
 			doFullDepthSearch,
 			alpha,
-			&pSplitedNode);
+			&pMonkeySplitedPlace);
 
 
 		this->explorePlain_10i3020j_getSweetnessNonPV(
@@ -465,7 +465,7 @@ split_point_start:
 
 
 		this->explorePlain_10i3050j_getAlpha(
-			&pSplitedNode,
+			&pMonkeySplitedPlace,
 			bestSweetness,
 			alpha);
 
@@ -483,7 +483,7 @@ split_point_start:
 			sweetness,
 			pos,
 			bestSweetness,
-			&pSplitedNode,
+			&pMonkeySplitedPlace,
 			bestMove,
 			beta);
 		if (isBreak) { break; }

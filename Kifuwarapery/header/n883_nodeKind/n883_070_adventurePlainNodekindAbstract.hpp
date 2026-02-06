@@ -98,7 +98,7 @@ public:
 
 		// initialize node
 
-		*ppMonkeySplitedPlace = (*ppFlashlight)->m_splitedNode;
+		*ppMonkeySplitedPlace = (*ppFlashlight)->m_monkeySplitedPlace;
 		bestMove = (*ppMonkeySplitedPlace)->m_bestMove;
 		threatMove = (*ppMonkeySplitedPlace)->m_threatMove;
 		bestSweetness = (*ppMonkeySplitedPlace)->m_bestSweetness;
@@ -676,7 +676,7 @@ public:
 			// move.cap() は前回(一手前)の指し手で取った駒の種類
 			NextmoveEvent mp(pos, ttMove, ourCarriage.m_history, move.GetCap());
 			const CheckInfo ci(pos);
-			while (!(move = mp.GetNextMove_NonSplitedNode()).IsNone()) {
+			while (!(move = mp.GetNextMove_NonMonkeySplitedPlace()).IsNone()) {
 				if (
 					pos.GetTurn()==Color::Black
 					?

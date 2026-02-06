@@ -12,7 +12,7 @@ enum NodeKind {
 	No0_Root,
 	No1_PV,
 	No2_NonPV,
-	SplitedNodeNo0Root,
-	SplitedNodeNo1PV,
-	SplitedNodeNo2NonPV
+	MonkeySplitedPlaceNo0Root,
+	MonkeySplitedPlaceNo1PV,
+	MonkeySplitedPlaceNo2NonPV
 };

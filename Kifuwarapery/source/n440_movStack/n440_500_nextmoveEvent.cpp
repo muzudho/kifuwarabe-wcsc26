@@ -192,9 +192,9 @@ NextmoveEvent::NextmoveEvent(
 /// 
 /// </summary>
 /// <returns></returns>
-Move NextmoveEvent::GetNextMove_SplitedNode() {
+Move NextmoveEvent::GetNextMove_MonkeySplitedPlace() {
 	// 分岐点の次のノード☆？（＾ｑ＾）？
-	return this->m_pFlashlightBox_->m_splitedNode->m_pNextmoveEvent->GetNextMove_NonSplitedNode();
+	return this->m_pFlashlightBox_->m_monkeySplitedPlace->m_pNextmoveEvent->GetNextMove_NonMonkeySplitedPlace();
 }
 
 
@@ -202,7 +202,7 @@ Move NextmoveEvent::GetNextMove_SplitedNode() {
 /// 
 /// </summary>
 /// <returns></returns>
-Move NextmoveEvent::GetNextMove_NonSplitedNode() {
+Move NextmoveEvent::GetNextMove_NonMonkeySplitedPlace() {
 	do {
 		// lastMove() に達したら次の phase に移る。
 		while (GetCurrMove() == GetLastMove()) {

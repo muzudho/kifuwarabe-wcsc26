@@ -14,7 +14,7 @@ const SwordPv g_SWORD_PV;
 /// <param name="ourCarriage"></param>
 /// <param name="pos"></param>
 /// <param name="pFlashlight"></param>
-void SwordPv::startSearch_asSplitedNode(
+void SwordPv::startSearch_asMonkeySplitedPlace(
 	MonkeySplitedPlace& ownerSplitedNode, 
 	OurCarriage& ourCarriage,
 	Position& pos,

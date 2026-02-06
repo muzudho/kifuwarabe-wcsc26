@@ -131,7 +131,7 @@ Sweetness AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 	NextmoveEvent mp(pos, ttMove, depth, ourCarriage.m_history, (pFlashlight - 1)->m_currentMove.To());
 	const CheckInfo ci(pos);
 
-	while (!(move = mp.GetNextMove_NonSplitedNode()).IsNone())
+	while (!(move = mp.GetNextMove_NonMonkeySplitedPlace()).IsNone())
 	{
 		assert(pos.IsOK());
 

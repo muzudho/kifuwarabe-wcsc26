@@ -85,7 +85,7 @@ public:
 
 		// initialize node
 
-		*ppMonkeySplitedPlace = (*ppFlashlight)->m_splitedNode;
+		*ppMonkeySplitedPlace = (*ppFlashlight)->m_monkeySplitedPlace;
 		bestMove = (*ppMonkeySplitedPlace)->m_bestMove;
 		threatMove = (*ppMonkeySplitedPlace)->m_threatMove;
 		bestSweetness = (*ppMonkeySplitedPlace)->m_bestSweetness;
@@ -451,7 +451,7 @@ public:
 		NextmoveEvent& mp
 		) const override {
 		// スプリットポイントの場合
-		return mp.GetNextMove_SplitedNode();
+		return mp.GetNextMove_MonkeySplitedPlace();
 	};
 
 
