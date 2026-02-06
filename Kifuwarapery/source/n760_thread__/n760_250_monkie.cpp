@@ -52,7 +52,7 @@ bool Monkie::SetLastSplitNodeSlavesMask(Monkie* master) const {
 	const int splitNodeCount = m_numberOfMonkeysRunningTogether;
 
 	// 分岐ノードが０ではなく、最後の分岐ノードのスレーブ・ビットフィールドに 1 を立てる。
-	return !splitNodeCount || (m_SplitedNodes[splitNodeCount - 1].m_slavesMask & (UINT64_C(1) << master->m_idx));
+	return !splitNodeCount || (m_MonkeySplitedPlaces[splitNodeCount - 1].m_slavesMask & (UINT64_C(1) << master->m_idx));
 }
 
 
@@ -127,31 +127,31 @@ void Monkie::ForkNewMonkey(
 	assert(m_numberOfMonkeysRunningTogether < g_MaxNumberOfMonkeysRunningTogether);
 
 	// 個定数のスプリット・ポイント☆（＾ｑ＾）
-	MonkeySplitedPlace& splitedNode = m_SplitedNodes[m_numberOfMonkeysRunningTogether];
+	MonkeySplitedPlace& monkeySplitedPlace = m_MonkeySplitedPlaces[m_numberOfMonkeysRunningTogether];
 
-	splitedNode.m_masterThread = this;
-	splitedNode.m_pParentMonkeySplitedPlace = m_activeMonkeySplitedPlace;
-	splitedNode.m_slavesMask = UINT64_C(1) << m_idx;
-	splitedNode.m_depth = depth;
-	splitedNode.m_bestMove = bestMove;
-	splitedNode.m_threatMove = threatMove;
-	splitedNode.m_alpha = alpha;
-	splitedNode.m_beta = beta;
-	splitedNode.m_pSword01 = pSword;	// ノード・タイプ（実行するプログラム）を切り替える変数みたいだぜ☆（＾ｑ＾）
-	splitedNode.m_cutNode = cutNode;
-	splitedNode.m_bestSweetness = bestSweetness;
-	splitedNode.m_pNextmoveEvent = &mp;
-	splitedNode.m_moveCount = moveCount;
-	splitedNode.m_position = &pos;
-	splitedNode.m_nodes = 0;
-	splitedNode.m_isUselessNode = false;
-	splitedNode.m_pFlashlightBox = pFlashlightBox;
+	monkeySplitedPlace.m_masterThread = this;
+	monkeySplitedPlace.m_pParentMonkeySplitedPlace = m_activeMonkeySplitedPlace;
+	monkeySplitedPlace.m_slavesMask = UINT64_C(1) << m_idx;
+	monkeySplitedPlace.m_depth = depth;
+	monkeySplitedPlace.m_bestMove = bestMove;
+	monkeySplitedPlace.m_threatMove = threatMove;
+	monkeySplitedPlace.m_alpha = alpha;
+	monkeySplitedPlace.m_beta = beta;
+	monkeySplitedPlace.m_pSword01 = pSword;	// ノード・タイプ（実行するプログラム）を切り替える変数みたいだぜ☆（＾ｑ＾）
+	monkeySplitedPlace.m_cutNode = cutNode;
+	monkeySplitedPlace.m_bestSweetness = bestSweetness;
+	monkeySplitedPlace.m_pNextmoveEvent = &mp;
+	monkeySplitedPlace.m_moveCount = moveCount;
+	monkeySplitedPlace.m_position = &pos;
+	monkeySplitedPlace.m_nodes = 0;
+	monkeySplitedPlace.m_isUselessNode = false;
+	monkeySplitedPlace.m_pFlashlightBox = pFlashlightBox;
 
 	this->m_pOurCarriage->m_pub.m_mutex_.lock();
-	splitedNode.m_mutex.lock();
+	monkeySplitedPlace.m_mutex.lock();
 
 	++m_numberOfMonkeysRunningTogether;
-	m_activeMonkeySplitedPlace = &splitedNode;
+	m_activeMonkeySplitedPlace = &monkeySplitedPlace;
 	m_activePosition = nullptr;
 
 	// thisThread が常に含まれるので 1
@@ -161,32 +161,32 @@ void Monkie::ForkNewMonkey(
 	while ((slave = this->m_pOurCarriage->m_pub.GetBoredMonkey(this)) != nullptr
 		&& ++slavesCount <= this->m_pOurCarriage->m_pub.m_maxThreadsPerMonkeySplitedPlace && !Fake)
 	{
-		splitedNode.m_slavesMask |= UINT64_C(1) << slave->m_idx;
-		slave->m_activeMonkeySplitedPlace = &splitedNode;
+		monkeySplitedPlace.m_slavesMask |= UINT64_C(1) << slave->m_idx;
+		slave->m_activeMonkeySplitedPlace = &monkeySplitedPlace;
 		slave->m_isBeingSearched = true;
 		slave->NotifyOne();
 	}
 
 	if (1 < slavesCount || Fake) {
-		splitedNode.m_mutex.unlock();
+		monkeySplitedPlace.m_mutex.unlock();
 		this->m_pOurCarriage->m_pub.m_mutex_.unlock();
 		Monkie::workAsMonkey();	// ワーカースレッド開始
 		assert(!m_isBeingSearched);
 		assert(!m_activePosition);
 		this->m_pOurCarriage->m_pub.m_mutex_.lock();
-		splitedNode.m_mutex.lock();
+		monkeySplitedPlace.m_mutex.lock();
 	}
 
 	m_isBeingSearched = true;
 	--m_numberOfMonkeysRunningTogether;
-	m_activeMonkeySplitedPlace = splitedNode.m_pParentMonkeySplitedPlace;
+	m_activeMonkeySplitedPlace = monkeySplitedPlace.m_pParentMonkeySplitedPlace;
 	m_activePosition = &pos;
-	pos.setNodesSearched(pos.getNodesSearched() + splitedNode.m_nodes);
-	bestMove = splitedNode.m_bestMove;
-	bestSweetness = splitedNode.m_bestSweetness;
+	pos.setNodesSearched(pos.getNodesSearched() + monkeySplitedPlace.m_nodes);
+	bestMove = monkeySplitedPlace.m_bestMove;
+	bestSweetness = monkeySplitedPlace.m_bestSweetness;
 
 	this->m_pOurCarriage->m_pub.m_mutex_.unlock();
-	splitedNode.m_mutex.unlock();
+	monkeySplitedPlace.m_mutex.unlock();
 }
 
 

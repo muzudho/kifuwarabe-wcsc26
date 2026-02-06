@@ -322,10 +322,10 @@ void OurCarriage::CheckTime() {
 		nodes = m_rootPosition.getNodesSearched();
 		for (size_t i = 0; i < m_pub.m_monkies.size(); ++i) {
 			for (int j = 0; j < m_pub.m_monkies[i]->m_numberOfMonkeysRunningTogether; ++j) {
-				MonkeySplitedPlace& splitedNode = m_pub.m_monkies[i]->m_SplitedNodes[j];
-				std::unique_lock<Mutex> spLock(splitedNode.m_mutex);
-				nodes += splitedNode.m_nodes;
-				u64 slvMask = splitedNode.m_slavesMask;
+				MonkeySplitedPlace& monkeySplitedPlace = m_pub.m_monkies[i]->m_MonkeySplitedPlaces[j];
+				std::unique_lock<Mutex> spLock(monkeySplitedPlace.m_mutex);
+				nodes += monkeySplitedPlace.m_nodes;
+				u64 slvMask = monkeySplitedPlace.m_slavesMask;
 				while (slvMask) {
 					const int index = firstOneFromLSB(slvMask);
 					slvMask &= slvMask - 1;

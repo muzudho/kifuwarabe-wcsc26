@@ -81,7 +81,7 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	MonkeySplitedPlace m_SplitedNodes[g_MaxNumberOfMonkeysRunningTogether];
+	MonkeySplitedPlace m_MonkeySplitedPlaces[g_MaxNumberOfMonkeysRunningTogether];
 
 	/// <summary>
 	/// 
