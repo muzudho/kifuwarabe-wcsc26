@@ -273,7 +273,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 	while (
 		!(
 			// スプリット・ポイントかどうかで、取ってくる指し手が変わる☆
-			move = this->getNextMove_10i400j100k(nextmoveEvent)
+			move = this->getNextMove_10i2010j(nextmoveEvent)
 			).IsNone()
 		) {
 
@@ -289,7 +289,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 		bool isContinue = false;
 
 
-		this->explorePlain_10i400j120k_resetSweetness(
+		this->explorePlain_10i2020j_resetSweetness(
 			isContinue,
 			pos,
 			move,
@@ -299,7 +299,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 		if (isContinue) { continue; }
 
 
-		this->explorePlain_10i400j140k_resetState(
+		this->explorePlain_10i2050j_resetState(
 			extension,
 			captureOrPawnPromotion,
 			move,
@@ -309,7 +309,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 			dangerous);
 
 
-		this->explorerPlain_10i400j160k_recursiveSearchA(
+		this->explorerPlain_10i2060j_recursiveSearchA(
 			ourCarriage,
 			givesCheck,
 			pos,
@@ -327,7 +327,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 			newDepth);
 
 
-		this->explorePlain_10i400j180k_isContinue(
+		this->explorePlain_10i2080_isContinue(
 			isContinue,
 			pos,
 			move,
@@ -336,7 +336,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 		if (isContinue) { continue; }
 
 
-		this->explorePlain_10i400j200k_updateCurrentMove(
+		this->explorePlain_10i2090j_updateCurrentMove(
 			isContinue,
 			ourCarriage,
 			captureOrPawnPromotion,
@@ -360,7 +360,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 		if (isContinue) { continue; }
 
 
-		this->explorerPlain_10i400j220k_updateMoveSearched(
+		this->explorerPlain_10i2100j_updateMoveSearched(
 			captureOrPawnPromotion,
 			playedMoveCount,
 			movesSearched,
@@ -370,7 +370,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 		// 一手指す
 
 
-		this->explorePlain_10i500j100k_doMove(
+		this->explorePlain_10i2110j_doMove(
 			pos,
 			move,
 			st,

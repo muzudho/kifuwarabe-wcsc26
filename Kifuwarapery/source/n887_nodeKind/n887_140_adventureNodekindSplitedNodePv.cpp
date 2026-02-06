@@ -297,7 +297,7 @@ split_point_start:
 	while (
 		!(
 			// スプリット・ポイントかどうかで、取ってくる指し手が変わる☆
-			move = this->getNextMove_10i400j100k(nextmoveEvent)
+			move = this->getNextMove_10i2010j(nextmoveEvent)
 			).IsNone()
 		) {
 
@@ -313,7 +313,7 @@ split_point_start:
 		bool isContinue = false;
 
 
-		this->explorePlain_10i400j120k_resetSweetness(
+		this->explorePlain_10i2020j_resetSweetness(
 			isContinue,
 			pos,
 			move,
@@ -323,7 +323,7 @@ split_point_start:
 		if (isContinue) { continue; }
 
 
-		this->explorePlain_10i400j140k_resetState(
+		this->explorePlain_10i2050j_resetState(
 			extension,
 			captureOrPawnPromotion,
 			move,
@@ -333,7 +333,7 @@ split_point_start:
 			dangerous);
 
 
-		this->explorerPlain_10i400j160k_recursiveSearchA(
+		this->explorerPlain_10i2060j_recursiveSearchA(
 			ourCarriage,
 			givesCheck,
 			pos,
@@ -351,7 +351,7 @@ split_point_start:
 			newDepth);
 
 
-		this->explorePlain_10i400j200k_updateCurrentMove(
+		this->explorePlain_10i2090j_updateCurrentMove(
 			isContinue,
 			ourCarriage,
 			captureOrPawnPromotion,
@@ -378,7 +378,7 @@ split_point_start:
 		// 一手指す☆（＾～＾）
 
 
-		this->explorePlain_10i500j100k_doMove(
+		this->explorePlain_10i2110j_doMove(
 			pos,
 			move,
 			st,

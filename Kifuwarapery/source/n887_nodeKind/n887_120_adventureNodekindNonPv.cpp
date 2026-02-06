@@ -315,7 +315,7 @@ iid_start:
 	while (
 		!(
 			// スプリット・ポイントかどうかで、取ってくる指し手が変わる☆
-			move = this->getNextMove_10i400j100k(nextmoveEvent)
+			move = this->getNextMove_10i2010j(nextmoveEvent)
 			).IsNone()
 		) {
 
@@ -331,7 +331,7 @@ iid_start:
 		bool isContinue = false;
 
 
-		this->explorePlain_10i400j120k_resetSweetness(
+		this->explorePlain_10i2020j_resetSweetness(
 			isContinue,
 			pos,
 			move,
@@ -341,7 +341,7 @@ iid_start:
 		if (isContinue) { continue; }
 
 
-		this->explorePlain_10i400j140k_resetState(
+		this->explorePlain_10i2050j_resetState(
 			extension,
 			captureOrPawnPromotion,
 			move,
@@ -351,7 +351,7 @@ iid_start:
 			dangerous);
 
 
-		this->explorerPlain_10i400j160k_recursiveSearchA(
+		this->explorerPlain_10i2060j_recursiveSearchA(
 			ourCarriage,
 			givesCheck,
 			pos,
@@ -370,7 +370,7 @@ iid_start:
 
 
 		// 無駄枝狩り☆（＾▽＾）非PVだけ行う☆！
-		this->explorePlain_10i400j170k_futilityPruning(
+		this->explorePlain_10i2070j_futilityPruning(
 			isContinue,
 			ourCarriage,
 			captureOrPawnPromotion,
@@ -390,7 +390,7 @@ iid_start:
 		if (isContinue) { continue; }
 
 
-		this->explorePlain_10i400j180k_isContinue(
+		this->explorePlain_10i2080_isContinue(
 			isContinue,
 			pos,
 			move,
@@ -399,7 +399,7 @@ iid_start:
 		if (isContinue) { continue; }
 
 
-		this->explorePlain_10i400j200k_updateCurrentMove(
+		this->explorePlain_10i2090j_updateCurrentMove(
 			isContinue,
 			ourCarriage,
 			captureOrPawnPromotion,
@@ -423,7 +423,7 @@ iid_start:
 		if (isContinue) { continue; }
 
 
-		this->explorerPlain_10i400j220k_updateMoveSearched(
+		this->explorerPlain_10i2100j_updateMoveSearched(
 			captureOrPawnPromotion,
 			playedMoveCount,
 			movesSearched,
@@ -433,7 +433,7 @@ iid_start:
 		// 一手指す
 
 
-		this->explorePlain_10i500j100k_doMove(
+		this->explorePlain_10i2110j_doMove(
 			pos,
 			move,
 			st,

@@ -773,7 +773,7 @@ public:
 	/// </summary>
 	/// <param name="mp"></param>
 	/// <returns></returns>
-	virtual inline Move getNextMove_10i400j100k(
+	virtual inline Move getNextMove_10i2010j(
 		NextmoveEvent& mp
 		) const = 0;
 
@@ -787,7 +787,7 @@ public:
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void explorePlain_10i400j120k_resetSweetness(
+	virtual inline void explorePlain_10i2020j_resetSweetness(
 		bool& isContinue,
 		Position& pos,
 		Move& move,
@@ -803,7 +803,7 @@ public:
 	/// <param name="isContinue"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="move"></param>
-	virtual inline void explorePlain_10i400j135k_isRootMoveEnd(
+	virtual inline void explorePlain_10i2030j_isRootMoveEnd(
 		bool& isContinue,
 		const OurCarriage& ourCarriage,
 		const Move& move
@@ -825,7 +825,7 @@ public:
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="moveCount"></param>
-	virtual inline void explorerPlain_10i400j137k_displayInfo(
+	virtual inline void explorerPlain_10i2040j_displayInfo(
 		OurCarriage& ourCarriage,
 		int& moveCount) const
 	{
@@ -850,7 +850,7 @@ public:
 	/// <param name="ci"></param>
 	/// <param name="pos"></param>
 	/// <param name="dangerous"></param>
-	virtual inline void explorePlain_10i400j140k_resetState(
+	virtual inline void explorePlain_10i2050j_resetState(
 		Depth& extension,
 		bool& captureOrPawnPromotion,
 		Move& move,
@@ -884,7 +884,7 @@ public:
 	/// <param name="cutNode"></param>
 	/// <param name="beta"></param>
 	/// <param name="newDepth"></param>
-	virtual inline void explorerPlain_10i400j160k_recursiveSearchA(
+	virtual inline void explorerPlain_10i2060j_recursiveSearchA(
 		OurCarriage& ourCarriage,
 		bool& givesCheck,
 		Position& pos,
@@ -964,7 +964,7 @@ public:
 	/// <param name="newDepth"></param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="beta"></param>
-	virtual inline void explorePlain_10i400j170k_futilityPruning(
+	virtual inline void explorePlain_10i2070j_futilityPruning(
 		bool& isContinue,
 		OurCarriage& ourCarriage,
 		bool& captureOrPawnPromotion,
@@ -1089,7 +1089,7 @@ public:
 	/// <param name="move"></param>
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
-	virtual inline void explorePlain_10i400j180k_isContinue(
+	virtual inline void explorePlain_10i2080_isContinue(
 		bool& isContinue,
 		Position& pos,
 		Move& move,
@@ -1136,7 +1136,7 @@ public:
 	/// <param name="isPVMoveRef"></param>
 	/// <param name="playedMoveCount"></param>
 	/// <param name="movesSearched"></param>
-	virtual inline void explorePlain_10i400j200k_updateCurrentMove(
+	virtual inline void explorePlain_10i2090j_updateCurrentMove(
 		bool& isContinue,
 		OurCarriage& ourCarriage,
 		bool& captureOrPawnPromotion,
@@ -1167,7 +1167,7 @@ public:
 	/// <param name="playedMoveCount"></param>
 	/// <param name="movesSearched"></param>
 	/// <param name="move"></param>
-	virtual inline void explorerPlain_10i400j220k_updateMoveSearched(
+	virtual inline void explorerPlain_10i2100j_updateMoveSearched(
 		bool& captureOrPawnPromotion,
 		int& playedMoveCount,
 		Move movesSearched[64],
@@ -1188,7 +1188,7 @@ public:
 	/// <param name="ci"></param>
 	/// <param name="givesCheck"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void explorePlain_10i500j100k_doMove(
+	virtual inline void explorePlain_10i2110j_doMove(
 		Position& pos,
 		Move& move,
 		StateInfo& st,

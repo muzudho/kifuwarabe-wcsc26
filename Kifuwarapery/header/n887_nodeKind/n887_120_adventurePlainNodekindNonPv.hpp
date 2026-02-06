@@ -240,7 +240,7 @@ public:
 	/// </summary>
 	/// <param name="mp"></param>
 	/// <returns></returns>
-	virtual inline Move getNextMove_10i400j100k(
+	virtual inline Move getNextMove_10i2010j(
 		NextmoveEvent& mp) const override
 	{
 		// 非スプリットポイントの場合
@@ -257,7 +257,7 @@ public:
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void explorePlain_10i400j120k_resetSweetness(
+	virtual inline void explorePlain_10i2020j_resetSweetness(
 		bool& isContinue,
 		Position& pos,
 		Move& move,
@@ -275,7 +275,7 @@ public:
 	/// <param name="isContinue"></param>
 	/// <param name="ourCarriage"></param>
 	/// <param name="move"></param>
-	virtual inline void explorePlain_10i400j135k_isRootMoveEnd(
+	virtual inline void explorePlain_10i2030j_isRootMoveEnd(
 		bool& isContinue,
 		const OurCarriage& ourCarriage,
 		const Move& move
@@ -290,7 +290,7 @@ public:
 	/// </summary>
 	/// <param name="ourCarriage"></param>
 	/// <param name="moveCount"></param>
-	virtual inline void explorerPlain_10i400j137k_displayInfo(
+	virtual inline void explorerPlain_10i2040j_displayInfo(
 		OurCarriage& ourCarriage,
 		int& moveCount
 		) const override {
@@ -364,7 +364,7 @@ public:
 	/// <param name="isPVMoveRef"></param>
 	/// <param name="playedMoveCount"></param>
 	/// <param name="movesSearched"></param>
-	virtual inline void explorePlain_10i400j200k_updateCurrentMove(
+	virtual inline void explorePlain_10i2090j_updateCurrentMove(
 		bool& isContinue,
 		OurCarriage& ourCarriage,
 		bool& captureOrPawnPromotion,
