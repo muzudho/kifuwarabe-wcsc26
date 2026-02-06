@@ -8,7 +8,9 @@ class Position;
 
 
 /// <summary>
-/// 
+///		<pre>
+/// 王手の情報か（＾～＾）？
+///		</pre>
 /// </summary>
 struct CheckInfo {
 
@@ -19,12 +21,18 @@ struct CheckInfo {
 	explicit CheckInfo(const Position&);
 
 	/// <summary>
+	///		<pre>
 	/// discoverd check candidates bitboard
+	/// 
+	///		- 空き王手か何かか（＾～＾）？
+	///		</pre>
 	/// </summary>
 	Bitboard m_dcBB;
 
 	/// <summary>
-	/// 
+	///		<pre>
+	/// どいたら空き王手になる駒か（＾～＾）？
+	///		</pre>
 	/// </summary>
 	Bitboard m_pinned;
 

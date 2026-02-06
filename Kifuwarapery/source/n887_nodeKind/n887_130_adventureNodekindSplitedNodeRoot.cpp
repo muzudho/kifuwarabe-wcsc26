@@ -199,8 +199,8 @@ Sweetness AdventureNodekindSplitedNodeRoot::explorePlain_10i(
 	*/
 
 
-	// 内側の反復深化探索☆？（＾ｑ＾）
 //iid_start:
+	// 内側の反復深化探索☆？（＾ｑ＾）
 	this->explorerPlain_10i1300j_internalIterativeDeepening(
 		depth,
 		ttMove,
@@ -224,11 +224,11 @@ split_point_start:
 		this->getBeta_10i1310j(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
 		);
 
-
+	// 王手の情報か（＾～＾）？
 	const CheckInfo checkInfo(pos);
 
-
-	this->explorePlain_10i1320j_beforeLoopSplitPointStart(
+	// ［スプリット・ポイント］ってのは、［ようこその終了地点］のことかだぜ（＾～＾）？
+	this->explorePlain_10i1320j_atWelcomeEnd(
 		ttMove,
 		depth,
 		sweetness,

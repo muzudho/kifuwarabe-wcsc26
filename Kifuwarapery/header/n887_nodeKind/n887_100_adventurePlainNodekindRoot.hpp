@@ -414,7 +414,9 @@ public:
 
 
 	/// <summary>
-	/// 
+	///		<pre>
+	/// ［スプリット・ポイント］の開始地点
+	///		</pre>
 	/// </summary>
 	/// <param name="ttMove"></param>
 	/// <param name="depth"></param>
@@ -423,7 +425,7 @@ public:
 	/// <param name="singularExtensionNode"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="pTtEntry"></param>
-	virtual inline void explorePlain_10i1320j_beforeLoopSplitPointStart(
+	virtual inline void explorePlain_10i1320j_atWelcomeEnd(
 		Move& ttMove,
 		const Depth depth,
 		Sweetness& sweetness,
