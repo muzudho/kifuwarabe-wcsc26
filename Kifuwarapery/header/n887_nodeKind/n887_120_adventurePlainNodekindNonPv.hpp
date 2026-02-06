@@ -61,7 +61,7 @@ public:
 	/// <param name="threatMove"></param>
 	/// <param name="bestSweetness"></param>
 	/// <param name="excludedMove"></param>
-	virtual inline void explorePlain_10i200j100k_initializeNode(
+	virtual inline void explorePlain_10i1020j_initializeNode(
 		Move& ttMove,
 		Sweetness& ttSweetness,
 		bool& isGotoSplitPointStart,
@@ -85,7 +85,7 @@ public:
 	/// </summary>
 	/// <param name="ppThisThread"></param>
 	/// <param name="pFlashlight"></param>
-	inline void explorePlain_10i200j140k_mapPly(
+	inline void explorePlain_10i1040j_mapPly(
 		Monkie** ppThisThread,
 		const Flashlight* pFlashlight
 		)const override {
@@ -100,7 +100,7 @@ public:
 	/// <param name="ourCarriage"></param>
 	/// <param name="pTtEntry"></param>
 	/// <param name="pos"></param>
-	virtual inline std::unique_ptr<Move> explorePlain_10i200j220k_getTtMove(
+	virtual inline std::unique_ptr<Move> explorePlain_10i1110j_getTtMove(
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
 		Position& pos) const override
@@ -146,7 +146,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="ppTtEntry"></param>
 	/// <param name="posKey"></param>
-	virtual inline void explorerPlain_10i300j100k_internalIterativeDeepening(
+	virtual inline void explorerPlain_10i1300j_internalIterativeDeepening(
 		const Depth depth,
 		Move& ttMove,
 		bool& inCheck,
@@ -198,7 +198,7 @@ public:
 	/// </summary>
 	/// <param name="beta"></param>
 	/// <returns></returns>
-	virtual inline Sweetness getBeta_10i300j150k(
+	virtual inline Sweetness getBeta_10i1310j(
 		Sweetness beta
 		) const override {
 		// 非PVノードの場合☆（＾ｑ＾）
@@ -216,7 +216,7 @@ public:
 	/// <param name="singularExtensionNode"></param>
 	/// <param name="excludedMove"></param>
 	/// <param name="pTtEntry"></param>
-	virtual inline void explorePlain_10i300j200k_beforeLoopSplitPointStart(
+	virtual inline void explorePlain_10i1320j_beforeLoopSplitPointStart(
 		Move& ttMove,
 		const Depth depth,
 		Sweetness& sweetness,

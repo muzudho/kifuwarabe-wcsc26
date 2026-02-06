@@ -79,7 +79,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 
 
 	assert(-SweetnessInfinite <= alpha && alpha < beta && beta <= SweetnessInfinite);
-	this->explorePlain_10i100j100k_assertAtFirst(
+	this->explorePlain_10i1010j_assertAtFirst(
 		alpha,
 		beta
 		);
@@ -125,21 +125,21 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 	bool isGotoSplitPointStart = false;
 
 
-	this->explorePlain_10i200j120k_clearMove(
+	this->explorePlain_10i1030j_clearMove(
 		bestSweetness,
 		&pFlashlight,
 		threatMove,
 		bestMove);
 
 
-	this->explorePlain_10i200j140k_mapPly(
+	this->explorePlain_10i1040j_mapPly(
 		&pHandleMonkey,
 		pFlashlight);
 
 
 	// step2: 千日手による探索打切りの判断
 	//		- maxPly を更新するケースもある。
-	auto p = this->explorePlain_10i200j160k_isStopByRepetetion(
+	auto p = this->explorePlain_10i1080j_isStopByRepetetion(
 		pos,
 		ourCarriage,
 		&pFlashlight);
@@ -148,8 +148,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 	if (isReturnWithSweetness) { return returnSweetness; }
 
 
-	// step3
-	this->explorePlain_10i200j180k_checkAlpha(
+	this->explorePlain_10i1090j_checkAlpha(
 		isReturnWithSweetness,
 		returnSweetness,
 		&pFlashlight,
@@ -162,21 +161,21 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 
 
 	// step4
-	ttSweetness = this->explorePlain_10i200j200k_getTtSweetness(
+	ttSweetness = this->explorePlain_10i1100j_getTtSweetness(
 		excludedMove,
 		&pFlashlight,
 		posKey,
 		pos,
 		&pTtEntry,//セットされる☆
 		ourCarriage);
-	pTtMove = this->explorePlain_10i200j220k_getTtMove(
+	pTtMove = this->explorePlain_10i1110j_getTtMove(
 		ourCarriage,
 		pTtEntry,
 		pos);
 	ttMove = *pTtMove.get();	// コピー作成
 
 
-	this->explorePlain_10i200j240k_killerMove(
+	this->explorePlain_10i1180j_killerMove(
 		ttMove,
 		ttSweetness,
 		isReturnWithSweetness,
@@ -190,7 +189,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 
 
 	// 一手詰めならそのバナナ採用☆（＾～＾）
-	this->explorePlain_10i200j260k_returnIfMateMoveIn1Ply(
+	this->explorePlain_10i1190j_returnIfMateMoveIn1Ply(
 		isReturnWithSweetness,
 		bestMove,
 		returnSweetness,
@@ -206,7 +205,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 
 
 	bool isGotoIidStart = false;//NonPVのとき使う☆
-	this->explorePlain_10i200j280k_evelSweetness(
+	this->explorePlain_10i1200j_evelSweetness(
 		isGotoIidStart,
 		ourCarriage,
 		eval,
@@ -227,7 +226,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 	// 内側の反復深化探索☆？（＾ｑ＾）
 //iid_start:
 	// step10
-	this->explorerPlain_10i300j100k_internalIterativeDeepening(
+	this->explorerPlain_10i1300j_internalIterativeDeepening(
 		depth,
 		ttMove,
 		inCheck,
@@ -247,14 +246,14 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 		depth,
 		ourCarriage.m_history,
 		pFlashlight,
-		this->getBeta_10i300j150k(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
+		this->getBeta_10i1310j(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
 		);
 
 
 	const CheckInfo checkInfo(pos);
 
 
-	this->explorePlain_10i300j200k_beforeLoopSplitPointStart(
+	this->explorePlain_10i1320j_beforeLoopSplitPointStart(
 		ttMove,
 		depth,
 		sweetness,

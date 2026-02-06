@@ -111,7 +111,6 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 	std::unique_ptr<Move> pTtMove;  // 宣言だけ（デフォルトnull）
 
 
-	// step1
 	// initialize node
 	Monkie* pHandleMonkey = pos.getHandleMonkey();	// 局面に対応する猿
 	moveCount = playedMoveCount = 0;
@@ -120,14 +119,14 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 	//bool isGotoSplitPointStart = false;
 
 
-	this->explorePlain_10i200j120k_clearMove(
+	this->explorePlain_10i1030j_clearMove(
 		bestSweetness,
 		&pFlashlight,
 		threatMove,
 		bestMove);
 
 
-	this->explorePlain_10i200j140k_mapPly(
+	this->explorePlain_10i1040j_mapPly(
 		&pHandleMonkey,
 		pFlashlight);
 
@@ -139,14 +138,14 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 	pos.setNodesSearched(pos.getNodesSearched() + 1);
 
 
-	ttSweetness = this->explorePlain_10i200j200k_getTtSweetness(
+	ttSweetness = this->explorePlain_10i1100j_getTtSweetness(
 		excludedMove,
 		&pFlashlight,
 		posKey,
 		pos,
 		&pTtEntry,//セットされる☆
 		ourCarriage);
-	pTtMove = this->explorePlain_10i200j220k_getTtMove(
+	pTtMove = this->explorePlain_10i1110j_getTtMove(
 		ourCarriage,
 		pTtEntry,
 		pos);
@@ -155,7 +154,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 
 
 	bool isGotoIidStart = false;//NonPVのとき使う☆
-	this->explorePlain_10i200j280k_evelSweetness(
+	this->explorePlain_10i1200j_evelSweetness(
 		isGotoIidStart,
 		ourCarriage,
 		eval,
@@ -176,7 +175,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 	// 内側の反復深化探索☆？（＾ｑ＾）
 //iid_start:
 	// step10
-	this->explorerPlain_10i300j100k_internalIterativeDeepening(
+	this->explorerPlain_10i1300j_internalIterativeDeepening(
 		depth,
 		ttMove,
 		inCheck,
@@ -196,14 +195,14 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 		depth,
 		ourCarriage.m_history,
 		pFlashlight,
-		this->getBeta_10i300j150k(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
+		this->getBeta_10i1310j(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
 		);
 
 
 	const CheckInfo checkInfo(pos);
 
 
-	this->explorePlain_10i300j200k_beforeLoopSplitPointStart(
+	this->explorePlain_10i1320j_beforeLoopSplitPointStart(
 		ttMove,
 		depth,
 		sweetness,

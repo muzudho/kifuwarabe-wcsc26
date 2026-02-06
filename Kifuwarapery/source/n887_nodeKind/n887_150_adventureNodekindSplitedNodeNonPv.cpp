@@ -84,7 +84,7 @@ Sweetness AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 
 
 	assert(-SweetnessInfinite <= alpha && alpha < beta && beta <= SweetnessInfinite);
-	this->explorePlain_10i100j100k_assertAtFirst(
+	this->explorePlain_10i1010j_assertAtFirst(
 		alpha,
 		beta);
 	assert(Depth0 < depth);
@@ -125,7 +125,7 @@ Sweetness AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 	inCheck = pos.inCheck();
 
 	bool isGotoSplitPointStart = false;
-	this->explorePlain_10i200j100k_initializeNode(
+	this->explorePlain_10i1020j_initializeNode(
 		ttMove,
 		ttSweetness,
 		isGotoSplitPointStart,
@@ -142,7 +142,7 @@ Sweetness AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 	if (isGotoSplitPointStart) { goto split_point_start; }
 
 
-	this->explorePlain_10i200j120k_clearMove(
+	this->explorePlain_10i1030j_clearMove(
 		bestSweetness,
 		&pFlashlight,
 		threatMove,
@@ -151,7 +151,7 @@ Sweetness AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 
 	// step2: 千日手による探索打切りの判断
 	{
-		auto p = this->explorePlain_10i200j160k_isStopByRepetetion(
+		auto p = this->explorePlain_10i1080j_isStopByRepetetion(
 			pos,
 			ourCarriage,
 			&pFlashlight);
@@ -164,7 +164,7 @@ Sweetness AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 	Sweetness returnSweetness = SweetnessNone;
 
 
-	this->explorePlain_10i200j180k_checkAlpha(
+	this->explorePlain_10i1090j_checkAlpha(
 		isReturnWithSweetness,
 		returnSweetness,
 		&pFlashlight,
@@ -176,21 +176,21 @@ Sweetness AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 	pos.setNodesSearched(pos.getNodesSearched() + 1);
 
 
-	ttSweetness = this->explorePlain_10i200j200k_getTtSweetness(
+	ttSweetness = this->explorePlain_10i1100j_getTtSweetness(
 		excludedMove,
 		&pFlashlight,
 		posKey,
 		pos,
 		&pTtEntry,//セットされる☆
 		ourCarriage);
-	pTtMove = this->explorePlain_10i200j220k_getTtMove(
+	pTtMove = this->explorePlain_10i1110j_getTtMove(
 		ourCarriage,
 		pTtEntry,
 		pos);
 	ttMove = *pTtMove.get();	// コピー作成
 
 
-	this->explorePlain_10i200j240k_killerMove(
+	this->explorePlain_10i1180j_killerMove(
 		ttMove,
 		ttSweetness,
 		isReturnWithSweetness,
@@ -204,7 +204,7 @@ Sweetness AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 
 
 	// 一手詰めならそのバナナ採用☆（＾～＾）
-	this->explorePlain_10i200j260k_returnIfMateMoveIn1Ply(
+	this->explorePlain_10i1190j_returnIfMateMoveIn1Ply(
 		isReturnWithSweetness,
 		bestMove,
 		returnSweetness,
@@ -220,7 +220,7 @@ Sweetness AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 
 
 	bool isGotoIidStart = false;//NonPVのとき使う☆
-	this->explorePlain_10i200j280k_evelSweetness(
+	this->explorePlain_10i1200j_evelSweetness(
 		isGotoIidStart,
 		ourCarriage,
 		eval,
@@ -234,7 +234,7 @@ Sweetness AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 	if (isGotoIidStart) { goto iid_start; }
 
 
-	this->explorePlain_10i200j300k_nonPV(
+	this->explorePlain_10i1260j_nonPV(
 		isReturnWithSweetness,
 		returnSweetness,
 		ourCarriage,
@@ -247,7 +247,7 @@ Sweetness AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 	if (isReturnWithSweetness) { return returnSweetness; }
 
 
-	this->explorePlain_10i200j320k(
+	this->explorePlain_10i1270j_nonPV(
 		isReturnWithSweetness,
 		returnSweetness,
 		&pFlashlight,
@@ -257,7 +257,7 @@ Sweetness AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 	if (isReturnWithSweetness) { return returnSweetness; }
 
 
-	this->explorePlain_10i200j340k_nonPV(
+	this->explorePlain_10i1280j_nonPV(
 		isReturnWithSweetness,
 		returnSweetness,
 		ourCarriage,
@@ -273,7 +273,7 @@ Sweetness AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 	if (isReturnWithSweetness) { return returnSweetness; }
 
 
-	this->explorePlain_10i200j360k(
+	this->explorePlain_10i1290j_nonPV(
 		isReturnWithSweetness,
 		ourCarriage,
 		depth,
@@ -290,7 +290,7 @@ Sweetness AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 
 	// 内側の反復深化探索☆？（＾ｑ＾）
 iid_start:
-	this->explorerPlain_10i300j100k_internalIterativeDeepening(
+	this->explorerPlain_10i1300j_internalIterativeDeepening(
 		depth,
 		ttMove,
 		inCheck,
@@ -310,14 +310,14 @@ split_point_start:
 		depth,
 		ourCarriage.m_history,
 		pFlashlight,
-		this->getBeta_10i300j150k(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
+		this->getBeta_10i1310j(beta)//PVノードか、そうでないかで初期値を変えるぜ☆（＾ｑ＾）
 		);
 
 
 	const CheckInfo checkInfo(pos);
 
 
-	this->explorePlain_10i300j200k_beforeLoopSplitPointStart(
+	this->explorePlain_10i1320j_beforeLoopSplitPointStart(
 		ttMove,
 		depth,
 		sweetness,
