@@ -145,7 +145,7 @@ public:
 	/// </summary>
 	/// <param name="master"></param>
 	/// <returns></returns>
-	Monkie* GetAvailableSlave(Monkie* master) const;
+	Monkie* GetBoredMonkey(Monkie* master) const;
 
 
 	/// <summary>

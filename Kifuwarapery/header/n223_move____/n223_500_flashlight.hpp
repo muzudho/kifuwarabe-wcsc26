@@ -9,7 +9,7 @@
 /// <summary>
 /// Flashlight（ＳｅａｒｃｈＳｔａｃｋ）,NextmoveEvent(ＭｏｖｅＰｉｃｋｅｒ),ＳｐｌｉｔＰｏｉｎｔ が三つ巴になっている☆（＾ｑ＾）
 /// </summary>
-struct SplitedNode;
+struct MonkeySplitedPlace;
 
 
 /// <summary>
@@ -28,7 +28,7 @@ public:
 	/// <summary>
 	/// 分岐ノードか☆
 	/// </summary>
-	SplitedNode*	m_splitedNode;
+	MonkeySplitedPlace*	m_splitedNode;
 
 	/// <summary>
 	/// 手数か☆？

@@ -18,7 +18,9 @@
 
 
 /// <summary>
-/// ワーカースレッド開始
+///		<pre>
+/// スレッド・オブジェクトを作成するだけ
+///		</pre>
 /// </summary>
 /// <typeparam name="T"></typeparam>
 /// <param name="s"></param>
@@ -120,11 +122,15 @@ void MonkiesPub::ReadUSIOptions(OurCarriage* searcher) {
 
 
 /// <summary>
+///		<pre>
+/// ヒマしてる猿を取得する（＾～＾）？
 /// 
+///		- 旧名： `GetAvailableSlave`
+///		</pre>
 /// </summary>
 /// <param name="master"></param>
 /// <returns></returns>
-Monkie* MonkiesPub::GetAvailableSlave(Monkie* master) const {
+Monkie* MonkiesPub::GetBoredMonkey(Monkie* master) const {
 	for (auto elem : (*this).m_monkies) {
 		if (elem->SetLastSplitNodeSlavesMask(master)) {
 			return elem;

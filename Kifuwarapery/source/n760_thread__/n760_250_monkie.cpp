@@ -20,7 +20,7 @@ Monkie::Monkie(OurCarriage* ourCarriage) /*: ＳｐｌｉｔＰｏｉｎｔｓ()
 	this->m_pOurCarriage = ourCarriage;
 	this->m_isEndOfSearch = false;
 	this->m_isBeingSearched = false;
-	this->m_splitedNodesSize = 0;
+	this->m_numberOfMonkeysRunningTogether = 0;
 	this->m_maxPly = 0;
 	this->m_activeSplitedNode = nullptr;
 	this->m_activePosition = nullptr;
@@ -49,7 +49,7 @@ bool Monkie::SetLastSplitNodeSlavesMask(Monkie* master) const {
 	if (m_isBeingSearched) { return false; }
 
 	// 分岐ノードの数。ローカルコピーし、次の瞬間に値が変わらないようにする。
-	const int splitNodeCount = m_splitedNodesSize;
+	const int splitNodeCount = m_numberOfMonkeysRunningTogether;
 
 	// 分岐ノードが０ではなく、最後の分岐ノードのスレーブ・ビットフィールドに 1 を立てる。
 	return !splitNodeCount || (m_SplitedNodes[splitNodeCount - 1].m_slavesMask & (UINT64_C(1) << master->m_idx));
@@ -70,7 +70,7 @@ void Monkie::NotifyOne() {
 /// </summary>
 /// <returns></returns>
 bool Monkie::IsUselessNode() const {
-	for (SplitedNode* sp = m_activeSplitedNode; sp != nullptr; sp = sp->m_pParentSplitedNode) {
+	for (MonkeySplitedPlace* sp = m_activeSplitedNode; sp != nullptr; sp = sp->m_pParentSplitedNode) {
 		if (sp->m_isUselessNode) { return true; }
 	}
 	return false;
@@ -124,10 +124,10 @@ void Monkie::ForkNewMonkey(
 	assert(this->m_pOurCarriage->m_pub.GetMinSplitDepth() <= depth);
 
 	assert(m_isBeingSearched);
-	assert(m_splitedNodesSize < g_MaxSplitedNodesPerThread);
+	assert(m_numberOfMonkeysRunningTogether < g_MaxNumberOfMonkeysRunningTogether);
 
 	// 個定数のスプリット・ポイント☆（＾ｑ＾）
-	SplitedNode& splitedNode = m_SplitedNodes[m_splitedNodesSize];
+	MonkeySplitedPlace& splitedNode = m_SplitedNodes[m_numberOfMonkeysRunningTogether];
 
 	splitedNode.m_masterThread = this;
 	splitedNode.m_pParentSplitedNode = m_activeSplitedNode;
@@ -150,7 +150,7 @@ void Monkie::ForkNewMonkey(
 	this->m_pOurCarriage->m_pub.m_mutex_.lock();
 	splitedNode.m_mutex.lock();
 
-	++m_splitedNodesSize;
+	++m_numberOfMonkeysRunningTogether;
 	m_activeSplitedNode = &splitedNode;
 	m_activePosition = nullptr;
 
@@ -158,7 +158,7 @@ void Monkie::ForkNewMonkey(
 	size_t slavesCount = 1;
 	Monkie* slave;
 
-	while ((slave = this->m_pOurCarriage->m_pub.GetAvailableSlave(this)) != nullptr
+	while ((slave = this->m_pOurCarriage->m_pub.GetBoredMonkey(this)) != nullptr
 		&& ++slavesCount <= this->m_pOurCarriage->m_pub.m_maxThreadsPerSplitedNode_ && !Fake)
 	{
 		splitedNode.m_slavesMask |= UINT64_C(1) << slave->m_idx;
@@ -178,7 +178,7 @@ void Monkie::ForkNewMonkey(
 	}
 
 	m_isBeingSearched = true;
-	--m_splitedNodesSize;
+	--m_numberOfMonkeysRunningTogether;
 	m_activeSplitedNode = splitedNode.m_pParentSplitedNode;
 	m_activePosition = &pos;
 	pos.setNodesSearched(pos.getNodesSearched() + splitedNode.m_nodes);

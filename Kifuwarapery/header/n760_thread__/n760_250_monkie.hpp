@@ -16,9 +16,12 @@ class OurCarriage;
 
 
 /// <summary>
-/// 
+///		<pre>
+/// ［一緒に走る猿の最大数］
+///		- 旧名： スレッド毎のスプリット・ポイントの最大数
+///		</pre>
 /// </summary>
-const int g_MaxSplitedNodesPerThread = 8;
+const int g_MaxNumberOfMonkeysRunningTogether = 8;
 
 
 /// <summary>
@@ -78,7 +81,7 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	SplitedNode m_SplitedNodes[g_MaxSplitedNodesPerThread];
+	MonkeySplitedPlace m_SplitedNodes[g_MaxNumberOfMonkeysRunningTogether];
 
 	/// <summary>
 	/// 
@@ -113,12 +116,12 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	SplitedNode* volatile m_activeSplitedNode;
+	MonkeySplitedPlace* volatile m_activeSplitedNode;
 
 	/// <summary>
 	/// 
 	/// </summary>
-	volatile int m_splitedNodesSize;
+	volatile int m_numberOfMonkeysRunningTogether;
 
 	/// <summary>
 	/// わたしたちの馬車

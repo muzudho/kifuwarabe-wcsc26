@@ -13,7 +13,7 @@ const SwordRoot g_SWORD_ROOT;
 /// <param name="pos"></param>
 /// <param name="pFlashlight"></param>
 void SwordRoot::startSearch_asSplitedNode(
-	SplitedNode& ownerSplitedNode,
+	MonkeySplitedPlace& ownerSplitedNode,
 	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight) const

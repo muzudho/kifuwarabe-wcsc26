@@ -13,7 +13,7 @@ const SwordNonPv g_SWORD_NON_PV;
 /// <param name="pos"></param>
 /// <param name="pFlashlight"></param>
 void SwordNonPv::startSearch_asSplitedNode(
-	SplitedNode& ownerSplitedNode, 
+	MonkeySplitedPlace& ownerSplitedNode, 
 	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight

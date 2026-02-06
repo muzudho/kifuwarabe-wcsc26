@@ -88,7 +88,7 @@ public:
 		int& playedMoveCount,
 		bool& inCheck,
 		Position& pos,
-		SplitedNode** ppSplitedNode,
+		MonkeySplitedPlace** ppSplitedNode,
 		Flashlight** ppFlashlight,
 		Move& bestMove,
 		Move& threatMove,
@@ -793,7 +793,7 @@ public:
 		Move& move,
 		const CheckInfo& ci,
 		int& moveCount,
-		SplitedNode** ppSplitedNode
+		MonkeySplitedPlace** ppSplitedNode
 		) const = 0;
 
 
@@ -977,7 +977,7 @@ public:
 		int& moveCount,
 		Move& threatMove,
 		Position& pos,
-		SplitedNode** ppSplitedNode,
+		MonkeySplitedPlace** ppSplitedNode,
 		Depth& newDepth,
 		Flashlight** ppFlashlight,
 		Sweetness& beta) const
@@ -1058,7 +1058,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestSweetness"></param>
 	virtual inline void lockAndUpdateBestSweetness_10i400j170k200L(
-		SplitedNode** ppSplitedNode,
+		MonkeySplitedPlace** ppSplitedNode,
 		Sweetness& bestSweetness
 	) const {
 
@@ -1074,7 +1074,7 @@ public:
 	/// </summary>
 	/// <param name="ppSplitedNode"></param>
 	virtual inline void lock_10i400j170k300L(
-		SplitedNode** ppSplitedNode
+		MonkeySplitedPlace** ppSplitedNode
 		) const
 	{
 		(*ppSplitedNode)->m_mutex.lock();
@@ -1149,7 +1149,7 @@ public:
 		int& moveCount,
 		Move& threatMove,
 		Position& pos,
-		SplitedNode** ppSplitedNode,
+		MonkeySplitedPlace** ppSplitedNode,
 		Depth& newDepth,
 		Flashlight** ppFlashlight,
 		Sweetness& beta,
@@ -1238,7 +1238,7 @@ public:
 		const bool cutNode,
 		Depth& newDepth,
 		Sweetness& alpha,
-		SplitedNode** ppSplitedNode,
+		MonkeySplitedPlace** ppSplitedNode,
 		Sweetness& sweetness,
 		Position& pos,
 		bool& doFullDepthSearch
@@ -1301,7 +1301,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	virtual inline void updateAlpha_10i500j500k200L(
 		Sweetness& alpha,
-		SplitedNode** ppSplitedNode
+		MonkeySplitedPlace** ppSplitedNode
 		) const {
 
 		alpha = (*ppSplitedNode)->m_alpha;
@@ -1317,7 +1317,7 @@ public:
 	virtual inline void explorePlain_10i3010j_updateAlpha(
 		bool& doFullDepthSearch,
 		Sweetness& alpha,
-		SplitedNode** ppSplitedNode) const
+		MonkeySplitedPlace** ppSplitedNode) const
 	{
 		// full depth search
 		// PVS
@@ -1439,7 +1439,7 @@ public:
 	/// <param name="bestSweetness"></param>
 	/// <param name="alpha"></param>
 	virtual inline void explorePlain_10i3050j_getAlpha(
-		SplitedNode** ppSplitedNode,
+		MonkeySplitedPlace** ppSplitedNode,
 		Sweetness& bestSweetness,
 		Sweetness& alpha
 		) const
@@ -1518,7 +1518,7 @@ public:
 		Sweetness& sweetness,
 		Position& pos,
 		Sweetness& bestSweetness,
-		SplitedNode** ppSplitedNode,
+		MonkeySplitedPlace** ppSplitedNode,
 		Move& bestMove,
 		Sweetness& beta) const = 0;
 
@@ -1540,7 +1540,7 @@ public:
 	/// <param name="moveCount"></param>
 	/// <param name="mp"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void explorePlain_10i3080j_forkNewMonkey(
+	virtual inline void explorePlain_10i3080j_forkNewMonkeyIfPossible(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		const Depth depth,

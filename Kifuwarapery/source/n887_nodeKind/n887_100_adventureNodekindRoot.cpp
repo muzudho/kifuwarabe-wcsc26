@@ -86,7 +86,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 	Move movesSearched[64];
 	StateInfo st;
 	const TTEntry* pTtEntry = nullptr;//(^q^)トランスポジション・テーブル・エントリー☆？
-	SplitedNode* pSplitedNode = nullptr;//(^q^)
+	MonkeySplitedPlace* pSplitedNode = nullptr;//(^q^)
 	Key posKey;
 	Move move;
 	Move excludedMove;
@@ -201,7 +201,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 	// 王手の情報か（＾～＾）？
 	const CheckInfo checkInfo(pos);
 
-	// ［スプリット・ポイント］ってのは、［ようこその終了地点］のことかだぜ（＾～＾）？
+	// ［ようこその終了地点］（＾～＾）
 	this->explorePlain_10i1320j_atWelcomeEnd(
 		ttMove,
 		depth,
@@ -426,8 +426,8 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 			beta);
 		if (isBreak) { break; }
 
-
-		this->explorePlain_10i3080j_forkNewMonkey(
+		// ここで、（ヒマしてる猿がいるなら）別の枝を探索させる（＾～＾）？
+		this->explorePlain_10i3080j_forkNewMonkeyIfPossible(
 			isBreak,
 			ourCarriage,
 			depth,

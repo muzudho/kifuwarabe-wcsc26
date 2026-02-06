@@ -95,7 +95,7 @@ Sweetness AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 	Move movesSearched[64];
 	StateInfo st;
 	const TTEntry* pTtEntry = nullptr;//(^q^)トランスポジション・テーブル・エントリー☆？
-	SplitedNode* pSplitedNode = nullptr;//(^q^)
+	MonkeySplitedPlace* pSplitedNode = nullptr;//(^q^)
 	Key posKey;
 	Move move;
 	Move excludedMove;
@@ -320,7 +320,7 @@ split_point_start:
 	// 王手の情報か（＾～＾）？
 	const CheckInfo checkInfo(pos);
 
-	// ［スプリット・ポイント］ってのは、［ようこその終了地点］のことかだぜ（＾～＾）？
+	// ［ようこその終了地点］（＾～＾）
 	this->explorePlain_10i1320j_atWelcomeEnd(
 		ttMove,
 		depth,

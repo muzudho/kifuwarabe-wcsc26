@@ -10,7 +10,7 @@
 
 
 // PvNode = true
-// SplitedNode = true
+// MonkeySplitedPlace = true
 // RootNode = false
 
 /// <summary>
@@ -66,7 +66,7 @@ public:
 		int& playedMoveCount,
 		bool& inCheck,
 		Position& pos,
-		SplitedNode** ppSplitedNode,
+		MonkeySplitedPlace** ppSplitedNode,
 		Flashlight** ppFlashlight,
 		Move& bestMove,
 		Move& threatMove,
@@ -369,7 +369,7 @@ public:
 		Move& move,
 		const CheckInfo& ci,
 		int& moveCount,
-		SplitedNode** ppSplitedNode
+		MonkeySplitedPlace** ppSplitedNode
 	) const override {
 		// DoStep11c
 		if (!
@@ -451,7 +451,7 @@ public:
 		int& moveCount,
 		Move& threatMove,
 		Position& pos,
-		SplitedNode** ppSplitedNode,
+		MonkeySplitedPlace** ppSplitedNode,
 		Depth& newDepth,
 		Flashlight** ppFlashlight,
 		Sweetness& beta
@@ -534,7 +534,7 @@ public:
 		int& moveCount,
 		Move& threatMove,
 		Position& pos,
-		SplitedNode** ppSplitedNode,
+		MonkeySplitedPlace** ppSplitedNode,
 		Depth& newDepth,
 		Flashlight** ppFlashlight,
 		Sweetness& beta,
@@ -646,7 +646,7 @@ public:
 		Sweetness& sweetness,
 		Position& pos,
 		Sweetness& bestSweetness,
-		SplitedNode** ppSplitedNode,
+		MonkeySplitedPlace** ppSplitedNode,
 		Move& bestMove,
 		Sweetness& beta) const override
 	{
@@ -688,7 +688,7 @@ public:
 	/// <param name="moveCount"></param>
 	/// <param name="mp"></param>
 	/// <param name="cutNode"></param>
-	inline void explorePlain_10i3080j_forkNewMonkey(
+	inline void explorePlain_10i3080j_forkNewMonkeyIfPossible(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		const Depth depth,

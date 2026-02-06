@@ -321,8 +321,8 @@ void OurCarriage::CheckTime() {
 
 		nodes = m_rootPosition.getNodesSearched();
 		for (size_t i = 0; i < m_pub.m_monkies.size(); ++i) {
-			for (int j = 0; j < m_pub.m_monkies[i]->m_splitedNodesSize; ++j) {
-				SplitedNode& splitedNode = m_pub.m_monkies[i]->m_SplitedNodes[j];
+			for (int j = 0; j < m_pub.m_monkies[i]->m_numberOfMonkeysRunningTogether; ++j) {
+				MonkeySplitedPlace& splitedNode = m_pub.m_monkies[i]->m_SplitedNodes[j];
 				std::unique_lock<Mutex> spLock(splitedNode.m_mutex);
 				nodes += splitedNode.m_nodes;
 				u64 slvMask = splitedNode.m_slavesMask;
@@ -370,7 +370,7 @@ void OurCarriage::CheckTime() {
 /// ワーカースレッド開始
 /// </summary>
 void Monkie::workAsMonkey() {
-	SplitedNode* thisSp = m_splitedNodesSize ? m_activeSplitedNode : nullptr;
+	MonkeySplitedPlace* thisSp = m_numberOfMonkeysRunningTogether ? m_activeSplitedNode : nullptr;
 	assert(!thisSp || (thisSp->m_masterThread == this && m_isBeingSearched));
 
 	while (true) {
@@ -396,7 +396,7 @@ void Monkie::workAsMonkey() {
 
 			this->m_pOurCarriage->m_pub.m_mutex_.lock();
 			assert(m_isBeingSearched);
-			SplitedNode* pSplitedNode = m_activeSplitedNode;
+			MonkeySplitedPlace* pSplitedNode = m_activeSplitedNode;
 			this->m_pOurCarriage->m_pub.m_mutex_.unlock();
 
 			Flashlight ss[g_maxPlyPlus2];

@@ -28,7 +28,7 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="pFlashlight"></param>
 	virtual void startSearch_asSplitedNode(
-		SplitedNode& ownerSplitedNode,
+		MonkeySplitedPlace& ownerSplitedNode,
 		OurCarriage& ourCarriage,
 		Position& pos,
 		Flashlight* pFlashlight

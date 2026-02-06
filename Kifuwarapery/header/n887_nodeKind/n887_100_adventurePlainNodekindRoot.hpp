@@ -14,7 +14,7 @@
 
 
 // PvNode = true
-// SplitedNode = false
+// MonkeySplitedPlace = false
 // IsRootNode = true
 
 /// <summary>
@@ -86,7 +86,7 @@ public:
 		int& playedMoveCount,
 		bool& inCheck,
 		Position& pos,
-		SplitedNode** ppSplitedNode,
+		MonkeySplitedPlace** ppSplitedNode,
 		Flashlight** ppFlashlight,
 		Move& bestMove,
 		Move& threatMove,
@@ -468,7 +468,7 @@ public:
 		Move& move,
 		const CheckInfo& ci,
 		int& moveCount,
-		SplitedNode** ppSplitedNode
+		MonkeySplitedPlace** ppSplitedNode
 		) const override {
 			++moveCount;
 	}
@@ -506,7 +506,7 @@ public:
 		int& moveCount,
 		Move& threatMove,
 		Position& pos,
-		SplitedNode** ppSplitedNode,
+		MonkeySplitedPlace** ppSplitedNode,
 		Depth& newDepth,
 		Flashlight** ppFlashlight,
 		Sweetness& beta
@@ -538,7 +538,7 @@ public:
 	/// </summary>
 	/// <param name="ppSplitedNode"></param>
 	virtual inline void lock_10i400j170k300L(
-		SplitedNode** ppSplitedNode
+		MonkeySplitedPlace** ppSplitedNode
 		) const override
 	{
 		// 非スプリット・ポイントではスルー☆！（＾ｑ＾）
@@ -551,7 +551,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestSweetness"></param>
 	virtual inline void lockAndUpdateBestSweetness_10i400j170k200L(
-		SplitedNode** ppSplitedNode,
+		MonkeySplitedPlace** ppSplitedNode,
 		Sweetness& bestSweetness
 		) const override {
 		// 非スプリット・ポイントではスルー☆！（＾ｑ＾）
@@ -614,7 +614,7 @@ public:
 		int& moveCount,
 		Move& threatMove,
 		Position& pos,
-		SplitedNode** ppSplitedNode,
+		MonkeySplitedPlace** ppSplitedNode,
 		Depth& newDepth,
 		Flashlight** ppFlashlight,
 		Sweetness& beta,
@@ -638,7 +638,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	virtual inline void updateAlpha_10i500j500k200L(
 		Sweetness& alpha,
-		SplitedNode** ppSplitedNode
+		MonkeySplitedPlace** ppSplitedNode
 		) const override {
 
 		// 非スプリットノードではスルー☆！（＾ｑ＾）
@@ -672,7 +672,7 @@ public:
 	virtual inline void explorePlain_10i3010j_updateAlpha(
 		bool& doFullDepthSearch,
 		Sweetness& alpha,
-		SplitedNode** ppSplitedNode
+		MonkeySplitedPlace** ppSplitedNode
 		)const override {
 		// 非スプリットノードはスルー☆！（＾ｑ＾）
 		//UNREACHABLE;
@@ -701,7 +701,7 @@ public:
 	/// <param name="bestSweetness"></param>
 	/// <param name="alpha"></param>
 	virtual inline void explorePlain_10i3050j_getAlpha(
-		SplitedNode** ppSplitedNode,
+		MonkeySplitedPlace** ppSplitedNode,
 		Sweetness& bestSweetness,
 		Sweetness& alpha
 		)const override {
@@ -732,7 +732,7 @@ public:
 		Sweetness& sweetness,
 		Position& pos,
 		Sweetness& bestSweetness,
-		SplitedNode** ppSplitedNode,
+		MonkeySplitedPlace** ppSplitedNode,
 		Move& bestMove,
 		Sweetness& beta
 		)const override {
@@ -773,7 +773,7 @@ public:
 	/// <param name="moveCount"></param>
 	/// <param name="mp"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void explorePlain_10i3080j_forkNewMonkey(
+	virtual inline void explorePlain_10i3080j_forkNewMonkeyIfPossible(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		const Depth depth,
@@ -791,11 +791,14 @@ public:
 	{
 
 		if (
+			// ある程度の深さになってから（＾～＾）
 			ourCarriage.m_pub.GetMinSplitDepth() <= depth
 			&&
-			ourCarriage.m_pub.GetAvailableSlave(*ppThisThread)
+			// ヒマしてる猿のポインターがあるか（＾～＾）？
+			ourCarriage.m_pub.GetBoredMonkey(*ppThisThread)
 			&&
-			(*ppThisThread)->m_splitedNodesSize < g_MaxSplitedNodesPerThread)
+			// ［一緒に走る猿の数］が上限に達してなければ（＾～＾）
+			(*ppThisThread)->m_numberOfMonkeysRunningTogether < g_MaxNumberOfMonkeysRunningTogether)
 		{
 			assert(bestSweetness < beta);
 			(*ppThisThread)->ForkNewMonkey<OurCarriage::FakeSplit>(

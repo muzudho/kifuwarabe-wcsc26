@@ -17,11 +17,13 @@ class SwordAbstract;
 
 /// <summary>
 ///		<pre>
-/// 元の名前は ＳｐｌｉｔＰｏｉｎｔ☆
-/// ツリーノードの、分岐しているところだろうか☆（＾ｑ＾）？
+/// スプリット・ポイント
+/// 猿たちが分かれたところ☆（＾ｑ＾）？
+/// 
+///		- 旧名： `ＳplitPoint`
 ///		</pre>
 /// </summary>
-struct SplitedNode {
+struct MonkeySplitedPlace {
 
 
 	// ========================================
@@ -89,7 +91,7 @@ struct SplitedNode {
 	/// <summary>
 	/// 
 	/// </summary>
-	SplitedNode*		m_pParentSplitedNode;
+	MonkeySplitedPlace*		m_pParentSplitedNode;
 
 	/// <summary>
 	/// 
