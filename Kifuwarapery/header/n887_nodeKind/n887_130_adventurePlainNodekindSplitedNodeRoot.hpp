@@ -686,7 +686,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestMove"></param>
 	/// <param name="beta"></param>
-	virtual inline void explorePlain_10i700j120k_getBestUpdateAlpha(
+	virtual inline void explorePlain_10i3070j_getBestUpdateAlpha(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		Move& move,
@@ -739,7 +739,7 @@ public:
 	/// <param name="moveCount"></param>
 	/// <param name="mp"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void explorePlain_10i700j140k_forkNewMonkey(
+	virtual inline void explorePlain_10i3080j_forkNewMonkey(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		const Depth depth,
@@ -763,7 +763,7 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	virtual inline bool isReturnBeforeLastProcess_10i800j100k() const override {
+	virtual inline bool isReturnBeforeLastProcess_10i4010j() const override {
 		// スプリット・ポイントは　ステップ２０を実行する前に途中抜けするぜ☆（＾ｑ＾）
 		return true;
 	}
@@ -786,7 +786,7 @@ public:
 	/// <param name="inCheck"></param>
 	/// <param name="pos"></param>
 	/// <param name="movesSearched"></param>
-	inline void explorePlain_10i800j200k_backwardProcess(
+	inline void explorePlain_10i4020j_backwardProcess(
 		int& moveCount,
 		Move& excludedMove,
 		OurCarriage& ourCarriage,

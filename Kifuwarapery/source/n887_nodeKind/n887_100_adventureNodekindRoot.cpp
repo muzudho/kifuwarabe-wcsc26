@@ -339,7 +339,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 		// ----------------------------------------
 
 
-		this->explorePlain_10i500j500k_recursiveSearch(
+		this->explorePlain_10i2999j_recursiveSearch(
 			ourCarriage,
 			depth,
 			isPVMove,
@@ -362,7 +362,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 		// ----------------------------------------
 
 
-		this->explorePlain_10i600j120k_getSweetnessNonPV(
+		this->explorePlain_10i3020j_getSweetnessNonPV(
 			ourCarriage,
 			doFullDepthSearch,
 			sweetness,
@@ -372,7 +372,8 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 			&pFlashlight,
 			alpha,
 			cutNode);
-		this->explorerPlain_10i600j140k_getSweetness(
+
+		this->explorerPlain_10i3030j_getSweetness(
 			ourCarriage,
 			isPVMove,
 			alpha,
@@ -387,7 +388,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 		// 一手戻す
 
 
-		this->explorerPlain_10i600j160k_undoMove(
+		this->explorerPlain_10i3040j_undoMove(
 			pos,
 			move);
 
@@ -401,7 +402,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 		if (ourCarriage.m_signals.m_stop || pHandleMonkey->IsUselessNode()) { return sweetness; }
 
 
-		this->explorerPlain_10i700j115k_bestMovePlyChanges(
+		this->explorerPlain_10i3060j_bestMovePlyChanges(
 			ourCarriage,
 			move,
 			isPVMove,
@@ -411,7 +412,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 
 
 		bool isBreak = false;
-		this->explorePlain_10i700j120k_getBestUpdateAlpha(
+		this->explorePlain_10i3070j_getBestUpdateAlpha(
 			isBreak,
 			ourCarriage,
 			move,
@@ -426,7 +427,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 		if (isBreak) { break; }
 
 
-		this->explorePlain_10i700j140k_forkNewMonkey(
+		this->explorePlain_10i3080j_forkNewMonkey(
 			isBreak,
 			ourCarriage,
 			depth,
@@ -457,11 +458,11 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 	// ----------------------------------------
 
 
-	if (this->isReturnBeforeLastProcess_10i800j100k()) { return bestSweetness; }
+	if (this->isReturnBeforeLastProcess_10i4010j()) { return bestSweetness; }
 
 
 	// あれば、ここで帰り際の処理（＾～＾）
-	this->explorePlain_10i800j200k_backwardProcess(
+	this->explorePlain_10i4020j_backwardProcess(
 		moveCount,
 		excludedMove,
 		ourCarriage,

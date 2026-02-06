@@ -387,7 +387,15 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 		// ----------------------------------------
 
 
-		this->explorePlain_10i600j120k_getSweetnessNonPV(
+		// 再帰探索しない（＾～＾）？
+
+
+		// ----------------------------------------
+		// ３．　ただいま　開始
+		// ----------------------------------------
+
+
+		this->explorePlain_10i3020j_getSweetnessNonPV(
 			ourCarriage,
 			doFullDepthSearch,
 			sweetness,
@@ -398,13 +406,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 			alpha,
 			cutNode);
 
-
-		// ----------------------------------------
-		// ３．　ただいま　開始
-		// ----------------------------------------
-
-
-		this->explorerPlain_10i600j140k_getSweetness(
+		this->explorerPlain_10i3030j_getSweetness(
 			ourCarriage,
 			isPVMove,
 			alpha,
@@ -419,7 +421,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 		// 一手戻す
 
 
-		this->explorerPlain_10i600j160k_undoMove(
+		this->explorerPlain_10i3040j_undoMove(
 			pos,
 			move);
 
@@ -434,7 +436,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 
 
 		bool isBreak = false;
-		this->explorePlain_10i700j120k_getBestUpdateAlpha(
+		this->explorePlain_10i3070j_getBestUpdateAlpha(
 			isBreak,
 			ourCarriage,
 			move,
@@ -450,7 +452,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 
 
 		// 猿を別の枝に走らせるぜ（＾～＾）
-		this->explorePlain_10i700j140k_forkNewMonkey(
+		this->explorePlain_10i3080j_forkNewMonkey(
 			isBreak,
 			ourCarriage,
 			depth,
@@ -481,11 +483,11 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 	// ----------------------------------------
 
 
-	if (this->isReturnBeforeLastProcess_10i800j100k()) { return bestSweetness; }
+	if (this->isReturnBeforeLastProcess_10i4010j()) { return bestSweetness; }
 
 
 	// あれば、ここで帰り際の処理（＾～＾）
-	this->explorePlain_10i800j200k_backwardProcess(
+	this->explorePlain_10i4020j_backwardProcess(
 		moveCount,
 		excludedMove,
 		ourCarriage,

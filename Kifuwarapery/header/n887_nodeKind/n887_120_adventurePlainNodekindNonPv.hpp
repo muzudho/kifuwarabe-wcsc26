@@ -434,7 +434,7 @@ public:
 	/// <param name="doFullDepthSearch"></param>
 	/// <param name="alpha"></param>
 	/// <param name="ppSplitedNode"></param>
-	virtual inline void explorePlain_10i600j100k_updateAlpha(
+	virtual inline void explorePlain_10i3010j_updateAlpha(
 		bool& doFullDepthSearch,
 		Sweetness& alpha,
 		SplitedNode** ppSplitedNode
@@ -456,7 +456,7 @@ public:
 	/// <param name="givesCheck"></param>
 	/// <param name="pos"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void explorerPlain_10i600j140k_getSweetness(
+	virtual inline void explorerPlain_10i3030j_getSweetness(
 		OurCarriage& ourCarriage,
 		bool& isPVMove,
 		Sweetness& alpha,
@@ -493,7 +493,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestSweetness"></param>
 	/// <param name="alpha"></param>
-	virtual inline void explorePlain_10i700j100k_getAlpha(
+	virtual inline void explorePlain_10i3050j_getAlpha(
 		SplitedNode** ppSplitedNode,
 		Sweetness& bestSweetness,
 		Sweetness& alpha
@@ -511,7 +511,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="sweetness"></param>
 	/// <param name="pos"></param>
-	virtual inline void explorerPlain_10i700j115k_bestMovePlyChanges(
+	virtual inline void explorerPlain_10i3060j_bestMovePlyChanges(
 		OurCarriage& ourCarriage,
 		Move& move,
 		bool& isPVMove,
@@ -538,7 +538,7 @@ public:
 	/// <param name="ppSplitedNode"></param>
 	/// <param name="bestMove"></param>
 	/// <param name="beta"></param>
-	virtual inline void explorePlain_10i700j120k_getBestUpdateAlpha(
+	virtual inline void explorePlain_10i3070j_getBestUpdateAlpha(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		Move& move,
@@ -583,7 +583,7 @@ public:
 	/// <param name="moveCount"></param>
 	/// <param name="mp"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void explorePlain_10i700j140k_forkNewMonkey(
+	virtual inline void explorePlain_10i3080j_forkNewMonkey(
 		bool& isBreak,
 		OurCarriage& ourCarriage,
 		const Depth depth,
@@ -633,7 +633,7 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	virtual inline bool isReturnBeforeLastProcess_10i800j100k() const override {
+	virtual inline bool isReturnBeforeLastProcess_10i4010j() const override {
 		// 非スプリット・ポイントは　ステップ２０を実行する前に途中抜けはしないぜ☆（＾ｑ＾）
 		return false;
 	}

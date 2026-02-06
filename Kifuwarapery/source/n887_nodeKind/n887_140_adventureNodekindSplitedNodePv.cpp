@@ -396,7 +396,7 @@ split_point_start:
 
 
 		// 再帰探索（＾～＾）
-		this->explorePlain_10i500j500k_recursiveSearch(
+		this->explorePlain_10i2999j_recursiveSearch(
 			ourCarriage,
 			depth,
 			isPVMove,
@@ -422,13 +422,13 @@ split_point_start:
 		// 後ろ向き探索
 
 
-		this->explorePlain_10i600j100k_updateAlpha(
+		this->explorePlain_10i3010j_updateAlpha(
 			doFullDepthSearch,
 			alpha,
 			&pSplitedNode);
 
 
-		this->explorePlain_10i600j120k_getSweetnessNonPV(
+		this->explorePlain_10i3020j_getSweetnessNonPV(
 			ourCarriage,
 			doFullDepthSearch,
 			sweetness,
@@ -439,8 +439,7 @@ split_point_start:
 			alpha,
 			cutNode);
 
-
-		this->explorerPlain_10i600j140k_getSweetness(
+		this->explorerPlain_10i3030j_getSweetness(
 			ourCarriage,
 			isPVMove,
 			alpha,
@@ -455,7 +454,7 @@ split_point_start:
 		// 一手戻す
 
 
-		this->explorerPlain_10i600j160k_undoMove(
+		this->explorerPlain_10i3040j_undoMove(
 			pos,
 			move);
 
@@ -466,7 +465,7 @@ split_point_start:
 		assert(-SweetnessInfinite < sweetness && sweetness < SweetnessInfinite);
 
 
-		this->explorePlain_10i700j100k_getAlpha(
+		this->explorePlain_10i3050j_getAlpha(
 			&pSplitedNode,
 			bestSweetness,
 			alpha);
@@ -476,7 +475,7 @@ split_point_start:
 
 
 		bool isBreak = false;
-		this->explorePlain_10i700j120k_getBestUpdateAlpha(
+		this->explorePlain_10i3070j_getBestUpdateAlpha(
 			isBreak,
 			ourCarriage,
 			move,
@@ -504,7 +503,7 @@ split_point_start:
 	// ----------------------------------------
 
 
-	if (this->isReturnBeforeLastProcess_10i800j100k()) { return bestSweetness; }
+	if (this->isReturnBeforeLastProcess_10i4010j()) { return bestSweetness; }
 
 
 	// あれば、ここで帰り際の処理（＾～＾）

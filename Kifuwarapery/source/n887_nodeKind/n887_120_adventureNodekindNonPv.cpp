@@ -450,7 +450,7 @@ iid_start:
 		// ----------------------------------------
 
 
-		this->explorePlain_10i500j500k_recursiveSearch(
+		this->explorePlain_10i2999j_recursiveSearch(
 			ourCarriage,
 			depth,
 			isPVMove,
@@ -473,7 +473,7 @@ iid_start:
 		// ----------------------------------------
 
 
-		this->explorePlain_10i600j120k_getSweetnessNonPV(
+		this->explorePlain_10i3020j_getSweetnessNonPV(
 			ourCarriage,
 			doFullDepthSearch,
 			sweetness,
@@ -488,7 +488,7 @@ iid_start:
 		// 一手戻す
 
 
-		this->explorerPlain_10i600j160k_undoMove(
+		this->explorerPlain_10i3040j_undoMove(
 			pos,
 			move);
 
@@ -502,7 +502,7 @@ iid_start:
 		if (ourCarriage.m_signals.m_stop || pHandleMonkey->IsUselessNode()) { return sweetness; }
 
 
-		this->explorerPlain_10i700j115k_bestMovePlyChanges(
+		this->explorerPlain_10i3060j_bestMovePlyChanges(
 			ourCarriage,
 			move,
 			isPVMove,
@@ -512,7 +512,7 @@ iid_start:
 
 
 		bool isBreak = false;
-		this->explorePlain_10i700j120k_getBestUpdateAlpha(
+		this->explorePlain_10i3070j_getBestUpdateAlpha(
 			isBreak,
 			ourCarriage,
 			move,
@@ -527,7 +527,7 @@ iid_start:
 		if (isBreak) { break; }
 
 
-		this->explorePlain_10i700j140k_forkNewMonkey(
+		this->explorePlain_10i3080j_forkNewMonkey(
 			isBreak,
 			ourCarriage,
 			depth,
@@ -558,11 +558,11 @@ iid_start:
 	// ----------------------------------------
 
 
-	if (this->isReturnBeforeLastProcess_10i800j100k()) { return bestSweetness; }
+	if (this->isReturnBeforeLastProcess_10i4010j()) { return bestSweetness; }
 
 
 	// あれば、ここで帰り際の処理（＾～＾）
-	this->explorePlain_10i800j200k_backwardProcess(
+	this->explorePlain_10i4020j_backwardProcess(
 		moveCount,
 		excludedMove,
 		ourCarriage,
