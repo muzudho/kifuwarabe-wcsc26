@@ -6,8 +6,10 @@ const SwordNonPv g_SWORD_NON_PV;
 
 
 /// <summary>
-/// 依存関係の都合上、インラインにはしないぜ☆（＾ｑ＾）
-/// </summary>
+///		<pre>
+///		- スプリット・ポイントでの探索開始？
+///		- 依存関係の都合上、インラインにはしないぜ☆（＾ｑ＾）
+///		</pre>/// </summary>
 /// <param name="ownerSplitedNode"></param>
 /// <param name="ourCarriage"></param>
 /// <param name="pos"></param>
@@ -16,8 +18,8 @@ void SwordNonPv::startSearch_asSplitedNode(
 	MonkeySplitedPlace& ownerSplitedNode, 
 	OurCarriage& ourCarriage,
 	Position& pos,
-	Flashlight* pFlashlight
-	) const {
+	Flashlight* pFlashlight) const
+{
 	//────────────────────────────────────────────────────────────────────────────────
 	// 探索☆？（＾ｑ＾）
 	//────────────────────────────────────────────────────────────────────────────────

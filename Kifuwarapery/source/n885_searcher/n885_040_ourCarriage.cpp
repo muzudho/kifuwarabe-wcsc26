@@ -396,44 +396,43 @@ void Monkie::workAsMonkey() {
 
 			this->m_pOurCarriage->m_pub.m_mutex_.lock();
 			assert(m_isBeingSearched);
-			MonkeySplitedPlace* pSplitedNode = m_activeSplitedNode;
+			MonkeySplitedPlace* monkeySplitedPlace = m_activeSplitedNode;
 			this->m_pOurCarriage->m_pub.m_mutex_.unlock();
 
 			Flashlight ss[g_maxPlyPlus2];
-			Position pos(*pSplitedNode->m_position, this);
+			Position pos(*monkeySplitedPlace->m_position, this);
 
-			memcpy(ss, pSplitedNode->m_pFlashlightBox - 1, 4 * sizeof(Flashlight));
-			(ss+1)->m_splitedNode = pSplitedNode;
+			memcpy(ss, monkeySplitedPlace->m_pFlashlightBox - 1, 4 * sizeof(Flashlight));
+			(ss+1)->m_splitedNode = monkeySplitedPlace;
 
-			pSplitedNode->m_mutex.lock();
+			monkeySplitedPlace->m_mutex.lock();
 
 			assert(m_activePosition == nullptr);
 
 			m_activePosition = &pos;
 
-
-			// スプリット・ポイント用の検索に変えるぜ☆（＾ｑ＾）
-			pSplitedNode->m_pSword01->startSearch_asSplitedNode(
-				*pSplitedNode, *this->m_pOurCarriage, pos, ss);
+			// ［一緒に走る猿］が分かれた場所で。探索を開始するぜ（＾～＾）
+			monkeySplitedPlace->m_pSword01->startSearch_asSplitedNode(
+				*monkeySplitedPlace, *this->m_pOurCarriage, pos, ss);
 
 
 			assert(m_isBeingSearched);
 			m_isBeingSearched = false;
 			m_activePosition = nullptr;
-			assert(pSplitedNode->m_slavesMask & (UINT64_C(1) << m_idx));
-			pSplitedNode->m_slavesMask ^= (UINT64_C(1) << m_idx);
-			pSplitedNode->m_nodes += pos.getNodesSearched();
+			assert(monkeySplitedPlace->m_slavesMask & (UINT64_C(1) << m_idx));
+			monkeySplitedPlace->m_slavesMask ^= (UINT64_C(1) << m_idx);
+			monkeySplitedPlace->m_nodes += pos.getNodesSearched();
 
 			// ［手の空いてる猿は寝かす］フラグが立っているケースで
 			if (this->m_pOurCarriage->m_pub.m_isIdleMonkeyToSleep_
-				&& this != pSplitedNode->m_masterThread
-				&& !pSplitedNode->m_slavesMask)
+				&& this != monkeySplitedPlace->m_masterThread
+				&& !monkeySplitedPlace->m_slavesMask)
 			{
-				assert(!pSplitedNode->m_masterThread->m_isBeingSearched);
-				pSplitedNode->m_masterThread->NotifyOne();
+				assert(!monkeySplitedPlace->m_masterThread->m_isBeingSearched);
+				monkeySplitedPlace->m_masterThread->NotifyOne();
 			}
 
-			pSplitedNode->m_mutex.unlock();
+			monkeySplitedPlace->m_mutex.unlock();
 		}
 
 		if (thisSp != nullptr && !thisSp->m_slavesMask) {

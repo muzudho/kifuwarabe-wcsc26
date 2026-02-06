@@ -25,10 +25,8 @@
 #include "../../header/n680_egOption/n680_240_engineOptionsMap.hpp"
 #include "../../header/n680_egOption/n680_300_engineOptionSetup.hpp"
 #include "../../header/n760_thread__/n760_400_monkiesPub.hpp"
-
 #include "../../header/n800_learn___/n800_100_stopwatch.hpp"
 #include "../../header/n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
-
 #include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 #include "../../header/n885_searcher/n885_310_adventureBattlefieldQsearchAbstract.hpp"
 #include "../../header/n885_searcher/n885_340_adventureBattlefieldQsearchPrograms.hpp"
@@ -42,23 +40,24 @@
 #include "../../header/n886_repeType/n886_140_rtSuperior.hpp"
 #include "../../header/n886_repeType/n886_150_rtInferior.hpp"
 #include "../../header/n886_repeType/n886_500_rtArray.hpp"
-#include "../../header/n887_nodeKind/n887_140_adventurePlainNodekindSplitedNodePv.hpp"
+#include "../../header/n887_nodeKind/n887_150_adventurePlainNodekindSplitedNodeNonPv.hpp"
 #include "../../header/n887_nodeKind/n887_500_adventurePlainNodekindPrograms.hpp"
 
 
 using namespace std;
-
-
 extern const InFrontMaskBb g_inFrontMaskBb;
 extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 //extern RepetitionTypeModels g_repetitionTypes;
 
 
-AdventureNodekindSplitedNodePv g_NODEKIND_SPLITEDNODE_PV;
+// 依存関係の回避
+AdventureNodekindMonkeySplitedPlaceNonPv g_NODEKIND_SPLITEDNODE_NON_PV;
 
 
 /// <summary>
-/// 
+///		<pre>
+/// 評価値は返すが、ベストムーブは返さなくていいらしい、そんなもんか☆（＾～＾）
+///		</pre>
 /// </summary>
 /// <param name="ourCarriage"></param>
 /// <param name="pos"></param>
@@ -68,7 +67,7 @@ AdventureNodekindSplitedNodePv g_NODEKIND_SPLITEDNODE_PV;
 /// <param name="depth"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
-Sweetness AdventureNodekindSplitedNodePv::explorePlain_10i(
+Sweetness AdventureNodekindMonkeySplitedPlaceNonPv::explorePlain_10i(
 	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
@@ -85,7 +84,7 @@ Sweetness AdventureNodekindSplitedNodePv::explorePlain_10i(
 
 
 	assert(-SweetnessInfinite <= alpha && alpha < beta && beta <= SweetnessInfinite);
-	// αは　β－１　なのかだぜ（＾～＾）？
+	// [NOTE_1010]: αは　β－１　なのかだぜ（＾～＾）？
 	this->explorePlain_10i1010j_alphaIsBetaMinusOne(
 		alpha,
 		beta);
@@ -120,17 +119,14 @@ Sweetness AdventureNodekindSplitedNodePv::explorePlain_10i(
 	Sweetness ttSweetness;
 	std::unique_ptr<Move> pTtMove;  // 宣言だけ（デフォルトnull）
 
-
-	// step1
 	// initialize node
 	Monkie* pHandleMonkey = pos.getHandleMonkey();	// 局面に対応する猿
 	moveCount = playedMoveCount = 0;
 	inCheck = pos.inCheck();
 
-
 	bool isGotoSplitPointStart = false;
 
-	// ノードの初期化する
+	// [NOTE_1020]: ノードの初期化する
 	this->explorePlain_10i1020j_initializeNode(
 		ttMove,
 		ttSweetness,
@@ -147,19 +143,16 @@ Sweetness AdventureNodekindSplitedNodePv::explorePlain_10i(
 		excludedMove);
 	if (isGotoSplitPointStart) { goto split_point_start; }
 
-	// 指し手の初期化する
+	// [NOTE_1030]: 指し手の初期化する
 	this->explorePlain_10i1030j_clearMove(
 		bestSweetness,
 		&pFlashlight,
 		threatMove,
 		bestMove);
 
-	// （必要なら）最大Plyを更新
-	this->explorePlain_10i1040j_updateMaxPly(
-		&pHandleMonkey,
-		pFlashlight);
+	// [NOTE_1040]はない。最大Plyの更新はしない
 
-	// 千日手による探索打切りの判断
+	// step2: 千日手による探索打切りの判断
 	{
 		auto p = this->explorePlain_10i1080j_isStopByRepetetion(
 			pos,
@@ -169,7 +162,6 @@ Sweetness AdventureNodekindSplitedNodePv::explorePlain_10i(
 		Sweetness returnSweetness = p.second;
 		if (isReturnWithSweetness) { return returnSweetness; }
 	}
-
 
 	bool isReturnWithSweetness = false;
 	Sweetness returnSweetness = SweetnessNone;
@@ -242,14 +234,64 @@ Sweetness AdventureNodekindSplitedNodePv::explorePlain_10i(
 		ttSweetness,
 		posKey,
 		move);
-	/*
-	if (isGotoIidStart) {
-		goto iid_start;
-	}
-	*/
+	if (isGotoIidStart) { goto iid_start; }
 
 
-//iid_start:
+	this->explorePlain_10i1260j_nonPV(
+		isReturnWithSweetness,
+		returnSweetness,
+		ourCarriage,
+		depth,
+		eval,
+		beta,
+		ttMove,
+		pos,
+		&pFlashlight);
+	if (isReturnWithSweetness) { return returnSweetness; }
+
+
+	this->explorePlain_10i1270j_nonPV(
+		isReturnWithSweetness,
+		returnSweetness,
+		&pFlashlight,
+		depth,
+		beta,
+		eval);
+	if (isReturnWithSweetness) { return returnSweetness; }
+
+
+	this->explorePlain_10i1280j_nonPV(
+		isReturnWithSweetness,
+		returnSweetness,
+		ourCarriage,
+		&pFlashlight,
+		depth,
+		beta,
+		eval,
+		pos,
+		st,
+		alpha,
+		cutNode,
+		threatMove);
+	if (isReturnWithSweetness) { return returnSweetness; }
+
+
+	this->explorePlain_10i1290j_nonPV(
+		isReturnWithSweetness,
+		ourCarriage,
+		depth,
+		&pFlashlight,
+		beta,
+		move,
+		pos,
+		ttMove,
+		st,
+		sweetness,
+		cutNode);
+	if (isReturnWithSweetness) { return sweetness; }
+
+
+iid_start:
 	// 内側の反復深化探索☆？（＾ｑ＾）
 	this->explorerPlain_10i1300j_internalIterativeDeepening(
 		depth,
@@ -265,8 +307,6 @@ Sweetness AdventureNodekindSplitedNodePv::explorePlain_10i(
 
 
 split_point_start:
-
-
 	NextmoveEvent nextmoveEvent(
 		pos,
 		ttMove,
@@ -322,7 +362,8 @@ split_point_start:
 			move,
 			checkInfo,
 			moveCount,
-			&pSplitedNode);
+			&pSplitedNode
+			);
 		if (isContinue) { continue; }
 
 
@@ -354,6 +395,27 @@ split_point_start:
 			newDepth);
 
 
+		// 無駄枝狩り☆（＾▽＾）非PVだけ行う☆！
+		this->explorePlain_10i2070j_futilityPruning(
+			isContinue,
+			ourCarriage,
+			captureOrPawnPromotion,
+			inCheck,
+			dangerous,
+			bestSweetness,
+			move,
+			ttMove,
+			depth,
+			moveCount,
+			threatMove,
+			pos,
+			&pSplitedNode,
+			newDepth,
+			&pFlashlight,
+			beta);
+		if (isContinue) { continue; }
+
+
 		this->explorePlain_10i2090j_updateCurrentMove(
 			isContinue,
 			ourCarriage,
@@ -378,7 +440,7 @@ split_point_start:
 		if (isContinue) { continue; }
 
 
-		// 一手指す☆（＾～＾）
+		// 一手指す
 
 
 		this->explorePlain_10i2110j_doMove(
@@ -398,7 +460,6 @@ split_point_start:
 		// ----------------------------------------
 
 
-		// 再帰探索（＾～＾）
 		this->explorePlain_10i2999j_recursiveSearch(
 			ourCarriage,
 			depth,
@@ -422,14 +483,10 @@ split_point_start:
 		// ----------------------------------------
 
 
-		// 後ろ向き探索
-
-
 		this->explorePlain_10i3010j_updateAlpha(
 			doFullDepthSearch,
 			alpha,
 			&pSplitedNode);
-
 
 		this->explorePlain_10i3020j_getSweetnessNonPV(
 			ourCarriage,
@@ -441,17 +498,6 @@ split_point_start:
 			&pFlashlight,
 			alpha,
 			cutNode);
-
-		this->explorerPlain_10i3030j_getSweetness(
-			ourCarriage,
-			isPVMove,
-			alpha,
-			sweetness,
-			beta,
-			newDepth,
-			givesCheck,
-			pos,
-			&pFlashlight);
 
 
 		// 一手戻す

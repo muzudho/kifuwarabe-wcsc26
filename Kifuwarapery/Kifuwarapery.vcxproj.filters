@@ -1628,13 +1628,13 @@
     <ClCompile Include="source\n887_nodeKind\n887_120_adventureNodekindNonPv.cpp">
       <Filter>source\n887_nodeType</Filter>
     </ClCompile>
-    <ClCompile Include="source\n887_nodeKind\n887_130_adventureNodekindSplitedNodeRoot.cpp">
+    <ClCompile Include="source\n887_nodeKind\n887_130_adventureNodekindMonkeySplitedPlaceRoot.cpp">
       <Filter>source\n887_nodeType</Filter>
     </ClCompile>
-    <ClCompile Include="source\n887_nodeKind\n887_140_adventureNodekindSplitedNodePv.cpp">
+    <ClCompile Include="source\n887_nodeKind\n887_140_adventureNodekindMonkeySplitedPlacePv.cpp">
       <Filter>source\n887_nodeType</Filter>
     </ClCompile>
-    <ClCompile Include="source\n887_nodeKind\n887_150_adventureNodekindSplitedNodeNonPv.cpp">
+    <ClCompile Include="source\n887_nodeKind\n887_150_adventureNodekindMonkeySplitedPlaceNonPv.cpp">
       <Filter>source\n887_nodeType</Filter>
     </ClCompile>
     <ClCompile Include="source\n885_searcher\n885_510_adventureContinent.cpp">

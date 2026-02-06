@@ -79,8 +79,8 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 
 
 	assert(-SweetnessInfinite <= alpha && alpha < beta && beta <= SweetnessInfinite);
+	// [NOTE_1010] はない
 	assert(Depth0 < depth);
-
 
 	// 途中で goto を使用している為、先に全部の変数を定義しておいた方が安全。
 	Move movesSearched[64];
@@ -110,7 +110,6 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 	Sweetness ttSweetness;
 	std::unique_ptr<Move> pTtMove;  // 宣言だけ（デフォルトnull）
 
-
 	// initialize node
 	Monkie* pHandleMonkey = pos.getHandleMonkey();	// 局面に対応する猿
 	moveCount = playedMoveCount = 0;
@@ -118,16 +117,16 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 
 	//bool isGotoSplitPointStart = false;
 
-	// ノードの初期化しない
+	// [NOTE_1020]はない。ノード初期化しない
 
-	// 指し手の初期化する
+	// [NOTE_1030]: 指し手の初期化する
 	this->explorePlain_10i1030j_clearMove(
 		bestSweetness,
 		&pFlashlight,
 		threatMove,
 		bestMove);
 
-	// （必要なら）最大Plyを更新
+	// [NOTE_1040]: （必要なら）最大Plyを更新
 	this->explorePlain_10i1040j_updateMaxPly(
 		&pHandleMonkey,
 		pFlashlight);

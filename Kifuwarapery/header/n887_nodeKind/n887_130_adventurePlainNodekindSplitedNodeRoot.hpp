@@ -24,7 +24,7 @@ extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 /// <summary>
 /// 
 /// </summary>
-class AdventureNodekindSplitedNodeRoot : public AdventureNodekindAbstract
+class AdventureNodekindMonkeySplitedPlaceRoot : public AdventureNodekindAbstract
 {
 
 
@@ -73,7 +73,7 @@ public:
 		int& playedMoveCount,
 		bool& inCheck,
 		Position& pos,
-		MonkeySplitedPlace** ppSplitedNode,
+		MonkeySplitedPlace** ppMonkeySplitedPlace,
 		Flashlight** ppFlashlight,
 		Move& bestMove,
 		Move& threatMove,
@@ -85,10 +85,10 @@ public:
 
 		// initialize node
 
-		*ppSplitedNode = (*ppFlashlight)->m_splitedNode;
-		bestMove = (*ppSplitedNode)->m_bestMove;
-		threatMove = (*ppSplitedNode)->m_threatMove;
-		bestSweetness = (*ppSplitedNode)->m_bestSweetness;
+		*ppMonkeySplitedPlace = (*ppFlashlight)->m_splitedNode;
+		bestMove = (*ppMonkeySplitedPlace)->m_bestMove;
+		threatMove = (*ppMonkeySplitedPlace)->m_threatMove;
+		bestSweetness = (*ppMonkeySplitedPlace)->m_bestSweetness;
 		//tte = nullptr;
 		ttMove = excludedMove = g_MOVE_NONE;
 		ttSweetness = SweetnessNone;
@@ -96,7 +96,7 @@ public:
 		Evaluation09 evaluation;
 		evaluation.evaluate(pos, *ppFlashlight);
 
-		assert(-SweetnessInfinite < (*ppSplitedNode)->m_bestSweetness && 0 < (*ppSplitedNode)->m_moveCount);
+		assert(-SweetnessInfinite < (*ppMonkeySplitedPlace)->m_bestSweetness && 0 < (*ppMonkeySplitedPlace)->m_moveCount);
 
 		isGotoSplitPointStart = true;
 		return;
@@ -463,14 +463,14 @@ public:
 	/// <param name="move"></param>
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
-	/// <param name="ppSplitedNode"></param>
+	/// <param name="ppMonkeySplitedPlace"></param>
 	virtual inline void explorePlain_10i2020j_resetSweetness(
 		bool& isContinue,
 		Position& pos,
 		Move& move,
 		const CheckInfo& ci,
 		int& moveCount,
-		MonkeySplitedPlace** ppSplitedNode
+		MonkeySplitedPlace** ppMonkeySplitedPlace
 	) const override {
 		// DoStep11c
 		if (!
@@ -485,8 +485,8 @@ public:
 			isContinue = true;
 			return;
 		}
-		moveCount = ++(*ppSplitedNode)->m_moveCount;
-		(*ppSplitedNode)->m_mutex.unlock();
+		moveCount = ++(*ppMonkeySplitedPlace)->m_moveCount;
+		(*ppMonkeySplitedPlace)->m_mutex.unlock();
 	}
 
 
@@ -505,7 +505,7 @@ public:
 	/// <param name="moveCount"></param>
 	/// <param name="threatMove"></param>
 	/// <param name="pos"></param>
-	/// <param name="ppSplitedNode"></param>
+	/// <param name="ppMonkeySplitedPlace"></param>
 	/// <param name="newDepth"></param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="beta"></param>
@@ -522,7 +522,7 @@ public:
 		int& moveCount,
 		Move& threatMove,
 		Position& pos,
-		MonkeySplitedPlace** ppSplitedNode,
+		MonkeySplitedPlace** ppMonkeySplitedPlace,
 		Depth& newDepth,
 		Flashlight** ppFlashlight,
 		Sweetness& beta
@@ -584,7 +584,7 @@ public:
 	/// <param name="moveCount"></param>
 	/// <param name="threatMove"></param>
 	/// <param name="pos"></param>
-	/// <param name="ppSplitedNode"></param>
+	/// <param name="ppMonkeySplitedPlace"></param>
 	/// <param name="newDepth"></param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="beta"></param>
@@ -605,7 +605,7 @@ public:
 		int& moveCount,
 		Move& threatMove,
 		Position& pos,
-		MonkeySplitedPlace** ppSplitedNode,
+		MonkeySplitedPlace** ppMonkeySplitedPlace,
 		Depth& newDepth,
 		Flashlight** ppFlashlight,
 		Sweetness& beta,
@@ -683,7 +683,7 @@ public:
 	/// <param name="sweetness"></param>
 	/// <param name="pos"></param>
 	/// <param name="bestSweetness"></param>
-	/// <param name="ppSplitedNode"></param>
+	/// <param name="ppMonkeySplitedPlace"></param>
 	/// <param name="bestMove"></param>
 	/// <param name="beta"></param>
 	virtual inline void explorePlain_10i3070j_getBestUpdateAlpha(
@@ -695,24 +695,24 @@ public:
 		Sweetness& sweetness,
 		Position& pos,
 		Sweetness& bestSweetness,
-		MonkeySplitedPlace** ppSplitedNode,
+		MonkeySplitedPlace** ppMonkeySplitedPlace,
 		Move& bestMove,
 		Sweetness& beta
 		)const override {
 
 		if (bestSweetness < sweetness) {
-			bestSweetness = (*ppSplitedNode)->m_bestSweetness = sweetness;
+			bestSweetness = (*ppMonkeySplitedPlace)->m_bestSweetness = sweetness;
 
 			if (alpha < sweetness) {
-				bestMove = (*ppSplitedNode)->m_bestMove = move;
+				bestMove = (*ppMonkeySplitedPlace)->m_bestMove = move;
 
 				// （＾ｑ＾）PVノードの場合☆
 				if (sweetness < beta) {
-					alpha = (*ppSplitedNode)->m_alpha = sweetness;
+					alpha = (*ppMonkeySplitedPlace)->m_alpha = sweetness;
 				}
 				else {
 					// fail high
-					(*ppSplitedNode)->m_isUselessNode = true;
+					(*ppMonkeySplitedPlace)->m_isUselessNode = true;
 					isBreak = true;
 					return;
 				}
@@ -821,4 +821,4 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern AdventureNodekindSplitedNodeRoot g_NODEKIND_SPLITEDNODE_ROOT;
+extern AdventureNodekindMonkeySplitedPlaceRoot g_NODEKIND_SPLITEDNODE_ROOT;

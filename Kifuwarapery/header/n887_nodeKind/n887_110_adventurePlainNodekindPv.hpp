@@ -69,7 +69,7 @@ public:
 	/// <param name="playedMoveCount"></param>
 	/// <param name="inCheck"></param>
 	/// <param name="pos"></param>
-	/// <param name="ppSplitedNode"></param>
+	/// <param name="ppMonkeySplitedPlace"></param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="bestMove"></param>
 	/// <param name="threatMove"></param>
@@ -83,7 +83,7 @@ public:
 		int& playedMoveCount,
 		bool& inCheck,
 		Position& pos,
-		MonkeySplitedPlace** ppSplitedNode,
+		MonkeySplitedPlace** ppMonkeySplitedPlace,
 		Flashlight** ppFlashlight,
 		Move& bestMove,
 		Move& threatMove,
@@ -363,14 +363,14 @@ public:
 	/// <param name="move"></param>
 	/// <param name="ci"></param>
 	/// <param name="moveCount"></param>
-	/// <param name="ppSplitedNode"></param>
+	/// <param name="ppMonkeySplitedPlace"></param>
 	virtual inline void explorePlain_10i2020j_resetSweetness(
 		bool& isContinue,
 		Position& pos,
 		Move& move,
 		const CheckInfo& ci,
 		int& moveCount,
-		MonkeySplitedPlace** ppSplitedNode
+		MonkeySplitedPlace** ppMonkeySplitedPlace
 	) const override {
 		++moveCount;
 	}
@@ -421,7 +421,7 @@ public:
 	/// <param name="moveCount"></param>
 	/// <param name="threatMove"></param>
 	/// <param name="pos"></param>
-	/// <param name="ppSplitedNode"></param>
+	/// <param name="ppMonkeySplitedPlace"></param>
 	/// <param name="newDepth"></param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="beta"></param>
@@ -438,7 +438,7 @@ public:
 		int& moveCount,
 		Move& threatMove,
 		Position& pos,
-		MonkeySplitedPlace** ppSplitedNode,
+		MonkeySplitedPlace** ppMonkeySplitedPlace,
 		Depth& newDepth,
 		Flashlight** ppFlashlight,
 		Sweetness& beta
@@ -468,10 +468,10 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="ppSplitedNode"></param>
+	/// <param name="ppMonkeySplitedPlace"></param>
 	/// <param name="bestSweetness"></param>
 	virtual inline void lockAndUpdateBestSweetness_10i400j170k200L(
-		MonkeySplitedPlace** ppSplitedNode,
+		MonkeySplitedPlace** ppMonkeySplitedPlace,
 		Sweetness& bestSweetness
 	) const override {
 		// 非スプリット・ポイントではスルー☆！（＾ｑ＾）
@@ -481,9 +481,9 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="ppSplitedNode"></param>
+	/// <param name="ppMonkeySplitedPlace"></param>
 	virtual inline void lock_10i400j170k300L(
-		MonkeySplitedPlace** ppSplitedNode
+		MonkeySplitedPlace** ppMonkeySplitedPlace
 		) const override
 	{
 		// 非スプリット・ポイントではスルー☆！（＾ｑ＾）
@@ -505,7 +505,7 @@ public:
 	/// <param name="moveCount"></param>
 	/// <param name="threatMove"></param>
 	/// <param name="pos"></param>
-	/// <param name="ppSplitedNode"></param>
+	/// <param name="ppMonkeySplitedPlace"></param>
 	/// <param name="newDepth"></param>
 	/// <param name="ppFlashlight"></param>
 	/// <param name="beta"></param>
@@ -526,7 +526,7 @@ public:
 		int& moveCount,
 		Move& threatMove,
 		Position& pos,
-		MonkeySplitedPlace** ppSplitedNode,
+		MonkeySplitedPlace** ppMonkeySplitedPlace,
 		Depth& newDepth,
 		Flashlight** ppFlashlight,
 		Sweetness& beta,
@@ -564,10 +564,10 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="alpha"></param>
-	/// <param name="ppSplitedNode"></param>
+	/// <param name="ppMonkeySplitedPlace"></param>
 	virtual inline void updateAlpha_10i500j500k200L(
 		Sweetness& alpha,
-		MonkeySplitedPlace** ppSplitedNode
+		MonkeySplitedPlace** ppMonkeySplitedPlace
 		) const override {
 
 		// 非スプリットノードではスルー☆！（＾ｑ＾）
@@ -579,11 +579,11 @@ public:
 	/// </summary>
 	/// <param name="doFullDepthSearch"></param>
 	/// <param name="alpha"></param>
-	/// <param name="ppSplitedNode"></param>
+	/// <param name="ppMonkeySplitedPlace"></param>
 	virtual inline void explorePlain_10i3010j_updateAlpha(
 		bool& doFullDepthSearch,
 		Sweetness& alpha,
-		MonkeySplitedPlace** ppSplitedNode
+		MonkeySplitedPlace** ppMonkeySplitedPlace
 		)const override {
 		// 非スプリットノードはスルー☆！（＾ｑ＾）
 		//UNREACHABLE;
@@ -608,11 +608,11 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="ppSplitedNode"></param>
+	/// <param name="ppMonkeySplitedPlace"></param>
 	/// <param name="bestSweetness"></param>
 	/// <param name="alpha"></param>
 	virtual inline void explorePlain_10i3050j_getAlpha(
-		MonkeySplitedPlace** ppSplitedNode,
+		MonkeySplitedPlace** ppMonkeySplitedPlace,
 		Sweetness& bestSweetness,
 		Sweetness& alpha
 		)const override {
@@ -653,7 +653,7 @@ public:
 	/// <param name="sweetness"></param>
 	/// <param name="pos"></param>
 	/// <param name="bestSweetness"></param>
-	/// <param name="ppSplitedNode"></param>
+	/// <param name="ppMonkeySplitedPlace"></param>
 	/// <param name="bestMove"></param>
 	/// <param name="beta"></param>
 	virtual inline void explorePlain_10i3070j_getBestUpdateAlpha(
@@ -665,7 +665,7 @@ public:
 		Sweetness& sweetness,
 		Position& pos,
 		Sweetness& bestSweetness,
-		MonkeySplitedPlace** ppSplitedNode,
+		MonkeySplitedPlace** ppMonkeySplitedPlace,
 		Move& bestMove,
 		Sweetness& beta
 		)const override {
