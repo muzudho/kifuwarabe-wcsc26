@@ -990,16 +990,16 @@
     <ClInclude Include="header\n885_searcher\n885_340_adventureBattlefieldQsearchPrograms.hpp">
       <Filter>header\n885_searcher</Filter>
     </ClInclude>
-    <ClInclude Include="header\n755_sword___\n755_070_SwordAbstract.hpp">
+    <ClInclude Include="header\n755_whistle_\n755_070_SwordAbstract.hpp">
       <Filter>header\n755_sword___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n755_sword___\n755_100_SwordRoot.hpp">
+    <ClInclude Include="header\n755_whistle_\n755_100_SwordRoot.hpp">
       <Filter>header\n755_sword___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n755_sword___\n755_110_SwordPv.hpp">
+    <ClInclude Include="header\n755_whistle_\n755_110_SwordPv.hpp">
       <Filter>header\n755_sword___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n755_sword___\n755_120_SwordNonPv.hpp">
+    <ClInclude Include="header\n755_whistle_\n755_120_SwordNonPv.hpp">
       <Filter>header\n755_sword___</Filter>
     </ClInclude>
     <ClInclude Include="header\n350_pieceTyp\n350_030_makePromoteMove.hpp">
@@ -1658,16 +1658,16 @@
     <ClCompile Include="source\n885_searcher\n885_340_adventureBattlefieldQsearchPrograms.cpp">
       <Filter>source\n885_searcher</Filter>
     </ClCompile>
-    <ClCompile Include="source\n755_sword___\n755_070_SwordAbstract.cpp">
+    <ClCompile Include="source\n755_whistle_\n755_070_SwordAbstract.cpp">
       <Filter>source\n755_sword___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n755_sword___\n755_100_SwordRoot.cpp">
+    <ClCompile Include="source\n755_whistle_\n755_100_SwordRoot.cpp">
       <Filter>source\n755_sword___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n755_sword___\n755_110_SwordPv.cpp">
+    <ClCompile Include="source\n755_whistle_\n755_110_SwordPv.cpp">
       <Filter>source\n755_sword___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n755_sword___\n755_120_SwordNonPv.cpp">
+    <ClCompile Include="source\n755_whistle_\n755_120_SwordNonPv.cpp">
       <Filter>source\n755_sword___</Filter>
     </ClCompile>
     <ClCompile Include="source\n350_pieceTyp\n350_030_makePromoteMove.cpp">
