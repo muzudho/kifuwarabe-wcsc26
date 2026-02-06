@@ -616,7 +616,7 @@ public:
 				threatMove,
 				moveCount,
 				mp,
-				&g_SWORD_NON_PV,
+				&g_WHISTLE_NON_PV,
 				cutNode
 				);
 

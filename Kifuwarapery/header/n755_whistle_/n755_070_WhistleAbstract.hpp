@@ -10,9 +10,9 @@ class OurCarriage;
 
 
 /// <summary>
-/// スプリット・ポイントは、剣を持っているんだぜ☆（＾ｑ＾）
+/// スプリット・ポイントは、ホイッスルを持っているんだぜ☆（＾ｑ＾）
 /// </summary>
-class SwordAbstract {
+class WhistleAbstract {
 
 
 public:
@@ -20,14 +20,16 @@ public:
 
 	/// <summary>
 	///		<pre>
-	/// 依存関係の都合上、インラインにはしないぜ☆（＾ｑ＾）
+	/// ［一緒に走る猿たちが分かれた所］でホイッスルを吹くぜ（＾～＾）！
+	/// 
+	///		- 依存関係の都合上、インラインにはしないぜ☆（＾ｑ＾）
 	///		</pre>
 	/// </summary>
 	/// <param name="ownerMonkeySplitedPlace"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pos"></param>
 	/// <param name="pFlashlight"></param>
-	virtual void startSearch_asMonkeySplitedPlace(
+	virtual void blowWhistle_asMonkeySplitedPlace(
 		MonkeySplitedPlace& ownerMonkeySplitedPlace,
 		OurCarriage& ourCarriage,
 		Position& pos,

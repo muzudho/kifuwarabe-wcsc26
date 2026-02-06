@@ -191,7 +191,7 @@ public:
 	/// <param name="threatMove"></param>
 	/// <param name="moveCount"></param>
 	/// <param name="mp"></param>
-	/// <param name="pSword"></param>
+	/// <param name="pWhistle"></param>
 	/// <param name="cutNode"></param>
 	template <bool Fake>
 	void ForkNewMonkey(
@@ -205,7 +205,7 @@ public:
 		const Move threatMove,
 		const int moveCount,
 		NextmoveEvent& mp,
-		const SwordAbstract* pSword,
+		const WhistleAbstract* pWhistle,
 		const bool cutNode
 	);
 };

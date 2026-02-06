@@ -12,7 +12,7 @@
 
 
 class Monkie;
-class SwordAbstract;
+class WhistleAbstract;
 
 
 /// <summary>
@@ -71,7 +71,7 @@ struct MonkeySplitedPlace {
 	/// <summary>
 	/// スプリット・ポイントは　ノード・タイプを持っている☆？（＾ｑ＾）
 	/// </summary>
-	const SwordAbstract*		m_pSword01;
+	const WhistleAbstract*		m_pWhistle01;
 
 	/// <summary>
 	/// 

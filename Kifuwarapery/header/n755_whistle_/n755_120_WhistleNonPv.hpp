@@ -7,7 +7,7 @@
 /// <summary>
 /// 
 /// </summary>
-class SwordNonPv : public SwordAbstract {
+class WhistleNonPv : public WhistleAbstract {
 
 
 public:
@@ -23,7 +23,7 @@ public:
 	/// <param name="searcher"></param>
 	/// <param name="pos"></param>
 	/// <param name="pFlashlight"></param>
-	virtual void startSearch_asMonkeySplitedPlace(
+	virtual void blowWhistle_asMonkeySplitedPlace(
 		MonkeySplitedPlace& ownerMonkeySplitedPlace,
 		OurCarriage& searcher,
 		Position& pos,
@@ -35,4 +35,4 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern const SwordNonPv g_SWORD_NON_PV;
+extern const WhistleNonPv g_WHISTLE_NON_PV;

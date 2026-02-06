@@ -101,7 +101,7 @@ void Monkie::WaitFor(volatile const bool& b) {
 /// <param name="threatMove"></param>
 /// <param name="moveCount"></param>
 /// <param name="mp"></param>
-/// <param name="pSword"></param>
+/// <param name="pWhistle"></param>
 /// <param name="cutNode"></param>
 template <bool Fake>
 void Monkie::ForkNewMonkey(
@@ -115,7 +115,7 @@ void Monkie::ForkNewMonkey(
 	const Move threatMove,
 	const int moveCount,
 	NextmoveEvent& mp,
-	const SwordAbstract* pSword,
+	const WhistleAbstract* pWhistle,
 	const bool cutNode)
 {
 	assert(pos.IsOK());
@@ -137,7 +137,7 @@ void Monkie::ForkNewMonkey(
 	monkeySplitedPlace.m_threatMove = threatMove;
 	monkeySplitedPlace.m_alpha = alpha;
 	monkeySplitedPlace.m_beta = beta;
-	monkeySplitedPlace.m_pSword01 = pSword;	// ノード・タイプ（実行するプログラム）を切り替える変数みたいだぜ☆（＾ｑ＾）
+	monkeySplitedPlace.m_pWhistle01 = pWhistle;	// ノード・タイプ（実行するプログラム）を切り替える変数みたいだぜ☆（＾ｑ＾）
 	monkeySplitedPlace.m_cutNode = cutNode;
 	monkeySplitedPlace.m_bestSweetness = bestSweetness;
 	monkeySplitedPlace.m_pNextmoveEvent = &mp;
@@ -203,7 +203,7 @@ void Monkie::ForkNewMonkey(
 /// <param name="threatMove"></param>
 /// <param name="moveCount"></param>
 /// <param name="mp"></param>
-/// <param name="pSword"></param>
+/// <param name="pWhistle"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
 template void Monkie::ForkNewMonkey<true >(
@@ -217,7 +217,7 @@ template void Monkie::ForkNewMonkey<true >(
 	const Move threatMove,
 	const int moveCount,
 	NextmoveEvent& mp,
-	const SwordAbstract* pSword,
+	const WhistleAbstract* pWhistle,
 	const bool cutNode);
 
 
@@ -234,7 +234,7 @@ template void Monkie::ForkNewMonkey<true >(
 /// <param name="threatMove"></param>
 /// <param name="moveCount"></param>
 /// <param name="mp"></param>
-/// <param name="pSword"></param>
+/// <param name="pWhistle"></param>
 /// <param name="cutNode"></param>
 /// <returns></returns>
 template void Monkie::ForkNewMonkey<false>(
@@ -248,5 +248,5 @@ template void Monkie::ForkNewMonkey<false>(
 	const Move threatMove,
 	const int moveCount,
 	NextmoveEvent& mp,
-	const SwordAbstract* pSword,
+	const WhistleAbstract* pWhistle,
 	const bool cutNode);

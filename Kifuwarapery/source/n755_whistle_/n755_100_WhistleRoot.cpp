@@ -2,7 +2,7 @@
 #include "../../header/n887_nodeKind/n887_130_adventurePlainNodekindSplitedNodeRoot.hpp"
 
 
-const SwordRoot g_SWORD_ROOT;
+const WhistleRoot g_WHISTLE_ROOT;
 
 
 /// <summary>
@@ -15,7 +15,7 @@ const SwordRoot g_SWORD_ROOT;
 /// <param name="ourCarriage"></param>
 /// <param name="pos"></param>
 /// <param name="pFlashlight"></param>
-void SwordRoot::startSearch_asMonkeySplitedPlace(
+void WhistleRoot::blowWhistle_asMonkeySplitedPlace(
 	MonkeySplitedPlace& ownerMonkeySplitedPlace,
 	OurCarriage& ourCarriage,
 	Position& pos,

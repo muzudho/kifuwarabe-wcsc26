@@ -2,7 +2,7 @@
 #include "../../header/n887_nodeKind/n887_140_adventurePlainNodekindSplitedNodePv.hpp"
 
 
-const SwordPv g_SWORD_PV;
+const WhistlePv g_WHISTLE_PV;
 
 
 /// <summary>
@@ -14,7 +14,7 @@ const SwordPv g_SWORD_PV;
 /// <param name="ourCarriage"></param>
 /// <param name="pos"></param>
 /// <param name="pFlashlight"></param>
-void SwordPv::startSearch_asMonkeySplitedPlace(
+void WhistlePv::blowWhistle_asMonkeySplitedPlace(
 	MonkeySplitedPlace& ownerMonkeySplitedPlace, 
 	OurCarriage& ourCarriage,
 	Position& pos,

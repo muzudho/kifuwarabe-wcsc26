@@ -743,7 +743,7 @@ public:
 				threatMove,
 				moveCount,
 				mp,
-				&g_SWORD_PV,
+				&g_WHISTLE_PV,
 				cutNode
 				);
 

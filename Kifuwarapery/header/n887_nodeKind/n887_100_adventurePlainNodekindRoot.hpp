@@ -812,7 +812,7 @@ public:
 				threatMove,
 				moveCount,
 				mp,
-				&g_SWORD_ROOT,
+				&g_WHISTLE_ROOT,
 				cutNode
 				);
 
