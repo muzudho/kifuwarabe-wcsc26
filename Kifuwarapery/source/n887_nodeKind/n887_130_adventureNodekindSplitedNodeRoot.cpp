@@ -77,6 +77,11 @@ Sweetness AdventureNodekindSplitedNodeRoot::explorePlain_10i(
 {
 
 
+	// ----------------------------------------
+	// １．　ようこそ　開始
+	// ----------------------------------------
+
+
 	assert(-SweetnessInfinite <= alpha && alpha < beta && beta <= SweetnessInfinite);
 	this->explorePlain_10i100j100k_assertAtFirst(
 		alpha,
@@ -227,7 +232,11 @@ split_point_start:
 		);
 
 
-	// Loop through moves
+	// ----------------------------------------
+	// １．　ようこそ　終了
+	// ----------------------------------------
+
+
 	while (
 		!(
 			// スプリット・ポイントかどうかで、取ってくる指し手が変わる☆
@@ -235,6 +244,11 @@ split_point_start:
 			).IsNone()
 	)
 	{
+
+
+		// ----------------------------------------
+		// ２．　いってきます　開始
+		// ----------------------------------------
 
 
 		if (move == excludedMove) { continue; }	// ムーブが一致していれば、次のループへ☆
@@ -317,6 +331,9 @@ split_point_start:
 		if (isContinue) { continue; }
 
 
+		// 一手指す
+
+
 		this->explorePlain_10i500j100k_doMove(
 			pos,
 			move,
@@ -324,6 +341,14 @@ split_point_start:
 			checkInfo,
 			givesCheck,
 			&pFlashlight);
+
+
+		// 一手指した後
+
+
+		// ----------------------------------------
+		// ２．　いってきます　終了
+		// ----------------------------------------
 
 
 		this->explorePlain_10i500j500k_recursiveSearch(
@@ -342,6 +367,11 @@ split_point_start:
 			sweetness,
 			pos,
 			doFullDepthSearch);
+
+
+		// ----------------------------------------
+		// ３．　ただいま　開始
+		// ----------------------------------------
 
 
 		this->explorePlain_10i600j100k_updateAlpha(
@@ -370,9 +400,15 @@ split_point_start:
 			&pFlashlight);
 
 
+		// 一手戻す
+
+
 		this->explorerPlain_10i600j160k_undoMove(
 			pos,
 			move);
+
+
+		// 一手戻した後
 
 
 		assert(-SweetnessInfinite < sweetness && sweetness < SweetnessInfinite);
@@ -412,13 +448,30 @@ split_point_start:
 
 
 		if (isBreak) { break; }
+
+
+		// ----------------------------------------
+		// ３．　ただいま　終了
+		// ----------------------------------------
+
+
 	}
+
+
+	// ----------------------------------------
+	// ４．　さよなら　開始
+	// ----------------------------------------
 
 
 	if (this->isReturnBeforeLastProcess_10i800j100k()) { return bestSweetness; }
 
 
 	// あれば、ここで帰り際の処理（＾～＾）
+
+
+	// ----------------------------------------
+	// ４．　さよなら　終了
+	// ----------------------------------------
 
 
 	return bestSweetness;

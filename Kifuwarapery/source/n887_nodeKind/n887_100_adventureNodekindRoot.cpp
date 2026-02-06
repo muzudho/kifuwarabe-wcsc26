@@ -73,6 +73,11 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 {
 
 
+	// ----------------------------------------
+	// １．　ようこそ　開始
+	// ----------------------------------------
+
+
 	assert(-SweetnessInfinite <= alpha && alpha < beta && beta <= SweetnessInfinite);
 	assert(Depth0 < depth);
 
@@ -209,7 +214,11 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 		);
 
 
-	// step11
+	// ----------------------------------------
+	// １．　ようこそ　終了
+	// ----------------------------------------
+
+
 	// Loop through moves
 	while (
 		!(
@@ -217,6 +226,11 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 			move = this->getNextMove_10i400j100k(nextmoveEvent)
 			).IsNone()
 		) {
+
+
+		// ----------------------------------------
+		// ２．　いってきます　開始
+		// ----------------------------------------
 
 
 		if (move == excludedMove) { continue; }	// ムーブが一致していれば、次のループへ☆
@@ -306,6 +320,9 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 			move);
 
 
+		// 一手指す
+
+
 		this->explorePlain_10i500j100k_doMove(
 			pos,
 			move,
@@ -313,6 +330,14 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 			checkInfo,
 			givesCheck,
 			&pFlashlight);
+
+
+		// 一手指した後
+
+
+		// ----------------------------------------
+		// ２．　いってきます　終了
+		// ----------------------------------------
 
 
 		this->explorePlain_10i500j500k_recursiveSearch(
@@ -331,6 +356,11 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 			sweetness,
 			pos,
 			doFullDepthSearch);
+
+
+		// ----------------------------------------
+		// ３．　ただいま　開始
+		// ----------------------------------------
 
 
 		this->explorePlain_10i600j120k_getSweetnessNonPV(
@@ -355,9 +385,15 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 			&pFlashlight);
 
 
+		// 一手戻す
+
+
 		this->explorerPlain_10i600j160k_undoMove(
 			pos,
 			move);
+
+
+		// 一手戻した後
 
 
 		assert(-SweetnessInfinite < sweetness && sweetness < SweetnessInfinite);
@@ -407,7 +443,19 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 			nextmoveEvent,
 			cutNode);
 		if (isBreak) { break; }
+
+
+		// ----------------------------------------
+		// ３．　ただいま　終了
+		// ----------------------------------------
+
+
 	}
+
+
+	// ----------------------------------------
+	// ４．　さよなら　開始
+	// ----------------------------------------
 
 
 	if (this->isReturnBeforeLastProcess_10i800j100k()) { return bestSweetness; }
@@ -429,6 +477,11 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 		inCheck,
 		pos,
 		movesSearched);
+
+
+	// ----------------------------------------
+	// ４．　さよなら　終了
+	// ----------------------------------------
 
 
 	return bestSweetness;

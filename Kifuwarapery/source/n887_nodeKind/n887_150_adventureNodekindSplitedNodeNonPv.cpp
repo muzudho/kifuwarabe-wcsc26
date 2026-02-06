@@ -78,6 +78,11 @@ Sweetness AdventureNodekindSplitedNodeNonPv::explorePlain_10i(
 {
 
 
+	// ----------------------------------------
+	// １．　ようこそ　開始
+	// ----------------------------------------
+
+
 	assert(-SweetnessInfinite <= alpha && alpha < beta && beta <= SweetnessInfinite);
 	this->explorePlain_10i100j100k_assertAtFirst(
 		alpha,
@@ -323,6 +328,11 @@ split_point_start:
 		);
 
 
+	// ----------------------------------------
+	// １．　ようこそ　終了
+	// ----------------------------------------
+
+
 	// Loop through moves
 	while (
 		!(
@@ -330,6 +340,11 @@ split_point_start:
 			move = this->getNextMove_10i400j100k(nextmoveEvent)
 			).IsNone()
 		) {
+
+
+		// ----------------------------------------
+		// ２．　いってきます　開始
+		// ----------------------------------------
 
 
 		if (move == excludedMove) { continue; }	// ムーブが一致していれば、次のループへ☆
@@ -437,6 +452,11 @@ split_point_start:
 		// 一手指した後
 
 
+		// ----------------------------------------
+		// ２．　いってきます　終了
+		// ----------------------------------------
+
+
 		this->explorePlain_10i500j500k_recursiveSearch(
 			ourCarriage,
 			depth,
@@ -453,6 +473,11 @@ split_point_start:
 			sweetness,
 			pos,
 			doFullDepthSearch);
+
+
+		// ----------------------------------------
+		// ３．　ただいま　開始
+		// ----------------------------------------
 
 
 		this->explorePlain_10i600j100k_updateAlpha(
@@ -510,13 +535,30 @@ split_point_start:
 			bestMove,
 			beta);
 		if (isBreak) { break; }
+
+
+		// ----------------------------------------
+		// ３．　ただいま　終了
+		// ----------------------------------------
+
+
 	}
+
+
+	// ----------------------------------------
+	// ４．　さよなら　開始
+	// ----------------------------------------
 
 
 	if (this->isReturnBeforeLastProcess_10i800j100k()) { return bestSweetness; }
 
 
 	// あれば、ここで帰り際の処理（＾～＾）
+
+
+	// ----------------------------------------
+	// ４．　さよなら　終了
+	// ----------------------------------------
 
 
 	return bestSweetness;

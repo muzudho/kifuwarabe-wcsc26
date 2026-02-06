@@ -73,6 +73,11 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 {
 
 
+	// ----------------------------------------
+	// １．　ようこそ　開始
+	// ----------------------------------------
+
+
 	assert(-SweetnessInfinite <= alpha && alpha < beta && beta <= SweetnessInfinite);
 	this->explorePlain_10i100j100k_assertAtFirst(
 		alpha,
@@ -260,7 +265,11 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 		);
 
 
-	// step11
+	// ----------------------------------------
+	// １．　ようこそ　終了
+	// ----------------------------------------
+
+
 	// Loop through moves
 	while (
 		!(
@@ -270,7 +279,11 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 		) {
 
 
-		// DoStep11b
+		// ----------------------------------------
+		// ２．　いってきます　開始
+		// ----------------------------------------
+
+
 		if (move == excludedMove) { continue; }// ムーブが一致していれば、次のループへ☆
 
 
@@ -370,6 +383,11 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 		// 一手指した後
 
 
+		// ----------------------------------------
+		// ２．　いってきます　終了
+		// ----------------------------------------
+
+
 		this->explorePlain_10i600j120k_getSweetnessNonPV(
 			ourCarriage,
 			doFullDepthSearch,
@@ -380,6 +398,11 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 			&pFlashlight,
 			alpha,
 			cutNode);
+
+
+		// ----------------------------------------
+		// ３．　ただいま　開始
+		// ----------------------------------------
 
 
 		this->explorerPlain_10i600j140k_getSweetness(
@@ -394,10 +417,15 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 			&pFlashlight);
 
 
-		// step17
+		// 一手戻す
+
+
 		this->explorerPlain_10i600j160k_undoMove(
 			pos,
 			move);
+
+
+		// 一手戻した後
 
 
 		assert(-SweetnessInfinite < sweetness && sweetness < SweetnessInfinite);
@@ -439,7 +467,19 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 			nextmoveEvent,
 			cutNode);
 		if (isBreak) { break; }
+
+
+		// ----------------------------------------
+		// ３．　ただいま　終了
+		// ----------------------------------------
+
+
 	}
+
+
+	// ----------------------------------------
+	// ４．　さよなら　開始
+	// ----------------------------------------
 
 
 	if (this->isReturnBeforeLastProcess_10i800j100k()) { return bestSweetness; }
@@ -461,6 +501,11 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 		inCheck,
 		pos,
 		movesSearched);
+
+
+	// ----------------------------------------
+	// ４．　さよなら　終了
+	// ----------------------------------------
 
 
 	return bestSweetness;

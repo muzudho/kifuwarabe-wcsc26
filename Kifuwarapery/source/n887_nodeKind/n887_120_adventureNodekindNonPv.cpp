@@ -73,6 +73,11 @@ Sweetness AdventureNodekindNonPv::explorePlain_10i(
 {
 
 
+	// ----------------------------------------
+	// １．　ようこそ　開始
+	// ----------------------------------------
+
+
 	assert(-SweetnessInfinite <= alpha && alpha < beta && beta <= SweetnessInfinite);
 	this->explorePlain_10i100j100k_assertAtFirst(
 		alpha,
@@ -301,7 +306,11 @@ iid_start:
 		);
 
 
-	// step11
+	// ----------------------------------------
+	// １．　ようこそ　終了
+	// ----------------------------------------
+
+
 	// Loop through moves
 	while (
 		!(
@@ -311,7 +320,11 @@ iid_start:
 		) {
 
 
-		// DoStep11b
+		// ----------------------------------------
+		// ２．　いってきます　開始
+		// ----------------------------------------
+
+
 		if (move == excludedMove) { continue; }	// ムーブが一致していれば、次のループへ☆
 
 
@@ -417,6 +430,9 @@ iid_start:
 			move);
 
 
+		// 一手指す
+
+
 		this->explorePlain_10i500j100k_doMove(
 			pos,
 			move,
@@ -424,6 +440,14 @@ iid_start:
 			checkInfo,
 			givesCheck,
 			&pFlashlight);
+
+
+		// 一手指した後
+
+
+		// ----------------------------------------
+		// ２．　いってきます　終了
+		// ----------------------------------------
 
 
 		this->explorePlain_10i500j500k_recursiveSearch(
@@ -444,6 +468,11 @@ iid_start:
 			doFullDepthSearch);
 
 
+		// ----------------------------------------
+		// ３．　ただいま　開始
+		// ----------------------------------------
+
+
 		this->explorePlain_10i600j120k_getSweetnessNonPV(
 			ourCarriage,
 			doFullDepthSearch,
@@ -456,9 +485,15 @@ iid_start:
 			cutNode);
 
 
+		// 一手戻す
+
+
 		this->explorerPlain_10i600j160k_undoMove(
 			pos,
 			move);
+
+
+		// 一手戻した後
 
 
 		assert(-SweetnessInfinite < sweetness && sweetness < SweetnessInfinite);
@@ -508,7 +543,19 @@ iid_start:
 			nextmoveEvent,
 			cutNode);
 		if (isBreak) { break; }
+
+
+		// ----------------------------------------
+		// ３．　ただいま　終了
+		// ----------------------------------------
+
+
 	}
+
+
+	// ----------------------------------------
+	// ４．　さよなら　開始
+	// ----------------------------------------
 
 
 	if (this->isReturnBeforeLastProcess_10i800j100k()) { return bestSweetness; }
@@ -530,6 +577,11 @@ iid_start:
 		inCheck,
 		pos,
 		movesSearched);
+
+
+	// ----------------------------------------
+	// ４．　さよなら　終了
+	// ----------------------------------------
 
 
 	return bestSweetness;

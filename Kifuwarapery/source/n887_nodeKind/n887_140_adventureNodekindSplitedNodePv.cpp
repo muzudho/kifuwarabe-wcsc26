@@ -79,7 +79,9 @@ Sweetness AdventureNodekindSplitedNodePv::explorePlain_10i(
 {
 
 
-	// 事前処理
+	// ----------------------------------------
+	// １．　ようこそ　開始
+	// ----------------------------------------
 
 
 	assert(-SweetnessInfinite <= alpha && alpha < beta && beta <= SweetnessInfinite);
@@ -285,7 +287,11 @@ split_point_start:
 		);
 
 
-	// step11
+	// ----------------------------------------
+	// １．　ようこそ　終了
+	// ----------------------------------------
+
+
 	// Loop through moves
 	while (
 		!(
@@ -293,6 +299,11 @@ split_point_start:
 			move = this->getNextMove_10i400j100k(nextmoveEvent)
 			).IsNone()
 		) {
+
+
+		// ----------------------------------------
+		// ２．　いってきます　開始
+		// ----------------------------------------
 
 
 		if (move == excludedMove) { continue; }	// ムーブが一致していれば、次のループへ☆
@@ -364,6 +375,8 @@ split_point_start:
 
 
 		// 一手指す☆（＾～＾）
+
+
 		this->explorePlain_10i500j100k_doMove(
 			pos,
 			move,
@@ -371,6 +384,14 @@ split_point_start:
 			checkInfo,
 			givesCheck,
 			&pFlashlight);
+
+
+		// 一手指した後
+
+
+		// ----------------------------------------
+		// ２．　いってきます　終了
+		// ----------------------------------------
 
 
 		// 再帰探索（＾～＾）
@@ -390,6 +411,11 @@ split_point_start:
 			sweetness,
 			pos,
 			doFullDepthSearch);
+
+
+		// ----------------------------------------
+		// ３．　ただいま　開始
+		// ----------------------------------------
 
 
 		// 後ろ向き探索
@@ -425,12 +451,15 @@ split_point_start:
 			&pFlashlight);
 
 
+		// 一手戻す
+
+
 		this->explorerPlain_10i600j160k_undoMove(
 			pos,
 			move);
 
 
-		// アンドゥムーブ後
+		// 一手戻した後
 
 
 		assert(-SweetnessInfinite < sweetness && sweetness < SweetnessInfinite);
@@ -459,13 +488,30 @@ split_point_start:
 			bestMove,
 			beta);
 		if (isBreak) { break; }
+
+
+		// ----------------------------------------
+		// ３．　ただいま　終了
+		// ----------------------------------------
+
+
 	}
+
+
+	// ----------------------------------------
+	// ４．　さよなら　開始
+	// ----------------------------------------
 
 
 	if (this->isReturnBeforeLastProcess_10i800j100k()) { return bestSweetness; }
 
 
 	// あれば、ここで帰り際の処理（＾～＾）
+
+
+	// ----------------------------------------
+	// ４．　さよなら　終了
+	// ----------------------------------------
 
 
 	return bestSweetness;
