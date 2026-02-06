@@ -370,7 +370,7 @@ void OurCarriage::CheckTime() {
 /// ワーカースレッド開始
 /// </summary>
 void Monkie::workAsMonkey() {
-	MonkeySplitedPlace* thisSp = m_numberOfMonkeysRunningTogether ? m_activeSplitedNode : nullptr;
+	MonkeySplitedPlace* thisSp = m_numberOfMonkeysRunningTogether ? m_activeMonkeySplitedPlace : nullptr;
 	assert(!thisSp || (thisSp->m_masterThread == this && m_isBeingSearched));
 
 	while (true) {
@@ -396,7 +396,7 @@ void Monkie::workAsMonkey() {
 
 			this->m_pOurCarriage->m_pub.m_mutex_.lock();
 			assert(m_isBeingSearched);
-			MonkeySplitedPlace* monkeySplitedPlace = m_activeSplitedNode;
+			MonkeySplitedPlace* monkeySplitedPlace = m_activeMonkeySplitedPlace;
 			this->m_pOurCarriage->m_pub.m_mutex_.unlock();
 
 			Flashlight ss[g_maxPlyPlus2];

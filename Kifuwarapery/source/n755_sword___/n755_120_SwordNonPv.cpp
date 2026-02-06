@@ -10,12 +10,12 @@ const SwordNonPv g_SWORD_NON_PV;
 ///		- スプリット・ポイントでの探索開始？
 ///		- 依存関係の都合上、インラインにはしないぜ☆（＾ｑ＾）
 ///		</pre>/// </summary>
-/// <param name="ownerSplitedNode"></param>
+/// <param name="ownerMonkeySplitedPlace"></param>
 /// <param name="ourCarriage"></param>
 /// <param name="pos"></param>
 /// <param name="pFlashlight"></param>
 void SwordNonPv::startSearch_asMonkeySplitedPlace(
-	MonkeySplitedPlace& ownerSplitedNode, 
+	MonkeySplitedPlace& ownerMonkeySplitedPlace, 
 	OurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight) const
@@ -24,13 +24,13 @@ void SwordNonPv::startSearch_asMonkeySplitedPlace(
 	// 探索☆？（＾ｑ＾）
 	//────────────────────────────────────────────────────────────────────────────────
 	// スプリットポイントは検索を開始するぜ☆（＾ｑ＾）
-	g_NODEKIND_SPLITEDNODE_NON_PV.explorePlain_10i(
+	g_NODEKIND_MONKEYSPLITEDPLACE_NON_PV.explorePlain_10i(
 		ourCarriage,
 		pos,
 		pFlashlight + 1,
-		ownerSplitedNode.m_alpha,
-		ownerSplitedNode.m_beta,
-		ownerSplitedNode.m_depth,
-		ownerSplitedNode.m_cutNode
+		ownerMonkeySplitedPlace.m_alpha,
+		ownerMonkeySplitedPlace.m_beta,
+		ownerMonkeySplitedPlace.m_depth,
+		ownerMonkeySplitedPlace.m_cutNode
 		);
 }

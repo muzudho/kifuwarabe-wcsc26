@@ -95,7 +95,7 @@ void MonkiesPub::exit_90a500b() {
 /// <param name="searcher"></param>
 void MonkiesPub::ReadUSIOptions(OurCarriage* searcher) {
 
-	this->m_maxThreadsPerSplitedNode_ = searcher->m_engineOptions["Max_Threads_per_Split_Point"];
+	this->m_maxThreadsPerMonkeySplitedPlace = searcher->m_engineOptions["Max_Threads_per_Split_Point"];
 
 	// スレッドの個数（１以上）
 	const size_t numberOfThreads   = searcher->m_engineOptions["Threads"];

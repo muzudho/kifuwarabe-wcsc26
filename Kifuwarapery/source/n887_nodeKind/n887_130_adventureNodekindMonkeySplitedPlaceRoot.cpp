@@ -52,7 +52,7 @@ extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 //extern RepetitionTypeModels g_repetitionTypes;
 
 
-AdventureNodekindMonkeySplitedPlaceRoot g_NODEKIND_SPLITEDNODE_ROOT;
+AdventureNodekindMonkeySplitedPlaceRoot g_NODEKIND_MONKEYSPLITEDPLACE_ROOT;
 
 
 /// <summary>

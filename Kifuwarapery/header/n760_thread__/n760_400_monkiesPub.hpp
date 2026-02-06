@@ -61,7 +61,7 @@ public:
 	/// <summary>
 	/// マックス・スレッド？
 	/// </summary>
-	size_t m_maxThreadsPerSplitedNode_;
+	size_t m_maxThreadsPerMonkeySplitedPlace;
 
 
 	/// <summary>

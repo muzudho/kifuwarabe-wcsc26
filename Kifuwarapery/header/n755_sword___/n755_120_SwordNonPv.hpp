@@ -19,12 +19,12 @@ public:
 	/// 依存関係の都合上、インラインにはしないぜ☆（＾ｑ＾）
 	///		</pre>
 	/// </summary>
-	/// <param name="ownerSplitedNode"></param>
+	/// <param name="ownerMonkeySplitedPlace"></param>
 	/// <param name="searcher"></param>
 	/// <param name="pos"></param>
 	/// <param name="pFlashlight"></param>
 	virtual void startSearch_asMonkeySplitedPlace(
-		MonkeySplitedPlace& ownerSplitedNode,
+		MonkeySplitedPlace& ownerMonkeySplitedPlace,
 		OurCarriage& searcher,
 		Position& pos,
 		Flashlight* pFlashlight

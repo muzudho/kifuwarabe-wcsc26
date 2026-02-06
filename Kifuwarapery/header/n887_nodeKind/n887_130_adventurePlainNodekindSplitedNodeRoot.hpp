@@ -821,4 +821,4 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern AdventureNodekindMonkeySplitedPlaceRoot g_NODEKIND_SPLITEDNODE_ROOT;
+extern AdventureNodekindMonkeySplitedPlaceRoot g_NODEKIND_MONKEYSPLITEDPLACE_ROOT;

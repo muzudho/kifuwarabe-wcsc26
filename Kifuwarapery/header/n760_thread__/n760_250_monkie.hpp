@@ -116,7 +116,7 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	MonkeySplitedPlace* volatile m_activeSplitedNode;
+	MonkeySplitedPlace* volatile m_activeMonkeySplitedPlace;
 
 	/// <summary>
 	/// 

@@ -770,5 +770,5 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern AdventureNodekindMonkeySplitedPlacePv g_NODEKIND_SPLITEDNODE_PV;
+extern AdventureNodekindMonkeySplitedPlacePv g_NODEKIND_MONKEYSPLITEDPLACE_PV;
 

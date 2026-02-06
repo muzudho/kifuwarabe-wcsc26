@@ -51,7 +51,7 @@ extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 
 
 // 依存関係の回避
-AdventureNodekindMonkeySplitedPlaceNonPv g_NODEKIND_SPLITEDNODE_NON_PV;
+AdventureNodekindMonkeySplitedPlaceNonPv g_NODEKIND_MONKEYSPLITEDPLACE_NON_PV;
 
 
 /// <summary>

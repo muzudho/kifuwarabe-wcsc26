@@ -22,7 +22,7 @@ Monkie::Monkie(OurCarriage* ourCarriage) /*: ＳｐｌｉｔＰｏｉｎｔｓ()
 	this->m_isBeingSearched = false;
 	this->m_numberOfMonkeysRunningTogether = 0;
 	this->m_maxPly = 0;
-	this->m_activeSplitedNode = nullptr;
+	this->m_activeMonkeySplitedPlace = nullptr;
 	this->m_activePosition = nullptr;
 	this->m_idx = ourCarriage->m_pub.m_monkies.size();
 }
@@ -70,7 +70,7 @@ void Monkie::NotifyOne() {
 /// </summary>
 /// <returns></returns>
 bool Monkie::IsUselessNode() const {
-	for (MonkeySplitedPlace* sp = m_activeSplitedNode; sp != nullptr; sp = sp->m_pParentMonkeySplitedPlace) {
+	for (MonkeySplitedPlace* sp = m_activeMonkeySplitedPlace; sp != nullptr; sp = sp->m_pParentMonkeySplitedPlace) {
 		if (sp->m_isUselessNode) { return true; }
 	}
 	return false;
@@ -130,7 +130,7 @@ void Monkie::ForkNewMonkey(
 	MonkeySplitedPlace& splitedNode = m_SplitedNodes[m_numberOfMonkeysRunningTogether];
 
 	splitedNode.m_masterThread = this;
-	splitedNode.m_pParentMonkeySplitedPlace = m_activeSplitedNode;
+	splitedNode.m_pParentMonkeySplitedPlace = m_activeMonkeySplitedPlace;
 	splitedNode.m_slavesMask = UINT64_C(1) << m_idx;
 	splitedNode.m_depth = depth;
 	splitedNode.m_bestMove = bestMove;
@@ -151,7 +151,7 @@ void Monkie::ForkNewMonkey(
 	splitedNode.m_mutex.lock();
 
 	++m_numberOfMonkeysRunningTogether;
-	m_activeSplitedNode = &splitedNode;
+	m_activeMonkeySplitedPlace = &splitedNode;
 	m_activePosition = nullptr;
 
 	// thisThread が常に含まれるので 1
@@ -159,10 +159,10 @@ void Monkie::ForkNewMonkey(
 	Monkie* slave;
 
 	while ((slave = this->m_pOurCarriage->m_pub.GetBoredMonkey(this)) != nullptr
-		&& ++slavesCount <= this->m_pOurCarriage->m_pub.m_maxThreadsPerSplitedNode_ && !Fake)
+		&& ++slavesCount <= this->m_pOurCarriage->m_pub.m_maxThreadsPerMonkeySplitedPlace && !Fake)
 	{
 		splitedNode.m_slavesMask |= UINT64_C(1) << slave->m_idx;
-		slave->m_activeSplitedNode = &splitedNode;
+		slave->m_activeMonkeySplitedPlace = &splitedNode;
 		slave->m_isBeingSearched = true;
 		slave->NotifyOne();
 	}
@@ -179,7 +179,7 @@ void Monkie::ForkNewMonkey(
 
 	m_isBeingSearched = true;
 	--m_numberOfMonkeysRunningTogether;
-	m_activeSplitedNode = splitedNode.m_pParentMonkeySplitedPlace;
+	m_activeMonkeySplitedPlace = splitedNode.m_pParentMonkeySplitedPlace;
 	m_activePosition = &pos;
 	pos.setNodesSearched(pos.getNodesSearched() + splitedNode.m_nodes);
 	bestMove = splitedNode.m_bestMove;
