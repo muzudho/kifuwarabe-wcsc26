@@ -399,7 +399,7 @@ Sweetness AdventureNodekindPv::explorePlain_10i(
 			alpha,
 			cutNode);
 
-		this->explorerPlain_10i3030j_getSweetnessIfPV(
+		this->explorerPlain_10i3030j_getSweetnessIfMeticulous(
 			ourCarriage,
 			isPVMove,
 			alpha,

@@ -471,7 +471,7 @@ public:
 			&& abs(beta) < SweetnessMateInMaxPly)
 		{
 			const Sweetness rbeta = beta - ourCarriage.razorMargin(depth);
-			const Sweetness s = AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[No2_NonPV]->ExploreAsQsearch(
+			const Sweetness s = AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[EasyGoing]->ExploreAsQsearch(
 				ourCarriage, false, pos, (*ppFlashlight), rbeta - 1, rbeta, Depth0);
 			if (s < rbeta) {
 				isReturnWithSweetness = true;
@@ -572,13 +572,13 @@ public:
 				//────────────────────────────────────────────────────────────────────────────────
 				// 深さが２手（先後１組）以上なら　クイックな探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				-AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[No2_NonPV]->ExploreAsQsearch(
+				-AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[EasyGoing]->ExploreAsQsearch(
 					ourCarriage, false, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
 				:
 				//────────────────────────────────────────────────────────────────────────────────
 				// 深さが２手（先後１組）未満なら　ふつーのNonPV探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				-g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, depth - reduction, !cutNode)
+				-g_NODEKIND_PROGRAMS[NodeKind::EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, depth - reduction, !cutNode)
 			);
 
 			((*ppFlashlight) + 1)->m_skipNullMove = false;
@@ -601,7 +601,7 @@ public:
 				//────────────────────────────────────────────────────────────────────────────────
 				// 非PV探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				const Sweetness s = g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight), alpha, beta, depth - reduction, false);
+				const Sweetness s = g_NODEKIND_PROGRAMS[NodeKind::EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight), alpha, beta, depth - reduction, false);
 				(*ppFlashlight)->m_skipNullMove = false;
 
 				if (beta <= s) {
@@ -698,7 +698,7 @@ public:
 					//────────────────────────────────────────────────────────────────────────────────
 					// 非PV探索☆？（＾ｑ＾）
 					//────────────────────────────────────────────────────────────────────────────────
-					sweetness =	-g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -rbeta, -rbeta + 1, rdepth, !cutNode);
+					sweetness =	-g_NODEKIND_PROGRAMS[NodeKind::EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -rbeta, -rbeta + 1, rdepth, !cutNode);
 					pos.UndoMove(move);
 					if (rbeta <= sweetness) {
 						isReturnWithSweetness = true;
@@ -928,7 +928,7 @@ public:
 			//────────────────────────────────────────────────────────────────────────────────
 			// 非PV探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
-			sweetness =	g_NODEKIND_PROGRAMS[No2_NonPV]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight), rBeta - 1, rBeta, depth / 2, cutNode);
+			sweetness =	g_NODEKIND_PROGRAMS[EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight), rBeta - 1, rBeta, depth / 2, cutNode);
 			(*ppFlashlight)->m_skipNullMove = false;
 			(*ppFlashlight)->m_excludedMove = g_MOVE_NONE;
 
@@ -1268,7 +1268,7 @@ public:
 			// 非PV探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			// PVS
-			sweetness = -g_NODEKIND_PROGRAMS[No2_NonPV]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, d, true);
+			sweetness = -g_NODEKIND_PROGRAMS[EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, d, true);
 
 			doFullDepthSearch = (alpha < sweetness && (*ppFlashlight)->m_reduction != Depth0);
 			(*ppFlashlight)->m_reduction = Depth0;
@@ -1354,12 +1354,12 @@ public:
 		// PVS
 		if (doFullDepthSearch) {
 			sweetness = (newDepth < OnePly ?
-				(givesCheck ? -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[No2_NonPV]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0)
-					: -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[No2_NonPV]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0))
+				(givesCheck ? -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[EasyGoing]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0)
+					: -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[EasyGoing]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0))
 				//────────────────────────────────────────────────────────────────────────────────
 				// 非PV探索☆？（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				: -g_NODEKIND_PROGRAMS[No2_NonPV]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, newDepth, !cutNode));
+				: -g_NODEKIND_PROGRAMS[EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, newDepth, !cutNode));
 		}
 	}
 
@@ -1378,7 +1378,7 @@ public:
 	/// <param name="givesCheck"></param>
 	/// <param name="pos"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void explorerPlain_10i3030j_getSweetnessIfPV(
+	virtual inline void explorerPlain_10i3030j_getSweetnessIfMeticulous(
 		OurCarriage& ourCarriage,
 		bool& isPVMove,
 		Sweetness& alpha,
@@ -1395,19 +1395,19 @@ public:
 			(alpha < sweetness && this->isBetaLarge_10i600j140k100L(sweetness, beta))
 		) {
 			//────────────────────────────────────────────────────────────────────────────────
-			// いずれにしろ、PV探索☆（＾ｑ＾）
+			// ［几帳面］に探索☆（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			sweetness = (
 				newDepth < OnePly
 				?
 					(givesCheck
 					?
-						-AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[No1_PV]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
+						-AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[Meticulous]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
 					:
-						-AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[No1_PV]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
+						-AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[Meticulous]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
 					)
 				:
-					-g_NODEKIND_PROGRAMS[No1_PV]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, newDepth, false)
+					-g_NODEKIND_PROGRAMS[Meticulous]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, newDepth, false)
 		);
 		}
 	}

@@ -381,7 +381,7 @@ public:
 			//────────────────────────────────────────────────────────────────────────────────
 			// インターナル反復深化で、PV探索☆（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
-			g_NODEKIND_PROGRAMS[NodeKind::No1_PV]->explorePlain_10i(
+			g_NODEKIND_PROGRAMS[NodeKind::Meticulous]->explorePlain_10i(
 				ourCarriage, pos, (*ppFlashlight), alpha, beta, d, true);
 
 			(*ppFlashlight)->m_skipNullMove = false;

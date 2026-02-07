@@ -183,10 +183,9 @@ public:
 			(*ppFlashlight)->m_skipNullMove = true;
 
 			//────────────────────────────────────────────────────────────────────────────────
-			// 非PV探索☆？（＾ｑ＾）
+			// 非PVノードで、インターナル反復深化で、非PV探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
-			// 非PVノードの場合☆
-			g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_10i(
+			g_NODEKIND_PROGRAMS[NodeKind::EasyGoing]->explorePlain_10i(
 				ourCarriage, pos, (*ppFlashlight), alpha, beta, d, true);
 
 			(*ppFlashlight)->m_skipNullMove = false;
@@ -460,7 +459,7 @@ public:
 	/// <param name="givesCheck"></param>
 	/// <param name="pos"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void explorerPlain_10i3030j_getSweetnessIfPV(
+	virtual inline void explorerPlain_10i3030j_getSweetnessIfMeticulous(
 		OurCarriage& ourCarriage,
 		bool& isPVMove,
 		Sweetness& alpha,

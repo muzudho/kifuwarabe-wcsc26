@@ -145,7 +145,7 @@ public:
 					//────────────────────────────────────────────────────────────────────────────────
 					// Root探索☆？（＾ｑ＾）　１回目のぐるんぐるんだぜ～☆　ルート～☆
 					//────────────────────────────────────────────────────────────────────────────────
-					bestSweetness = g_NODEKIND_PROGRAMS[NodeKind::No0_Root]->explorePlain_10i(ourCarriage, pos, flashlight + 1, alpha, beta, static_cast<Depth>(depth * OnePly), false);
+					bestSweetness = g_NODEKIND_PROGRAMS[NodeKind::Root]->explorePlain_10i(ourCarriage, pos, flashlight + 1, alpha, beta, static_cast<Depth>(depth * OnePly), false);
 
 					// 先頭が最善手になるようにソート
 					UtilMoveStack::InsertionSort(ourCarriage.m_rootMoves.begin() + ourCarriage.m_pvIdx, ourCarriage.m_rootMoves.end());
@@ -271,7 +271,8 @@ public:
 					//────────────────────────────────────────────────────────────────────────────────
 
 
-					const Sweetness s = g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_10i(
+					// いわゆる普通の反復深化探索で、非PV探索
+					const Sweetness s = g_NODEKIND_PROGRAMS[NodeKind::EasyGoing]->explorePlain_10i(
 						ourCarriage, pos, flashlight + 1, rBeta - 1, rBeta, (depth - 3) * OnePly, true);
 
 					(flashlight + 1)->m_skipNullMove = false;
