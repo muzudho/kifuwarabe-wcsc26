@@ -366,7 +366,7 @@ public:
 	{
 		// internal iterative deepening
 		if (
-			// PVノードの場合、５倍☆
+			// ルートの場合、５倍☆
 			(5 * OnePly) <= depth // 深さが５以上で☆
 			&&
 			ttMove.IsNone()	// トランスポジション・テーブルに指し手がない場合☆
@@ -379,9 +379,8 @@ public:
 			(*ppFlashlight)->m_skipNullMove = true;
 
 			//────────────────────────────────────────────────────────────────────────────────
-			// PV探索☆？（＾ｑ＾）
+			// インターナル反復深化で、PV探索☆（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
-			// PVノードの場合☆
 			g_NODEKIND_PROGRAMS[NodeKind::No1_PV]->explorePlain_10i(
 				ourCarriage, pos, (*ppFlashlight), alpha, beta, d, true);
 

@@ -1394,6 +1394,9 @@ public:
 			isPVMove ||
 			(alpha < sweetness && this->isBetaLarge_10i600j140k100L(sweetness, beta))
 		) {
+			//────────────────────────────────────────────────────────────────────────────────
+			// いずれにしろ、PV探索☆（＾ｑ＾）
+			//────────────────────────────────────────────────────────────────────────────────
 			sweetness = (
 				newDepth < OnePly
 				?
@@ -1404,9 +1407,6 @@ public:
 						-AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[No1_PV]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
 					)
 				:
-					//────────────────────────────────────────────────────────────────────────────────
-					// PV探索☆？（＾ｑ＾）
-					//────────────────────────────────────────────────────────────────────────────────
 					-g_NODEKIND_PROGRAMS[No1_PV]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, newDepth, false)
 		);
 		}
