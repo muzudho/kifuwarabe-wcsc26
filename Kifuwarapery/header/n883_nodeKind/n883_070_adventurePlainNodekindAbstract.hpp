@@ -1213,7 +1213,7 @@ public:
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="depth"></param>
-	/// <param name="isPVMove"></param>
+	/// <param name="isMeticulousMove"></param>
 	/// <param name="captureOrPawnPromotion"></param>
 	/// <param name="move"></param>
 	/// <param name="ttMove"></param>
@@ -1370,7 +1370,7 @@ public:
 	///		</pre>
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
-	/// <param name="isPVMove"></param>
+	/// <param name="isMeticulousMove"></param>
 	/// <param name="alpha"></param>
 	/// <param name="sweetness"></param>
 	/// <param name="beta"></param>
@@ -1380,7 +1380,7 @@ public:
 	/// <param name="ppFlashlight"></param>
 	virtual inline void explorerPlain_10i3030j_getSweetnessIfMeticulous(
 		OurCarriage& ourCarriage,
-		bool& isPVMove,
+		bool& isMeticulousMove,
 		Sweetness& alpha,
 		Sweetness& sweetness,
 		Sweetness& beta,
@@ -1391,7 +1391,7 @@ public:
 	{
 		// 通常の探索
 		if (
-			isPVMove ||
+			isMeticulousMove ||
 			(alpha < sweetness && this->isBetaLarge_10i600j140k100L(sweetness, beta))
 		) {
 			//────────────────────────────────────────────────────────────────────────────────
@@ -1462,7 +1462,7 @@ public:
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="move"></param>
-	/// <param name="isPVMove">本筋の指し手かどうかかなあ（＾～＾）？</param>
+	/// <param name="isMeticulousMove">本筋の指し手かどうかかなあ（＾～＾）？</param>
 	/// <param name="alpha"></param>
 	/// <param name="sweetness"></param>
 	/// <param name="pos"></param>
@@ -1508,7 +1508,7 @@ public:
 	/// <param name="isBreak"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="move"></param>
-	/// <param name="isPVMove"></param>
+	/// <param name="isMeticulousMove"></param>
 	/// <param name="alpha"></param>
 	/// <param name="sweetness"></param>
 	/// <param name="pos"></param>
