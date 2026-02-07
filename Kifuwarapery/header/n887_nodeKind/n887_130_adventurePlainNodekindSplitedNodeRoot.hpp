@@ -387,7 +387,7 @@ public:
 			(*ppFlashlight)->m_skipNullMove = true;
 
 			//────────────────────────────────────────────────────────────────────────────────
-			// ［几帳面な猿］が探索☆（＾ｑ＾）
+			// 根だから、［几帳面な猿］が探索☆（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			g_NODEKIND_PROGRAMS[NodeKind::Meticulous]->explorePlain_10i(
 				ourCarriage, pos, (*ppFlashlight), alpha, beta, d, true);

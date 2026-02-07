@@ -177,7 +177,7 @@ public:
 			(*ppFlashlight)->m_skipNullMove = true;
 
 			//────────────────────────────────────────────────────────────────────────────────
-			// ［大雑把な性格の猿］が探索☆（＾ｑ＾）
+			// ［大雑把な性格の猿］が引き続き探索☆（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			g_NODEKIND_PROGRAMS[NodeKind::EasyGoing]->explorePlain_10i(
 				ourCarriage, pos, (*ppFlashlight), alpha, beta, d, true);
@@ -430,11 +430,11 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="doFullDepthSearch"></param>
+	/// <param name="willFullDepthSearch"></param>
 	/// <param name="alpha"></param>
 	/// <param name="ppMonkeySplitedPlace"></param>
 	virtual inline void explorePlain_10i3010j_updateAlpha(
-		bool& doFullDepthSearch,
+		bool& willFullDepthSearch,
 		Sweetness& alpha,
 		MonkeySplitedPlace** ppMonkeySplitedPlace
 		)const override {

@@ -1221,11 +1221,11 @@ public:
 	/// <param name="ppMonkeySplitedPlace"></param>
 	/// <param name="sweetness"></param>
 	/// <param name="pos"></param>
-	/// <param name="doFullDepthSearch"></param>
+	/// <param name="willFullDepthSearch"></param>
 	virtual inline void explorePlain_10i2999j_recursiveSearch(
 		OurCarriage& ourCarriage,
 		const Depth depth,
-		bool& isPVMove,
+		bool& isMeticulousMove,
 		bool& captureOrPawnPromotion,
 		Move& move,
 		Move& ttMove,
@@ -1237,12 +1237,12 @@ public:
 		MonkeySplitedPlace** ppMonkeySplitedPlace,
 		Sweetness& sweetness,
 		Position& pos,
-		bool& doFullDepthSearch
+		bool& willFullDepthSearch
 		) const
 	{
 		// LMR
 		if (3 * OnePly <= depth
-			&& !isPVMove
+			&& !isMeticulousMove
 			&& !captureOrPawnPromotion
 			&& move != ttMove
 			&& (*ppFlashlight)->m_killers[0] != move
@@ -1266,11 +1266,11 @@ public:
 			// PVS
 			sweetness = -g_NODEKIND_PROGRAMS[EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, d, true);
 
-			doFullDepthSearch = (alpha < sweetness && (*ppFlashlight)->m_reduction != Depth0);
+			willFullDepthSearch = (alpha < sweetness && (*ppFlashlight)->m_reduction != Depth0);
 			(*ppFlashlight)->m_reduction = Depth0;
 		}
 		else {
-			doFullDepthSearch = !isPVMove;
+			willFullDepthSearch = !isMeticulousMove;
 		}
 	}
 
@@ -1307,27 +1307,27 @@ public:
 	/// <summary>
 	/// スプリットノードだけが実行するぜ☆！（＾ｑ＾）
 	/// </summary>
-	/// <param name="doFullDepthSearch"></param>
+	/// <param name="willFullDepthSearch"></param>
 	/// <param name="alpha"></param>
 	/// <param name="ppMonkeySplitedPlace"></param>
 	virtual inline void explorePlain_10i3010j_updateAlpha(
-		bool& doFullDepthSearch,
+		bool& willFullDepthSearch,
 		Sweetness& alpha,
 		MonkeySplitedPlace** ppMonkeySplitedPlace) const
 	{
 		// full depth search
 		// PVS
-		if (doFullDepthSearch) {
+		if (willFullDepthSearch) {
 			alpha = (*ppMonkeySplitedPlace)->m_alpha;
 		}
 	}
 
 
 	/// <summary>
-	/// ［大雑把な性格の猿］］が評価値を取得するぜ（＾ｑ＾）
+	/// ［大雑把な性格の猿］が評価値を取得するぜ（＾ｑ＾）
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
-	/// <param name="doFullDepthSearch"></param>
+	/// <param name="willFullDepthSearch"></param>
 	/// <param name="sweetness"></param>
 	/// <param name="newDepth"></param>
 	/// <param name="givesCheck"></param>
@@ -1335,9 +1335,9 @@ public:
 	/// <param name="ppFlashlight"></param>
 	/// <param name="alpha"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void explorePlain_10i3020j_getSweetnessByEasyGoingMonkey(
+	virtual inline void explorePlain_10i3020j_getSweetnessByEasyGoingMonkeyIfWillFullDepthSearch(
 		OurCarriage& ourCarriage,
-		bool& doFullDepthSearch,
+		bool& willFullDepthSearch,
 		Sweetness& sweetness,
 		Depth& newDepth,
 		bool& givesCheck,
@@ -1348,7 +1348,7 @@ public:
 	{
 		// full depth search
 		// PVS
-		if (doFullDepthSearch) {
+		if (willFullDepthSearch) {
 			sweetness = (newDepth < OnePly ?
 				(givesCheck ? -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[EasyGoing]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0)
 					: -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[EasyGoing]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0))

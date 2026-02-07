@@ -103,7 +103,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 	bool singularExtensionNode;
 	bool captureOrPawnPromotion;
 	bool dangerous;
-	bool doFullDepthSearch;
+	bool willFullDepthSearch;
 	int moveCount;
 	int playedMoveCount;
 	Move ttMove;
@@ -353,7 +353,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 			&pMonkeySplitedPlace,
 			sweetness,
 			pos,
-			doFullDepthSearch);
+			willFullDepthSearch);
 
 
 		// ----------------------------------------
@@ -361,9 +361,10 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 		// ----------------------------------------
 
 
-		this->explorePlain_10i3020j_getSweetnessByEasyGoingMonkey(
+		// もし全深さ探索するんだったら、［大雑把な性格の猿］が評価値を取得するぜ（＾ｑ＾）
+		this->explorePlain_10i3020j_getSweetnessByEasyGoingMonkeyIfWillFullDepthSearch(
 			ourCarriage,
-			doFullDepthSearch,
+			willFullDepthSearch,
 			sweetness,
 			newDepth,
 			givesCheck,

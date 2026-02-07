@@ -112,7 +112,7 @@ Sweetness AdventureNodekindMonkeySplitedPlacePv::explorePlain_10i(
 	bool singularExtensionNode;
 	bool captureOrPawnPromotion;
 	bool dangerous;
-	bool doFullDepthSearch;
+	bool willFullDepthSearch;
 	int moveCount;
 	int playedMoveCount;
 	Move ttMove;
@@ -410,7 +410,7 @@ split_point_start:
 			&pMonkeySplitedPlace,
 			sweetness,
 			pos,
-			doFullDepthSearch);
+			willFullDepthSearch);
 
 
 		// ----------------------------------------
@@ -422,14 +422,15 @@ split_point_start:
 
 
 		this->explorePlain_10i3010j_updateAlpha(
-			doFullDepthSearch,
+			willFullDepthSearch,
 			alpha,
 			&pMonkeySplitedPlace);
 
 
-		this->explorePlain_10i3020j_getSweetnessByEasyGoingMonkey(
+		// もし全深さ探索するんだったら、［大雑把な性格の猿］が評価値を取得するぜ（＾ｑ＾）
+		this->explorePlain_10i3020j_getSweetnessByEasyGoingMonkeyIfWillFullDepthSearch(
 			ourCarriage,
-			doFullDepthSearch,
+			willFullDepthSearch,
 			sweetness,
 			newDepth,
 			givesCheck,

@@ -576,11 +576,11 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="doFullDepthSearch"></param>
+	/// <param name="willFullDepthSearch"></param>
 	/// <param name="alpha"></param>
 	/// <param name="ppMonkeySplitedPlace"></param>
 	virtual inline void explorePlain_10i3010j_updateAlpha(
-		bool& doFullDepthSearch,
+		bool& willFullDepthSearch,
 		Sweetness& alpha,
 		MonkeySplitedPlace** ppMonkeySplitedPlace
 		)const override {
