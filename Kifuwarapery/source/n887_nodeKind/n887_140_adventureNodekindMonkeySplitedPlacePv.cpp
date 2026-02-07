@@ -427,7 +427,7 @@ split_point_start:
 			&pMonkeySplitedPlace);
 
 
-		this->explorePlain_10i3020j_getSweetnessNonPV(
+		this->explorePlain_10i3020j_getSweetnessByEasyGoingMonkey(
 			ourCarriage,
 			doFullDepthSearch,
 			sweetness,

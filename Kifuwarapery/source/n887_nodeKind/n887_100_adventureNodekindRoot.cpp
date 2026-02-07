@@ -361,7 +361,7 @@ Sweetness AdventureNodekindRoot::explorePlain_10i(
 		// ----------------------------------------
 
 
-		this->explorePlain_10i3020j_getSweetnessNonPV(
+		this->explorePlain_10i3020j_getSweetnessByEasyGoingMonkey(
 			ourCarriage,
 			doFullDepthSearch,
 			sweetness,

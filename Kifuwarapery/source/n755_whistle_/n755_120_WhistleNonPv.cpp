@@ -2,7 +2,7 @@
 #include "../../header/n887_nodeKind/n887_150_adventurePlainNodekindSplitedNodeNonPv.hpp"
 
 
-const WhistleNonPv g_WHISTLE_NON_PV;
+const WhistleForEasyGoingMonkey g_WHISTLE_NON_PV;
 
 
 /// <summary>
@@ -14,7 +14,7 @@ const WhistleNonPv g_WHISTLE_NON_PV;
 /// <param name="ourCarriage"></param>
 /// <param name="pos"></param>
 /// <param name="pFlashlight"></param>
-void WhistleNonPv::blowWhistle_asMonkeySplitedPlace(
+void WhistleForEasyGoingMonkey::blowWhistle_asMonkeySplitedPlace(
 	MonkeySplitedPlace& ownerMonkeySplitedPlace, 
 	OurCarriage& ourCarriage,
 	Position& pos,

@@ -5,9 +5,9 @@
 
 
 /// <summary>
-/// 
+/// ［大雑把な性格の猿］を動かすホイッスル☆（＾ｑ＾）
 /// </summary>
-class WhistleNonPv : public WhistleAbstract {
+class WhistleForEasyGoingMonkey : public WhistleAbstract {
 
 
 public:
@@ -35,4 +35,4 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern const WhistleNonPv g_WHISTLE_NON_PV;
+extern const WhistleForEasyGoingMonkey g_WHISTLE_NON_PV;

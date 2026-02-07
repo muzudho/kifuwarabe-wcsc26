@@ -438,8 +438,8 @@ public:
 
 	/// <summary>
 	///		<pre>
-	/// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
-	/// N02_NonPV扱いで実行する関数があるぜ、なんだこれ☆（＾ｑ＾）Qサーチは、スプリットポイントかどうかは見てないのかだぜ☆（＾ｑ＾）
+	/// ［大雑把な性格の猿］がする手続きだぜ☆！（＾ｑ＾）
+	/// Qサーチは、スプリットポイントかどうかは見てないのかだぜ☆（＾ｑ＾）
 	///		</pre>
 	/// </summary>
 	/// <param name="isReturnWithSweetness"></param>
@@ -451,7 +451,7 @@ public:
 	/// <param name="ttMove"></param>
 	/// <param name="pos"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void explorePlain_10i1260j_nonPV(
+	virtual inline void explorePlain_10i1260j_byEasyGoingMonkey(
 		bool& isReturnWithSweetness,
 		Sweetness& returnSweetness,
 		OurCarriage& ourCarriage,
@@ -484,7 +484,7 @@ public:
 
 
 	/// <summary>
-	/// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
+	/// ［大雑把な性格の猿］だけが実行する手続きだぜ☆！（＾ｑ＾）
 	/// </summary>
 	/// <param name="isReturnWithSweetness"></param>
 	/// <param name="returnSweetness"></param>
@@ -492,7 +492,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="beta"></param>
 	/// <param name="eval"></param>
-	virtual inline void explorePlain_10i1270j_nonPV(
+	virtual inline void explorePlain_10i1270j_byEasyGoingMonkey(
 		bool& isReturnWithSweetness,
 		Sweetness& returnSweetness,
 		Flashlight** ppFlashlight,
@@ -518,8 +518,7 @@ public:
 
 	/// <summary>
 	///		<pre>
-	/// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
-	/// N02_NonPV扱いで実行する関数があるぜ、なんだこれ☆（＾ｑ＾）
+	/// ［大雑把な性格の猿］だけが実行する手続きだぜ☆！（＾ｑ＾）
 	///		</pre>
 	/// </summary>
 	/// <param name="isReturnWithSweetness"></param>
@@ -534,7 +533,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="cutNode"></param>
 	/// <param name="threatMove"></param>
-	virtual inline void explorePlain_10i1280j_nonPV(
+	virtual inline void explorePlain_10i1280j_byEasyGoingMonkey(
 		bool& isReturnWithSweetness,
 		Sweetness& returnSweetness,
 		OurCarriage& ourCarriage,
@@ -550,8 +549,6 @@ public:
 	)const {
 
 		// null move
-
-		// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
 		if (!(*ppFlashlight)->m_skipNullMove
 			&& 2 * OnePly <= depth
 			&& beta <= eval
@@ -576,7 +573,7 @@ public:
 					ourCarriage, false, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
 				:
 				//────────────────────────────────────────────────────────────────────────────────
-				// 深さが２手（先後１組）未満なら　ふつーのNonPV探索☆？（＾ｑ＾）
+				// 深さが２手（先後１組）未満なら　クイックでない［大雑把な性格の猿］が探索☆（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
 				-g_NODEKIND_PROGRAMS[NodeKind::EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, depth - reduction, !cutNode)
 			);
@@ -599,7 +596,7 @@ public:
 				(*ppFlashlight)->m_skipNullMove = true;
 				assert(Depth0 < depth - reduction);
 				//────────────────────────────────────────────────────────────────────────────────
-				// 非PV探索☆？（＾ｑ＾）
+				// ［大雑把な性格の猿］が探索☆（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
 				const Sweetness s = g_NODEKIND_PROGRAMS[NodeKind::EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight), alpha, beta, depth - reduction, false);
 				(*ppFlashlight)->m_skipNullMove = false;
@@ -630,7 +627,7 @@ public:
 
 
 	/// <summary>
-	/// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
+	/// ［大雑把な性格の猿］だけが実行する手続きだぜ☆！（＾ｑ＾）
 	/// </summary>
 	/// <param name="isReturnWithSweetness"></param>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
@@ -643,7 +640,7 @@ public:
 	/// <param name="st"></param>
 	/// <param name="sweetness"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void explorePlain_10i1290j_nonPV(
+	virtual inline void explorePlain_10i1290j_byEasyGoingMonkey(
 		bool& isReturnWithSweetness,
 		OurCarriage& ourCarriage,
 		const Depth& depth,
@@ -658,8 +655,6 @@ public:
 		)const {
 
 		// probcut
-
-		// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
 		if (5 * OnePly <= depth
 			&& !(*ppFlashlight)->m_skipNullMove
 			// 確実にバグらせないようにする。
@@ -696,7 +691,7 @@ public:
 					((*ppFlashlight) + 1)->m_staticEvalRaw.m_p[0][0] = SweetnessNotEvaluated;
 
 					//────────────────────────────────────────────────────────────────────────────────
-					// 非PV探索☆？（＾ｑ＾）
+					// ［大雑把な性格の猿］が探索☆（＾ｑ＾）
 					//────────────────────────────────────────────────────────────────────────────────
 					sweetness =	-g_NODEKIND_PROGRAMS[NodeKind::EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -rbeta, -rbeta + 1, rdepth, !cutNode);
 					pos.UndoMove(move);
@@ -1328,7 +1323,7 @@ public:
 
 
 	/// <summary>
-	/// （＾ｑ＾）N02_NonPV扱いで実行するみたいなんだがなんだこれだぜ☆
+	/// ［大雑把な性格の猿］］が評価値を取得するぜ（＾ｑ＾）
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="doFullDepthSearch"></param>
@@ -1339,7 +1334,7 @@ public:
 	/// <param name="ppFlashlight"></param>
 	/// <param name="alpha"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void explorePlain_10i3020j_getSweetnessNonPV(
+	virtual inline void explorePlain_10i3020j_getSweetnessByEasyGoingMonkey(
 		OurCarriage& ourCarriage,
 		bool& doFullDepthSearch,
 		Sweetness& sweetness,
@@ -1357,7 +1352,7 @@ public:
 				(givesCheck ? -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[EasyGoing]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0)
 					: -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[EasyGoing]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0))
 				//────────────────────────────────────────────────────────────────────────────────
-				// 非PV探索☆？（＾ｑ＾）
+				// ［大雑把］な性格の猿が探索☆（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
 				: -g_NODEKIND_PROGRAMS[EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, newDepth, !cutNode));
 		}
@@ -1366,7 +1361,7 @@ public:
 
 	/// <summary>
 	///		<pre>
-	/// PVノードだけが実行するぜ☆！（＾ｑ＾）
+	/// ［几帳面］な猿が実行するぜ☆！（＾ｑ＾）
 	///		</pre>
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>

@@ -237,7 +237,7 @@ Sweetness AdventureNodekindMonkeySplitedPlaceNonPv::explorePlain_10i(
 	if (isGotoIidStart) { goto iid_start; }
 
 
-	this->explorePlain_10i1260j_nonPV(
+	this->explorePlain_10i1260j_byEasyGoingMonkey(
 		isReturnWithSweetness,
 		returnSweetness,
 		ourCarriage,
@@ -250,7 +250,7 @@ Sweetness AdventureNodekindMonkeySplitedPlaceNonPv::explorePlain_10i(
 	if (isReturnWithSweetness) { return returnSweetness; }
 
 
-	this->explorePlain_10i1270j_nonPV(
+	this->explorePlain_10i1270j_byEasyGoingMonkey(
 		isReturnWithSweetness,
 		returnSweetness,
 		&pFlashlight,
@@ -260,7 +260,7 @@ Sweetness AdventureNodekindMonkeySplitedPlaceNonPv::explorePlain_10i(
 	if (isReturnWithSweetness) { return returnSweetness; }
 
 
-	this->explorePlain_10i1280j_nonPV(
+	this->explorePlain_10i1280j_byEasyGoingMonkey(
 		isReturnWithSweetness,
 		returnSweetness,
 		ourCarriage,
@@ -276,7 +276,7 @@ Sweetness AdventureNodekindMonkeySplitedPlaceNonPv::explorePlain_10i(
 	if (isReturnWithSweetness) { return returnSweetness; }
 
 
-	this->explorePlain_10i1290j_nonPV(
+	this->explorePlain_10i1290j_byEasyGoingMonkey(
 		isReturnWithSweetness,
 		ourCarriage,
 		depth,
@@ -488,7 +488,7 @@ split_point_start:
 			alpha,
 			&pMonkeySplitedPlace);
 
-		this->explorePlain_10i3020j_getSweetnessNonPV(
+		this->explorePlain_10i3020j_getSweetnessByEasyGoingMonkey(
 			ourCarriage,
 			doFullDepthSearch,
 			sweetness,

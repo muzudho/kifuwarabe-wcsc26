@@ -238,7 +238,7 @@ public:
 	/// <param name="ttMove"></param>
 	/// <param name="pos"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void explorePlain_10i1260j_nonPV(
+	virtual inline void explorePlain_10i1260j_byEasyGoingMonkey(
 		bool& isReturnWithSweetness,
 		Sweetness& returnSweetness,
 		OurCarriage& ourCarriage,
@@ -262,7 +262,7 @@ public:
 	/// <param name="depth"></param>
 	/// <param name="beta"></param>
 	/// <param name="eval"></param>
-	virtual inline void explorePlain_10i1270j_nonPV(
+	virtual inline void explorePlain_10i1270j_byEasyGoingMonkey(
 		bool& isReturnWithSweetness,
 		Sweetness& returnSweetness,
 		Flashlight** ppFlashlight,
@@ -289,7 +289,7 @@ public:
 	/// <param name="alpha"></param>
 	/// <param name="cutNode"></param>
 	/// <param name="threatMove"></param>
-	virtual inline void explorePlain_10i1280j_nonPV(
+	virtual inline void explorePlain_10i1280j_byEasyGoingMonkey(
 		bool& isReturnWithSweetness,
 		Sweetness& returnSweetness,
 		OurCarriage& ourCarriage,
@@ -321,7 +321,7 @@ public:
 	/// <param name="st"></param>
 	/// <param name="sweetness"></param>
 	/// <param name="cutNode"></param>
-	virtual inline void explorePlain_10i1290j_nonPV(
+	virtual inline void explorePlain_10i1290j_byEasyGoingMonkey(
 		bool& isReturnWithSweetness,
 		OurCarriage& ourCarriage,
 		const Depth& depth,
