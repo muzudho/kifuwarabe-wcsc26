@@ -177,7 +177,7 @@ public:
 			(*ppFlashlight)->m_skipNullMove = true;
 
 			//────────────────────────────────────────────────────────────────────────────────
-			// 探索☆？（＾ｑ＾）
+			// 非PV探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			// 非PVノードの場合☆
 			g_NODEKIND_PROGRAMS[NodeKind::No2_NonPV]->explorePlain_10i(
@@ -456,7 +456,7 @@ public:
 	/// <param name="givesCheck"></param>
 	/// <param name="pos"></param>
 	/// <param name="ppFlashlight"></param>
-	virtual inline void explorerPlain_10i3030j_getSweetness(
+	virtual inline void explorerPlain_10i3030j_getSweetnessIfPV(
 		OurCarriage& ourCarriage,
 		bool& isPVMove,
 		Sweetness& alpha,
@@ -616,7 +616,7 @@ public:
 				threatMove,
 				moveCount,
 				mp,
-				&g_WHISTLE_NON_PV,
+                &g_WHISTLE_NON_PV,	// 猿生成時、非PVノード用の口笛を吹くぜ☆！（＾ｑ＾）
 				cutNode
 				);
 

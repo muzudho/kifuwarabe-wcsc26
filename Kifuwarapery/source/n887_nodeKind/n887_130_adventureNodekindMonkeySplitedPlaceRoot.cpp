@@ -395,7 +395,7 @@ split_point_start:
 			alpha,
 			cutNode);
 
-		this->explorerPlain_10i3030j_getSweetness(
+		this->explorerPlain_10i3030j_getSweetnessIfPV(
 			ourCarriage,
 			isPVMove,
 			alpha,

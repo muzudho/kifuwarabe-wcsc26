@@ -379,7 +379,7 @@ public:
 			(*ppFlashlight)->m_skipNullMove = true;
 
 			//────────────────────────────────────────────────────────────────────────────────
-			// 探索☆？（＾ｑ＾）
+			// PV探索☆？（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			// PVノードの場合☆
 			g_NODEKIND_PROGRAMS[NodeKind::No1_PV]->explorePlain_10i(
@@ -812,7 +812,7 @@ public:
 				threatMove,
 				moveCount,
 				mp,
-				&g_WHISTLE_ROOT,
+                &g_WHISTLE_ROOT,	// 猿生成時、ルート用のホイッスルを渡すぜ☆（＾ｑ＾）
 				cutNode
 				);
 
