@@ -5,9 +5,13 @@
 
 
 /// <summary>
+///		<pre>
+/// ［几帳面な猿］を走らすホイッスルぜ☆（＾ｑ＾）
 /// 
+///		- 旧名： `NodeType_PV`
+/// 	</pre>
 /// </summary>
-class WhistlePv : public WhistleAbstract {
+class WhistleForMeticulousMonkey : public WhistleAbstract {
 
 
 public:
@@ -35,4 +39,4 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern const WhistlePv g_WHISTLE_PV;
+extern const WhistleForMeticulousMonkey g_WHISTLE_PV;

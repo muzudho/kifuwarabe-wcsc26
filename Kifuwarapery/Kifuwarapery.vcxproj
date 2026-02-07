@@ -396,8 +396,8 @@
     <ClInclude Include="header\n720_usi_____\n720_300_benchmark.hpp" />
     <ClInclude Include="header\n755_whistle_\n755_070_WhistleAbstract.hpp" />
     <ClInclude Include="header\n755_whistle_\n755_100_WhistleRoot.hpp" />
-    <ClInclude Include="header\n755_whistle_\n755_110_WhistlePv.hpp" />
-    <ClInclude Include="header\n755_whistle_\n755_120_WhistleNonPv.hpp" />
+    <ClInclude Include="header\n755_whistle_\n755_110_WhistleForMeticulousMonkey.hpp" />
+    <ClInclude Include="header\n755_whistle_\n755_120_WhistleForEasyGoingMonkey.hpp" />
     <ClInclude Include="header\n760_thread__\n760_250_monkie.hpp" />
     <ClInclude Include="header\n760_thread__\n760_300_orangutan.hpp" />
     <ClInclude Include="header\n760_thread__\n760_350_chimpanzee.hpp" />
@@ -618,8 +618,8 @@
     <ClCompile Include="source\n720_usi_____\n720_300_benchmark.cpp" />
     <ClCompile Include="source\n755_whistle_\n755_070_WhistleAbstract.cpp" />
     <ClCompile Include="source\n755_whistle_\n755_100_WhistleRoot.cpp" />
-    <ClCompile Include="source\n755_whistle_\n755_110_WhistlePv.cpp" />
-    <ClCompile Include="source\n755_whistle_\n755_120_WhistleNonPv.cpp" />
+    <ClCompile Include="source\n755_whistle_\n755_110_WhistleForMeticulousMonkey.cpp" />
+    <ClCompile Include="source\n755_whistle_\n755_120_WhistleForEasyGoingMonkey.cpp" />
     <ClCompile Include="source\n760_thread__\n760_250_monkie.cpp" />
     <ClCompile Include="source\n760_thread__\n760_300_orangutan.cpp" />
     <ClCompile Include="source\n760_thread__\n760_350_chimpanzee.cpp" />

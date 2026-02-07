@@ -1,8 +1,8 @@
-﻿#include "../../header/n755_whistle_/n755_110_WhistlePv.hpp"
-#include "../../header/n887_nodeKind/n887_140_adventurePlainNodekindSplitedNodePv.hpp"
+﻿#include "../../header/n755_whistle_/n755_120_WhistleForEasyGoingMonkey.hpp"
+#include "../../header/n887_nodeKind/n887_150_adventurePlainNodekindSplitedNodeNonPv.hpp"
 
 
-const WhistlePv g_WHISTLE_PV;
+const WhistleForEasyGoingMonkey g_WHISTLE_NON_PV;
 
 
 /// <summary>
@@ -14,7 +14,7 @@ const WhistlePv g_WHISTLE_PV;
 /// <param name="ourCarriage"></param>
 /// <param name="pos"></param>
 /// <param name="pFlashlight"></param>
-void WhistlePv::blowWhistle_asMonkeySplitedPlace(
+void WhistleForEasyGoingMonkey::blowWhistle_asMonkeySplitedPlace(
 	MonkeySplitedPlace& ownerMonkeySplitedPlace, 
 	OurCarriage& ourCarriage,
 	Position& pos,
@@ -24,7 +24,7 @@ void WhistlePv::blowWhistle_asMonkeySplitedPlace(
 	// 探索☆？（＾ｑ＾）
 	//────────────────────────────────────────────────────────────────────────────────
 	// スプリットポイントは検索を開始するぜ☆（＾ｑ＾）
-	g_NODEKIND_MONKEYSPLITEDPLACE_PV.explorePlain_10i(
+	g_NODEKIND_MONKEYSPLITEDPLACE_NON_PV.explorePlain_10i(
 		ourCarriage,
 		pos,
 		pFlashlight + 1,

@@ -996,10 +996,10 @@
     <ClInclude Include="header\n755_whistle_\n755_100_WhistleRoot.hpp">
       <Filter>header\n755_sword___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n755_whistle_\n755_110_WhistlePv.hpp">
+    <ClInclude Include="header\n755_whistle_\n755_110_WhistleForMeticulousMonkey.hpp">
       <Filter>header\n755_sword___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n755_whistle_\n755_120_WhistleNonPv.hpp">
+    <ClInclude Include="header\n755_whistle_\n755_120_WhistleForEasyGoingMonkey.hpp">
       <Filter>header\n755_sword___</Filter>
     </ClInclude>
     <ClInclude Include="header\n350_pieceTyp\n350_030_makePromoteMove.hpp">
@@ -1664,10 +1664,10 @@
     <ClCompile Include="source\n755_whistle_\n755_100_WhistleRoot.cpp">
       <Filter>source\n755_sword___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n755_whistle_\n755_110_WhistlePv.cpp">
+    <ClCompile Include="source\n755_whistle_\n755_110_WhistleForMeticulousMonkey.cpp">
       <Filter>source\n755_sword___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n755_whistle_\n755_120_WhistleNonPv.cpp">
+    <ClCompile Include="source\n755_whistle_\n755_120_WhistleForEasyGoingMonkey.cpp">
       <Filter>source\n755_sword___</Filter>
     </ClCompile>
     <ClCompile Include="source\n350_pieceTyp\n350_030_makePromoteMove.cpp">

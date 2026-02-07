@@ -5,7 +5,11 @@
 
 
 /// <summary>
+///		<pre>
 /// ［大雑把な性格の猿］を動かすホイッスル☆（＾ｑ＾）
+/// 
+///		- 旧名： `NodeType_NonPV`
+///		</pre>
 /// </summary>
 class WhistleForEasyGoingMonkey : public WhistleAbstract {
 
