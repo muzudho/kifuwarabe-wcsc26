@@ -40,7 +40,7 @@
 #include "../../header/n886_repeType/n886_140_rtSuperior.hpp"
 #include "../../header/n886_repeType/n886_150_rtInferior.hpp"
 #include "../../header/n886_repeType/n886_500_rtArray.hpp"
-#include "../../header/n887_nodeKind/n887_120_adventurePlainNodekindNonPv.hpp"
+#include "../../header/n887_nodeKind/n887_120_adventurePlainNodekindEasyGoingMonkey.hpp"
 #include "../../header/n887_nodeKind/n887_500_adventurePlainNodekindPrograms.hpp"
 
 
@@ -48,7 +48,7 @@ using namespace std;
 extern const InFrontMaskBb g_inFrontMaskBb;
 extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 //extern RepetitionTypeModels g_repetitionTypes;
-AdventureNodekindNonPv g_NODEKIND_NON_PV;
+AdventureNodekindNonPv g_NODEKIND_EASY_GOING_MONKEY;
 
 
 /// <summary>

@@ -1,10 +1,10 @@
 ﻿#include "../../header/n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
 #include "../../header/n887_nodeKind/n887_100_adventurePlainNodekindRoot.hpp"
-#include "../../header/n887_nodeKind/n887_110_adventurePlainNodekindPv.hpp"
-#include "../../header/n887_nodeKind/n887_120_adventurePlainNodekindNonPv.hpp"
+#include "../../header/n887_nodeKind/n887_110_adventurePlainNodekindMeticulousMonkey.hpp"
+#include "../../header/n887_nodeKind/n887_120_adventurePlainNodekindEasyGoingMonkey.hpp"
 #include "../../header/n887_nodeKind/n887_130_adventurePlainNodekindSplitedNodeRoot.hpp"
-#include "../../header/n887_nodeKind/n887_140_adventurePlainNodekindSplitedNodePv.hpp"
-#include "../../header/n887_nodeKind/n887_150_adventurePlainNodekindSplitedNodeNonPv.hpp"
+#include "../../header/n887_nodeKind/n887_140_adventurePlainNodekindSplitedNodeMeticulousMonkey.hpp"
+#include "../../header/n887_nodeKind/n887_150_adventurePlainNodekindSplitedNodeEasyGoingMonkey.hpp"
 #include "../../header/n887_nodeKind/n887_500_adventurePlainNodekindPrograms.hpp"
 
 
@@ -14,9 +14,9 @@
 /// </summary>
 AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[6] = {
 	&g_NODEKIND_ROOT,
-	&g_NODEKIND_PV,
-	&g_NODEKIND_NON_PV,
+	&g_NODEKIND_METICULOUS_MONKEY,
+	&g_NODEKIND_EASY_GOING_MONKEY,
 	&g_NODEKIND_MONKEYSPLITEDPLACE_ROOT,
-	&g_NODEKIND_MONKEYSPLITEDPLACE_PV,
-	&g_NODEKIND_MONKEYSPLITEDPLACE_NON_PV
+	&g_NODEKIND_MONKEYSPLITEDPLACE_METICULOUS_MONKEY,
+	&g_NODEKIND_MONKEYSPLITEDPLACE_EASY_GOING_MONKEY
 };

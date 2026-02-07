@@ -39,4 +39,4 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern const WhistleForMeticulousMonkey g_WHISTLE_PV;
+extern const WhistleForMeticulousMonkey g_WHISTLE_FOR_METICULOUS_MONKEY;

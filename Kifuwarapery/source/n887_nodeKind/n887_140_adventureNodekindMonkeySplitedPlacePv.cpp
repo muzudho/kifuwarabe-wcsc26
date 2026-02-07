@@ -42,7 +42,7 @@
 #include "../../header/n886_repeType/n886_140_rtSuperior.hpp"
 #include "../../header/n886_repeType/n886_150_rtInferior.hpp"
 #include "../../header/n886_repeType/n886_500_rtArray.hpp"
-#include "../../header/n887_nodeKind/n887_140_adventurePlainNodekindSplitedNodePv.hpp"
+#include "../../header/n887_nodeKind/n887_140_adventurePlainNodekindSplitedNodeMeticulousMonkey.hpp"
 #include "../../header/n887_nodeKind/n887_500_adventurePlainNodekindPrograms.hpp"
 
 
@@ -54,7 +54,7 @@ extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 //extern RepetitionTypeModels g_repetitionTypes;
 
 
-AdventureNodekindMonkeySplitedPlacePv g_NODEKIND_MONKEYSPLITEDPLACE_PV;
+AdventureNodekindMonkeySplitedPlacePv g_NODEKIND_MONKEYSPLITEDPLACE_METICULOUS_MONKEY;
 
 
 /// <summary>

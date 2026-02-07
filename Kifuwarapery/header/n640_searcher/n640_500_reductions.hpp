@@ -43,7 +43,7 @@ public:
 	}
 
 
-	inline Depth DoReduction_NotPvNode(
+	inline Depth DoReduction_NotMeticulousMonkey(
 		const Depth depth, const int moveCount
 		) {
 		return static_cast<Depth>(this->m_reductions[false//not MeticulousNode

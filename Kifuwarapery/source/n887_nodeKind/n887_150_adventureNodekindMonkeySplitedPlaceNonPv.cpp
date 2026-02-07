@@ -40,7 +40,7 @@
 #include "../../header/n886_repeType/n886_140_rtSuperior.hpp"
 #include "../../header/n886_repeType/n886_150_rtInferior.hpp"
 #include "../../header/n886_repeType/n886_500_rtArray.hpp"
-#include "../../header/n887_nodeKind/n887_150_adventurePlainNodekindSplitedNodeNonPv.hpp"
+#include "../../header/n887_nodeKind/n887_150_adventurePlainNodekindSplitedNodeEasyGoingMonkey.hpp"
 #include "../../header/n887_nodeKind/n887_500_adventurePlainNodekindPrograms.hpp"
 
 
@@ -51,7 +51,7 @@ extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 
 
 // 依存関係の回避
-AdventureNodekindMonkeySplitedPlaceNonPv g_NODEKIND_MONKEYSPLITEDPLACE_NON_PV;
+AdventureNodekindMonkeySplitedPlaceNonPv g_NODEKIND_MONKEYSPLITEDPLACE_EASY_GOING_MONKEY;
 
 
 /// <summary>

@@ -423,11 +423,11 @@
     <ClInclude Include="header\n886_repeType\n886_150_rtInferior.hpp" />
     <ClInclude Include="header\n886_repeType\n886_500_rtArray.hpp" />
     <ClInclude Include="header\n887_nodeKind\n887_100_adventurePlainNodekindRoot.hpp" />
-    <ClInclude Include="header\n887_nodeKind\n887_110_adventurePlainNodekindPv.hpp" />
-    <ClInclude Include="header\n887_nodeKind\n887_120_adventurePlainNodekindNonPv.hpp" />
+    <ClInclude Include="header\n887_nodeKind\n887_110_adventurePlainNodekindMeticulousMonkey.hpp" />
+    <ClInclude Include="header\n887_nodeKind\n887_120_adventurePlainNodekindEasyGoingMonkey.hpp" />
     <ClInclude Include="header\n887_nodeKind\n887_130_adventurePlainNodekindSplitedNodeRoot.hpp" />
-    <ClInclude Include="header\n887_nodeKind\n887_140_adventurePlainNodekindSplitedNodePv.hpp" />
-    <ClInclude Include="header\n887_nodeKind\n887_150_adventurePlainNodekindSplitedNodeNonPv.hpp" />
+    <ClInclude Include="header\n887_nodeKind\n887_140_adventurePlainNodekindSplitedNodeMeticulousMonkey.hpp" />
+    <ClInclude Include="header\n887_nodeKind\n887_150_adventurePlainNodekindSplitedNodeEasyGoingMonkey.hpp" />
     <ClInclude Include="header\n887_nodeKind\n887_500_adventurePlainNodekindPrograms.hpp" />
     <ClInclude Include="header\n900_main____\n900_300_usiLoop.hpp" />
     <ClInclude Include="header\n900_main____\n900_400_main01.hpp" />

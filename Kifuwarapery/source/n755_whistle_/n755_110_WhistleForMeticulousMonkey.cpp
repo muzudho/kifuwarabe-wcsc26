@@ -1,8 +1,8 @@
 ﻿#include "../../header/n755_whistle_/n755_110_WhistleForMeticulousMonkey.hpp"
-#include "../../header/n887_nodeKind/n887_140_adventurePlainNodekindSplitedNodePv.hpp"
+#include "../../header/n887_nodeKind/n887_140_adventurePlainNodekindSplitedNodeMeticulousMonkey.hpp"
 
 
-const WhistleForMeticulousMonkey g_WHISTLE_PV;
+const WhistleForMeticulousMonkey g_WHISTLE_FOR_METICULOUS_MONKEY;
 
 
 /// <summary>
@@ -24,7 +24,7 @@ void WhistleForMeticulousMonkey::blowWhistle_asMonkeySplitedPlace(
 	// 探索☆？（＾ｑ＾）
 	//────────────────────────────────────────────────────────────────────────────────
 	// スプリットポイントは検索を開始するぜ☆（＾ｑ＾）
-	g_NODEKIND_MONKEYSPLITEDPLACE_PV.explorePlain_10i(
+	g_NODEKIND_MONKEYSPLITEDPLACE_METICULOUS_MONKEY.explorePlain_10i(
 		ourCarriage,
 		pos,
 		pFlashlight + 1,

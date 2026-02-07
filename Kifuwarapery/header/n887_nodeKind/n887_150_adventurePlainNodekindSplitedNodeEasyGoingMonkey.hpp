@@ -9,14 +9,14 @@
 #include "../n885_searcher/n885_040_ourCarriage.hpp"
 
 
-// PvNode = true
+// PvNode = false
 // MonkeySplitedPlace = true
 // RootNode = false
 
 /// <summary>
 /// 
 /// </summary>
-class AdventureNodekindMonkeySplitedPlacePv : public AdventureNodekindAbstract
+class AdventureNodekindMonkeySplitedPlaceNonPv : public AdventureNodekindAbstract
 {
 
 
@@ -26,7 +26,7 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	/// <param name="ourCarriage">わたしたちの馬車</param>
+	/// <param name="ourCarriage"></param>
 	/// <param name="pos"></param>
 	/// <param name="pFlashlight"></param>
 	/// <param name="alpha"></param>
@@ -43,20 +43,6 @@ public:
 		const Depth depth,
 		const bool cutNode
 		) const override;
-
-
-	/// <summary>
-	/// 非PVノードはassertをするぜ☆（＾ｑ＾）
-	/// </summary>
-	/// <param name="alpha"></param>
-	/// <param name="beta"></param>
-	virtual inline void explorePlain_10i1010j_alphaIsBetaMinusOne(
-		Sweetness alpha,
-		Sweetness beta
-		) const override {
-		assert(alpha == beta - 1);
-	}
-
 
 	/*
 	// スプリット・ポイントのみ実行☆（＾ｑ＾）
@@ -99,15 +85,31 @@ public:
 
 
 	/// <summary>
+	/// 非PVノードはassertをするぜ☆（＾ｑ＾）
+	/// </summary>
+	/// <param name="ppThisThread"></param>
+	/// <param name="pFlashlight"></param>
+	inline void explorePlain_10i1040j_updateMaxPly(
+		Monkie** ppThisThread,
+		const Flashlight* pFlashlight
+		)const override {
+		// PVノードはスルー☆！（＾ｑ＾）
+		//UNREACHABLE;
+	}
+
+
+	/// <summary>
 	/// ルートノードか、それ以外かで　値が分かれるぜ☆（＾ｑ＾）
 	/// </summary>
-	/// <param name="ourCarriage">わたしたちの馬車</param>
+	/// <param name="ttMove"></param>
+	/// <param name="ourCarriage"></param>
 	/// <param name="pTtEntry"></param>
 	/// <param name="pos"></param>
 	virtual inline std::unique_ptr<Move> explorePlain_10i1110j_getTtMove(
 		OurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
-		Position& pos) const override
+		Position& pos
+		)const override
 	{
 		return pTtEntry != nullptr
 			?
@@ -119,7 +121,7 @@ public:
 
 
 	/// <summary>
-	/// PVノードの場合☆（＾ｑ＾）
+	/// 非PVノードの場合☆（＾ｑ＾）
 	/// </summary>
 	/// <param name="pTtEntry"></param>
 	/// <param name="beta"></param>
@@ -130,119 +132,10 @@ public:
 		Sweetness& beta,
 		Sweetness& ttSweetness
 		) const override {
-		return pTtEntry->GetBoundKind() == Bound::BoundExact;
-	}
-
-
-	/// <summary>
-	/// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
-	/// </summary>
-	/// <param name="isReturnWithSweetness"></param>
-	/// <param name="returnSweetness"></param>
-	/// <param name="ourCarriage">わたしたちの馬車</param>
-	/// <param name="depth"></param>
-	/// <param name="eval"></param>
-	/// <param name="beta"></param>
-	/// <param name="ttMove"></param>
-	/// <param name="pos"></param>
-	/// <param name="ppFlashlight"></param>
-	virtual inline void explorePlain_10i1260j_byEasyGoingMonkey(
-		bool& isReturnWithSweetness,
-		Sweetness& returnSweetness,
-		OurCarriage& ourCarriage,
-		const Depth depth,
-		Sweetness& eval,
-		Sweetness& beta,
-		Move& ttMove,
-		Position& pos,
-		Flashlight** ppFlashlight
-		)const override {
-		// PVノードはスルー☆！（＾ｑ＾）
-	}
-
-
-	/// <summary>
-	/// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
-	/// </summary>
-	/// <param name="isReturnWithSweetness"></param>
-	/// <param name="returnSweetness"></param>
-	/// <param name="ppFlashlight"></param>
-	/// <param name="depth"></param>
-	/// <param name="beta"></param>
-	/// <param name="eval"></param>
-	virtual inline void explorePlain_10i1270j_byEasyGoingMonkey(
-		bool& isReturnWithSweetness,
-		Sweetness& returnSweetness,
-		Flashlight** ppFlashlight,
-		const Depth depth,
-		Sweetness& beta,
-		Sweetness& eval
-		)const override {
-		// PVノードはスルー☆！（＾ｑ＾）
-	}
-
-
-	/// <summary>
-	/// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
-	/// </summary>
-	/// <param name="isReturnWithSweetness"></param>
-	/// <param name="returnSweetness"></param>
-	/// <param name="ourCarriage">わたしたちの馬車</param>
-	/// <param name="ppFlashlight"></param>
-	/// <param name="depth"></param>
-	/// <param name="beta"></param>
-	/// <param name="eval"></param>
-	/// <param name="pos"></param>
-	/// <param name="st"></param>
-	/// <param name="alpha"></param>
-	/// <param name="cutNode"></param>
-	/// <param name="threatMove"></param>
-	virtual inline void explorePlain_10i1280j_byEasyGoingMonkey(
-		bool& isReturnWithSweetness,
-		Sweetness& returnSweetness,
-		OurCarriage& ourCarriage,
-		Flashlight** ppFlashlight,
-		const Depth depth,
-		Sweetness& beta,
-		Sweetness& eval,
-		Position& pos,
-		StateInfo& st,
-		Sweetness& alpha,
-		const bool cutNode,
-		Move& threatMove
-		)const override {
-		// PVノードはスルー☆！（＾ｑ＾）
-	}
-
-
-	/// <summary>
-	/// 非PVノードだけが実行する手続きだぜ☆！（＾ｑ＾）
-	/// </summary>
-	/// <param name="isReturnWithSweetness"></param>
-	/// <param name="ourCarriage"></param>
-	/// <param name="depth"></param>
-	/// <param name="ppFlashlight"></param>
-	/// <param name="beta"></param>
-	/// <param name="move"></param>
-	/// <param name="pos"></param>
-	/// <param name="ttMove"></param>
-	/// <param name="st"></param>
-	/// <param name="sweetness"></param>
-	/// <param name="cutNode"></param>
-	virtual inline void explorePlain_10i1290j_byEasyGoingMonkey(
-		bool& isReturnWithSweetness,
-		OurCarriage& ourCarriage,
-		const Depth& depth,
-		Flashlight** ppFlashlight,
-		Sweetness& beta,
-		Move& move,
-		Position& pos,
-		Move& ttMove,
-		StateInfo& st,
-		Sweetness& sweetness,
-		const bool cutNode
-		)const override {
-		// 非PVノードはスルー☆！（＾ｑ＾）
+		return  beta <= ttSweetness ?
+			(pTtEntry->GetBoundKind() & Bound::BoundLower)
+			:
+			(pTtEntry->GetBoundKind() & Bound::BoundUpper);
 	}
 
 
@@ -274,30 +167,37 @@ public:
 	{
 		// internal iterative deepening
 		if (
-			// PVノードの場合、５倍☆
-			(5 * OnePly) <= depth
+			// 非PVノードの場合、８倍☆
+			(8 * OnePly) <= depth
 			&& ttMove.IsNone()
+			// 非PVノードの場合、さらに条件☆
+			&& (
+				!inCheck && beta <= (*ppFlashlight)->m_staticEval + static_cast<Sweetness>(256)
+				)
 			)
 		{
 			//const Depth d = depth - 2 * OnePly - (PVNode ? Depth0 : depth / 4);
-			// PVノードの場合☆
-			const Depth d = depth - 2 * OnePly;
+			// 非PVノードの場合☆
+			const Depth d = depth / 2;
 
 			(*ppFlashlight)->m_skipNullMove = true;
 
 			//────────────────────────────────────────────────────────────────────────────────
-			// インターナル反復深化で、PV探索☆（＾ｑ＾）
+			// ［大雑把な性格の猿］が、インターナル反復深化探索☆（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
-			// PVノードの場合☆
-			g_NODEKIND_PROGRAMS[NodeKind::Meticulous]->explorePlain_10i(
+			g_NODEKIND_PROGRAMS[NodeKind::EasyGoing]->explorePlain_10i(
 				ourCarriage, pos, (*ppFlashlight), alpha, beta, d, true);
 
 			(*ppFlashlight)->m_skipNullMove = false;
 
 			(*ppTtEntry) = ourCarriage.m_tt.Probe(posKey);
-			ttMove = ((*ppTtEntry) != nullptr ?
-				UtilMoveStack::Move16toMove((*ppTtEntry)->GetMove(), pos) :
-				g_MOVE_NONE);
+			ttMove = (
+				(*ppTtEntry) != nullptr
+				?
+				UtilMoveStack::Move16toMove((*ppTtEntry)->GetMove(), pos)
+				:
+				g_MOVE_NONE
+				);
 		}
 	}
 
@@ -310,8 +210,8 @@ public:
 	virtual inline Sweetness getBeta_10i1310j(
 		Sweetness beta
 		) const override {
-		// PVノードの場合☆（＾ｑ＾）
-		return -Sweetness::SweetnessInfinite;
+		// 非PVノードの場合☆（＾ｑ＾）
+		return beta;
 	}
 
 
@@ -420,48 +320,6 @@ public:
 
 
 	/// <summary>
-	/// 無駄枝狩り☆（＾▽＾）
-	/// </summary>
-	/// <param name="isContinue"></param>
-	/// <param name="ourCarriage"></param>
-	/// <param name="captureOrPawnPromotion"></param>
-	/// <param name="inCheck"></param>
-	/// <param name="dangerous"></param>
-	/// <param name="bestSweetness"></param>
-	/// <param name="move"></param>
-	/// <param name="ttMove"></param>
-	/// <param name="depth"></param>
-	/// <param name="moveCount"></param>
-	/// <param name="threatMove"></param>
-	/// <param name="pos"></param>
-	/// <param name="ppMonkeySplitedPlace"></param>
-	/// <param name="newDepth"></param>
-	/// <param name="ppFlashlight"></param>
-	/// <param name="beta"></param>
-	virtual inline void explorePlain_10i2070j_futilityPruning(
-		bool& isContinue,
-		OurCarriage& ourCarriage,
-		bool& captureOrPawnPromotion,
-		bool& inCheck,
-		bool& dangerous,
-		Sweetness& bestSweetness,
-		Move& move,
-		Move& ttMove,
-		const Depth depth,
-		int& moveCount,
-		Move& threatMove,
-		Position& pos,
-		MonkeySplitedPlace** ppMonkeySplitedPlace,
-		Depth& newDepth,
-		Flashlight** ppFlashlight,
-		Sweetness& beta
-		) const override {
-		// PVノードはスルー☆！（＾ｑ＾）
-		//UNREACHABLE;
-	}
-
-
-	/// <summary>
 	/// PVノードか、そうでないかで変わるぜ☆！（＾ｑ＾）
 	/// </summary>
 	/// <param name="newDepth"></param>
@@ -473,8 +331,8 @@ public:
 		const Depth depth,
 		int& moveCount
 		) const override {
-		// PVノードのとき
-		return newDepth - g_reductions.DoReduction_PvNode(depth, moveCount);
+		// 非PVノードのとき
+		return newDepth - g_reductions.DoReduction_NotMeticulousMonkey(depth, moveCount);
 	}
 
 
@@ -544,8 +402,8 @@ public:
 		Move movesSearched[64]
 		)const override {
 
-		// PVノードだぜ☆！（＾ｑ＾）
-		isPVMoveRef = (moveCount == 1);
+		// 非PVノードだぜ☆（＾ｑ＾）
+		isPVMoveRef = false;
 		(*ppFlashlight)->m_currentMove = move;
 	}
 
@@ -581,8 +439,39 @@ public:
 		int& moveCount,
 		const bool cutNode
 		) const override {
-		// Pvノードのとき☆！（＾ｑ＾）
-		(*ppFlashlight)->m_reduction = g_reductions.DoReduction_PvNode(depth, moveCount);
+		// 非Pvノードのとき☆！（＾ｑ＾）
+		(*ppFlashlight)->m_reduction = g_reductions.DoReduction_NotMeticulousMonkey(depth, moveCount);
+		if (cutNode) {
+			(*ppFlashlight)->m_reduction += Depth::OnePly;
+		}
+	}
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="ourCarriage"></param>
+	/// <param name="isPVMove"></param>
+	/// <param name="alpha"></param>
+	/// <param name="sweetness"></param>
+	/// <param name="beta"></param>
+	/// <param name="newDepth"></param>
+	/// <param name="givesCheck"></param>
+	/// <param name="pos"></param>
+	/// <param name="ppFlashlight"></param>
+	virtual inline void explorerPlain_10i3030j_getSweetnessIfMeticulous(
+		OurCarriage& ourCarriage,
+		bool& isPVMove,
+		Sweetness& alpha,
+		Sweetness& sweetness,
+		Sweetness& beta,
+		Depth& newDepth,
+		bool& givesCheck,
+		Position& pos,
+		Flashlight** ppFlashlight
+		)const override {
+		// 非PVノードはスルー☆！（＾ｑ＾）
+		//UNREACHABLE;
 	}
 
 
@@ -648,24 +537,20 @@ public:
 		Sweetness& bestSweetness,
 		MonkeySplitedPlace** ppMonkeySplitedPlace,
 		Move& bestMove,
-		Sweetness& beta) const override
-	{
+		Sweetness& beta
+		)const override {
+
 		if (bestSweetness < sweetness) {
 			bestSweetness = (*ppMonkeySplitedPlace)->m_bestSweetness = sweetness;
 
 			if (alpha < sweetness) {
 				bestMove = (*ppMonkeySplitedPlace)->m_bestMove = move;
 
-				// （＾ｑ＾）PVノードの場合☆
-				if (sweetness < beta) {
-					alpha = (*ppMonkeySplitedPlace)->m_alpha = sweetness;
-				}
-				else {
-					// fail high
-					(*ppMonkeySplitedPlace)->m_isUselessNode = true;
-					isBreak = true;
-					return;
-				}
+				// PVノードではない場合☆（＾ｑ＾）
+				// fail high
+				(*ppMonkeySplitedPlace)->m_isUselessNode = true;
+				isBreak = true;
+				return;
 			}
 		}
 	}
@@ -762,7 +647,7 @@ public:
 	/// <param name="bestMoveExists"></param>
 	/// <returns></returns>
 	inline Bound getBound_10i800j200k600L(bool bestMoveExists) const override {
-		return bestMoveExists ? Bound::BoundExact : Bound::BoundUpper;
+		return Bound::BoundUpper;
 	}
 };
 
@@ -770,5 +655,5 @@ public:
 /// <summary>
 /// 
 /// </summary>
-extern AdventureNodekindMonkeySplitedPlacePv g_NODEKIND_MONKEYSPLITEDPLACE_PV;
+extern AdventureNodekindMonkeySplitedPlaceNonPv g_NODEKIND_MONKEYSPLITEDPLACE_EASY_GOING_MONKEY;
 

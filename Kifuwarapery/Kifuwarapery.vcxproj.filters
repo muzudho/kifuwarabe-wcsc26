@@ -951,19 +951,19 @@
     <ClInclude Include="header\n887_nodeKind\n887_100_adventurePlainNodekindRoot.hpp">
       <Filter>header\n887_nodeType</Filter>
     </ClInclude>
-    <ClInclude Include="header\n887_nodeKind\n887_110_adventurePlainNodekindPv.hpp">
+    <ClInclude Include="header\n887_nodeKind\n887_110_adventurePlainNodekindMeticulousMonkey.hpp">
       <Filter>header\n887_nodeType</Filter>
     </ClInclude>
-    <ClInclude Include="header\n887_nodeKind\n887_120_adventurePlainNodekindNonPv.hpp">
+    <ClInclude Include="header\n887_nodeKind\n887_120_adventurePlainNodekindEasyGoingMonkey.hpp">
       <Filter>header\n887_nodeType</Filter>
     </ClInclude>
     <ClInclude Include="header\n887_nodeKind\n887_130_adventurePlainNodekindSplitedNodeRoot.hpp">
       <Filter>header\n887_nodeType</Filter>
     </ClInclude>
-    <ClInclude Include="header\n887_nodeKind\n887_140_adventurePlainNodekindSplitedNodePv.hpp">
+    <ClInclude Include="header\n887_nodeKind\n887_140_adventurePlainNodekindSplitedNodeMeticulousMonkey.hpp">
       <Filter>header\n887_nodeType</Filter>
     </ClInclude>
-    <ClInclude Include="header\n887_nodeKind\n887_150_adventurePlainNodekindSplitedNodeNonPv.hpp">
+    <ClInclude Include="header\n887_nodeKind\n887_150_adventurePlainNodekindSplitedNodeEasyGoingMonkey.hpp">
       <Filter>header\n887_nodeType</Filter>
     </ClInclude>
     <ClInclude Include="header\n883_nodeKind\n883_070_adventurePlainNodekindAbstract.hpp">
