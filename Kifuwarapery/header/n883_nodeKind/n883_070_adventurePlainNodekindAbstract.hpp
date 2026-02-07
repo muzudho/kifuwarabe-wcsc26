@@ -471,6 +471,7 @@ public:
 			&& abs(beta) < SweetnessMateInMaxPly)
 		{
 			const Sweetness rbeta = beta - ourCarriage.razorMargin(depth);
+            // ［大雑把な性格の猿］が探索☆！（＾ｑ＾）
 			const Sweetness s = AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[EasyGoing]->ExploreAsQsearch(
 				ourCarriage, false, pos, (*ppFlashlight), rbeta - 1, rbeta, Depth0);
 			if (s < rbeta) {
@@ -567,13 +568,13 @@ public:
 
 			Sweetness nullSweetness = (depth - reduction < OnePly ?
 				//────────────────────────────────────────────────────────────────────────────────
-				// 深さが２手（先後１組）以上なら　クイックな探索☆？（＾ｑ＾）
+				// 深さが２手（先後１組）以上なら、［大雑把な性格の猿］が静止探索☆（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
 				-AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[EasyGoing]->ExploreAsQsearch(
 					ourCarriage, false, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
 				:
 				//────────────────────────────────────────────────────────────────────────────────
-				// 深さが２手（先後１組）未満なら　クイックでない［大雑把な性格の猿］が探索☆（＾ｑ＾）
+				// 深さが２手（先後１組）未満なら、［大雑把な性格の猿］が探索☆（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
 				-g_NODEKIND_PROGRAMS[NodeKind::EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, depth - reduction, !cutNode)
 			);
@@ -921,7 +922,7 @@ public:
 			(*ppFlashlight)->m_excludedMove = move;
 			(*ppFlashlight)->m_skipNullMove = true;
 			//────────────────────────────────────────────────────────────────────────────────
-			// 非PV探索☆？（＾ｑ＾）
+			// ［大雑把な性格の猿］が探索☆（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			sweetness =	g_NODEKIND_PROGRAMS[EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight), rBeta - 1, rBeta, depth / 2, cutNode);
 			(*ppFlashlight)->m_skipNullMove = false;
@@ -1260,7 +1261,7 @@ public:
 				ppMonkeySplitedPlace);
 
 			//────────────────────────────────────────────────────────────────────────────────
-			// 非PV探索☆？（＾ｑ＾）
+			// ［大雑把な性格の猿］が探索☆（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			// PVS
 			sweetness = -g_NODEKIND_PROGRAMS[EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, d, true);
@@ -1352,7 +1353,7 @@ public:
 				(givesCheck ? -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[EasyGoing]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0)
 					: -AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[EasyGoing]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0))
 				//────────────────────────────────────────────────────────────────────────────────
-				// ［大雑把］な性格の猿が探索☆（＾ｑ＾）
+				// ［大雑把な性格の猿］が探索☆（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
 				: -g_NODEKIND_PROGRAMS[EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, newDepth, !cutNode));
 		}
@@ -1384,13 +1385,12 @@ public:
 		Position& pos,
 		Flashlight** ppFlashlight) const
 	{
-		// 通常の探索
 		if (
 			isMeticulousMove ||
 			(alpha < sweetness && this->isBetaLarge_10i600j140k100L(sweetness, beta))
 		) {
 			//────────────────────────────────────────────────────────────────────────────────
-			// ［几帳面］に探索☆（＾ｑ＾）
+			// ［几帳面な猿］が探索☆（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			sweetness = (
 				newDepth < OnePly

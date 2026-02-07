@@ -379,7 +379,7 @@ public:
 			(*ppFlashlight)->m_skipNullMove = true;
 
 			//────────────────────────────────────────────────────────────────────────────────
-			// インターナル反復深化で、PV探索☆（＾ｑ＾）
+			// ［几帳面な猿］が探索☆（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			g_NODEKIND_PROGRAMS[NodeKind::Meticulous]->explorePlain_10i(
 				ourCarriage, pos, (*ppFlashlight), alpha, beta, d, true);

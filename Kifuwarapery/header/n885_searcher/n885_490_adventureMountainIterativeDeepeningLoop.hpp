@@ -271,7 +271,7 @@ public:
 					//────────────────────────────────────────────────────────────────────────────────
 
 
-					// いわゆる普通の反復深化探索で、非PV探索
+					// ［大雑把な性格の猿］が探索
 					const Sweetness s = g_NODEKIND_PROGRAMS[NodeKind::EasyGoing]->explorePlain_10i(
 						ourCarriage, pos, flashlight + 1, rBeta - 1, rBeta, (depth - 3) * OnePly, true);
 

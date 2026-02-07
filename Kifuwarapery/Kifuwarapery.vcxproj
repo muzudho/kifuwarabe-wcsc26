@@ -636,11 +636,11 @@
     <ClCompile Include="source\n885_searcher\n885_580_adventurerSkill.cpp" />
     <ClCompile Include="source\n885_searcher\n885_490_adventureMountainIterativeDeepeningLoop.cpp" />
     <ClCompile Include="source\n887_nodeKind\n887_100_adventureNodekindRoot.cpp" />
-    <ClCompile Include="source\n887_nodeKind\n887_110_adventureNodekindPv.cpp" />
-    <ClCompile Include="source\n887_nodeKind\n887_120_adventureNodekindNonPv.cpp" />
+    <ClCompile Include="source\n887_nodeKind\n887_110_adventureNodekindMeticuliousMonkey.cpp" />
+    <ClCompile Include="source\n887_nodeKind\n887_120_adventureNodekindEasyGoingMonkey.cpp" />
     <ClCompile Include="source\n887_nodeKind\n887_130_adventureNodekindMonkeySplitedPlaceRoot.cpp" />
-    <ClCompile Include="source\n887_nodeKind\n887_140_adventureNodekindMonkeySplitedPlacePv.cpp" />
-    <ClCompile Include="source\n887_nodeKind\n887_150_adventureNodekindMonkeySplitedPlaceNonPv.cpp" />
+    <ClCompile Include="source\n887_nodeKind\n887_140_adventureNodekindMonkeySplitedPlaceMeticuliousMonkey.cpp" />
+    <ClCompile Include="source\n887_nodeKind\n887_150_adventureNodekindMonkeySplitedPlaceEasyGoingMonkey.cpp" />
     <ClCompile Include="source\n887_nodeKind\n887_500_adventureNodekindPrograms.cpp" />
     <ClCompile Include="source\n900_main____\n900_300_usiLoop.cpp" />
     <ClCompile Include="source\n900_main____\n900_400_main.cpp" />
