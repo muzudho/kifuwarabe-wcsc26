@@ -7,7 +7,13 @@
 
 
 /// <summary>
-/// Flashlight（ＳｅａｒｃｈＳｔａｃｋ）,NextmoveEvent(ＭｏｖｅＰｉｃｋｅｒ),ＳｐｌｉｔＰｏｉｎｔ が三つ巴になっている☆（＾ｑ＾）
+///		<pre>
+/// 以下の３つが三つ巴になっている☆（＾ｑ＾）
+/// 
+///		- Flashlight（ＳｅａｒｃｈＳｔａｃｋ）
+///		- NextmoveEvent(ＭｏｖｅＰｉｃｋｅｒ)
+///		- ＳplitPoint
+///		</pre>
 /// </summary>
 struct MonkeySplitedPlace;
 

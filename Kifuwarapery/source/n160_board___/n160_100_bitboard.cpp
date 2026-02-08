@@ -20,8 +20,8 @@ Bitboard g_nullBitboard;
 /// <param name="v1"></param>
 Bitboard::Bitboard(const u64 v0, const u64 v1)
 {
-	this->m_p_[0] = v0;
-	this->m_p_[1] = v1;
+	this->m_part_[0] = v0;
+	this->m_part_[1] = v1;
 }
 
 
@@ -32,7 +32,7 @@ Bitboard::Bitboard(const u64 v0, const u64 v1)
 /// <returns></returns>
 u64 Bitboard::GetP(const int index) const
 {
-	return this->m_p_[index];
+	return this->m_part_[index];
 }
 
 
@@ -43,7 +43,7 @@ u64 Bitboard::GetP(const int index) const
 /// <param name="val"></param>
 void Bitboard::SetP(const int index, const u64 val)
 {
-	this->m_p_[index] = val;
+	this->m_part_[index] = val;
 }
 
 
@@ -112,8 +112,8 @@ Bitboard Bitboard::operator&=(const Bitboard & rhs)
 #if defined (HAVE_SSE2) || defined (HAVE_SSE4)
 	_mm_store_si128(&this->m_m_, _mm_and_si128(this->m_m_, rhs.m_m_));
 #else
-	this->m_p_[0] &= rhs.GetP(0);
-	this->m_p_[1] &= rhs.GetP(1);
+	this->m_part_[0] &= rhs.GetP(0);
+	this->m_part_[1] &= rhs.GetP(1);
 #endif
 	return *this;
 }
@@ -129,8 +129,8 @@ Bitboard Bitboard::operator|=(const Bitboard & rhs)
 #if defined (HAVE_SSE2) || defined (HAVE_SSE4)
 	_mm_store_si128(&this->m_m_, _mm_or_si128(this->m_m_, rhs.m_m_));
 #else
-	this->m_p_[0] |= rhs.GetP(0);
-	this->m_p_[1] |= rhs.GetP(1);
+	this->m_part_[0] |= rhs.GetP(0);
+	this->m_part_[1] |= rhs.GetP(1);
 #endif
 	return *this;
 }
@@ -146,8 +146,8 @@ Bitboard Bitboard::operator^=(const Bitboard & rhs)
 #if defined (HAVE_SSE2) || defined (HAVE_SSE4)
 	_mm_store_si128(&this->m_m_, _mm_xor_si128(this->m_m_, rhs.m_m_));
 #else
-	this->m_p_[0] ^= rhs.GetP(0);
-	this->m_p_[1] ^= rhs.GetP(1);
+	this->m_part_[0] ^= rhs.GetP(0);
+	this->m_part_[1] ^= rhs.GetP(1);
 #endif
 	return *this;
 }
@@ -163,8 +163,8 @@ Bitboard Bitboard::operator<<=(const int i)
 #if defined (HAVE_SSE2) || defined (HAVE_SSE4)
 	_mm_store_si128(&this->m_m_, _mm_slli_epi64(this->m_m_, i));
 #else
-	this->m_p_[0] <<= i;
-	this->m_p_[1] <<= i;
+	this->m_part_[0] <<= i;
+	this->m_part_[1] <<= i;
 #endif
 	return *this;
 }
@@ -180,8 +180,8 @@ Bitboard Bitboard::operator>>=(const int i)
 #if defined (HAVE_SSE2) || defined (HAVE_SSE4)
 	_mm_store_si128(&this->m_m_, _mm_srli_epi64(this->m_m_, i));
 #else
-	this->m_p_[0] >>= i;
-	this->m_p_[1] >>= i;
+	this->m_part_[0] >>= i;
+	this->m_part_[1] >>= i;
 #endif
 	return *this;
 }

@@ -129,6 +129,7 @@ void Monkie::ForkNewMonkey(
 
 	// 個定数のスプリット・ポイント☆（＾ｑ＾）
 	MonkeySplitedPlace& monkeySplitedPlace = m_MonkeySplitedPlaces[m_numberOfMonkeysRunningTogether];
+	//assert(monkeySplitedPlace != nullptr);
 
 	monkeySplitedPlace.m_masterThread = this;
 	monkeySplitedPlace.m_pParentMonkeySplitedPlace = m_activeMonkeySplitedPlace;
@@ -180,6 +181,7 @@ void Monkie::ForkNewMonkey(
 
 	m_isBeingSearched = true;
 	--m_numberOfMonkeysRunningTogether;
+
 	m_activeMonkeySplitedPlace = monkeySplitedPlace.m_pParentMonkeySplitedPlace;
 	m_activePosition = &pos;
 	pos.setNodesSearched(pos.getNodesSearched() + monkeySplitedPlace.m_nodes);

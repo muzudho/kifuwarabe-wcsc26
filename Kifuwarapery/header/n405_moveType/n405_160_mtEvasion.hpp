@@ -62,7 +62,7 @@ private:
 		) {
 
 		assert(pos.IsOK());
-		assert(pos.InCheck());
+		assert(pos.inCheck());
 
 		const Square ksq = pos.GetKingSquare(US);
 

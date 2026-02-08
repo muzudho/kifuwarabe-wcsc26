@@ -321,8 +321,11 @@ void OurCarriage::CheckTime() {
 
 		nodes = m_rootPosition.getNodesSearched();
 		for (size_t i = 0; i < m_pub.m_monkies.size(); ++i) {
+
+			// 配列分生成
 			for (int j = 0; j < m_pub.m_monkies[i]->m_numberOfMonkeysRunningTogether; ++j) {
 				MonkeySplitedPlace& monkeySplitedPlace = m_pub.m_monkies[i]->m_MonkeySplitedPlaces[j];
+
 				std::unique_lock<Mutex> spLock(monkeySplitedPlace.m_mutex);
 				nodes += monkeySplitedPlace.m_nodes;
 				u64 slvMask = monkeySplitedPlace.m_slavesMask;
@@ -400,7 +403,7 @@ void Monkie::workAsMonkey() {
 			assert(m_isBeingSearched);
 
 			MonkeySplitedPlace* monkeySplitedPlace = m_activeMonkeySplitedPlace;
-			assert(monkeySplitedPlace != null);
+			assert(monkeySplitedPlace != nullptr);
 
 			this->m_pOurCarriage->m_pub.m_mutex_.unlock();
 

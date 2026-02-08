@@ -10,7 +10,11 @@
 
 
 /// <summary>
-/// ビットボード
+///		<pre>
+/// 将棋盤（ビットボード）
+/// 
+///		- ２つのバイトで表現
+///		</pre>
 /// </summary>
 class Bitboard {
 
@@ -20,15 +24,15 @@ private:
 
 #if defined (HAVE_SSE2) || defined (HAVE_SSE4)
 	union {
-		u64 m_p_[2];
+		u64 m_part_[2];
 		__m128i m_m_;
 	};
 #else
 	/// <summary>
-	/// m_p_[0] : 先手から見て、1一から7九までを縦に並べたbit. 63bit使用. right と呼ぶ。
-	/// m_p_[1] : 先手から見て、8一から1九までを縦に並べたbit. 18bit使用. left  と呼ぶ。
+	/// m_part_[0] : 先手から見て、1一から7九までを縦に並べたbit. 63bit使用. right と呼ぶ。
+	/// m_part_[1] : 先手から見て、8一から1九までを縦に並べたbit. 18bit使用. left  と呼ぶ。
 	/// </summary>
-	u64 m_p_[2];
+	u64 m_part_[2];
 #endif
 
 
@@ -148,10 +152,10 @@ public:
 	///		</pre>
 	/// </summary>
 	/// <returns></returns>
-	FORCE_INLINE Square PopFirstOneRightFromI9() {
+	FORCE_INLINE Square PopFirstOneRightOfBoard() {
 		const Square sq = static_cast<Square>(firstOneFromLSB(this->GetP(0)));
 		// LSB 側の最初の 1 の bit を 0 にする
-		this->m_p_[0] &= this->GetP(0) - 1;
+		this->m_part_[0] &= this->GetP(0) - 1;
 		return sq;
 	}
 
@@ -163,10 +167,10 @@ public:
 	/// Bitboard の left 側が 0 でないことを前提にしている。
 	///		</pre>
 	/// </summary>
-	FORCE_INLINE Square PopFirstOneLeftFromB9() {
+	FORCE_INLINE Square PopFirstOneLeftOfBoard() {
 		const Square sq = static_cast<Square>(firstOneFromLSB(this->GetP(1)) + 63);
 		// LSB 側の最初の 1 の bit を 0 にする
-		this->m_p_[1] &= this->GetP(1) - 1;
+		this->m_part_[1] &= this->GetP(1) - 1;
 		return sq;
 	}
 
@@ -183,9 +187,9 @@ public:
 	FORCE_INLINE Square PopFirstOneFromI9()
 	{
 		if (this->GetP(0)) {
-			return PopFirstOneRightFromI9();
+			return PopFirstOneRightOfBoard();
 		}
-		return PopFirstOneLeftFromB9();
+		return PopFirstOneLeftOfBoard();
 	}
 
 
@@ -210,7 +214,7 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// 最初の１つを取得☆（＾～＾）？
 	/// </summary>
 	/// <returns></returns>
 	FORCE_INLINE Square GetFirstOneFromI9() const

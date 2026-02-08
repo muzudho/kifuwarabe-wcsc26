@@ -98,7 +98,7 @@ public:
 		// initialize node
 
 		*ppMonkeySplitedPlace = (*ppFlashlight)->m_monkeySplitedPlace;
-		assert(ppMonkeySplitedPlace != null);
+		assert(ppMonkeySplitedPlace != nullptr);
 
 		bestMove = (*ppMonkeySplitedPlace)->m_bestMove;
 		threatMove = (*ppMonkeySplitedPlace)->m_threatMove;

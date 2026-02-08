@@ -38,7 +38,7 @@ public:
 		Bitboard toBB = dmEvent.m_target & dmEvent.m_tRank9BB;
 		do {
 			while (toBB.GetP(0)) {
-				Square iTo = toBB.PopFirstOneRightFromI9();
+				Square iTo = toBB.PopFirstOneRightOfBoard();
 				{
 					pMovestack->m_move = ConvMove::Convert30_MakeDropMove_da(haveHandArr[dmEvent.m_noKnightLanceIdx + 2], iTo);
 					pMovestack++;
@@ -49,7 +49,7 @@ public:
 				};
 			}
 			while (toBB.GetP(1)) {
-				Square iTo = toBB.PopFirstOneLeftFromB9();
+				Square iTo = toBB.PopFirstOneLeftOfBoard();
 				{
 					pMovestack->m_move = ConvMove::Convert30_MakeDropMove_da(haveHandArr[dmEvent.m_noKnightLanceIdx + 2], iTo);
 					pMovestack++;
@@ -79,7 +79,7 @@ public:
 		Bitboard toBB = dmEvent.m_target & dmEvent.m_tRank8BB;
 		do {
 			while (toBB.GetP(0)) {
-				Square iTo = toBB.PopFirstOneRightFromI9();
+				Square iTo = toBB.PopFirstOneRightOfBoard();
 				{
 					pMovestack->m_move = ConvMove::Convert30_MakeDropMove_da(haveHandArr[dmEvent.m_noKnightIdx + 2], iTo);
 					pMovestack++;
@@ -90,7 +90,7 @@ public:
 				};
 			}
 			while (toBB.GetP(1)) {
-				Square iTo = toBB.PopFirstOneLeftFromB9();
+				Square iTo = toBB.PopFirstOneLeftOfBoard();
 				{
 					pMovestack->m_move = ConvMove::Convert30_MakeDropMove_da(haveHandArr[dmEvent.m_noKnightIdx + 2], iTo);
 					pMovestack++;
@@ -120,7 +120,7 @@ public:
 		Bitboard toBB = dmEvent.m_target & ~(dmEvent.m_tRank8BB | dmEvent.m_tRank9BB);
 		do {
 			while (toBB.GetP(0)) {
-				Square iTo = toBB.PopFirstOneRightFromI9();
+				Square iTo = toBB.PopFirstOneRightOfBoard();
 				{
 					pMovestack->m_move = ConvMove::Convert30_MakeDropMove_da(haveHandArr[2], iTo);
 					pMovestack++;
@@ -131,7 +131,7 @@ public:
 				};
 			}
 			while (toBB.GetP(1)) {
-				Square iTo = toBB.PopFirstOneLeftFromB9();
+				Square iTo = toBB.PopFirstOneLeftOfBoard();
 				{
 					pMovestack->m_move = ConvMove::Convert30_MakeDropMove_da(haveHandArr[2], iTo);
 					pMovestack++;

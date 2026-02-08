@@ -18,11 +18,11 @@
 #define FOREACH_BB(bb, sq, xxx)					\
 	do {										\
 		while (bb.GetP(0)) {					\
-			sq = bb.PopFirstOneRightFromI9();		\
+			sq = bb.PopFirstOneRightOfBoard();	\
 			xxx;								\
 		}										\
 		while (bb.GetP(1)) {					\
-			sq = bb.PopFirstOneLeftFromB9();		\
+			sq = bb.PopFirstOneLeftOfBoard();	\
 			xxx;								\
 		}										\
 	} while (false)
@@ -37,11 +37,11 @@
 /// <returns></returns>
 template <typename T> FORCE_INLINE void foreachBB(Bitboard& bb, Square& sq, T t) {
 	while (bb.GetP(0)) {
-		sq = bb.PopFirstOneRightFromI9();
+		sq = bb.PopFirstOneRightOfBoard();
 		t(0);
 	}
 	while (bb.GetP(1)) {
-		sq = bb.PopFirstOneLeftFromB9();
+		sq = bb.PopFirstOneLeftOfBoard();
 		t(1);
 	}
 }

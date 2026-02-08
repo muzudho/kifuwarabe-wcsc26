@@ -274,11 +274,12 @@ public:
 	/// </summary>
 	/// <typeparam name="CLR"></typeparam>
 	/// <returns></returns>
-	template<const Color CLR>
-	FORCE_INLINE Square GetKingSquare() const {
-		// assert(m_kingSquare_[CLR] == this->GetBbOf<CLR>(N08_King).GetFirstOneFromI9());
-		assert(m_kingSquare_[CLR] == this->GetBbOf10(N08_King).GetFirstOneFromI9());
-		return m_kingSquare_[CLR];
+	template<const Color COLOR>
+	FORCE_INLINE Square GetKingSquare() const
+	{
+		// assert(m_kingSquare_[COLOR] == this->GetBbOf<COLOR>(N08_King).GetFirstOneFromI9());
+		assert(m_kingSquare_[COLOR] == this->GetBbOf10(N08_King).GetFirstOneFromI9());
+		return m_kingSquare_[COLOR];
 	}
 	FORCE_INLINE Square GetKingSquare(const Color c) const {
 		assert(m_kingSquare_[c] == this->GetBbOf20(N08_King, c).GetFirstOneFromI9());
