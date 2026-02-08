@@ -27,8 +27,8 @@ Sweetness AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
 	Flashlight* pFlashlight,
 	Sweetness alpha,
 	Sweetness beta,
-	const Depth depth
-	) const {
+	const Depth depth) const
+{
 
 	assert(INCHECK == pos.inCheck());
 	assert(-SweetnessInfinite <= alpha && alpha < beta && beta <= SweetnessInfinite);

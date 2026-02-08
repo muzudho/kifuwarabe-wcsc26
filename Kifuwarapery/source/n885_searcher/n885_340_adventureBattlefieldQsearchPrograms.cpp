@@ -4,15 +4,15 @@
 #include "../../header/n885_searcher/n885_340_adventureBattlefieldQsearchPrograms.hpp"
 
 
-const AdventureBattlefieldQsearchPv AdventureBattlefieldQsearchPrograms::m_adventureBattlefieldQsearchPv;
-const AdventureBattlefieldQsearchNonPv AdventureBattlefieldQsearchPrograms::m_adventureBattlefieldQsearchNonPv;
+const AdventureBattlefieldQsearchPv AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_adventureBattlefieldQsearchByMeticulousMonkey;
+const AdventureBattlefieldQsearchNonPv AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_adventureBattlefieldQsearchByEasyGoingMonkey;
 
 
 /// <summary>
-/// 静止探索プログラム配列
+/// ［猿の性格］別、静止探索プログラム配列
 /// </summary>
-const AdventureBattlefieldQsearchAbstract* AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchPrograms[3] = {
+const AdventureBattlefieldQsearchAbstract* AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_pAdventureBattlefieldQsearchByMonkeyPersonalities[3] = {
 	nullptr,
-	&AdventureBattlefieldQsearchPrograms::m_adventureBattlefieldQsearchPv,
-	&AdventureBattlefieldQsearchPrograms::m_adventureBattlefieldQsearchNonPv
+	&AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_adventureBattlefieldQsearchByMeticulousMonkey,
+	&AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_adventureBattlefieldQsearchByEasyGoingMonkey
 };

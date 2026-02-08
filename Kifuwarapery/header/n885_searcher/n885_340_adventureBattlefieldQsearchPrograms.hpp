@@ -5,34 +5,35 @@
 
 
 /// <summary>
-/// 各種静止探索
+/// ［猿の性格］別、静止探索プログラム配列
 /// </summary>
-class AdventureBattlefieldQsearchPrograms {
+class AdventureBattlefieldQsearchByMonkeyPersonalitiesModel
+{
 
 
 public:
 
 
 	/// <summary>
-	/// 本筋の静止探索。
+	/// ［几帳面な猿］の静止探索。
 	/// </summary>
-	static const AdventureBattlefieldQsearchPv m_adventureBattlefieldQsearchPv;
+	static const AdventureBattlefieldQsearchPv m_adventureBattlefieldQsearchByMeticulousMonkey;
 
 
 	/// <summary>
-	/// 変化の静止探索。
+	/// ［大雑把な性格の猿］の静止探索。
 	/// </summary>
-	static const AdventureBattlefieldQsearchNonPv m_adventureBattlefieldQsearchNonPv;
+	static const AdventureBattlefieldQsearchNonPv m_adventureBattlefieldQsearchByEasyGoingMonkey;
 
 
 	/// <summary>
-	/// 
+    /// ［猿の性格］別、静止探索プログラム配列
 	/// </summary>
-	static const AdventureBattlefieldQsearchAbstract* m_pAdventureBattlefieldQsearchPrograms[3];
+	static const AdventureBattlefieldQsearchAbstract* m_pAdventureBattlefieldQsearchByMonkeyPersonalities[3];
 };
 
 
 /// <summary>
-/// 
+/// 使ってない（＾～＾）？ static だからリンクエラー回避のために置いてあるだけ☆？（＾～＾）
 /// </summary>
-extern AdventureBattlefieldQsearchPrograms g_adventureBattlefieldQsearchPrograms;
+extern AdventureBattlefieldQsearchByMonkeyPersonalitiesModel g_adventureBattlefieldQsearchByMonkeyPersonalities;
