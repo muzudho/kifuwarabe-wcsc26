@@ -31,6 +31,5 @@ void WhistleForEasyGoingMonkey::blowWhistle_asMonkeySplitedPlace(
 		ownerMonkeySplitedPlace.m_alpha,
 		ownerMonkeySplitedPlace.m_beta,
 		ownerMonkeySplitedPlace.m_depth,
-		ownerMonkeySplitedPlace.m_cutNode
-		);
+		ownerMonkeySplitedPlace.m_cutNode);
 }

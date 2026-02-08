@@ -12,7 +12,7 @@ const AdventureBattlefieldQsearchNonPv AdventureBattlefieldQsearchByMonkeyPerson
 /// ［猿の性格］別、静止探索プログラム配列
 /// </summary>
 const AdventureBattlefieldQsearchAbstract* AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_pAdventureBattlefieldQsearchByMonkeyPersonalities[3] = {
-	nullptr,
+	nullptr,																									// プレースホルダー（未使用）
 	&AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_adventureBattlefieldQsearchByMeticulousMonkey,
 	&AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_adventureBattlefieldQsearchByEasyGoingMonkey
 };

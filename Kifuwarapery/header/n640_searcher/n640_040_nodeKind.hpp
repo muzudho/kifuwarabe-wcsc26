@@ -14,11 +14,11 @@
 /// </summary>
 enum NodeKind {
 	Root,                           // 旧名： `RootNode` - 最初の反復深化探索をする猿（＾～＾）
-    AlphaBeta,                      // 旧名： `AlphaBetaNode` - 使ってない（＾～＾）？
-    Quiescence,                     // 旧名： `QsearchNode` - 使ってない（＾～＾）？
+    AlphaBeta,                      // 旧名： `AlphaBetaNode` - 未使用。静止探索配列に合わせたプレースホルダー（＾～＾）
+    Quiescence,                     // 旧名： `QsearchNode` - 未使用。静止探索配列に合わせたプレースホルダー（＾～＾）
     NullMove,                       // 旧名： `NullMoveNode` - 使ってない（＾～＾）？
-	Meticulous,						// 旧名： `PVNode`
-    EasyGoing,						// 旧名： `NonPVNode`
+	Meticulous,						// 旧名： `PVNode` - スプリット・ポイント用の探索に使うぜ（＾～＾）
+    EasyGoing,						// 旧名： `NonPVNode` - スプリット・ポイント用の探索に使うぜ（＾～＾）
     MonkeySplitedPlaceRoot,			// 旧名： `SplitPointRoot` - 使ってない（＾～＾）？
 	MonkeySplitedPlaceMeticulous,	// 旧名： `SplitPointPV` - 使ってない（＾～＾）？
     MonkeySplitedPlaceEasyGoing		// 旧名： `SplitPointNonPV` - 使ってない（＾～＾）？

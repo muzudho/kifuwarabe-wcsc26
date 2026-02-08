@@ -31,8 +31,7 @@ public:
 		MonkeySplitedPlace& ownerMonkeySplitedPlace,
 		OurCarriage& searcher,
 		Position& pos,
-		Flashlight* pFlashlight
-		) const override;
+		Flashlight* pFlashlight) const override;
 };
 
 

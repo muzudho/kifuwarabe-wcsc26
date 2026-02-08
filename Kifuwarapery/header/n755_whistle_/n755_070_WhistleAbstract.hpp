@@ -38,6 +38,5 @@ public:
 		MonkeySplitedPlace& ownerMonkeySplitedPlace,
 		OurCarriage& ourCarriage,
 		Position& pos,
-		Flashlight* pFlashlight
-		) const = 0;
+		Flashlight* pFlashlight) const = 0;
 };
