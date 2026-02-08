@@ -472,7 +472,7 @@ public:
 		{
 			const Sweetness rbeta = beta - ourCarriage.razorMargin(depth);
             // ［大雑把な性格の猿］が静止探索☆！（＾ｑ＾）
-			const Sweetness s = AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_pAdventureBattlefieldQsearchByMonkeyPersonalities[NodeKind::EasyGoing]->ExploreAsQsearch(
+			const Sweetness s = AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_pAdventureBattlefieldQsearchByMonkeyPersonalities[MonkeyPersonalitiesForQuiescenceSearch::QsearchEasyGoing]->ExploreAsQsearch(
 				ourCarriage, false, pos, (*ppFlashlight), rbeta - 1, rbeta, Depth0);
 			if (s < rbeta) {
 				isReturnWithSweetness = true;
@@ -570,7 +570,7 @@ public:
 				//────────────────────────────────────────────────────────────────────────────────
 				// 深さが２手（先後１組）以上なら、［大雑把な性格の猿］が静止探索☆（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				-AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_pAdventureBattlefieldQsearchByMonkeyPersonalities[NodeKind::EasyGoing]->ExploreAsQsearch(
+				-AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_pAdventureBattlefieldQsearchByMonkeyPersonalities[MonkeyPersonalitiesForQuiescenceSearch::QsearchEasyGoing]->ExploreAsQsearch(
 					ourCarriage, false, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
 				:
 				//────────────────────────────────────────────────────────────────────────────────
@@ -1357,9 +1357,9 @@ public:
 				?
 					(givesCheck
 					?
-						-AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_pAdventureBattlefieldQsearchByMonkeyPersonalities[NodeKind::EasyGoing]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0)
+						-AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_pAdventureBattlefieldQsearchByMonkeyPersonalities[MonkeyPersonalitiesForQuiescenceSearch::QsearchEasyGoing]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0)
 					:
-						-AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_pAdventureBattlefieldQsearchByMonkeyPersonalities[NodeKind::EasyGoing]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0)
+						-AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_pAdventureBattlefieldQsearchByMonkeyPersonalities[MonkeyPersonalitiesForQuiescenceSearch::QsearchEasyGoing]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0)
 					)
 				:
 				-g_NODEKIND_PROGRAMS[NodeKind::EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, newDepth, !cutNode)
@@ -1405,9 +1405,9 @@ public:
 				?
 					(givesCheck
 					?
-						-AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_pAdventureBattlefieldQsearchByMonkeyPersonalities[NodeKind::Meticulous]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
+						-AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_pAdventureBattlefieldQsearchByMonkeyPersonalities[MonkeyPersonalitiesForQuiescenceSearch::QsearchMeticulous]->ExploreAsQsearch(ourCarriage, true, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
 					:
-						-AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_pAdventureBattlefieldQsearchByMonkeyPersonalities[NodeKind::Meticulous]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
+						-AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_pAdventureBattlefieldQsearchByMonkeyPersonalities[MonkeyPersonalitiesForQuiescenceSearch::QsearchMeticulous]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
 					)
 				:
 					-g_NODEKIND_PROGRAMS[NodeKind::Meticulous]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, newDepth, false)

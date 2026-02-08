@@ -20,3 +20,16 @@ enum NodeKind {
 	Meticulous,						// [4] 旧名： `PVNode` - ［几帳面な猿］が探索（＾～＾）
     EasyGoing,						// [5] 旧名： `NonPVNode` - ［大雑把な性格の猿］が探索（＾～＾）
 };
+
+/// <summary>
+/// 	<pre>
+/// 静止探索で使う猿の性格の種類
+/// 
+///     - `AdventureBattlefieldQsearchPrograms::m_pAdventureBattlefieldQsearchByMonkeyPersonalities` の添え字に使うぜ☆（＾ｑ＾）
+///     </pre>
+/// </summary>
+enum MonkeyPersonalitiesForQuiescenceSearch {
+    QsearchEarlyAdopter,
+    QsearchMeticulous,
+    QsearchEasyGoing,
+};
