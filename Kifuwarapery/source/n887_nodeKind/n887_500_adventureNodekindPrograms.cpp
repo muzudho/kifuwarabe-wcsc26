@@ -9,12 +9,16 @@
 
 
 /// <summary>
+///		<pre>
 /// サーチ☆
 /// 主に、反復深化探索の中で呼び出される☆
+/// 
+///		- 配列長６も要らんのでは（＾～＾）？ ［一番乗りする猿］［几帳面な猿］［大雑把な性格の猿］の３つで十分では（＾～＾）？
+///		</pre>
 /// </summary>
 AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[6] = {
 	&g_NODEKIND_ROOT,
-    & g_NODEKIND_METICULOUS_MONKEY,						// 静止探索にも使うぜ☆！（＾ｑ＾）
+    &g_NODEKIND_METICULOUS_MONKEY,						// 静止探索にも使うぜ☆！（＾ｑ＾）
 	&g_NODEKIND_EASY_GOING_MONKEY,						// 静止探索にも使うぜ☆！（＾ｑ＾）
 	&g_NODEKIND_MONKEYSPLITEDPLACE_ROOT,
 	&g_NODEKIND_MONKEYSPLITEDPLACE_METICULOUS_MONKEY,

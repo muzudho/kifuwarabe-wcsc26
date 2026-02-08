@@ -13,13 +13,10 @@
 ///		</pre>
 /// </summary>
 enum NodeKind {
-	Root,                           // 旧名： `RootNode` - 最初の反復深化探索をする猿（＾～＾）
-    AlphaBeta,                      // 旧名： `AlphaBetaNode` - 未使用。静止探索配列に合わせたプレースホルダー（＾～＾）
-    Quiescence,                     // 旧名： `QsearchNode` - 未使用。静止探索配列に合わせたプレースホルダー（＾～＾）
-    NullMove,                       // 旧名： `NullMoveNode` - 使ってない（＾～＾）？
-	Meticulous,						// 旧名： `PVNode` - スプリット・ポイント用の探索に使うぜ（＾～＾）
-    EasyGoing,						// 旧名： `NonPVNode` - スプリット・ポイント用の探索に使うぜ（＾～＾）
-    MonkeySplitedPlaceRoot,			// 旧名： `SplitPointRoot` - 使ってない（＾～＾）？
-	MonkeySplitedPlaceMeticulous,	// 旧名： `SplitPointPV` - 使ってない（＾～＾）？
-    MonkeySplitedPlaceEasyGoing		// 旧名： `SplitPointNonPV` - 使ってない（＾～＾）？
+	EarlyAdopter,                   // [0] 旧名： `RootNode` - 最初の反復深化探索をする猿（＾～＾）
+    QuiescenceSearchMeticulous,     // [1] 旧名： `AlphaBetaNode` - 未使用。静止探索配列に合わせたプレースホルダー（＾～＾）
+    QuiescenceSearchEasyGoing,      // [2] 旧名： `QsearchNode`, - 未使用。静止探索配列に合わせたプレースホルダー（＾～＾）
+    NullMove,                       // [3] 旧名： `NullMoveNode` - ［一番乗りする猿］が探索（＾～＾）使ってない（＾～＾）？
+	Meticulous,						// [4] 旧名： `PVNode` - ［几帳面な猿］が探索（＾～＾）
+    EasyGoing,						// [5] 旧名： `NonPVNode` - ［大雑把な性格の猿］が探索（＾～＾）
 };
