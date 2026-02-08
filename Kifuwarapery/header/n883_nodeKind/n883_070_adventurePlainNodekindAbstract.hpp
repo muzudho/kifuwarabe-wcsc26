@@ -576,7 +576,7 @@ public:
 				//────────────────────────────────────────────────────────────────────────────────
 				// 深さが２手（先後１組）未満なら、［大雑把な性格の猿］が探索☆（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				-g_NODEKIND_PROGRAMS[NodeKind::EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, depth - reduction, !cutNode)
+				-g_NODEKIND_PROGRAMS[MonkeyPersonalities::EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, depth - reduction, !cutNode)
 			);
 
 			((*ppFlashlight) + 1)->m_skipNullMove = false;
@@ -599,7 +599,7 @@ public:
 				//────────────────────────────────────────────────────────────────────────────────
 				// ［大雑把な性格の猿］が探索☆（＾ｑ＾）
 				//────────────────────────────────────────────────────────────────────────────────
-				const Sweetness s = g_NODEKIND_PROGRAMS[NodeKind::EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight), alpha, beta, depth - reduction, false);
+				const Sweetness s = g_NODEKIND_PROGRAMS[MonkeyPersonalities::EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight), alpha, beta, depth - reduction, false);
 				(*ppFlashlight)->m_skipNullMove = false;
 
 				if (beta <= s) {
@@ -694,7 +694,7 @@ public:
 					//────────────────────────────────────────────────────────────────────────────────
 					// ［大雑把な性格の猿］が探索☆（＾ｑ＾）
 					//────────────────────────────────────────────────────────────────────────────────
-					sweetness =	-g_NODEKIND_PROGRAMS[NodeKind::EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -rbeta, -rbeta + 1, rdepth, !cutNode);
+					sweetness =	-g_NODEKIND_PROGRAMS[MonkeyPersonalities::EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -rbeta, -rbeta + 1, rdepth, !cutNode);
 					pos.UndoMove(move);
 					if (rbeta <= sweetness) {
 						isReturnWithSweetness = true;
@@ -924,7 +924,7 @@ public:
 			//────────────────────────────────────────────────────────────────────────────────
 			// ［大雑把な性格の猿］が探索☆（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
-			sweetness =	g_NODEKIND_PROGRAMS[NodeKind::EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight), rBeta - 1, rBeta, depth / 2, cutNode);
+			sweetness =	g_NODEKIND_PROGRAMS[MonkeyPersonalities::EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight), rBeta - 1, rBeta, depth / 2, cutNode);
 			(*ppFlashlight)->m_skipNullMove = false;
 			(*ppFlashlight)->m_excludedMove = g_MOVE_NONE;
 
@@ -1264,7 +1264,7 @@ public:
 			// ［大雑把な性格の猿］が探索☆（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
 			// PVS
-			sweetness = -g_NODEKIND_PROGRAMS[NodeKind::EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, d, true);
+			sweetness = -g_NODEKIND_PROGRAMS[MonkeyPersonalities::EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, d, true);
 
 			willFullDepthSearch = (alpha < sweetness && (*ppFlashlight)->m_reduction != Depth0);
 			(*ppFlashlight)->m_reduction = Depth0;
@@ -1362,7 +1362,7 @@ public:
 						-AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_pAdventureBattlefieldQsearchByMonkeyPersonalities[MonkeyPersonalitiesForQuiescenceSearch::QsearchEasyGoing]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, Depth0)
 					)
 				:
-				-g_NODEKIND_PROGRAMS[NodeKind::EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, newDepth, !cutNode)
+				-g_NODEKIND_PROGRAMS[MonkeyPersonalities::EasyGoing]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -(alpha + 1), -alpha, newDepth, !cutNode)
 			);
 		}
 	}
@@ -1410,7 +1410,7 @@ public:
 						-AdventureBattlefieldQsearchByMonkeyPersonalitiesModel::m_pAdventureBattlefieldQsearchByMonkeyPersonalities[MonkeyPersonalitiesForQuiescenceSearch::QsearchMeticulous]->ExploreAsQsearch(ourCarriage, false, pos, (*ppFlashlight) + 1, -beta, -alpha, Depth0)
 					)
 				:
-					-g_NODEKIND_PROGRAMS[NodeKind::Meticulous]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, newDepth, false)
+					-g_NODEKIND_PROGRAMS[MonkeyPersonalities::Meticulous]->explorePlain_10i(ourCarriage, pos, (*ppFlashlight) + 1, -beta, -alpha, newDepth, false)
 		);
 		}
 	}

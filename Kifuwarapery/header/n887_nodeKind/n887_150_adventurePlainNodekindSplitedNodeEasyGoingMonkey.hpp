@@ -185,7 +185,7 @@ public:
 			//────────────────────────────────────────────────────────────────────────────────
 			// ［大雑把な性格の猿］が引き続き探索☆（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
-			g_NODEKIND_PROGRAMS[NodeKind::EasyGoing]->explorePlain_10i(
+			g_NODEKIND_PROGRAMS[MonkeyPersonalities::EasyGoing]->explorePlain_10i(
 				ourCarriage, pos, (*ppFlashlight), alpha, beta, d, true);
 
 			(*ppFlashlight)->m_skipNullMove = false;

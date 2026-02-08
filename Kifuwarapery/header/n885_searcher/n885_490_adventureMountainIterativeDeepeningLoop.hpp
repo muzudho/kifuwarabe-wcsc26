@@ -145,7 +145,7 @@ public:
 					//────────────────────────────────────────────────────────────────────────────────
 					// Root探索☆？（＾ｑ＾）　１回目のぐるんぐるんだぜ～☆　ルート～☆
 					//────────────────────────────────────────────────────────────────────────────────
-					bestSweetness = g_NODEKIND_PROGRAMS[NodeKind::EarlyAdopter]->explorePlain_10i(ourCarriage, pos, flashlight + 1, alpha, beta, static_cast<Depth>(depth * OnePly), false);
+					bestSweetness = g_NODEKIND_PROGRAMS[MonkeyPersonalities::EarlyAdopter]->explorePlain_10i(ourCarriage, pos, flashlight + 1, alpha, beta, static_cast<Depth>(depth * OnePly), false);
 
 					// 先頭が最善手になるようにソート
 					UtilMoveStack::InsertionSort(ourCarriage.m_rootMoves.begin() + ourCarriage.m_pvIdx, ourCarriage.m_rootMoves.end());
@@ -272,7 +272,7 @@ public:
 
 
 					// ［大雑把な性格の猿］に登場してもらって、探索
-					const Sweetness s = g_NODEKIND_PROGRAMS[NodeKind::EasyGoing]->explorePlain_10i(
+					const Sweetness s = g_NODEKIND_PROGRAMS[MonkeyPersonalities::EasyGoing]->explorePlain_10i(
 						ourCarriage, pos, flashlight + 1, rBeta - 1, rBeta, (depth - 3) * OnePly, true);
 
 					(flashlight + 1)->m_skipNullMove = false;

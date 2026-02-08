@@ -285,7 +285,7 @@ public:
 			//────────────────────────────────────────────────────────────────────────────────
 			// ［几帳面な猿］が探索☆（＾ｑ＾）
 			//────────────────────────────────────────────────────────────────────────────────
-			g_NODEKIND_PROGRAMS[NodeKind::Meticulous]->explorePlain_10i(
+			g_NODEKIND_PROGRAMS[MonkeyPersonalities::Meticulous]->explorePlain_10i(
 				ourCarriage, pos, (*ppFlashlight), alpha, beta, d, true);
 
 			(*ppFlashlight)->m_skipNullMove = false;
