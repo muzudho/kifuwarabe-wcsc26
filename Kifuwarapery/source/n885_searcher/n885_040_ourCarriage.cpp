@@ -398,7 +398,10 @@ void Monkie::workAsMonkey() {
 
 			this->m_pOurCarriage->m_pub.m_mutex_.lock();
 			assert(m_isBeingSearched);
+
 			MonkeySplitedPlace* monkeySplitedPlace = m_activeMonkeySplitedPlace;
+			assert(monkeySplitedPlace != null);
+
 			this->m_pOurCarriage->m_pub.m_mutex_.unlock();
 
 			Flashlight ss[g_maxPlyPlus2];

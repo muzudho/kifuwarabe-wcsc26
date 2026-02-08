@@ -26,7 +26,7 @@ public:
 
 
 	/// <summary>
-	/// 分岐ノードか☆
+	/// ［一緒に走る猿が分かれた所］
 	/// </summary>
 	MonkeySplitedPlace*	m_monkeySplitedPlace;
 

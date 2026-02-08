@@ -76,7 +76,7 @@ public:
 		Sweetness& bestSweetness,
 		Move& excludedMove) const override
 	{
-		// 非スプリット・ポイントはスルー☆！（＾ｑ＾）
+		// ［大雑把な性格の猿］はスルー☆！（＾ｑ＾）
 	}
 
 

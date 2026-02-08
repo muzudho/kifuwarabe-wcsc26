@@ -95,10 +95,11 @@ public:
 		Sweetness& bestSweetness,
 		Move& excludedMove) const
 	{
-
 		// initialize node
 
 		*ppMonkeySplitedPlace = (*ppFlashlight)->m_monkeySplitedPlace;
+		assert(ppMonkeySplitedPlace != null);
+
 		bestMove = (*ppMonkeySplitedPlace)->m_bestMove;
 		threatMove = (*ppMonkeySplitedPlace)->m_threatMove;
 		bestSweetness = (*ppMonkeySplitedPlace)->m_bestSweetness;
