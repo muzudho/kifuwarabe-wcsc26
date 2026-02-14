@@ -9,8 +9,11 @@
 /// <param name="newValue"></param>
 /// <param name="f"></param>
 /// <param name="pGameEngineStore"></param>
-EngineOptionable::EngineOptionable(const char* v, std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> f, MuzGameEngineStorageModel* pGameEngineStore)
-	: m_type_("string"), m_min_(0), m_max_(0), m_onChange_(f), m_pGameEngineStore_(pGameEngineStore)
+EngineOptionable::EngineOptionable(
+	const char* v,
+	std::function<void(const EngineOptionable&)> f,
+	MuzGameEngineStorageModel* pGameEngineStore)
+		: m_type_("string"), m_min_(0), m_max_(0), m_onChange_(f), m_pGameEngineStore_(pGameEngineStore)
 {
 	m_defaultValue_ = m_currentValue_ = v;
 }
@@ -22,8 +25,11 @@ EngineOptionable::EngineOptionable(const char* v, std::function<void(MuzGameEngi
 /// <param name="newValue"></param>
 /// <param name="f"></param>
 /// <param name="pGameEngineStore"></param>
-EngineOptionable::EngineOptionable(const bool v, std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> f, MuzGameEngineStorageModel* pGameEngineStore)
-	: m_type_("check"), m_min_(0), m_max_(0), m_onChange_(f), m_pGameEngineStore_(pGameEngineStore)
+EngineOptionable::EngineOptionable(
+	const bool v,
+	std::function<void(const EngineOptionable&)> f,
+	MuzGameEngineStorageModel* pGameEngineStore)
+		: m_type_("check"), m_min_(0), m_max_(0), m_onChange_(f), m_pGameEngineStore_(pGameEngineStore)
 {
 	m_defaultValue_ = m_currentValue_ = (v ? "true" : "false");
 }
@@ -34,8 +40,10 @@ EngineOptionable::EngineOptionable(const bool v, std::function<void(MuzGameEngin
 /// </summary>
 /// <param name="f"></param>
 /// <param name="pGameEngineStore"></param>
-EngineOptionable::EngineOptionable(std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> f, MuzGameEngineStorageModel* pGameEngineStore)
-	: m_type_("button"), m_min_(0), m_max_(0), m_onChange_(f), m_pGameEngineStore_(pGameEngineStore)
+EngineOptionable::EngineOptionable(
+	std::function<void(const EngineOptionable&)> f,
+	MuzGameEngineStorageModel* pGameEngineStore)
+		: m_type_("button"), m_min_(0), m_max_(0), m_onChange_(f), m_pGameEngineStore_(pGameEngineStore)
 {
 }
 
@@ -48,8 +56,13 @@ EngineOptionable::EngineOptionable(std::function<void(MuzGameEngineStorageModel*
 /// <param name="max"></param>
 /// <param name="f"></param>
 /// <param name="pGameEngineStore"></param>
-EngineOptionable::EngineOptionable(const int v, const int min, const int max, std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> f, MuzGameEngineStorageModel* pGameEngineStore)
-	: m_type_("spin"), m_min_(min), m_max_(max), m_onChange_(f), m_pGameEngineStore_(pGameEngineStore)
+EngineOptionable::EngineOptionable(
+	const int v,
+	const int min,
+	const int max,
+	std::function<void(const EngineOptionable&)> f,
+	MuzGameEngineStorageModel* pGameEngineStore)
+		: m_type_("spin"), m_min_(min), m_max_(max), m_onChange_(f), m_pGameEngineStore_(pGameEngineStore)
 {
 	std::ostringstream ss;
 	ss << v;
@@ -89,7 +102,7 @@ EngineOptionable& EngineOptionable::operator = (const std::string& newValue)
 	// 変更通知、またはボタン押下の通知
     // FIXME: 変更前の値、変更後の値を渡すようにするか（＾～＾）？
 	if (isDirty && m_onChange_ != nullptr) {
-		m_onChange_(m_pGameEngineStore_, *this);
+		m_onChange_(*this);
 	}
 
 	return *this;

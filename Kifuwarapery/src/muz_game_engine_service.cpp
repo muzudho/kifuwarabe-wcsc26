@@ -138,27 +138,27 @@ void MuzGameEngineService::initialize_10a()
         &this->m_pGameEngineStore->m_engineOptionCollection,
         this->m_pGameEngineStore.get(),
         // onHashSizeChanged:
-        [this] (auto pGameEngineStore2, auto opt)
+        [this] (auto opt)
         {
             this->m_pGameEngineStore.get()->m_tt.setSize(opt);
         },
         // onHashCleared:
-        [this](auto pGameEngineStore2, auto opt)
+        [this](auto opt)
         {
             this->m_pGameEngineStore.get()->m_tt.Clear();
         },
         // onEvalDirChanged:
-        [this](auto pGameEngineStore2, auto opt)
+        [this](auto opt)
         {
             std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->initialize_10a600b(opt, true);
         },
         // onMaxThreadsPerSplitPointChanged:
-        [this](auto pGameEngineStore2, auto opt)
+        [this](auto opt)
         {
             this->m_pGameEngineStore.get()->m_pub.ReadUSIOptions(this->m_pGameEngineStore.get());
         },
         // onThreadsChanged:
-        [this](auto pGameEngineStore2, auto opt)
+        [this](auto opt)
         {
             this->m_pGameEngineStore.get()->m_pub.ReadUSIOptions(this->m_pGameEngineStore.get());
         },
