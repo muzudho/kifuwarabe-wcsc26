@@ -156,6 +156,13 @@ void MuzGameEngineService::initialize_10a()
         [](auto pGameEngineStore, auto opt)
         {
             pGameEngineStore->m_pub.ReadUSIOptions(pGameEngineStore);
+        },
+        []()
+        {
+            // 論理的なコア数の取得
+            // todo: boost::thread::physical_concurrency() を使うこと。
+            // std::thread::hardware_concurrency() は 0 を返す可能性がある。
+            return std::max(static_cast<int>(std::thread::hardware_concurrency() / 2), 1);
         });
 
     SYNCCOUT << "(^q^) 3   . 探索部の初期化！" << SYNCENDL;

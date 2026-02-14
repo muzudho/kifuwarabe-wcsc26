@@ -20,6 +20,12 @@ public:	//protected:
 	using Fn = void(MuzGameEngineStorageModel*, const EngineOptionable&);
 
 
+	/// <summary>
+	/// int n = f();
+	/// </summary>
+	using FnVoidInt = int();
+
+
 public:
 
 

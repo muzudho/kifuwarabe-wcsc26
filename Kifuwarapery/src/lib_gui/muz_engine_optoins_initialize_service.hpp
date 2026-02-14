@@ -28,5 +28,6 @@ public:
 		EngineOptionable::Fn* pHandleHashCleared,
 		EngineOptionable::Fn* pHandleEvalDirChanged,
 		EngineOptionable::Fn* pMaxThreadsPerSplitPointChanged,
-		EngineOptionable::Fn* pHandleThreadsChanged);
+		EngineOptionable::Fn* pHandleThreadsChanged,
+		EngineOptionable::FnVoidInt* pGetCpuCoreCount);
 };

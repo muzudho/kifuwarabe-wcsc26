@@ -5,22 +5,6 @@
 #include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 
 
-// 初期化の値を取ってくるのに使います。
-namespace {
-
-
-	/// <summary>
-	/// 論理的なコア数の取得
-	/// </summary>
-	/// <returns></returns>
-	inline int getCpuCoreCount() {
-		// todo: boost::thread::physical_concurrency() を使うこと。
-		// std::thread::hardware_concurrency() は 0 を返す可能性がある。
-		return std::max(static_cast<int>(std::thread::hardware_concurrency() / 2), 1);
-	}
-}
-
-
 /// <summary>
 /// USIエンジン・オプションに既定値を入れるぜ☆
 /// </summary>
@@ -33,7 +17,8 @@ void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
 	EngineOptionable::Fn* pHandleHashCleared,
 	EngineOptionable::Fn* pHandleEvalDirChanged,
 	EngineOptionable::Fn* pMaxThreadsPerSplitPointChanged,
-	EngineOptionable::Fn* pHandleThreadsChanged)
+	EngineOptionable::Fn* pHandleThreadsChanged,
+	EngineOptionable::FnVoidInt* pGetCpuCoreCount)
 {
 	// ハッシュサイズ
 	pMap->Put("USI_Hash"					, EngineOption(256, 1, 65536, pHandleHashSizeChanged, pRucksack));
@@ -104,7 +89,7 @@ void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
 	pMap->Put("Max_Threads_per_Split_Point"	, EngineOption(		5,  4,     8, pMaxThreadsPerSplitPointChanged, pRucksack));
 
 	// スレッド数
-	pMap->Put("Threads"						, EngineOption(getCpuCoreCount(), 1, g_MaxThreads, pHandleThreadsChanged, pRucksack));
+	pMap->Put("Threads"						, EngineOption((*pGetCpuCoreCount)(), 1, g_MaxThreads, pHandleThreadsChanged, pRucksack));
 
 	// ［寝てる猿を使う］チェックボックス
 	pMap->Put("Use_Sleeping_Threads"		, EngineOption(false));
