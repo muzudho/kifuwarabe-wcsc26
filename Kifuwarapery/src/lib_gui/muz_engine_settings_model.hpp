@@ -3,6 +3,8 @@
 #include <string>
 #include "muz_engine_option_abstract_model.hpp"
 #include <ostream>      // std::ostream のため（普通は iostream で入ってる）
+#include <vector>
+#include <map>
 
 
 /// <summary>
@@ -78,8 +80,10 @@ public:
 	/// </summary>
 	/// <param name="key"></param>
 	/// <returns></returns>
-	MuzEngineOptionAbstractModel& GetOption(const std::string key) {
-		return this->m_map.at(key);
+	MuzEngineOptionAbstractModel& GetOptionByKey(const std::string key)
+	{
+        return this->m_map.find(key)->second;	// 値を返す。例外は投げない。
+		//return this->m_map.at(key);	// 例外を投げる
     }
 
 

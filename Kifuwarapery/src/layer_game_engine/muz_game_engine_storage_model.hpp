@@ -477,7 +477,7 @@ FORCE_INLINE void		MonkiesPub::WakeUp(MuzGameEngineStorageModel* ourCarriage) {
 	}
 
 	// ［手の空いてる猿は寝かす］フラグを立てる☆
-	this->m_isIdleMonkeyToSleep_ = ourCarriage->m_engineSettings.m_map["Use_Sleeping_Threads"];
+	this->m_isIdleMonkeyToSleep_ = ourCarriage->m_engineSettings.GetOptionByKey("Use_Sleeping_Threads");
 }
 
 

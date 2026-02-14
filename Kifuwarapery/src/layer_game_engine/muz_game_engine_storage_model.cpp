@@ -48,7 +48,7 @@ extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 /// </summary>
 void MuzGameEngineStorageModel::initialize_10a520b_search() {
 	this->m_pub.initialize_10a520b500c(this);
-	this->m_tt.setSize(this->m_engineSettings.m_map["USI_Hash"]);
+	this->m_tt.setSize(this->m_engineSettings.GetOptionByKey("USI_Hash"));
 }
 
 
