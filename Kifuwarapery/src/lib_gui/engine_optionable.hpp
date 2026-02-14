@@ -16,25 +16,21 @@ public:
 
 
 	EngineOptionable(
-		std::function<void(const EngineOptionable&)> onChanged = nullptr,
-		MuzGameEngineStorageModel* pGameEngineStore = nullptr);
+		std::function<void(const EngineOptionable&)> onChanged = nullptr);
 
 	EngineOptionable(
 		const char* v,
-		std::function<void(const EngineOptionable&)> onChanged = nullptr,
-		MuzGameEngineStorageModel* pGameEngineStore = nullptr);
+		std::function<void(const EngineOptionable&)> onChanged = nullptr);
 
 	EngineOptionable(
 		const bool  v,
-		std::function<void(const EngineOptionable&)> onChanged = nullptr,
-		MuzGameEngineStorageModel* pGameEngineStore = nullptr);
+		std::function<void(const EngineOptionable&)> onChanged = nullptr);
 
 	EngineOptionable(
 		const int   v,
 		const int min,
 		const int max,
-		std::function<void(const EngineOptionable&)> onChanged = nullptr,
-		MuzGameEngineStorageModel* pGameEngineStore = nullptr);
+		std::function<void(const EngineOptionable&)> onChanged = nullptr);
 
 
 	/// <summary>
@@ -125,13 +121,5 @@ protected:
 	/// <summary>
 	/// 変更時フック
 	/// </summary>
-	std::function<void(const EngineOptionable&)> m_onChange_;
-
-	/// <summary>
-	///		<pre>
-	/// ［ゲームエンジン倉庫］へのポインタ☆（＾ｑ＾）
-    /// オプションの変更時に、ゲームエンジン倉庫の中身を変更するために必要だぜ☆（＾ｑ＾）
-	///		</pre>
-	/// </summary>
-	MuzGameEngineStorageModel* m_pGameEngineStore_;
+	std::function<void(const EngineOptionable&)> m_onChanged_;
 };

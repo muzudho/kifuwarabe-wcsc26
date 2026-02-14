@@ -14,7 +14,7 @@
 EngineOption::EngineOption(
     const char* v,
     std::function<void(const EngineOptionable&)> onChanged,
-    MuzGameEngineStorageModel* pGameEngineStore) : EngineOptionable(v, onChanged, pGameEngineStore)
+    MuzGameEngineStorageModel* pGameEngineStore) : EngineOptionable(v, onChanged)
 {
 }
 
@@ -30,7 +30,7 @@ EngineOption::EngineOption(
 EngineOption::EngineOption(
     const bool v,
     std::function<void(const EngineOptionable&)> onChanged,
-    MuzGameEngineStorageModel* pGameEngineStore) : EngineOptionable(v, onChanged, pGameEngineStore)
+    MuzGameEngineStorageModel* pGameEngineStore) : EngineOptionable(v, onChanged)
 {
 }
 
@@ -44,7 +44,7 @@ EngineOption::EngineOption(
 /// <param name="pGameEngineStore"></param>
 EngineOption::EngineOption(
     std::function<void(const EngineOptionable&)> onChanged,
-    MuzGameEngineStorageModel* pGameEngineStore) : EngineOptionable(onChanged, pGameEngineStore)
+    MuzGameEngineStorageModel* pGameEngineStore) : EngineOptionable(onChanged)
 {
 }
 
@@ -64,7 +64,7 @@ EngineOption::EngineOption(
     const int min,
     const int max,
     std::function<void(const EngineOptionable&)> onChanged,
-    MuzGameEngineStorageModel* pGameEngineStore) : EngineOptionable(v, min, max, onChanged, pGameEngineStore)
+    MuzGameEngineStorageModel* pGameEngineStore) : EngineOptionable(v, min, max, onChanged)
 {
 }
 

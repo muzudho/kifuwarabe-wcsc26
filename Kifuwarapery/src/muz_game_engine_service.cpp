@@ -136,7 +136,6 @@ void MuzGameEngineService::initialize_10a()
     MuzEngineOptionsInitializeService engineOptionsInitialize;
     engineOptionsInitialize.initialize_10a510b_engineOptions(
         &this->m_pGameEngineStore->m_engineOptionCollection,
-        this->m_pGameEngineStore.get(),
         // onHashSizeChanged:
         [this] (auto opt)
         {

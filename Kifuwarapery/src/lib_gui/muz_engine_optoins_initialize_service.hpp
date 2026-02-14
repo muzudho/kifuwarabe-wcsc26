@@ -22,7 +22,6 @@ public:
 	/// <param name="s"></param>
 	void initialize_10a510b_engineOptions(
 		EngineOptionCollection* pMap,
-		MuzGameEngineStorageModel* s,
 		std::function<void(const EngineOptionable&)> onHashSizeChanged,
 		std::function<void(const EngineOptionable&)> onHashCleared,
 		std::function<void(const EngineOptionable&)> onEvalDirChanged,
