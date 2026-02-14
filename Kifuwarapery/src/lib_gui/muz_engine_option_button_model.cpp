@@ -54,10 +54,10 @@ std::string MuzEngineOptionButtonModel::ToUSICode() const
 {
 
 #if __cplusplus >= 202002L
-    return std::format("type {} default {}", this->GetType(), this->GetDefaultValue());
+    return std::format("type {}", this->GetType());
 #else
     std::ostringstream oss;
-    oss << "type " << this->GetType() << " default " << this->GetDefaultValue();
+    oss << "type " << this->GetType();
     return oss.str();
 #endif
 
