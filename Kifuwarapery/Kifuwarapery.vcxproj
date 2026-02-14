@@ -390,6 +390,7 @@
     <ClInclude Include="header\n640_searcher\n640_500_reductions.hpp" />
     <ClInclude Include="header\n640_searcher\n640_510_futilityMargins.hpp" />
     <ClInclude Include="header\n640_searcher\n640_520_futilityMoveCounts.hpp" />
+    <ClInclude Include="src\lib_gui\muz_engine_option_textbox_model.hpp" />
     <ClInclude Include="src\lib_gui\muz_engine_option_spinbox_model.hpp" />
     <ClInclude Include="src\lib_gui\muz_engine_option_checkbox_model.hpp" />
     <ClInclude Include="src\lib_gui\muz_engine_option_button_model.hpp" />
@@ -447,6 +448,7 @@
     <ClCompile Include="header\n080_100_sysWorld\n080_100_075_debugcerr.hpp" />
     <ClCompile Include="header\n080_100_sysWorld\n080_100_077_binary.hpp" />
     <ClCompile Include="header\n080_100_sysWorld\n080_100_078_lsbMsb.hpp" />
+    <ClCompile Include="src\lib_gui\muz_engine_option_textbox_model..cpp" />
     <ClCompile Include="src\lib_gui\muz_engine_option_spinbox_model.cpp" />
     <ClCompile Include="src\lib_gui\muz_engine_option_checkbox_model.cpp" />
     <ClCompile Include="src\lib_gui\muz_engine_option_button_model.cpp" />

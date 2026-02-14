@@ -16,12 +16,4 @@ class MuzEngineOptionModel : public MuzEngineOptionableModel
 public:
 
 
-    /// <summary>
-    /// テキストボックス用
-    /// </summary>
-    /// <returns></returns>
-    MuzEngineOptionModel(
-        const char* v, std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
-
-
 };

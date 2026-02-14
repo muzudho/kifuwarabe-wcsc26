@@ -2,6 +2,7 @@
 #include "muz_engine_option_button_model.hpp"
 #include "muz_engine_option_checkbox_model.hpp"
 #include "muz_engine_option_spinbox_model.hpp"
+#include "muz_engine_option_textbox_model.hpp"
 #include "muz_engine_optoins_initialize_service.hpp"
 
 
@@ -30,7 +31,7 @@ void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
 	pMap->Put("Clear_Hash"					, MuzEngineOptionButtonModel(onHashCleared));
 
 	// 定跡ファイルパス
-	pMap->Put("Book_File"					, MuzEngineOptionModel("book/20150503/book.bin"));
+	pMap->Put("Book_File"					, MuzEngineOptionTextboxModel("book/20150503/book.bin"));
 
 	// ［定跡］チェックボックス
 	pMap->Put("Best_Book_Move"				, MuzEngineOptionCheckboxModel(false));
@@ -48,7 +49,7 @@ void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
 	pMap->Put("Min_Book_Score"				, MuzEngineOptionSpinboxModel(-180, -sweetnessInfinite, sweetnessInfinite));
 
 	// ［評価値ファイル］フォルダー
-	pMap->Put("Eval_Dir"					, MuzEngineOptionModel("20151105", onEvalDirChanged));
+	pMap->Put("Eval_Dir"					, MuzEngineOptionTextboxModel("20151105", onEvalDirChanged));
 
 	// ［評価値書き込み］チェックボックス
 	pMap->Put("Write_Synthesized_Eval"		, MuzEngineOptionCheckboxModel(false));

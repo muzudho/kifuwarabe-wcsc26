@@ -71,7 +71,7 @@ MuzEngineOptionableModel& MuzEngineOptionableModel::operator = (const std::strin
 {
 	assert(!m_type_.empty());
 
-	// ボタン、チェックボックス、スピンボックスではない（＾～＾）
+	// ボタン、チェックボックス、スピンボックス、テキストボックスではない（＾～＾）
 
 	if (
 		newValue.empty())	// ボタンじゃないのに、値が無かった
