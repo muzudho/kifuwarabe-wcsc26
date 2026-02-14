@@ -93,11 +93,11 @@ UsiLoop::UsiLoop()
 /// </summary>
 /// <param name="argc"></param>
 /// <param name="argv"></param>
-/// <param name="m_ourCarriage"></param>
-void UsiLoop::mainloop_50a500b(int argc, char* argv[], GameEngineStorageOurCarriage& m_ourCarriage)
+/// <param name="m_pGameEngineStore"></param>
+void UsiLoop::mainloop_50a500b(int argc, char* argv[], GameEngineStorageOurCarriage& m_pGameEngineStore)
 {
 	GameStats gameStats{};	// こう書くと関数呼出しと思われてエラー： GameStats gameStats();
-	Position pos(g_SFEN_STARTPOS_STR, m_ourCarriage.m_pub.GetFirstCaptain(), &m_ourCarriage);
+	Position pos(g_SFEN_STARTPOS_STR, m_pGameEngineStore.m_pub.GetFirstCaptain(), &m_pGameEngineStore);
 
 	std::string cmd;
 	std::string token;
@@ -136,26 +136,26 @@ void UsiLoop::mainloop_50a500b(int argc, char* argv[], GameEngineStorageOurCarri
 		) {
 			// 終了時にポンダーヒットが来ることがある。
 			if (token != "ponderhit" ||
-				m_ourCarriage.m_signals.m_stopOnPonderHit
+				m_pGameEngineStore.m_signals.m_stopOnPonderHit
 			) {
                 // 思考停止シグナルを立てる。
-				m_ourCarriage.m_signals.m_stop = true;
+				m_pGameEngineStore.m_signals.m_stop = true;
 
 				// 排他的処理の何か？？
-				m_ourCarriage.m_pub.GetFirstCaptain()->NotifyOne();
+				m_pGameEngineStore.m_pub.GetFirstCaptain()->NotifyOne();
 			}
 			else {
 				// 相手の思考時間中に自分も思考するのを止める。
-				m_ourCarriage.m_limits.m_canPonder = false;
+				m_pGameEngineStore.m_limits.m_canPonder = false;
 			}
 
             // ポンダーヒットのときに、ムーブタイムが０でなければ、消費した時間分、加算する。
-			if (token == "ponderhit" && m_ourCarriage.m_limits.GetMoveTime() != 0) {
-				m_ourCarriage.m_limits.IncreaseMoveTime( m_ourCarriage.m_stopwatch.GetElapsed());
+			if (token == "ponderhit" && m_pGameEngineStore.m_limits.GetMoveTime() != 0) {
+				m_pGameEngineStore.m_limits.IncreaseMoveTime( m_pGameEngineStore.m_stopwatch.GetElapsed());
 			}
 		}
 		else if (token == "usinewgame") {
-			m_ourCarriage.m_tt.Clear();
+			m_pGameEngineStore.m_tt.Clear();
 #if defined INANIWA_SHIFT
 			inaniwaFlag = NotInaniwa;
 #endif
@@ -168,7 +168,7 @@ void UsiLoop::mainloop_50a500b(int argc, char* argv[], GameEngineStorageOurCarri
 			}
 		}
 		else if (token == "usi") {
-			SYNCCOUT << "id name " << MyName << "\nid author (Derivation)Takahashi Satoshi (Base)Hiraoka Takuya\n" << m_ourCarriage.m_engineOptionCollection << "\nusiok" << SYNCENDL;
+			SYNCCOUT << "id name " << MyName << "\nid author (Derivation)Takahashi Satoshi (Base)Hiraoka Takuya\n" << m_pGameEngineStore.m_engineOptionCollection << "\nusiok" << SYNCENDL;
 		}
 		else if (token == "go") {
 			usiOperation.Go(gameStats, pos, ssCmd);
@@ -180,7 +180,7 @@ void UsiLoop::mainloop_50a500b(int argc, char* argv[], GameEngineStorageOurCarri
 			usiOperation.SetPosition(pos, ssCmd);
 		}
 		else if (token == "setoption") {
-			m_ourCarriage.SetOption(ssCmd);
+			m_pGameEngineStore.SetOption(ssCmd);
 		}
 #if defined LEARN
 		else if (token == "l") {
@@ -214,13 +214,13 @@ void UsiLoop::mainloop_50a500b(int argc, char* argv[], GameEngineStorageOurCarri
 	//────────────────────────────────────────────────────────────────────────────────
 
 	// 評価値ファイルを書き出す指定なら
-	if (m_ourCarriage.m_engineOptionCollection.m_map["Write_Synthesized_Eval"])
+	if (m_pGameEngineStore.m_engineOptionCollection.m_map["Write_Synthesized_Eval"])
 	{
 		// シンセサイズド評価を書き出します。
-		KkKkpKppStorage1::WriteSynthesized(m_ourCarriage.m_engineOptionCollection.m_map["Eval_Dir"]);
+		KkKkpKppStorage1::WriteSynthesized(m_pGameEngineStore.m_engineOptionCollection.m_map["Eval_Dir"]);
 	}
 
 	//────────────────────────────────────────────────────────────────────────────────
 
-	m_ourCarriage.m_pub.WaitForThinkFinished();
+	m_pGameEngineStore.m_pub.WaitForThinkFinished();
 }

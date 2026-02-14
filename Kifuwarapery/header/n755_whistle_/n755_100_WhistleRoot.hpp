@@ -20,12 +20,12 @@ public:
 	///		</pre>
 	/// </summary>
 	/// <param name="ownerMonkeySplitedPlace"></param>
-	/// <param name="m_ourCarriage"></param>
+	/// <param name="m_pGameEngineStore"></param>
 	/// <param name="pos"></param>
 	/// <param name="pFlashlight"></param>
 	virtual void blowWhistle_asMonkeySplitedPlace(
 		MonkeySplitedPlace& ownerMonkeySplitedPlace,
-		GameEngineStorageOurCarriage& m_ourCarriage,
+		GameEngineStorageOurCarriage& m_pGameEngineStore,
 		Position& pos,
 		Flashlight* pFlashlight
 		) const override;

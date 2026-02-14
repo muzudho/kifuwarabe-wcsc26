@@ -30,7 +30,7 @@
 /// </summary>
 MyGameEngineModel::MyGameEngineModel()
 {
-    this->m_ourCarriage = std::unique_ptr<GameEngineStorageOurCarriage>(new GameEngineStorageOurCarriage);
+    this->m_pGameEngineStore = std::unique_ptr<GameEngineStorageOurCarriage>(new GameEngineStorageOurCarriage);
 }
 
 
@@ -39,7 +39,7 @@ MyGameEngineModel::MyGameEngineModel()
 /// </summary>
 MyGameEngineModel::~MyGameEngineModel()
 {
-    this->m_ourCarriage.reset();
+    this->m_pGameEngineStore.reset();
 }
 
 
@@ -132,14 +132,14 @@ void MyGameEngineModel::initialize_10a()
     Position::initialize_10a310b_zobrist();
 
     SYNCCOUT << "(^q^) 3   . 探索部の初期化！" << SYNCENDL;
-    this->m_ourCarriage->initialize_10a500b_search();
+    this->m_pGameEngineStore->initialize_10a500b_search(&this->m_pGameEngineStore->m_engineOptionCollection);
 
 
     // 一時オブジェクトの生成と破棄
 
 
     SYNCCOUT << "(^q^) 4   . 評価関数の初期化！" << SYNCENDL;
-    std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->initialize_10a600b(this->m_ourCarriage->m_engineOptionCollection.m_map["Eval_Dir"], true);
+    std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->initialize_10a600b(this->m_pGameEngineStore->m_engineOptionCollection.m_map["Eval_Dir"], true);
 
     SYNCCOUT << "(^q^) 次は USIループへ！" << SYNCENDL;
 }
@@ -153,7 +153,7 @@ void MyGameEngineModel::initialize_10a()
 void MyGameEngineModel::body_50a(int argc, char* argv[])
 {
     UsiLoop usiLoop;
-    usiLoop.mainloop_50a500b(argc, argv, *this->m_ourCarriage);
+    usiLoop.mainloop_50a500b(argc, argv, *this->m_pGameEngineStore);
 }
 
 
@@ -163,5 +163,5 @@ void MyGameEngineModel::body_50a(int argc, char* argv[])
 void MyGameEngineModel::finalize_90a()
 {
     SYNCCOUT << "(^q^)main(6/6): threads.exit! ----> doUSICommandLoop" << SYNCENDL;
-    this->m_ourCarriage->m_pub.exit_90a500b();
+    this->m_pGameEngineStore->m_pub.exit_90a500b();
 }

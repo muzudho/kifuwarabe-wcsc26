@@ -24,6 +24,6 @@ public:
 	/// </summary>
 	/// <param name="argc"></param>
 	/// <param name="argv"></param>
-	/// <param name="m_ourCarriage"></param>
-	void mainloop_50a500b(int argc, char* argv[], GameEngineStorageOurCarriage& m_ourCarriage);
+	/// <param name="m_pGameEngineStore"></param>
+	void mainloop_50a500b(int argc, char* argv[], GameEngineStorageOurCarriage& m_pGameEngineStore);
 };

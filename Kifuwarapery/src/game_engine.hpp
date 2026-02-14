@@ -18,7 +18,7 @@ public:
 	/// <summary>
 	///		ゲームエンジンが１つだけ持つ、局面の探索状態を保存するクラス☆（＾ｑ＾）
 	/// </summary>
-	std::unique_ptr<GameEngineStorageOurCarriage> m_ourCarriage;
+	std::unique_ptr<GameEngineStorageOurCarriage> m_pGameEngineStore;
 
 
 public:

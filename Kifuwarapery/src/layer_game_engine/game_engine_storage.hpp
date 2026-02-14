@@ -199,7 +199,7 @@ public:
 	/// <summary>
 	/// 初期化？
 	/// </summary>
-	void	initialize_10a500b_search();
+	void	initialize_10a500b_search(EngineOptionCollection* pMap);
 
 
 	/// <summary>
