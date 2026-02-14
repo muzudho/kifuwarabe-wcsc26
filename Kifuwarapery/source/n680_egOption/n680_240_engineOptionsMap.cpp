@@ -3,7 +3,7 @@
 
 
 /// <summary>
-/// 
+/// ２つの文字列の並び順の比較☆（＾～＾）
 /// </summary>
 /// <param name="s1"></param>
 /// <param name="s2"></param>
@@ -21,11 +21,11 @@ bool CaseInsensitiveLess::operator () (const std::string& s1, const std::string&
 
 
 /// <summary>
-/// 
+/// エンジン・オプションを登録するぜ☆（＾～＾）
 /// </summary>
 /// <param name="key"></param>
-/// <param name="value"></param>
-void EngineOptionsMap::Put(const std::string key, EngineOptionable value)
+/// <param name="option"></param>
+void EngineOptionsMap::Put(const std::string key, EngineOptionable option)
 {
-	(*this)[key] = value;
+	(*this)[key] = option;
 }
