@@ -22,7 +22,7 @@ IMuzEngineOptionableModel::IMuzEngineOptionableModel(
 
 
 /// <summary>
-/// 
+/// XXX: これを消すとコンパイルエラー
 /// </summary>
 /// <param name="onChanged"></param>
 IMuzEngineOptionableModel::IMuzEngineOptionableModel(

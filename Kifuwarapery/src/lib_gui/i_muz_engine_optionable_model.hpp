@@ -30,7 +30,7 @@ public:
 		int max,
 		std::function<void(const IMuzEngineOptionableModel&)> onChanged = nullptr);
 
-	// TODO: ボタン
+	// XXX: これを消すとコンパイルエラー
 	IMuzEngineOptionableModel(
 		std::function<void(const IMuzEngineOptionableModel&)> onChanged = nullptr);
 

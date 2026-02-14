@@ -103,6 +103,6 @@ void MuzEngineSettingsInitializeService::initialize_10a510b_engineOptions(
 	pMap->Put("Use_Sleeping_Threads"		, MuzEngineOptionCheckboxModel(false));
 
 #if defined BISHOP_IN_DANGER
-	(*this)["Danger_Demerit_Score"] = MuzEngineOptionModel(700, SHRT_MIN, SHRT_MAX);
+	(*this)["Danger_Demerit_Score"] = MuzEngineOptionSpinboxModel(700, SHRT_MIN, SHRT_MAX);
 #endif
 }
