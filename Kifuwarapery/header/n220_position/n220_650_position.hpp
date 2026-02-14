@@ -829,7 +829,7 @@ private:
 	/// <summary>
 	/// わたしたちの馬車
 	/// </summary>
-	GameEngineStorageOurCarriage* m_pOurCarriage_;
+	GameEngineStorageOurCarriage* m_pGameEngineStore_;
 
 	/// <summary>
 	/// 

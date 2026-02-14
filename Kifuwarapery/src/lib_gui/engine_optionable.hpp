@@ -120,7 +120,10 @@ protected:
 	Fn* m_onChange_;
 
 	/// <summary>
-    /// 探索用変数へのポインタ☆（＾ｑ＾）
+	///		<pre>
+	/// ［ゲームエンジン倉庫］へのポインタ☆（＾ｑ＾）
+    /// オプションの変更時に、ゲームエンジン倉庫の中身を変更するために必要だぜ☆（＾ｑ＾）
+	///		</pre>
 	/// </summary>
-	GameEngineStorageOurCarriage* m_pOurCarriage_;
+	GameEngineStorageOurCarriage* m_pGameEngineStore_;
 };

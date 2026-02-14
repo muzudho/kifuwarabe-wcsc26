@@ -9,8 +9,8 @@
 /// <param name="v"></param>
 /// <param name="f"></param>
 /// <param name="s"></param>
-EngineOptionable::EngineOptionable(const char* v, Fn* f, GameEngineStorageOurCarriage* s) :
-	m_type_("string"), m_min_(0), m_max_(0), m_onChange_(f), m_pOurCarriage_(s)
+EngineOptionable::EngineOptionable(const char* v, Fn* f, GameEngineStorageOurCarriage* s)
+	: m_type_("string"), m_min_(0), m_max_(0), m_onChange_(f), m_pGameEngineStore_(s)
 {
 	m_defaultValue_ = m_currentValue_ = v;
 }
@@ -22,8 +22,8 @@ EngineOptionable::EngineOptionable(const char* v, Fn* f, GameEngineStorageOurCar
 /// <param name="v"></param>
 /// <param name="f"></param>
 /// <param name="s"></param>
-EngineOptionable::EngineOptionable(const bool v, Fn* f, GameEngineStorageOurCarriage* s) :
-	m_type_("check"), m_min_(0), m_max_(0), m_onChange_(f), m_pOurCarriage_(s)
+EngineOptionable::EngineOptionable(const bool v, Fn* f, GameEngineStorageOurCarriage* s)
+	: m_type_("check"), m_min_(0), m_max_(0), m_onChange_(f), m_pGameEngineStore_(s)
 {
 	m_defaultValue_ = m_currentValue_ = (v ? "true" : "false");
 }
@@ -34,8 +34,8 @@ EngineOptionable::EngineOptionable(const bool v, Fn* f, GameEngineStorageOurCarr
 /// </summary>
 /// <param name="f"></param>
 /// <param name="s"></param>
-EngineOptionable::EngineOptionable(Fn* f, GameEngineStorageOurCarriage* s) :
-	m_type_("button"), m_min_(0), m_max_(0), m_onChange_(f), m_pOurCarriage_(s)
+EngineOptionable::EngineOptionable(Fn* f, GameEngineStorageOurCarriage* s)
+	: m_type_("button"), m_min_(0), m_max_(0), m_onChange_(f), m_pGameEngineStore_(s)
 {
 }
 
@@ -47,9 +47,9 @@ EngineOptionable::EngineOptionable(Fn* f, GameEngineStorageOurCarriage* s) :
 /// <param name="min"></param>
 /// <param name="max"></param>
 /// <param name="f"></param>
-/// <param name="s"></param>
-EngineOptionable::EngineOptionable(const int v, const int min, const int max, Fn* f, GameEngineStorageOurCarriage* s)
-	: m_type_("spin"), m_min_(min), m_max_(max), m_onChange_(f), m_pOurCarriage_(s)
+/// <param name="gameEngineStore"></param>
+EngineOptionable::EngineOptionable(const int v, const int min, const int max, Fn* f, GameEngineStorageOurCarriage* gameEngineStore)
+	: m_type_("spin"), m_min_(min), m_max_(max), m_onChange_(f), m_pGameEngineStore_(gameEngineStore)
 {
 	std::ostringstream ss;
 	ss << v;
@@ -62,7 +62,8 @@ EngineOptionable::EngineOptionable(const int v, const int min, const int max, Fn
 /// </summary>
 /// <param name="v"></param>
 /// <returns></returns>
-EngineOptionable& EngineOptionable::operator = (const std::string& v) {
+EngineOptionable& EngineOptionable::operator = (const std::string& v)
+{
 	assert(!m_type_.empty());
 
 	if ((m_type_ != "button" && v.empty())
@@ -75,7 +76,7 @@ EngineOptionable& EngineOptionable::operator = (const std::string& v) {
 	}
 
 	if (m_onChange_ != nullptr) {
-		(*m_onChange_)(m_pOurCarriage_, *this);
+		(*m_onChange_)(m_pGameEngineStore_, *this);
 	}
 
 	return *this;

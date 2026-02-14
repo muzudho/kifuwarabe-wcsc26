@@ -301,7 +301,7 @@ const ChangedLists& Position::GetCl() const
 /// <returns></returns>
 const GameEngineStorageOurCarriage* Position::GetConstOurCarriage() const
 {
-	return this->m_pOurCarriage_;
+	return this->m_pGameEngineStore_;
 }
 
 
@@ -311,7 +311,7 @@ const GameEngineStorageOurCarriage* Position::GetConstOurCarriage() const
 /// <returns></returns>
 GameEngineStorageOurCarriage* Position::GetOurCarriage() const
 {
-	return this->m_pOurCarriage_;
+	return this->m_pGameEngineStore_;
 }
 
 
@@ -321,7 +321,7 @@ GameEngineStorageOurCarriage* Position::GetOurCarriage() const
 /// <param name="s"></param>
 void Position::SetOurCarriage(GameEngineStorageOurCarriage* s)
 {
-	this->m_pOurCarriage_ = s;
+	this->m_pGameEngineStore_ = s;
 }
 
 
@@ -2546,7 +2546,8 @@ Position::Position()
 /// 
 /// </summary>
 /// <param name="s"></param>
-Position::Position(GameEngineStorageOurCarriage * s) : m_pOurCarriage_(s)
+Position::Position(GameEngineStorageOurCarriage* gameEngineStore)
+	: m_pGameEngineStore_(gameEngineStore)
 {
 }
 
@@ -2614,7 +2615,7 @@ void Position::Set(const std::string& sfen, Monkie* th) {
 	char token;
 	Square sq = A9;
 
-	GameEngineStorageOurCarriage* s = std::move(m_pOurCarriage_);
+	GameEngineStorageOurCarriage* s = std::move(m_pGameEngineStore_);
 	this->Clear();
 	this->SetOurCarriage(s);
 

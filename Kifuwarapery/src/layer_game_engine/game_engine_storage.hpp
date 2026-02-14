@@ -27,7 +27,7 @@ using Gains   = Stats<true>;
 
 /// <summary>
 ///		<pre>
-/// わたしたちの馬車
+/// ゲームエンジン倉庫
 /// 
 ///		- 旧名：　1. Searcher, 2. Rucksack, 3. ＯurCarriage
 ///		- ゲームエンジンが１つだけ持つ
