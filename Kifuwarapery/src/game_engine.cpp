@@ -15,6 +15,7 @@
 #include "../header/n600_book____/n600_500_book.hpp"
 #include "../header/n760_thread__/n760_400_monkiesPub.hpp"
 #include "../header/n900_main____/n900_300_usiLoop.hpp"
+#include "../src/layer_game_engine/setup_by_engine_optoins.hpp"
 #include "../src/game_engine.hpp"
 #include "../src/layer_game_engine/game_engine_storage.hpp"
 #include <iostream>
@@ -130,6 +131,10 @@ void MyGameEngineModel::initialize_10a()
 
     SYNCCOUT << "(^q^) 2   . 局面のゾブリストハッシュ初期化！" << SYNCENDL;
     Position::initialize_10a310b_zobrist();
+
+    SYNCCOUT << "(^q^) 2.9 . エンジン・オプション設定！" << SYNCENDL;
+    EngineOptionSetup engineOptionSetup;
+    engineOptionSetup.initialize_10a500b100c(&this->m_pGameEngineStore->m_engineOptionCollection, this->m_pGameEngineStore.get());
 
     SYNCCOUT << "(^q^) 3   . 探索部の初期化！" << SYNCENDL;
     this->m_pGameEngineStore->initialize_10a500b_search(&this->m_pGameEngineStore->m_engineOptionCollection);
