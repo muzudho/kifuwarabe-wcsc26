@@ -1,4 +1,4 @@
-﻿#include "i_muz_engine_optionable_model.hpp"
+﻿#include "muz_engine_option_abstract_model.hpp"
 #include <sstream>
 
 
@@ -8,25 +8,25 @@
 
 
 /// <summary>
-/// TODO: 汎用
+/// TODO: 汎用に作った（＾～＾）
 /// </summary>
 /// <param name="onChanged"></param>
-IMuzEngineOptionableModel::IMuzEngineOptionableModel(
+MuzEngineOptionAbstractModel::MuzEngineOptionAbstractModel(
 	std::string type,
 	int min,
 	int max,
-	std::function<void(const IMuzEngineOptionableModel&)> onChanged)
+	std::function<void(const MuzEngineOptionAbstractModel&)> onChanged)
 	: m_type_(type), m_min_(min), m_max_(max), m_onChanged_(onChanged)
 {
 }
 
 
 /// <summary>
-/// XXX: これを消すとコンパイルエラー
+/// XXX: これを消すとコンパイルエラー。匿名関数で使ってる（＾～＾）？
 /// </summary>
 /// <param name="onChanged"></param>
-IMuzEngineOptionableModel::IMuzEngineOptionableModel(
-	std::function<void(const IMuzEngineOptionableModel&)> onChanged)
+MuzEngineOptionAbstractModel::MuzEngineOptionAbstractModel(
+	std::function<void(const MuzEngineOptionAbstractModel&)> onChanged)
 	: m_type_("button"), m_min_(0), m_max_(0), m_onChanged_(onChanged)
 {
 }
@@ -37,9 +37,9 @@ IMuzEngineOptionableModel::IMuzEngineOptionableModel(
 /// </summary>
 /// <param name="newValue"></param>
 /// <param name="onChanged"></param>
-IMuzEngineOptionableModel::IMuzEngineOptionableModel(
+MuzEngineOptionAbstractModel::MuzEngineOptionAbstractModel(
 	const char* v,
-	std::function<void(const IMuzEngineOptionableModel&)> onChanged)
+	std::function<void(const MuzEngineOptionAbstractModel&)> onChanged)
 		: m_type_("string"), m_min_(0), m_max_(0), m_onChanged_(onChanged)
 {
 	m_defaultValue_ = m_currentValue_ = v;
@@ -51,9 +51,9 @@ IMuzEngineOptionableModel::IMuzEngineOptionableModel(
 /// </summary>
 /// <param name="newValue"></param>
 /// <param name="f"></param>
-IMuzEngineOptionableModel::IMuzEngineOptionableModel(
+MuzEngineOptionAbstractModel::MuzEngineOptionAbstractModel(
 	const bool v,
-	std::function<void(const IMuzEngineOptionableModel&)> onChanged)
+	std::function<void(const MuzEngineOptionAbstractModel&)> onChanged)
 		: m_type_("check"), m_min_(0), m_max_(0), m_onChanged_(onChanged)
 {
 	m_defaultValue_ = m_currentValue_ = (v ? "true" : "false");
@@ -67,11 +67,11 @@ IMuzEngineOptionableModel::IMuzEngineOptionableModel(
 /// <param name="min"></param>
 /// <param name="max"></param>
 /// <param name="onChanged"></param>
-IMuzEngineOptionableModel::IMuzEngineOptionableModel(
+MuzEngineOptionAbstractModel::MuzEngineOptionAbstractModel(
 	const int v,
 	const int min,
 	const int max,
-	std::function<void(const IMuzEngineOptionableModel&)> onChanged)
+	std::function<void(const MuzEngineOptionAbstractModel&)> onChanged)
 		: m_type_("spin"), m_min_(min), m_max_(max), m_onChanged_(onChanged)
 {
 	std::ostringstream ss;
@@ -90,7 +90,7 @@ IMuzEngineOptionableModel::IMuzEngineOptionableModel(
 /// </summary>
 /// <param name="newValue"></param>
 /// <returns></returns>
-IMuzEngineOptionableModel& IMuzEngineOptionableModel::operator = (const std::string& newValue)
+MuzEngineOptionAbstractModel& MuzEngineOptionAbstractModel::operator = (const std::string& newValue)
 {
 	if (newValue.empty()) { return *this; }	// 値が無かった
 
@@ -116,7 +116,7 @@ IMuzEngineOptionableModel& IMuzEngineOptionableModel::operator = (const std::str
 /// USIコード化☆（＾～＾）
 /// </summary>
 /// <returns></returns>
-std::string IMuzEngineOptionableModel::ToUSICode() const
+std::string MuzEngineOptionAbstractModel::ToUSICode() const
 {
 	return "";
 }

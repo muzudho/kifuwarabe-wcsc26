@@ -12,7 +12,7 @@
 /// <summary>
 /// エンジン・オプション的☆（＾ｑ＾）
 /// </summary>
-class IMuzEngineOptionableModel {
+class MuzEngineOptionAbstractModel {
 
 
 public:
@@ -23,33 +23,33 @@ public:
 	// ========================================
 
 
-	// TODO: 汎用
-	IMuzEngineOptionableModel(
+	// TODO: ボタン用に作った（＾～＾）
+	MuzEngineOptionAbstractModel(
 		std::string type,
 		int min,
 		int max,
-		std::function<void(const IMuzEngineOptionableModel&)> onChanged = nullptr);
+		std::function<void(const MuzEngineOptionAbstractModel&)> onChanged = nullptr);
 
-	// XXX: これを消すとコンパイルエラー
-	IMuzEngineOptionableModel(
-		std::function<void(const IMuzEngineOptionableModel&)> onChanged = nullptr);
+	// XXX: これを消すとコンパイルエラー。匿名関数で使ってる（＾～＾）？
+	MuzEngineOptionAbstractModel(
+		std::function<void(const MuzEngineOptionAbstractModel&)> onChanged = nullptr);
 
 	// TODO: テキストボックス
-	IMuzEngineOptionableModel(
+	MuzEngineOptionAbstractModel(
 		const char* v,
-		std::function<void(const IMuzEngineOptionableModel&)> onChanged = nullptr);
+		std::function<void(const MuzEngineOptionAbstractModel&)> onChanged = nullptr);
 
 	// TODO: チェックボックス
-	IMuzEngineOptionableModel(
+	MuzEngineOptionAbstractModel(
 		const bool  v,
-		std::function<void(const IMuzEngineOptionableModel&)> onChanged = nullptr);
+		std::function<void(const MuzEngineOptionAbstractModel&)> onChanged = nullptr);
 
 	// TODO: スピンボックス
-	IMuzEngineOptionableModel(
+	MuzEngineOptionAbstractModel(
 		const int   v,
 		const int min,
 		const int max,
-		std::function<void(const IMuzEngineOptionableModel&)> onChanged = nullptr);
+		std::function<void(const MuzEngineOptionAbstractModel&)> onChanged = nullptr);
 
 
 protected:
@@ -88,7 +88,7 @@ protected:
 	/// <summary>
 	/// 変更時フック
 	/// </summary>
-	std::function<void(const IMuzEngineOptionableModel&)> m_onChanged_;
+	std::function<void(const MuzEngineOptionAbstractModel&)> m_onChanged_;
 
 
 public:
@@ -104,7 +104,7 @@ public:
 	/// </summary>
 	/// <param name="v"></param>
 	/// <returns></returns>
-	IMuzEngineOptionableModel& operator = (const std::string& v);
+	MuzEngineOptionAbstractModel& operator = (const std::string& v);
 
 
 	/// <summary>

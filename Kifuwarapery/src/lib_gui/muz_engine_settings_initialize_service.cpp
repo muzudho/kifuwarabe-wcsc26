@@ -21,11 +21,11 @@ void MuzEngineSettingsInitializeService::initialize_10a510b_engineOptions(
 	int sweetnessMate0Ply,
 	int maxThreads,
 	MuzEngineSettingsModel* pMap,
-	std::function<void(const IMuzEngineOptionableModel&)> onHashSizeChanged,
-	std::function<void(const IMuzEngineOptionableModel&)> onHashCleared,
-	std::function<void(const IMuzEngineOptionableModel&)> onEvalDirChanged,
-	std::function<void(const IMuzEngineOptionableModel&)> onMaxThreadsPerSplitPointChanged,
-	std::function<void(const IMuzEngineOptionableModel&)> onThreadsChanged,
+	std::function<void(const MuzEngineOptionAbstractModel&)> onHashSizeChanged,
+	std::function<void(const MuzEngineOptionAbstractModel&)> onHashCleared,
+	std::function<void(const MuzEngineOptionAbstractModel&)> onEvalDirChanged,
+	std::function<void(const MuzEngineOptionAbstractModel&)> onMaxThreadsPerSplitPointChanged,
+	std::function<void(const MuzEngineOptionAbstractModel&)> onThreadsChanged,
 	std::function<int()> getCPUCoreCount)
 {
 	// ハッシュサイズ

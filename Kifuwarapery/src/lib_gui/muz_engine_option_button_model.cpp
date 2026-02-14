@@ -14,8 +14,8 @@
 /// <param name="onChanged"></param>
 /// <param name="pGameEngineStore"></param>
 MuzEngineOptionButtonModel::MuzEngineOptionButtonModel(
-    std::function<void(const IMuzEngineOptionableModel&)> onChanged)
-    : IMuzEngineOptionableModel("button", 0, 0, onChanged)
+    std::function<void(const MuzEngineOptionAbstractModel&)> onChanged)
+    : MuzEngineOptionAbstractModel("button", 0, 0, onChanged)
 {
 }
 
@@ -30,7 +30,7 @@ MuzEngineOptionButtonModel::MuzEngineOptionButtonModel(
 /// </summary>
 /// <param name="newValue"></param>
 /// <returns></returns>
-IMuzEngineOptionableModel& MuzEngineOptionButtonModel::operator = (const std::string& newValue)
+MuzEngineOptionAbstractModel& MuzEngineOptionButtonModel::operator = (const std::string& newValue)
 {
 	//assert(!m_type_.empty());
 
