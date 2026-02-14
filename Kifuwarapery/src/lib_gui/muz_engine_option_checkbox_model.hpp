@@ -12,14 +12,24 @@ class MuzEngineOptionCheckboxModel : public IMuzEngineOptionableModel
 public:
 
 
+	// ========================================
+	// 生成／破棄
+	// ========================================
+
+
 	/// <summary>
-	/// 生成
+    /// 生成☆（＾ｑ＾）
 	/// </summary>
 	/// <param name="v"></param>
 	/// <param name="onChanged"></param>
 	MuzEngineOptionCheckboxModel(
 		const bool  v,
 		std::function<void(const IMuzEngineOptionableModel&)> onChanged = nullptr);
+
+
+	// ========================================
+	// 生成／破棄
+	// ========================================
 
 
 	/// <summary>

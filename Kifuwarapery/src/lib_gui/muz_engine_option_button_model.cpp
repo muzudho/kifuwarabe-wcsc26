@@ -1,6 +1,11 @@
 #include "muz_engine_option_button_model.hpp"
 
 
+// ========================================
+// 生成／破棄
+// ========================================
+
+
 /// <summary>
 ///     <pre>
 /// 生成☆（＾ｑ＾）
@@ -13,6 +18,11 @@ MuzEngineOptionButtonModel::MuzEngineOptionButtonModel(
     : IMuzEngineOptionableModel(onChanged)
 {
 }
+
+
+// ========================================
+// 演算子
+// ========================================
 
 
 /// <summary>

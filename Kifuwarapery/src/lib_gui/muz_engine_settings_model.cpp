@@ -1,6 +1,11 @@
 ﻿#include "muz_engine_settings_model.hpp"
 
 
+// ========================================
+// 演算子
+// ========================================
+
+
 /// <summary>
 /// ２つの文字列の並び順の比較☆（＾～＾）
 /// </summary>
@@ -20,18 +25,7 @@ bool MuzCaseInsensitiveLessModel::operator () (const std::string& s1, const std:
 
 
 /// <summary>
-/// エンジン・オプションを登録するぜ☆（＾～＾）
-/// </summary>
-/// <param name="key"></param>
-/// <param name="option"></param>
-void MuzEngineSettingsModel::Put(const std::string key, IMuzEngineOptionableModel option)
-{
-	(this->m_map)[key] = option;
-}
-
-
-/// <summary>
-/// 
+/// 演算子
 /// </summary>
 /// <param name="os"></param>
 /// <param name="engineOptionCollection"></param>
@@ -49,4 +43,20 @@ std::ostream& operator << (std::ostream& os, const MuzEngineSettingsModel& engin
 		}
 	}
 	return os;
+}
+
+
+// ========================================
+// メソッド
+// ========================================
+
+
+/// <summary>
+/// エンジン・オプションを登録するぜ☆（＾～＾）
+/// </summary>
+/// <param name="key"></param>
+/// <param name="option"></param>
+void MuzEngineSettingsModel::Put(const std::string key, IMuzEngineOptionableModel option)
+{
+	(this->m_map)[key] = option;
 }

@@ -24,6 +24,36 @@ struct MuzEngineSettingsModel {
 public:
 
 
+	// ========================================
+	// フィールド
+	// ========================================
+
+
+	/// <summary>
+	/// オプションのマップ☆（＾～＾）
+	/// </summary>
+	std::map<std::string, IMuzEngineOptionableModel, MuzCaseInsensitiveLessModel> m_map;
+
+
+	// ========================================
+	// 演算子
+	// ========================================
+
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name=""></param>
+	/// <param name=""></param>
+	/// <returns></returns>
+	friend std::ostream& operator << (std::ostream&, const MuzEngineSettingsModel&);
+
+
+	// ========================================
+	// メソッド
+	// ========================================
+
+
 	/// <summary>
 	/// 
 	/// </summary>
@@ -41,19 +71,4 @@ public:
 	/// <param name="key"></param>
 	/// <param name="option"></param>
 	void Put(const std::string key, IMuzEngineOptionableModel option);
-
-
-    /// <summary>
-    /// オプションのマップ☆（＾～＾）
-    /// </summary>
-    std::map<std::string, IMuzEngineOptionableModel, MuzCaseInsensitiveLessModel> m_map;
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name=""></param>
-	/// <param name=""></param>
-	/// <returns></returns>
-	friend std::ostream& operator << (std::ostream&, const MuzEngineSettingsModel&);
 };

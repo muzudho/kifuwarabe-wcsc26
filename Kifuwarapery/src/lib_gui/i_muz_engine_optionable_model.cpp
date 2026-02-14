@@ -2,6 +2,11 @@
 #include <sstream>
 
 
+// ========================================
+// 生成／破棄
+// ========================================
+
+
 /// <summary>
 /// 
 /// </summary>
@@ -60,6 +65,11 @@ IMuzEngineOptionableModel::IMuzEngineOptionableModel(
 	ss << v;
 	m_defaultValue_ = m_currentValue_ = ss.str();
 }
+
+
+// ========================================
+// 演算子
+// ========================================
 
 
 /// <summary>

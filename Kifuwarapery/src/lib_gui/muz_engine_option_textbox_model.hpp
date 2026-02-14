@@ -12,12 +12,22 @@ class MuzEngineOptionTextboxModel : public IMuzEngineOptionableModel
 public:
 
 
+    // ========================================
+    // 生成／破棄
+    // ========================================
+
+
     /// <summary>
-    /// テキストボックス用
+    /// 生成☆（＾ｑ＾）
     /// </summary>
     /// <returns></returns>
     MuzEngineOptionTextboxModel(
         const char* v, std::function<void(const IMuzEngineOptionableModel&)> onChanged = nullptr);
+
+
+    // ========================================
+    // 演算子
+    // ========================================
 
 
     /// <summary>

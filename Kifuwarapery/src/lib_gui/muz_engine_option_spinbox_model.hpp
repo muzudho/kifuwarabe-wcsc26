@@ -12,8 +12,13 @@ class MuzEngineOptionSpinboxModel : public IMuzEngineOptionableModel
 public:
 
 
+    // ========================================
+    // 生成／破棄
+    // ========================================
+
+
     /// <summary>
-    /// スピンボックス用
+    /// 生成☆（＾ｑ＾）
     /// </summary>
     /// <returns></returns>
     MuzEngineOptionSpinboxModel(
@@ -21,6 +26,11 @@ public:
         const int min,
         const int max,
         std::function<void(const IMuzEngineOptionableModel&)> onChanged = nullptr);
+
+
+    // ========================================
+    // 生成／破棄
+    // ========================================
 
 
     /// <summary>

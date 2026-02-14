@@ -1,6 +1,11 @@
 #include "muz_engine_option_checkbox_model.hpp"
 
 
+// ========================================
+// 生成／破棄
+// ========================================
+
+
 /// <summary>
 ///     <pre>
 /// 生成☆（＾ｑ＾）
@@ -15,6 +20,11 @@ MuzEngineOptionCheckboxModel::MuzEngineOptionCheckboxModel(
     : IMuzEngineOptionableModel(v, onChanged)
 {
 }
+
+
+// ========================================
+// 演算子
+// ========================================
 
 
 /// <summary>

@@ -1,9 +1,14 @@
 #include "muz_engine_option_spinbox_model.hpp"
 
 
+// ========================================
+// 生成／破棄
+// ========================================
+
+
 /// <summary>
 ///     <pre>
-/// 生成
+/// 生成☆（＾～＾）
 ///     </pre>
 /// </summary>
 /// <param name="v"></param>
@@ -21,6 +26,11 @@ MuzEngineOptionSpinboxModel::MuzEngineOptionSpinboxModel(
 }
 
 
+// ========================================
+// 生成／破棄
+// ========================================
+
+
 /// <summary>
 /// 値のセット☆（＾ｑ＾）
 /// </summary>
@@ -28,7 +38,7 @@ MuzEngineOptionSpinboxModel::MuzEngineOptionSpinboxModel(
 /// <returns></returns>
 IMuzEngineOptionableModel& MuzEngineOptionSpinboxModel::operator = (const std::string& newValue)
 {
-	assert(!m_type_.empty());
+	//assert(!m_type_.empty());
 
 	if (
 		newValue.empty()	// ボタンじゃないのに、値が無かった

@@ -12,12 +12,22 @@ class MuzEngineOptionButtonModel : public IMuzEngineOptionableModel
 public:
 
 
+    // ========================================
+    // 生成／破棄
+    // ========================================
+
+
     /// <summary>
-    /// 生成
+    /// 生成☆（＾ｑ＾）
     /// </summary>
     /// <param name="onChanged"></param>
     MuzEngineOptionButtonModel(
         std::function<void(const IMuzEngineOptionableModel&)> onChanged = nullptr);
+
+
+    // ========================================
+    // 演算子
+    // ========================================
 
 
     /// <summary>

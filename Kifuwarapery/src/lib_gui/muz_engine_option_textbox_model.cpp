@@ -1,9 +1,14 @@
 #include "muz_engine_option_textbox_model.hpp"
 
 
+// ========================================
+// 生成／破棄
+// ========================================
+
+
 /// <summary>
 ///     <pre>
-/// 生成
+/// 生成☆（＾～＾）
 ///     </pre>
 /// </summary>
 /// <param name="v"></param>
@@ -17,6 +22,11 @@ MuzEngineOptionTextboxModel::MuzEngineOptionTextboxModel(
 }
 
 
+// ========================================
+// 演算子
+// ========================================
+
+
 /// <summary>
 /// 値のセット☆（＾ｑ＾）
 /// </summary>
@@ -24,7 +34,7 @@ MuzEngineOptionTextboxModel::MuzEngineOptionTextboxModel(
 /// <returns></returns>
 IMuzEngineOptionableModel& MuzEngineOptionTextboxModel::operator = (const std::string& newValue)
 {
-	assert(!m_type_.empty());
+	//assert(!m_type_.empty());
 
 	if (
 		newValue.empty())	// ボタンじゃないのに、値が無かった
