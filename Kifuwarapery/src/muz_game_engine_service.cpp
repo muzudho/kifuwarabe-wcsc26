@@ -137,33 +137,33 @@ void MuzGameEngineService::initialize_10a()
     engineOptionsInitialize.initialize_10a510b_engineOptions(
         &this->m_pGameEngineStore->m_engineOptionCollection,
         this->m_pGameEngineStore.get(),
-        // pHandleHashSizeChanged:
-        [] (auto pGameEngineStore, auto opt)
+        // onHashSizeChanged:
+        [this] (auto pGameEngineStore2, auto opt)
         {
-            pGameEngineStore->m_tt.setSize(opt);
+            this->m_pGameEngineStore.get()->m_tt.setSize(opt);
         },
-        // pHandleHashCleared:
-        [](auto pGameEngineStore, auto opt)
+        // onHashCleared:
+        [this](auto pGameEngineStore2, auto opt)
         {
-            pGameEngineStore->m_tt.Clear();
+            this->m_pGameEngineStore.get()->m_tt.Clear();
         },
-        // pHandleEvalDirChanged:
-        [](auto pGameEngineStore, auto opt)
+        // onEvalDirChanged:
+        [this](auto pGameEngineStore2, auto opt)
         {
             std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->initialize_10a600b(opt, true);
         },
-        // pMaxThreadsPerSplitPointChanged:
-        [](auto pGameEngineStore, auto opt)
+        // onMaxThreadsPerSplitPointChanged:
+        [this](auto pGameEngineStore2, auto opt)
         {
-            pGameEngineStore->m_pub.ReadUSIOptions(pGameEngineStore);
+            this->m_pGameEngineStore.get()->m_pub.ReadUSIOptions(this->m_pGameEngineStore.get());
         },
-        // pHandleThreadsChanged:
-        [](auto pGameEngineStore, auto opt)
+        // onThreadsChanged:
+        [this](auto pGameEngineStore2, auto opt)
         {
-            pGameEngineStore->m_pub.ReadUSIOptions(pGameEngineStore);
+            this->m_pGameEngineStore.get()->m_pub.ReadUSIOptions(this->m_pGameEngineStore.get());
         },
-        // pGetCpuCoreCount:
-        []()
+        // getCpuCoreCount:
+        [this]()
         {
             // 論理的なコア数の取得
             // todo: boost::thread::physical_concurrency() を使うこと。
