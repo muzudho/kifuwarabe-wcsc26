@@ -92,13 +92,13 @@ void MonkiesPub::exit_90a500b() {
 /// <summary>
 /// 
 /// </summary>
-/// <param name="searcher"></param>
-void MonkiesPub::ReadUSIOptions(GameEngineStorageOurCarriage* searcher) {
+/// <param name="m_ourCarriage"></param>
+void MonkiesPub::ReadUSIOptions(GameEngineStorageOurCarriage* m_ourCarriage) {
 
-	this->m_maxThreadsPerMonkeySplitedPlace = searcher->m_engineOptions["Max_Threads_per_Split_Point"];
+	this->m_maxThreadsPerMonkeySplitedPlace = m_ourCarriage->m_engineOptions["Max_Threads_per_Split_Point"];
 
 	// スレッドの個数（１以上）
-	const size_t numberOfThreads   = searcher->m_engineOptions["Threads"];
+	const size_t numberOfThreads   = m_ourCarriage->m_engineOptions["Threads"];
 
 	this->m_minimumSplitDepth_ = (
 		numberOfThreads < 6 ?
@@ -111,7 +111,7 @@ void MonkiesPub::ReadUSIOptions(GameEngineStorageOurCarriage* searcher) {
 	assert(0 < numberOfThreads);
 
 	while (this->m_monkies.size() < numberOfThreads) {
-		this->m_monkies.push_back(newThread<Monkie>(searcher));
+		this->m_monkies.push_back(newThread<Monkie>(m_ourCarriage));
 	}
 
 	while (numberOfThreads < this->m_monkies.size()) {

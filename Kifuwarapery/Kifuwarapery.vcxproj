@@ -628,6 +628,7 @@
     <ClCompile Include="source\n760_thread__\n760_400_monkiePub.cpp" />
     <ClCompile Include="source\n800_learn___\n800_100_stopwatch.cpp" />
     <ClCompile Include="source\n883_nodeKind\n883_070_adventurePlainNodekindAbstract.cpp" />
+    <ClCompile Include="src\game_engine.cpp" />
     <ClCompile Include="src\game_engine_layer\game_engine_storage.cpp" />
     <ClCompile Include="source\n885_searcher\n885_310_hitchhikerQsearchAbstract.cpp" />
     <ClCompile Include="source\n885_searcher\n885_320_adventureBattlefieldQsearchPv.cpp" />

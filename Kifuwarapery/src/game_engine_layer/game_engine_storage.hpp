@@ -34,7 +34,8 @@ using Gains   = Stats<true>;
 ///		- 複数の探索スレッドに渡される
 ///		</pre>
 /// </summary>
-class GameEngineStorageOurCarriage {
+class GameEngineStorageOurCarriage
+{
 
 
 public:

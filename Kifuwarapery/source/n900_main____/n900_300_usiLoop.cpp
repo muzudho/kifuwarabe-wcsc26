@@ -92,11 +92,11 @@ UsiLoop::UsiLoop()
 /// </summary>
 /// <param name="argc"></param>
 /// <param name="argv"></param>
-/// <param name="searcher"></param>
-void UsiLoop::mainloop_50a500b(int argc, char* argv[], GameEngineStorageOurCarriage& searcher)
+/// <param name="m_ourCarriage"></param>
+void UsiLoop::mainloop_50a500b(int argc, char* argv[], GameEngineStorageOurCarriage& m_ourCarriage)
 {
 	GameStats gameStats{};	// こう書くと関数呼出しと思われてエラー： GameStats gameStats();
-	Position pos(g_DefaultStartPositionSFEN, searcher.m_pub.GetFirstCaptain(), &searcher);
+	Position pos(g_DefaultStartPositionSFEN, m_ourCarriage.m_pub.GetFirstCaptain(), &m_ourCarriage);
 
 	std::string cmd;
 	std::string token;
@@ -135,26 +135,26 @@ void UsiLoop::mainloop_50a500b(int argc, char* argv[], GameEngineStorageOurCarri
 		) {
 			// 終了時にポンダーヒットが来ることがある。
 			if (token != "ponderhit" ||
-				searcher.m_signals.m_stopOnPonderHit
+				m_ourCarriage.m_signals.m_stopOnPonderHit
 			) {
                 // 思考停止シグナルを立てる。
-				searcher.m_signals.m_stop = true;
+				m_ourCarriage.m_signals.m_stop = true;
 
 				// 排他的処理の何か？？
-				searcher.m_pub.GetFirstCaptain()->NotifyOne();
+				m_ourCarriage.m_pub.GetFirstCaptain()->NotifyOne();
 			}
 			else {
 				// 相手の思考時間中に自分も思考するのを止める。
-				searcher.m_limits.m_canPonder = false;
+				m_ourCarriage.m_limits.m_canPonder = false;
 			}
 
             // ポンダーヒットのときに、ムーブタイムが０でなければ、消費した時間分、加算する。
-			if (token == "ponderhit" && searcher.m_limits.GetMoveTime() != 0) {
-				searcher.m_limits.IncreaseMoveTime( searcher.m_stopwatch.GetElapsed());
+			if (token == "ponderhit" && m_ourCarriage.m_limits.GetMoveTime() != 0) {
+				m_ourCarriage.m_limits.IncreaseMoveTime( m_ourCarriage.m_stopwatch.GetElapsed());
 			}
 		}
 		else if (token == "usinewgame") {
-			searcher.m_tt.Clear();
+			m_ourCarriage.m_tt.Clear();
 #if defined INANIWA_SHIFT
 			inaniwaFlag = NotInaniwa;
 #endif
@@ -167,7 +167,7 @@ void UsiLoop::mainloop_50a500b(int argc, char* argv[], GameEngineStorageOurCarri
 			}
 		}
 		else if (token == "usi") {
-			SYNCCOUT << "id name " << MyName << "\nid author (Derivation)Takahashi Satoshi (Base)Hiraoka Takuya\n" << searcher.m_engineOptions << "\nusiok" << SYNCENDL;
+			SYNCCOUT << "id name " << MyName << "\nid author (Derivation)Takahashi Satoshi (Base)Hiraoka Takuya\n" << m_ourCarriage.m_engineOptions << "\nusiok" << SYNCENDL;
 		}
 		else if (token == "go") {
 			usiOperation.Go(gameStats, pos, ssCmd);
@@ -179,7 +179,7 @@ void UsiLoop::mainloop_50a500b(int argc, char* argv[], GameEngineStorageOurCarri
 			usiOperation.SetPosition(pos, ssCmd);
 		}
 		else if (token == "setoption") {
-			searcher.SetOption(ssCmd);
+			m_ourCarriage.SetOption(ssCmd);
 		}
 #if defined LEARN
 		else if (token == "l") {
@@ -213,13 +213,13 @@ void UsiLoop::mainloop_50a500b(int argc, char* argv[], GameEngineStorageOurCarri
 	//────────────────────────────────────────────────────────────────────────────────
 
 	// 評価値ファイルを書き出す指定なら
-	if (searcher.m_engineOptions["Write_Synthesized_Eval"])
+	if (m_ourCarriage.m_engineOptions["Write_Synthesized_Eval"])
 	{
 		// シンセサイズド評価を書き出します。
-		KkKkpKppStorage1::WriteSynthesized(searcher.m_engineOptions["Eval_Dir"]);
+		KkKkpKppStorage1::WriteSynthesized(m_ourCarriage.m_engineOptions["Eval_Dir"]);
 	}
 
 	//────────────────────────────────────────────────────────────────────────────────
 
-	searcher.m_pub.WaitForThinkFinished();
+	m_ourCarriage.m_pub.WaitForThinkFinished();
 }

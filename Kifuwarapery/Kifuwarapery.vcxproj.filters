@@ -1703,6 +1703,9 @@
     <ClCompile Include="source\n760_thread__\n760_400_monkiePub.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="src\game_engine.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
