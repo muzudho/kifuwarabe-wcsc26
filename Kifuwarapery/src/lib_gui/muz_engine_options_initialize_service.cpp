@@ -1,8 +1,5 @@
-﻿#include "../../header/n165_movStack/n165_400_move.hpp"
-#include "../../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
-#include "../../src/lib_gui/muz_engine_optoins_initialize_service.hpp"
-#include "../../src/lib_gui/engine_option.hpp"
-#include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
+﻿#include "engine_option.hpp"
+#include "muz_engine_optoins_initialize_service.hpp"
 
 
 /// <summary>
@@ -11,6 +8,10 @@
 /// <param name="pMap"></param>
 /// <param name="pRucksack"></param>
 void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
+	int max_legal_moves,
+	int sweetnessInfinite,
+	int sweetnessMate0Ply,
+	int maxThreads,
 	EngineOptionCollection* pMap,
 	std::function<void(const EngineOptionable&)> onHashSizeChanged,
 	std::function<void(const EngineOptionable&)> onHashCleared,
@@ -41,7 +42,7 @@ void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
 	pMap->Put("Max_Book_Ply"				, EngineOption(SHRT_MAX, 0, SHRT_MAX));
 
 	// 定跡評価値
-	pMap->Put("Min_Book_Score"				, EngineOption(-180, -SweetnessInfinite, SweetnessInfinite));
+	pMap->Put("Min_Book_Score"				, EngineOption(-180, -sweetnessInfinite, sweetnessInfinite));
 
 	// ［評価値ファイル］フォルダー
 	pMap->Put("Eval_Dir"					, EngineOption("20151105", onEvalDirChanged));
@@ -56,13 +57,13 @@ void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
 	pMap->Put("Byoyomi_Margin"				, EngineOption(500, 0, INT_MAX));
 
 	// ［几帳面な読み］の本数
-	pMap->Put("MultiPV"						, EngineOption(1, 1, Move::m_MAX_LEGAL_MOVES));
+	pMap->Put("MultiPV"						, EngineOption(1, 1, max_legal_moves));
 
 	// ［コンピューターの強さ］。遊び用
 	pMap->Put("Skill_Level"					, EngineOption(20, 0, 20));
 
 	// ［最大ランダム評価値差］
-	pMap->Put("Max_Random_Score_Diff"		, EngineOption(0, 0, SweetnessMate0Ply));
+	pMap->Put("Max_Random_Score_Diff"		, EngineOption(0, 0, sweetnessMate0Ply));
 
 	// ［最大ランダム評価値差の手数］
 	pMap->Put("Max_Random_Score_Diff_Ply"	, EngineOption(40, 0, SHRT_MAX));
@@ -88,7 +89,7 @@ void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
 	pMap->Put("Max_Threads_per_Split_Point"	, EngineOption(		5,  4,     8, onMaxThreadsPerSplitPointChanged));
 
 	// スレッド数
-	pMap->Put("Threads"						, EngineOption(getCPUCoreCount(), 1, g_MaxThreads, onThreadsChanged));
+	pMap->Put("Threads"						, EngineOption(getCPUCoreCount(), 1, maxThreads, onThreadsChanged));
 
 	// ［寝てる猿を使う］チェックボックス
 	pMap->Put("Use_Sleeping_Threads"		, EngineOption(false));

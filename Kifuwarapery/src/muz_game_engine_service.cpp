@@ -135,6 +135,10 @@ void MuzGameEngineService::initialize_10a()
     SYNCCOUT << "(^q^) 2.9 . エンジン・オプション設定！" << SYNCENDL;
     MuzEngineOptionsInitializeService engineOptionsInitialize;
     engineOptionsInitialize.initialize_10a510b_engineOptions(
+        Move::m_MAX_LEGAL_MOVES,
+        SweetnessInfinite,
+        SweetnessMate0Ply,
+        g_MaxThreads,
         &this->m_pGameEngineStore->m_engineOptionCollection,
         // onHashSizeChanged:
         [this] (auto opt)

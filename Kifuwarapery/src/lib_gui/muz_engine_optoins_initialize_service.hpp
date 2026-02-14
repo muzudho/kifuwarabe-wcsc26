@@ -21,6 +21,10 @@ public:
 	/// <param name="pMap"></param>
 	/// <param name="s"></param>
 	void initialize_10a510b_engineOptions(
+		int max_legal_moves,
+		int sweetnessInfinite,
+		int sweetnessMate0Ply,
+		int maxThreads,
 		EngineOptionCollection* pMap,
 		std::function<void(const EngineOptionable&)> onHashSizeChanged,
 		std::function<void(const EngineOptionable&)> onHashCleared,

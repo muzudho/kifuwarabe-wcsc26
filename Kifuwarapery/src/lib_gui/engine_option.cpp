@@ -1,6 +1,4 @@
-﻿#include <ostream>
-#include "engine_option.hpp"
-#include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
+﻿#include "engine_option.hpp"
 
 
 /// <summary>
@@ -28,7 +26,7 @@ EngineOption::EngineOption(
 EngineOption::EngineOption(
     const char* v,
     std::function<void(const EngineOptionable&)> onChanged)
-        : EngineOptionable(v, onChanged)
+    : EngineOptionable(v, onChanged)
 {
 }
 
@@ -44,7 +42,7 @@ EngineOption::EngineOption(
 EngineOption::EngineOption(
     const bool v,
     std::function<void(const EngineOptionable&)> onChanged)
-        : EngineOptionable(v, onChanged)
+    : EngineOptionable(v, onChanged)
 {
 }
 
@@ -64,7 +62,7 @@ EngineOption::EngineOption(
     const int min,
     const int max,
     std::function<void(const EngineOptionable&)> onChanged)
-        : EngineOptionable(v, min, max, onChanged)
+    : EngineOptionable(v, min, max, onChanged)
 {
 }
 

@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <map>
 #include <string>
-#include "../../src/lib_gui/engine_optionable.hpp"
+#include "engine_optionable.hpp"
 
 
 /// <summary>

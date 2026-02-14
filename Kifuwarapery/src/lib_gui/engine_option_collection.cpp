@@ -1,5 +1,4 @@
-﻿#include <string>
-#include "engine_option_collection.hpp"
+﻿#include "engine_option_collection.hpp"
 
 
 /// <summary>
