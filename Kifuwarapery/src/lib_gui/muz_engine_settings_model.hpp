@@ -80,7 +80,7 @@ public:
 	/// </summary>
 	/// <param name="key"></param>
 	/// <returns></returns>
-	MuzEngineOptionAbstractModel& GetOptionByKey(const std::string key)
+	const MuzEngineOptionAbstractModel& GetOptionByKey(const std::string key) const
 	{
         return this->m_map.find(key)->second;	// 値を返す。例外は投げない。
 		//return this->m_map.at(key);	// 例外を投げる
