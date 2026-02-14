@@ -94,7 +94,7 @@ UsiLoop::UsiLoop()
 /// <param name="argc"></param>
 /// <param name="argv"></param>
 /// <param name="m_pGameEngineStore"></param>
-void UsiLoop::mainloop_50a500b(int argc, char* argv[], GameEngineStorageOurCarriage& m_pGameEngineStore)
+void UsiLoop::mainloop_50a500b(int argc, char* argv[], MuzGameEngineStorage& m_pGameEngineStore)
 {
 	GameStats gameStats{};	// こう書くと関数呼出しと思われてエラー： GameStats gameStats();
 	Position pos(g_SFEN_STARTPOS_STR, m_pGameEngineStore.m_pub.GetFirstCaptain(), &m_pGameEngineStore);

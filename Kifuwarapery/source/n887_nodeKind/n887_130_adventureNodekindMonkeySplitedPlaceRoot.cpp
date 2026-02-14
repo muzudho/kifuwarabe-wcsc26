@@ -67,7 +67,7 @@ AdventureNodekindMonkeySplitedPlaceRoot g_NODEKIND_MONKEYSPLITEDPLACE_ROOT;
 /// <param name="cutNode"></param>
 /// <returns></returns>
 Sweetness AdventureNodekindMonkeySplitedPlaceRoot::explorePlain_10i(
-	GameEngineStorageOurCarriage& ourCarriage,
+	MuzGameEngineStorage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
 	Sweetness alpha,

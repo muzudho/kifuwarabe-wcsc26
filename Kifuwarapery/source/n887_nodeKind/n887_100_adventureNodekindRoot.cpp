@@ -63,7 +63,7 @@ AdventureNodekindRoot g_NODEKIND_ROOT;
 /// <param name="cutNode"></param>
 /// <returns></returns>
 Sweetness AdventureNodekindRoot::explorePlain_10i(
-	GameEngineStorageOurCarriage& ourCarriage,
+	MuzGameEngineStorage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
 	Sweetness alpha,

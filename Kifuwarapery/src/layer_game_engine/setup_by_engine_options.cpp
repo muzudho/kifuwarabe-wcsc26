@@ -14,7 +14,7 @@ namespace {
 	/// </summary>
 	/// <param name="s"></param>
 	/// <param name="opt"></param>
-	void handleHashSizeChanged(GameEngineStorageOurCarriage* s, const EngineOptionable& opt) { s->m_tt.setSize(opt); }
+	void handleHashSizeChanged(MuzGameEngineStorage* s, const EngineOptionable& opt) { s->m_tt.setSize(opt); }
 
 
 	/// <summary>
@@ -22,7 +22,7 @@ namespace {
 	/// </summary>
 	/// <param name="s"></param>
 	/// <param name=""></param>
-	void handleHashCleared(GameEngineStorageOurCarriage* s, const EngineOptionable&) { s->m_tt.Clear(); }
+	void handleHashCleared(MuzGameEngineStorage* s, const EngineOptionable&) { s->m_tt.Clear(); }
 
 
 	/// <summary>
@@ -30,7 +30,7 @@ namespace {
 	/// </summary>
 	/// <param name=""></param>
 	/// <param name="opt"></param>
-	void onEvalDirChanged(GameEngineStorageOurCarriage*, const EngineOptionable& opt) {
+	void onEvalDirChanged(MuzGameEngineStorage*, const EngineOptionable& opt) {
 		std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->initialize_10a600b(opt, true);
 	}
 
@@ -40,7 +40,7 @@ namespace {
 	/// </summary>
 	/// <param name="s"></param>
 	/// <param name=""></param>
-	void onThreadsChanged(GameEngineStorageOurCarriage* s, const EngineOptionable&) { s->m_pub.ReadUSIOptions(s); }
+	void onThreadsChanged(MuzGameEngineStorage* s, const EngineOptionable&) { s->m_pub.ReadUSIOptions(s); }
 
 
 	/// <summary>
@@ -60,7 +60,7 @@ namespace {
 /// </summary>
 /// <param name="pMap"></param>
 /// <param name="pRucksack"></param>
-void EngineOptionSetup::initialize_10a510b_engineOptions(EngineOptionCollection* pMap, GameEngineStorageOurCarriage * pRucksack)
+void MuzEngineOptionSetup::initialize_10a510b_engineOptions(EngineOptionCollection* pMap, MuzGameEngineStorage * pRucksack)
 {
 	// ハッシュサイズ
 	pMap->Put("USI_Hash"					, EngineOption(256, 1, 65536, handleHashSizeChanged, pRucksack));

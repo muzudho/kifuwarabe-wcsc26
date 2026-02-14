@@ -24,5 +24,5 @@
 #include "../header/n600_book____/n600_500_book.hpp"
 #include "../header/n900_main____/n900_300_usiLoop.hpp"
 #include "../src/layer_game_engine/game_engine_storage.hpp"
-#include "../src/game_engine.hpp"
+#include "../src/muz_game_engine_service.hpp"
 // プログラムに必要なヘッダーをここに追加してください。

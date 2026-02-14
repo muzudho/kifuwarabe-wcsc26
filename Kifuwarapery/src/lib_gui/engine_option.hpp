@@ -4,7 +4,7 @@
 #include "../../src/lib_gui/engine_option_collection.hpp"
 
 
-class GameEngineStorageOurCarriage;
+class MuzGameEngineStorage;
 
 
 /// <summary>
@@ -18,10 +18,10 @@ class EngineOption : public EngineOptionable {
 public:
 
 
-	EngineOption(Fn* = nullptr, GameEngineStorageOurCarriage* s = nullptr);
-	EngineOption(const char* v, Fn* = nullptr, GameEngineStorageOurCarriage* s = nullptr);
-	EngineOption(const bool  v, Fn* = nullptr, GameEngineStorageOurCarriage* s = nullptr);
-	EngineOption(const int   v, const int min, const int max, Fn* = nullptr, GameEngineStorageOurCarriage* s = nullptr);
+	EngineOption(Fn* = nullptr, MuzGameEngineStorage* s = nullptr);
+	EngineOption(const char* v, Fn* = nullptr, MuzGameEngineStorage* s = nullptr);
+	EngineOption(const bool  v, Fn* = nullptr, MuzGameEngineStorage* s = nullptr);
+	EngineOption(const int   v, const int min, const int max, Fn* = nullptr, MuzGameEngineStorage* s = nullptr);
 
 
 //private:

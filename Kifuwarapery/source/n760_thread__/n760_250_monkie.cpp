@@ -16,7 +16,7 @@
 // ========================================
 
 
-Monkie::Monkie(GameEngineStorageOurCarriage* ourCarriage) /*: ＳｐｌｉｔＰｏｉｎｔｓ()*/ {
+Monkie::Monkie(MuzGameEngineStorage* ourCarriage) /*: ＳｐｌｉｔＰｏｉｎｔｓ()*/ {
 	this->m_pOurCarriage = ourCarriage;
 	this->m_isEndOfSearch = false;
 	this->m_isBeingSearched = false;

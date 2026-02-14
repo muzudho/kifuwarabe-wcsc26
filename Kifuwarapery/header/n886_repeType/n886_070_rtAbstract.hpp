@@ -19,7 +19,7 @@ public:
 	/// <param name="pSearcher"></param>
 	/// <param name="pFlashlightBox"></param>
 	virtual std::pair<bool, Sweetness> IsStop(
-		const GameEngineStorageOurCarriage* pSearcher,
+		const MuzGameEngineStorage* pSearcher,
 		const Flashlight* pFlashlightBox) const = 0;
 };
 

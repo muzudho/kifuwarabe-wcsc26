@@ -63,7 +63,7 @@ AdventureNodekindNonPv g_NODEKIND_EASY_GOING_MONKEY;
 /// <param name="cutNode"></param>
 /// <returns></returns>
 Sweetness AdventureNodekindNonPv::explorePlain_10i(
-	GameEngineStorageOurCarriage& ourCarriage,
+	MuzGameEngineStorage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
 	Sweetness alpha,

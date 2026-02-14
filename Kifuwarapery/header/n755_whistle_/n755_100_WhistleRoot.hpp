@@ -25,7 +25,7 @@ public:
 	/// <param name="pFlashlight"></param>
 	virtual void blowWhistle_asMonkeySplitedPlace(
 		MonkeySplitedPlace& ownerMonkeySplitedPlace,
-		GameEngineStorageOurCarriage& m_pGameEngineStore,
+		MuzGameEngineStorage& m_pGameEngineStore,
 		Position& pos,
 		Flashlight* pFlashlight
 		) const override;

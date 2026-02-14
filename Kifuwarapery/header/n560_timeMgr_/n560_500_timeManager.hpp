@@ -4,7 +4,7 @@
 
 
 // 依存関係の都合を解消。
-class GameEngineStorageOurCarriage;
+class MuzGameEngineStorage;
 
 
 /// <summary>
@@ -40,7 +40,7 @@ public:
 		const LimitsDuringGo& limits,
 		const Ply currentPly,
 		const Color us,
-		GameEngineStorageOurCarriage* pOurCarriage);
+		MuzGameEngineStorage* pOurCarriage);
 
 
 	// ========================================

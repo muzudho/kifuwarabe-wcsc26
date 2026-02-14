@@ -68,7 +68,7 @@ AdventureNodekindMonkeySplitedPlaceNonPv g_NODEKIND_MONKEYSPLITEDPLACE_EASY_GOIN
 /// <param name="cutNode"></param>
 /// <returns></returns>
 Sweetness AdventureNodekindMonkeySplitedPlaceNonPv::explorePlain_10i(
-	GameEngineStorageOurCarriage& ourCarriage,
+	MuzGameEngineStorage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
 	Sweetness alpha,

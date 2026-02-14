@@ -16,7 +16,7 @@
 #include "../header/n760_thread__/n760_400_monkiesPub.hpp"
 #include "../header/n900_main____/n900_300_usiLoop.hpp"
 #include "../src/layer_game_engine/setup_by_engine_optoins.hpp"
-#include "../src/game_engine.hpp"
+#include "../src/muz_game_engine_service.hpp"
 #include "../src/layer_game_engine/game_engine_storage.hpp"
 #include <iostream>
 
@@ -29,16 +29,16 @@
 /// <summary>
 /// 生成
 /// </summary>
-MyGameEngineModel::MyGameEngineModel()
+MuzGameEngineService::MuzGameEngineService()
 {
-    this->m_pGameEngineStore = std::unique_ptr<GameEngineStorageOurCarriage>(new GameEngineStorageOurCarriage);
+    this->m_pGameEngineStore = std::unique_ptr<MuzGameEngineStorage>(new MuzGameEngineStorage);
 }
 
 
 /// <summary>
 /// 破棄。
 /// </summary>
-MyGameEngineModel::~MyGameEngineModel()
+MuzGameEngineService::~MuzGameEngineService()
 {
     this->m_pGameEngineStore.reset();
 }
@@ -52,7 +52,7 @@ MyGameEngineModel::~MyGameEngineModel()
 /// <summary>
 /// 最初の設定
 /// </summary>
-void MyGameEngineModel::initialize_10a()
+void MuzGameEngineService::initialize_10a()
 {
     //────────────────────────────────────────────────────────────────────────────────
     // ビットボードとテーブルの初期化☆（＾ｑ＾）
@@ -133,7 +133,7 @@ void MyGameEngineModel::initialize_10a()
     Position::initialize_10a310b_zobrist();
 
     SYNCCOUT << "(^q^) 2.9 . エンジン・オプション設定！" << SYNCENDL;
-    EngineOptionSetup engineOptionSetup;
+    MuzEngineOptionSetup engineOptionSetup;
     engineOptionSetup.initialize_10a510b_engineOptions(&this->m_pGameEngineStore->m_engineOptionCollection, this->m_pGameEngineStore.get());
 
     SYNCCOUT << "(^q^) 3   . 探索部の初期化！" << SYNCENDL;
@@ -155,7 +155,7 @@ void MyGameEngineModel::initialize_10a()
 /// </summary>
 /// <param name="argc"></param>
 /// <param name="argv"></param>
-void MyGameEngineModel::body_50a(int argc, char* argv[])
+void MuzGameEngineService::body_50a(int argc, char* argv[])
 {
     UsiLoop usiLoop;
     usiLoop.mainloop_50a500b(argc, argv, *this->m_pGameEngineStore);
@@ -165,7 +165,7 @@ void MyGameEngineModel::body_50a(int argc, char* argv[])
 /// <summary>
 /// 事後処理
 /// </summary>
-void MyGameEngineModel::finalize_90000a()
+void MuzGameEngineService::finalize_90000a()
 {
     SYNCCOUT << "(^q^)main(6/6): threads.exit! ----> doUSICommandLoop" << SYNCENDL;
     this->m_pGameEngineStore->m_pub.exit_90a500b();

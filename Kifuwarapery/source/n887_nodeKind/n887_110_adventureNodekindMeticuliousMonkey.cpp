@@ -63,7 +63,7 @@ AdventureNodekindPv g_NODEKIND_METICULOUS_MONKEY;
 /// <param name="cutNode"></param>
 /// <returns></returns>
 Sweetness AdventureNodekindPv::explorePlain_10i(
-	GameEngineStorageOurCarriage& ourCarriage,
+	MuzGameEngineStorage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
 	Sweetness alpha,

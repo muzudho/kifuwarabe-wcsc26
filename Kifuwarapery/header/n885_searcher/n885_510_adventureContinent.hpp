@@ -49,7 +49,7 @@ public:
 	/// </summary>
 	/// <param name="captainsOurCarriage">キャプテンの持っている、わたしたちの馬車☆</param>
 	static void	ExploreContinent(
-		GameEngineStorageOurCarriage& captainsOurCarriage);
+		MuzGameEngineStorage& captainsOurCarriage);
 
 
 	/// <summary>

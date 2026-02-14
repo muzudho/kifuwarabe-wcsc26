@@ -4,13 +4,13 @@
 #include "../../src/lib_gui/engine_option_collection.hpp"
 
 
-class GameEngineStorageOurCarriage;
+class MuzGameEngineStorage;
 
 
 /// <summary>
 /// エンジン・オプション設定
 /// </summary>
-class EngineOptionSetup {
+class MuzEngineOptionSetup {
 
 
 public:
@@ -21,5 +21,5 @@ public:
 	/// </summary>
 	/// <param name="pMap"></param>
 	/// <param name="s"></param>
-	void initialize_10a510b_engineOptions( EngineOptionCollection* pMap, GameEngineStorageOurCarriage* s);
+	void initialize_10a510b_engineOptions( EngineOptionCollection* pMap, MuzGameEngineStorage* s);
 };

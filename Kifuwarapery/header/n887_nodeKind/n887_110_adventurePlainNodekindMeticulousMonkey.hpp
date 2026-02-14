@@ -35,7 +35,7 @@ public:
 	/// <param name="cutNode"></param>
 	/// <returns></returns>
 	virtual Sweetness explorePlain_10i(
-		GameEngineStorageOurCarriage& ourCarriage,
+		MuzGameEngineStorage& ourCarriage,
 		Position& pos,
 		Flashlight* pFlashlight,//サーチスタック
 		Sweetness alpha,
@@ -101,7 +101,7 @@ public:
 	/// <param name="pTtEntry"></param>
 	/// <param name="pos"></param>
 	virtual inline std::unique_ptr<Move> explorePlain_10i1110j_getTtMove(
-		GameEngineStorageOurCarriage& ourCarriage,
+		MuzGameEngineStorage& ourCarriage,
 		const TTEntry* pTtEntry,
 		Position& pos
 		)const override
@@ -146,7 +146,7 @@ public:
 	virtual inline void explorePlain_10i1260j_byEasyGoingMonkey(
 		bool& isReturnWithSweetness,
 		Sweetness& returnSweetness,
-		GameEngineStorageOurCarriage& ourCarriage,
+		MuzGameEngineStorage& ourCarriage,
 		const Depth depth,
 		Sweetness& eval,
 		Sweetness& beta,
@@ -197,7 +197,7 @@ public:
 	virtual inline void explorePlain_10i1280j_byEasyGoingMonkey(
 		bool& isReturnWithSweetness,
 		Sweetness& returnSweetness,
-		GameEngineStorageOurCarriage& ourCarriage,
+		MuzGameEngineStorage& ourCarriage,
 		Flashlight** ppFlashlight,
 		const Depth depth,
 		Sweetness& beta,
@@ -228,7 +228,7 @@ public:
 	/// <param name="cutNode"></param>
 	virtual inline void explorePlain_10i1290j_byEasyGoingMonkey(
 		bool& isReturnWithSweetness,
-		GameEngineStorageOurCarriage& ourCarriage,
+		MuzGameEngineStorage& ourCarriage,
 		const Depth& depth,
 		Flashlight** ppFlashlight,
 		Sweetness& beta,
@@ -262,7 +262,7 @@ public:
 		bool& inCheck,
 		Sweetness& beta,
 		Flashlight** ppFlashlight,
-		GameEngineStorageOurCarriage& ourCarriage,
+		MuzGameEngineStorage& ourCarriage,
 		Position& pos,
 		Sweetness& alpha,
 		const TTEntry** ppTtEntry,//セットされるぜ☆
@@ -383,7 +383,7 @@ public:
 	/// <param name="move"></param>
 	virtual inline void explorePlain_10i2030j_isRootMoveEnd(
 		bool& isContinue,
-		const GameEngineStorageOurCarriage& ourCarriage,
+		const MuzGameEngineStorage& ourCarriage,
 		const Move& move
 		)const override {
 		// 非ルートノードはスルー☆！（＾ｑ＾）
@@ -397,7 +397,7 @@ public:
 	/// <param name="ourCarriage"></param>
 	/// <param name="moveCount"></param>
 	virtual inline void explorerPlain_10i2040j_displayInfo(
-		GameEngineStorageOurCarriage& ourCarriage,
+		MuzGameEngineStorage& ourCarriage,
 		int& moveCount
 		) const override {
 		// 非ルートノードはスルー☆！（＾ｑ＾）
@@ -426,7 +426,7 @@ public:
 	/// <param name="beta"></param>
 	virtual inline void explorePlain_10i2070j_futilityPruning(
 		bool& isContinue,
-		GameEngineStorageOurCarriage& ourCarriage,
+		MuzGameEngineStorage& ourCarriage,
 		bool& captureOrPawnPromotion,
 		bool& inCheck,
 		bool& dangerous,
@@ -514,7 +514,7 @@ public:
 	/// <param name="movesSearched"></param>
 	virtual inline void explorePlain_10i2090j_updateCurrentMove(
 		bool& isContinue,
-		GameEngineStorageOurCarriage& ourCarriage,
+		MuzGameEngineStorage& ourCarriage,
 		bool& captureOrPawnPromotion,
 		bool& inCheck,
 		bool& dangerous,
@@ -629,7 +629,7 @@ public:
 	/// <param name="sweetness"></param>
 	/// <param name="pos"></param>
 	virtual inline void explorerPlain_10i3060j_bestMovePlyChanges(
-		GameEngineStorageOurCarriage& ourCarriage,
+		MuzGameEngineStorage& ourCarriage,
 		Move& move,
 		bool& isPVMove,
 		Sweetness& alpha,
@@ -657,7 +657,7 @@ public:
 	/// <param name="beta"></param>
 	virtual inline void explorePlain_10i3070j_getBestUpdateAlpha(
 		bool& isBreak,
-		GameEngineStorageOurCarriage& ourCarriage,
+		MuzGameEngineStorage& ourCarriage,
 		Move& move,
 		bool& isPVMove,
 		Sweetness& alpha,
@@ -708,7 +708,7 @@ public:
 	/// <param name="cutNode"></param>
 	virtual inline void explorePlain_10i3080j_forkNewMonkeyIfPossible(
 		bool& isBreak,
-		GameEngineStorageOurCarriage& ourCarriage,
+		MuzGameEngineStorage& ourCarriage,
 		const Depth depth,
 		Monkie** ppThisThread,
 		Sweetness& bestSweetness,
@@ -731,7 +731,7 @@ public:
 			(*ppThisThread)->m_numberOfMonkeysRunningTogether < g_MaxNumberOfMonkeysRunningTogether)
 		{
 			assert(bestSweetness < beta);
-			(*ppThisThread)->ForkNewMonkey<GameEngineStorageOurCarriage::FakeSplit>(
+			(*ppThisThread)->ForkNewMonkey<MuzGameEngineStorage::FakeSplit>(
 				pos,
 				*ppFlashlight,
 				alpha,

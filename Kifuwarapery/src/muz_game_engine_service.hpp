@@ -10,7 +10,7 @@
 /// <summary>
 /// 
 /// </summary>
-class MyGameEngineModel {
+class MuzGameEngineService {
 
 
 public:
@@ -18,12 +18,12 @@ public:
 	/// <summary>
 	///		ゲームエンジンが１つだけ持つ、局面の探索状態を保存するクラス☆（＾ｑ＾）
 	/// </summary>
-	std::unique_ptr<GameEngineStorageOurCarriage> m_pGameEngineStore;
+	std::unique_ptr<MuzGameEngineStorage> m_pGameEngineStore;
 
 
 public:
-	MyGameEngineModel();
-	~MyGameEngineModel();
+	MuzGameEngineService();
+	~MuzGameEngineService();
 	void initialize_10a();
 	void body_50a(int argc, char* argv[]);
 	void finalize_90000a();

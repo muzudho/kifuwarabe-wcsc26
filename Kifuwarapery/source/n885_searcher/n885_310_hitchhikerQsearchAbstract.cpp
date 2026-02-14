@@ -21,7 +21,7 @@
 /// <param name="depth"></param>
 /// <returns></returns>
 Sweetness AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
-	GameEngineStorageOurCarriage& ourCarriage,
+	MuzGameEngineStorage& ourCarriage,
 	bool INCHECK,
 	Position& pos,
 	Flashlight* pFlashlight,

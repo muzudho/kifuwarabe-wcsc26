@@ -299,7 +299,7 @@ const ChangedLists& Position::GetCl() const
 /// 
 /// </summary>
 /// <returns></returns>
-const GameEngineStorageOurCarriage* Position::GetConstOurCarriage() const
+const MuzGameEngineStorage* Position::GetConstOurCarriage() const
 {
 	return this->m_pGameEngineStore_;
 }
@@ -309,7 +309,7 @@ const GameEngineStorageOurCarriage* Position::GetConstOurCarriage() const
 /// 
 /// </summary>
 /// <returns></returns>
-GameEngineStorageOurCarriage* Position::GetOurCarriage() const
+MuzGameEngineStorage* Position::GetOurCarriage() const
 {
 	return this->m_pGameEngineStore_;
 }
@@ -319,7 +319,7 @@ GameEngineStorageOurCarriage* Position::GetOurCarriage() const
 /// 
 /// </summary>
 /// <param name="s"></param>
-void Position::SetOurCarriage(GameEngineStorageOurCarriage* s)
+void Position::SetOurCarriage(MuzGameEngineStorage* s)
 {
 	this->m_pGameEngineStore_ = s;
 }
@@ -2546,7 +2546,7 @@ Position::Position()
 /// 
 /// </summary>
 /// <param name="s"></param>
-Position::Position(GameEngineStorageOurCarriage* gameEngineStore)
+Position::Position(MuzGameEngineStorage* gameEngineStore)
 	: m_pGameEngineStore_(gameEngineStore)
 {
 }
@@ -2580,7 +2580,7 @@ Position::Position(const Position & pos, Monkie * th)
 /// <param name="sfen"></param>
 /// <param name="th"></param>
 /// <param name="s"></param>
-Position::Position(const std::string & sfen, Monkie * th, GameEngineStorageOurCarriage * s)
+Position::Position(const std::string & sfen, Monkie * th, MuzGameEngineStorage * s)
 {
 	this->Set(sfen, th);
 	this->SetOurCarriage(s);
@@ -2615,7 +2615,7 @@ void Position::Set(const std::string& sfen, Monkie* th) {
 	char token;
 	Square sq = A9;
 
-	GameEngineStorageOurCarriage* s = std::move(m_pGameEngineStore_);
+	MuzGameEngineStorage* s = std::move(m_pGameEngineStore_);
 	this->Clear();
 	this->SetOurCarriage(s);
 

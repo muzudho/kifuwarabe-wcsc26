@@ -2,7 +2,7 @@
 
 
 // 探索用変数
-class GameEngineStorageOurCarriage;
+class MuzGameEngineStorage;
 
 
 /// <summary>
@@ -17,16 +17,16 @@ protected:
 	/// <summary>
 	/// 
 	/// </summary>
-	using Fn = void(GameEngineStorageOurCarriage*, const EngineOptionable&);
+	using Fn = void(MuzGameEngineStorage*, const EngineOptionable&);
 
 
 public:
 
 
-	EngineOptionable(												Fn* = nullptr, GameEngineStorageOurCarriage* s = nullptr);
-	EngineOptionable(const char* v,								    Fn* = nullptr, GameEngineStorageOurCarriage* s = nullptr);
-	EngineOptionable(const bool  v,								    Fn* = nullptr, GameEngineStorageOurCarriage* s = nullptr);
-	EngineOptionable(const int   v, const int min, const int max,	Fn* = nullptr, GameEngineStorageOurCarriage* s = nullptr);
+	EngineOptionable(												Fn* = nullptr, MuzGameEngineStorage* s = nullptr);
+	EngineOptionable(const char* v,								    Fn* = nullptr, MuzGameEngineStorage* s = nullptr);
+	EngineOptionable(const bool  v,								    Fn* = nullptr, MuzGameEngineStorage* s = nullptr);
+	EngineOptionable(const int   v, const int min, const int max,	Fn* = nullptr, MuzGameEngineStorage* s = nullptr);
 
 
 	/// <summary>
@@ -125,5 +125,5 @@ protected:
     /// オプションの変更時に、ゲームエンジン倉庫の中身を変更するために必要だぜ☆（＾ｑ＾）
 	///		</pre>
 	/// </summary>
-	GameEngineStorageOurCarriage* m_pGameEngineStore_;
+	MuzGameEngineStorage* m_pGameEngineStore_;
 };
