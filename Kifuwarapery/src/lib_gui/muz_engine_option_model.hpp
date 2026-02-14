@@ -9,18 +9,11 @@
 ///     - TODO ほんとはボタン用、テキストボックス用、チェックボックス用、スピンボックス用のクラスを分けるべきだと思うが（＾～＾）
 ///		</pre
 /// </summary>
-class MuzEngineOptionModel : public MuzEngineOptionableModel {
+class MuzEngineOptionModel : public MuzEngineOptionableModel
+{
 
 
 public:
-
-
-    /// <summary>
-    /// ボタン用
-    /// </summary>
-    /// <returns></returns>
-    MuzEngineOptionModel(
-        std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
 
 
     /// <summary>

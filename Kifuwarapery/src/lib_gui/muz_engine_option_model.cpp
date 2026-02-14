@@ -3,20 +3,6 @@
 
 /// <summary>
 ///     <pre>
-/// ボタン用
-///     </pre>
-/// </summary>
-/// <param name="onChanged"></param>
-/// <param name="pGameEngineStore"></param>
-MuzEngineOptionModel::MuzEngineOptionModel(
-    std::function<void(const MuzEngineOptionableModel&)> onChanged)
-    : MuzEngineOptionableModel(onChanged)
-{
-}
-
-
-/// <summary>
-///     <pre>
 /// テキストボックス用
 ///     </pre>
 /// </summary>

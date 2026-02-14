@@ -1,4 +1,5 @@
 ﻿#include "muz_engine_option_model.hpp"
+#include "muz_engine_option_button_model.hpp"
 #include "muz_engine_optoins_initialize_service.hpp"
 
 
@@ -24,7 +25,7 @@ void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
 	pMap->Put("USI_Hash"					, MuzEngineOptionModel(256, 1, 65536, onHashSizeChanged));
 
 	// ［ハッシュ・クリアー］ボタン
-	pMap->Put("Clear_Hash"					, MuzEngineOptionModel(onHashCleared));
+	pMap->Put("Clear_Hash"					, MuzEngineOptionButtonModel(onHashCleared));
 
 	// 定跡ファイルパス
 	pMap->Put("Book_File"					, MuzEngineOptionModel("book/20150503/book.bin"));
