@@ -1,11 +1,11 @@
 #pragma once
-#include "muz_engine_optionable_model.hpp"
+#include "i_muz_engine_optionable_model.hpp"
 
 
 /// <summary>
 /// エンジン・オプション　＞　ボタン
 /// </summary>
-class MuzEngineOptionButtonModel : public MuzEngineOptionableModel
+class MuzEngineOptionButtonModel : public IMuzEngineOptionableModel
 {
 
 
@@ -17,7 +17,7 @@ public:
     /// </summary>
     /// <param name="onChanged"></param>
     MuzEngineOptionButtonModel(
-        std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
+        std::function<void(const IMuzEngineOptionableModel&)> onChanged = nullptr);
 
 
     /// <summary>
@@ -25,6 +25,6 @@ public:
     /// </summary>
     /// <param name="v"></param>
     /// <returns></returns>
-    MuzEngineOptionableModel& operator = (const std::string& v);
+    IMuzEngineOptionableModel& operator = (const std::string& v);
 };
 

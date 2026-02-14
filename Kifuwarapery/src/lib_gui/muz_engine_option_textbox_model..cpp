@@ -11,8 +11,8 @@
 /// <param name="pGameEngineStore"></param>
 MuzEngineOptionTextboxModel::MuzEngineOptionTextboxModel(
     const char* v,
-    std::function<void(const MuzEngineOptionableModel&)> onChanged)
-    : MuzEngineOptionableModel(v, onChanged)
+    std::function<void(const IMuzEngineOptionableModel&)> onChanged)
+    : IMuzEngineOptionableModel(v, onChanged)
 {
 }
 
@@ -22,7 +22,7 @@ MuzEngineOptionTextboxModel::MuzEngineOptionTextboxModel(
 /// </summary>
 /// <param name="newValue"></param>
 /// <returns></returns>
-MuzEngineOptionableModel& MuzEngineOptionTextboxModel::operator = (const std::string& newValue)
+IMuzEngineOptionableModel& MuzEngineOptionTextboxModel::operator = (const std::string& newValue)
 {
 	assert(!m_type_.empty());
 

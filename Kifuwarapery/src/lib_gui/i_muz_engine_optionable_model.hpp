@@ -5,32 +5,32 @@
 /// <summary>
 /// エンジン・オプション的☆（＾ｑ＾）
 /// </summary>
-class MuzEngineOptionableModel {
+class IMuzEngineOptionableModel {
 
 
 public:
 
 
 	// TODO: ボタン
-	MuzEngineOptionableModel(
-		std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
+	IMuzEngineOptionableModel(
+		std::function<void(const IMuzEngineOptionableModel&)> onChanged = nullptr);
 
 	// TODO: テキストボックス
-	MuzEngineOptionableModel(
+	IMuzEngineOptionableModel(
 		const char* v,
-		std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
+		std::function<void(const IMuzEngineOptionableModel&)> onChanged = nullptr);
 
 	// TODO: チェックボックス
-	MuzEngineOptionableModel(
+	IMuzEngineOptionableModel(
 		const bool  v,
-		std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
+		std::function<void(const IMuzEngineOptionableModel&)> onChanged = nullptr);
 
 	// TODO: スピンボックス
-	MuzEngineOptionableModel(
+	IMuzEngineOptionableModel(
 		const int   v,
 		const int min,
 		const int max,
-		std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
+		std::function<void(const IMuzEngineOptionableModel&)> onChanged = nullptr);
 
 
 	/// <summary>
@@ -38,7 +38,7 @@ public:
 	/// </summary>
 	/// <param name="v"></param>
 	/// <returns></returns>
-	MuzEngineOptionableModel& operator = (const std::string& v);
+	IMuzEngineOptionableModel& operator = (const std::string& v);
 
 
 	/// <summary>
@@ -121,5 +121,5 @@ protected:
 	/// <summary>
 	/// 変更時フック
 	/// </summary>
-	std::function<void(const MuzEngineOptionableModel&)> m_onChanged_;
+	std::function<void(const IMuzEngineOptionableModel&)> m_onChanged_;
 };

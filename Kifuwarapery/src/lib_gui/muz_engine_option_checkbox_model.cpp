@@ -11,8 +11,8 @@
 /// <param name="pGameEngineStore"></param>
 MuzEngineOptionCheckboxModel::MuzEngineOptionCheckboxModel(
     const bool v,
-    std::function<void(const MuzEngineOptionableModel&)> onChanged)
-    : MuzEngineOptionableModel(v, onChanged)
+    std::function<void(const IMuzEngineOptionableModel&)> onChanged)
+    : IMuzEngineOptionableModel(v, onChanged)
 {
 }
 
@@ -22,7 +22,7 @@ MuzEngineOptionCheckboxModel::MuzEngineOptionCheckboxModel(
 /// </summary>
 /// <param name="newValue"></param>
 /// <returns></returns>
-MuzEngineOptionableModel& MuzEngineOptionCheckboxModel::operator = (const std::string& newValue)
+IMuzEngineOptionableModel& MuzEngineOptionCheckboxModel::operator = (const std::string& newValue)
 {
 	assert(!m_type_.empty());
 

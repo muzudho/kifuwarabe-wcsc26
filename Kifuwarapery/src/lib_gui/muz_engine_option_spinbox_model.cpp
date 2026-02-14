@@ -15,8 +15,8 @@ MuzEngineOptionSpinboxModel::MuzEngineOptionSpinboxModel(
     const int v,
     const int min,
     const int max,
-    std::function<void(const MuzEngineOptionableModel&)> onChanged)
-    : MuzEngineOptionableModel(v, min, max, onChanged)
+    std::function<void(const IMuzEngineOptionableModel&)> onChanged)
+    : IMuzEngineOptionableModel(v, min, max, onChanged)
 {
 }
 
@@ -26,7 +26,7 @@ MuzEngineOptionSpinboxModel::MuzEngineOptionSpinboxModel(
 /// </summary>
 /// <param name="newValue"></param>
 /// <returns></returns>
-MuzEngineOptionableModel& MuzEngineOptionSpinboxModel::operator = (const std::string& newValue)
+IMuzEngineOptionableModel& MuzEngineOptionSpinboxModel::operator = (const std::string& newValue)
 {
 	assert(!m_type_.empty());
 

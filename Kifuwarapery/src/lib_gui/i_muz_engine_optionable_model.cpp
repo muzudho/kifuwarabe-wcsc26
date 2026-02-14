@@ -1,4 +1,4 @@
-﻿#include "muz_engine_optionable_model.hpp"
+﻿#include "i_muz_engine_optionable_model.hpp"
 #include <sstream>
 
 
@@ -7,9 +7,9 @@
 /// </summary>
 /// <param name="newValue"></param>
 /// <param name="onChanged"></param>
-MuzEngineOptionableModel::MuzEngineOptionableModel(
+IMuzEngineOptionableModel::IMuzEngineOptionableModel(
 	const char* v,
-	std::function<void(const MuzEngineOptionableModel&)> onChanged)
+	std::function<void(const IMuzEngineOptionableModel&)> onChanged)
 		: m_type_("string"), m_min_(0), m_max_(0), m_onChanged_(onChanged)
 {
 	m_defaultValue_ = m_currentValue_ = v;
@@ -21,9 +21,9 @@ MuzEngineOptionableModel::MuzEngineOptionableModel(
 /// </summary>
 /// <param name="newValue"></param>
 /// <param name="f"></param>
-MuzEngineOptionableModel::MuzEngineOptionableModel(
+IMuzEngineOptionableModel::IMuzEngineOptionableModel(
 	const bool v,
-	std::function<void(const MuzEngineOptionableModel&)> onChanged)
+	std::function<void(const IMuzEngineOptionableModel&)> onChanged)
 		: m_type_("check"), m_min_(0), m_max_(0), m_onChanged_(onChanged)
 {
 	m_defaultValue_ = m_currentValue_ = (v ? "true" : "false");
@@ -35,8 +35,8 @@ MuzEngineOptionableModel::MuzEngineOptionableModel(
 /// </summary>
 /// <param name="onChanged"></param>
 /// <param name="pGameEngineStore"></param>
-MuzEngineOptionableModel::MuzEngineOptionableModel(
-	std::function<void(const MuzEngineOptionableModel&)> onChanged)
+IMuzEngineOptionableModel::IMuzEngineOptionableModel(
+	std::function<void(const IMuzEngineOptionableModel&)> onChanged)
 		: m_type_("button"), m_min_(0), m_max_(0), m_onChanged_(onChanged)
 {
 }
@@ -49,11 +49,11 @@ MuzEngineOptionableModel::MuzEngineOptionableModel(
 /// <param name="min"></param>
 /// <param name="max"></param>
 /// <param name="onChanged"></param>
-MuzEngineOptionableModel::MuzEngineOptionableModel(
+IMuzEngineOptionableModel::IMuzEngineOptionableModel(
 	const int v,
 	const int min,
 	const int max,
-	std::function<void(const MuzEngineOptionableModel&)> onChanged)
+	std::function<void(const IMuzEngineOptionableModel&)> onChanged)
 		: m_type_("spin"), m_min_(min), m_max_(max), m_onChanged_(onChanged)
 {
 	std::ostringstream ss;
@@ -67,7 +67,7 @@ MuzEngineOptionableModel::MuzEngineOptionableModel(
 /// </summary>
 /// <param name="newValue"></param>
 /// <returns></returns>
-MuzEngineOptionableModel& MuzEngineOptionableModel::operator = (const std::string& newValue)
+IMuzEngineOptionableModel& IMuzEngineOptionableModel::operator = (const std::string& newValue)
 {
 	if (newValue.empty()) { return *this; }	// 値が無かった
 

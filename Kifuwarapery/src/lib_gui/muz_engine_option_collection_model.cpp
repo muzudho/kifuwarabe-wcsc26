@@ -24,7 +24,7 @@ bool MuzCaseInsensitiveLessModel::operator () (const std::string& s1, const std:
 /// </summary>
 /// <param name="key"></param>
 /// <param name="option"></param>
-void MuzEngineOptionCollectionModel::Put(const std::string key, MuzEngineOptionableModel option)
+void MuzEngineOptionCollectionModel::Put(const std::string key, IMuzEngineOptionableModel option)
 {
 	(this->m_map)[key] = option;
 }
@@ -38,7 +38,7 @@ void MuzEngineOptionCollectionModel::Put(const std::string key, MuzEngineOptiona
 /// <returns></returns>
 std::ostream& operator << (std::ostream& os, const MuzEngineOptionCollectionModel& engineOptionCollection) {
 	for (auto& elem : engineOptionCollection.m_map) {
-		const MuzEngineOptionableModel& o = elem.second;
+		const IMuzEngineOptionableModel& o = elem.second;
 		os << "\noption name " << elem.first << " type " << o.GetType();
 		if (o.GetType() != "button") {
 			os << " default " << o.GetDefaultValue();

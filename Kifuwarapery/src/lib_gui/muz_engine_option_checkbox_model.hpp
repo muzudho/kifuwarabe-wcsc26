@@ -1,11 +1,11 @@
 #pragma once
-#include "muz_engine_optionable_model.hpp"
+#include "i_muz_engine_optionable_model.hpp"
 
 
 /// <summary>
 /// エンジン・オプション　＞　チェックボックス
 /// </summary>
-class MuzEngineOptionCheckboxModel : public MuzEngineOptionableModel
+class MuzEngineOptionCheckboxModel : public IMuzEngineOptionableModel
 {
 
 
@@ -19,7 +19,7 @@ public:
 	/// <param name="onChanged"></param>
 	MuzEngineOptionCheckboxModel(
 		const bool  v,
-		std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
+		std::function<void(const IMuzEngineOptionableModel&)> onChanged = nullptr);
 
 
 	/// <summary>
@@ -27,7 +27,7 @@ public:
 	/// </summary>
 	/// <param name="v"></param>
 	/// <returns></returns>
-	MuzEngineOptionableModel& operator = (const std::string& v);
+	IMuzEngineOptionableModel& operator = (const std::string& v);
 
 
 };

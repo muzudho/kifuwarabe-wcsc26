@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <map>
 #include <string>
-#include "muz_engine_optionable_model.hpp"
+#include "i_muz_engine_optionable_model.hpp"
 
 
 /// <summary>
@@ -39,13 +39,13 @@ public:
 	/// </summary>
 	/// <param name="key"></param>
 	/// <param name="option"></param>
-	void Put(const std::string key, MuzEngineOptionableModel option);
+	void Put(const std::string key, IMuzEngineOptionableModel option);
 
 
     /// <summary>
     /// オプションのマップ☆（＾～＾）
     /// </summary>
-    std::map<std::string, MuzEngineOptionableModel, MuzCaseInsensitiveLessModel> m_map;
+    std::map<std::string, IMuzEngineOptionableModel, MuzCaseInsensitiveLessModel> m_map;
 
 
 	/// <summary>

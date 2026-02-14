@@ -26,10 +26,10 @@ public:
 		int sweetnessMate0Ply,
 		int maxThreads,
 		MuzEngineOptionCollectionModel* pMap,
-		std::function<void(const MuzEngineOptionableModel&)> onHashSizeChanged,
-		std::function<void(const MuzEngineOptionableModel&)> onHashCleared,
-		std::function<void(const MuzEngineOptionableModel&)> onEvalDirChanged,
-		std::function<void(const MuzEngineOptionableModel&)> onMaxThreadsPerSplitPointChanged,
-		std::function<void(const MuzEngineOptionableModel&)> onThreadsChanged,
+		std::function<void(const IMuzEngineOptionableModel&)> onHashSizeChanged,
+		std::function<void(const IMuzEngineOptionableModel&)> onHashCleared,
+		std::function<void(const IMuzEngineOptionableModel&)> onEvalDirChanged,
+		std::function<void(const IMuzEngineOptionableModel&)> onMaxThreadsPerSplitPointChanged,
+		std::function<void(const IMuzEngineOptionableModel&)> onThreadsChanged,
 		std::function<int()> getCPUCoreCount);
 };
