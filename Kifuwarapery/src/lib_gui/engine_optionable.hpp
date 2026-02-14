@@ -12,15 +12,6 @@ class MuzGameEngineStorageModel;
 class EngineOptionable {
 
 
-public:	//protected:
-
-
-	/// <summary>
-	/// int n = f();
-	/// </summary>
-	using FnVoidInt = int();
-
-
 public:
 
 

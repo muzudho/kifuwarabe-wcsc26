@@ -28,5 +28,5 @@ public:
 		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> onEvalDirChanged,
 		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> onMaxThreadsPerSplitPointChanged,
 		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> onThreadsChanged,
-		EngineOptionable::FnVoidInt* pGetCpuCoreCount);
+		std::function<int()> getCPUCoreCount);
 };

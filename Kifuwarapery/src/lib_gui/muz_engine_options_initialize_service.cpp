@@ -18,7 +18,7 @@ void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
 	std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> onEvalDirChanged,
 	std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> onMaxThreadsPerSplitPointChanged,
 	std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> onThreadsChanged,
-	EngineOptionable::FnVoidInt* pGetCpuCoreCount)
+	std::function<int()> getCPUCoreCount)
 {
 	// ハッシュサイズ
 	pMap->Put("USI_Hash"					, EngineOption(256, 1, 65536, onHashSizeChanged, pRucksack));
@@ -89,7 +89,7 @@ void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
 	pMap->Put("Max_Threads_per_Split_Point"	, EngineOption(		5,  4,     8, onMaxThreadsPerSplitPointChanged, pRucksack));
 
 	// スレッド数
-	pMap->Put("Threads"						, EngineOption((*pGetCpuCoreCount)(), 1, g_MaxThreads, onThreadsChanged, pRucksack));
+	pMap->Put("Threads"						, EngineOption(getCPUCoreCount(), 1, g_MaxThreads, onThreadsChanged, pRucksack));
 
 	// ［寝てる猿を使う］チェックボックス
 	pMap->Put("Use_Sleeping_Threads"		, EngineOption(false));
