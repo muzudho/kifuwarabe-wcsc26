@@ -58,10 +58,10 @@ public:
 		ourCarriage.m_gains.Clear();
 
 		// マルチＰＶの数☆？
-		ourCarriage.m_pvSize = ourCarriage.m_engineSettings.m_map["MultiPV"];
-		AdventurerSkill skill(ourCarriage.m_engineSettings.m_map["Skill_Level"], ourCarriage.m_engineSettings.m_map["Max_Random_Score_Diff"]);
+		ourCarriage.m_pvSize = ourCarriage.m_engineSettings.GetOptionByKey("MultiPV");
+		AdventurerSkill skill(ourCarriage.m_engineSettings.GetOptionByKey("Skill_Level"), ourCarriage.m_engineSettings.GetOptionByKey("Max_Random_Score_Diff"));
 
-		if (ourCarriage.m_engineSettings.m_map["Max_Random_Score_Diff_Ply"] < pos.GetGamePly()) {
+		if (ourCarriage.m_engineSettings.GetOptionByKey("Max_Random_Score_Diff_Ply") < pos.GetGamePly()) {
 			skill.m_maxRandomSweetnessDiff = SweetnessZero;
 			ourCarriage.m_pvSize = 1;
 			assert(!skill.enabled()); // level による設定が出来るようになるまでは、これで良い。

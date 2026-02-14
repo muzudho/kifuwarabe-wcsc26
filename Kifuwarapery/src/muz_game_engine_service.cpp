@@ -182,7 +182,7 @@ void MuzGameEngineService::initialize_10a()
 
 
     SYNCCOUT << "(^q^) 4   . 評価関数の初期化！" << SYNCENDL;
-    std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->initialize_10a600b(this->m_pGameEngineStore->m_engineSettings.m_map["Eval_Dir"], true);
+    std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->initialize_10a600b(this->m_pGameEngineStore->m_engineSettings.GetOptionByKey("Eval_Dir"), true);
 
     SYNCCOUT << "(^q^) 次は USIループへ！" << SYNCENDL;
 }

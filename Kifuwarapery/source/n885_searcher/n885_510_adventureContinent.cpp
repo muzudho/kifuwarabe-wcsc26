@@ -89,7 +89,7 @@ void AdventureContinent::ExploreContinent(
 	//────────────────────────────────────────────────────────────────────────────────
 	static Book book;
 	std::uniform_int_distribution<int> dist(
-		captainsRucksack.m_engineSettings.m_map["Min_Book_Ply"], captainsRucksack.m_engineSettings.m_map["Max_Book_Ply"]);
+		captainsRucksack.m_engineSettings.GetOptionByKey("Min_Book_Ply"), captainsRucksack.m_engineSettings.GetOptionByKey("Max_Book_Ply"));
 
 	const Ply book_ply = dist(g_randomTimeSeed);
 
@@ -98,16 +98,16 @@ void AdventureContinent::ExploreContinent(
 #if defined LEARN
 	captainsRucksack.m_ownerHerosPub[0]->m_searching = true;
 #else
-	captainsRucksack.m_tt.setSize(captainsRucksack.m_engineSettings.m_map["USI_Hash"]); // operator int() 呼び出し。
+	captainsRucksack.m_tt.setSize(captainsRucksack.m_engineSettings.GetOptionByKey("USI_Hash")); // operator int() 呼び出し。
 
 	SYNCCOUT << "info string book_ply " << book_ply << SYNCENDL;
 	if (
 		// 定跡が使える手数のとき☆（＾ｑ＾）？
-		captainsRucksack.m_engineSettings.m_map["OwnBook"] &&
+		captainsRucksack.m_engineSettings.GetOptionByKey("OwnBook") &&
 		pos.GetGamePly() <= book_ply
 	) {
 		const DeliciousBanana bookBanana = book.GetProbe(
-			pos, captainsRucksack.m_engineSettings.m_map["Book_File"], captainsRucksack.m_engineSettings.m_map["Best_Book_Move"]);
+			pos, captainsRucksack.m_engineSettings.GetOptionByKey("Book_File"), captainsRucksack.m_engineSettings.GetOptionByKey("Best_Book_Move"));
 
 		if (
 			!bookBanana.m_move.IsNone()
