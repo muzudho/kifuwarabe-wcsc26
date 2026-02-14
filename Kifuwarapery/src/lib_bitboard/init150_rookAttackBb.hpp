@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "n160_100_bitboard.hpp"
-#include "n160_130_lanceAttackBb.hpp"
-#include "n160_140_goldAttackBb.hpp"
+#include "init130_lanceAttackBb.hpp"
+#include "init140_goldAttackBb.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────

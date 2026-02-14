@@ -1,9 +1,9 @@
 ﻿#include "../../header/n105_120_square__/n105_120_500_convSquare.hpp"
 #include "n160_106_inFrontMaskBb.hpp"
-#include "n160_110_silverAttackBb.hpp"
-#include "n160_120_bishopAttackBb.hpp"	// TODO:これを消すのが難しい
-#include "n160_140_goldAttackBb.hpp"		// TODO:これを消すのが難しい
-#include "n160_160_kingAttackBb.hpp"		// TODO:これを消すのが難しい
+#include "init110_silverAttackBb.hpp"
+#include "init120_bishopAttackBb.hpp"	// TODO:これを消すのが難しい
+#include "init140_goldAttackBb.hpp"		// TODO:これを消すのが難しい
+#include "init160_kingAttackBb.hpp"		// TODO:これを消すのが難しい
 #include "n160_230_setMaskBb.hpp"		// TODO:これを消すのが難しい
 
 

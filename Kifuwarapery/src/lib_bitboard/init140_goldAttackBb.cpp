@@ -1,7 +1,7 @@
 ﻿#include "n160_106_inFrontMaskBb.hpp"
-#include "n160_140_goldAttackBb.hpp"
-#include "n160_150_rookAttackBb.hpp"
-#include "n160_160_kingAttackBb.hpp"
+#include "init140_goldAttackBb.hpp"
+#include "init150_rookAttackBb.hpp"
+#include "init160_kingAttackBb.hpp"
 #include "n160_230_setMaskBb.hpp"
 #include "n160_400_printBb.hpp"
 

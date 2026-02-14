@@ -1,16 +1,13 @@
-﻿#include "n160_102_FileMaskBb.hpp"
-#include "n160_106_inFrontMaskBb.hpp"
-#include "n160_108_slideBits.hpp"
-#include "n160_150_rookAttackBb.hpp"
+﻿#include "init120_bishopAttackBb.hpp"
 #include "n160_230_setMaskBb.hpp"
-#include "n160_400_printBb.hpp"
+#include "n160_102_FileMaskBb.hpp"
+#include "n160_106_inFrontMaskBb.hpp"
 
 
 /// <summary>
-/// これらは一度値を設定したら二度と変更しない。
 /// 本当はconst にしたいが、やり方がわからない☆ C2373エラーになるんだぜ☆
 /// </summary>
-RookAttackBb g_rookAttackBb;
+BishopAttackBb g_bishopAttackBb;
 
 
 #if defined FIND_MAGIC
@@ -18,25 +15,23 @@ RookAttackBb g_rookAttackBb;
 
 /// <summary>
 ///		<pre>
-/// マジックナンバーを見つけるぜ☆（＾ｑ＾）
-/// 
-///		square の位置の rook, bishop それぞれのMagic Bitboard に使用するマジックナンバーを見つける。
-///		isBishop  : true なら bishop, false なら rook のマジックナンバーを見つける。
+/// square の位置の rook, bishop それぞれのMagic Bitboard に使用するマジックナンバーを見つける。
+/// isBishop  : true なら bishop, false なら rook のマジックナンバーを見つける。
 ///		</pre>
 /// </summary>
 /// <param name="square"></param>
 /// <returns></returns>
-u64 RookAttackBb::findMagicRook(const Square square) {
+u64 BishopAttackBb::findMagicBishop(const Square square) {
 	Bitboard occupied[1 << 14];
 	Bitboard attack[1 << 14];
 	Bitboard attackUsed[1 << 14];
-	Bitboard mask = this->RookBlockMaskCalc(square);
-	int num1s = g_rookBlockBits[square];
+	Bitboard mask = BishopBlockMaskCalc(square);
+	int num1s = g_bishopBlockBits[square];
 
 	// n bit の全ての数字 (利きのあるマスの全ての 0 or 1 の組み合わせ)
 	for (int i = 0; i < (1 << num1s); ++i) {
 		occupied[i] = g_setMaskBb.IndexToOccupied(i, num1s, mask);
-		attack[i] = RookAttackCalc(square, occupied[i]);
+		attack[i] = BishopAttackCalc(square, occupied[i]);
 	}
 
 	for (u64 k = 0; k < UINT64_C(100000000); ++k) {
@@ -49,7 +44,7 @@ u64 RookAttackBb::findMagicRook(const Square square) {
 		std::fill(std::begin(attackUsed), std::IsEnd(attackUsed), CreateAllZeroBB());
 
 		for (int i = 0; !fail && i < (1 << num1s); ++i) {
-			const int shiftBits = g_rookShiftBits[square];
+			const int shiftBits = g_bishopShiftBits[square];
 			const u64 index = OccupiedToIndex(occupied[i], magic, shiftBits);
 			if (attackUsed[index] == CreateAllZeroBB())
 				attackUsed[index] = attack[i];
@@ -70,12 +65,24 @@ u64 RookAttackBb::findMagicRook(const Square square) {
 /// </summary>
 /// <param name="square"></param>
 /// <returns></returns>
-Bitboard RookAttackBb::RookBlockMaskCalc(const Square square) const {
-	Bitboard result = g_fileMaskBb.GetSquareFileMask(square) ^ g_rankMaskBb.GetSquareRankMask(square);
-	if (ConvSquare::TO_FILE10(square) != FileA) { result &= ~g_fileMaskBb.GetFileMask(FileA); }
-	if (ConvSquare::TO_FILE10(square) != FileI) { result &= ~g_fileMaskBb.GetFileMask(FileI); }
-	if (ConvSquare::TO_RANK10(square) != Rank1) { result &= ~g_rankMaskBb.GetRankMask(Rank1); }
-	if (ConvSquare::TO_RANK10(square) != Rank9) { result &= ~g_rankMaskBb.GetRankMask(Rank9); }
+Bitboard BishopAttackBb::BishopBlockMaskCalc(const Square square) const {
+	const Rank rank = ConvSquare::TO_RANK10(square);
+	const File file = ConvSquare::TO_FILE10(square);
+	Bitboard result = Bitboard::CreateAllZeroBB();
+	for (Square sq = I9; sq < SquareNum; ++sq) {
+		const Rank r = ConvSquare::TO_RANK10(sq);
+		const File f = ConvSquare::TO_FILE10(sq);
+		if (abs(rank - r) == abs(file - f))
+			g_setMaskBb.AddBit(&result, sq);
+	}
+	result &= ~(
+		g_rankMaskBb.GetRankMask<Rank1>() |
+		g_rankMaskBb.GetRankMask<Rank9>() |
+		g_fileMaskBb.GetFileMask(FileA) |
+		g_fileMaskBb.GetFileMask(FileI)
+	);
+	g_setMaskBb.ClearBit(&result, square);
+
 	return result;
 }
 
@@ -89,10 +96,10 @@ Bitboard RookAttackBb::RookBlockMaskCalc(const Square square) const {
 /// <param name="square"></param>
 /// <param name="occupied"></param>
 /// <returns></returns>
-Bitboard RookAttackBb::RookAttackCalc(const Square square, const Bitboard& occupied) const {
+Bitboard BishopAttackBb::BishopAttackCalc(const Square square, const Bitboard& occupied) const {
 	const SquareDelta deltaArray[2][4] = { { DeltaN, DeltaS, DeltaE, DeltaW },{ DeltaNE, DeltaSE, DeltaSW, DeltaNW } };
 	Bitboard result = Bitboard::CreateAllZeroBB();
-	for (SquareDelta delta : deltaArray[false/*isBishop*/]) {
+	for (SquareDelta delta : deltaArray[true/*isBishop*/]) {
 		for (Square sq = square + delta;
 		ConvSquare::CONTAINS_OF10(sq) && abs(ConvSquare::TO_RANK10(sq - delta) - ConvSquare::TO_RANK10(sq)) <= 1;
 			sq += delta)
@@ -107,34 +114,35 @@ Bitboard RookAttackBb::RookAttackCalc(const Square square, const Bitboard& occup
 
 
 /// <summary>
-/// 飛車の利きビットボードの初期化。
+/// 
 /// </summary>
-void RookAttackBb::initialize_10a100b_rookAttacks()
+void BishopAttackBb::initialize_10a120b_bishopAttacks()
 {
-	auto* attacks = g_rookAttackBb.m_controllBb_;			// 飛車の利き
-	auto* attackIndex = g_rookAttackBb.m_rookAttackIndex;	// 飛車の利きのインデックス
-	auto* blockMask = g_rookAttackBb.m_rookBlockMask_;		// 飛車の利きのブロック・マスか？
-	auto* shift = this->m_rookShiftBits_;					// 飛車のシフト
+	// 角か、飛車か
+	auto* attacks = g_bishopAttackBb.m_controllBb_;
+	auto* attackIndex = g_bishopAttackBb.m_controllBbIndex_;
+	auto* blockMask = g_bishopAttackBb.m_bishopBlockMask_;
+	auto* shift = g_bishopAttackBb.m_bishopShiftBits;
 #if defined HAVE_BMI2
 #else
-	auto* magic = this->m_rookMagic_;
+	auto* magic = g_bishopAttackBb.m_bishopMagic;
 #endif
 
 	// 各マスについて
 	int index = 0;
 	for (Square sq = I9; sq < SquareNum; ++sq) {
-		blockMask[sq] = this->RookBlockMaskCalc(sq);
+		blockMask[sq] = this->BishopBlockMaskCalc(sq);
 		attackIndex[sq] = index;
 
-		const int num1s = this->m_rookBlockBits_[sq];
+		const int num1s = g_bishopAttackBb.m_bishopBlockBits[sq];
 		for (int i = 0; i < (1 << num1s); ++i)
 		{
 			const Bitboard occupied = g_setMaskBb.IndexToOccupied(i, num1s, blockMask[sq]);
 #if defined HAVE_BMI2
-			attacks[index + (occupied & blockMask[sq]).OccupiedToIndex(blockMask[sq])] = this->RookAttackCalc(sq, occupied);
+			attacks[index + (occupied & blockMask[sq]).OccupiedToIndex(blockMask[sq])] = this->BishopAttackCalc(sq, occupied);
 #else
 			attacks[index + occupied.OccupiedToIndex(magic[sq], shift[sq])] =
-				this->RookAttackCalc(sq, occupied);
+				this->BishopAttackCalc(sq, occupied);
 #endif
 		}
 		index += 1 << (64 - shift[sq]);
@@ -145,9 +153,9 @@ void RookAttackBb::initialize_10a100b_rookAttacks()
 /// <summary>
 /// 
 /// </summary>
-void RookAttackBb::initialize_10a200b_rookToEdge()
+void BishopAttackBb::Initialize_10a210b_bishopToEdge()
 {
 	for (Square sq = I9; sq < SquareNum; ++sq) {
-		g_rookAttackBb.m_controllBbToEdge_[sq] = g_rookAttackBb.GetControllBb(Bitboard::CreateAllZeroBB(), sq);
+		g_bishopAttackBb.m_controllBbToEdge_[sq] = g_bishopAttackBb.BishopAttack(Bitboard::CreateAllZeroBB(), sq);
 	}
 }
