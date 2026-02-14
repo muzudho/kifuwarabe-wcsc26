@@ -18,10 +18,10 @@ class EngineOption : public EngineOptionable {
 public:
 
 
-	EngineOption(Fn* = nullptr, MuzGameEngineStorageModel* s = nullptr);
-	EngineOption(const char* v, Fn* = nullptr, MuzGameEngineStorageModel* s = nullptr);
-	EngineOption(const bool  v, Fn* = nullptr, MuzGameEngineStorageModel* s = nullptr);
-	EngineOption(const int   v, const int min, const int max, Fn* = nullptr, MuzGameEngineStorageModel* s = nullptr);
+	EngineOption(std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> = nullptr, MuzGameEngineStorageModel* s = nullptr);
+	EngineOption(const char* v, std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> = nullptr, MuzGameEngineStorageModel* s = nullptr);
+	EngineOption(const bool  v, std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> = nullptr, MuzGameEngineStorageModel* s = nullptr);
+	EngineOption(const int   v, const int min, const int max, std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> = nullptr, MuzGameEngineStorageModel* s = nullptr);
 
 
 //private:

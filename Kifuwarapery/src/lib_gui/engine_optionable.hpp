@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <functional>
 
 
 // 探索用変数
@@ -15,12 +16,6 @@ public:	//protected:
 
 
 	/// <summary>
-	/// 
-	/// </summary>
-	using Fn = void(MuzGameEngineStorageModel*, const EngineOptionable&);
-
-
-	/// <summary>
 	/// int n = f();
 	/// </summary>
 	using FnVoidInt = int();
@@ -29,10 +24,10 @@ public:	//protected:
 public:
 
 
-	EngineOptionable(												Fn* = nullptr, MuzGameEngineStorageModel* s = nullptr);
-	EngineOptionable(const char* v,								    Fn* = nullptr, MuzGameEngineStorageModel* s = nullptr);
-	EngineOptionable(const bool  v,								    Fn* = nullptr, MuzGameEngineStorageModel* s = nullptr);
-	EngineOptionable(const int   v, const int min, const int max,	Fn* = nullptr, MuzGameEngineStorageModel* s = nullptr);
+	EngineOptionable(												std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> = nullptr, MuzGameEngineStorageModel* s = nullptr);
+	EngineOptionable(const char* v,								    std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> = nullptr, MuzGameEngineStorageModel* s = nullptr);
+	EngineOptionable(const bool  v,								    std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> = nullptr, MuzGameEngineStorageModel* s = nullptr);
+	EngineOptionable(const int   v, const int min, const int max,	std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> = nullptr, MuzGameEngineStorageModel* s = nullptr);
 
 
 	/// <summary>
@@ -123,7 +118,7 @@ protected:
 	/// <summary>
 	/// 変更時フック
 	/// </summary>
-	Fn* m_onChange_;
+	std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> m_onChange_;
 
 	/// <summary>
 	///		<pre>

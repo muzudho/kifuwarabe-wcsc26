@@ -13,11 +13,11 @@
 void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
 	EngineOptionCollection* pMap,
 	MuzGameEngineStorageModel* pRucksack,
-	EngineOptionable::Fn* pHandleHashSizeChanged,
-	EngineOptionable::Fn* pHandleHashCleared,
-	EngineOptionable::Fn* pHandleEvalDirChanged,
-	EngineOptionable::Fn* pMaxThreadsPerSplitPointChanged,
-	EngineOptionable::Fn* pHandleThreadsChanged,
+	std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> pHandleHashSizeChanged,
+	std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> pHandleHashCleared,
+	std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> pHandleEvalDirChanged,
+	std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> pMaxThreadsPerSplitPointChanged,
+	std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> pHandleThreadsChanged,
 	EngineOptionable::FnVoidInt* pGetCpuCoreCount)
 {
 	// ハッシュサイズ

@@ -11,7 +11,7 @@
 /// <param name="v"></param>
 /// <param name="f"></param>
 /// <param name="s"></param>
-EngineOption::EngineOption(const char* v, Fn* f, MuzGameEngineStorageModel* s) : EngineOptionable(v, f, s)
+EngineOption::EngineOption(const char* v, std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> f, MuzGameEngineStorageModel* s) : EngineOptionable(v, f, s)
 {
 }
 
@@ -24,7 +24,7 @@ EngineOption::EngineOption(const char* v, Fn* f, MuzGameEngineStorageModel* s) :
 /// <param name="v"></param>
 /// <param name="f"></param>
 /// <param name="s"></param>
-EngineOption::EngineOption(const bool v, Fn* f, MuzGameEngineStorageModel* s) : EngineOptionable(v, f, s)
+EngineOption::EngineOption(const bool v, std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> f, MuzGameEngineStorageModel* s) : EngineOptionable(v, f, s)
 {
 }
 
@@ -36,7 +36,7 @@ EngineOption::EngineOption(const bool v, Fn* f, MuzGameEngineStorageModel* s) : 
 /// </summary>
 /// <param name="f"></param>
 /// <param name="s"></param>
-EngineOption::EngineOption(Fn* f, MuzGameEngineStorageModel* s) : EngineOptionable(f, s)
+EngineOption::EngineOption(std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> f, MuzGameEngineStorageModel* s) : EngineOptionable(f, s)
 {
 }
 
@@ -51,7 +51,7 @@ EngineOption::EngineOption(Fn* f, MuzGameEngineStorageModel* s) : EngineOptionab
 /// <param name="max"></param>
 /// <param name="f"></param>
 /// <param name="s"></param>
-EngineOption::EngineOption(const int v, const int min, const int max, Fn* f, MuzGameEngineStorageModel* s) : EngineOptionable(v, min, max, f, s)
+EngineOption::EngineOption(const int v, const int min, const int max, std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> f, MuzGameEngineStorageModel* s) : EngineOptionable(v, min, max, f, s)
 {
 }
 
