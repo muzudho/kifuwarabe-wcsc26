@@ -137,26 +137,32 @@ void MuzGameEngineService::initialize_10a()
     engineOptionsInitialize.initialize_10a510b_engineOptions(
         &this->m_pGameEngineStore->m_engineOptionCollection,
         this->m_pGameEngineStore.get(),
+        // pHandleHashSizeChanged:
         [] (auto pGameEngineStore, auto opt)
         {
             pGameEngineStore->m_tt.setSize(opt);
         },
+        // pHandleHashCleared:
         [](auto pGameEngineStore, auto opt)
         {
             pGameEngineStore->m_tt.Clear();
         },
+        // pHandleEvalDirChanged:
         [](auto pGameEngineStore, auto opt)
         {
             std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->initialize_10a600b(opt, true);
         },
+        // pMaxThreadsPerSplitPointChanged:
         [](auto pGameEngineStore, auto opt)
         {
             pGameEngineStore->m_pub.ReadUSIOptions(pGameEngineStore);
         },
+        // pHandleThreadsChanged:
         [](auto pGameEngineStore, auto opt)
         {
             pGameEngineStore->m_pub.ReadUSIOptions(pGameEngineStore);
         },
+        // pGetCpuCoreCount:
         []()
         {
             // 論理的なコア数の取得
