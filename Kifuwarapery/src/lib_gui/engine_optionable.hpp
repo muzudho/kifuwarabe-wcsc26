@@ -11,7 +11,7 @@ class MuzGameEngineStorageModel;
 class EngineOptionable {
 
 
-protected:
+public:	//protected:
 
 
 	/// <summary>

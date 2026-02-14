@@ -10,30 +10,23 @@ namespace {
 
 
 	/// <summary>
-	/// USIエンジン用のオプションが変化したときに呼び出されるコールバック関数群☆（＾ｑ＾）
+    /// USIエンジン用のオプションが変化したときに呼び出されるコールバック関数群☆（＾ｑ＾） 
 	/// </summary>
-	/// <param name="s"></param>
-	/// <param name="opt"></param>
-	void handleHashSizeChanged(MuzGameEngineStorageModel* s, const EngineOptionable& opt)
+	/// <param name="pGameEngineStore"></param>
+	/// <param name=""></param>
+	void handleHashCleared(MuzGameEngineStorageModel* pGameEngineStore, const EngineOptionable&)
 	{
-		s->m_tt.setSize(opt);
+		pGameEngineStore->m_tt.Clear();
 	}
 
 
 	/// <summary>
     /// USIエンジン用のオプションが変化したときに呼び出されるコールバック関数群☆（＾ｑ＾） 
 	/// </summary>
-	/// <param name="s"></param>
-	/// <param name=""></param>
-	void handleHashCleared(MuzGameEngineStorageModel* s, const EngineOptionable&) { s->m_tt.Clear(); }
-
-
-	/// <summary>
-    /// USIエンジン用のオプションが変化したときに呼び出されるコールバック関数群☆（＾ｑ＾） 
-	/// </summary>
 	/// <param name=""></param>
 	/// <param name="opt"></param>
-	void onEvalDirChanged(MuzGameEngineStorageModel*, const EngineOptionable& opt) {
+	void handleEvalDirChanged(MuzGameEngineStorageModel*, const EngineOptionable& opt)
+	{
 		std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->initialize_10a600b(opt, true);
 	}
 
@@ -41,9 +34,12 @@ namespace {
 	/// <summary>
     /// USIエンジン用のオプションが変化したときに呼び出されるコールバック関数群☆（＾ｑ＾） 
 	/// </summary>
-	/// <param name="s"></param>
+	/// <param name="pGameEngineStore"></param>
 	/// <param name=""></param>
-	void onThreadsChanged(MuzGameEngineStorageModel* s, const EngineOptionable&) { s->m_pub.ReadUSIOptions(s); }
+	void handleThreadsChanged(MuzGameEngineStorageModel* pGameEngineStore, const EngineOptionable&)
+	{
+		pGameEngineStore->m_pub.ReadUSIOptions(pGameEngineStore);
+	}
 
 
 	/// <summary>
@@ -63,10 +59,13 @@ namespace {
 /// </summary>
 /// <param name="pMap"></param>
 /// <param name="pRucksack"></param>
-void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(EngineOptionCollection* pMap, MuzGameEngineStorageModel * pRucksack)
+void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
+	EngineOptionCollection* pMap,
+	MuzGameEngineStorageModel* pRucksack,
+	EngineOptionable::Fn* pHandleHashSizeChanged)
 {
 	// ハッシュサイズ
-	pMap->Put("USI_Hash"					, EngineOption(256, 1, 65536, handleHashSizeChanged, pRucksack));
+	pMap->Put("USI_Hash"					, EngineOption(256, 1, 65536, pHandleHashSizeChanged, pRucksack));
 
 	// ［ハッシュ・クリアー］ボタン
 	pMap->Put("Clear_Hash"					, EngineOption(handleHashCleared, pRucksack));
@@ -90,7 +89,7 @@ void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(EngineO
 	pMap->Put("Min_Book_Score"				, EngineOption(-180, -SweetnessInfinite, SweetnessInfinite));
 
 	// ［評価値ファイル］フォルダー
-	pMap->Put("Eval_Dir"					, EngineOption("20151105", onEvalDirChanged));
+	pMap->Put("Eval_Dir"					, EngineOption("20151105", handleEvalDirChanged));
 
 	// ［評価値書き込み］チェックボックス
 	pMap->Put("Write_Synthesized_Eval"		, EngineOption(false));
@@ -131,10 +130,10 @@ void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(EngineO
 	//────────────────────────────────────────────────────────────────────────────────
 
 	// ［一緒に走る猿が分岐する点の最大数］
-	pMap->Put("Max_Threads_per_Split_Point"	, EngineOption(		5,  4,     8, onThreadsChanged, pRucksack));
+	pMap->Put("Max_Threads_per_Split_Point"	, EngineOption(		5,  4,     8, handleThreadsChanged, pRucksack));
 
 	// スレッド数
-	pMap->Put("Threads"						, EngineOption(getCpuCoreCount(), 1, g_MaxThreads, onThreadsChanged, pRucksack));
+	pMap->Put("Threads"						, EngineOption(getCpuCoreCount(), 1, g_MaxThreads, handleThreadsChanged, pRucksack));
 
 	// ［寝てる猿を使う］チェックボックス
 	pMap->Put("Use_Sleeping_Threads"		, EngineOption(false));

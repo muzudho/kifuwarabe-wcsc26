@@ -21,5 +21,8 @@ public:
 	/// </summary>
 	/// <param name="pMap"></param>
 	/// <param name="s"></param>
-	void initialize_10a510b_engineOptions( EngineOptionCollection* pMap, MuzGameEngineStorageModel* s);
+	void initialize_10a510b_engineOptions(
+		EngineOptionCollection* pMap,
+		MuzGameEngineStorageModel* s,
+		EngineOptionable::Fn* pHandleHashSizeChanged);
 };

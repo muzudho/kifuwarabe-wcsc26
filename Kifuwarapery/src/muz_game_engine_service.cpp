@@ -134,7 +134,12 @@ void MuzGameEngineService::initialize_10a()
 
     SYNCCOUT << "(^q^) 2.9 . エンジン・オプション設定！" << SYNCENDL;
     MuzEngineOptionsInitializeService engineOptionsInitialize;
-    engineOptionsInitialize.initialize_10a510b_engineOptions(&this->m_pGameEngineStore->m_engineOptionCollection, this->m_pGameEngineStore.get());
+    engineOptionsInitialize.initialize_10a510b_engineOptions(
+        &this->m_pGameEngineStore->m_engineOptionCollection,
+        this->m_pGameEngineStore.get(),
+        [] (auto pGameEngineStore, auto opt) {
+            pGameEngineStore->m_tt.setSize(opt);
+        });
 
     SYNCCOUT << "(^q^) 3   . 探索部の初期化！" << SYNCENDL;
     this->m_pGameEngineStore->initialize_10a520b_search();
