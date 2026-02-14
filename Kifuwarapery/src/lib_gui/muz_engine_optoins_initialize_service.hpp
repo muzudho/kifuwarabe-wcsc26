@@ -24,5 +24,9 @@ public:
 	void initialize_10a510b_engineOptions(
 		EngineOptionCollection* pMap,
 		MuzGameEngineStorageModel* s,
-		EngineOptionable::Fn* pHandleHashSizeChanged);
+		EngineOptionable::Fn* pHandleHashSizeChanged,
+		EngineOptionable::Fn* pHandleHashCleared,
+		EngineOptionable::Fn* pHandleEvalDirChanged,
+		EngineOptionable::Fn* pMaxThreadsPerSplitPointChanged,
+		EngineOptionable::Fn* pHandleThreadsChanged);
 };

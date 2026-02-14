@@ -137,8 +137,25 @@ void MuzGameEngineService::initialize_10a()
     engineOptionsInitialize.initialize_10a510b_engineOptions(
         &this->m_pGameEngineStore->m_engineOptionCollection,
         this->m_pGameEngineStore.get(),
-        [] (auto pGameEngineStore, auto opt) {
+        [] (auto pGameEngineStore, auto opt)
+        {
             pGameEngineStore->m_tt.setSize(opt);
+        },
+        [](auto pGameEngineStore, auto opt)
+        {
+            pGameEngineStore->m_tt.Clear();
+        },
+        [](auto pGameEngineStore, auto opt)
+        {
+            std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->initialize_10a600b(opt, true);
+        },
+        [](auto pGameEngineStore, auto opt)
+        {
+            pGameEngineStore->m_pub.ReadUSIOptions(pGameEngineStore);
+        },
+        [](auto pGameEngineStore, auto opt)
+        {
+            pGameEngineStore->m_pub.ReadUSIOptions(pGameEngineStore);
         });
 
     SYNCCOUT << "(^q^) 3   . 探索部の初期化！" << SYNCENDL;
