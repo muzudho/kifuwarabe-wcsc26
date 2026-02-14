@@ -60,7 +60,7 @@ namespace {
 /// </summary>
 /// <param name="pMap"></param>
 /// <param name="pRucksack"></param>
-void EngineOptionSetup::initialize_10a500b100c(EngineOptionsMap* pMap, GameEngineStorageOurCarriage * pRucksack)
+void EngineOptionSetup::initialize_10a500b100c(EngineOptionCollection* pMap, GameEngineStorageOurCarriage * pRucksack)
 {
 	pMap->Put("USI_Hash"					, EngineOption(256, 1, 65536, onHashSize, pRucksack));
 	pMap->Put("Clear_Hash"					, EngineOption(onClearHash, pRucksack));

@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../../src/lib_gui/engine_optionable.hpp"
-#include "../../header/n680_egOption/n680_240_engineOptionsMap.hpp"
+#include "../../src/lib_gui/engine_option_collection.hpp"
 
 
 class GameEngineStorageOurCarriage;

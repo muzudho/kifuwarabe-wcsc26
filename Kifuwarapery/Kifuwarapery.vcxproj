@@ -391,7 +391,7 @@
     <ClInclude Include="header\n640_searcher\n640_510_futilityMargins.hpp" />
     <ClInclude Include="header\n640_searcher\n640_520_futilityMoveCounts.hpp" />
     <ClInclude Include="src\lib_gui\engine_optionable.hpp" />
-    <ClInclude Include="header\n680_egOption\n680_240_engineOptionsMap.hpp" />
+    <ClInclude Include="src\lib_gui\engine_option_collection.hpp" />
     <ClInclude Include="header\n680_egOption\n680_245_engineOption.hpp" />
     <ClInclude Include="header\n680_egOption\n680_300_engineOptionSetup.hpp" />
     <ClInclude Include="header\n720_usi_____\n720_260_usiOperation.hpp" />
@@ -615,7 +615,7 @@
     <ClCompile Include="source\n640_searcher\n640_510_futilityMargins.cpp" />
     <ClCompile Include="source\n640_searcher\n640_520_futilityMoveCounts.cpp" />
     <ClCompile Include="src\lib_gui\engine_optionable.cpp" />
-    <ClCompile Include="source\n680_egOption\n680_240_engineOptionsMap.cpp" />
+    <ClCompile Include="src\lib_gui\engine_option_collection.cpp" />
     <ClCompile Include="source\n680_egOption\n680_245_engineOption.cpp" />
     <ClCompile Include="source\n680_egOption\n680_300_engineOptionSetup.cpp" />
     <ClCompile Include="source\n720_usi_____\n720_260_usiOperation.cpp" />

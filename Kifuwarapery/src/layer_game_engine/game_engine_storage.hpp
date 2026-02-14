@@ -14,11 +14,11 @@
 #include "../../header/n560_timeMgr_/n560_500_timeManager.hpp"
 #include "../../header/n640_searcher/n640_128_signalsType.hpp"
 #include "../../header/n640_searcher/n640_450_rootMove.hpp"
-#include "../../header/n680_egOption/n680_240_engineOptionsMap.hpp"
 #include "../../header/n640_searcher/n640_440_splitedNode.hpp"
 #include "../../header/n760_thread__/n760_400_monkiesPub.hpp"
 #include "../../header/n800_learn___/n800_100_stopwatch.hpp"
 #include "../../header/n885_searcher/n885_510_adventureContinent.hpp"
+#include "../../src/lib_gui/engine_option_collection.hpp"
 
 using namespace std;
 using History = Stats<false>;
@@ -150,7 +150,7 @@ public:
 	/// <summary>
 	/// USIオプションのコレクション
 	/// </summary>
-	EngineOptionsMap	m_engineOptionCollection;
+	EngineOptionCollection	m_engineOptionCollection;
 
 	/// <summary>
 	/// true にすると、シングルスレッドで動作する。デバッグ用。

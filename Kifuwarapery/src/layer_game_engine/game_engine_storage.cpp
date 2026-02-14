@@ -28,7 +28,7 @@
 #include "../../header/n640_searcher/n640_500_reductions.hpp"
 #include "../../header/n640_searcher/n640_510_futilityMargins.hpp"
 #include "../../header/n640_searcher/n640_520_futilityMoveCounts.hpp"
-#include "../../header/n680_egOption/n680_240_engineOptionsMap.hpp"
+#include "../../src/lib_gui/engine_option_collection.hpp"
 #include "../../header/n680_egOption/n680_300_engineOptionSetup.hpp"
 #include "../../header/n755_whistle_/n755_070_WhistleAbstract.hpp"
 #include "../../header/n760_thread__/n760_400_monkiesPub.hpp"

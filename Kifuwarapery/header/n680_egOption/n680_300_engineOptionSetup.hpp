@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 
-#include "../n680_egOption/n680_240_engineOptionsMap.hpp"
+#include "../../src/lib_gui/engine_option_collection.hpp"
 
 
 class GameEngineStorageOurCarriage;
@@ -21,5 +21,5 @@ public:
 	/// </summary>
 	/// <param name="pMap"></param>
 	/// <param name="s"></param>
-	void initialize_10a500b100c( EngineOptionsMap* pMap, GameEngineStorageOurCarriage* s);
+	void initialize_10a500b100c( EngineOptionCollection* pMap, GameEngineStorageOurCarriage* s);
 };

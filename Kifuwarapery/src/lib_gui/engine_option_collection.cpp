@@ -1,5 +1,5 @@
 ﻿#include <string>
-#include "../../header/n680_egOption/n680_240_engineOptionsMap.hpp"
+#include "engine_option_collection.hpp"
 
 
 /// <summary>
@@ -25,7 +25,7 @@ bool CaseInsensitiveLess::operator () (const std::string& s1, const std::string&
 /// </summary>
 /// <param name="key"></param>
 /// <param name="option"></param>
-void EngineOptionsMap::Put(const std::string key, EngineOptionable option)
+void EngineOptionCollection::Put(const std::string key, EngineOptionable option)
 {
 	(this->m_map)[key] = option;
 }
@@ -37,7 +37,7 @@ void EngineOptionsMap::Put(const std::string key, EngineOptionable option)
 /// <param name="os"></param>
 /// <param name="engineOptionCollection"></param>
 /// <returns></returns>
-std::ostream& operator << (std::ostream& os, const EngineOptionsMap& engineOptionCollection) {
+std::ostream& operator << (std::ostream& os, const EngineOptionCollection& engineOptionCollection) {
 	for (auto& elem : engineOptionCollection.m_map) {
 		const EngineOptionable& o = elem.second;
 		os << "\noption name " << elem.first << " type " << o.GetType();
