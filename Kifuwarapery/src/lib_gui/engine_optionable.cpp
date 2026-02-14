@@ -6,11 +6,11 @@
 /// <summary>
 /// 
 /// </summary>
-/// <param name="v"></param>
+/// <param name="newValue"></param>
 /// <param name="f"></param>
-/// <param name="s"></param>
-EngineOptionable::EngineOptionable(const char* v, Fn* f, GameEngineStorageOurCarriage* s)
-	: m_type_("string"), m_min_(0), m_max_(0), m_onChange_(f), m_pGameEngineStore_(s)
+/// <param name="pGameEngineStore"></param>
+EngineOptionable::EngineOptionable(const char* v, Fn* f, GameEngineStorageOurCarriage* pGameEngineStore)
+	: m_type_("string"), m_min_(0), m_max_(0), m_onChange_(f), m_pGameEngineStore_(pGameEngineStore)
 {
 	m_defaultValue_ = m_currentValue_ = v;
 }
@@ -19,11 +19,11 @@ EngineOptionable::EngineOptionable(const char* v, Fn* f, GameEngineStorageOurCar
 /// <summary>
 /// 
 /// </summary>
-/// <param name="v"></param>
+/// <param name="newValue"></param>
 /// <param name="f"></param>
-/// <param name="s"></param>
-EngineOptionable::EngineOptionable(const bool v, Fn* f, GameEngineStorageOurCarriage* s)
-	: m_type_("check"), m_min_(0), m_max_(0), m_onChange_(f), m_pGameEngineStore_(s)
+/// <param name="pGameEngineStore"></param>
+EngineOptionable::EngineOptionable(const bool v, Fn* f, GameEngineStorageOurCarriage* pGameEngineStore)
+	: m_type_("check"), m_min_(0), m_max_(0), m_onChange_(f), m_pGameEngineStore_(pGameEngineStore)
 {
 	m_defaultValue_ = m_currentValue_ = (v ? "true" : "false");
 }
@@ -33,9 +33,9 @@ EngineOptionable::EngineOptionable(const bool v, Fn* f, GameEngineStorageOurCarr
 /// 
 /// </summary>
 /// <param name="f"></param>
-/// <param name="s"></param>
-EngineOptionable::EngineOptionable(Fn* f, GameEngineStorageOurCarriage* s)
-	: m_type_("button"), m_min_(0), m_max_(0), m_onChange_(f), m_pGameEngineStore_(s)
+/// <param name="pGameEngineStore"></param>
+EngineOptionable::EngineOptionable(Fn* f, GameEngineStorageOurCarriage* pGameEngineStore)
+	: m_type_("button"), m_min_(0), m_max_(0), m_onChange_(f), m_pGameEngineStore_(pGameEngineStore)
 {
 }
 
@@ -43,13 +43,13 @@ EngineOptionable::EngineOptionable(Fn* f, GameEngineStorageOurCarriage* s)
 /// <summary>
 /// 
 /// </summary>
-/// <param name="v"></param>
+/// <param name="newValue"></param>
 /// <param name="min"></param>
 /// <param name="max"></param>
 /// <param name="f"></param>
-/// <param name="gameEngineStore"></param>
-EngineOptionable::EngineOptionable(const int v, const int min, const int max, Fn* f, GameEngineStorageOurCarriage* gameEngineStore)
-	: m_type_("spin"), m_min_(min), m_max_(max), m_onChange_(f), m_pGameEngineStore_(gameEngineStore)
+/// <param name="pGameEngineStore"></param>
+EngineOptionable::EngineOptionable(const int v, const int min, const int max, Fn* f, GameEngineStorageOurCarriage* pGameEngineStore)
+	: m_type_("spin"), m_min_(min), m_max_(max), m_onChange_(f), m_pGameEngineStore_(pGameEngineStore)
 {
 	std::ostringstream ss;
 	ss << v;
@@ -58,24 +58,37 @@ EngineOptionable::EngineOptionable(const int v, const int min, const int max, Fn
 
 
 /// <summary>
-/// 
+/// 値のセット、またはボタンの押下☆（＾ｑ＾）
 /// </summary>
-/// <param name="v"></param>
+/// <param name="newValue"></param>
 /// <returns></returns>
-EngineOptionable& EngineOptionable::operator = (const std::string& v)
+EngineOptionable& EngineOptionable::operator = (const std::string& newValue)
 {
 	assert(!m_type_.empty());
 
-	if ((m_type_ != "button" && v.empty())
-		|| (m_type_ == "check" && v != "true" && v != "false")
-		|| (m_type_ == "spin" && (atoi(v.c_str()) < m_min_ || m_max_ < atoi(v.c_str()))))
+	if (
+		(m_type_ != "button" && newValue.empty())	// 値が無いのに、ボタンじゃなかった
+        || (m_type_ == "check" && newValue != "true" && newValue != "false")	// チェックボックスなのに、値が "true" でも "false" でもなかった
+        || (m_type_ == "spin" && (atoi(newValue.c_str()) < m_min_ || m_max_ < atoi(newValue.c_str()))))	// スピンなのに、値が最小値～最大値の範囲外だった
 	{ return *this; }
 
-	if (m_type_ != "button") {
-		m_currentValue_ = v;
+    bool isDirty = false;
+
+	// ボタンなら
+	if (m_type_ == "button")
+	{
+        isDirty = true;
+	}
+	// （ボタンじゃなければ）値の更新
+	else
+	{
+		m_currentValue_ = newValue;
+        isDirty = m_currentValue_ != newValue;	// 変更前の値と変更後の値が違うときだけ、変更通知を呼び出すようにするぜ☆（＾ｑ＾）
 	}
 
-	if (m_onChange_ != nullptr) {
+	// 変更通知、またはボタン押下の通知
+    // FIXME: 変更前の値、変更後の値を渡すようにするか（＾～＾）？
+	if (isDirty && m_onChange_ != nullptr) {
 		(*m_onChange_)(m_pGameEngineStore_, *this);
 	}
 
