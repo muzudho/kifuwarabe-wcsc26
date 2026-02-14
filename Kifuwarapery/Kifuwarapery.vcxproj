@@ -439,6 +439,7 @@
     <ClInclude Include="src\main.hpp" />
     <ClInclude Include="header\n165_movStack\n165_410_moveModels.hpp" />
     <ClInclude Include="header\n220_position\n220_645_gameStats.hpp" />
+    <ClInclude Include="src\muz_game_engine_service.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -447,6 +448,17 @@
     <ClCompile Include="header\n080_100_sysWorld\n080_100_075_debugcerr.hpp" />
     <ClCompile Include="header\n080_100_sysWorld\n080_100_077_binary.hpp" />
     <ClCompile Include="header\n080_100_sysWorld\n080_100_078_lsbMsb.hpp" />
+    <ClCompile Include="src\lib_bitboard\init150_rookAttackBb.cpp" />
+    <ClCompile Include="src\lib_bitboard\init160_kingAttackBb.cpp" />
+    <ClCompile Include="src\lib_bitboard\init180_knightAttackBb.cpp" />
+    <ClCompile Include="src\lib_bitboard\init190_pawnAttackBb.cpp" />
+    <ClCompile Include="src\lib_bitboard\n160_170_goldAndSilverAttackBb.cpp" />
+    <ClCompile Include="src\lib_bitboard\n160_200_horseAttackBb.cpp" />
+    <ClCompile Include="src\lib_bitboard\n160_210_dragonAttackBb.cpp" />
+    <ClCompile Include="src\lib_bitboard\n160_220_queenAttackBb.cpp" />
+    <ClCompile Include="src\lib_bitboard\n160_230_setMaskBB.cpp" />
+    <ClCompile Include="src\lib_bitboard\n160_240_betweenBb.cpp" />
+    <ClCompile Include="src\lib_bitboard\n160_400_printBb.cpp" />
     <ClCompile Include="src\lib_gui\muz_engine_option_textbox_model.cpp" />
     <ClCompile Include="src\lib_gui\muz_engine_option_spinbox_model.cpp" />
     <ClCompile Include="src\lib_gui\muz_engine_option_checkbox_model.cpp" />
@@ -664,6 +676,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="benchmark.sfen" />
+    <None Include="Makefile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="# - 20_○ビルドは通る☆-弱くはなっていない☆.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

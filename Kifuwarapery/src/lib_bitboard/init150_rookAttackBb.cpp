@@ -30,7 +30,7 @@ u64 RookAttackBb::findMagicRook(const Square square) {
 	Bitboard occupied[1 << 14];
 	Bitboard attack[1 << 14];
 	Bitboard attackUsed[1 << 14];
-	Bitboard mask = this->RookBlockMaskCalc(square);
+	Bitboard mask = this->MakeRookBlockMask(square);
 	int num1s = g_rookBlockBits[square];
 
 	// n bit の全ての数字 (利きのあるマスの全ての 0 or 1 の組み合わせ)
@@ -88,7 +88,7 @@ void RookAttackBb::initialize_10a100b_rookAttacks()
 	int index = 0;
 	for (Square sq = I9; sq < SquareNum; ++sq) {
 
-		blockMask[sq] = this->RookBlockMaskCalc(sq);
+		blockMask[sq] = this->MakeRookBlockMask(sq);
 
 		attackIndex[sq] = index;
 
@@ -111,11 +111,11 @@ void RookAttackBb::initialize_10a100b_rookAttacks()
 
 
 /// <summary>
-/// square のマスにおける、障害物を調べる必要がある場所を調べて Bitboard で返す。
+/// square のマスにおける、障害物（Block）を調べる必要がある場所を調べて Bitboard で返す。
 /// </summary>
 /// <param name="square"></param>
 /// <returns></returns>
-Bitboard RookAttackBb::RookBlockMaskCalc(const Square square) const {
+Bitboard RookAttackBb::MakeRookBlockMask(const Square square) const {
 
     // 飛車の利きのブロックマスは、縦横の端を除くマス。
     // ^ は排他的論理和。縦横の端を除くマスは、縦横のマスクの XOR で求められる。

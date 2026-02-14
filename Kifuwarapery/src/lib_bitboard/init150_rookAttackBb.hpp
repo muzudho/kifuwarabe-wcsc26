@@ -144,7 +144,7 @@ public:
 	/// </summary>
 	/// <param name="square"></param>
 	/// <returns></returns>
-	Bitboard RookBlockMaskCalc(const Square square) const;
+	Bitboard MakeRookBlockMask(const Square square) const;
 
 	/// <summary>
 	/// 
