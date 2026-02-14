@@ -79,7 +79,7 @@ public:
 	/// <param name="key"></param>
 	/// <returns></returns>
 	MuzEngineOptionAbstractModel& GetOption(const std::string key) {
-		return this->m_map[key];
+		return this->m_map.at(key);
     }
 
 
