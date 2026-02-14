@@ -3,7 +3,7 @@
 #include "n760_250_monkie.hpp"
 
 
-class OurCarriage;
+class GameEngineStorageOurCarriage;
 
 
 /// <summary>
@@ -42,7 +42,7 @@ public:
     /// 生成☆（＾ｑ＾）
 	/// </summary>
 	/// <param name="s"></param>
-	explicit Orangutan(OurCarriage* s) : Monkie(s), m_isMasterThread(true) {}
+	explicit Orangutan(GameEngineStorageOurCarriage* s) : Monkie(s), m_isMasterThread(true) {}
 
 
 	// ========================================

@@ -3,7 +3,7 @@
 #include "n760_250_monkie.hpp"
 
 
-class OurCarriage;
+class GameEngineStorageOurCarriage;
 
 
 /// <summary>
@@ -40,7 +40,7 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="s"></param>
-	explicit Chimpanzee(OurCarriage* s) : Monkie(s), m_lifetimeMilliseconds(0) {}
+	explicit Chimpanzee(GameEngineStorageOurCarriage* s) : Monkie(s), m_lifetimeMilliseconds(0) {}
 
 
 	// ========================================

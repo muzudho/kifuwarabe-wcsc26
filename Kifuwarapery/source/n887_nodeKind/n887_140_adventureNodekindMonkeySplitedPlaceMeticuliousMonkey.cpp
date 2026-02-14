@@ -69,7 +69,7 @@ AdventureNodekindMonkeySplitedPlacePv g_NODEKIND_MONKEYSPLITEDPLACE_METICULOUS_M
 /// <param name="cutNode"></param>
 /// <returns></returns>
 Sweetness AdventureNodekindMonkeySplitedPlacePv::explorePlain_10i(
-	OurCarriage& ourCarriage,
+	GameEngineStorageOurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
 	Sweetness alpha,

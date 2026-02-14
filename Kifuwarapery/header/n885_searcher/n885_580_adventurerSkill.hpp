@@ -36,7 +36,7 @@ struct AdventurerSkill {
 	/// 
 	/// </summary>
 	/// <param name="s"></param>
-	void swapIfEnabled(OurCarriage* s) {
+	void swapIfEnabled(GameEngineStorageOurCarriage* s) {
 		if (enabled()) {
 			auto it = std::find(s->m_rootMoves.begin(),
 				s->m_rootMoves.end(),
@@ -68,7 +68,7 @@ struct AdventurerSkill {
 	/// </summary>
 	/// <param name="s"></param>
 	/// <returns></returns>
-	Move pickMove(OurCarriage* s) {
+	Move pickMove(GameEngineStorageOurCarriage* s) {
 		// level については未対応。max_random_weetness_diff についてのみ対応する。
 		if (m_maxRandomSweetnessDiff != SweetnessZero) {
 			size_t i = 1;

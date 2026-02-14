@@ -21,7 +21,7 @@ public:
 	/// <param name="pSearcher"></param>
 	/// <param name="pFlashlightBox"></param>
 	std::pair<bool, Sweetness> IsStop(
-		const OurCarriage* pSearcher,
+		const GameEngineStorageOurCarriage* pSearcher,
 		const Flashlight* pFlashlightBox) const override
 	{
 		return std::make_pair(true, UtilSweetness::MateIn(pFlashlightBox->m_ply));

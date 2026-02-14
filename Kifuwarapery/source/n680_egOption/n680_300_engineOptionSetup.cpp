@@ -14,7 +14,7 @@ namespace {
 	/// </summary>
 	/// <param name="s"></param>
 	/// <param name="opt"></param>
-	void onHashSize(OurCarriage* s, const EngineOptionable& opt) { s->m_tt.setSize(opt); }
+	void onHashSize(GameEngineStorageOurCarriage* s, const EngineOptionable& opt) { s->m_tt.setSize(opt); }
 
 
 	/// <summary>
@@ -22,7 +22,7 @@ namespace {
 	/// </summary>
 	/// <param name="s"></param>
 	/// <param name=""></param>
-	void onClearHash(OurCarriage* s, const EngineOptionable&) { s->m_tt.Clear(); }
+	void onClearHash(GameEngineStorageOurCarriage* s, const EngineOptionable&) { s->m_tt.Clear(); }
 
 
 	/// <summary>
@@ -30,7 +30,7 @@ namespace {
 	/// </summary>
 	/// <param name=""></param>
 	/// <param name="opt"></param>
-	void onEvalDir(OurCarriage*, const EngineOptionable& opt) {
+	void onEvalDir(GameEngineStorageOurCarriage*, const EngineOptionable& opt) {
 		std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->initialize_10a600b(opt, true);
 	}
 
@@ -40,7 +40,7 @@ namespace {
 	/// </summary>
 	/// <param name="s"></param>
 	/// <param name=""></param>
-	void onThreads(OurCarriage* s, const EngineOptionable&) { s->m_pub.ReadUSIOptions(s); }
+	void onThreads(GameEngineStorageOurCarriage* s, const EngineOptionable&) { s->m_pub.ReadUSIOptions(s); }
 
 
 	/// <summary>
@@ -60,7 +60,7 @@ namespace {
 /// </summary>
 /// <param name="pMap"></param>
 /// <param name="pRucksack"></param>
-void EngineOptionSetup::initialize_10a500b100c(EngineOptionsMap* pMap, OurCarriage * pRucksack)
+void EngineOptionSetup::initialize_10a500b100c(EngineOptionsMap* pMap, GameEngineStorageOurCarriage * pRucksack)
 {
 	pMap->Put("USI_Hash"					, EngineOption(256, 1, 65536, onHashSize, pRucksack));
 	pMap->Put("Clear_Hash"					, EngineOption(onClearHash, pRucksack));

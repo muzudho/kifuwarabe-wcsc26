@@ -29,7 +29,7 @@ public:
 	/// <param name="pFlashlight"></param>
 	virtual void blowWhistle_asMonkeySplitedPlace(
 		MonkeySplitedPlace& ownerMonkeySplitedPlace,
-		OurCarriage& searcher,
+		GameEngineStorageOurCarriage& searcher,
 		Position& pos,
 		Flashlight* pFlashlight) const override;
 };

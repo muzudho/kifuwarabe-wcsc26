@@ -3,10 +3,10 @@
 
 #include "../n220_position/n220_650_position.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"
-#include "../n640_searcher/n640_440_splitedNode.hpp" // OurCarriage と持ち合い
+#include "../n640_searcher/n640_440_splitedNode.hpp" // GameEngineStorageOurCarriage と持ち合い
 
 
-class OurCarriage;
+class GameEngineStorageOurCarriage;
 
 
 /// <summary>
@@ -36,7 +36,7 @@ public:
 	/// <param name="pFlashlight"></param>
 	virtual void blowWhistle_asMonkeySplitedPlace(
 		MonkeySplitedPlace& ownerMonkeySplitedPlace,
-		OurCarriage& ourCarriage,
+		GameEngineStorageOurCarriage& ourCarriage,
 		Position& pos,
 		Flashlight* pFlashlight) const = 0;
 };

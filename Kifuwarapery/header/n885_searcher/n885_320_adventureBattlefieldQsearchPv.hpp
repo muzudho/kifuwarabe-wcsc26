@@ -139,7 +139,7 @@ public:
 	virtual inline void doByNewSweetness(
 		bool& isReturnWithSweetness,
 		Sweetness& returnSweetness,
-		OurCarriage& ourCarriage,
+		GameEngineStorageOurCarriage& ourCarriage,
 		Sweetness& sweetness,
 		Sweetness& beta,
 		Sweetness& alpha,

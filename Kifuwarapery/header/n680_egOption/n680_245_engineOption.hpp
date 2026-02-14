@@ -5,7 +5,7 @@
 #include "../../header/n680_egOption/n680_240_engineOptionsMap.hpp"
 
 
-class OurCarriage;
+class GameEngineStorageOurCarriage;
 
 
 /// <summary>
@@ -17,10 +17,10 @@ class EngineOption : public EngineOptionable {
 public:
 
 
-	EngineOption(Fn* = nullptr, OurCarriage* s = nullptr);
-	EngineOption(const char* v, Fn* = nullptr, OurCarriage* s = nullptr);
-	EngineOption(const bool  v, Fn* = nullptr, OurCarriage* s = nullptr);
-	EngineOption(const int   v, const int min, const int max, Fn* = nullptr, OurCarriage* s = nullptr);
+	EngineOption(Fn* = nullptr, GameEngineStorageOurCarriage* s = nullptr);
+	EngineOption(const char* v, Fn* = nullptr, GameEngineStorageOurCarriage* s = nullptr);
+	EngineOption(const bool  v, Fn* = nullptr, GameEngineStorageOurCarriage* s = nullptr);
+	EngineOption(const int   v, const int min, const int max, Fn* = nullptr, GameEngineStorageOurCarriage* s = nullptr);
 
 
 //private:

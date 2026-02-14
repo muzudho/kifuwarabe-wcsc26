@@ -29,11 +29,12 @@ using Gains   = Stats<true>;
 ///		<pre>
 /// わたしたちの馬車
 /// 
-///		- 元の名前：　1.Ｓearcher, 2.Ｒucksack
-///		- 複数の探索スレッドに渡される、単一のデータのかたまり。
+///		- 旧名：　1. Searcher, 2. Rucksack, 3. ＯurCarriage
+///		- ゲームエンジンが１つだけ持つ
+///		- 複数の探索スレッドに渡される
 ///		</pre>
 /// </summary>
-class OurCarriage {
+class GameEngineStorageOurCarriage {
 
 
 public:
@@ -468,7 +469,7 @@ void initialize_10a300b_searchTable();
 /// </summary>
 /// <param name="ourCarriage">わたしたちの馬車</param>
 /// <returns></returns>
-FORCE_INLINE void		MonkiesPub::WakeUp(OurCarriage* ourCarriage) {
+FORCE_INLINE void		MonkiesPub::WakeUp(GameEngineStorageOurCarriage* ourCarriage) {
 	// 全員初期化☆？
 	for (size_t i = 0; i < this->m_monkies.size(); ++i) {
 		(*this).m_monkies[i]->m_maxPly = 0;

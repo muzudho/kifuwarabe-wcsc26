@@ -135,7 +135,7 @@ void TimeManager::Initialize(
 	const LimitsDuringGo& limits,
 	const Ply currentPly,
 	const Color us,
-	OurCarriage* pRucksack)
+	GameEngineStorageOurCarriage* pRucksack)
 {
 	const Color them = ConvColor::OPPOSITE_COLOR10b(us);	// 相手の手番の色
 

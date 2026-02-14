@@ -32,7 +32,7 @@ public:
 	/// <param name="depth"></param>
 	/// <returns></returns>
 	virtual Sweetness ExploreAsQsearch(
-		OurCarriage& ourCarriage,
+		GameEngineStorageOurCarriage& ourCarriage,
 		bool INCHECK,
 		Position& pos,
 		Flashlight* ss,
@@ -154,7 +154,7 @@ public:
 	virtual inline void doByNewSweetness(
 		bool& isReturnWithSweetness,
 		Sweetness& returnSweetness,
-		OurCarriage& ourCarriage,
+		GameEngineStorageOurCarriage& ourCarriage,
 		Sweetness& sweetness,
 		Sweetness& beta,
 		Sweetness& alpha,

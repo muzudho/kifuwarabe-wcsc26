@@ -25,7 +25,7 @@
 /// <typeparam name="T"></typeparam>
 /// <param name="s"></param>
 /// <returns></returns>
-template <typename MONKIE> MONKIE* newThread(OurCarriage* s) {
+template <typename MONKIE> MONKIE* newThread(GameEngineStorageOurCarriage* s) {
 	MONKIE* monkie = new MONKIE(s);
 	monkie->m_handleThread = std::thread(&Monkie::workAsMonkey, monkie); // move constructor
 	return monkie;
@@ -53,7 +53,7 @@ void deleteThread(Monkie* th) {
 ///		</pre>
 /// </summary>
 /// <param name="s"></param>
-void MonkiesPub::initialize_10a500b500c(OurCarriage* s)
+void MonkiesPub::initialize_10a500b500c(GameEngineStorageOurCarriage* s)
 {
 	// 手の空いてる猿は寝てろ。
 	m_isIdleMonkeyToSleep_ = true;
@@ -93,7 +93,7 @@ void MonkiesPub::exit_90a500b() {
 /// 
 /// </summary>
 /// <param name="searcher"></param>
-void MonkiesPub::ReadUSIOptions(OurCarriage* searcher) {
+void MonkiesPub::ReadUSIOptions(GameEngineStorageOurCarriage* searcher) {
 
 	this->m_maxThreadsPerMonkeySplitedPlace = searcher->m_engineOptions["Max_Threads_per_Split_Point"];
 

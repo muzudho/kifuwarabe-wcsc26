@@ -10,7 +10,7 @@
 /// <summary>
 /// わたしたちの馬車
 /// </summary>
-class OurCarriage;
+class GameEngineStorageOurCarriage;
 
 
 #if 0
@@ -356,7 +356,7 @@ public:
 		readBook(GetPos, recordFileName, blackRecordFileName, whiteRecordFileName, gameNum);
 		// 既に 1 つのSearcher, Positionが立ち上がっているので、指定した数 - 1 の Searcher, Position を立ち上げる。
 		threadNum = std::max<size_t>(0, threadNum - 1);
-		std::vector<OurCarriage> searchers(threadNum);
+		std::vector<GameEngineStorageOurCarriage> searchers(threadNum);
 		for (auto& s : searchers) {
 			s.initOptions();
 			setLearnOptions(s);
@@ -496,7 +496,7 @@ private:
 	/// 
 	/// </summary>
 	/// <param name="s"></param>
-	void setLearnOptions(OurCarriage& s) {
+	void setLearnOptions(GameEngineStorageOurCarriage& s) {
 		std::string m_engineOptions[] = {"name Threads value 1",
 								 "name MultiPV value 1",
 								 "name OwnBook value false",

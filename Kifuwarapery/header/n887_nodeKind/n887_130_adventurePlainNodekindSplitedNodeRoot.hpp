@@ -43,7 +43,7 @@ public:
 	/// <param name="cutNode"></param>
 	/// <returns></returns>
 	virtual Sweetness explorePlain_10i(
-		OurCarriage& ourCarriage,
+		GameEngineStorageOurCarriage& ourCarriage,
 		Position& pos,
 		Flashlight* pFlashlight,//サーチスタック
 		Sweetness alpha,
@@ -113,7 +113,7 @@ public:
 	/// <param name="ppFlashlight"></param>
 	virtual inline std::pair<bool, Sweetness> explorePlain_10i1080j_isStopByRepetetion(
 		Position& pos,
-		OurCarriage& ourCarriage,
+		GameEngineStorageOurCarriage& ourCarriage,
 		Flashlight** ppFlashlight
 		)const override
 	{
@@ -150,7 +150,7 @@ public:
 	/// <param name="pTtEntry"></param>
 	/// <param name="pos"></param>
 	virtual inline std::unique_ptr<Move> explorePlain_10i1110j_getTtMove(
-		OurCarriage& ourCarriage,
+		GameEngineStorageOurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
 		Position& pos
 		)const override
@@ -176,7 +176,7 @@ public:
 		Sweetness& ttSweetness,
 		bool& isReturnWithSweetness,
 		Sweetness& returnSweetness,
-		OurCarriage& ourCarriage,
+		GameEngineStorageOurCarriage& ourCarriage,
 		const TTEntry* pTtEntry,
 		const Depth depth,
 		Sweetness& beta,
@@ -221,7 +221,7 @@ public:
 		bool& isReturnWithSweetness,
 		Move& bestMove,
 		Sweetness& returnSweetness,
-		OurCarriage& ourCarriage,
+		GameEngineStorageOurCarriage& ourCarriage,
 		bool& inCheck,
 		Move& move,
 		Position& pos,
@@ -250,7 +250,7 @@ public:
 	virtual inline void explorePlain_10i1260j_byEasyGoingMonkey(
 		bool& isReturnWithSweetness,
 		Sweetness& returnSweetness,
-		OurCarriage& ourCarriage,
+		GameEngineStorageOurCarriage& ourCarriage,
 		const Depth depth,
 		Sweetness& eval,
 		Sweetness& beta,
@@ -301,7 +301,7 @@ public:
 	virtual inline void explorePlain_10i1280j_byEasyGoingMonkey(
 		bool& isReturnWithSweetness,
 		Sweetness& returnSweetness,
-		OurCarriage& ourCarriage,
+		GameEngineStorageOurCarriage& ourCarriage,
 		Flashlight** ppFlashlight,
 		const Depth depth,
 		Sweetness& beta,
@@ -332,7 +332,7 @@ public:
 	/// <param name="cutNode"></param>
 	virtual inline void explorePlain_10i1290j_byEasyGoingMonkey(
 		bool& isReturnWithSweetness,
-		OurCarriage& ourCarriage,
+		GameEngineStorageOurCarriage& ourCarriage,
 		const Depth& depth,
 		Flashlight** ppFlashlight,
 		Sweetness& beta,
@@ -366,7 +366,7 @@ public:
 		bool& inCheck,
 		Sweetness& beta,
 		Flashlight** ppFlashlight,
-		OurCarriage& ourCarriage,
+		GameEngineStorageOurCarriage& ourCarriage,
 		Position& pos,
 		Sweetness& alpha,
 		const TTEntry** ppTtEntry,//セットされるぜ☆
@@ -510,7 +510,7 @@ public:
 	/// <param name="beta"></param>
 	virtual inline void explorePlain_10i2070j_futilityPruning(
 		bool& isContinue,
-		OurCarriage& ourCarriage,
+		GameEngineStorageOurCarriage& ourCarriage,
 		bool& captureOrPawnPromotion,
 		bool& inCheck,
 		bool& dangerous,
@@ -593,7 +593,7 @@ public:
 	/// <param name="movesSearched"></param>
 	virtual inline void explorePlain_10i2090j_updateCurrentMove(
 		bool& isContinue,
-		OurCarriage& ourCarriage,
+		GameEngineStorageOurCarriage& ourCarriage,
 		bool& captureOrPawnPromotion,
 		bool& inCheck,
 		bool& dangerous,
@@ -687,7 +687,7 @@ public:
 	/// <param name="beta"></param>
 	virtual inline void explorePlain_10i3070j_getBestUpdateAlpha(
 		bool& isBreak,
-		OurCarriage& ourCarriage,
+		GameEngineStorageOurCarriage& ourCarriage,
 		Move& move,
 		bool& isPVMove,
 		Sweetness& alpha,
@@ -740,7 +740,7 @@ public:
 	/// <param name="cutNode"></param>
 	virtual inline void explorePlain_10i3080j_forkNewMonkeyIfPossible(
 		bool& isBreak,
-		OurCarriage& ourCarriage,
+		GameEngineStorageOurCarriage& ourCarriage,
 		const Depth depth,
 		Monkie** ppThisThread,
 		Sweetness& bestSweetness,
@@ -788,7 +788,7 @@ public:
 	inline void explorePlain_10i4020j_backwardProcess(
 		int& moveCount,
 		Move& excludedMove,
-		OurCarriage& ourCarriage,
+		GameEngineStorageOurCarriage& ourCarriage,
 		Sweetness& alpha,
 		Flashlight** ppFlashlight,//サーチスタック
 		Sweetness& bestSweetness,

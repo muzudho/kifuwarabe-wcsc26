@@ -4,7 +4,7 @@
 #include "../n680_egOption/n680_240_engineOptionsMap.hpp"
 
 
-class OurCarriage;
+class GameEngineStorageOurCarriage;
 
 
 /// <summary>
@@ -21,5 +21,5 @@ public:
 	/// </summary>
 	/// <param name="pMap"></param>
 	/// <param name="s"></param>
-	void initialize_10a500b100c( EngineOptionsMap* pMap, OurCarriage* s);
+	void initialize_10a500b100c( EngineOptionsMap* pMap, GameEngineStorageOurCarriage* s);
 };

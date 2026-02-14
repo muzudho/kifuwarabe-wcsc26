@@ -31,7 +31,7 @@ using StateStackPtr = std::unique_ptr<std::stack<StateInfo> >;
 
 // 依存関係回避のため。
 class Monkie;
-class OurCarriage;
+class GameEngineStorageOurCarriage;
 
 
 /// <summary>
@@ -53,13 +53,13 @@ public:
 	/// </summary>
 	Position();
 
-	explicit Position(OurCarriage* s);
+	explicit Position(GameEngineStorageOurCarriage* s);
 
 	Position(const Position& pos);
 
 	Position(const Position& pos, Monkie* th);
 
-	Position(const std::string& sfen, Monkie* th, OurCarriage* s);
+	Position(const std::string& sfen, Monkie* th, GameEngineStorageOurCarriage* s);
 
 
 	// ========================================
@@ -606,21 +606,21 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	const OurCarriage* GetConstOurCarriage() const;
+	const GameEngineStorageOurCarriage* GetConstOurCarriage() const;
 
 
 	/// <summary>
 	/// わたしたちの馬車を取得
 	/// </summary>
 	/// <returns></returns>
-	OurCarriage* GetOurCarriage() const;
+	GameEngineStorageOurCarriage* GetOurCarriage() const;
 
 
 	/// <summary>
 	/// わたしたちの馬車を設定
 	/// </summary>
 	/// <param name="s"></param>
-	void SetOurCarriage(OurCarriage* ourCarriage);
+	void SetOurCarriage(GameEngineStorageOurCarriage* ourCarriage);
 
 
 #if !defined NDEBUG
@@ -829,7 +829,7 @@ private:
 	/// <summary>
 	/// わたしたちの馬車
 	/// </summary>
-	OurCarriage* m_pOurCarriage_;
+	GameEngineStorageOurCarriage* m_pOurCarriage_;
 
 	/// <summary>
 	/// 

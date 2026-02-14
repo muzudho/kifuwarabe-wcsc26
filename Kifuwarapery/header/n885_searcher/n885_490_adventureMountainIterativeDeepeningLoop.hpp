@@ -28,7 +28,7 @@ public:
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pos"></param>
-	static inline void ExploreMountain(OurCarriage& ourCarriage, Position& pos)
+	static inline void ExploreMountain(GameEngineStorageOurCarriage& ourCarriage, Position& pos)
 	{
 		Flashlight flashlight[g_maxPlyPlus2];
 		Ply depth;

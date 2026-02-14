@@ -74,7 +74,7 @@
 	/// </summary>
 	Main01::Main01()
 	{
-		this->searcher = std::unique_ptr<OurCarriage>(new OurCarriage);
+		this->searcher = std::unique_ptr<GameEngineStorageOurCarriage>(new GameEngineStorageOurCarriage);
 	}
 
 

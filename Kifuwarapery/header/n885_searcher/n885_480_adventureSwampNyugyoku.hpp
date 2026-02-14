@@ -19,7 +19,7 @@ public:
 	/// </summary>
 	/// <param name="ourCarriage"></param>
 	/// <param name="pos"></param>
-	static inline void ExploreSwamp(OurCarriage& ourCarriage, const Position& pos)
+	static inline void ExploreSwamp(GameEngineStorageOurCarriage& ourCarriage, const Position& pos)
 	{
 		SYNCCOUT << "info nodes " << pos.getNodesSearched()
 			<< " time " << ourCarriage.m_stopwatch.GetElapsed() << SYNCENDL;

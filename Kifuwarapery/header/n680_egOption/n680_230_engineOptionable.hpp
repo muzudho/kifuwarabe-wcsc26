@@ -3,7 +3,7 @@
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
 
 
-class OurCarriage;
+class GameEngineStorageOurCarriage;
 
 
 /// <summary>
@@ -18,16 +18,16 @@ protected:
 	/// <summary>
 	/// 
 	/// </summary>
-	using Fn = void(OurCarriage*, const EngineOptionable&);
+	using Fn = void(GameEngineStorageOurCarriage*, const EngineOptionable&);
 
 
 public:
 
 
-	EngineOptionable(												Fn* = nullptr, OurCarriage* s = nullptr);
-	EngineOptionable(const char* v,								    Fn* = nullptr, OurCarriage* s = nullptr);
-	EngineOptionable(const bool  v,								    Fn* = nullptr, OurCarriage* s = nullptr);
-	EngineOptionable(const int   v, const int min, const int max,	Fn* = nullptr, OurCarriage* s = nullptr);
+	EngineOptionable(												Fn* = nullptr, GameEngineStorageOurCarriage* s = nullptr);
+	EngineOptionable(const char* v,								    Fn* = nullptr, GameEngineStorageOurCarriage* s = nullptr);
+	EngineOptionable(const bool  v,								    Fn* = nullptr, GameEngineStorageOurCarriage* s = nullptr);
+	EngineOptionable(const int   v, const int min, const int max,	Fn* = nullptr, GameEngineStorageOurCarriage* s = nullptr);
 
 
 	/// <summary>
@@ -123,5 +123,5 @@ protected:
 	/// <summary>
 	/// 
 	/// </summary>
-	OurCarriage* m_searcher_;
+	GameEngineStorageOurCarriage* m_searcher_;
 };

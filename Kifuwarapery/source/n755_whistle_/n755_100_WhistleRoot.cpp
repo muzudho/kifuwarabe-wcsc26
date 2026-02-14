@@ -17,7 +17,7 @@ const WhistleRoot g_WHISTLE_ROOT;
 /// <param name="pFlashlight"></param>
 void WhistleRoot::blowWhistle_asMonkeySplitedPlace(
 	MonkeySplitedPlace& ownerMonkeySplitedPlace,
-	OurCarriage& ourCarriage,
+	GameEngineStorageOurCarriage& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight) const
 {

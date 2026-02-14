@@ -47,7 +47,7 @@ extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 /// <summary>
 /// 最初の設定（初期化）を行うぜ☆（＾▽＾）
 /// </summary>
-void OurCarriage::initialize_10a500b_search() {
+void GameEngineStorageOurCarriage::initialize_10a500b_search() {
 	EngineOptionSetup engineOptionSetup;
 	engineOptionSetup.initialize_10a500b100c( &m_engineOptions, this);
 
@@ -64,7 +64,7 @@ void OurCarriage::initialize_10a500b_search() {
 /// <param name="alpha"></param>
 /// <param name="beta"></param>
 /// <returns></returns>
-std::string OurCarriage::PvInfoToUSI(Position& pos, const Ply depth, const Sweetness alpha, const Sweetness beta) {
+std::string GameEngineStorageOurCarriage::PvInfoToUSI(Position& pos, const Ply depth, const Sweetness alpha, const Sweetness beta) {
 
 	// 思考時間（ミリ秒。読み筋表示用）
 	const int time = m_stopwatch.GetElapsed();
@@ -113,7 +113,7 @@ std::string OurCarriage::PvInfoToUSI(Position& pos, const Ply depth, const Sweet
 /// 稲庭判定
 /// </summary>
 /// <param name="GetPos"></param>
-void OurCarriage::detectInaniwa(const Position& GetPos) {
+void GameEngineStorageOurCarriage::detectInaniwa(const Position& GetPos) {
 	if (inaniwaFlag == NotInaniwa && 20 <= GetPos.GetGamePly()) {
 		const Rank TRank7 = (GetPos.GetTurn() == Black ? Rank7 : Rank3); // not constant
 		const Bitboard mask = g_rankMaskBb.GetRankMask(TRank7) & ~g_fileMaskBb.GetFileMask(FileA) & ~g_fileMaskBb.GetFileMask(FileI);
@@ -131,7 +131,7 @@ void OurCarriage::detectInaniwa(const Position& GetPos) {
 /// 
 /// </summary>
 /// <param name="GetPos"></param>
-void OurCarriage::detectBishopInDanger(const Position& GetPos) {
+void GameEngineStorageOurCarriage::detectBishopInDanger(const Position& GetPos) {
 	if (bishopInDangerFlag == NotBishopInDanger && GetPos.GetGamePly() <= 50) {
 		const Color them = ConvColor::OPPOSITE_COLOR10(GetPos.GetTurn());
 		if (GetPos.m_hand(GetPos.GetTurn()).Exists<HBishop>()
@@ -312,7 +312,7 @@ void initialize_10a300b_searchTable() {
 /// <summary>
 /// 
 /// </summary>
-void OurCarriage::CheckTime() {
+void GameEngineStorageOurCarriage::CheckTime() {
 	if (m_limits.m_canPonder) { return; }
 
 	s64 nodes = 0;
@@ -460,7 +460,7 @@ void Monkie::workAsMonkey() {
 /// 
 /// </summary>
 /// <param name="ssCmd"></param>
-void OurCarriage::SetOption(std::istringstream& ssCmd) {
+void GameEngineStorageOurCarriage::SetOption(std::istringstream& ssCmd) {
 	std::string token;
 	std::string name;
 	std::string value;

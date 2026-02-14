@@ -18,7 +18,7 @@ public:
 	/// <summary>
 	/// Rucksack？ 探索者☆？（＾ｑ＾）
 	/// </summary>
-	std::unique_ptr<OurCarriage> searcher;
+	std::unique_ptr<GameEngineStorageOurCarriage> searcher;
 
 
 public:
