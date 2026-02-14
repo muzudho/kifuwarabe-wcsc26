@@ -1,7 +1,7 @@
 ﻿#include "../../header/n165_movStack/n165_400_move.hpp"
 #include "../../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
-#include "..\..\header\n680_egOption/n680_245_engineOption.hpp"
 #include "..\..\header\n680_egOption\n680_300_engineOptionSetup.hpp"
+#include "../../src/lib_gui/engine_option.hpp"
 #include "../../src/layer_game_engine/game_engine_storage.hpp"
 
 

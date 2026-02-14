@@ -11,7 +11,7 @@
 #include "../../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
 #include "../../header/n600_book____/n600_500_book.hpp"
 #include "../../src/lib_gui/engine_option_collection.hpp"
-#include "../../header/n680_egOption/n680_245_engineOption.hpp"
+#include "../../src/lib_gui/engine_option.hpp"
 #include "../../header/n720_usi_____/n720_260_usiOperation.hpp"
 #include "../../header/n720_usi_____/n720_300_benchmark.hpp"
 #include "../../header/n800_learn___/n800_500_learner.hpp"

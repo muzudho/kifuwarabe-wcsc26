@@ -1,10 +1,12 @@
 ﻿#include <ostream>
-#include "../../header/n680_egOption/n680_245_engineOption.hpp"
+#include "engine_option.hpp"
 #include "../../src/layer_game_engine/game_engine_storage.hpp"
 
 
 /// <summary>
-///
+///     <pre>
+/// テキストボックス用
+///     </pre>
 /// </summary>
 /// <param name="v"></param>
 /// <param name="f"></param>
@@ -15,7 +17,9 @@ EngineOption::EngineOption(const char* v, Fn* f, GameEngineStorageOurCarriage* s
 
 
 /// <summary>
-/// 
+///     <pre>
+/// チェックボックス用
+///     </pre>
 /// </summary>
 /// <param name="v"></param>
 /// <param name="f"></param>
@@ -26,7 +30,9 @@ EngineOption::EngineOption(const bool v, Fn* f, GameEngineStorageOurCarriage* s)
 
 
 /// <summary>
-/// 
+///     <pre>
+/// ボタン用
+///     </pre>
 /// </summary>
 /// <param name="f"></param>
 /// <param name="s"></param>
@@ -36,7 +42,9 @@ EngineOption::EngineOption(Fn* f, GameEngineStorageOurCarriage* s) : EngineOptio
 
 
 /// <summary>
-/// 
+///     <pre>
+/// スピンボックス用
+///     </pre>
 /// </summary>
 /// <param name="v"></param>
 /// <param name="min"></param>

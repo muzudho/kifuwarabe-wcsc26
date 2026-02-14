@@ -8,7 +8,9 @@ class GameEngineStorageOurCarriage;
 
 
 /// <summary>
-/// エンジン・オプション☆
+///		<pre>
+/// エンジン・オプション☆（＾～＾）
+///		</pre
 /// </summary>
 class EngineOption : public EngineOptionable {
 
