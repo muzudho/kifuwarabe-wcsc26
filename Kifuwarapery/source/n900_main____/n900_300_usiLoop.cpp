@@ -17,6 +17,7 @@
 #include "../../header/n800_learn___/n800_500_learner.hpp"
 #include "../../src/layer_game_engine/game_engine_storage.hpp"
 #include "..\..\header\n900_main____\n900_300_usiLoop.hpp"
+#include "../../src/lib_shogi/shogi_model.hpp"
 
 
 #if !defined MINIMUL
@@ -96,7 +97,7 @@ UsiLoop::UsiLoop()
 void UsiLoop::mainloop_50a500b(int argc, char* argv[], GameEngineStorageOurCarriage& m_ourCarriage)
 {
 	GameStats gameStats{};	// こう書くと関数呼出しと思われてエラー： GameStats gameStats();
-	Position pos(g_DefaultStartPositionSFEN, m_ourCarriage.m_pub.GetFirstCaptain(), &m_ourCarriage);
+	Position pos(g_DEFAULT_START_POSITION_SFEN, m_ourCarriage.m_pub.GetFirstCaptain(), &m_ourCarriage);
 
 	std::string cmd;
 	std::string token;

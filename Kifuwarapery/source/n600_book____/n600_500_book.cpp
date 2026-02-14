@@ -7,6 +7,7 @@
 #include "../../header/n600_book____/n600_500_book.hpp"
 #include "../../header/n720_usi_____/n720_260_usiOperation.hpp"
 #include "../../src/layer_game_engine/game_engine_storage.hpp"
+#include "../../src/lib_shogi/shogi_model.hpp"
 
 
 /// <summary>
@@ -254,7 +255,7 @@ void MakeBook(GameStats& gameStats, Position& pos, std::istringstream& ssCmd) {
 			return;
 		}
 
-		pos.Set(g_DefaultStartPositionSFEN, pos.GetOurCarriage()->m_pub.GetFirstCaptain());
+		pos.Set(g_DEFAULT_START_POSITION_SFEN, pos.GetOurCarriage()->m_pub.GetFirstCaptain());
 		StateStackPtr SetUpStates = StateStackPtr(new std::stack<StateInfo>());
 		UsiOperation usiOperation;
 		while (!line.empty()) {

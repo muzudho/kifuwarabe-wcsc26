@@ -28,7 +28,7 @@
 /// <summary>
 /// 生成
 /// </summary>
-GameEngineShogi::GameEngineShogi()
+MyGameEngineModel::MyGameEngineModel()
 {
     this->m_ourCarriage = std::unique_ptr<GameEngineStorageOurCarriage>(new GameEngineStorageOurCarriage);
 }
@@ -37,7 +37,7 @@ GameEngineShogi::GameEngineShogi()
 /// <summary>
 /// 破棄。
 /// </summary>
-GameEngineShogi::~GameEngineShogi()
+MyGameEngineModel::~MyGameEngineModel()
 {
     this->m_ourCarriage.reset();
 }
@@ -51,7 +51,7 @@ GameEngineShogi::~GameEngineShogi()
 /// <summary>
 /// 最初の設定
 /// </summary>
-void GameEngineShogi::initialize_10a()
+void MyGameEngineModel::initialize_10a()
 {
     //────────────────────────────────────────────────────────────────────────────────
     // ビットボードとテーブルの初期化☆（＾ｑ＾）
@@ -150,7 +150,7 @@ void GameEngineShogi::initialize_10a()
 /// </summary>
 /// <param name="argc"></param>
 /// <param name="argv"></param>
-void GameEngineShogi::body_50a(int argc, char* argv[])
+void MyGameEngineModel::body_50a(int argc, char* argv[])
 {
     UsiLoop usiLoop;
     usiLoop.mainloop_50a500b(argc, argv, *this->m_ourCarriage);
@@ -160,7 +160,7 @@ void GameEngineShogi::body_50a(int argc, char* argv[])
 /// <summary>
 /// 事後処理
 /// </summary>
-void GameEngineShogi::finalize_90a()
+void MyGameEngineModel::finalize_90a()
 {
     SYNCCOUT << "(^q^)main(6/6): threads.exit! ----> doUSICommandLoop" << SYNCENDL;
     this->m_ourCarriage->m_pub.exit_90a500b();

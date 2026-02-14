@@ -10,7 +10,7 @@
 /// <summary>
 /// 
 /// </summary>
-class GameEngineShogi {
+class MyGameEngineModel {
 
 
 public:
@@ -22,8 +22,8 @@ public:
 
 
 public:
-	GameEngineShogi();
-	~GameEngineShogi();
+	MyGameEngineModel();
+	~MyGameEngineModel();
 	void initialize_10a();
 	void body_50a(int argc, char* argv[]);
 	void finalize_90a();

@@ -8,6 +8,7 @@
 #include "../../header/n407_moveGen_/n407_900_moveList.hpp"
 #include "../../header/n720_usi_____/n720_260_usiOperation.hpp"
 #include "../../src/layer_game_engine/game_engine_storage.hpp"
+#include "../../src/lib_shogi/shogi_model.hpp"
 
 
 /// <summary>
@@ -236,7 +237,7 @@ void UsiOperation::SetPosition(Position& pos, std::istringstream& ssCmd) {
 
 	// 平手初期局面だぜ（＾▽＾）
 	if (token == "startpos") {
-		sfen = g_DefaultStartPositionSFEN;
+		sfen = g_DEFAULT_START_POSITION_SFEN;
 		ssCmd >> token; // "moves" が入力されるはず。
 	}
 

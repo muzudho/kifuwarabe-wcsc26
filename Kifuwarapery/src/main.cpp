@@ -39,7 +39,7 @@
 	/// <returns></returns>
 	int main(int argc, char* argv[])
 	{
-		GameEngineShogi gameEngine;
+		MyGameEngineModel gameEngine;
 		gameEngine.initialize_10a();
 		gameEngine.body_50a(argc, argv);
 		gameEngine.finalize_90a();
