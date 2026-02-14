@@ -5,6 +5,20 @@
 
 /// <summary>
 ///     <pre>
+/// ボタン用
+///     </pre>
+/// </summary>
+/// <param name="onChanged"></param>
+/// <param name="pGameEngineStore"></param>
+EngineOption::EngineOption(
+    std::function<void(const EngineOptionable&)> onChanged)
+    : EngineOptionable(onChanged)
+{
+}
+
+
+/// <summary>
+///     <pre>
 /// テキストボックス用
 ///     </pre>
 /// </summary>
@@ -13,8 +27,8 @@
 /// <param name="pGameEngineStore"></param>
 EngineOption::EngineOption(
     const char* v,
-    std::function<void(const EngineOptionable&)> onChanged,
-    MuzGameEngineStorageModel* pGameEngineStore) : EngineOptionable(v, onChanged)
+    std::function<void(const EngineOptionable&)> onChanged)
+        : EngineOptionable(v, onChanged)
 {
 }
 
@@ -29,22 +43,8 @@ EngineOption::EngineOption(
 /// <param name="pGameEngineStore"></param>
 EngineOption::EngineOption(
     const bool v,
-    std::function<void(const EngineOptionable&)> onChanged,
-    MuzGameEngineStorageModel* pGameEngineStore) : EngineOptionable(v, onChanged)
-{
-}
-
-
-/// <summary>
-///     <pre>
-/// ボタン用
-///     </pre>
-/// </summary>
-/// <param name="onChanged"></param>
-/// <param name="pGameEngineStore"></param>
-EngineOption::EngineOption(
-    std::function<void(const EngineOptionable&)> onChanged,
-    MuzGameEngineStorageModel* pGameEngineStore) : EngineOptionable(onChanged)
+    std::function<void(const EngineOptionable&)> onChanged)
+        : EngineOptionable(v, onChanged)
 {
 }
 
@@ -63,8 +63,8 @@ EngineOption::EngineOption(
     const int v,
     const int min,
     const int max,
-    std::function<void(const EngineOptionable&)> onChanged,
-    MuzGameEngineStorageModel* pGameEngineStore) : EngineOptionable(v, min, max, onChanged)
+    std::function<void(const EngineOptionable&)> onChanged)
+        : EngineOptionable(v, min, max, onChanged)
 {
 }
 
