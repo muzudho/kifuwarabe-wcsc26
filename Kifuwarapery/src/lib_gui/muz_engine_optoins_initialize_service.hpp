@@ -10,7 +10,7 @@ class MuzGameEngineStorage;
 /// <summary>
 /// エンジン・オプション設定
 /// </summary>
-class MuzEngineOptionSetup {
+class MuzEngineOptionsInitializeService {
 
 
 public:

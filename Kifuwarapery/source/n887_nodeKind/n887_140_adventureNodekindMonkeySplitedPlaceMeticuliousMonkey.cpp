@@ -23,12 +23,9 @@
 #include "../../header/n640_searcher/n640_510_futilityMargins.hpp"
 #include "../../header/n640_searcher/n640_520_futilityMoveCounts.hpp"
 #include "../../src/lib_gui/engine_option_collection.hpp"
-#include "../../src/layer_game_engine/setup_by_engine_optoins.hpp"
 #include "../../header/n760_thread__/n760_400_monkiesPub.hpp"
-
 #include "../../header/n800_learn___/n800_100_stopwatch.hpp"
 #include "../../header/n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
-
 #include "../../src/layer_game_engine/game_engine_storage.hpp"
 #include "../../header/n885_searcher/n885_310_adventureBattlefieldQsearchAbstract.hpp"
 #include "../../header/n885_searcher/n885_340_adventureBattlefieldQsearchPrograms.hpp"

@@ -1,6 +1,6 @@
 ﻿#include "../../header/n165_movStack/n165_400_move.hpp"
 #include "../../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
-#include "../../src/layer_game_engine/setup_by_engine_optoins.hpp"
+#include "../../src/lib_gui/muz_engine_optoins_initialize_service.hpp"
 #include "../../src/lib_gui/engine_option.hpp"
 #include "../../src/layer_game_engine/game_engine_storage.hpp"
 
@@ -60,7 +60,7 @@ namespace {
 /// </summary>
 /// <param name="pMap"></param>
 /// <param name="pRucksack"></param>
-void MuzEngineOptionSetup::initialize_10a510b_engineOptions(EngineOptionCollection* pMap, MuzGameEngineStorage * pRucksack)
+void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(EngineOptionCollection* pMap, MuzGameEngineStorage * pRucksack)
 {
 	// ハッシュサイズ
 	pMap->Put("USI_Hash"					, EngineOption(256, 1, 65536, handleHashSizeChanged, pRucksack));

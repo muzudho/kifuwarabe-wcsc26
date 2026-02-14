@@ -29,7 +29,6 @@
 #include "../../header/n640_searcher/n640_510_futilityMargins.hpp"
 #include "../../header/n640_searcher/n640_520_futilityMoveCounts.hpp"
 #include "../../src/lib_gui/engine_option_collection.hpp"
-#include "../../src/layer_game_engine/setup_by_engine_optoins.hpp"
 #include "../../header/n755_whistle_/n755_070_WhistleAbstract.hpp"
 #include "../../header/n760_thread__/n760_400_monkiesPub.hpp"
 #include "../../header/n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"

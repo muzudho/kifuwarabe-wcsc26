@@ -15,7 +15,7 @@
 #include "../header/n600_book____/n600_500_book.hpp"
 #include "../header/n760_thread__/n760_400_monkiesPub.hpp"
 #include "../header/n900_main____/n900_300_usiLoop.hpp"
-#include "../src/layer_game_engine/setup_by_engine_optoins.hpp"
+#include "../src/lib_gui/muz_engine_optoins_initialize_service.hpp"
 #include "../src/muz_game_engine_service.hpp"
 #include "../src/layer_game_engine/game_engine_storage.hpp"
 #include <iostream>
@@ -133,8 +133,8 @@ void MuzGameEngineService::initialize_10a()
     Position::initialize_10a310b_zobrist();
 
     SYNCCOUT << "(^q^) 2.9 . エンジン・オプション設定！" << SYNCENDL;
-    MuzEngineOptionSetup engineOptionSetup;
-    engineOptionSetup.initialize_10a510b_engineOptions(&this->m_pGameEngineStore->m_engineOptionCollection, this->m_pGameEngineStore.get());
+    MuzEngineOptionsInitializeService engineOptionsInitialize;
+    engineOptionsInitialize.initialize_10a510b_engineOptions(&this->m_pGameEngineStore->m_engineOptionCollection, this->m_pGameEngineStore.get());
 
     SYNCCOUT << "(^q^) 3   . 探索部の初期化！" << SYNCENDL;
     this->m_pGameEngineStore->initialize_10a520b_search();
