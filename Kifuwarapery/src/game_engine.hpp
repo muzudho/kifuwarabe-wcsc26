@@ -26,5 +26,5 @@ public:
 	~MyGameEngineModel();
 	void initialize_10a();
 	void body_50a(int argc, char* argv[]);
-	void finalize_90a();
+	void finalize_90000a();
 };

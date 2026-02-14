@@ -160,7 +160,7 @@ void MyGameEngineModel::body_50a(int argc, char* argv[])
 /// <summary>
 /// 事後処理
 /// </summary>
-void MyGameEngineModel::finalize_90a()
+void MyGameEngineModel::finalize_90000a()
 {
     SYNCCOUT << "(^q^)main(6/6): threads.exit! ----> doUSICommandLoop" << SYNCENDL;
     this->m_pGameEngineStore->m_pub.exit_90a500b();

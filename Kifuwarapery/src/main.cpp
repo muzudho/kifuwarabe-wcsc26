@@ -42,7 +42,7 @@
 		MyGameEngineModel gameEngine;
 		gameEngine.initialize_10a();
 		gameEngine.body_50a(argc, argv);
-		gameEngine.finalize_90a();
+		gameEngine.finalize_90000a();
 	}
 
 #endif
