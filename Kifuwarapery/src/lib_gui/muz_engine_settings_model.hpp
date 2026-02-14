@@ -2,6 +2,7 @@
 #include <map>
 #include <string>
 #include "i_muz_engine_optionable_model.hpp"
+#include <ostream>      // std::ostream のため（普通は iostream で入ってる）
 
 
 /// <summary>
