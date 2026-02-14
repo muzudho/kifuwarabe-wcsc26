@@ -8,6 +8,31 @@
 
 
 /// <summary>
+/// TODO: 汎用
+/// </summary>
+/// <param name="onChanged"></param>
+IMuzEngineOptionableModel::IMuzEngineOptionableModel(
+	std::string type,
+	int min,
+	int max,
+	std::function<void(const IMuzEngineOptionableModel&)> onChanged)
+	: m_type_(type), m_min_(min), m_max_(max), m_onChanged_(onChanged)
+{
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="onChanged"></param>
+IMuzEngineOptionableModel::IMuzEngineOptionableModel(
+	std::function<void(const IMuzEngineOptionableModel&)> onChanged)
+	: m_type_("button"), m_min_(0), m_max_(0), m_onChanged_(onChanged)
+{
+}
+
+
+/// <summary>
 /// 
 /// </summary>
 /// <param name="newValue"></param>
@@ -32,18 +57,6 @@ IMuzEngineOptionableModel::IMuzEngineOptionableModel(
 		: m_type_("check"), m_min_(0), m_max_(0), m_onChanged_(onChanged)
 {
 	m_defaultValue_ = m_currentValue_ = (v ? "true" : "false");
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="onChanged"></param>
-/// <param name="pGameEngineStore"></param>
-IMuzEngineOptionableModel::IMuzEngineOptionableModel(
-	std::function<void(const IMuzEngineOptionableModel&)> onChanged)
-		: m_type_("button"), m_min_(0), m_max_(0), m_onChanged_(onChanged)
-{
 }
 
 

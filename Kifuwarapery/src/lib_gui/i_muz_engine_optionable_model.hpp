@@ -23,6 +23,13 @@ public:
 	// ========================================
 
 
+	// TODO: 汎用
+	IMuzEngineOptionableModel(
+		std::string type,
+		int min,
+		int max,
+		std::function<void(const IMuzEngineOptionableModel&)> onChanged = nullptr);
+
 	// TODO: ボタン
 	IMuzEngineOptionableModel(
 		std::function<void(const IMuzEngineOptionableModel&)> onChanged = nullptr);
