@@ -13,18 +13,18 @@
 void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
 	EngineOptionCollection* pMap,
 	MuzGameEngineStorageModel* pRucksack,
-	std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> pHandleHashSizeChanged,
-	std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> pHandleHashCleared,
-	std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> pHandleEvalDirChanged,
-	std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> pMaxThreadsPerSplitPointChanged,
-	std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> pHandleThreadsChanged,
+	std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> handleHashSizeChanged,
+	std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> handleHashCleared,
+	std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> handleEvalDirChanged,
+	std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> handleMaxThreadsPerSplitPointChanged,
+	std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> handleThreadsChanged,
 	EngineOptionable::FnVoidInt* pGetCpuCoreCount)
 {
 	// ハッシュサイズ
-	pMap->Put("USI_Hash"					, EngineOption(256, 1, 65536, pHandleHashSizeChanged, pRucksack));
+	pMap->Put("USI_Hash"					, EngineOption(256, 1, 65536, handleHashSizeChanged, pRucksack));
 
 	// ［ハッシュ・クリアー］ボタン
-	pMap->Put("Clear_Hash"					, EngineOption(pHandleHashCleared, pRucksack));
+	pMap->Put("Clear_Hash"					, EngineOption(handleHashCleared, pRucksack));
 
 	// 定跡ファイルパス
 	pMap->Put("Book_File"					, EngineOption("book/20150503/book.bin"));
@@ -45,7 +45,7 @@ void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
 	pMap->Put("Min_Book_Score"				, EngineOption(-180, -SweetnessInfinite, SweetnessInfinite));
 
 	// ［評価値ファイル］フォルダー
-	pMap->Put("Eval_Dir"					, EngineOption("20151105", pHandleEvalDirChanged));
+	pMap->Put("Eval_Dir"					, EngineOption("20151105", handleEvalDirChanged));
 
 	// ［評価値書き込み］チェックボックス
 	pMap->Put("Write_Synthesized_Eval"		, EngineOption(false));
@@ -86,10 +86,10 @@ void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
 	//────────────────────────────────────────────────────────────────────────────────
 
 	// ［一緒に走る猿が分岐する点の最大数］
-	pMap->Put("Max_Threads_per_Split_Point"	, EngineOption(		5,  4,     8, pMaxThreadsPerSplitPointChanged, pRucksack));
+	pMap->Put("Max_Threads_per_Split_Point"	, EngineOption(		5,  4,     8, handleMaxThreadsPerSplitPointChanged, pRucksack));
 
 	// スレッド数
-	pMap->Put("Threads"						, EngineOption((*pGetCpuCoreCount)(), 1, g_MaxThreads, pHandleThreadsChanged, pRucksack));
+	pMap->Put("Threads"						, EngineOption((*pGetCpuCoreCount)(), 1, g_MaxThreads, handleThreadsChanged, pRucksack));
 
 	// ［寝てる猿を使う］チェックボックス
 	pMap->Put("Use_Sleeping_Threads"		, EngineOption(false));

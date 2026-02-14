@@ -18,10 +18,24 @@ class EngineOption : public EngineOptionable {
 public:
 
 
-	EngineOption(std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> = nullptr, MuzGameEngineStorageModel* s = nullptr);
-	EngineOption(const char* v, std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> = nullptr, MuzGameEngineStorageModel* s = nullptr);
-	EngineOption(const bool  v, std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> = nullptr, MuzGameEngineStorageModel* s = nullptr);
-	EngineOption(const int   v, const int min, const int max, std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> = nullptr, MuzGameEngineStorageModel* s = nullptr);
+	EngineOption(
+		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> handleChanged = nullptr,
+		MuzGameEngineStorageModel* pGameEngineStore = nullptr);
+
+	EngineOption(
+		const char* v, std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> handleChanged = nullptr,
+		MuzGameEngineStorageModel* pGameEngineStore = nullptr);
+
+	EngineOption(
+		const bool  v, std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> handleChanged = nullptr,
+		MuzGameEngineStorageModel* pGameEngineStore = nullptr);
+
+	EngineOption(
+		const int   v,
+		const int min,
+		const int max,
+		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> handleChanged = nullptr,
+		MuzGameEngineStorageModel* spGameEngineStore = nullptr);
 
 
 //private:

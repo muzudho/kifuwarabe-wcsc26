@@ -23,10 +23,10 @@ public:
 	void initialize_10a510b_engineOptions(
 		EngineOptionCollection* pMap,
 		MuzGameEngineStorageModel* s,
-		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> pHandleHashSizeChanged,
-		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> pHandleHashCleared,
-		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> pHandleEvalDirChanged,
-		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> pMaxThreadsPerSplitPointChanged,
-		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> pHandleThreadsChanged,
+		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> handleHashSizeChanged,
+		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> handleHashCleared,
+		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> handleEvalDirChanged,
+		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> handleMaxThreadsPerSplitPointChanged,
+		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> handleThreadsChanged,
 		EngineOptionable::FnVoidInt* pGetCpuCoreCount);
 };
