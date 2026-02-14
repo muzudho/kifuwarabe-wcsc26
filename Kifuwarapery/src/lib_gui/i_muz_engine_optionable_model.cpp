@@ -92,3 +92,18 @@ IMuzEngineOptionableModel& IMuzEngineOptionableModel::operator = (const std::str
 
 	return *this;
 }
+
+
+// ========================================
+// その他のメソッド
+// ========================================
+
+
+/// <summary>
+/// USIコード化☆（＾～＾）
+/// </summary>
+/// <returns></returns>
+std::string IMuzEngineOptionableModel::ToUSICode() const
+{
+	return "";
+}

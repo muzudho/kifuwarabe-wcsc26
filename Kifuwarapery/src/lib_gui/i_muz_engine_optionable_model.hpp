@@ -145,10 +145,10 @@ public:
 	int			GetMax()			const { return this->m_max_; }
 
 
-	///// <summary>
- //   /// USIコード化☆（＾～＾）
-	///// </summary>
-	///// <returns></returns>
-	//virtual std::string ToUSICode()	const = 0;
+	/// <summary>
+    /// USIコード化☆（＾～＾）
+	/// </summary>
+	/// <returns></returns>
+	virtual std::string ToUSICode()	const;	// = 0;
 
 };
