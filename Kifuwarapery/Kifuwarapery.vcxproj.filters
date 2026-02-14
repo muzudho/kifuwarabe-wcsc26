@@ -972,7 +972,7 @@
     <ClInclude Include="header\n885_searcher\n885_510_adventureContinent.hpp">
       <Filter>header\n885_searcher</Filter>
     </ClInclude>
-    <ClInclude Include="header\n885_searcher\n885_040_ourCarriage.hpp">
+    <ClInclude Include="src\game_engine_layer\game_engine_storage.hpp">
       <Filter>header\n885_searcher</Filter>
     </ClInclude>
     <ClInclude Include="header\n885_searcher\n885_480_adventureSwampNyugyoku.hpp">
@@ -1637,7 +1637,7 @@
     <ClCompile Include="source\n885_searcher\n885_510_adventureContinent.cpp">
       <Filter>source\n885_searcher</Filter>
     </ClCompile>
-    <ClCompile Include="source\n885_searcher\n885_040_ourCarriage.cpp">
+    <ClCompile Include="src\game_engine_layer\game_engine_storage.cpp">
       <Filter>source\n885_searcher</Filter>
     </ClCompile>
     <ClCompile Include="source\n885_searcher\n885_480_adventureSwampNyugyoku.cpp">

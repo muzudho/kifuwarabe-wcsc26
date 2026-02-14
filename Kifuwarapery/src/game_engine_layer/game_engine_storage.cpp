@@ -33,9 +33,9 @@
 #include "../../header/n755_whistle_/n755_070_WhistleAbstract.hpp"
 #include "../../header/n760_thread__/n760_400_monkiesPub.hpp"
 #include "../../header/n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
-#include "../../header/n885_searcher/n885_040_ourCarriage.hpp"
 #include "../../header/n885_searcher/n885_490_adventureMountainIterativeDeepeningLoop.hpp"
 #include "../../header/n887_nodeKind/n887_500_adventurePlainNodekindPrograms.hpp"//FIXME:
+#include "./game_engine_storage.hpp"
 
 
 using namespace std;

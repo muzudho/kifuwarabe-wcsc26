@@ -5,9 +5,8 @@
 #include "../n220_position/n220_665_utilMoveStack.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"
 #include "../n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
-#include "n885_040_ourCarriage.hpp"
 #include "n885_580_adventurerSkill.hpp"
-
+#include "../../src/game_engine_layer/game_engine_storage.hpp"
 
 extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 
