@@ -7,7 +7,7 @@
 #include "../../header/n600_book____/n600_500_book.hpp"
 #include "../../header/n720_usi_____/n720_260_usiOperation.hpp"
 #include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
-#include "../../src/lib_shogi/shogi_model.hpp"
+#include "../../src/lib_shogi/muz_shogi_model.hpp"
 
 
 /// <summary>

@@ -17,7 +17,7 @@
 #include "../../header/n800_learn___/n800_500_learner.hpp"
 #include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 #include "..\..\header\n900_main____\n900_300_usiLoop.hpp"
-#include "../../src/lib_shogi/shogi_model.hpp"
+#include "../../src/lib_shogi/muz_shogi_model.hpp"
 
 
 #if !defined MINIMUL
