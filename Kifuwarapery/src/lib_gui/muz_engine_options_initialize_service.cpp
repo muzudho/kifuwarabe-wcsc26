@@ -1,5 +1,6 @@
 ﻿#include "muz_engine_option_model.hpp"
 #include "muz_engine_option_button_model.hpp"
+#include "muz_engine_option_checkbox_model.hpp"
 #include "muz_engine_optoins_initialize_service.hpp"
 
 
@@ -31,10 +32,10 @@ void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
 	pMap->Put("Book_File"					, MuzEngineOptionModel("book/20150503/book.bin"));
 
 	// ［定跡］チェックボックス
-	pMap->Put("Best_Book_Move"				, MuzEngineOptionModel(false));
+	pMap->Put("Best_Book_Move"				, MuzEngineOptionCheckboxModel(false));
 
 	// ［定跡］チェックボックス
-	pMap->Put("OwnBook"						, MuzEngineOptionModel(true));
+	pMap->Put("OwnBook"						, MuzEngineOptionCheckboxModel(true));
 
 	// 定跡の最小手数
 	pMap->Put("Min_Book_Ply"				, MuzEngineOptionModel(SHRT_MAX, 0, SHRT_MAX));
@@ -49,10 +50,10 @@ void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
 	pMap->Put("Eval_Dir"					, MuzEngineOptionModel("20151105", onEvalDirChanged));
 
 	// ［評価値書き込み］チェックボックス
-	pMap->Put("Write_Synthesized_Eval"		, MuzEngineOptionModel(false));
+	pMap->Put("Write_Synthesized_Eval"		, MuzEngineOptionCheckboxModel(false));
 
 	// ［相手の手番に考えるか］チェックボックス
-	pMap->Put("USI_Ponder"					, MuzEngineOptionModel(true));
+	pMap->Put("USI_Ponder"					, MuzEngineOptionCheckboxModel(true));
 
 	// ［秒読みマージン］ - 元の値：0.5秒☆？（＾ｑ＾）
 	pMap->Put("Byoyomi_Margin"				, MuzEngineOptionModel(500, 0, INT_MAX));
@@ -93,7 +94,7 @@ void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
 	pMap->Put("Threads"						, MuzEngineOptionModel(getCPUCoreCount(), 1, maxThreads, onThreadsChanged));
 
 	// ［寝てる猿を使う］チェックボックス
-	pMap->Put("Use_Sleeping_Threads"		, MuzEngineOptionModel(false));
+	pMap->Put("Use_Sleeping_Threads"		, MuzEngineOptionCheckboxModel(false));
 
 #if defined BISHOP_IN_DANGER
 	(*this)["Danger_Demerit_Score"] = MuzEngineOptionModel(700, SHRT_MIN, SHRT_MAX);

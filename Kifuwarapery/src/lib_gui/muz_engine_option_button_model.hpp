@@ -15,7 +15,7 @@ public:
     /// <summary>
     /// 生成
     /// </summary>
-    /// <returns></returns>
+    /// <param name="onChanged"></param>
     MuzEngineOptionButtonModel(
         std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
 

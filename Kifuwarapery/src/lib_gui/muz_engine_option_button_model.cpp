@@ -3,7 +3,7 @@
 
 /// <summary>
 ///     <pre>
-/// ボタン用
+/// 生成☆（＾ｑ＾）
 ///     </pre>
 /// </summary>
 /// <param name="onChanged"></param>
@@ -16,7 +16,7 @@ MuzEngineOptionButtonModel::MuzEngineOptionButtonModel(
 
 
 /// <summary>
-/// 値のセット、またはボタンの押下☆（＾ｑ＾）
+/// 値のセット☆（＾ｑ＾）
 /// </summary>
 /// <param name="newValue"></param>
 /// <returns></returns>

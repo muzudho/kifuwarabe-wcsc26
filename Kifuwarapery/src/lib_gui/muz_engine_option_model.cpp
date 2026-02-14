@@ -19,22 +19,6 @@ MuzEngineOptionModel::MuzEngineOptionModel(
 
 /// <summary>
 ///     <pre>
-/// チェックボックス用
-///     </pre>
-/// </summary>
-/// <param name="v"></param>
-/// <param name="onChanged"></param>
-/// <param name="pGameEngineStore"></param>
-MuzEngineOptionModel::MuzEngineOptionModel(
-    const bool v,
-    std::function<void(const MuzEngineOptionableModel&)> onChanged)
-    : MuzEngineOptionableModel(v, onChanged)
-{
-}
-
-
-/// <summary>
-///     <pre>
 /// スピンボックス用
 ///     </pre>
 /// </summary>

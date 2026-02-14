@@ -71,11 +71,10 @@ MuzEngineOptionableModel& MuzEngineOptionableModel::operator = (const std::strin
 {
 	assert(!m_type_.empty());
 
-	// ボタンではない（＾～＾）
+	// ボタン、チェックボックスではない（＾～＾）
 
 	if (
 		newValue.empty()	// ボタンじゃないのに、値が無かった
-        || (m_type_ == "check" && newValue != "true" && newValue != "false")	// チェックボックスなのに、値が "true" でも "false" でもなかった
         || (m_type_ == "spin" && (atoi(newValue.c_str()) < m_min_ || m_max_ < atoi(newValue.c_str()))))	// スピンなのに、値が最小値～最大値の範囲外だった
 	{ return *this; }
 

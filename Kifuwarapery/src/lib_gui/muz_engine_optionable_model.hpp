@@ -11,17 +11,21 @@ class MuzEngineOptionableModel {
 public:
 
 
+	// TODO: ボタン
 	MuzEngineOptionableModel(
 		std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
 
+	// TODO: テキストボックス
 	MuzEngineOptionableModel(
 		const char* v,
 		std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
 
+	// TODO: チェックボックス
 	MuzEngineOptionableModel(
 		const bool  v,
 		std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
 
+	// TODO: スピンボックス
 	MuzEngineOptionableModel(
 		const int   v,
 		const int min,
