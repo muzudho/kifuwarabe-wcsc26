@@ -2,7 +2,7 @@
 #include "muz_engine_option_checkbox_model.hpp"
 #include "muz_engine_option_spinbox_model.hpp"
 #include "muz_engine_option_textbox_model.hpp"
-#include "muz_engine_optoins_initialize_service.hpp"
+#include "muz_engine_settings_initialize_service.hpp"
 
 
 /// <summary>
@@ -10,7 +10,7 @@
 /// </summary>
 /// <param name="pMap"></param>
 /// <param name="pRucksack"></param>
-void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
+void MuzEngineSettingsInitializeService::initialize_10a510b_engineOptions(
 	int max_legal_moves,
 	int sweetnessInfinite,
 	int sweetnessMate0Ply,

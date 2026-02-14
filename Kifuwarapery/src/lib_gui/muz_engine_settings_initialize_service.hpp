@@ -7,9 +7,9 @@ class MuzGameEngineStorageModel;
 
 
 /// <summary>
-/// エンジン・オプション設定
+/// エンジン設定
 /// </summary>
-class MuzEngineOptionsInitializeService {
+class MuzEngineSettingsInitializeService {
 
 
 public:

@@ -15,7 +15,7 @@
 #include "../header/n600_book____/n600_500_book.hpp"
 #include "../header/n760_thread__/n760_400_monkiesPub.hpp"
 #include "../header/n900_main____/n900_300_usiLoop.hpp"
-#include "../src/lib_gui/muz_engine_optoins_initialize_service.hpp"
+#include "../src/lib_gui/muz_engine_settings_initialize_service.hpp"
 #include "../src/muz_game_engine_service.hpp"
 #include "../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 #include <iostream>
@@ -132,9 +132,9 @@ void MuzGameEngineService::initialize_10a()
     SYNCCOUT << "(^q^) 2   . 局面のゾブリストハッシュ初期化！" << SYNCENDL;
     Position::initialize_10a310b_zobrist();
 
-    SYNCCOUT << "(^q^) 2.9 . エンジン・オプション設定！" << SYNCENDL;
-    MuzEngineOptionsInitializeService engineOptionsInitialize;
-    engineOptionsInitialize.initialize_10a510b_engineOptions(
+    SYNCCOUT << "(^q^) 2.9 . エンジン設定！" << SYNCENDL;
+    MuzEngineSettingsInitializeService engineSettingsInitialize;
+    engineSettingsInitialize.initialize_10a510b_engineOptions(
         Move::m_MAX_LEGAL_MOVES,
         SweetnessInfinite,
         SweetnessMate0Ply,
