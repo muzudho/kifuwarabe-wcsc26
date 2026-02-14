@@ -38,6 +38,18 @@ std::ostream& operator << (std::ostream& os, const MuzEngineSettingsModel& engin
 			os << " default " << o.GetDefaultValue();
 		}
 
+
+		//os << "\noption name " << elem.first;
+		//
+		//if (o.GetType() != "button") {
+		//	os << " " << o.ToUSICode();
+		//}
+		//else {
+		//	os << " type " << o.GetType();
+		//}
+
+
+
 		if (o.GetType() == "spin") {
 			os << " min " << o.GetMin() << " max " << o.GetMax();
 		}

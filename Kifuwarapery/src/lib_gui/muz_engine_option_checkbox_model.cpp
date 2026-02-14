@@ -34,7 +34,7 @@ MuzEngineOptionCheckboxModel::MuzEngineOptionCheckboxModel(
 /// <returns></returns>
 IMuzEngineOptionableModel& MuzEngineOptionCheckboxModel::operator = (const std::string& newValue)
 {
-	assert(!m_type_.empty());
+	//assert(!m_type_.empty());
 
 	if (
 		newValue.empty()	// ボタンじゃないのに、値が無かった
@@ -54,3 +54,18 @@ IMuzEngineOptionableModel& MuzEngineOptionCheckboxModel::operator = (const std::
 
 	return *this;
 }
+
+
+// ========================================
+// その他のメソッド
+// ========================================
+
+
+///// <summary>
+///// USIコード化☆（＾～＾）
+///// </summary>
+///// <returns></returns>
+//std::string MuzEngineOptionCheckboxModel::ToUSICode() const
+//{
+//	return "";
+//}

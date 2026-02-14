@@ -58,3 +58,18 @@ IMuzEngineOptionableModel& MuzEngineOptionSpinboxModel::operator = (const std::s
 
 	return *this;
 }
+
+
+// ========================================
+// その他のメソッド
+// ========================================
+
+
+///// <summary>
+///// USIコード化☆（＾～＾）
+///// </summary>
+///// <returns></returns>
+//std::string MuzEngineOptionSpinboxModel::ToUSICode() const
+//{
+//	return "";
+//}

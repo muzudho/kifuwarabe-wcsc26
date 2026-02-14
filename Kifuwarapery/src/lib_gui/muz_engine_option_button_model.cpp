@@ -32,10 +32,33 @@ MuzEngineOptionButtonModel::MuzEngineOptionButtonModel(
 /// <returns></returns>
 IMuzEngineOptionableModel& MuzEngineOptionButtonModel::operator = (const std::string& newValue)
 {
-	assert(!m_type_.empty());
+	//assert(!m_type_.empty());
 
     // ボタンなら、変更通知をする
 	m_onChanged_(*this);
 
 	return *this;
 }
+
+
+// ========================================
+// その他のメソッド
+// ========================================
+
+
+///// <summary>
+///// USIコード化☆（＾～＾）
+///// </summary>
+///// <returns></returns>
+//std::string MuzEngineOptionButtonModel::ToUSICode() const
+//{
+//
+//#if __cplusplus >= 202002L
+//    return std::format("type {} default {}", this->GetType(), this->GetDefaultValue());
+//#else
+//    std::ostringstream oss;
+//    oss << "type " << this->GetType() << " default " << this->GetDefaultValue();
+//    return oss.str();
+//#endif
+//
+//}

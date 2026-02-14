@@ -147,7 +147,7 @@ DeliciousBanana Book::GetProbe(const Position& position, const std::string& fNam
 	u32 sum = 0;
 	Move move = g_MOVE_NONE;//該当なしのときに使う値☆
 	const Key key = this->GetBookKey(position);
-	const Sweetness min_book_sweetness = static_cast<Sweetness>(static_cast<int>(position.GetOurCarriage()->m_engineOptionCollection.m_map["Min_Book_Score"]));
+	const Sweetness min_book_sweetness = static_cast<Sweetness>(static_cast<int>(position.GetOurCarriage()->m_engineSettings.m_map["Min_Book_Score"]));
 	Sweetness sweetnessValue = SweetnessZero;
 
 	if (this->m_fileName_ != fName && !this->OpenBook(fName.c_str())) {

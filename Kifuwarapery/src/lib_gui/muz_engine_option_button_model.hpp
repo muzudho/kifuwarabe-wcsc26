@@ -1,6 +1,12 @@
 #pragma once
 #include "i_muz_engine_optionable_model.hpp"
 
+#if __cplusplus >= 202002L
+    #include <format>  // C++20
+#else
+    #include <sstream>
+#endif
+
 
 /// <summary>
 /// エンジン・オプション　＞　ボタン
@@ -36,5 +42,17 @@ public:
     /// <param name="v"></param>
     /// <returns></returns>
     IMuzEngineOptionableModel& operator = (const std::string& v);
+
+
+    // ========================================
+    // その他のメソッド
+    // ========================================
+
+
+    ///// <summary>
+    ///// USIコード化☆（＾～＾）
+    ///// </summary>
+    ///// <returns></returns>
+    //std::string ToUSICode() const override;
 };
 

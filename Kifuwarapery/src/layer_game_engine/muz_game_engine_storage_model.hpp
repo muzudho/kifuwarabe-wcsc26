@@ -47,9 +47,9 @@ public:
 
 
 	/// <summary>
-	/// USIオプションのコレクション
+	/// USIエンジン設定
 	/// </summary>
-	MuzEngineSettingsModel	m_engineOptionCollection;
+	MuzEngineSettingsModel	m_engineSettings;
 
 	/// <summary>
 	/// シグナル？
@@ -477,7 +477,7 @@ FORCE_INLINE void		MonkiesPub::WakeUp(MuzGameEngineStorageModel* ourCarriage) {
 	}
 
 	// ［手の空いてる猿は寝かす］フラグを立てる☆
-	this->m_isIdleMonkeyToSleep_ = ourCarriage->m_engineOptionCollection.m_map["Use_Sleeping_Threads"];
+	this->m_isIdleMonkeyToSleep_ = ourCarriage->m_engineSettings.m_map["Use_Sleeping_Threads"];
 }
 
 

@@ -40,5 +40,15 @@ public:
 	IMuzEngineOptionableModel& operator = (const std::string& v);
 
 
+	// ========================================
+	// その他のメソッド
+	// ========================================
+
+
+	///// <summary>
+	///// USIコード化☆（＾～＾）
+	///// </summary>
+	///// <returns></returns>
+	//std::string ToUSICode() const override;
 };
 

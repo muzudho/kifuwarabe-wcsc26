@@ -53,3 +53,18 @@ IMuzEngineOptionableModel& MuzEngineOptionTextboxModel::operator = (const std::s
 
 	return *this;
 }
+
+
+// ========================================
+// その他のメソッド
+// ========================================
+
+
+///// <summary>
+///// USIコード化☆（＾～＾）
+///// </summary>
+///// <returns></returns>
+//std::string MuzEngineOptionTextboxModel::ToUSICode() const
+//{
+//	return "";
+//}
