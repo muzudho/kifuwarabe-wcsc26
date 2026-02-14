@@ -1,13 +1,13 @@
 ﻿#pragma once
 #include <map>
 #include <string>
-#include "engine_optionable.hpp"
+#include "muz_engine_optionable_model.hpp"
 
 
 /// <summary>
 /// ２つの文字列の並び順の比較☆（＾～＾）
 /// </summary>
-struct CaseInsensitiveLess {
+struct MuzCaseInsensitiveLessModel {
 	bool operator() (const std::string&, const std::string&) const;
 };
 
@@ -17,7 +17,7 @@ struct CaseInsensitiveLess {
 /// エンジン・オプションのコレクション☆（＾～＾）
 ///		</pre>
 /// </summary>
-struct EngineOptionCollection {
+struct MuzEngineOptionCollectionModel {
 
 
 public:
@@ -39,13 +39,13 @@ public:
 	/// </summary>
 	/// <param name="key"></param>
 	/// <param name="option"></param>
-	void Put(const std::string key, EngineOptionable option);
+	void Put(const std::string key, MuzEngineOptionableModel option);
 
 
     /// <summary>
     /// オプションのマップ☆（＾～＾）
     /// </summary>
-    std::map<std::string, EngineOptionable, CaseInsensitiveLess> m_map;
+    std::map<std::string, MuzEngineOptionableModel, MuzCaseInsensitiveLessModel> m_map;
 
 
 	/// <summary>
@@ -54,5 +54,5 @@ public:
 	/// <param name=""></param>
 	/// <param name=""></param>
 	/// <returns></returns>
-	friend std::ostream& operator << (std::ostream&, const EngineOptionCollection&);
+	friend std::ostream& operator << (std::ostream&, const MuzEngineOptionCollectionModel&);
 };

@@ -15,7 +15,7 @@
 #include "../n560_timeMgr_/n560_500_timeManager.hpp"
 #include "../n640_searcher/n640_128_signalsType.hpp"
 #include "../n640_searcher/n640_450_rootMove.hpp"
-#include "../../src/lib_gui/engine_option_collection.hpp"
+#include "../../src/lib_gui/muz_engine_option_collection_model.hpp"
 #include "../n640_searcher/n640_440_splitedNode.hpp"
 #include "../n760_thread__/n760_400_monkiesPub.hpp"
 #include "../n800_learn___/n800_100_stopwatch.hpp"

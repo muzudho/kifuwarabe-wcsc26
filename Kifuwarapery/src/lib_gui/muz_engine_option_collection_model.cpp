@@ -1,4 +1,4 @@
-﻿#include "engine_option_collection.hpp"
+﻿#include "muz_engine_option_collection_model.hpp"
 
 
 /// <summary>
@@ -7,7 +7,7 @@
 /// <param name="s1"></param>
 /// <param name="s2"></param>
 /// <returns></returns>
-bool CaseInsensitiveLess::operator () (const std::string& s1, const std::string& s2) const {
+bool MuzCaseInsensitiveLessModel::operator () (const std::string& s1, const std::string& s2) const {
 	for (size_t i = 0; i < s1.size() && i < s2.size(); ++i) {
 		const int c1 = tolower(s1[i]);
 		const int c2 = tolower(s2[i]);
@@ -24,7 +24,7 @@ bool CaseInsensitiveLess::operator () (const std::string& s1, const std::string&
 /// </summary>
 /// <param name="key"></param>
 /// <param name="option"></param>
-void EngineOptionCollection::Put(const std::string key, EngineOptionable option)
+void MuzEngineOptionCollectionModel::Put(const std::string key, MuzEngineOptionableModel option)
 {
 	(this->m_map)[key] = option;
 }
@@ -36,9 +36,9 @@ void EngineOptionCollection::Put(const std::string key, EngineOptionable option)
 /// <param name="os"></param>
 /// <param name="engineOptionCollection"></param>
 /// <returns></returns>
-std::ostream& operator << (std::ostream& os, const EngineOptionCollection& engineOptionCollection) {
+std::ostream& operator << (std::ostream& os, const MuzEngineOptionCollectionModel& engineOptionCollection) {
 	for (auto& elem : engineOptionCollection.m_map) {
-		const EngineOptionable& o = elem.second;
+		const MuzEngineOptionableModel& o = elem.second;
 		os << "\noption name " << elem.first << " type " << o.GetType();
 		if (o.GetType() != "button") {
 			os << " default " << o.GetDefaultValue();

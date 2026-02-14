@@ -1,4 +1,4 @@
-﻿#include "engine_option.hpp"
+﻿#include "muz_engine_option_model.hpp"
 
 
 /// <summary>
@@ -8,9 +8,9 @@
 /// </summary>
 /// <param name="onChanged"></param>
 /// <param name="pGameEngineStore"></param>
-EngineOption::EngineOption(
-    std::function<void(const EngineOptionable&)> onChanged)
-    : EngineOptionable(onChanged)
+MuzEngineOptionModel::MuzEngineOptionModel(
+    std::function<void(const MuzEngineOptionableModel&)> onChanged)
+    : MuzEngineOptionableModel(onChanged)
 {
 }
 
@@ -23,10 +23,10 @@ EngineOption::EngineOption(
 /// <param name="v"></param>
 /// <param name="onChanged"></param>
 /// <param name="pGameEngineStore"></param>
-EngineOption::EngineOption(
+MuzEngineOptionModel::MuzEngineOptionModel(
     const char* v,
-    std::function<void(const EngineOptionable&)> onChanged)
-    : EngineOptionable(v, onChanged)
+    std::function<void(const MuzEngineOptionableModel&)> onChanged)
+    : MuzEngineOptionableModel(v, onChanged)
 {
 }
 
@@ -39,10 +39,10 @@ EngineOption::EngineOption(
 /// <param name="v"></param>
 /// <param name="onChanged"></param>
 /// <param name="pGameEngineStore"></param>
-EngineOption::EngineOption(
+MuzEngineOptionModel::MuzEngineOptionModel(
     const bool v,
-    std::function<void(const EngineOptionable&)> onChanged)
-    : EngineOptionable(v, onChanged)
+    std::function<void(const MuzEngineOptionableModel&)> onChanged)
+    : MuzEngineOptionableModel(v, onChanged)
 {
 }
 
@@ -57,12 +57,12 @@ EngineOption::EngineOption(
 /// <param name="max"></param>
 /// <param name="onChanged"></param>
 /// <param name="pGameEngineStore"></param>
-EngineOption::EngineOption(
+MuzEngineOptionModel::MuzEngineOptionModel(
     const int v,
     const int min,
     const int max,
-    std::function<void(const EngineOptionable&)> onChanged)
-    : EngineOptionable(v, min, max, onChanged)
+    std::function<void(const MuzEngineOptionableModel&)> onChanged)
+    : MuzEngineOptionableModel(v, min, max, onChanged)
 {
 }
 

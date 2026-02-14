@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../../src/lib_gui/engine_option_collection.hpp"
+#include "../../src/lib_gui/muz_engine_option_collection_model.hpp"
 #include <functional>
 
 
@@ -25,11 +25,11 @@ public:
 		int sweetnessInfinite,
 		int sweetnessMate0Ply,
 		int maxThreads,
-		EngineOptionCollection* pMap,
-		std::function<void(const EngineOptionable&)> onHashSizeChanged,
-		std::function<void(const EngineOptionable&)> onHashCleared,
-		std::function<void(const EngineOptionable&)> onEvalDirChanged,
-		std::function<void(const EngineOptionable&)> onMaxThreadsPerSplitPointChanged,
-		std::function<void(const EngineOptionable&)> onThreadsChanged,
+		MuzEngineOptionCollectionModel* pMap,
+		std::function<void(const MuzEngineOptionableModel&)> onHashSizeChanged,
+		std::function<void(const MuzEngineOptionableModel&)> onHashCleared,
+		std::function<void(const MuzEngineOptionableModel&)> onEvalDirChanged,
+		std::function<void(const MuzEngineOptionableModel&)> onMaxThreadsPerSplitPointChanged,
+		std::function<void(const MuzEngineOptionableModel&)> onThreadsChanged,
 		std::function<int()> getCPUCoreCount);
 };

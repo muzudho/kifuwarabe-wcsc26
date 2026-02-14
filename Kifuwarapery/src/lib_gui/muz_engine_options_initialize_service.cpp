@@ -1,4 +1,4 @@
-﻿#include "engine_option.hpp"
+﻿#include "muz_engine_option_model.hpp"
 #include "muz_engine_optoins_initialize_service.hpp"
 
 
@@ -12,73 +12,73 @@ void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
 	int sweetnessInfinite,
 	int sweetnessMate0Ply,
 	int maxThreads,
-	EngineOptionCollection* pMap,
-	std::function<void(const EngineOptionable&)> onHashSizeChanged,
-	std::function<void(const EngineOptionable&)> onHashCleared,
-	std::function<void(const EngineOptionable&)> onEvalDirChanged,
-	std::function<void(const EngineOptionable&)> onMaxThreadsPerSplitPointChanged,
-	std::function<void(const EngineOptionable&)> onThreadsChanged,
+	MuzEngineOptionCollectionModel* pMap,
+	std::function<void(const MuzEngineOptionableModel&)> onHashSizeChanged,
+	std::function<void(const MuzEngineOptionableModel&)> onHashCleared,
+	std::function<void(const MuzEngineOptionableModel&)> onEvalDirChanged,
+	std::function<void(const MuzEngineOptionableModel&)> onMaxThreadsPerSplitPointChanged,
+	std::function<void(const MuzEngineOptionableModel&)> onThreadsChanged,
 	std::function<int()> getCPUCoreCount)
 {
 	// ハッシュサイズ
-	pMap->Put("USI_Hash"					, EngineOption(256, 1, 65536, onHashSizeChanged));
+	pMap->Put("USI_Hash"					, MuzEngineOptionModel(256, 1, 65536, onHashSizeChanged));
 
 	// ［ハッシュ・クリアー］ボタン
-	pMap->Put("Clear_Hash"					, EngineOption(onHashCleared));
+	pMap->Put("Clear_Hash"					, MuzEngineOptionModel(onHashCleared));
 
 	// 定跡ファイルパス
-	pMap->Put("Book_File"					, EngineOption("book/20150503/book.bin"));
+	pMap->Put("Book_File"					, MuzEngineOptionModel("book/20150503/book.bin"));
 
 	// ［定跡］チェックボックス
-	pMap->Put("Best_Book_Move"				, EngineOption(false));
+	pMap->Put("Best_Book_Move"				, MuzEngineOptionModel(false));
 
 	// ［定跡］チェックボックス
-	pMap->Put("OwnBook"						, EngineOption(true));
+	pMap->Put("OwnBook"						, MuzEngineOptionModel(true));
 
 	// 定跡の最小手数
-	pMap->Put("Min_Book_Ply"				, EngineOption(SHRT_MAX, 0, SHRT_MAX));
+	pMap->Put("Min_Book_Ply"				, MuzEngineOptionModel(SHRT_MAX, 0, SHRT_MAX));
 
 	// 定跡の最大手数
-	pMap->Put("Max_Book_Ply"				, EngineOption(SHRT_MAX, 0, SHRT_MAX));
+	pMap->Put("Max_Book_Ply"				, MuzEngineOptionModel(SHRT_MAX, 0, SHRT_MAX));
 
 	// 定跡評価値
-	pMap->Put("Min_Book_Score"				, EngineOption(-180, -sweetnessInfinite, sweetnessInfinite));
+	pMap->Put("Min_Book_Score"				, MuzEngineOptionModel(-180, -sweetnessInfinite, sweetnessInfinite));
 
 	// ［評価値ファイル］フォルダー
-	pMap->Put("Eval_Dir"					, EngineOption("20151105", onEvalDirChanged));
+	pMap->Put("Eval_Dir"					, MuzEngineOptionModel("20151105", onEvalDirChanged));
 
 	// ［評価値書き込み］チェックボックス
-	pMap->Put("Write_Synthesized_Eval"		, EngineOption(false));
+	pMap->Put("Write_Synthesized_Eval"		, MuzEngineOptionModel(false));
 
 	// ［相手の手番に考えるか］チェックボックス
-	pMap->Put("USI_Ponder"					, EngineOption(true));
+	pMap->Put("USI_Ponder"					, MuzEngineOptionModel(true));
 
 	// ［秒読みマージン］ - 元の値：0.5秒☆？（＾ｑ＾）
-	pMap->Put("Byoyomi_Margin"				, EngineOption(500, 0, INT_MAX));
+	pMap->Put("Byoyomi_Margin"				, MuzEngineOptionModel(500, 0, INT_MAX));
 
 	// ［几帳面な読み］の本数
-	pMap->Put("MultiPV"						, EngineOption(1, 1, max_legal_moves));
+	pMap->Put("MultiPV"						, MuzEngineOptionModel(1, 1, max_legal_moves));
 
 	// ［コンピューターの強さ］。遊び用
-	pMap->Put("Skill_Level"					, EngineOption(20, 0, 20));
+	pMap->Put("Skill_Level"					, MuzEngineOptionModel(20, 0, 20));
 
 	// ［最大ランダム評価値差］
-	pMap->Put("Max_Random_Score_Diff"		, EngineOption(0, 0, sweetnessMate0Ply));
+	pMap->Put("Max_Random_Score_Diff"		, MuzEngineOptionModel(0, 0, sweetnessMate0Ply));
 
 	// ［最大ランダム評価値差の手数］
-	pMap->Put("Max_Random_Score_Diff_Ply"	, EngineOption(40, 0, SHRT_MAX));
+	pMap->Put("Max_Random_Score_Diff_Ply"	, MuzEngineOptionModel(40, 0, SHRT_MAX));
 
 	//────────────────────────────────────────────────────────────────────────────────
 	// 時間制御関連☆（＾ｑ＾）
 	//────────────────────────────────────────────────────────────────────────────────
-	pMap->Put("Emergency_Move_Horizon"		, EngineOption(40, 0, 50));
-	//pMap->Put("Emergency_Base_Time"			, EngineOption(   200,  0, 30000));	// 緊急時用に残しておこうというタイム（ミリ秒）か☆？
-	//pMap->Put("Emergency_Move_Time"			, EngineOption(    70,  0,  5000));	// 緊急時用に残しておこうというタイム（ミリ秒）か☆？
-	//pMap->Put("Slow_Mover"					, EngineOption(   100, 10,  1000));//スロー・ムーバーとは何なのか☆？（＾ｑ＾）？
+	pMap->Put("Emergency_Move_Horizon"		, MuzEngineOptionModel(40, 0, 50));
+	//pMap->Put("Emergency_Base_Time"			, MuzEngineOptionModel(   200,  0, 30000));	// 緊急時用に残しておこうというタイム（ミリ秒）か☆？
+	//pMap->Put("Emergency_Move_Time"			, MuzEngineOptionModel(    70,  0,  5000));	// 緊急時用に残しておこうというタイム（ミリ秒）か☆？
+	//pMap->Put("Slow_Mover"					, MuzEngineOptionModel(   100, 10,  1000));//スロー・ムーバーとは何なのか☆？（＾ｑ＾）？
 //#if defined(FISCHER_RULE)
-//	pMap->Put("Minimum_Thinking_Time"		, EngineOption(  9000,  0, INT_MAX));// 10秒加算されると見越して、9秒は最低使えるということにしようぜ☆（＾ｑ＾）
+//	pMap->Put("Minimum_Thinking_Time"		, MuzEngineOptionModel(  9000,  0, INT_MAX));// 10秒加算されると見越して、9秒は最低使えるということにしようぜ☆（＾ｑ＾）
 //#else
-	pMap->Put("Minimum_Thinking_Time", EngineOption(1500, 0, INT_MAX));// 元の値：初期値 1500（1.5）秒☆
+	pMap->Put("Minimum_Thinking_Time", MuzEngineOptionModel(1500, 0, INT_MAX));// 元の値：初期値 1500（1.5）秒☆
 //#endif
 
 	//────────────────────────────────────────────────────────────────────────────────
@@ -86,15 +86,15 @@ void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
 	//────────────────────────────────────────────────────────────────────────────────
 
 	// ［一緒に走る猿が分岐する点の最大数］
-	pMap->Put("Max_Threads_per_Split_Point"	, EngineOption(		5,  4,     8, onMaxThreadsPerSplitPointChanged));
+	pMap->Put("Max_Threads_per_Split_Point"	, MuzEngineOptionModel(		5,  4,     8, onMaxThreadsPerSplitPointChanged));
 
 	// スレッド数
-	pMap->Put("Threads"						, EngineOption(getCPUCoreCount(), 1, maxThreads, onThreadsChanged));
+	pMap->Put("Threads"						, MuzEngineOptionModel(getCPUCoreCount(), 1, maxThreads, onThreadsChanged));
 
 	// ［寝てる猿を使う］チェックボックス
-	pMap->Put("Use_Sleeping_Threads"		, EngineOption(false));
+	pMap->Put("Use_Sleeping_Threads"		, MuzEngineOptionModel(false));
 
 #if defined BISHOP_IN_DANGER
-	(*this)["Danger_Demerit_Score"] = EngineOption(700, SHRT_MIN, SHRT_MAX);
+	(*this)["Danger_Demerit_Score"] = MuzEngineOptionModel(700, SHRT_MIN, SHRT_MAX);
 #endif
 }

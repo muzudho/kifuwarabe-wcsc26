@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "engine_optionable.hpp"
+#include "muz_engine_optionable_model.hpp"
 
 
 class MuzGameEngineStorageModel;
@@ -10,7 +10,7 @@ class MuzGameEngineStorageModel;
 /// エンジン・オプション☆（＾～＾）
 ///		</pre
 /// </summary>
-class EngineOption : public EngineOptionable {
+class MuzEngineOptionModel : public MuzEngineOptionableModel {
 
 
 public:
@@ -20,35 +20,35 @@ public:
     /// ボタン用
     /// </summary>
     /// <returns></returns>
-    EngineOption(
-        std::function<void(const EngineOptionable&)> onChanged = nullptr);
+    MuzEngineOptionModel(
+        std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
 
 
     /// <summary>
     /// テキストボックス用
     /// </summary>
     /// <returns></returns>
-    EngineOption(
-        const char* v, std::function<void(const EngineOptionable&)> onChanged = nullptr);
+    MuzEngineOptionModel(
+        const char* v, std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
 
 
     /// <summary>
     /// チェックボックス用
     /// </summary>
     /// <returns></returns>
-    EngineOption(
-        const bool  v, std::function<void(const EngineOptionable&)> onChanged = nullptr);
+    MuzEngineOptionModel(
+        const bool  v, std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
 
 
     /// <summary>
     /// スピンボックス用
     /// </summary>
     /// <returns></returns>
-    EngineOption(
+    MuzEngineOptionModel(
         const int   v,
         const int min,
         const int max,
-        std::function<void(const EngineOptionable&)> onChanged = nullptr);
+        std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
 
 
 };

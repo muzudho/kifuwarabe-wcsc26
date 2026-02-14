@@ -9,28 +9,28 @@ class MuzGameEngineStorageModel;
 /// <summary>
 /// エンジン・オプション的☆（＾ｑ＾）
 /// </summary>
-class EngineOptionable {
+class MuzEngineOptionableModel {
 
 
 public:
 
 
-	EngineOptionable(
-		std::function<void(const EngineOptionable&)> onChanged = nullptr);
+	MuzEngineOptionableModel(
+		std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
 
-	EngineOptionable(
+	MuzEngineOptionableModel(
 		const char* v,
-		std::function<void(const EngineOptionable&)> onChanged = nullptr);
+		std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
 
-	EngineOptionable(
+	MuzEngineOptionableModel(
 		const bool  v,
-		std::function<void(const EngineOptionable&)> onChanged = nullptr);
+		std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
 
-	EngineOptionable(
+	MuzEngineOptionableModel(
 		const int   v,
 		const int min,
 		const int max,
-		std::function<void(const EngineOptionable&)> onChanged = nullptr);
+		std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
 
 
 	/// <summary>
@@ -38,7 +38,7 @@ public:
 	/// </summary>
 	/// <param name="v"></param>
 	/// <returns></returns>
-	EngineOptionable& operator = (const std::string& v);
+	MuzEngineOptionableModel& operator = (const std::string& v);
 
 
 	/// <summary>
@@ -121,5 +121,5 @@ protected:
 	/// <summary>
 	/// 変更時フック
 	/// </summary>
-	std::function<void(const EngineOptionable&)> m_onChanged_;
+	std::function<void(const MuzEngineOptionableModel&)> m_onChanged_;
 };

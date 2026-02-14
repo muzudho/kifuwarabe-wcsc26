@@ -1,4 +1,4 @@
-﻿#include "engine_optionable.hpp"
+﻿#include "muz_engine_optionable_model.hpp"
 #include <sstream>
 
 
@@ -7,9 +7,9 @@
 /// </summary>
 /// <param name="newValue"></param>
 /// <param name="onChanged"></param>
-EngineOptionable::EngineOptionable(
+MuzEngineOptionableModel::MuzEngineOptionableModel(
 	const char* v,
-	std::function<void(const EngineOptionable&)> onChanged)
+	std::function<void(const MuzEngineOptionableModel&)> onChanged)
 		: m_type_("string"), m_min_(0), m_max_(0), m_onChanged_(onChanged)
 {
 	m_defaultValue_ = m_currentValue_ = v;
@@ -21,9 +21,9 @@ EngineOptionable::EngineOptionable(
 /// </summary>
 /// <param name="newValue"></param>
 /// <param name="f"></param>
-EngineOptionable::EngineOptionable(
+MuzEngineOptionableModel::MuzEngineOptionableModel(
 	const bool v,
-	std::function<void(const EngineOptionable&)> onChanged)
+	std::function<void(const MuzEngineOptionableModel&)> onChanged)
 		: m_type_("check"), m_min_(0), m_max_(0), m_onChanged_(onChanged)
 {
 	m_defaultValue_ = m_currentValue_ = (v ? "true" : "false");
@@ -35,8 +35,8 @@ EngineOptionable::EngineOptionable(
 /// </summary>
 /// <param name="onChanged"></param>
 /// <param name="pGameEngineStore"></param>
-EngineOptionable::EngineOptionable(
-	std::function<void(const EngineOptionable&)> onChanged)
+MuzEngineOptionableModel::MuzEngineOptionableModel(
+	std::function<void(const MuzEngineOptionableModel&)> onChanged)
 		: m_type_("button"), m_min_(0), m_max_(0), m_onChanged_(onChanged)
 {
 }
@@ -49,11 +49,11 @@ EngineOptionable::EngineOptionable(
 /// <param name="min"></param>
 /// <param name="max"></param>
 /// <param name="onChanged"></param>
-EngineOptionable::EngineOptionable(
+MuzEngineOptionableModel::MuzEngineOptionableModel(
 	const int v,
 	const int min,
 	const int max,
-	std::function<void(const EngineOptionable&)> onChanged)
+	std::function<void(const MuzEngineOptionableModel&)> onChanged)
 		: m_type_("spin"), m_min_(min), m_max_(max), m_onChanged_(onChanged)
 {
 	std::ostringstream ss;
@@ -67,7 +67,7 @@ EngineOptionable::EngineOptionable(
 /// </summary>
 /// <param name="newValue"></param>
 /// <returns></returns>
-EngineOptionable& EngineOptionable::operator = (const std::string& newValue)
+MuzEngineOptionableModel& MuzEngineOptionableModel::operator = (const std::string& newValue)
 {
 	assert(!m_type_.empty());
 

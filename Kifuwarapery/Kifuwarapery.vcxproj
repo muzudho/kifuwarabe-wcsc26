@@ -390,9 +390,9 @@
     <ClInclude Include="header\n640_searcher\n640_500_reductions.hpp" />
     <ClInclude Include="header\n640_searcher\n640_510_futilityMargins.hpp" />
     <ClInclude Include="header\n640_searcher\n640_520_futilityMoveCounts.hpp" />
-    <ClInclude Include="src\lib_gui\engine_optionable.hpp" />
-    <ClInclude Include="src\lib_gui\engine_option_collection.hpp" />
-    <ClInclude Include="src\lib_gui\engine_option.hpp" />
+    <ClInclude Include="src\lib_gui\muz_engine_optionable_model.hpp" />
+    <ClInclude Include="src\lib_gui\muz_engine_option_collection_model.hpp" />
+    <ClInclude Include="src\lib_gui\muz_engine_option_model.hpp" />
     <ClInclude Include="src\lib_gui\muz_engine_optoins_initialize_service.hpp" />
     <ClInclude Include="header\n720_usi_____\n720_260_usiOperation.hpp" />
     <ClInclude Include="header\n720_usi_____\n720_300_benchmark.hpp" />
@@ -614,9 +614,9 @@
     <ClCompile Include="source\n640_searcher\n640_500_reductions.cpp" />
     <ClCompile Include="source\n640_searcher\n640_510_futilityMargins.cpp" />
     <ClCompile Include="source\n640_searcher\n640_520_futilityMoveCounts.cpp" />
-    <ClCompile Include="src\lib_gui\engine_optionable.cpp" />
-    <ClCompile Include="src\lib_gui\engine_option_collection.cpp" />
-    <ClCompile Include="src\lib_gui\engine_option.cpp" />
+    <ClCompile Include="src\lib_gui\muz_engine_optionable_model.cpp" />
+    <ClCompile Include="src\lib_gui\muz_engine_option_collection_model.cpp" />
+    <ClCompile Include="src\lib_gui\muz_engine_option_model.cpp" />
     <ClCompile Include="src\lib_gui\muz_engine_options_initialize_service.cpp" />
     <ClCompile Include="source\n720_usi_____\n720_260_usiOperation.cpp" />
     <ClCompile Include="source\n720_usi_____\n720_300_benchmark.cpp" />
