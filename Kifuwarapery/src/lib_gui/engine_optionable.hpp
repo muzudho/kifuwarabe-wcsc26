@@ -25,24 +25,24 @@ public:
 
 
 	EngineOptionable(
-		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> handleChanged = nullptr,
+		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> onChanged = nullptr,
 		MuzGameEngineStorageModel* pGameEngineStore = nullptr);
 
 	EngineOptionable(
 		const char* v,
-		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> handleChanged = nullptr,
+		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> onChanged = nullptr,
 		MuzGameEngineStorageModel* pGameEngineStore = nullptr);
 
 	EngineOptionable(
 		const bool  v,
-		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> handleChanged = nullptr,
+		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> onChanged = nullptr,
 		MuzGameEngineStorageModel* pGameEngineStore = nullptr);
 
 	EngineOptionable(
 		const int   v,
 		const int min,
 		const int max,
-		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> handleChanged = nullptr,
+		std::function<void(MuzGameEngineStorageModel*, const EngineOptionable&)> onChanged = nullptr,
 		MuzGameEngineStorageModel* pGameEngineStore = nullptr);
 
 
