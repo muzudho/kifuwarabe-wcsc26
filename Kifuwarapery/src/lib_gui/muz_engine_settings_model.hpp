@@ -81,4 +81,17 @@ public:
 	MuzEngineOptionAbstractModel& GetOption(const std::string key) {
 		return this->m_map[key];
     }
+
+
+	std::vector<std::string> GetAllOptionKeys() const
+	{
+		std::vector<std::string> keys;
+		keys.reserve(this->m_map.size());  // パフォーマンスのため（任意）
+
+		for (const auto& pair : this->m_map) {
+			keys.push_back(pair.first);
+		}
+
+		return keys;
+	}
 };
