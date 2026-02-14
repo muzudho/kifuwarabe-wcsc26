@@ -2,9 +2,7 @@
 
 #include <map>
 #include <string>
-//#include <utility>	//std::end か☆？
-//#include <iostream>	//std::end か☆？
-#include "../n680_egOption/n680_230_engineOptionable.hpp"
+#include "../../src/lib_gui/engine_optionable.hpp"
 
 
 /// <summary>

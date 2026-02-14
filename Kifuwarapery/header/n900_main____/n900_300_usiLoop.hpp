@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n165_movStack/n165_600_convMove.hpp"
-#include "../n680_egOption/n680_230_engineOptionable.hpp"
+#include "../../src/lib_gui/engine_optionable.hpp"
 #include "../n680_egOption/n680_240_engineOptionsMap.hpp"
 #include "../../src/layer_game_engine/game_engine_storage.hpp"
 
