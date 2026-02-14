@@ -71,4 +71,14 @@ public:
 	/// <param name="key"></param>
 	/// <param name="option"></param>
 	void Put(const std::string key, MuzEngineOptionAbstractModel option);
+
+
+	/// <summary>
+	/// エンジン・オプション取得☆（＾～＾）
+	/// </summary>
+	/// <param name="key"></param>
+	/// <returns></returns>
+	MuzEngineOptionAbstractModel& GetOption(const std::string key) {
+		return this->m_map[key];
+    }
 };
