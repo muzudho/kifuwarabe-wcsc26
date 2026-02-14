@@ -2,10 +2,6 @@
 #include <functional>
 
 
-// 探索用変数
-class MuzGameEngineStorageModel;
-
-
 /// <summary>
 /// エンジン・オプション的☆（＾ｑ＾）
 /// </summary>
