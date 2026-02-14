@@ -24,23 +24,4 @@ public:
         const char* v, std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
 
 
-    /// <summary>
-    /// チェックボックス用
-    /// </summary>
-    /// <returns></returns>
-    MuzEngineOptionModel(
-        const bool  v, std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
-
-
-    /// <summary>
-    /// スピンボックス用
-    /// </summary>
-    /// <returns></returns>
-    MuzEngineOptionModel(
-        const int   v,
-        const int min,
-        const int max,
-        std::function<void(const MuzEngineOptionableModel&)> onChanged = nullptr);
-
-
 };
