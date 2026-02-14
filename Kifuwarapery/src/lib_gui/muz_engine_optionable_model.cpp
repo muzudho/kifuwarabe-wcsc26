@@ -63,7 +63,7 @@ MuzEngineOptionableModel::MuzEngineOptionableModel(
 
 
 /// <summary>
-/// 値のセット、またはボタンの押下☆（＾ｑ＾）
+/// 値のセット☆（＾ｑ＾）
 /// </summary>
 /// <param name="newValue"></param>
 /// <returns></returns>
@@ -71,28 +71,19 @@ MuzEngineOptionableModel& MuzEngineOptionableModel::operator = (const std::strin
 {
 	assert(!m_type_.empty());
 
+	// ボタンではない（＾～＾）
+
 	if (
-		(m_type_ != "button" && newValue.empty())	// 値が無いのに、ボタンじゃなかった
+		newValue.empty()	// ボタンじゃないのに、値が無かった
         || (m_type_ == "check" && newValue != "true" && newValue != "false")	// チェックボックスなのに、値が "true" でも "false" でもなかった
         || (m_type_ == "spin" && (atoi(newValue.c_str()) < m_min_ || m_max_ < atoi(newValue.c_str()))))	// スピンなのに、値が最小値～最大値の範囲外だった
 	{ return *this; }
 
-    bool isDirty = false;
+	// 値の更新
+	m_currentValue_ = newValue;
+    auto isDirty = m_currentValue_ != newValue;	// 変更前の値と変更後の値が違うときだけ、変更通知を呼び出すようにするぜ☆（＾ｑ＾）
 
-	// ボタンなら
-	if (m_type_ == "button")
-	{
-        isDirty = true;
-	}
-	// （ボタンじゃなければ）値の更新
-	else
-	{
-		m_currentValue_ = newValue;
-        isDirty = m_currentValue_ != newValue;	// 変更前の値と変更後の値が違うときだけ、変更通知を呼び出すようにするぜ☆（＾ｑ＾）
-	}
-
-	// 変更通知、またはボタン押下の通知
-    // FIXME: 変更前の値、変更後の値を渡すようにするか（＾～＾）？
+	// 変更通知
 	if (isDirty && m_onChanged_ != nullptr) {
 		m_onChanged_(*this);
 	}

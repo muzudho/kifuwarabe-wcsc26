@@ -34,7 +34,7 @@ public:
 	/// </summary>
 	/// <param name="v"></param>
 	/// <returns></returns>
-	MuzEngineOptionableModel& operator = (const std::string& v);
+	virtual MuzEngineOptionableModel& operator = (const std::string& v);
 
 
 	/// <summary>

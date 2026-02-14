@@ -13,3 +13,19 @@ MuzEngineOptionButtonModel::MuzEngineOptionButtonModel(
     : MuzEngineOptionableModel(onChanged)
 {
 }
+
+
+/// <summary>
+/// 値のセット、またはボタンの押下☆（＾ｑ＾）
+/// </summary>
+/// <param name="newValue"></param>
+/// <returns></returns>
+MuzEngineOptionableModel& MuzEngineOptionButtonModel::operator = (const std::string& newValue)
+{
+	assert(!m_type_.empty());
+
+    // ボタンなら、変更通知をする
+	m_onChanged_(*this);
+
+	return *this;
+}
