@@ -15,7 +15,7 @@
 /// <param name="pGameEngineStore"></param>
 MuzEngineOptionButtonModel::MuzEngineOptionButtonModel(
     std::function<void(const IMuzEngineOptionableModel&)> onChanged)
-    : IMuzEngineOptionableModel(onChanged)
+    : IMuzEngineOptionableModel("button", 0, 0, onChanged)
 {
 }
 
