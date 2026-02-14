@@ -82,7 +82,8 @@ public:
 	/// <returns></returns>
 	const MuzEngineOptionAbstractModel& GetOptionByKey(const std::string key) const
 	{
-        return this->m_map.find(key)->second;	// 値を返す。例外は投げない。
+        // first はキー、second は値。例外は投げない。
+        return this->m_map.find(key)->second;
 		//return this->m_map.at(key);	// 例外を投げる
     }
 

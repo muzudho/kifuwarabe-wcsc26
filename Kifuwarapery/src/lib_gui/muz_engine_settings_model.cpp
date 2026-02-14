@@ -31,9 +31,9 @@ bool MuzCaseInsensitiveLessModel::operator () (const std::string& s1, const std:
 /// <param name="engineSettings"></param>
 /// <returns></returns>
 std::ostream& operator << (std::ostream& os, const MuzEngineSettingsModel& engineSettings) {
-	for (auto& elem : engineSettings.m_map) {
-		const MuzEngineOptionAbstractModel& option = elem.second;
-		os << "\noption name " << elem.first << " " << option.ToUSICode();
+	for (auto key : engineSettings.GetAllOptionKeys()) {
+		const MuzEngineOptionAbstractModel& option = engineSettings.GetOptionByKey(key);
+		os << "\noption name " << key << " " << option.ToUSICode();
 	}
 	return os;
 }
