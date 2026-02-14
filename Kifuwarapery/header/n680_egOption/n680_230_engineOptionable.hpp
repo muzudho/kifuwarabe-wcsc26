@@ -1,8 +1,9 @@
 ﻿#pragma once
 
-#include "../n080_100_sysWorld/n080_100_500_common.hpp"
+// #include "../n080_100_sysWorld/n080_100_500_common.hpp"
 
 
+// 探索用変数
 class GameEngineStorageOurCarriage;
 
 
@@ -31,7 +32,7 @@ public:
 
 
 	/// <summary>
-	/// 
+    /// 代入演算子☆
 	/// </summary>
 	/// <param name="v"></param>
 	/// <returns></returns>
@@ -39,7 +40,7 @@ public:
 
 
 	/// <summary>
-	/// 
+    /// 整数化☆
 	/// </summary>
 	operator int() const {
 		assert(m_type_ == "check" || m_type_ == "spin");
@@ -51,8 +52,8 @@ public:
     /// 文字列化☆
 	/// </summary>
 	operator std::string() const {
-		assert(m_type_ == "string");
-		return m_currentValue_;
+		assert(this->m_type_ == "string");
+		return this->m_currentValue_;
 	}
 
 
@@ -60,28 +61,28 @@ public:
 
 
 	/// <summary>
-	/// 
+	/// 既定値
 	/// </summary>
 	/// <returns></returns>
 	std::string	GetDefaultValue()	const { return this->m_defaultValue_; }
 
 
 	/// <summary>
-	/// 
+	/// 型
 	/// </summary>
 	/// <returns></returns>
 	std::string	GetType()			const { return this->m_type_; }
 
 
 	/// <summary>
-	/// 
+	/// 最小値
 	/// </summary>
 	/// <returns></returns>
 	int			GetMin()			const { return this->m_min_; }
 
 
 	/// <summary>
-	/// 
+	/// 最大値
 	/// </summary>
 	/// <returns></returns>
 	int			GetMax()			const { return this->m_max_; }
@@ -91,37 +92,37 @@ protected:
 
 
 	/// <summary>
-	/// 
+	/// 既定値
 	/// </summary>
 	std::string m_defaultValue_;
 
 	/// <summary>
-	/// 
+	/// 現在値
 	/// </summary>
 	std::string m_currentValue_;
 
 	/// <summary>
-	/// 
+	/// 型
 	/// </summary>
 	std::string m_type_;
 
 	/// <summary>
-	/// 
+	/// 最小値
 	/// </summary>
 	int m_min_;
 
 	/// <summary>
-	/// 
+	/// 最大値
 	/// </summary>
 	int m_max_;
 
 	/// <summary>
-	/// 
+	/// 変更時フック
 	/// </summary>
 	Fn* m_onChange_;
 
 	/// <summary>
-	/// 
+    /// 探索用変数へのポインタ☆（＾ｑ＾）
 	/// </summary>
-	GameEngineStorageOurCarriage* m_searcher_;
+	GameEngineStorageOurCarriage* m_pOurCarriage_;
 };
