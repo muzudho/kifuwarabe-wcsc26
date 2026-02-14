@@ -33,20 +33,22 @@ bool MuzCaseInsensitiveLessModel::operator () (const std::string& s1, const std:
 std::ostream& operator << (std::ostream& os, const MuzEngineSettingsModel& engineOptionCollection) {
 	for (auto& elem : engineOptionCollection.m_map) {
 		const IMuzEngineOptionableModel& option = elem.second;
-		os << "\noption name " << elem.first << " type " << option.GetType();
-		if (option.GetType() != "button") {
-			os << " default " << option.GetDefaultValue();
-		}
 
 
-		//os << "\noption name " << elem.first;
-		//
+		//os << "\noption name " << elem.first << " type " << option.GetType();
 		//if (option.GetType() != "button") {
-		//	os << " " << option.ToUSICode();
+		//	os << " default " << option.GetDefaultValue();
 		//}
-		//else {
-		//	os << " type " << option.GetType();
-		//}
+
+
+		os << "\noption name " << elem.first;
+		
+		if (option.GetType() != "button") {
+			os << " " << option.ToUSICode();
+		}
+		else {
+			os << " type " << option.GetType();
+		}
 
 
 
