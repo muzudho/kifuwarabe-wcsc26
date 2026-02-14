@@ -95,10 +95,10 @@ void MonkiesPub::exit_90a500b() {
 /// <param name="m_ourCarriage"></param>
 void MonkiesPub::ReadUSIOptions(GameEngineStorageOurCarriage* m_ourCarriage) {
 
-	this->m_maxThreadsPerMonkeySplitedPlace = m_ourCarriage->m_engineOptions["Max_Threads_per_Split_Point"];
+	this->m_maxThreadsPerMonkeySplitedPlace = m_ourCarriage->m_engineOptionCollection.m_map["Max_Threads_per_Split_Point"];
 
 	// スレッドの個数（１以上）
-	const size_t numberOfThreads   = m_ourCarriage->m_engineOptions["Threads"];
+	const size_t numberOfThreads   = m_ourCarriage->m_engineOptionCollection.m_map["Threads"];
 
 	this->m_minimumSplitDepth_ = (
 		numberOfThreads < 6 ?

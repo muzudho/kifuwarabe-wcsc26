@@ -148,9 +148,9 @@ public:
 	MonkiesPub	m_pub;
 
 	/// <summary>
-	/// USIオプション？
+	/// USIオプションのコレクション
 	/// </summary>
-	EngineOptionsMap	m_engineOptions;
+	EngineOptionsMap	m_engineOptionCollection;
 
 	/// <summary>
 	/// true にすると、シングルスレッドで動作する。デバッグ用。
@@ -477,7 +477,7 @@ FORCE_INLINE void		MonkiesPub::WakeUp(GameEngineStorageOurCarriage* ourCarriage)
 	}
 
 	// ［手の空いてる猿は寝かす］フラグを立てる☆
-	this->m_isIdleMonkeyToSleep_ = ourCarriage->m_engineOptions["Use_Sleeping_Threads"];
+	this->m_isIdleMonkeyToSleep_ = ourCarriage->m_engineOptionCollection.m_map["Use_Sleeping_Threads"];
 }
 
 

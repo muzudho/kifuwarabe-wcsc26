@@ -47,25 +47,3 @@ EngineOption::EngineOption(const int v, const int min, const int max, Fn* f, Gam
 {
 }
 
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="os"></param>
-/// <param name="om"></param>
-/// <returns></returns>
-std::ostream& operator << (std::ostream& os, const EngineOptionsMap& om) {
-	for (auto& elem : om) {
-		const EngineOptionable& o = elem.second;
-		os << "\noption name " << elem.first << " type " << o.GetType();
-		if (o.GetType() != "button") {
-			os << " default " << o.GetDefaultValue();
-		}
-
-		if (o.GetType() == "spin") {
-			os << " min " << o.GetMin() << " max " << o.GetMax();
-		}
-	}
-	return os;
-}
-

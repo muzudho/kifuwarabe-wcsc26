@@ -109,7 +109,7 @@ void UsiOperation::Go(GameStats& gameStats, const Position& pos, std::istringstr
 			if (limits.GetMoveTime() != 0) {
 //#if !defined(FISCHER_RULE)
 				// フィッシャー・ルールでないときは、秒読みがあるのだろう☆（＾ｑ＾）
-				limits.DecrementMoveTime( pos.GetOurCarriage()->m_engineOptions["Byoyomi_Margin"]);
+				limits.DecrementMoveTime( pos.GetOurCarriage()->m_engineOptionCollection.m_map["Byoyomi_Margin"]);
 //#endif
 			}
 		}

@@ -27,5 +27,27 @@ bool CaseInsensitiveLess::operator () (const std::string& s1, const std::string&
 /// <param name="option"></param>
 void EngineOptionsMap::Put(const std::string key, EngineOptionable option)
 {
-	(*this)[key] = option;
+	(this->m_map)[key] = option;
+}
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="os"></param>
+/// <param name="engineOptionCollection"></param>
+/// <returns></returns>
+std::ostream& operator << (std::ostream& os, const EngineOptionsMap& engineOptionCollection) {
+	for (auto& elem : engineOptionCollection.m_map) {
+		const EngineOptionable& o = elem.second;
+		os << "\noption name " << elem.first << " type " << o.GetType();
+		if (o.GetType() != "button") {
+			os << " default " << o.GetDefaultValue();
+		}
+
+		if (o.GetType() == "spin") {
+			os << " min " << o.GetMin() << " max " << o.GetMax();
+		}
+	}
+	return os;
 }

@@ -1491,7 +1491,7 @@ public:
 				|| (bishopInDangerFlag == BlackBishopInDangerIn78 && GetMove.ToCSA() == "0032KA")
 				|| (bishopInDangerFlag == WhiteBishopInDangerIn78 && GetMove.ToCSA() == "0078KA"))
 			{
-				rm.m_sweetness_ -= m_engineOptions["Danger_Demerit_Score"];
+				rm.m_sweetness_ -= m_engineOptionCollection["Danger_Demerit_Score"];
 			}
 #endif
 			rm.ExtractPvFromTT(pos);

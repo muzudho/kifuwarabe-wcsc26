@@ -168,7 +168,7 @@ void UsiLoop::mainloop_50a500b(int argc, char* argv[], GameEngineStorageOurCarri
 			}
 		}
 		else if (token == "usi") {
-			SYNCCOUT << "id name " << MyName << "\nid author (Derivation)Takahashi Satoshi (Base)Hiraoka Takuya\n" << m_ourCarriage.m_engineOptions << "\nusiok" << SYNCENDL;
+			SYNCCOUT << "id name " << MyName << "\nid author (Derivation)Takahashi Satoshi (Base)Hiraoka Takuya\n" << m_ourCarriage.m_engineOptionCollection << "\nusiok" << SYNCENDL;
 		}
 		else if (token == "go") {
 			usiOperation.Go(gameStats, pos, ssCmd);
@@ -214,10 +214,10 @@ void UsiLoop::mainloop_50a500b(int argc, char* argv[], GameEngineStorageOurCarri
 	//────────────────────────────────────────────────────────────────────────────────
 
 	// 評価値ファイルを書き出す指定なら
-	if (m_ourCarriage.m_engineOptions["Write_Synthesized_Eval"])
+	if (m_ourCarriage.m_engineOptionCollection.m_map["Write_Synthesized_Eval"])
 	{
 		// シンセサイズド評価を書き出します。
-		KkKkpKppStorage1::WriteSynthesized(m_ourCarriage.m_engineOptions["Eval_Dir"]);
+		KkKkpKppStorage1::WriteSynthesized(m_ourCarriage.m_engineOptionCollection.m_map["Eval_Dir"]);
 	}
 
 	//────────────────────────────────────────────────────────────────────────────────

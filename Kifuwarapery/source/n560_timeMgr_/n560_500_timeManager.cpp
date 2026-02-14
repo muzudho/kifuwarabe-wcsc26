@@ -139,8 +139,8 @@ void TimeManager::Initialize(
 {
 	const Color them = ConvColor::OPPOSITE_COLOR10b(us);	// 相手の手番の色
 
-	const int emergencyMoveHorizon = pRucksack->m_engineOptions["Emergency_Move_Horizon"];	// 何か急ぐんかな（＾～＾）？
-	const int nokositeokuTime      = pRucksack->m_engineOptions["Minimum_Thinking_Time"];	// 手番で、使わずに残しておく思考時間☆
+	const int emergencyMoveHorizon = pRucksack->m_engineOptionCollection.m_map["Emergency_Move_Horizon"];	// 何か急ぐんかな（＾～＾）？
+	const int nokositeokuTime      = pRucksack->m_engineOptionCollection.m_map["Minimum_Thinking_Time"];	// 手番で、使わずに残しておく思考時間☆
 
 	//this->ZeroclearTemeBonusTime();
 	this->ZeroclearBufferThinkSeconds();
@@ -191,7 +191,7 @@ void TimeManager::Initialize(
 	}
 
 	// 相手の思考中にも読み続ける設定の場合☆（＾ｑ＾）
-	if (pRucksack->m_engineOptions["USI_Ponder"]) {
+	if (pRucksack->m_engineOptionCollection.m_map["USI_Ponder"]) {
 
 		// 相手が何秒考えるかなんて分からないので☆（＾～＾）
 		// FIXME: 相手の思考タイム推測は、自分の考える時間の 4分の1 にしておくぜ☆（＾▽＾）

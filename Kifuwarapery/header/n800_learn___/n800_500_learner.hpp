@@ -309,7 +309,7 @@ public:
 	/// <param name="GetPos"></param>
 	/// <param name="ssCmd"></param>
 	void learn(Position& GetPos, std::istringstream& ssCmd) {
-		eval_.initOptions(GetPos.GetOurCarriage()->m_engineOptions["Eval_Dir"], false);
+		eval_.initOptions(GetPos.GetOurCarriage()->m_engineOptionCollection["Eval_Dir"], false);
 		s64 gameNum;
 		std::string recordFileName;
 		std::string blackRecordFileName;
@@ -497,11 +497,11 @@ private:
 	/// </summary>
 	/// <param name="s"></param>
 	void setLearnOptions(GameEngineStorageOurCarriage& s) {
-		std::string m_engineOptions[] = {"name Threads value 1",
+		std::string m_engineOptionCollection[] = {"name Threads value 1",
 								 "name MultiPV value 1",
 								 "name OwnBook value false",
 								 "name Max_Random_Score_Diff value 0"};
-		for (auto& str : m_engineOptions) {
+		for (auto& str : m_engineOptionCollection) {
 			std::istringstream is(str);
 			s.SetOption(is);
 		}
@@ -799,8 +799,8 @@ private:
 			lowerDimension(parse2EvalBase_, parse2Data_.params);
 			setUpdateMask(step);
 			std::cout << "update eval ... " << std::flush;
-			if (usePenalty_) updateEval<true >(GetPos.GetOurCarriage()->m_engineOptions["Eval_Dir"]);
-			else             updateEval<false>(GetPos.GetOurCarriage()->m_engineOptions["Eval_Dir"]);
+			if (usePenalty_) updateEval<true >(GetPos.GetOurCarriage()->m_engineOptionCollection["Eval_Dir"]);
+			else             updateEval<false>(GetPos.GetOurCarriage()->m_engineOptionCollection["Eval_Dir"]);
 			std::cout << "done" << std::endl;
 			std::cout << "parse2 1 step elapsed: " << t.GetElapsed() / 1000 << "[sec]" << std::endl;
 			Print();

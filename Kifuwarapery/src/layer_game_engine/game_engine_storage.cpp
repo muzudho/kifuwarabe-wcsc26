@@ -49,10 +49,10 @@ extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 /// </summary>
 void GameEngineStorageOurCarriage::initialize_10a500b_search() {
 	EngineOptionSetup engineOptionSetup;
-	engineOptionSetup.initialize_10a500b100c( &m_engineOptions, this);
+	engineOptionSetup.initialize_10a500b100c( &m_engineOptionCollection, this);
 
 	this->m_pub.initialize_10a500b500c(this);
-	this->m_tt.setSize(this->m_engineOptions["USI_Hash"]);
+	this->m_tt.setSize(this->m_engineOptionCollection.m_map["USI_Hash"]);
 }
 
 
@@ -479,10 +479,10 @@ void GameEngineStorageOurCarriage::SetOption(std::istringstream& ssCmd) {
 		value += " " + token;
 	}
 
-	if (!m_engineOptions.IsLegalOption(name)) {
+	if (!m_engineOptionCollection.IsLegalOption(name)) {
 		std::cout << "No such option: " << name << std::endl;
 	}
 	else {
-		m_engineOptions[name] = value;
+		m_engineOptionCollection.m_map[name] = value;
 	}
 }

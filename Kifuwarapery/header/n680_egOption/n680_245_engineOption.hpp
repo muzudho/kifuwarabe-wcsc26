@@ -25,11 +25,4 @@ public:
 //private:
 	
 
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name=""></param>
-	/// <param name=""></param>
-	/// <returns></returns>
-	friend std::ostream& operator << (std::ostream&, const EngineOptionsMap&);
 };
