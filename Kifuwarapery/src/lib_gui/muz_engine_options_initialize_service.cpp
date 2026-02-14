@@ -15,7 +15,7 @@ void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(
 	int sweetnessInfinite,
 	int sweetnessMate0Ply,
 	int maxThreads,
-	MuzEngineOptionCollectionModel* pMap,
+	MuzEngineSettingsModel* pMap,
 	std::function<void(const IMuzEngineOptionableModel&)> onHashSizeChanged,
 	std::function<void(const IMuzEngineOptionableModel&)> onHashCleared,
 	std::function<void(const IMuzEngineOptionableModel&)> onEvalDirChanged,

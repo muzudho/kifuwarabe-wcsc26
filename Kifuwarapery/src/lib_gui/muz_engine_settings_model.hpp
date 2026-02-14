@@ -17,7 +17,7 @@ struct MuzCaseInsensitiveLessModel {
 /// エンジン・オプションのコレクション☆（＾～＾）
 ///		</pre>
 /// </summary>
-struct MuzEngineOptionCollectionModel {
+struct MuzEngineSettingsModel {
 
 
 public:
@@ -54,5 +54,5 @@ public:
 	/// <param name=""></param>
 	/// <param name=""></param>
 	/// <returns></returns>
-	friend std::ostream& operator << (std::ostream&, const MuzEngineOptionCollectionModel&);
+	friend std::ostream& operator << (std::ostream&, const MuzEngineSettingsModel&);
 };

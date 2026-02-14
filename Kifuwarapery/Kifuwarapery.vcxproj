@@ -395,7 +395,7 @@
     <ClInclude Include="src\lib_gui\muz_engine_option_checkbox_model.hpp" />
     <ClInclude Include="src\lib_gui\muz_engine_option_button_model.hpp" />
     <ClInclude Include="src\lib_gui\i_muz_engine_optionable_model.hpp" />
-    <ClInclude Include="src\lib_gui\muz_engine_option_collection_model.hpp" />
+    <ClInclude Include="src\lib_gui\muz_engine_settings_model.hpp" />
     <ClInclude Include="src\lib_gui\muz_engine_optoins_initialize_service.hpp" />
     <ClInclude Include="header\n720_usi_____\n720_260_usiOperation.hpp" />
     <ClInclude Include="header\n720_usi_____\n720_300_benchmark.hpp" />
@@ -622,7 +622,7 @@
     <ClCompile Include="source\n640_searcher\n640_510_futilityMargins.cpp" />
     <ClCompile Include="source\n640_searcher\n640_520_futilityMoveCounts.cpp" />
     <ClCompile Include="src\lib_gui\i_muz_engine_optionable_model.cpp" />
-    <ClCompile Include="src\lib_gui\muz_engine_option_collection_model.cpp" />
+    <ClCompile Include="src\lib_gui\muz_engine_settings_model.cpp" />
     <ClCompile Include="src\lib_gui\muz_engine_options_initialize_service.cpp" />
     <ClCompile Include="source\n720_usi_____\n720_260_usiOperation.cpp" />
     <ClCompile Include="source\n720_usi_____\n720_300_benchmark.cpp" />

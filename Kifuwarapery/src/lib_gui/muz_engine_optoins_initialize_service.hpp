@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../../src/lib_gui/muz_engine_option_collection_model.hpp"
+#include "../../src/lib_gui/muz_engine_settings_model.hpp"
 #include <functional>
 
 
@@ -25,7 +25,7 @@ public:
 		int sweetnessInfinite,
 		int sweetnessMate0Ply,
 		int maxThreads,
-		MuzEngineOptionCollectionModel* pMap,
+		MuzEngineSettingsModel* pMap,
 		std::function<void(const IMuzEngineOptionableModel&)> onHashSizeChanged,
 		std::function<void(const IMuzEngineOptionableModel&)> onHashCleared,
 		std::function<void(const IMuzEngineOptionableModel&)> onEvalDirChanged,

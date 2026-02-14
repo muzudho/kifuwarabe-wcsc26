@@ -18,7 +18,7 @@
 #include "../../header/n760_thread__/n760_400_monkiesPub.hpp"
 #include "../../header/n800_learn___/n800_100_stopwatch.hpp"
 #include "../../header/n885_searcher/n885_510_adventureContinent.hpp"
-#include "../../src/lib_gui/muz_engine_option_collection_model.hpp"
+#include "../../src/lib_gui/muz_engine_settings_model.hpp"
 
 using namespace std;
 using History = Stats<false>;
@@ -150,7 +150,7 @@ public:
 	/// <summary>
 	/// USIオプションのコレクション
 	/// </summary>
-	MuzEngineOptionCollectionModel	m_engineOptionCollection;
+	MuzEngineSettingsModel	m_engineOptionCollection;
 
 	/// <summary>
 	/// true にすると、シングルスレッドで動作する。デバッグ用。
