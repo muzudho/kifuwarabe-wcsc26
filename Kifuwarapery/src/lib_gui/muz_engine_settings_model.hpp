@@ -2,6 +2,7 @@
 #include <map>
 #include <string>
 #include "muz_engine_option_abstract_model.hpp"
+#include "muz_engine_option_textbox_model.hpp"
 #include <ostream>      // std::ostream のため（普通は iostream で入ってる）
 #include <vector>
 #include <map>
@@ -98,5 +99,16 @@ public:
 		}
 
 		return keys;
+	}
+
+
+	/// <summary>
+	/// テキストボックス型のエンジン・オプション設定☆（＾～＾）
+	/// </summary>
+	/// <param name="key"></param>
+	/// <returns></returns>
+	void SetTextboxOption(const std::string key, std::string value)
+	{
+		this->m_map[key] = new MuzEngineOptionTextboxModel(value.c_str());
 	}
 };
