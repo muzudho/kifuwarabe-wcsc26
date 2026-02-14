@@ -237,7 +237,7 @@ void UsiOperation::SetPosition(Position& pos, std::istringstream& ssCmd) {
 
 	// 平手初期局面だぜ（＾▽＾）
 	if (token == "startpos") {
-		sfen = g_DEFAULT_START_POSITION_SFEN;
+		sfen = g_SFEN_STARTPOS_STR;
 		ssCmd >> token; // "moves" が入力されるはず。
 	}
 

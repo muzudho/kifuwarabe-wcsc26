@@ -97,7 +97,7 @@ UsiLoop::UsiLoop()
 void UsiLoop::mainloop_50a500b(int argc, char* argv[], GameEngineStorageOurCarriage& m_ourCarriage)
 {
 	GameStats gameStats{};	// こう書くと関数呼出しと思われてエラー： GameStats gameStats();
-	Position pos(g_DEFAULT_START_POSITION_SFEN, m_ourCarriage.m_pub.GetFirstCaptain(), &m_ourCarriage);
+	Position pos(g_SFEN_STARTPOS_STR, m_ourCarriage.m_pub.GetFirstCaptain(), &m_ourCarriage);
 
 	std::string cmd;
 	std::string token;
