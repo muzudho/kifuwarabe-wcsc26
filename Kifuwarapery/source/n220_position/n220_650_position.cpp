@@ -32,7 +32,7 @@
 #include "../../header/n407_moveGen_/n407_900_moveList.hpp"
 #include "../../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
 #include "../../header/n600_book____/n600_100_mt64bit.hpp"
-#include "../../src/layer_game_engine/game_engine_storage.hpp"
+#include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 #include <cassert>
 
 
@@ -299,7 +299,7 @@ const ChangedLists& Position::GetCl() const
 /// 
 /// </summary>
 /// <returns></returns>
-const MuzGameEngineStorage* Position::GetConstOurCarriage() const
+const MuzGameEngineStorageModel* Position::GetConstOurCarriage() const
 {
 	return this->m_pGameEngineStore_;
 }
@@ -309,7 +309,7 @@ const MuzGameEngineStorage* Position::GetConstOurCarriage() const
 /// 
 /// </summary>
 /// <returns></returns>
-MuzGameEngineStorage* Position::GetOurCarriage() const
+MuzGameEngineStorageModel* Position::GetOurCarriage() const
 {
 	return this->m_pGameEngineStore_;
 }
@@ -319,7 +319,7 @@ MuzGameEngineStorage* Position::GetOurCarriage() const
 /// 
 /// </summary>
 /// <param name="s"></param>
-void Position::SetOurCarriage(MuzGameEngineStorage* s)
+void Position::SetOurCarriage(MuzGameEngineStorageModel* s)
 {
 	this->m_pGameEngineStore_ = s;
 }
@@ -2546,7 +2546,7 @@ Position::Position()
 /// 
 /// </summary>
 /// <param name="s"></param>
-Position::Position(MuzGameEngineStorage* gameEngineStore)
+Position::Position(MuzGameEngineStorageModel* gameEngineStore)
 	: m_pGameEngineStore_(gameEngineStore)
 {
 }
@@ -2580,7 +2580,7 @@ Position::Position(const Position & pos, Monkie * th)
 /// <param name="sfen"></param>
 /// <param name="th"></param>
 /// <param name="s"></param>
-Position::Position(const std::string & sfen, Monkie * th, MuzGameEngineStorage * s)
+Position::Position(const std::string & sfen, Monkie * th, MuzGameEngineStorageModel * s)
 {
 	this->Set(sfen, th);
 	this->SetOurCarriage(s);
@@ -2615,7 +2615,7 @@ void Position::Set(const std::string& sfen, Monkie* th) {
 	char token;
 	Square sq = A9;
 
-	MuzGameEngineStorage* s = std::move(m_pGameEngineStore_);
+	MuzGameEngineStorageModel* s = std::move(m_pGameEngineStore_);
 	this->Clear();
 	this->SetOurCarriage(s);
 

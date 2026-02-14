@@ -6,7 +6,7 @@
 #include "../n223_move____/n223_500_flashlight.hpp"
 #include "../n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
 #include "n885_580_adventurerSkill.hpp"
-#include "../../src/layer_game_engine/game_engine_storage.hpp"
+#include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 
 extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 
@@ -28,7 +28,7 @@ public:
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
 	/// <param name="pos"></param>
-	static inline void ExploreMountain(MuzGameEngineStorage& ourCarriage, Position& pos)
+	static inline void ExploreMountain(MuzGameEngineStorageModel& ourCarriage, Position& pos)
 	{
 		Flashlight flashlight[g_maxPlyPlus2];
 		Ply depth;

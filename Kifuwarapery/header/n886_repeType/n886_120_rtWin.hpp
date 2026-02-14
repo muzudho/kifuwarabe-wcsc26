@@ -3,7 +3,7 @@
 #include "../n119_500_sweetnes/n119_100_UtilSweetness.hpp"
 #include "n886_070_rtAbstract.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"// &参照は使えない。*参照は使える。
-#include "../../src/layer_game_engine/game_engine_storage.hpp"
+#include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 
 
 /// <summary>
@@ -21,7 +21,7 @@ public:
 	/// <param name="pSearcher"></param>
 	/// <param name="pFlashlightBox"></param>
 	std::pair<bool, Sweetness> IsStop(
-		const MuzGameEngineStorage* pSearcher,
+		const MuzGameEngineStorageModel* pSearcher,
 		const Flashlight* pFlashlightBox) const override
 	{
 		return std::make_pair(true, UtilSweetness::MateIn(pFlashlightBox->m_ply));

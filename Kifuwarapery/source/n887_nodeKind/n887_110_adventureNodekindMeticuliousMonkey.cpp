@@ -26,7 +26,7 @@
 #include "../../header/n760_thread__/n760_400_monkiesPub.hpp"
 #include "../../header/n800_learn___/n800_100_stopwatch.hpp"
 #include "../../header/n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
-#include "../../src/layer_game_engine/game_engine_storage.hpp"
+#include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 #include "../../header/n885_searcher/n885_310_adventureBattlefieldQsearchAbstract.hpp"
 #include "../../header/n885_searcher/n885_340_adventureBattlefieldQsearchPrograms.hpp"
 #include "../../header/n885_searcher/n885_480_adventureSwampNyugyoku.hpp"
@@ -62,7 +62,7 @@ AdventureNodekindPv g_NODEKIND_METICULOUS_MONKEY;
 /// <param name="cutNode"></param>
 /// <returns></returns>
 Sweetness AdventureNodekindPv::explorePlain_10i(
-	MuzGameEngineStorage& ourCarriage,
+	MuzGameEngineStorageModel& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight,//サーチスタック
 	Sweetness alpha,

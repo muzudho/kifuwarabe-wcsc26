@@ -15,7 +15,7 @@
 
 
 // 依存関係の回避
-class MuzGameEngineStorage;
+class MuzGameEngineStorageModel;
 
 
 const int g_MaxThreads = 64;
@@ -111,7 +111,7 @@ public:
 	/// 初期化？
 	/// </summary>
 	/// <param name="s"></param>
-	void initialize_10a520b500c(MuzGameEngineStorage* s);
+	void initialize_10a520b500c(MuzGameEngineStorageModel* s);
 
 
 	/// <summary>
@@ -124,7 +124,7 @@ public:
 	/// 起きろ？
 	/// </summary>
 	/// <param name="ourCarriage">わたしたちの馬車</param>
-	void WakeUp(MuzGameEngineStorage* ourCarriage);
+	void WakeUp(MuzGameEngineStorageModel* ourCarriage);
 
 
 	/// <summary>
@@ -137,7 +137,7 @@ public:
 	/// USIオプションを読め？
 	/// </summary>
 	/// <param name="s"></param>
-	void ReadUSIOptions(MuzGameEngineStorage* s);
+	void ReadUSIOptions(MuzGameEngineStorageModel* s);
 
 
 	/// <summary>

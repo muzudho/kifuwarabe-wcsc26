@@ -2,7 +2,7 @@
 
 #include "../../header/n119_500_sweetnes/n119_090_Sweetness.hpp"
 #include "../../header/n165_movStack/n165_400_move.hpp"
-#include "../../src/layer_game_engine/game_engine_storage.hpp"
+#include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 
 
 /// <summary>
@@ -36,7 +36,7 @@ struct AdventurerSkill {
 	/// 
 	/// </summary>
 	/// <param name="s"></param>
-	void swapIfEnabled(MuzGameEngineStorage* s) {
+	void swapIfEnabled(MuzGameEngineStorageModel* s) {
 		if (enabled()) {
 			auto it = std::find(s->m_rootMoves.begin(),
 				s->m_rootMoves.end(),
@@ -68,7 +68,7 @@ struct AdventurerSkill {
 	/// </summary>
 	/// <param name="s"></param>
 	/// <returns></returns>
-	Move pickMove(MuzGameEngineStorage* s) {
+	Move pickMove(MuzGameEngineStorageModel* s) {
 		// level については未対応。max_random_weetness_diff についてのみ対応する。
 		if (m_maxRandomSweetnessDiff != SweetnessZero) {
 			size_t i = 1;

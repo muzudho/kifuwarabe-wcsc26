@@ -9,7 +9,7 @@
 #include "../n640_searcher/n640_500_reductions.hpp"
 #include "../n755_whistle_/n755_100_WhistleRoot.hpp"
 #include "../n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
-#include "../../src/layer_game_engine/game_engine_storage.hpp"
+#include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 #include "../n887_nodeKind/n887_100_adventurePlainNodekindRoot.hpp"
 
 
@@ -38,7 +38,7 @@ public:
 	/// <param name="cutNode"></param>
 	/// <returns></returns>
 	virtual Sweetness explorePlain_10i(
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		Position& pos,
 		Flashlight* pFlashlight,//サーチスタック
 		Sweetness alpha,
@@ -105,7 +105,7 @@ public:
 	/// <param name="ppFlashlight"></param>
 	virtual inline std::pair<bool, Sweetness> explorePlain_10i1080j_isStopByRepetetion(
 		Position& pos,
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		Flashlight** ppFlashlight
 		)const override
 	{
@@ -142,7 +142,7 @@ public:
 	/// <param name="pTtEntry"></param>
 	/// <param name="pos"></param>
 	virtual inline std::unique_ptr<Move> explorePlain_10i1110j_getTtMove(
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		const TTEntry* pTtEntry,
 		Position& pos) const override
 	{
@@ -167,7 +167,7 @@ public:
 		Sweetness& ttSweetness,
 		bool& isReturnWithSweetness,
 		Sweetness& returnSweetness,
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		const TTEntry* pTtEntry,
 		const Depth depth,
 		Sweetness& beta,
@@ -212,7 +212,7 @@ public:
 		bool& isReturnWithSweetness,
 		Move& bestMove,
 		Sweetness& returnSweetness,
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		bool& inCheck,
 		Move& move,
 		Position& pos,
@@ -241,7 +241,7 @@ public:
 	virtual inline void explorePlain_10i1260j_byEasyGoingMonkey(
 		bool& isReturnWithSweetness,
 		Sweetness& returnSweetness,
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		const Depth depth,
 		Sweetness& eval,
 		Sweetness& beta,
@@ -292,7 +292,7 @@ public:
 	virtual inline void explorePlain_10i1280j_byEasyGoingMonkey(
 		bool& isReturnWithSweetness,
 		Sweetness& returnSweetness,
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		Flashlight** ppFlashlight,
 		const Depth depth,
 		Sweetness& beta,
@@ -323,7 +323,7 @@ public:
 	/// <param name="cutNode"></param>
 	virtual inline void explorePlain_10i1290j_byEasyGoingMonkey(
 		bool& isReturnWithSweetness,
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		const Depth& depth,
 		Flashlight** ppFlashlight,
 		Sweetness& beta,
@@ -357,7 +357,7 @@ public:
 		bool& inCheck,
 		Sweetness& beta,
 		Flashlight** ppFlashlight,
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		Position& pos,
 		Sweetness& alpha,
 		const TTEntry** ppTtEntry,//セットされるぜ☆
@@ -494,7 +494,7 @@ public:
 	/// <param name="beta"></param>
 	virtual inline void explorePlain_10i2070j_futilityPruning(
 		bool& isContinue,
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		bool& captureOrPawnPromotion,
 		bool& inCheck,
 		bool& dangerous,
@@ -602,7 +602,7 @@ public:
 	/// <param name="movesSearched"></param>
 	virtual inline void explorePlain_10i2090j_updateCurrentMove(
 		bool& isContinue,
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		bool& captureOrPawnPromotion,
 		bool& inCheck,
 		bool& dangerous,
@@ -724,7 +724,7 @@ public:
 	/// <param name="beta"></param>
 	virtual inline void explorePlain_10i3070j_getBestUpdateAlpha(
 		bool& isBreak,
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		Move& move,
 		bool& isPVMove,
 		Sweetness& alpha,
@@ -774,7 +774,7 @@ public:
 	/// <param name="cutNode"></param>
 	virtual inline void explorePlain_10i3080j_forkNewMonkeyIfPossible(
 		bool& isBreak,
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		const Depth depth,
 		Monkie** ppThisThread,
 		Sweetness& bestSweetness,
@@ -800,7 +800,7 @@ public:
 			(*ppThisThread)->m_numberOfMonkeysRunningTogether < g_MaxNumberOfMonkeysRunningTogether)
 		{
 			assert(bestSweetness < beta);
-			(*ppThisThread)->ForkNewMonkey<MuzGameEngineStorage::FakeSplit>(
+			(*ppThisThread)->ForkNewMonkey<MuzGameEngineStorageModel::FakeSplit>(
 				pos,
 				*ppFlashlight,
 				alpha,

@@ -3,7 +3,7 @@
 #include "../n165_movStack/n165_600_convMove.hpp"
 #include "../../src/lib_gui/engine_optionable.hpp"
 #include "../../src/lib_gui/engine_option_collection.hpp"
-#include "../../src/layer_game_engine/game_engine_storage.hpp"
+#include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 
 
 /// <summary>
@@ -25,5 +25,5 @@ public:
 	/// <param name="argc"></param>
 	/// <param name="argv"></param>
 	/// <param name="m_pGameEngineStore"></param>
-	void mainloop_50a500b(int argc, char* argv[], MuzGameEngineStorage& m_pGameEngineStore);
+	void mainloop_50a500b(int argc, char* argv[], MuzGameEngineStorageModel& m_pGameEngineStore);
 };

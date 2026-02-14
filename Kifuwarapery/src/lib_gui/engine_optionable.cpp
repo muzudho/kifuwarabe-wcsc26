@@ -1,6 +1,6 @@
 ﻿#include <sstream>
 #include "engine_optionable.hpp"
-#include "../../src/layer_game_engine/game_engine_storage.hpp"
+#include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 
 
 /// <summary>
@@ -9,7 +9,7 @@
 /// <param name="newValue"></param>
 /// <param name="f"></param>
 /// <param name="pGameEngineStore"></param>
-EngineOptionable::EngineOptionable(const char* v, Fn* f, MuzGameEngineStorage* pGameEngineStore)
+EngineOptionable::EngineOptionable(const char* v, Fn* f, MuzGameEngineStorageModel* pGameEngineStore)
 	: m_type_("string"), m_min_(0), m_max_(0), m_onChange_(f), m_pGameEngineStore_(pGameEngineStore)
 {
 	m_defaultValue_ = m_currentValue_ = v;
@@ -22,7 +22,7 @@ EngineOptionable::EngineOptionable(const char* v, Fn* f, MuzGameEngineStorage* p
 /// <param name="newValue"></param>
 /// <param name="f"></param>
 /// <param name="pGameEngineStore"></param>
-EngineOptionable::EngineOptionable(const bool v, Fn* f, MuzGameEngineStorage* pGameEngineStore)
+EngineOptionable::EngineOptionable(const bool v, Fn* f, MuzGameEngineStorageModel* pGameEngineStore)
 	: m_type_("check"), m_min_(0), m_max_(0), m_onChange_(f), m_pGameEngineStore_(pGameEngineStore)
 {
 	m_defaultValue_ = m_currentValue_ = (v ? "true" : "false");
@@ -34,7 +34,7 @@ EngineOptionable::EngineOptionable(const bool v, Fn* f, MuzGameEngineStorage* pG
 /// </summary>
 /// <param name="f"></param>
 /// <param name="pGameEngineStore"></param>
-EngineOptionable::EngineOptionable(Fn* f, MuzGameEngineStorage* pGameEngineStore)
+EngineOptionable::EngineOptionable(Fn* f, MuzGameEngineStorageModel* pGameEngineStore)
 	: m_type_("button"), m_min_(0), m_max_(0), m_onChange_(f), m_pGameEngineStore_(pGameEngineStore)
 {
 }
@@ -48,7 +48,7 @@ EngineOptionable::EngineOptionable(Fn* f, MuzGameEngineStorage* pGameEngineStore
 /// <param name="max"></param>
 /// <param name="f"></param>
 /// <param name="pGameEngineStore"></param>
-EngineOptionable::EngineOptionable(const int v, const int min, const int max, Fn* f, MuzGameEngineStorage* pGameEngineStore)
+EngineOptionable::EngineOptionable(const int v, const int min, const int max, Fn* f, MuzGameEngineStorageModel* pGameEngineStore)
 	: m_type_("spin"), m_min_(min), m_max_(max), m_onChange_(f), m_pGameEngineStore_(pGameEngineStore)
 {
 	std::ostringstream ss;

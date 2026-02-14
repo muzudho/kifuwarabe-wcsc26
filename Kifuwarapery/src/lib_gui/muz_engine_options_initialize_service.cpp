@@ -2,7 +2,7 @@
 #include "../../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
 #include "../../src/lib_gui/muz_engine_optoins_initialize_service.hpp"
 #include "../../src/lib_gui/engine_option.hpp"
-#include "../../src/layer_game_engine/game_engine_storage.hpp"
+#include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 
 
 // 初期化の値を取ってくるのに使います。
@@ -14,7 +14,10 @@ namespace {
 	/// </summary>
 	/// <param name="s"></param>
 	/// <param name="opt"></param>
-	void handleHashSizeChanged(MuzGameEngineStorage* s, const EngineOptionable& opt) { s->m_tt.setSize(opt); }
+	void handleHashSizeChanged(MuzGameEngineStorageModel* s, const EngineOptionable& opt)
+	{
+		s->m_tt.setSize(opt);
+	}
 
 
 	/// <summary>
@@ -22,7 +25,7 @@ namespace {
 	/// </summary>
 	/// <param name="s"></param>
 	/// <param name=""></param>
-	void handleHashCleared(MuzGameEngineStorage* s, const EngineOptionable&) { s->m_tt.Clear(); }
+	void handleHashCleared(MuzGameEngineStorageModel* s, const EngineOptionable&) { s->m_tt.Clear(); }
 
 
 	/// <summary>
@@ -30,7 +33,7 @@ namespace {
 	/// </summary>
 	/// <param name=""></param>
 	/// <param name="opt"></param>
-	void onEvalDirChanged(MuzGameEngineStorage*, const EngineOptionable& opt) {
+	void onEvalDirChanged(MuzGameEngineStorageModel*, const EngineOptionable& opt) {
 		std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->initialize_10a600b(opt, true);
 	}
 
@@ -40,7 +43,7 @@ namespace {
 	/// </summary>
 	/// <param name="s"></param>
 	/// <param name=""></param>
-	void onThreadsChanged(MuzGameEngineStorage* s, const EngineOptionable&) { s->m_pub.ReadUSIOptions(s); }
+	void onThreadsChanged(MuzGameEngineStorageModel* s, const EngineOptionable&) { s->m_pub.ReadUSIOptions(s); }
 
 
 	/// <summary>
@@ -60,7 +63,7 @@ namespace {
 /// </summary>
 /// <param name="pMap"></param>
 /// <param name="pRucksack"></param>
-void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(EngineOptionCollection* pMap, MuzGameEngineStorage * pRucksack)
+void MuzEngineOptionsInitializeService::initialize_10a510b_engineOptions(EngineOptionCollection* pMap, MuzGameEngineStorageModel * pRucksack)
 {
 	// ハッシュサイズ
 	pMap->Put("USI_Hash"					, EngineOption(256, 1, 65536, handleHashSizeChanged, pRucksack));

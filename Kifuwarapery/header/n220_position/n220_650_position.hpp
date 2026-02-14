@@ -31,7 +31,7 @@ using StateStackPtr = std::unique_ptr<std::stack<StateInfo> >;
 
 // 依存関係回避のため。
 class Monkie;
-class MuzGameEngineStorage;
+class MuzGameEngineStorageModel;
 
 
 /// <summary>
@@ -53,13 +53,13 @@ public:
 	/// </summary>
 	Position();
 
-	explicit Position(MuzGameEngineStorage* s);
+	explicit Position(MuzGameEngineStorageModel* s);
 
 	Position(const Position& pos);
 
 	Position(const Position& pos, Monkie* th);
 
-	Position(const std::string& sfen, Monkie* th, MuzGameEngineStorage* s);
+	Position(const std::string& sfen, Monkie* th, MuzGameEngineStorageModel* s);
 
 
 	// ========================================
@@ -606,21 +606,21 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	const MuzGameEngineStorage* GetConstOurCarriage() const;
+	const MuzGameEngineStorageModel* GetConstOurCarriage() const;
 
 
 	/// <summary>
 	/// わたしたちの馬車を取得
 	/// </summary>
 	/// <returns></returns>
-	MuzGameEngineStorage* GetOurCarriage() const;
+	MuzGameEngineStorageModel* GetOurCarriage() const;
 
 
 	/// <summary>
 	/// わたしたちの馬車を設定
 	/// </summary>
 	/// <param name="s"></param>
-	void SetOurCarriage(MuzGameEngineStorage* ourCarriage);
+	void SetOurCarriage(MuzGameEngineStorageModel* ourCarriage);
 
 
 #if !defined NDEBUG
@@ -829,7 +829,7 @@ private:
 	/// <summary>
 	/// わたしたちの馬車
 	/// </summary>
-	MuzGameEngineStorage* m_pGameEngineStore_;
+	MuzGameEngineStorageModel* m_pGameEngineStore_;
 
 	/// <summary>
 	/// 

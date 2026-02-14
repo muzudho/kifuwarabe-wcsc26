@@ -5,7 +5,7 @@
 #include "../n223_move____/n223_200_depth.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"
 #include "../n640_searcher/n640_040_nodeKind.hpp"
-#include "../../src/layer_game_engine/game_engine_storage.hpp"
+#include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 
 
 /// <summary>
@@ -32,7 +32,7 @@ public:
 	/// <param name="depth"></param>
 	/// <returns></returns>
 	virtual Sweetness ExploreAsQsearch(
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		bool INCHECK,
 		Position& pos,
 		Flashlight* ss,
@@ -154,7 +154,7 @@ public:
 	virtual inline void doByNewSweetness(
 		bool& isReturnWithSweetness,
 		Sweetness& returnSweetness,
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		Sweetness& sweetness,
 		Sweetness& beta,
 		Sweetness& alpha,

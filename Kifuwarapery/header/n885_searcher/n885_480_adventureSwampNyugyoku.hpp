@@ -2,7 +2,7 @@
 #include <iostream>
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n220_position/n220_650_position.hpp"
-#include "../../src/layer_game_engine/game_engine_storage.hpp"
+#include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 
 
 /// <summary>
@@ -19,7 +19,7 @@ public:
 	/// </summary>
 	/// <param name="ourCarriage"></param>
 	/// <param name="pos"></param>
-	static inline void ExploreSwamp(MuzGameEngineStorage& ourCarriage, const Position& pos)
+	static inline void ExploreSwamp(MuzGameEngineStorageModel& ourCarriage, const Position& pos)
 	{
 		SYNCCOUT << "info nodes " << pos.getNodesSearched()
 			<< " time " << ourCarriage.m_stopwatch.GetElapsed() << SYNCENDL;

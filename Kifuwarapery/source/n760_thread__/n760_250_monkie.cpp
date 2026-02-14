@@ -8,7 +8,7 @@
 #include "../../header/n640_searcher/n640_040_nodeKind.hpp"
 #include "../../header/n640_searcher/n640_440_splitedNode.hpp"
 #include "../../header/n760_thread__/n760_250_monkie.hpp"
-#include "../../src/layer_game_engine/game_engine_storage.hpp"
+#include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 
 
 // ========================================
@@ -16,7 +16,7 @@
 // ========================================
 
 
-Monkie::Monkie(MuzGameEngineStorage* ourCarriage) /*: ＳｐｌｉｔＰｏｉｎｔｓ()*/ {
+Monkie::Monkie(MuzGameEngineStorageModel* ourCarriage) /*: ＳｐｌｉｔＰｏｉｎｔｓ()*/ {
 	this->m_pOurCarriage = ourCarriage;
 	this->m_isEndOfSearch = false;
 	this->m_isBeingSearched = false;

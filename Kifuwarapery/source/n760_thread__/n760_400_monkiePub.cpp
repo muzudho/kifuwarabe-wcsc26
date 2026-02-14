@@ -6,7 +6,7 @@
 #include "../../header/n640_searcher/n640_450_rootMove.hpp"
 #include "../../header/n760_thread__/n760_250_monkie.hpp"
 #include "../../header/n760_thread__/n760_400_monkiesPub.hpp"
-#include "../../src/layer_game_engine/game_engine_storage.hpp"
+#include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 
 
 // ========================================
@@ -25,7 +25,7 @@
 /// <typeparam name="T"></typeparam>
 /// <param name="s"></param>
 /// <returns></returns>
-template <typename MONKIE> MONKIE* newThread(MuzGameEngineStorage* s) {
+template <typename MONKIE> MONKIE* newThread(MuzGameEngineStorageModel* s) {
 	MONKIE* monkie = new MONKIE(s);
 	monkie->m_handleThread = std::thread(&Monkie::workAsMonkey, monkie); // move constructor
 	return monkie;
@@ -53,7 +53,7 @@ void deleteThread(Monkie* th) {
 ///		</pre>
 /// </summary>
 /// <param name="s"></param>
-void MonkiesPub::initialize_10a520b500c(MuzGameEngineStorage* s)
+void MonkiesPub::initialize_10a520b500c(MuzGameEngineStorageModel* s)
 {
 	// 手の空いてる猿は寝てろ。
 	m_isIdleMonkeyToSleep_ = true;
@@ -93,7 +93,7 @@ void MonkiesPub::exit_90a500b() {
 /// 
 /// </summary>
 /// <param name="m_pGameEngineStore"></param>
-void MonkiesPub::ReadUSIOptions(MuzGameEngineStorage* m_pGameEngineStore) {
+void MonkiesPub::ReadUSIOptions(MuzGameEngineStorageModel* m_pGameEngineStore) {
 
 	this->m_maxThreadsPerMonkeySplitedPlace = m_pGameEngineStore->m_engineOptionCollection.m_map["Max_Threads_per_Split_Point"];
 

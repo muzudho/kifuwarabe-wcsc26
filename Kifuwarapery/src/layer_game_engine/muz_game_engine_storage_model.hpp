@@ -34,7 +34,7 @@ using Gains   = Stats<true>;
 ///		- 複数の探索スレッドに渡される
 ///		</pre>
 /// </summary>
-class MuzGameEngineStorage
+class MuzGameEngineStorageModel
 {
 
 
@@ -470,7 +470,7 @@ void initialize_10a300b_searchTable();
 /// </summary>
 /// <param name="ourCarriage">わたしたちの馬車</param>
 /// <returns></returns>
-FORCE_INLINE void		MonkiesPub::WakeUp(MuzGameEngineStorage* ourCarriage) {
+FORCE_INLINE void		MonkiesPub::WakeUp(MuzGameEngineStorageModel* ourCarriage) {
 	// 全員初期化☆？
 	for (size_t i = 0; i < this->m_monkies.size(); ++i) {
 		(*this).m_monkies[i]->m_maxPly = 0;

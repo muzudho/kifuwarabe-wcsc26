@@ -5,7 +5,7 @@
 #include "../../header/n223_move____/n223_500_flashlight.hpp"
 #include "../../header/n640_searcher/n640_040_nodeKind.hpp"
 #include "../../header/n885_searcher/n885_310_adventureBattlefieldQsearchAbstract.hpp"
-#include "../../src/layer_game_engine/game_engine_storage.hpp"
+#include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 
 
 /// <summary>
@@ -21,7 +21,7 @@
 /// <param name="depth"></param>
 /// <returns></returns>
 Sweetness AdventureBattlefieldQsearchAbstract::ExploreAsQsearch(
-	MuzGameEngineStorage& ourCarriage,
+	MuzGameEngineStorageModel& ourCarriage,
 	bool INCHECK,
 	Position& pos,
 	Flashlight* pFlashlight,

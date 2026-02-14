@@ -4,7 +4,7 @@
 #include "../header/n220_position/n220_750_charToPieceUSI.hpp"
 #include "../header/n480_tt______/n480_300_tt.hpp"
 #include "../header/n760_thread__/n760_400_monkiesPub.hpp"
-#include "../src/layer_game_engine/game_engine_storage.hpp"
+#include "../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 
 
 /// <summary>
@@ -18,7 +18,7 @@ public:
 	/// <summary>
 	///		ゲームエンジンが１つだけ持つ、局面の探索状態を保存するクラス☆（＾ｑ＾）
 	/// </summary>
-	std::unique_ptr<MuzGameEngineStorage> m_pGameEngineStore;
+	std::unique_ptr<MuzGameEngineStorageModel> m_pGameEngineStore;
 
 
 public:

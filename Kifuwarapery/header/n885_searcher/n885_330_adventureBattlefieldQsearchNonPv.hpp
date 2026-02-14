@@ -184,7 +184,7 @@ public:
 	virtual inline void doByNewSweetness(
 		bool& isReturnWithSweetness,
 		Sweetness& returnSweetness,
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		Sweetness& sweetness,
 		Sweetness& beta,
 		Sweetness& alpha,

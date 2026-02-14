@@ -3,7 +3,7 @@
 #include "n760_250_monkie.hpp"
 
 
-class MuzGameEngineStorage;
+class MuzGameEngineStorageModel;
 
 
 /// <summary>
@@ -42,7 +42,7 @@ public:
     /// 生成☆（＾ｑ＾）
 	/// </summary>
 	/// <param name="s"></param>
-	explicit Orangutan(MuzGameEngineStorage* s) : Monkie(s), m_isMasterThread(true) {}
+	explicit Orangutan(MuzGameEngineStorageModel* s) : Monkie(s), m_isMasterThread(true) {}
 
 
 	// ========================================

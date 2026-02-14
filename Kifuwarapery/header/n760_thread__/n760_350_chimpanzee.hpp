@@ -3,7 +3,7 @@
 #include "n760_250_monkie.hpp"
 
 
-class MuzGameEngineStorage;
+class MuzGameEngineStorageModel;
 
 
 /// <summary>
@@ -40,7 +40,7 @@ public:
 	/// 
 	/// </summary>
 	/// <param name="s"></param>
-	explicit Chimpanzee(MuzGameEngineStorage* s) : Monkie(s), m_lifetimeMilliseconds(0) {}
+	explicit Chimpanzee(MuzGameEngineStorageModel* s) : Monkie(s), m_lifetimeMilliseconds(0) {}
 
 
 	// ========================================

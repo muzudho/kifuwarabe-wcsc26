@@ -16,7 +16,7 @@ const WhistleForMeticulousMonkey g_WHISTLE_FOR_METICULOUS_MONKEY;
 /// <param name="pFlashlight"></param>
 void WhistleForMeticulousMonkey::blowWhistle_asMonkeySplitedPlace(
 	MonkeySplitedPlace& ownerMonkeySplitedPlace, 
-	MuzGameEngineStorage& ourCarriage,
+	MuzGameEngineStorageModel& ourCarriage,
 	Position& pos,
 	Flashlight* pFlashlight) const
 {

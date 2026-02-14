@@ -2,7 +2,7 @@
 
 
 // 探索用変数
-class MuzGameEngineStorage;
+class MuzGameEngineStorageModel;
 
 
 /// <summary>
@@ -17,16 +17,16 @@ protected:
 	/// <summary>
 	/// 
 	/// </summary>
-	using Fn = void(MuzGameEngineStorage*, const EngineOptionable&);
+	using Fn = void(MuzGameEngineStorageModel*, const EngineOptionable&);
 
 
 public:
 
 
-	EngineOptionable(												Fn* = nullptr, MuzGameEngineStorage* s = nullptr);
-	EngineOptionable(const char* v,								    Fn* = nullptr, MuzGameEngineStorage* s = nullptr);
-	EngineOptionable(const bool  v,								    Fn* = nullptr, MuzGameEngineStorage* s = nullptr);
-	EngineOptionable(const int   v, const int min, const int max,	Fn* = nullptr, MuzGameEngineStorage* s = nullptr);
+	EngineOptionable(												Fn* = nullptr, MuzGameEngineStorageModel* s = nullptr);
+	EngineOptionable(const char* v,								    Fn* = nullptr, MuzGameEngineStorageModel* s = nullptr);
+	EngineOptionable(const bool  v,								    Fn* = nullptr, MuzGameEngineStorageModel* s = nullptr);
+	EngineOptionable(const int   v, const int min, const int max,	Fn* = nullptr, MuzGameEngineStorageModel* s = nullptr);
 
 
 	/// <summary>
@@ -125,5 +125,5 @@ protected:
     /// オプションの変更時に、ゲームエンジン倉庫の中身を変更するために必要だぜ☆（＾ｑ＾）
 	///		</pre>
 	/// </summary>
-	MuzGameEngineStorage* m_pGameEngineStore_;
+	MuzGameEngineStorageModel* m_pGameEngineStore_;
 };

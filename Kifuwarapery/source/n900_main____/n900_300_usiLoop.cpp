@@ -15,7 +15,7 @@
 #include "../../header/n720_usi_____/n720_260_usiOperation.hpp"
 #include "../../header/n720_usi_____/n720_300_benchmark.hpp"
 #include "../../header/n800_learn___/n800_500_learner.hpp"
-#include "../../src/layer_game_engine/game_engine_storage.hpp"
+#include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 #include "..\..\header\n900_main____\n900_300_usiLoop.hpp"
 #include "../../src/lib_shogi/shogi_model.hpp"
 
@@ -94,7 +94,7 @@ UsiLoop::UsiLoop()
 /// <param name="argc"></param>
 /// <param name="argv"></param>
 /// <param name="m_pGameEngineStore"></param>
-void UsiLoop::mainloop_50a500b(int argc, char* argv[], MuzGameEngineStorage& m_pGameEngineStore)
+void UsiLoop::mainloop_50a500b(int argc, char* argv[], MuzGameEngineStorageModel& m_pGameEngineStore)
 {
 	GameStats gameStats{};	// こう書くと関数呼出しと思われてエラー： GameStats gameStats();
 	Position pos(g_SFEN_STARTPOS_STR, m_pGameEngineStore.m_pub.GetFirstCaptain(), &m_pGameEngineStore);

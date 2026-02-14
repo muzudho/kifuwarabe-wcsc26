@@ -24,7 +24,7 @@
 #include "../../header/n760_thread__/n760_400_monkiesPub.hpp"
 #include "../../header/n800_learn___/n800_100_stopwatch.hpp"
 #include "../../header/n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
-#include "../../src/layer_game_engine/game_engine_storage.hpp"
+#include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 #include "../../header/n885_searcher/n885_480_adventureSwampNyugyoku.hpp"
 #include "../../header/n885_searcher/n885_490_adventureMountainIterativeDeepeningLoop.hpp"
 #include "../../header/n885_searcher/n885_510_adventureContinent.hpp"
@@ -53,7 +53,7 @@ extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 /// </summary>
 /// <param name="captainsRucksack">キャプテンの持っているＳｅａｒｃｈｅｒ☆</param>
 void AdventureContinent::ExploreContinent(
-	MuzGameEngineStorage& captainsRucksack)
+	MuzGameEngineStorageModel& captainsRucksack)
 {
 	Position& pos = captainsRucksack.m_rootPosition;
 

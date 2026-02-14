@@ -6,7 +6,7 @@
 #include "../n640_searcher/n640_440_splitedNode.hpp"
 #include "../n640_searcher/n640_500_reductions.hpp"
 #include "../n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
-#include "../../src/layer_game_engine/game_engine_storage.hpp"
+#include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 
 
 // PvNode = false
@@ -35,7 +35,7 @@ public:
 	/// <param name="cutNode"></param>
 	/// <returns></returns>
 	virtual Sweetness explorePlain_10i(
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		Position& pos,
 		Flashlight* pFlashlight,//サーチスタック
 		Sweetness alpha,
@@ -106,7 +106,7 @@ public:
 	/// <param name="pTtEntry"></param>
 	/// <param name="pos"></param>
 	virtual inline std::unique_ptr<Move> explorePlain_10i1110j_getTtMove(
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		const TTEntry* pTtEntry,
 		Position& pos
 		)const override
@@ -158,7 +158,7 @@ public:
 		bool& inCheck,
 		Sweetness& beta,
 		Flashlight** ppFlashlight,
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		Position& pos,
 		Sweetness& alpha,
 		const TTEntry** ppTtEntry,//セットされるぜ☆
@@ -297,7 +297,7 @@ public:
 	/// <param name="move"></param>
 	virtual inline void explorePlain_10i2030j_isRootMoveEnd(
 		bool& isContinue,
-		const MuzGameEngineStorage& ourCarriage,
+		const MuzGameEngineStorageModel& ourCarriage,
 		const Move& move
 		)const override {
 		// 非ルートノードはスルー☆！（＾ｑ＾）
@@ -311,7 +311,7 @@ public:
 	/// <param name="ourCarriage"></param>
 	/// <param name="moveCount"></param>
 	virtual inline void explorerPlain_10i2040j_displayInfo(
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		int& moveCount
 		) const override {
 		// 非ルートノードはスルー☆！（＾ｑ＾）
@@ -381,7 +381,7 @@ public:
 	/// <param name="movesSearched"></param>
 	virtual inline void explorePlain_10i2090j_updateCurrentMove(
 		bool& isContinue,
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		bool& captureOrPawnPromotion,
 		bool& inCheck,
 		bool& dangerous,
@@ -460,7 +460,7 @@ public:
 	/// <param name="pos"></param>
 	/// <param name="ppFlashlight"></param>
 	virtual inline void explorerPlain_10i3030j_getSweetnessIfMeticulous(
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		bool& isPVMove,
 		Sweetness& alpha,
 		Sweetness& sweetness,
@@ -500,7 +500,7 @@ public:
 	/// <param name="sweetness"></param>
 	/// <param name="pos"></param>
 	virtual inline void explorerPlain_10i3060j_bestMovePlyChanges(
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		Move& move,
 		bool& isPVMove,
 		Sweetness& alpha,
@@ -528,7 +528,7 @@ public:
 	/// <param name="beta"></param>
 	virtual inline void explorePlain_10i3070j_getBestUpdateAlpha(
 		bool& isBreak,
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		Move& move,
 		bool& isPVMove,
 		Sweetness& alpha,
@@ -575,7 +575,7 @@ public:
 	/// <param name="cutNode"></param>
 	inline void explorePlain_10i3080j_forkNewMonkeyIfPossible(
 		bool& isBreak,
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		const Depth depth,
 		Monkie** ppThisThread,
 		Sweetness& bestSweetness,
@@ -623,7 +623,7 @@ public:
 	inline void explorePlain_10i4020j_backwardProcess(
 		int& moveCount,
 		Move& excludedMove,
-		MuzGameEngineStorage& ourCarriage,
+		MuzGameEngineStorageModel& ourCarriage,
 		Sweetness& alpha,
 		Flashlight** ppFlashlight,//サーチスタック
 		Sweetness& bestSweetness,

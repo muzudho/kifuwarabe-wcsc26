@@ -12,7 +12,7 @@
 #include "../n640_searcher/n640_440_splitedNode.hpp" // 持ち合い
 
 
-class MuzGameEngineStorage;
+class MuzGameEngineStorageModel;
 
 
 /// <summary>
@@ -47,7 +47,7 @@ public:
 	/// 生成。
 	/// </summary>
 	/// <param name="s"></param>
-	explicit Monkie(MuzGameEngineStorage* s);
+	explicit Monkie(MuzGameEngineStorageModel* s);
 
 
 	/// <summary>
@@ -130,7 +130,7 @@ public:
 	/// <summary>
 	/// わたしたちの馬車
 	/// </summary>
-	MuzGameEngineStorage* m_pOurCarriage;
+	MuzGameEngineStorageModel* m_pOurCarriage;
 
 
 	// ========================================

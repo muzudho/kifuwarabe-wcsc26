@@ -17,7 +17,7 @@
 #include "../header/n900_main____/n900_300_usiLoop.hpp"
 #include "../src/lib_gui/muz_engine_optoins_initialize_service.hpp"
 #include "../src/muz_game_engine_service.hpp"
-#include "../src/layer_game_engine/game_engine_storage.hpp"
+#include "../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 #include <iostream>
 
 
@@ -31,7 +31,7 @@
 /// </summary>
 MuzGameEngineService::MuzGameEngineService()
 {
-    this->m_pGameEngineStore = std::unique_ptr<MuzGameEngineStorage>(new MuzGameEngineStorage);
+    this->m_pGameEngineStore = std::unique_ptr<MuzGameEngineStorageModel>(new MuzGameEngineStorageModel);
 }
 
 
