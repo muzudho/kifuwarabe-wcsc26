@@ -38,14 +38,14 @@ public:
 	/// </summary>
 	/// <param name="v"></param>
 	/// <returns></returns>
-	virtual MuzEngineOptionableModel& operator = (const std::string& v);
+	MuzEngineOptionableModel& operator = (const std::string& v);
 
 
 	/// <summary>
     /// 整数化☆
 	/// </summary>
 	operator int() const {
-		assert(m_type_ == "check" || m_type_ == "spin");
+		//assert(m_type_ == "check" || m_type_ == "spin");
 		return (m_type_ == "spin" ? atoi(m_currentValue_.c_str()) : m_currentValue_ == "true");
 	}
 
@@ -54,7 +54,7 @@ public:
     /// 文字列化☆
 	/// </summary>
 	operator std::string() const {
-		assert(this->m_type_ == "string");
+		//assert(this->m_type_ == "string");
 		return this->m_currentValue_;
 	}
 

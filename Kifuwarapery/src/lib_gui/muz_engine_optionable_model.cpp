@@ -69,13 +69,7 @@ MuzEngineOptionableModel::MuzEngineOptionableModel(
 /// <returns></returns>
 MuzEngineOptionableModel& MuzEngineOptionableModel::operator = (const std::string& newValue)
 {
-	assert(!m_type_.empty());
-
-	// ボタン、チェックボックス、スピンボックス、テキストボックスではない（＾～＾）
-
-	if (
-		newValue.empty())	// ボタンじゃないのに、値が無かった
-	{ return *this; }
+	if (newValue.empty()) { return *this; }	// 値が無かった
 
 	// 値の更新
 	m_currentValue_ = newValue;
