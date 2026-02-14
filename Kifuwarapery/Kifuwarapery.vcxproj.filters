@@ -1094,9 +1094,6 @@
     <ClCompile Include="src\main.cpp">
       <Filter>source\n900_main____</Filter>
     </ClCompile>
-    <ClCompile Include="source\n900_main____\n900_400_main.cpp">
-      <Filter>source\n900_main____</Filter>
-    </ClCompile>
     <ClCompile Include="source\n900_main____\n900_300_usiLoop.cpp">
       <Filter>source\n900_main____</Filter>
     </ClCompile>

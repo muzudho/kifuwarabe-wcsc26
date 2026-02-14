@@ -645,7 +645,6 @@
     <ClCompile Include="source\n887_nodeKind\n887_150_adventureNodekindMonkeySplitedPlaceEasyGoingMonkey.cpp" />
     <ClCompile Include="source\n887_nodeKind\n887_500_adventureNodekindPrograms.cpp" />
     <ClCompile Include="source\n900_main____\n900_300_usiLoop.cpp" />
-    <ClCompile Include="source\n900_main____\n900_400_main.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
