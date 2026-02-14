@@ -60,11 +60,11 @@ IMuzEngineOptionableModel& MuzEngineOptionTextboxModel::operator = (const std::s
 // ========================================
 
 
-///// <summary>
-///// USIコード化☆（＾～＾）
-///// </summary>
-///// <returns></returns>
-//std::string MuzEngineOptionTextboxModel::ToUSICode() const
-//{
-//	return "";
-//}
+/// <summary>
+/// USIコード化☆（＾～＾）
+/// </summary>
+/// <returns></returns>
+std::string MuzEngineOptionTextboxModel::ToUSICode() const
+{
+	return "";
+}

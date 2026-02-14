@@ -49,10 +49,10 @@ public:
     // ========================================
 
 
-    ///// <summary>
-    ///// USIコード化☆（＾～＾）
-    ///// </summary>
-    ///// <returns></returns>
-    //std::string ToUSICode() const override;
+    /// <summary>
+    /// USIコード化☆（＾～＾）
+    /// </summary>
+    /// <returns></returns>
+    std::string ToUSICode() const;// override;
 };
 

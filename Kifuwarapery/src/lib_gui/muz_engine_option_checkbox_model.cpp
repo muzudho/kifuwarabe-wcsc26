@@ -61,11 +61,11 @@ IMuzEngineOptionableModel& MuzEngineOptionCheckboxModel::operator = (const std::
 // ========================================
 
 
-///// <summary>
-///// USIコード化☆（＾～＾）
-///// </summary>
-///// <returns></returns>
-//std::string MuzEngineOptionCheckboxModel::ToUSICode() const
-//{
-//	return "";
-//}
+/// <summary>
+/// USIコード化☆（＾～＾）
+/// </summary>
+/// <returns></returns>
+std::string MuzEngineOptionCheckboxModel::ToUSICode() const
+{
+	return "";
+}
