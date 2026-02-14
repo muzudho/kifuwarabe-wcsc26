@@ -197,9 +197,9 @@ public:
 
 
 	/// <summary>
-	/// 初期化？
+	/// 探索部の初期化？
 	/// </summary>
-	void	initialize_10a500b_search(EngineOptionCollection* pMap);
+	void	initialize_10a520b_search();
 
 
 	/// <summary>

@@ -111,7 +111,7 @@ public:
 	/// 初期化？
 	/// </summary>
 	/// <param name="s"></param>
-	void initialize_10a500b500c(GameEngineStorageOurCarriage* s);
+	void initialize_10a520b500c(GameEngineStorageOurCarriage* s);
 
 
 	/// <summary>

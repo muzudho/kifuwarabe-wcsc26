@@ -21,5 +21,5 @@ public:
 	/// </summary>
 	/// <param name="pMap"></param>
 	/// <param name="s"></param>
-	void initialize_10a500b100c( EngineOptionCollection* pMap, GameEngineStorageOurCarriage* s);
+	void initialize_10a510b_engineOptions( EngineOptionCollection* pMap, GameEngineStorageOurCarriage* s);
 };

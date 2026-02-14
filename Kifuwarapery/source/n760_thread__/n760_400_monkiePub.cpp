@@ -53,7 +53,7 @@ void deleteThread(Monkie* th) {
 ///		</pre>
 /// </summary>
 /// <param name="s"></param>
-void MonkiesPub::initialize_10a500b500c(GameEngineStorageOurCarriage* s)
+void MonkiesPub::initialize_10a520b500c(GameEngineStorageOurCarriage* s)
 {
 	// 手の空いてる猿は寝てろ。
 	m_isIdleMonkeyToSleep_ = true;

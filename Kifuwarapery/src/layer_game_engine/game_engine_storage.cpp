@@ -47,8 +47,8 @@ extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 /// <summary>
 /// 最初の設定（初期化）を行うぜ☆（＾▽＾）
 /// </summary>
-void GameEngineStorageOurCarriage::initialize_10a500b_search(EngineOptionCollection* pMap) {
-	this->m_pub.initialize_10a500b500c(this);
+void GameEngineStorageOurCarriage::initialize_10a520b_search() {
+	this->m_pub.initialize_10a520b500c(this);
 	this->m_tt.setSize(this->m_engineOptionCollection.m_map["USI_Hash"]);
 }
 

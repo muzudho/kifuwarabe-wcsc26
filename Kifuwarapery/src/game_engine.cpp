@@ -134,10 +134,10 @@ void MyGameEngineModel::initialize_10a()
 
     SYNCCOUT << "(^q^) 2.9 . エンジン・オプション設定！" << SYNCENDL;
     EngineOptionSetup engineOptionSetup;
-    engineOptionSetup.initialize_10a500b100c(&this->m_pGameEngineStore->m_engineOptionCollection, this->m_pGameEngineStore.get());
+    engineOptionSetup.initialize_10a510b_engineOptions(&this->m_pGameEngineStore->m_engineOptionCollection, this->m_pGameEngineStore.get());
 
     SYNCCOUT << "(^q^) 3   . 探索部の初期化！" << SYNCENDL;
-    this->m_pGameEngineStore->initialize_10a500b_search(&this->m_pGameEngineStore->m_engineOptionCollection);
+    this->m_pGameEngineStore->initialize_10a520b_search();
 
 
     // 一時オブジェクトの生成と破棄

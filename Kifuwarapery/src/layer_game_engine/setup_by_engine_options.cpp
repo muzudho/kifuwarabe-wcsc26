@@ -14,7 +14,7 @@ namespace {
 	/// </summary>
 	/// <param name="s"></param>
 	/// <param name="opt"></param>
-	void onHashSize(GameEngineStorageOurCarriage* s, const EngineOptionable& opt) { s->m_tt.setSize(opt); }
+	void handleHashSizeChanged(GameEngineStorageOurCarriage* s, const EngineOptionable& opt) { s->m_tt.setSize(opt); }
 
 
 	/// <summary>
@@ -22,7 +22,7 @@ namespace {
 	/// </summary>
 	/// <param name="s"></param>
 	/// <param name=""></param>
-	void onClearHash(GameEngineStorageOurCarriage* s, const EngineOptionable&) { s->m_tt.Clear(); }
+	void handleHashCleared(GameEngineStorageOurCarriage* s, const EngineOptionable&) { s->m_tt.Clear(); }
 
 
 	/// <summary>
@@ -30,7 +30,7 @@ namespace {
 	/// </summary>
 	/// <param name=""></param>
 	/// <param name="opt"></param>
-	void onEvalDir(GameEngineStorageOurCarriage*, const EngineOptionable& opt) {
+	void onEvalDirChanged(GameEngineStorageOurCarriage*, const EngineOptionable& opt) {
 		std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->initialize_10a600b(opt, true);
 	}
 
@@ -40,14 +40,14 @@ namespace {
 	/// </summary>
 	/// <param name="s"></param>
 	/// <param name=""></param>
-	void onThreads(GameEngineStorageOurCarriage* s, const EngineOptionable&) { s->m_pub.ReadUSIOptions(s); }
+	void onThreadsChanged(GameEngineStorageOurCarriage* s, const EngineOptionable&) { s->m_pub.ReadUSIOptions(s); }
 
 
 	/// <summary>
 	/// 論理的なコア数の取得
 	/// </summary>
 	/// <returns></returns>
-	inline int cpuCoreCount() {
+	inline int getCpuCoreCount() {
 		// todo: boost::thread::physical_concurrency() を使うこと。
 		// std::thread::hardware_concurrency() は 0 を返す可能性がある。
 		return std::max(static_cast<int>(std::thread::hardware_concurrency() / 2), 1);
@@ -56,17 +56,17 @@ namespace {
 
 
 /// <summary>
-/// USIエンジン用のオプションを初期設定するぜ☆
+/// USIエンジン・オプションに既定値を入れるぜ☆
 /// </summary>
 /// <param name="pMap"></param>
 /// <param name="pRucksack"></param>
-void EngineOptionSetup::initialize_10a500b100c(EngineOptionCollection* pMap, GameEngineStorageOurCarriage * pRucksack)
+void EngineOptionSetup::initialize_10a510b_engineOptions(EngineOptionCollection* pMap, GameEngineStorageOurCarriage * pRucksack)
 {
 	// ハッシュサイズ
-	pMap->Put("USI_Hash"					, EngineOption(256, 1, 65536, onHashSize, pRucksack));
+	pMap->Put("USI_Hash"					, EngineOption(256, 1, 65536, handleHashSizeChanged, pRucksack));
 
 	// ［ハッシュ・クリアー］ボタン
-	pMap->Put("Clear_Hash"					, EngineOption(onClearHash, pRucksack));
+	pMap->Put("Clear_Hash"					, EngineOption(handleHashCleared, pRucksack));
 
 	// 定跡ファイルパス
 	pMap->Put("Book_File"					, EngineOption("book/20150503/book.bin"));
@@ -87,7 +87,7 @@ void EngineOptionSetup::initialize_10a500b100c(EngineOptionCollection* pMap, Gam
 	pMap->Put("Min_Book_Score"				, EngineOption(-180, -SweetnessInfinite, SweetnessInfinite));
 
 	// ［評価値ファイル］フォルダー
-	pMap->Put("Eval_Dir"					, EngineOption("20151105", onEvalDir));
+	pMap->Put("Eval_Dir"					, EngineOption("20151105", onEvalDirChanged));
 
 	// ［評価値書き込み］チェックボックス
 	pMap->Put("Write_Synthesized_Eval"		, EngineOption(false));
@@ -128,10 +128,10 @@ void EngineOptionSetup::initialize_10a500b100c(EngineOptionCollection* pMap, Gam
 	//────────────────────────────────────────────────────────────────────────────────
 
 	// ［一緒に走る猿が分岐する点の最大数］
-	pMap->Put("Max_Threads_per_Split_Point"	, EngineOption(		5,  4,     8, onThreads, pRucksack));
+	pMap->Put("Max_Threads_per_Split_Point"	, EngineOption(		5,  4,     8, onThreadsChanged, pRucksack));
 
 	// スレッド数
-	pMap->Put("Threads"						, EngineOption(cpuCoreCount(), 1, g_MaxThreads, onThreads, pRucksack));
+	pMap->Put("Threads"						, EngineOption(getCpuCoreCount(), 1, g_MaxThreads, onThreadsChanged, pRucksack));
 
 	// ［寝てる猿を使う］チェックボックス
 	pMap->Put("Use_Sleeping_Threads"		, EngineOption(false));
