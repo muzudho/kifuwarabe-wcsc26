@@ -22,7 +22,7 @@ public:
     /// </summary>
     /// <returns></returns>
     MuzEngineOptionTextboxModel(
-        const char* v,
+        const std::string text,
         std::function<void(const MuzEngineOptionAbstractModel&)> onChanged = nullptr);
 
 

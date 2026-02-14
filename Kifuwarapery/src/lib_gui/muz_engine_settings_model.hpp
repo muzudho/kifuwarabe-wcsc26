@@ -107,8 +107,8 @@ public:
 	/// </summary>
 	/// <param name="key"></param>
 	/// <returns></returns>
-	void SetTextboxOption(const std::string key, std::string value)
+	void SetTextboxOption(const std::string key, std::string text)
 	{
-		this->m_map[key] = new MuzEngineOptionTextboxModel(value.c_str());
+		this->m_map[key] = new MuzEngineOptionTextboxModel(text);
 	}
 };

@@ -15,9 +15,9 @@
 /// <param name="onChanged"></param>
 /// <param name="pGameEngineStore"></param>
 MuzEngineOptionTextboxModel::MuzEngineOptionTextboxModel(
-    const char* v,
+    const std::string text,
     std::function<void(const MuzEngineOptionAbstractModel&)> onChanged)
-    : MuzEngineOptionAbstractModel(v, onChanged)
+    : MuzEngineOptionAbstractModel(text, onChanged)
 {
 }
 

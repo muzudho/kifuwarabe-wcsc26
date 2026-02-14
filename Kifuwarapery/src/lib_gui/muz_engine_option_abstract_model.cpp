@@ -38,11 +38,11 @@ MuzEngineOptionAbstractModel::MuzEngineOptionAbstractModel(
 /// <param name="newValue"></param>
 /// <param name="onChanged"></param>
 MuzEngineOptionAbstractModel::MuzEngineOptionAbstractModel(
-	const char* v,
+	const std::string text,
 	std::function<void(const MuzEngineOptionAbstractModel&)> onChanged)
 		: m_type_("string"), m_min_(0), m_max_(0), m_onChanged_(onChanged)
 {
-	m_defaultValue_ = m_currentValue_ = v;
+	m_defaultValue_ = m_currentValue_ = text;
 }
 
 

@@ -36,7 +36,7 @@ public:
 
 	// TODO: テキストボックス
 	MuzEngineOptionAbstractModel(
-		const char* v,
+		const std::string text,
 		std::function<void(const MuzEngineOptionAbstractModel&)> onChanged = nullptr);
 
 	// TODO: チェックボックス
@@ -134,28 +134,28 @@ public:
 	/// 既定値
 	/// </summary>
 	/// <returns></returns>
-	std::string	GetDefaultValue()	const { return this->m_defaultValue_; }
+	std::string	GetDefaultValue() const { return this->m_defaultValue_; }
 
 
 	/// <summary>
 	/// 型
 	/// </summary>
 	/// <returns></returns>
-	std::string	GetType()			const { return this->m_type_; }
+	std::string	GetType() const { return this->m_type_; }
 
 
 	/// <summary>
 	/// 最小値
 	/// </summary>
 	/// <returns></returns>
-	int			GetMin()			const { return this->m_min_; }
+	int GetMin() const { return this->m_min_; }
 
 
 	/// <summary>
 	/// 最大値
 	/// </summary>
 	/// <returns></returns>
-	int			GetMax()			const { return this->m_max_; }
+	int GetMax() const { return this->m_max_; }
 
 
 	/// <summary>
