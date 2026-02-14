@@ -47,6 +47,11 @@ public:
 
 
 	/// <summary>
+	/// USIオプションのコレクション
+	/// </summary>
+	MuzEngineSettingsModel	m_engineOptionCollection;
+
+	/// <summary>
 	/// シグナル？
 	/// </summary>
 	volatile SignalsType		m_signals;
@@ -146,11 +151,6 @@ public:
 	///		</pre>
 	/// </summary>
 	MonkiesPub	m_pub;
-
-	/// <summary>
-	/// USIオプションのコレクション
-	/// </summary>
-	MuzEngineSettingsModel	m_engineOptionCollection;
 
 	/// <summary>
 	/// true にすると、シングルスレッドで動作する。デバッグ用。

@@ -10,20 +10,38 @@
 /// <summary>
 /// 
 /// </summary>
-class MuzGameEngineService {
+class MuzGameEngineService
+{
 
 
 public:
 
+
+	// ========================================
+	// 生成／破棄
+	// ========================================
+
+
+	MuzGameEngineService();
+	~MuzGameEngineService();
+
+
+	// ========================================
+	// フィールド
+	// ========================================
+
+
 	/// <summary>
-	///		ゲームエンジンが１つだけ持つ、局面の探索状態を保存するクラス☆（＾ｑ＾）
+	///	ゲームエンジン倉庫☆（＾ｑ＾）
 	/// </summary>
 	std::unique_ptr<MuzGameEngineStorageModel> m_pGameEngineStore;
 
 
-public:
-	MuzGameEngineService();
-	~MuzGameEngineService();
+	// ========================================
+	// ライフサイクルメソッド
+	// ========================================
+
+
 	void initialize_10a();
 	void body_50a(int argc, char* argv[]);
 	void finalize_90000a();
