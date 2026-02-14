@@ -432,7 +432,7 @@
     <ClInclude Include="header\n887_nodeKind\n887_150_adventurePlainNodekindSplitedNodeEasyGoingMonkey.hpp" />
     <ClInclude Include="header\n887_nodeKind\n887_500_adventurePlainNodekindPrograms.hpp" />
     <ClInclude Include="header\n900_main____\n900_300_usiLoop.hpp" />
-    <ClInclude Include="header\n900_main____\n900_400_main01.hpp" />
+    <ClInclude Include="src\main.hpp" />
     <ClInclude Include="header\n165_movStack\n165_410_moveModels.hpp" />
     <ClInclude Include="header\n220_position\n220_645_gameStats.hpp" />
     <ClInclude Include="stdafx.h" />
@@ -646,7 +646,7 @@
     <ClCompile Include="source\n887_nodeKind\n887_500_adventureNodekindPrograms.cpp" />
     <ClCompile Include="source\n900_main____\n900_300_usiLoop.cpp" />
     <ClCompile Include="source\n900_main____\n900_400_main.cpp" />
-    <ClCompile Include="source\n900_main____\n900_500_main.cpp" />
+    <ClCompile Include="src\main.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
