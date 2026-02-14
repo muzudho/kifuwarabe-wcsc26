@@ -3,7 +3,7 @@
 #include "../n165_movStack/n165_600_convMove.hpp"
 #include "../n680_egOption/n680_230_engineOptionable.hpp"
 #include "../n680_egOption/n680_240_engineOptionsMap.hpp"
-#include "../../src/game_engine_layer/game_engine_storage.hpp"
+#include "../../src/layer_game_engine/game_engine_storage.hpp"
 
 
 /// <summary>

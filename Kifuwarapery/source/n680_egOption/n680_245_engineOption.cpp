@@ -1,6 +1,6 @@
 ﻿#include <ostream>
 #include "../../header/n680_egOption/n680_245_engineOption.hpp"
-#include "../../src/game_engine_layer/game_engine_storage.hpp"
+#include "../../src/layer_game_engine/game_engine_storage.hpp"
 
 
 /// <summary>

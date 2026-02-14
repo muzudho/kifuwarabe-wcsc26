@@ -1,8 +1,8 @@
 #pragma once
 #include "../n119_500_sweetnes/n119_090_Sweetness.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"
-#include "../../src/game_engine_layer/game_engine_storage.hpp"
 #include "n886_070_rtAbstract.hpp" // &参照は使えない。*参照は使える。
+#include "../../src/layer_game_engine/game_engine_storage.hpp"
 
 
 /// <summary>

@@ -6,7 +6,7 @@
 #include "../n640_searcher/n640_440_splitedNode.hpp"
 #include "../n640_searcher/n640_500_reductions.hpp"
 #include "../n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
-#include "../../src/game_engine_layer/game_engine_storage.hpp"
+#include "../../src/layer_game_engine/game_engine_storage.hpp"
 
 
 // PvNode = true

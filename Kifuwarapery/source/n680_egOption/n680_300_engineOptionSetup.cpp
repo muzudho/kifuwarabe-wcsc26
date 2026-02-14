@@ -2,7 +2,7 @@
 #include "../../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
 #include "..\..\header\n680_egOption/n680_245_engineOption.hpp"
 #include "..\..\header\n680_egOption\n680_300_engineOptionSetup.hpp"
-#include "../../src/game_engine_layer/game_engine_storage.hpp"
+#include "../../src/layer_game_engine/game_engine_storage.hpp"
 
 
 // 初期化の値を取ってくるのに使います。

@@ -23,6 +23,6 @@
 #include "../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
 #include "../header/n600_book____/n600_500_book.hpp"
 #include "../header/n900_main____/n900_300_usiLoop.hpp"
-#include "../src/game_engine_layer/game_engine_storage.hpp"
+#include "../src/layer_game_engine/game_engine_storage.hpp"
 #include "../src/game_engine.hpp"
 // プログラムに必要なヘッダーをここに追加してください。
