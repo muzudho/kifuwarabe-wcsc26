@@ -1,8 +1,8 @@
 ﻿#pragma once
-#include "../n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../n105_100_color___/n105_100_100_color.hpp"
-#include "../n105_120_square__/n105_120_100_square.hpp"
-#include <bit>
+#include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"
+#include "../../header/n105_100_color___/n105_100_100_color.hpp"
+#include "../../header/n105_120_square__/n105_120_100_square.hpp"
+#include <bit>	// TODO: これも C++20 以降でないと使えない。C++20 以降にするか、独自実装するか。
 
 
 //────────────────────────────────────────────────────────────────────────────────
@@ -36,7 +36,7 @@ private:
 	u64 m_part_[2];
 #endif
 
-	std::bitset<128> m_part128_;
+	// TODO: std::bitset<81> m_part81_;
 
 public:
 
@@ -151,6 +151,8 @@ public:
 	/// Bitboard の right 側だけの要素を調べて、最初に 1 であるマスの index を返す。
 	/// そのマスを 0 にする。
 	/// Bitboard の right 側が 0 でないことを前提にしている。
+	/// 
+	///		- 旧名： `ＰopFirstOneFromI9`
 	///		</pre>
 	/// </summary>
 	/// <returns></returns>
@@ -167,6 +169,8 @@ public:
 	/// Bitboard の left 側だけの要素を調べて、最初に 1 であるマスの index を返す。
 	/// そのマスを 0 にする。
 	/// Bitboard の left 側が 0 でないことを前提にしている。
+	/// 
+	///		- 旧名： `ＰopFirstOneFromB9`
 	///		</pre>
 	/// </summary>
 	FORCE_INLINE Square PopFirstOneLeftOfBoard() {

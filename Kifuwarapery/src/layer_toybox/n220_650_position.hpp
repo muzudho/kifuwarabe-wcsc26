@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "muz_position_base_model.hpp"
 #include "../../src/lib_bitboard/n160_100_bitboard.hpp"
 #include "../../src/lib_bitboard/n160_102_FileMaskBb.hpp"
 #include "../../src/lib_bitboard/n160_106_inFrontMaskBb.hpp"
@@ -58,16 +59,21 @@ class MuzGameEngineStorageModel;
 
 
 /// <summary>
+///		<pre>
 /// 局面
+/// 
+///		- クラスがでかすぎるぜ（＾～＾）
+///		- 基本と、分析的なものを分けるべきかもしれないぜ（＾～＾）
+///		</pre>
 /// </summary>
-class Position {
+class Position : public MuzPositionBaseModel {
 
 
 public:
 
 
 	// ========================================
-	// 軽い生成／破棄
+	// 生成／破棄
 	// ========================================
 
 
@@ -183,27 +189,6 @@ public:
 	Bitboard GetGoldsBB() const;
 
 	Bitboard GetGoldsBB(const Color c) const;
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="sq"></param>
-	/// <returns></returns>
-	Piece GetPiece(const Square sq) const;
-
-
-	/// <summary>
-	/// 持ち駒
-	/// </summary>
-	/// <typeparam name="CLR"></typeparam>
-	/// <returns></returns>
-	template<Color CLR>
-	Hand GetHand() const
-	{
-		return this->m_hand_[CLR];
-	}
-	Hand GetHand(const Color c) const;
 
 
 	/// <summary>
@@ -403,13 +388,6 @@ public:
 
 
 	/// <summary>
-	/// 次の手番
-	/// </summary>
-	/// <returns></returns>
-	Color GetTurn() const;
-
-
-	/// <summary>
 	/// pseudoLegal とは
 	/// ・玉が相手駒の利きがある場所に移動する
 	/// ・pin の駒を移動させる
@@ -475,13 +453,6 @@ public:
 	/// 
 	/// </summary>
 	/// <returns></returns>
-	Ply GetGamePly() const;
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <returns></returns>
 	Key GetBoardKey() const;
 
 
@@ -540,13 +511,6 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	Monkie* getHandleMonkey() const;
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="ply"></param>
-	void SetStartPosPly(const Ply ply);
 
 
 	/// <summary>
@@ -800,24 +764,9 @@ private:
 	Bitboard m_goldsBB_;
 
 	/// <summary>
-	/// 各マスの状態
-	/// </summary>
-	Piece m_piece_[SquareNum];
-
-	/// <summary>
 	/// 
 	/// </summary>
 	Square m_kingSquare_[g_COLOR_NUM];
-
-	/// <summary>
-	/// 手駒
-	/// </summary>
-	Hand m_hand_[g_COLOR_NUM];
-
-	/// <summary>
-	/// 手番
-	/// </summary>
-	Color m_turn_;
 
 	/// <summary>
 	/// 
@@ -835,11 +784,6 @@ private:
 	StateInfo* m_st_;
 
 	/// <summary>
-	/// 時間管理に使用する。
-	/// </summary>
-	Ply m_gamePly_;
-
-	/// <summary>
 	/// 
 	/// </summary>
 	Monkie* m_thisThread_;
@@ -850,7 +794,7 @@ private:
 	u64 m_nodes_;
 
 	/// <summary>
-	/// わたしたちの馬車
+	/// ゲームエンジン倉庫
 	/// </summary>
 	MuzGameEngineStorageModel* m_pGameEngineStore_;
 

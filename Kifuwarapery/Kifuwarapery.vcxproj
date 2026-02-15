@@ -202,6 +202,7 @@
     <ClInclude Include="header\n119_500_sweetnes\n119_100_UtilSweetness.hpp" />
     <ClInclude Include="header\n119_500_sweetnes\n119_200_PieceSweetness.hpp" />
     <ClInclude Include="header\n119_500_sweetnes\n119_500_EvalSum.hpp" />
+    <ClInclude Include="src\layer_toybox\muz_position_base_model.hpp" />
     <ClInclude Include="src\lib_bitboard\n160_108_slideBits.hpp" />
     <ClInclude Include="src\lib_bitboard\n160_100_bitboard.hpp" />
     <ClInclude Include="src\lib_bitboard\init110_silverAttackBb.hpp" />
@@ -448,6 +449,7 @@
     <ClCompile Include="header\n080_100_sysWorld\n080_100_075_debugcerr.hpp" />
     <ClCompile Include="header\n080_100_sysWorld\n080_100_077_binary.hpp" />
     <ClCompile Include="header\n080_100_sysWorld\n080_100_078_lsbMsb.hpp" />
+    <ClCompile Include="src\layer_toybox\muz_position_base_model.cpp" />
     <ClCompile Include="src\lib_bitboard\init150_rookAttackBb.cpp" />
     <ClCompile Include="src\lib_bitboard\init160_kingAttackBb.cpp" />
     <ClCompile Include="src\lib_bitboard\init180_knightAttackBb.cpp" />

@@ -12,16 +12,6 @@ Key Position::m_ZOB_EXCLUSION_;
 // ========================================
 
 
-/// <summary>
-/// 手番を取得
-/// </summary>
-/// <returns></returns>
-Color Position::GetTurn() const
-{
-	return this->m_turn_;
-}
-
-
 /*
 Move Position::GetMateMoveIn1Ply() {
 	return (this->GetTurn() == Black
@@ -32,16 +22,6 @@ Move Position::GetMateMoveIn1Ply() {
 		);
 }
 */
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-Ply Position::GetGamePly() const
-{
-	return this->m_gamePly_;
-}
 
 
 /// <summary>
@@ -153,16 +133,6 @@ Key Position::GetComputeKey() const
 Monkie* Position::getHandleMonkey() const
 {
 	return this->m_thisThread_;
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="ply"></param>
-void Position::SetStartPosPly(const Ply ply)
-{
-	this->m_gamePly_ = ply;
 }
 
 
@@ -448,28 +418,6 @@ Bitboard Position::GetGoldsBB() const
 Bitboard Position::GetGoldsBB(const Color c) const
 {
 	return this->GetGoldsBB() & this->GetBbOf10(c);
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="sq"></param>
-/// <returns></returns>
-Piece Position::GetPiece(const Square sq) const
-{
-	return this->m_piece_[sq];
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="c"></param>
-/// <returns></returns>
-Hand Position::GetHand(const Color c) const
-{
-	return this->m_hand_[c];
 }
 
 
