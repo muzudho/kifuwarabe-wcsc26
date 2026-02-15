@@ -258,9 +258,6 @@
     <ClInclude Include="header\n080_100_sysWorld\n080_100_050_ifdef.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_100_bitboard.hpp">
-      <Filter>header\n160_board___</Filter>
-    </ClInclude>
     <ClInclude Include="header\n080_200_utilProg\n080_200_500_utilProgram.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
@@ -330,66 +327,6 @@
     <ClInclude Include="header\n119_500_sweetnes\n119_200_PieceSweetness.hpp">
       <Filter>header\n119_score___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_600_bitboardAll.hpp">
-      <Filter>header\n160_board___</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_400_printBb.hpp">
-      <Filter>header\n160_board___</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_240_betweenBb.hpp">
-      <Filter>header\n160_board___</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_200_horseAttackBb.hpp">
-      <Filter>header\n160_board___</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_210_dragonAttackBb.hpp">
-      <Filter>header\n160_board___</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_220_queenAttackBb.hpp">
-      <Filter>header\n160_board___</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_170_goldAndSilverAttackBb.hpp">
-      <Filter>header\n160_board___</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_180_knightAttackBb.hpp">
-      <Filter>header\n160_board___</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_190_pawnAttackBb.hpp">
-      <Filter>header\n160_board___</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_230_setMaskBb.hpp">
-      <Filter>header\n160_board___</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_160_kingAttackBb.hpp">
-      <Filter>header\n160_board___</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_110_silverAttackBb.hpp">
-      <Filter>header\n160_board___</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_120_bishopAttackBb.hpp">
-      <Filter>header\n160_board___</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_130_lanceAttackBb.hpp">
-      <Filter>header\n160_board___</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_140_goldAttackBb.hpp">
-      <Filter>header\n160_board___</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_150_rookAttackBb.hpp">
-      <Filter>header\n160_board___</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_102_fileMaskBb.hpp">
-      <Filter>header\n160_board___</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_104_rankMaskBb.hpp">
-      <Filter>header\n160_board___</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_106_inFrontMaskBb.hpp">
-      <Filter>header\n160_board___</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n160_board___\n160_108_slideBits.hpp">
-      <Filter>header\n160_board___</Filter>
-    </ClInclude>
     <ClInclude Include="header\n105_120_square__\n105_120_400_squareRelation.hpp">
       <Filter>header\n110_square__</Filter>
     </ClInclude>
@@ -411,7 +348,7 @@
     <ClInclude Include="header\n220_position\n220_750_charToPieceUSI.hpp">
       <Filter>header\n220_position</Filter>
     </ClInclude>
-    <ClInclude Include="header\n220_position\n220_650_position.hpp">
+    <ClInclude Include="src\layer_toybox\n220_650_position.hpp">
       <Filter>header\n220_position</Filter>
     </ClInclude>
     <ClInclude Include="header\n112_pieceTyp\n112_050_pieceType.hpp">
@@ -449,18 +386,6 @@
     </ClInclude>
     <ClInclude Include="header\n720_usi_____\n720_300_benchmark.hpp">
       <Filter>header\n720_usi_____</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n680_egOption\n680_230_engineOptionable.hpp">
-      <Filter>header\n680_egOption</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n680_egOption\n680_240_engineOptionsMap.hpp">
-      <Filter>header\n680_egOption</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n680_egOption\n680_245_engineOption.hpp">
-      <Filter>header\n680_egOption</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n680_egOption\n680_300_engineOptionSetup.hpp">
-      <Filter>header\n680_egOption</Filter>
     </ClInclude>
     <ClInclude Include="header\n640_searcher\n640_128_signalsType.hpp">
       <Filter>header\n640_searcher</Filter>
@@ -972,9 +897,6 @@
     <ClInclude Include="header\n885_searcher\n885_510_adventureContinent.hpp">
       <Filter>header\n885_searcher</Filter>
     </ClInclude>
-    <ClInclude Include="src\game_engine_layer\game_engine_storage.hpp">
-      <Filter>header\n885_searcher</Filter>
-    </ClInclude>
     <ClInclude Include="header\n885_searcher\n885_480_adventureSwampNyugyoku.hpp">
       <Filter>header\n885_searcher</Filter>
     </ClInclude>
@@ -1077,13 +999,103 @@
     <ClInclude Include="header\n119_500_sweetnes\n119_085_ply.hpp">
       <Filter>header\n119_score___</Filter>
     </ClInclude>
+    <ClInclude Include="src\lib_bitboard\n160_108_slideBits.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_bitboard\n160_100_bitboard.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_bitboard\init110_silverAttackBb.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_bitboard\init120_bishopAttackBb.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_bitboard\init130_lanceAttackBb.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_bitboard\init140_goldAttackBb.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_bitboard\init150_rookAttackBb.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_bitboard\n160_170_goldAndSilverAttackBb.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_bitboard\init180_knightAttackBb.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_bitboard\init190_pawnAttackBb.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_bitboard\n160_200_horseAttackBb.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_bitboard\n160_210_dragonAttackBb.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_bitboard\n160_220_queenAttackBb.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_bitboard\n160_230_setMaskBb.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_bitboard\n160_240_betweenBb.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_bitboard\n160_400_printBb.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_bitboard\init160_kingAttackBb.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_bitboard\n160_102_fileMaskBb.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_bitboard\n160_104_rankMaskBb.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_bitboard\n160_106_inFrontMaskBb.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_bitboard\n160_600_bitboardAll.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_gui\muz_engine_option_textbox_model.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_gui\muz_engine_option_spinbox_model.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_gui\muz_engine_option_checkbox_model.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_gui\muz_engine_option_button_model.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_gui\muz_engine_option_abstract_model.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_gui\muz_engine_settings_model.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_gui\muz_engine_settings_initialize_service.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_shogi\muz_shogi_model.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\layer_game_engine\muz_game_engine_storage_model.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\muz_game_engine_service.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_100_bitboard.cpp">
-      <Filter>source\n160_board___</Filter>
     </ClCompile>
     <ClCompile Include="source\n080_100_sysWorld\n080_100_500_common.cpp">
       <Filter>source\n080_common</Filter>
@@ -1133,31 +1145,7 @@
     <ClCompile Include="source\n160_board___\n160_160_kingAttackBb.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_110_silverAttackBb.cpp">
-      <Filter>source\n160_board___</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_120_bishopAttackBb.cpp">
-      <Filter>source\n160_board___</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_130_lanceAttackBb.cpp">
-      <Filter>source\n160_board___</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_140_goldAttackBb.cpp">
-      <Filter>source\n160_board___</Filter>
-    </ClCompile>
     <ClCompile Include="source\n160_board___\n160_150_rookAttackBb.cpp">
-      <Filter>source\n160_board___</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_102_fileMaskBb.cpp">
-      <Filter>source\n160_board___</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_104_rankMaskBb.cpp">
-      <Filter>source\n160_board___</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_106_inFrontMaskBb.cpp">
-      <Filter>source\n160_board___</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n160_board___\n160_108_slideBits.cpp">
       <Filter>source\n160_board___</Filter>
     </ClCompile>
     <ClCompile Include="source\n220_position\n220_150_checkInfo.cpp">
@@ -1184,7 +1172,7 @@
     <ClCompile Include="source\n220_position\n220_750_charToPieceUSI.cpp">
       <Filter>source\n220_position</Filter>
     </ClCompile>
-    <ClCompile Include="source\n220_position\n220_650_position.cpp">
+    <ClCompile Include="src\layer_toybox\n220_650_position.cpp">
       <Filter>source\n220_position</Filter>
     </ClCompile>
     <ClCompile Include="source\n220_position\n220_640_utilAttack.cpp">
@@ -1195,18 +1183,6 @@
     </ClCompile>
     <ClCompile Include="source\n720_usi_____\n720_300_benchmark.cpp">
       <Filter>source\n720_usi_____</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n680_egOption\n680_230_engineOptionable.cpp">
-      <Filter>source\n680_egOption</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n680_egOption\n680_240_engineOptionsMap.cpp">
-      <Filter>source\n680_egOption</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n680_egOption\n680_245_engineOption.cpp">
-      <Filter>source\n680_egOption</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n680_egOption\n680_300_engineOptionSetup.cpp">
-      <Filter>source\n680_egOption</Filter>
     </ClCompile>
     <ClCompile Include="source\n640_searcher\n640_500_reductions.cpp">
       <Filter>source\n640_searcher</Filter>
@@ -1637,9 +1613,6 @@
     <ClCompile Include="source\n885_searcher\n885_510_adventureContinent.cpp">
       <Filter>source\n885_searcher</Filter>
     </ClCompile>
-    <ClCompile Include="src\game_engine_layer\game_engine_storage.cpp">
-      <Filter>source\n885_searcher</Filter>
-    </ClCompile>
     <ClCompile Include="source\n885_searcher\n885_480_adventureSwampNyugyoku.cpp">
       <Filter>source\n885_searcher</Filter>
     </ClCompile>
@@ -1703,7 +1676,94 @@
     <ClCompile Include="source\n760_thread__\n760_400_monkiePub.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\game_engine.cpp">
+    <ClCompile Include="src\lib_bitboard\init150_rookAttackBb.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_bitboard\init160_kingAttackBb.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_bitboard\init180_knightAttackBb.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_bitboard\init190_pawnAttackBb.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_bitboard\n160_170_goldAndSilverAttackBb.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_bitboard\n160_200_horseAttackBb.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_bitboard\n160_210_dragonAttackBb.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_bitboard\n160_220_queenAttackBb.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_bitboard\n160_230_setMaskBB.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_bitboard\n160_240_betweenBb.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_bitboard\n160_400_printBb.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_gui\muz_engine_option_textbox_model.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_gui\muz_engine_option_spinbox_model.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_gui\muz_engine_option_checkbox_model.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_gui\muz_engine_option_button_model.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_shogi\muz_shogi_model.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_bitboard\n160_108_slideBits.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_bitboard\n160_100_bitboard.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_bitboard\init110_silverAttackBb.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_bitboard\init120_bishopAttackBb.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_bitboard\init130_lanceAttackBb.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_bitboard\init140_goldAttackBb.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_bitboard\n160_102_fileMaskBb.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_bitboard\n160_104_rankMaskBb.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_bitboard\n160_106_inFrontMaskBb.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_gui\muz_engine_option_abstract_model.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_gui\muz_engine_settings_model.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_gui\muz_engine_settings_initialize_service.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\muz_game_engine_service.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\layer_game_engine\muz_game_engine_storage_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1711,5 +1771,10 @@
     <None Include="App.config">
       <Filter>source</Filter>
     </None>
+    <None Include="benchmark.sfen" />
+    <None Include="Makefile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="# - 20_○ビルドは通る☆-弱くはなっていない☆.txt" />
   </ItemGroup>
 </Project>

@@ -229,10 +229,12 @@ Move UsiOperation::CsaToMove(const Position& pos, const std::string& moveStr) {
 /// </summary>
 /// <param name="pos"></param>
 /// <param name="ssCmd"></param>
-void UsiOperation::SetPosition(Position& pos, std::istringstream& ssCmd) {
+void UsiOperation::SetPosition(Position& pos, std::istringstream& ssCmd)
+{
 	std::string token;
 	std::string sfen;
 
+    // position コマンドを分解（＾▽＾）
 	ssCmd >> token;
 
 	// 平手初期局面だぜ（＾▽＾）

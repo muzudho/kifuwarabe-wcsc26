@@ -111,6 +111,7 @@ void UsiLoop::mainloop_50a500b(int argc, char* argv[], MuzGameEngineStorageModel
 	}
 #endif
 
+    // コマンドライン引数を結合して１つの文字列として扱う。
 	for (int i = 1; i < argc; ++i)
 	{
 		cmd += std::string(argv[i]) + " ";
@@ -119,11 +120,14 @@ void UsiLoop::mainloop_50a500b(int argc, char* argv[], MuzGameEngineStorageModel
 	do {
 		if (argc == 1)
 		{
+            // コマンドライン引数がないときは、標準入力からコマンドを読み取る。
 			std::getline(std::cin, cmd);
 		}
 
+        // コマンドを空白で区切って、最初のトークンを取り出す。
 		std::istringstream ssCmd(cmd);
 
+        // 最初のトークンを読み取る。
 		ssCmd >> std::skipws >> token;
 
 		UsiOperation usiOperation;
@@ -154,34 +158,50 @@ void UsiLoop::mainloop_50a500b(int argc, char* argv[], MuzGameEngineStorageModel
 				m_pGameEngineStore.m_limits.IncreaseMoveTime( m_pGameEngineStore.m_stopwatch.GetElapsed());
 			}
 		}
-		else if (token == "usinewgame") {
+		else if (token == "usinewgame")
+		{
+            // 新しいゲームの開始を知らせるコマンド。これが来たら、前のゲームの情報をクリアする。
 			m_pGameEngineStore.m_tt.Clear();
+
 #if defined INANIWA_SHIFT
 			inaniwaFlag = NotInaniwa;
 #endif
 #if defined BISHOP_IN_DANGER
 			bishopInDangerFlag = NotBishopInDanger;
 #endif
+
+            // 最初は乱数に偏りがあるかも。少し回しておく。
 			for (int i = 0; i < 100; ++i)
 			{
-				g_randomTimeSeed(); // 最初は乱数に偏りがあるかも。少し回しておく。
+				g_randomTimeSeed();
 			}
 		}
-		else if (token == "usi") {
+		else if (token == "usi")
+		{
+            // USIプロトコルのバージョンを返す。
 			SYNCCOUT << "id name " << MyName << "\nid author (Derivation)Takahashi Satoshi (Base)Hiraoka Takuya\n" << m_pGameEngineStore.m_engineSettings << "\nusiok" << SYNCENDL;
 		}
-		else if (token == "go") {
+		else if (token == "go")
+		{
+            // 思考開始のコマンド。これが来たら、思考を開始する。
 			usiOperation.Go(gameStats, pos, ssCmd);
 		}
-		else if (token == "isready") {
+		else if (token == "isready")
+		{
+            // エンジンが準備できたら、"readyok" を返す。
 			SYNCCOUT << "readyok" << SYNCENDL;
 		}
-		else if (token == "position") {
+		else if (token == "position")
+		{
+            // 局面を設定するコマンド。これが来たら、局面を変更する。
 			usiOperation.SetPosition(pos, ssCmd);
 		}
-		else if (token == "setoption") {
+		else if (token == "setoption") 
+		{
+            // エンジンのオプションを設定するコマンド。これが来たら、オプションを変更する。
 			m_pGameEngineStore.SetOption(ssCmd);
 		}
+
 #if defined LEARN
 		else if (token == "l") {
 			auto learner = std::unique_ptr<Learner>(new Learner);
@@ -192,6 +212,7 @@ void UsiLoop::mainloop_50a500b(int argc, char* argv[], MuzGameEngineStorageModel
 #endif
 		}
 #endif
+
 #if !defined MINIMUL
 		// 以下、デバッグ用
 		else if (token == "bench") { Benchmark(gameStats, pos); }
@@ -208,7 +229,11 @@ void UsiLoop::mainloop_50a500b(int argc, char* argv[], MuzGameEngineStorageModel
 			<< std::endl; }
 		else if (token == "b") { MakeBook(gameStats, pos, ssCmd); }
 #endif
+
+        // 上記以外のコマンドは、"unknown command: " と表示する。
 		else { SYNCCOUT << "unknown command: " << cmd << SYNCENDL; }
+
+        // コマンドライン引数があるときは、ループせずに１回だけコマンドを処理する。
 	} while (token != "quit" && argc == 1);
 
 	//────────────────────────────────────────────────────────────────────────────────
