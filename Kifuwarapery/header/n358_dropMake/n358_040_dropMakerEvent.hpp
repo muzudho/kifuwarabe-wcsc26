@@ -3,7 +3,7 @@
 #include "../../src/lib_toybox_base/color.hpp"
 #include "../../src/lib_toybox_base/piece_type.hpp"
 #include "../../src/lib_toybox_base/hand.hpp"
-#include "../../src/lib_toybox_base/n220_650_position.hpp"
+#include "../../src/lib_toybox_medium/muz_position_medium_model.hpp"
 #include "../../src/lib_bitboard/n160_100_bitboard.hpp"
 
 

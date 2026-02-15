@@ -2,7 +2,7 @@
 #include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../../header/n119_500_sweetnes/n119_090_Sweetness.hpp"
 #include "../../header/n165_movStack/n165_400_move.hpp"
-#include "../../header/n220_position/n220_650_position.hpp"
+#include "../../src/lib_toybox_medium/muz_position_medium_model.hpp"
 #include "../../header/n223_move____/n223_200_depth.hpp"
 #include "../../header/n440_movStack/n440_500_nextmoveEvent.hpp"
 #include "../../header/n640_searcher/n640_040_nodeKind.hpp"

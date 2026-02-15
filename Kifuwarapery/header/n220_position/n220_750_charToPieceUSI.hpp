@@ -19,7 +19,7 @@
 #include "../../src/lib_bitboard/n160_400_printBb.hpp"
 #include "../../src/lib_bitboard/n160_600_bitboardAll.hpp"
 #include "../n220_position/n220_400_evalList.hpp"
-#include "../../src/lib_toybox_base/n220_650_position.hpp"
+#include "../../src/lib_toybox_medium/muz_position_medium_model.hpp"
 #include "../n350_pieceTyp/n350_110_ptPawn.hpp"
 #include "../n350_pieceTyp/n350_120_ptLance.hpp"
 #include "../n350_pieceTyp/n350_130_ptKnight.hpp"

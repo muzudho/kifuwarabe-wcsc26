@@ -4,7 +4,7 @@
 #include "../n105_120_square__/n105_120_400_squareRelation.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 #include "../n160_board___/n160_210_dragonAttackBb.hpp"
-#include "../n220_position/n220_650_position.hpp"
+#include "../../src/lib_toybox_medium/muz_position_medium_model.hpp"
 #include "../n350_pieceTyp/n350_040_ptEvent.hpp"
 #include "../n350_pieceTyp/n350_500_ptPrograms.hpp"
 #include "../n372_piece___/n372_070_PieceAbstract.hpp"

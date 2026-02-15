@@ -237,7 +237,7 @@
     <ClInclude Include="header\n220_position\n220_250_changedLists.hpp" />
     <ClInclude Include="header\n220_position\n220_300_stateInfoMin.hpp" />
     <ClInclude Include="header\n220_position\n220_350_stateInfo.hpp" />
-    <ClInclude Include="src\lib_toybox_base\n220_650_position.hpp" />
+    <ClInclude Include="src\lib_toybox_medium\muz_position_medium_model.hpp" />
     <ClInclude Include="header\n220_position\n220_640_utilAttack.hpp" />
     <ClInclude Include="header\n220_position\n220_660_utilMovePos.hpp" />
     <ClInclude Include="header\n220_position\n220_665_utilMoveStack.hpp" />
@@ -511,7 +511,7 @@
     <ClCompile Include="source\n205_repeType\n886_150_rtInferior.cpp" />
     <ClCompile Include="source\n205_repeType\n886_500_rtArray.cpp" />
     <ClCompile Include="source\n220_position\n220_150_checkInfo.cpp" />
-    <ClCompile Include="src\lib_toybox_base\n220_650_position.cpp" />
+    <ClCompile Include="src\lib_toybox_medium\muz_position_medium_model.cpp" />
     <ClCompile Include="source\n220_position\n220_640_utilAttack.cpp" />
     <ClCompile Include="source\n220_position\n220_750_charToPieceUSI.cpp" />
     <ClCompile Include="source\n220_position\n220_400_evalList.cpp" />

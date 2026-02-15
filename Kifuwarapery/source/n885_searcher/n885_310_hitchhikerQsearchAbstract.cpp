@@ -1,5 +1,5 @@
 ﻿#include "../../header/n119_500_sweetnes/n119_090_Sweetness.hpp"
-#include "../../header/n220_position/n220_650_position.hpp"
+#include "../../src/lib_toybox_medium/muz_position_medium_model.hpp"
 #include "../../header/n220_position/n220_665_utilMoveStack.hpp"
 #include "../../header/n223_move____/n223_200_depth.hpp"
 #include "../../header/n223_move____/n223_500_flashlight.hpp"

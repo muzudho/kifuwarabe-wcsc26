@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 
-#include "../n220_position/n220_650_position.hpp"
+#include "../../src/lib_toybox_medium/muz_position_medium_model.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"
 #include "../n640_searcher/n640_440_splitedNode.hpp" // MuzGameEngineStorageModel と持ち合い
 

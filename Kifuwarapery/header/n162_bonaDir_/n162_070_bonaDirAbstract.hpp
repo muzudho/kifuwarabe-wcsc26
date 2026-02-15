@@ -3,7 +3,7 @@
 #include "../n105_100_color___/n105_100_100_color.hpp"
 #include "../../src/lib_toybox_base/square.hpp"
 #include "../n161_sqDistan/n161_500_squareDistance.hpp"
-#include "../n220_position/n220_650_position.hpp" //FIXME:
+#include "../../src/lib_toybox_medium/muz_position_medium_model.hpp"
 
 
 //class Position;

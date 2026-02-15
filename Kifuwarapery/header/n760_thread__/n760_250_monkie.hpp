@@ -4,7 +4,7 @@
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n119_500_sweetnes/n119_090_Sweetness.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
-#include "../n220_position/n220_650_position.hpp"
+#include "../../src/lib_toybox_medium/muz_position_medium_model.hpp"
 #include "../n223_move____/n223_200_depth.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"
 #include "../n440_movStack/n440_500_nextmoveEvent.hpp"

@@ -7,7 +7,7 @@
 #include "../../src/lib_toybox_base/piece_type.hpp"
 #include "../n161_sqDistan/n161_500_squareDistance.hpp"
 #include "../n162_bonaDir_/n162_070_bonaDirAbstract.hpp"
-#include "../n220_position/n220_650_position.hpp"
+#include "../../src/lib_toybox_medium/muz_position_medium_model.hpp"
 #include "../n350_pieceTyp/n350_040_ptEvent.hpp"
 #include "../n350_pieceTyp/n350_500_ptPrograms.hpp"
 

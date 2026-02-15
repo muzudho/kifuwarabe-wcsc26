@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../n220_position/n220_650_position.hpp"
+#include "../../src/lib_toybox_medium/muz_position_medium_model.hpp"
 #include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 
 

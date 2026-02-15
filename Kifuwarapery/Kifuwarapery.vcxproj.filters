@@ -348,7 +348,7 @@
     <ClInclude Include="header\n220_position\n220_750_charToPieceUSI.hpp">
       <Filter>header\n220_position</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_toybox_base\n220_650_position.hpp">
+    <ClInclude Include="src\lib_toybox_medium\muz_position_medium_model.hpp">
       <Filter>header\n220_position</Filter>
     </ClInclude>
     <ClInclude Include="src\lib_toybox_base\piece_type.hpp">
@@ -1175,7 +1175,7 @@
     <ClCompile Include="source\n220_position\n220_750_charToPieceUSI.cpp">
       <Filter>source\n220_position</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_toybox_base\n220_650_position.cpp">
+    <ClCompile Include="src\lib_toybox_medium\muz_position_medium_model.cpp">
       <Filter>source\n220_position</Filter>
     </ClCompile>
     <ClCompile Include="source\n220_position\n220_640_utilAttack.cpp">

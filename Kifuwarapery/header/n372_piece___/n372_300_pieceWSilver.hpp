@@ -3,7 +3,7 @@
 #include "../../src/lib_toybox_base/square.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 #include "../n160_board___/n160_110_silverAttackBb.hpp"
-#include "../n220_position/n220_650_position.hpp"
+#include "../../src/lib_toybox_medium/muz_position_medium_model.hpp"
 #include "../n372_piece___/n372_070_PieceAbstract.hpp"
 
 

@@ -10,7 +10,7 @@
 #include "../n160_board___/n160_150_rookAttackBb.hpp"
 #include "../n160_board___/n160_230_setMaskBb.hpp"
 #include "../n165_movStack/n165_500_moveStack.hpp"
-#include "../n220_position/n220_650_position.hpp"
+#include "../../src/lib_toybox_medium/muz_position_medium_model.hpp"
 #include "n350_030_makePromoteMove.hpp"
 #include "n350_040_ptEvent.hpp"
 #include "n350_045_pieceTypeSeeEvent.hpp"

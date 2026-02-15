@@ -4,7 +4,7 @@
 #include <string>
 #include <sstream>
 #include "../n220_position/n220_645_gameStats.hpp"
-#include "../n220_position/n220_650_position.hpp"
+#include "../../src/lib_toybox_medium/muz_position_medium_model.hpp"
 
 
 using namespace std;
