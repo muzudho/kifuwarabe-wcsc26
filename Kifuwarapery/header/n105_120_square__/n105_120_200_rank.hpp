@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../n080_150_overEnum/n080_150_500_overloadEnumOperators.hpp"
+#include "../../src/lib_cpp/overload_enum_operators.hpp"
 #include "../n105_120_square__/n105_120_100_square.hpp"
 
 

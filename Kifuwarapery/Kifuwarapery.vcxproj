@@ -252,7 +252,7 @@
     <ClInclude Include="header\n225_movPhase\n225_050_generateMovePhase.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_050_ifdef.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_500_common.hpp" />
-    <ClInclude Include="header\n080_150_overEnum\n080_150_500_overloadEnumOperators.hpp" />
+    <ClInclude Include="src\lib_cpp\overload_enum_operators.hpp" />
     <ClInclude Include="src\lib_bitboard\n160_600_bitboardAll.hpp" />
     <ClInclude Include="header\n350_pieceTyp\n350_030_makePromoteMove.hpp" />
     <ClInclude Include="header\n350_pieceTyp\n350_040_ptEvent.hpp" />

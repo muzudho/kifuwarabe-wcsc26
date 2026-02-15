@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"	// INT_MAX
-#include "../../header/n080_150_overEnum/n080_150_500_overloadEnumOperators.hpp"	// OverloadEnumOperators
+#include "../../src/lib_cpp/overload_enum_operators.hpp"
 #include "../../header/n119_500_sweetnes/n119_085_ply.hpp"	// g_maxPly
 
 

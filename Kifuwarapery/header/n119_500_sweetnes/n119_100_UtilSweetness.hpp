@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../n080_150_overEnum/n080_150_500_overloadEnumOperators.hpp"
+#include "../../src/lib_cpp/overload_enum_operators.hpp"
 #include "n119_090_Sweetness.hpp"
 
 

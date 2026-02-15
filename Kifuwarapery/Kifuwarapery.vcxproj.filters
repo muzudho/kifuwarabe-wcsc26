@@ -249,7 +249,7 @@
     <ClInclude Include="targetver.h">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="header\n080_150_overEnum\n080_150_500_overloadEnumOperators.hpp">
+    <ClInclude Include="src\lib_cpp\overload_enum_operators.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
     <ClInclude Include="header\n080_100_sysWorld\n080_100_500_common.hpp">
