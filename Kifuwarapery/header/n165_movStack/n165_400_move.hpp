@@ -5,7 +5,7 @@
 #include "../../header/n105_120_square__/n105_120_100_square.hpp"
 #include "../../header/n105_120_square__/n105_120_500_convSquare.hpp"
 #include "../../src/lib_toybox_base/piece_type.hpp"
-#include "../../header/n113_piece___/n113_200_handPiece.hpp"
+#include "../../src/lib_toybox_base/hand_piece.hpp"
 #include "../../header/n113_piece___/n113_205_convHandPiece.hpp"
 
 

@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../n113_piece___/n113_200_handPiece.hpp"
+#include "../../src/lib_toybox_base/hand_piece.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────

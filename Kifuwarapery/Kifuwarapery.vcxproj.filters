@@ -306,7 +306,7 @@
     <ClInclude Include="src\lib_toybox_base\piece.hpp">
       <Filter>header\n113_piece___</Filter>
     </ClInclude>
-    <ClInclude Include="header\n113_piece___\n113_200_handPiece.hpp">
+    <ClInclude Include="src\lib_toybox_base\hand_piece.hpp">
       <Filter>header\n113_piece___</Filter>
     </ClInclude>
     <ClInclude Include="header\n111_colorSq_\n111_500_ColorFileRank.h">
