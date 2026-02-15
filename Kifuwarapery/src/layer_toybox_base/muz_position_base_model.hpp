@@ -1,6 +1,7 @@
 #pragma once
 #include "../../header/n105_100_color___/n105_100_100_color.hpp"
 #include "../../header/n113_piece___/n113_150_piece.hpp"
+#include "../../header/n113_piece___/n113_500_hand.hpp"
 #include "../../header/n119_500_sweetnes/n119_085_ply.hpp"
 #include "../../header/n105_120_square__/n105_120_100_square.hpp"
 

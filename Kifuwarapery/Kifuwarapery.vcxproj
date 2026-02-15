@@ -202,7 +202,7 @@
     <ClInclude Include="header\n119_500_sweetnes\n119_100_UtilSweetness.hpp" />
     <ClInclude Include="header\n119_500_sweetnes\n119_200_PieceSweetness.hpp" />
     <ClInclude Include="header\n119_500_sweetnes\n119_500_EvalSum.hpp" />
-    <ClInclude Include="src\layer_toybox\muz_position_base_model.hpp" />
+    <ClInclude Include="src\layer_toybox_base\muz_position_base_model.hpp" />
     <ClInclude Include="src\lib_bitboard\n160_108_slideBits.hpp" />
     <ClInclude Include="src\lib_bitboard\n160_100_bitboard.hpp" />
     <ClInclude Include="src\lib_bitboard\init110_silverAttackBb.hpp" />
@@ -237,7 +237,7 @@
     <ClInclude Include="header\n220_position\n220_250_changedLists.hpp" />
     <ClInclude Include="header\n220_position\n220_300_stateInfoMin.hpp" />
     <ClInclude Include="header\n220_position\n220_350_stateInfo.hpp" />
-    <ClInclude Include="src\layer_toybox\n220_650_position.hpp" />
+    <ClInclude Include="src\layer_toybox_base\n220_650_position.hpp" />
     <ClInclude Include="header\n220_position\n220_640_utilAttack.hpp" />
     <ClInclude Include="header\n220_position\n220_660_utilMovePos.hpp" />
     <ClInclude Include="header\n220_position\n220_665_utilMoveStack.hpp" />
@@ -449,7 +449,7 @@
     <ClCompile Include="header\n080_100_sysWorld\n080_100_075_debugcerr.hpp" />
     <ClCompile Include="header\n080_100_sysWorld\n080_100_077_binary.hpp" />
     <ClCompile Include="header\n080_100_sysWorld\n080_100_078_lsbMsb.hpp" />
-    <ClCompile Include="src\layer_toybox\muz_position_base_model.cpp" />
+    <ClCompile Include="src\layer_toybox_base\muz_position_base_model.cpp" />
     <ClCompile Include="src\lib_bitboard\init150_rookAttackBb.cpp" />
     <ClCompile Include="src\lib_bitboard\init160_kingAttackBb.cpp" />
     <ClCompile Include="src\lib_bitboard\init180_knightAttackBb.cpp" />
@@ -511,7 +511,7 @@
     <ClCompile Include="source\n205_repeType\n886_150_rtInferior.cpp" />
     <ClCompile Include="source\n205_repeType\n886_500_rtArray.cpp" />
     <ClCompile Include="source\n220_position\n220_150_checkInfo.cpp" />
-    <ClCompile Include="src\layer_toybox\n220_650_position.cpp" />
+    <ClCompile Include="src\layer_toybox_base\n220_650_position.cpp" />
     <ClCompile Include="source\n220_position\n220_640_utilAttack.cpp" />
     <ClCompile Include="source\n220_position\n220_750_charToPieceUSI.cpp" />
     <ClCompile Include="source\n220_position\n220_400_evalList.cpp" />
