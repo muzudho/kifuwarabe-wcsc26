@@ -1,7 +1,7 @@
 #pragma once
 #include "../../src/lib_toybox_base/color.hpp"
 #include "../../src/lib_toybox_base/ply.hpp"
-#include "../../header/n113_piece___/n113_150_piece.hpp"
+#include "../../src/lib_toybox_base/piece.hpp"
 #include "../../header/n113_piece___/n113_500_hand.hpp"
 #include "../../header/n105_120_square__/n105_120_100_square.hpp"
 

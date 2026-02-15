@@ -303,7 +303,7 @@
     <ClInclude Include="header\n105_120_square__\n105_120_300_direction.hpp">
       <Filter>header\n110_square__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n113_piece___\n113_150_piece.hpp">
+    <ClInclude Include="src\lib_toybox_base\piece.hpp">
       <Filter>header\n113_piece___</Filter>
     </ClInclude>
     <ClInclude Include="header\n113_piece___\n113_200_handPiece.hpp">

@@ -6,7 +6,7 @@
 #include "../n105_120_square__/n105_120_200_rank.hpp"
 #include "../n105_120_square__/n105_120_250_squareDelta.hpp"
 #include "../n112_pieceTyp/n112_050_pieceType.hpp"
-#include "../n113_piece___/n113_150_piece.hpp"
+#include "../../src/lib_toybox_base/piece.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 #include "../n160_board___/n160_600_bitboardAll.hpp"
 #include "../n165_movStack/n165_300_moveType.hpp"

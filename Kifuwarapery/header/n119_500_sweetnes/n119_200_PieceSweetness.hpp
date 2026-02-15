@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../n113_piece___/n113_150_piece.hpp"
+#include "../../src/lib_toybox_base/piece.hpp"
 #include "../n113_piece___/n113_205_convHandPiece.hpp"
 #include "n119_090_Sweetness.hpp"
 #include "n119_100_UtilSweetness.hpp"
