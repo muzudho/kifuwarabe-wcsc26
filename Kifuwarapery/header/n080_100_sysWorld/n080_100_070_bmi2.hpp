@@ -1,5 +1,5 @@
 #pragma once
-#include "../n080_100_sysWorld/n080_100_050_ifdef.hpp"
+#include "../n080_100_sysWorld/n080_100_076_int.hpp"
 
 
 using namespace std;
