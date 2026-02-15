@@ -1,9 +1,12 @@
+//
+// 📄 局面の状態を表すクラス
+//
 #pragma once
-#include "../../src/lib_toybox_base/color.hpp"
-#include "../../src/lib_toybox_base/ply.hpp"
-#include "../../src/lib_toybox_base/piece.hpp"
-#include "../../src/lib_toybox_base/hand.hpp"
-#include "../../src/lib_toybox_base/square.hpp"
+#include "color.hpp"
+#include "ply.hpp"
+#include "piece.hpp"
+#include "hand.hpp"
+#include "square.hpp"
 
 
 class MuzPositionBaseModel

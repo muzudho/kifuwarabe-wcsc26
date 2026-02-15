@@ -1,3 +1,6 @@
+//
+// 📄 局面の状態を表すクラス
+//
 #include "muz_position_base_model.hpp"
 
 
