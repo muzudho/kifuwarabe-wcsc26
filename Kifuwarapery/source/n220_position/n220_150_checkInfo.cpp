@@ -1,4 +1,4 @@
-﻿#include "../../header/n105_100_color___/n105_100_100_color.hpp"
+﻿#include "../../src/lib_toybox_base/color.hpp"
 #include "../../header/n105_100_color___/n105_100_500_convColor.hpp"
 #include "../../header/n105_120_square__/n105_120_100_square.hpp"
 #include "../../header/n112_pieceTyp/n112_050_pieceType.hpp"

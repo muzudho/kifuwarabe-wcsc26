@@ -8,7 +8,7 @@
 #include "../../src/lib_bitboard/n160_170_goldAndSilverAttackBb.hpp"
 #include "../../src/lib_bitboard/n160_230_setMaskBb.hpp"
 #include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../../header/n105_100_color___/n105_100_100_color.hpp"
+#include "../../src/lib_toybox_base/color.hpp"
 #include "../../header/n105_120_square__/n105_120_100_square.hpp"
 #include "../../header/n112_pieceTyp/n112_050_pieceType.hpp"
 #include "../../header/n113_piece___/n113_150_piece.hpp"

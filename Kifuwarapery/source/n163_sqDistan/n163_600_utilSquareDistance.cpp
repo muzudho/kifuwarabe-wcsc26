@@ -1,4 +1,4 @@
-﻿#include "../../header/n105_100_color___/n105_100_100_color.hpp"
+﻿#include "../../src/lib_toybox_base/color.hpp"
 #include "../../header/n105_120_square__/n105_120_250_squareDelta.hpp"
 #include "../../header/n105_120_square__/n105_120_400_squareRelation.hpp"
 #include "../../header/n160_board___/n160_180_knightAttackBb.hpp"

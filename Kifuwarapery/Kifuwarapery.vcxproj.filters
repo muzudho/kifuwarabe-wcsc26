@@ -285,7 +285,7 @@
     <ClInclude Include="header\n220_position\n220_350_stateInfo.hpp">
       <Filter>header\n220_position</Filter>
     </ClInclude>
-    <ClInclude Include="header\n105_100_color___\n105_100_100_color.hpp">
+    <ClInclude Include="src\lib_toybox_base\color.hpp">
       <Filter>header\n105_color___</Filter>
     </ClInclude>
     <ClInclude Include="header\n105_120_square__\n105_120_100_square.hpp">
@@ -348,7 +348,7 @@
     <ClInclude Include="header\n220_position\n220_750_charToPieceUSI.hpp">
       <Filter>header\n220_position</Filter>
     </ClInclude>
-    <ClInclude Include="src\layer_toybox_base\n220_650_position.hpp">
+    <ClInclude Include="src\lib_toybox_base\n220_650_position.hpp">
       <Filter>header\n220_position</Filter>
     </ClInclude>
     <ClInclude Include="header\n112_pieceTyp\n112_050_pieceType.hpp">
@@ -1092,7 +1092,7 @@
     <ClInclude Include="src\muz_game_engine_service.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\layer_toybox_base\muz_position_base_model.hpp">
+    <ClInclude Include="src\lib_toybox_base\muz_position_base_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1175,7 +1175,7 @@
     <ClCompile Include="source\n220_position\n220_750_charToPieceUSI.cpp">
       <Filter>source\n220_position</Filter>
     </ClCompile>
-    <ClCompile Include="src\layer_toybox_base\n220_650_position.cpp">
+    <ClCompile Include="src\lib_toybox_base\n220_650_position.cpp">
       <Filter>source\n220_position</Filter>
     </ClCompile>
     <ClCompile Include="source\n220_position\n220_640_utilAttack.cpp">
@@ -1769,7 +1769,7 @@
     <ClCompile Include="src\layer_game_engine\muz_game_engine_storage_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\layer_toybox_base\muz_position_base_model.cpp">
+    <ClCompile Include="src\lib_toybox_base\muz_position_base_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

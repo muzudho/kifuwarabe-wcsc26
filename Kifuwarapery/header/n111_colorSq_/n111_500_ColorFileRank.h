@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../n105_100_color___/n105_100_100_color.hpp"
+#include "../../src/lib_toybox_base/color.hpp"
 #include "../n105_120_square__/n105_120_150_file.hpp"
 #include "../n105_120_square__/n105_120_200_rank.hpp"
 

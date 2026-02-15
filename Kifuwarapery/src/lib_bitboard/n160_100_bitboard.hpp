@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../../header/n105_100_color___/n105_100_100_color.hpp"
+#include "../../src/lib_toybox_base/color.hpp"
 #include "../../header/n105_120_square__/n105_120_100_square.hpp"
 #include <bit>	// TODO: これも C++20 以降でないと使えない。C++20 以降にするか、独自実装するか。
 
