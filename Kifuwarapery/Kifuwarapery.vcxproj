@@ -163,7 +163,7 @@
     <ClInclude Include="header\n080_100_sysWorld\n080_100_071_sse.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_072_unreachable.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_074_asmcomment.hpp" />
-    <ClInclude Include="header\n080_100_sysWorld\n080_100_076_int.hpp" />
+    <ClInclude Include="src\lib_cpp\int.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_079_count1s.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_080_putb.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_081_ioLock.hpp" />
