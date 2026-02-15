@@ -2,6 +2,7 @@
 #include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../../header/n105_120_square__/n105_120_500_convSquare.hpp"
 #include "n160_100_bitboard.hpp"
+#include <bit>
 
 
 using namespace std;
@@ -58,11 +59,12 @@ u64 Bitboard::MergeP() const
 
 
 /// <summary>
-/// 
+/// 1 bit でも立っていれば真☆(IsNot0)
 /// </summary>
 /// <returns></returns>
 bool Bitboard::Exists1Bit() const
 {
+	return std::has_single_bit(this->m_m_);
 #ifdef HAVE_SSE4
 	return !(_mm_testz_si128(this->m_m_, _mm_set1_epi8(static_cast<char>(0xffu))));
 #else

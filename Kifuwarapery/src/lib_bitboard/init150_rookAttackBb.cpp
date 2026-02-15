@@ -145,22 +145,29 @@ Bitboard RookAttackBb::MakeRookBlockMask(const Square square) const {
 /// <summary>
 ///		<pre>
 /// Rook or Bishop の利きの範囲を調べて bitboard で返す。
-/// occupied  障害物があるマスが 1 の bitboard
 ///		</pre>
 /// </summary>
 /// <param name="square"></param>
-/// <param name="occupied"></param>
+/// <param name="occupiedBB">障害物があるマスが 1 の bitboard</param>
 /// <returns></returns>
-Bitboard RookAttackBb::RookAttackCalc(const Square square, const Bitboard& occupied) const {
+Bitboard RookAttackBb::RookAttackCalc(
+	const Square square,
+	const Bitboard& occupiedBB) const
+{
 	const SquareDelta deltaArray[2][4] = { { DeltaN, DeltaS, DeltaE, DeltaW },{ DeltaNE, DeltaSE, DeltaSW, DeltaNW } };
+
 	Bitboard result = Bitboard::CreateAllZeroBB();
-	for (SquareDelta delta : deltaArray[false/*isBishop*/]) {
-		for (Square sq = square + delta;
-		ConvSquare::CONTAINS_OF10(sq) && abs(ConvSquare::TO_RANK10(sq - delta) - ConvSquare::TO_RANK10(sq)) <= 1;
+
+	for (SquareDelta delta : deltaArray[false/*isBishop*/])
+	{
+		for (
+			Square sq = square + delta;
+			ConvSquare::CONTAINS_OF10(sq) && abs(ConvSquare::TO_RANK10(sq - delta) - ConvSquare::TO_RANK10(sq)) <= 1;
 			sq += delta)
 		{
 			g_setMaskBb.AddBit(&result, sq);
-			if (g_setMaskBb.IsSet(&occupied, sq)) { break; }
+
+			if (g_setMaskBb.IsSet(&occupiedBB, sq)) { break; }
 		}
 	}
 
