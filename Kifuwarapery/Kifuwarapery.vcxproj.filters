@@ -342,7 +342,7 @@
     <ClInclude Include="header\n223_move____\n223_060_stats.hpp">
       <Filter>header\n223_move____</Filter>
     </ClInclude>
-    <ClInclude Include="header\n113_piece___\n113_500_hand.hpp">
+    <ClInclude Include="src\lib_toybox_base\hand.hpp">
       <Filter>header\n113_piece___</Filter>
     </ClInclude>
     <ClInclude Include="header\n220_position\n220_750_charToPieceUSI.hpp">
@@ -945,9 +945,6 @@
     <ClInclude Include="header\n080_100_sysWorld\n080_100_074_asmcomment.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n080_100_sysWorld\n080_100_076_int.hpp">
-      <Filter>header\n080_common__</Filter>
-    </ClInclude>
     <ClInclude Include="header\n080_100_sysWorld\n080_100_079_count1s.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
@@ -1093,6 +1090,9 @@
       <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="src\lib_toybox_base\muz_position_base_model.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_cpp\int.hpp">
       <Filter>header</Filter>
     </ClInclude>
   </ItemGroup>
