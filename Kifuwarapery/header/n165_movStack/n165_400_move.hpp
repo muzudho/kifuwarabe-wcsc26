@@ -2,7 +2,7 @@
 
 #include <string>
 #include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../../header/n105_120_square__/n105_120_100_square.hpp"
+#include "../../src/lib_toybox_base/square.hpp"
 #include "../../header/n105_120_square__/n105_120_500_convSquare.hpp"
 #include "../../src/lib_toybox_base/piece_type.hpp"
 #include "../../src/lib_toybox_base/hand_piece.hpp"

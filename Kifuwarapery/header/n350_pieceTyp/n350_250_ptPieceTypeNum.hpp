@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../n105_100_color___/n105_100_100_color.hpp"
-#include "../n105_120_square__/n105_120_100_square.hpp"
+#include "../../src/lib_toybox_base/square.hpp"
 #include "../n112_pieceTyp/n112_050_pieceType.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 #include "../n160_board___/n160_230_setMaskBb.hpp"

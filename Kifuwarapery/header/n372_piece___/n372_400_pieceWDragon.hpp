@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../n105_120_square__/n105_120_100_square.hpp"
+#include "../../src/lib_toybox_base/square.hpp"
 #include "../n105_120_square__/n105_120_400_squareRelation.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 #include "../n160_board___/n160_210_dragonAttackBb.hpp"

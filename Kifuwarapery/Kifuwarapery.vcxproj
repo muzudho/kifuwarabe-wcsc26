@@ -181,7 +181,7 @@
     <ClInclude Include="header\n105_120_square__\n105_120_155_convFile.hpp" />
     <ClInclude Include="header\n105_120_square__\n105_120_205_convRank.hpp" />
     <ClInclude Include="header\n105_120_square__\n105_120_250_squareDelta.hpp" />
-    <ClInclude Include="header\n105_120_square__\n105_120_100_square.hpp" />
+    <ClInclude Include="src\lib_toybox_base\square.hpp" />
     <ClInclude Include="header\n105_120_square__\n105_120_150_file.hpp" />
     <ClInclude Include="header\n105_120_square__\n105_120_200_rank.hpp" />
     <ClInclude Include="header\n105_120_square__\n105_120_300_direction.hpp" />

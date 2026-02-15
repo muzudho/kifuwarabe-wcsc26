@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "../../src/lib_cpp/overload_enum_operators.hpp"
-#include "../n105_120_square__/n105_120_100_square.hpp"
+#include "../../src/lib_toybox_base/square.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────

@@ -1,6 +1,6 @@
 #pragma once
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../n105_120_square__/n105_120_100_square.hpp"
+#include "../../src/lib_toybox_base/square.hpp"
 #include "../n105_120_square__/n105_120_400_squareRelation.hpp"
 #include "../../src/lib_toybox_base/piece_type.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"

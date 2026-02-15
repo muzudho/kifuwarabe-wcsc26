@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../n105_120_square__/n105_120_100_square.hpp"
+#include "../../src/lib_toybox_base/square.hpp"
 #include "../../src/lib_toybox_base/piece_type.hpp"
 #include "../n113_piece___/n113_155_convPiece.hpp"
 #include "../n165_movStack/n165_400_move.hpp"

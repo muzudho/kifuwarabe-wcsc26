@@ -3,7 +3,7 @@
 #include "../../src/lib_toybox_base/ply.hpp"
 #include "../../src/lib_toybox_base/piece.hpp"
 #include "../../src/lib_toybox_base/hand.hpp"
-#include "../../header/n105_120_square__/n105_120_100_square.hpp"
+#include "../../src/lib_toybox_base/square.hpp"
 
 
 class MuzPositionBaseModel

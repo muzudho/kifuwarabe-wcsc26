@@ -1,6 +1,6 @@
 ﻿#include <string>
 #include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../../header/n105_120_square__/n105_120_100_square.hpp"
+#include "../../src/lib_toybox_base/square.hpp"
 #include "../../header/n105_120_square__/n105_120_155_convFile.hpp"
 #include "../../header/n105_120_square__/n105_120_205_convRank.hpp"
 #include "../../header/n105_120_square__/n105_120_500_convSquare.hpp"
