@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <array>
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../n105_100_color___/n105_100_100_color.hpp"
+#include "../../src/lib_toybox_base/color.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────
