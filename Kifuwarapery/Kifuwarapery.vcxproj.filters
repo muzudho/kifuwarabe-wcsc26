@@ -351,7 +351,7 @@
     <ClInclude Include="src\lib_toybox_base\n220_650_position.hpp">
       <Filter>header\n220_position</Filter>
     </ClInclude>
-    <ClInclude Include="header\n112_pieceTyp\n112_050_pieceType.hpp">
+    <ClInclude Include="src\lib_toybox_base\piece_type.hpp">
       <Filter>header\n112_pieceTyp</Filter>
     </ClInclude>
     <ClInclude Include="header\n220_position\n220_640_utilAttack.hpp">

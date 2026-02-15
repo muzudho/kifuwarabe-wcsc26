@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../n112_pieceTyp/n112_050_pieceType.hpp"
+#include "../../src/lib_toybox_base/piece_type.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────

@@ -3,7 +3,7 @@
 #include "../n105_100_color___/n105_100_100_color.hpp"
 #include "../n105_120_square__/n105_120_100_square.hpp"
 #include "../n105_120_square__/n105_120_500_convSquare.hpp"
-#include "../n112_pieceTyp/n112_050_pieceType.hpp"
+#include "../../src/lib_toybox_base/piece_type.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 #include "../n160_board___/n160_130_lanceAttackBb.hpp"
 #include "../n160_board___/n160_190_pawnAttackBb.hpp"

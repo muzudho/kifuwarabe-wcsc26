@@ -2,7 +2,7 @@
 
 #include <algorithm> //std::swap std::max_element
 #include "../n105_120_square__/n105_120_100_square.hpp"
-#include "../n112_pieceTyp/n112_050_pieceType.hpp"
+#include "../../src/lib_toybox_base/piece_type.hpp"
 #include "../n113_piece___/n113_105_convPieceType.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
 #include "../n165_movStack/n165_500_moveStack.hpp"

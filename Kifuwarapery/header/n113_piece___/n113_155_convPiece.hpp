@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "../n105_100_color___/n105_100_100_color.hpp"
-#include "../n112_pieceTyp/n112_050_pieceType.hpp"
+#include "../../src/lib_toybox_base/piece_type.hpp"
 #include "../n113_piece___/n113_105_convPieceType.hpp"	// g_isSliderVal
 #include "../../src/lib_toybox_base/piece.hpp"
 

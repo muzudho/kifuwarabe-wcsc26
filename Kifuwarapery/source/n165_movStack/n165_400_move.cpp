@@ -4,7 +4,7 @@
 #include "../../header/n105_120_square__/n105_120_155_convFile.hpp"
 #include "../../header/n105_120_square__/n105_120_205_convRank.hpp"
 #include "../../header/n105_120_square__/n105_120_500_convSquare.hpp"
-#include "../../header/n112_pieceTyp/n112_050_pieceType.hpp"
+#include "../../src/lib_toybox_base/piece_type.hpp"
 #include "../../header/n113_piece___/n113_105_convPieceType.hpp"
 #include "../../header/n113_piece___/n113_200_handPiece.hpp"
 #include "../../header/n165_movStack/n165_400_move.hpp"

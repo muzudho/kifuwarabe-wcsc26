@@ -188,7 +188,7 @@
     <ClInclude Include="header\n105_120_square__\n105_120_400_squareRelation.hpp" />
     <ClInclude Include="header\n105_120_square__\n105_120_500_convSquare.hpp" />
     <ClInclude Include="header\n111_colorSq_\n111_500_ColorFileRank.h" />
-    <ClInclude Include="header\n112_pieceTyp\n112_050_pieceType.hpp" />
+    <ClInclude Include="src\lib_toybox_base\piece_type.hpp" />
     <ClInclude Include="header\n113_piece___\n113_105_convPieceType.hpp" />
     <ClInclude Include="src\lib_toybox_base\piece.hpp" />
     <ClInclude Include="header\n113_piece___\n113_155_convPiece.hpp" />

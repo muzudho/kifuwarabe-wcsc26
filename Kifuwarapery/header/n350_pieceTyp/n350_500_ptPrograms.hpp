@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../n112_pieceTyp/n112_050_pieceType.hpp"
-#include "../n112_pieceTyp/n112_050_pieceType.hpp"
+#include "../../src/lib_toybox_base/piece_type.hpp"
+#include "../../src/lib_toybox_base/piece_type.hpp"
 #include "n350_040_ptEvent.hpp"
 #include "n350_070_ptAbstract.hpp"
 #include "n350_100_ptOccupied.hpp"

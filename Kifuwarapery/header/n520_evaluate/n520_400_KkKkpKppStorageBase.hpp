@@ -3,7 +3,7 @@
 #include "../n105_100_color___/n105_100_100_color.hpp"
 #include "../n105_120_square__/n105_120_100_square.hpp"
 #include "../n111_colorSq_/n111_500_ColorFileRank.h"
-#include "../n112_pieceTyp/n112_050_pieceType.hpp"
+#include "../../src/lib_toybox_base/piece_type.hpp"
 #include "../n113_piece___/n113_155_convPiece.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 #include "../n160_board___/n160_230_setMaskBb.hpp"

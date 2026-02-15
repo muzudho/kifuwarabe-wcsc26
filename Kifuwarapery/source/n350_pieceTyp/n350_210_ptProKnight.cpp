@@ -2,7 +2,7 @@
 #include "../../src/lib_toybox_base/n220_650_position.hpp"
 #include "../../header/n105_120_square__/n105_120_100_square.hpp"
 #include "../../header/n105_120_square__/n105_120_500_convSquare.hpp"
-#include "../../header/n112_pieceTyp/n112_050_pieceType.hpp"
+#include "../../src/lib_toybox_base/piece_type.hpp"
 #include "../../src/lib_bitboard/n160_100_bitboard.hpp"
 #include "../../src/lib_bitboard/init130_lanceAttackBb.hpp"
 #include "../../src/lib_bitboard/init190_pawnAttackBb.hpp"
