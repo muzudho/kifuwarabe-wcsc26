@@ -1,5 +1,7 @@
 ﻿#pragma once
 #include "muz_position_base_model.hpp"
+#include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
+#include "../../src/lib_toybox_base/color.hpp"
 #include "../../src/lib_bitboard/n160_100_bitboard.hpp"
 #include "../../src/lib_bitboard/n160_102_FileMaskBb.hpp"
 #include "../../src/lib_bitboard/n160_106_inFrontMaskBb.hpp"
@@ -8,7 +10,6 @@
 #include "../../src/lib_bitboard/n160_170_goldAndSilverAttackBb.hpp"
 #include "../../src/lib_bitboard/n160_230_setMaskBb.hpp"
 #include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../../src/lib_toybox_base/color.hpp"
 #include "../../header/n105_120_square__/n105_120_100_square.hpp"
 #include "../../header/n112_pieceTyp/n112_050_pieceType.hpp"
 #include "../../header/n113_piece___/n113_150_piece.hpp"
@@ -39,7 +40,6 @@
 #include "../../header/n407_moveGen_/n407_900_moveList.hpp"
 #include "../../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
 #include "../../header/n600_book____/n600_100_mt64bit.hpp"
-#include "../../src/layer_game_engine/muz_game_engine_storage_model.hpp"
 #include <algorithm>	// std::min,std::max
 #include <cassert>
 #include <iostream>		// std::cout

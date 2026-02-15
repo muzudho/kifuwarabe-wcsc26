@@ -996,7 +996,7 @@
     <ClInclude Include="header\n760_thread__\n760_400_monkiesPub.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="header\n119_500_sweetnes\n119_085_ply.hpp">
+    <ClInclude Include="src\lib_toybox_base\ply.hpp">
       <Filter>header\n119_score___</Filter>
     </ClInclude>
     <ClInclude Include="src\lib_bitboard\n160_108_slideBits.hpp">
