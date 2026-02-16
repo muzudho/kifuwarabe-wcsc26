@@ -252,7 +252,8 @@ void UsiOperation::SetPosition(Position& pos, std::istringstream& ssCmd)
 	else { return; }
 
     // 指し手リストだぜ（＾▽＾）
-	pos.Set(sfen, pos.GetOurCarriage()->m_pub.GetFirstCaptain());
+	pos.Set(sfen);
+	pos.SetTh(pos.GetOurCarriage()->m_pub.GetFirstCaptain());
 
     // 指し手を進めるぜ（＾▽＾）
 	pos.GetOurCarriage()->m_setUpStates = StateStackPtr(new std::stack<StateInfo>());

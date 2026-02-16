@@ -255,7 +255,9 @@ void MakeBook(GameStats& gameStats, Position& pos, std::istringstream& ssCmd) {
 			return;
 		}
 
-		pos.Set(g_SFEN_STARTPOS_STR, pos.GetOurCarriage()->m_pub.GetFirstCaptain());
+		pos.Set(g_SFEN_STARTPOS_STR);
+		pos.SetTh(pos.GetOurCarriage()->m_pub.GetFirstCaptain());
+
 		StateStackPtr SetUpStates = StateStackPtr(new std::stack<StateInfo>());
 		UsiOperation usiOperation;
 		while (!line.empty()) {

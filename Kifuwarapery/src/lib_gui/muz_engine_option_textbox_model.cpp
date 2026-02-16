@@ -66,13 +66,5 @@ MuzEngineOptionAbstractModel& MuzEngineOptionTextboxModel::operator = (const std
 /// <returns></returns>
 std::string MuzEngineOptionTextboxModel::ToUSICode() const
 {
-
-#if __cplusplus >= 202002L
 	return std::format("type {} default {}", this->GetType(), this->GetDefaultValue());
-#else
-	std::ostringstream oss;
-	oss << "type " << this->GetType() << " default " << this->GetDefaultValue();
-	return oss.str();
-#endif
-
 }

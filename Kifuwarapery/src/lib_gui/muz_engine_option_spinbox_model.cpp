@@ -71,13 +71,5 @@ MuzEngineOptionAbstractModel& MuzEngineOptionSpinboxModel::operator = (const std
 /// <returns></returns>
 std::string MuzEngineOptionSpinboxModel::ToUSICode() const
 {
-
-#if __cplusplus >= 202002L
 	return std::format("type {} default {} min {} max {}", this->GetType(), this->GetDefaultValue(), this->GetMin(), this->GetMax());
-#else
-	std::ostringstream oss;
-	oss << "type " << this->GetType() << " default " << this->GetDefaultValue() << " min " << this->GetMin() << " max " << this->GetMax();
-	return oss.str();
-#endif
-
 }

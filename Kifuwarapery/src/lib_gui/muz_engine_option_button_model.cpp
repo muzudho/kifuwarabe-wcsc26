@@ -52,13 +52,5 @@ MuzEngineOptionAbstractModel& MuzEngineOptionButtonModel::operator = (const std:
 /// <returns></returns>
 std::string MuzEngineOptionButtonModel::ToUSICode() const
 {
-
-#if __cplusplus >= 202002L
     return std::format("type {}", this->GetType());
-#else
-    std::ostringstream oss;
-    oss << "type " << this->GetType();
-    return oss.str();
-#endif
-
 }
