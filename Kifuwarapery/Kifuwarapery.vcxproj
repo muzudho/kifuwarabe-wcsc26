@@ -412,7 +412,7 @@
     <ClInclude Include="header\n800_learn___\n800_500_learner.hpp" />
     <ClInclude Include="header\n883_nodeKind\n883_070_adventurePlainNodekindAbstract.hpp" />
     <ClInclude Include="src\lib_shogi\muz_shogi_model.hpp" />
-    <ClInclude Include="src\layer_game_engine\muz_game_engine_storage_model.hpp" />
+    <ClInclude Include="src\concept_game_engine\muz_game_engine_storage_model.hpp" />
     <ClInclude Include="header\n885_searcher\n885_310_adventureBattlefieldQsearchAbstract.hpp" />
     <ClInclude Include="header\n885_searcher\n885_320_adventureBattlefieldQsearchPv.hpp" />
     <ClInclude Include="header\n885_searcher\n885_330_adventureBattlefieldQsearchNonPv.hpp" />
@@ -651,7 +651,7 @@
     <ClCompile Include="source\n800_learn___\n800_100_stopwatch.cpp" />
     <ClCompile Include="source\n883_nodeKind\n883_070_adventurePlainNodekindAbstract.cpp" />
     <ClCompile Include="src\muz_game_engine_service.cpp" />
-    <ClCompile Include="src\layer_game_engine\muz_game_engine_storage_model.cpp" />
+    <ClCompile Include="src\concept_game_engine\muz_game_engine_storage_model.cpp" />
     <ClCompile Include="source\n885_searcher\n885_310_hitchhikerQsearchAbstract.cpp" />
     <ClCompile Include="source\n885_searcher\n885_320_adventureBattlefieldQsearchPv.cpp" />
     <ClCompile Include="source\n885_searcher\n885_330_adventureBattlefieldQsearchNonPv.cpp" />
