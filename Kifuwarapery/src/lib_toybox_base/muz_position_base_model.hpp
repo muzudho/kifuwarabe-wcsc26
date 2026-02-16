@@ -2,6 +2,7 @@
 // 📄 局面の状態を表すクラス
 //
 #pragma once
+#include "../../src/concept_game_engine/muz_game_engine_storage_model.hpp"
 #include "color.hpp"
 #include "ply.hpp"
 #include "piece.hpp"
@@ -63,6 +64,27 @@ protected:
 	Hand GetHand(const Color c) const;
 
 
+	/// <summary>
+	/// ゲームエンジン倉庫を取得（const）
+	/// </summary>
+	/// <returns></returns>
+	const MuzGameEngineStorageModel* GetConstGameEngineStore() const;
+
+
+	/// <summary>
+	/// ゲームエンジン倉庫を取得
+	/// </summary>
+	/// <returns></returns>
+	MuzGameEngineStorageModel* GetGameEngineStore() const;
+
+
+	/// <summary>
+	/// ゲームエンジン倉庫をセット
+	/// </summary>
+	/// <param name="s"></param>
+	void SetGameEngineStore(MuzGameEngineStorageModel* pGameEngineStore);
+
+
 	// ========================================
 	// フィールド
 	// ========================================
@@ -88,5 +110,21 @@ protected:
 	/// </summary>
 	Hand m_hand_[g_COLOR_NUM];
 
+	/// <summary>
+	/// ゲームエンジン倉庫
+	/// </summary>
+	MuzGameEngineStorageModel* m_pGameEngineStore_;
+
+
+	// ========================================
+	// 主要メソッド
+	// ========================================
+
+
+	/// <summary>
+	/// 局面セット
+	/// </summary>
+	/// <param name="sfen"></param>
+	void Set(const std::string& sfen);
 };
 

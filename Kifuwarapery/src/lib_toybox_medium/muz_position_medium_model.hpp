@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include "../../src/lib_toybox_base/muz_position_base_model.hpp"
 #include "../../src/concept_game_engine/muz_game_engine_storage_model.hpp"
+#include "../../src/lib_toybox_base/muz_position_base_model.hpp"
 #include "../../src/lib_toybox_base/color.hpp"
 #include "../../src/lib_bitboard/n160_100_bitboard.hpp"
 #include "../../src/lib_bitboard/n160_102_FileMaskBb.hpp"
@@ -105,14 +105,6 @@ public:
 
 
 	void SetTh(Monkie* th);
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="sfen"></param>
-	/// <param name="th"></param>
-	void Set(const std::string& sfen, Monkie* th);
 
 
 	// ========================================
@@ -597,27 +589,6 @@ public:
 	const ChangedLists& GetCl() const;
 
 
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <returns></returns>
-	const MuzGameEngineStorageModel* GetConstOurCarriage() const;
-
-
-	/// <summary>
-	/// わたしたちの馬車を取得
-	/// </summary>
-	/// <returns></returns>
-	MuzGameEngineStorageModel* GetOurCarriage() const;
-
-
-	/// <summary>
-	/// わたしたちの馬車を設定
-	/// </summary>
-	/// <param name="s"></param>
-	void SetOurCarriage(MuzGameEngineStorageModel* ourCarriage);
-
-
 #if !defined NDEBUG
 	/// <summary>
 	/// for debug
@@ -800,11 +771,6 @@ private:
 	/// 
 	/// </summary>
 	u64 m_nodes_;
-
-	/// <summary>
-	/// ゲームエンジン倉庫
-	/// </summary>
-	MuzGameEngineStorageModel* m_pGameEngineStore_;
 
 	/// <summary>
 	/// 

@@ -178,15 +178,15 @@ void MonkiesPub::StartThinking(
 	WaitForThinkFinished();
 #endif
 
-	position.GetOurCarriage()->m_stopwatch.Restart();
+	position.GetGameEngineStore()->m_stopwatch.Restart();
 
-	position.GetOurCarriage()->m_signals.m_stopOnPonderHit = position.GetOurCarriage()->m_signals.m_firstRootMove = false;
-	position.GetOurCarriage()->m_signals.m_stop = position.GetOurCarriage()->m_signals.m_failedLowAtRoot = false;
+	position.GetGameEngineStore()->m_signals.m_stopOnPonderHit = position.GetGameEngineStore()->m_signals.m_firstRootMove = false;
+	position.GetGameEngineStore()->m_signals.m_stop = position.GetGameEngineStore()->m_signals.m_failedLowAtRoot = false;
 
-	position.GetOurCarriage()->m_gameStats = gameStats;
-	position.GetOurCarriage()->m_rootPosition = position;
-	position.GetOurCarriage()->m_limits = limits;
-	position.GetOurCarriage()->m_rootMoves.clear();
+	position.GetGameEngineStore()->m_gameStats = gameStats;
+	position.GetGameEngineStore()->m_rootPosition = position;
+	position.GetGameEngineStore()->m_limits = limits;
+	position.GetGameEngineStore()->m_rootMoves.clear();
 
 #if defined LEARN
 	// searchMoves を直接使う。
@@ -200,7 +200,7 @@ void MonkiesPub::StartThinking(
 		if (searchMoves.empty()
 			|| std::find(searchMoves.begin(), searchMoves.end(), ml.GetMove()) != searchMoves.end())
 		{
-			position.GetOurCarriage()->m_rootMoves.push_back(RootMove(ml.GetMove()));
+			position.GetGameEngineStore()->m_rootMoves.push_back(RootMove(ml.GetMove()));
 		}
 	}
 

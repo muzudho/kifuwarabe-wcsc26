@@ -147,7 +147,7 @@ DeliciousBanana Book::GetProbe(const Position& position, const std::string& fNam
 	u32 sum = 0;
 	Move move = g_MOVE_NONE;//該当なしのときに使う値☆
 	const Key key = this->GetBookKey(position);
-	const Sweetness min_book_sweetness = static_cast<Sweetness>(static_cast<int>(position.GetOurCarriage()->m_engineSettings.GetOptionByKey("Min_Book_Score")));
+	const Sweetness min_book_sweetness = static_cast<Sweetness>(static_cast<int>(position.GetGameEngineStore()->m_engineSettings.GetOptionByKey("Min_Book_Score")));
 	Sweetness sweetnessValue = SweetnessZero;
 
 	if (this->m_fileName_ != fName && !this->OpenBook(fName.c_str())) {
@@ -256,7 +256,7 @@ void MakeBook(GameStats& gameStats, Position& pos, std::istringstream& ssCmd) {
 		}
 
 		pos.Set(g_SFEN_STARTPOS_STR);
-		pos.SetTh(pos.GetOurCarriage()->m_pub.GetFirstCaptain());
+		pos.SetTh(pos.GetGameEngineStore()->m_pub.GetFirstCaptain());
 
 		StateStackPtr SetUpStates = StateStackPtr(new std::stack<StateInfo>());
 		UsiOperation usiOperation;
@@ -302,13 +302,13 @@ void MakeBook(GameStats& gameStats, Position& pos, std::istringstream& ssCmd) {
 					std::istringstream ssCmd("byoyomi 1000");
 					UsiOperation usiOperation;
 					usiOperation.Go(gameStats, pos, ssCmd);
-					pos.GetOurCarriage()->m_pub.WaitForThinkFinished();
+					pos.GetGameEngineStore()->m_pub.WaitForThinkFinished();
 
 					pos.UndoMove(move);
 					SetUpStates->pop();
 
 					// doMove してから search してるので点数が反転しているので直す。
-					const Sweetness sweetness = -pos.GetConstOurCarriage()->m_rootMoves[0].m_sweetness_;
+					const Sweetness sweetness = -pos.GetConstGameEngineStore()->m_rootMoves[0].m_sweetness_;
 #else
 					const Sweetness GetSweetness = SweetnessZero;
 #endif

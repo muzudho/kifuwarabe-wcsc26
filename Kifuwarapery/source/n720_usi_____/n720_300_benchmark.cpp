@@ -24,7 +24,7 @@ void Benchmark(GameStats& gameStats, Position& pos) {
 							 "name Max_Random_Score_Diff value 0"};
 	for (auto& str : options) {
 		std::istringstream is(str);
-		pos.GetOurCarriage()->SetOption(is);
+		pos.GetGameEngineStore()->SetOption(is);
 	}
 
 	std::ifstream ifs("benchmark.sfen");
@@ -38,6 +38,6 @@ void Benchmark(GameStats& gameStats, Position& pos) {
 
 		std::istringstream ss_go("byoyomi 10000");
 		usiOperation.Go(gameStats, pos, ss_go);
-		pos.GetOurCarriage()->m_pub.WaitForThinkFinished();
+		pos.GetGameEngineStore()->m_pub.WaitForThinkFinished();
 	}
 }

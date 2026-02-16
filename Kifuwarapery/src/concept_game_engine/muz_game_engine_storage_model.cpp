@@ -185,7 +185,7 @@ void Position::DoNullMove(bool DO, StateInfo& backUpSt) {
 
 	if (DO) {
 		m_st_->m_boardKey ^= GetZobTurn();
-		prefetch(GetConstOurCarriage()->m_tt.FirstEntry(m_st_->GetKey()));
+		prefetch(GetConstGameEngineStore()->m_tt.FirstEntry(m_st_->GetKey()));
 		m_st_->m_pliesFromNull = 0;
 		m_st_->m_continuousCheck[GetTurn()] = 0;
 	}
@@ -222,7 +222,7 @@ void RootMove::ExtractPvFromTT(Position& pos) {
 			pos.DoMove<Color::White,Color::Black>(m_pv_[ply++], *st++)
 			;
 
-		tte = pos.GetConstOurCarriage()->m_tt.Probe(pos.GetKey());
+		tte = pos.GetConstGameEngineStore()->m_tt.Probe(pos.GetKey());
 	} while (tte != nullptr
 		// このチェックは少し無駄。駒打ちのときはmove16toMove() 呼ばなくて良い。
 		&&
@@ -262,12 +262,12 @@ void RootMove::InsertPvInTT(Position& pos) {
 	Ply ply = 0;
 
 	do {
-		tte = pos.GetConstOurCarriage()->m_tt.Probe(pos.GetKey());
+		tte = pos.GetConstGameEngineStore()->m_tt.Probe(pos.GetKey());
 
 		if (tte == nullptr
 			|| UtilMoveStack::Move16toMove(tte->GetMove(), pos) != m_pv_[ply])
 		{
-			pos.GetOurCarriage()->m_tt.Store(pos.GetKey(), SweetnessNone, BoundNone, DepthNone, m_pv_[ply], SweetnessNone);
+			pos.GetGameEngineStore()->m_tt.Store(pos.GetKey(), SweetnessNone, BoundNone, DepthNone, m_pv_[ply], SweetnessNone);
 		}
 
 		assert(pos.MoveIsLegal(m_pv_[ply]));

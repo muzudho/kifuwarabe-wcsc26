@@ -309,7 +309,7 @@ public:
 	/// <param name="GetPos"></param>
 	/// <param name="ssCmd"></param>
 	void learn(Position& GetPos, std::istringstream& ssCmd) {
-		eval_.initOptions(GetPos.GetOurCarriage()->m_engineSettings["Eval_Dir"], false);
+		eval_.initOptions(GetPos.GetGameEngineStore()->m_engineSettings["Eval_Dir"], false);
 		s64 gameNum;
 		std::string recordFileName;
 		std::string blackRecordFileName;
@@ -366,7 +366,7 @@ public:
 			// 一時オブジェクトのParse2Dataがスタックに出来ることでプログラムが落ちるので、コピーコンストラクタにする。
 			parse2Datum_.push_back(parse2Data_);
 		}
-		setLearnOptions(*GetPos.GetOurCarriage());
+		setLearnOptions(*GetPos.GetGameEngineStore());
 		mt_ = std::mt19937(std::chrono::system_clock::now().time_since_epoch().m_count());
 		mt64_ = std::mt19937_64(std::chrono::system_clock::now().time_since_epoch().m_count());
 		for (int i = 0; ; ++i) {
@@ -411,7 +411,7 @@ private:
 		textA >> elem; // 引き分け勝ち負け
 		bmdBase[Black].winner = (elem == "1");
 		bmdBase[White].winner = (elem == "2");
-		GetPos.SetP(g_DefaultStartPositionSFEN, GetPos.GetOurCarriage()->m_ownerHerosPub.GetFirstCaptain());
+		GetPos.SetP(g_DefaultStartPositionSFEN, GetPos.GetGameEngineStore()->m_ownerHerosPub.GetFirstCaptain());
 		StateStackPtr m_setUpStates = StateStackPtr(new std::stack<StateInfo>());
 		UsiOperation usiOperation;
 		while (true) {
@@ -531,33 +531,33 @@ private:
 	/// <param name="mt"></param>
 	void learnParse1Body(Position& GetPos, std::mt19937& mt) {
 		std::uniform_int_distribution<Ply> dist(minDepth_, maxDepth_);
-		GetPos.GetOurCarriage()->m_tt.Clear();
+		GetPos.GetGameEngineStore()->m_tt.Clear();
 		for (size_t i = lockingIndexIncrement<true>(); i < gameNumForIteration_; i = lockingIndexIncrement<true>()) {
 			StateStackPtr m_setUpStates = StateStackPtr(new std::stack<StateInfo>());
-			GetPos.SetP(g_DefaultStartPositionSFEN, GetPos.GetOurCarriage()->m_ownerHerosPub.GetFirstCaptain());
+			GetPos.SetP(g_DefaultStartPositionSFEN, GetPos.GetGameEngineStore()->m_ownerHerosPub.GetFirstCaptain());
 			auto& gameMoves = bookMovesDatum_[i];
 			for (auto& bmd : gameMoves) {
 				if (bmd.useLearning) {
-					GetPos.GetOurCarriage()->m_alpha = -SweetnessMaxEvaluate;
-					GetPos.GetOurCarriage()->m_beta  =  SweetnessMaxEvaluate;
+					GetPos.GetGameEngineStore()->m_alpha = -SweetnessMaxEvaluate;
+					GetPos.GetGameEngineStore()->m_beta  =  SweetnessMaxEvaluate;
 					Go(GetPos, dist(mt), bmd.GetMove);
-					const Sweetness recordSweetness = GetPos.GetOurCarriage()->m_rootMoves[0].m_sweetness_;
+					const Sweetness recordSweetness = GetPos.GetGameEngineStore()->m_rootMoves[0].m_sweetness_;
 					++moveCount_;
 					bmd.otherPVExist = false;
 					bmd.pvBuffer.Clear();
 					if (abs(recordSweetness) < SweetnessMaxEvaluate) {
 						int recordIsNth = 0; // 正解の手が何番目に良い手か。0から数える。
-						auto& recordPv = GetPos.GetOurCarriage()->m_rootMoves[0].m_pv_;
+						auto& recordPv = GetPos.GetGameEngineStore()->m_rootMoves[0].m_pv_;
 						bmd.pvBuffer.insert(std::IsEnd(bmd.pvBuffer), std::begin(recordPv), std::IsEnd(recordPv));
 						const auto recordPVSize = bmd.pvBuffer.m_size();
 						for (MoveList<N09_LegalAll> ml(GetPos); !ml.IsEnd(); ++ml) {
 							if (ml.GetMove() != bmd.GetMove) {
-								GetPos.GetOurCarriage()->m_alpha = recordSweetness - FVWindow;
-								GetPos.GetOurCarriage()->m_beta  = recordSweetness + FVWindow;
+								GetPos.GetGameEngineStore()->m_alpha = recordSweetness - FVWindow;
+								GetPos.GetGameEngineStore()->m_beta  = recordSweetness + FVWindow;
 								Go(GetPos, dist(mt), ml.GetMove());
-								const Sweetness GetSweetness = GetPos.GetOurCarriage()->m_rootMoves[0].m_sweetness_;
-								if (GetPos.GetOurCarriage()->m_alpha < GetSweetness && GetSweetness < GetPos.GetOurCarriage()->m_beta) {
-									auto& pv = GetPos.GetOurCarriage()->m_rootMoves[0].m_pv_;
+								const Sweetness GetSweetness = GetPos.GetGameEngineStore()->m_rootMoves[0].m_sweetness_;
+								if (GetPos.GetGameEngineStore()->m_alpha < GetSweetness && GetSweetness < GetPos.GetGameEngineStore()->m_beta) {
+									auto& pv = GetPos.GetGameEngineStore()->m_rootMoves[0].m_pv_;
 									bmd.pvBuffer.insert(std::IsEnd(bmd.pvBuffer), std::begin(pv), std::IsEnd(pv));
 								}
 								if (recordSweetness < GetSweetness)
@@ -714,7 +714,7 @@ private:
 		Flashlight m_pFlashlightBox[2];
 		for (size_t i = lockingIndexIncrement<false>(); i < gameNumForIteration_; i = lockingIndexIncrement<false>()) {
 			StateStackPtr m_setUpStates = StateStackPtr(new std::stack<StateInfo>());
-			GetPos.SetP(g_DefaultStartPositionSFEN, GetPos.GetOurCarriage()->m_ownerHerosPub.GetFirstCaptain());
+			GetPos.SetP(g_DefaultStartPositionSFEN, GetPos.GetGameEngineStore()->m_ownerHerosPub.GetFirstCaptain());
 			auto& gameMoves = bookMovesDatum_[i];
 			for (auto& bmd : gameMoves) {
 				PRINT_PV(GetPos.Print());
@@ -799,8 +799,8 @@ private:
 			lowerDimension(parse2EvalBase_, parse2Data_.params);
 			setUpdateMask(step);
 			std::cout << "update eval ... " << std::flush;
-			if (usePenalty_) updateEval<true >(GetPos.GetOurCarriage()->m_engineSettings["Eval_Dir"]);
-			else             updateEval<false>(GetPos.GetOurCarriage()->m_engineSettings["Eval_Dir"]);
+			if (usePenalty_) updateEval<true >(GetPos.GetGameEngineStore()->m_engineSettings["Eval_Dir"]);
+			else             updateEval<false>(GetPos.GetGameEngineStore()->m_engineSettings["Eval_Dir"]);
 			std::cout << "done" << std::endl;
 			std::cout << "parse2 1 step elapsed: " << t.GetElapsed() / 1000 << "[sec]" << std::endl;
 			Print();
