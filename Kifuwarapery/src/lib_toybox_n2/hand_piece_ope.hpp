@@ -1,7 +1,7 @@
 #pragma once
 
-#include "n1_hand_piece.hpp"
-#include "n2_piece_types.hpp"
+#include "../lib_toybox_n1/hand_piece.hpp"
+#include "piece_types.hpp"
 #include <string>
 
 namespace {

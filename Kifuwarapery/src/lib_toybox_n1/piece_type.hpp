@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include "../lib_cpp/int.hpp"
+
 /// <summary>
 /// pc が遠隔駒であるかを調べるのに使います。
 /// </summary>

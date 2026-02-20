@@ -1,6 +1,6 @@
-﻿#include "../../src/lib_toybox_base/piece_type.hpp"
-#include "../../src/lib_toybox_base/hand_piece.hpp"
-
+﻿#include "piece_types.hpp"
+#include "../lib_toybox_n1/piece_type.hpp"
+#include "../lib_toybox_n1/hand_piece.hpp"
 
 /// <summary>
 /// 
