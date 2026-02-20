@@ -945,7 +945,7 @@ void Position::DoMove(const Move move, StateInfo& newSt, const CheckInfo& ci, co
 		m_st_->m_cl.m_clistpair[0].m_newlist[0] = m_evalList_.m_list0[listIndex];
 		m_st_->m_cl.m_clistpair[0].m_newlist[1] = m_evalList_.m_list1[listIndex];
 
-		m_hand_[US].MinusOne(hpTo);
+		m_hand_models_[US].MinusOne(hpTo);
 		this->XorBBs<US>(ptTo, to);
 		m_piece_[to] = ConvPiece::FROM_COLOR_AND_PIECE_TYPE10<US>(ptTo);
 
@@ -982,7 +982,7 @@ void Position::DoMove(const Move move, StateInfo& newSt, const CheckInfo& ci, co
 			g_setMaskBb.XorBit(&m_BB_ByPiecetype_[ptCaptured], to);
 			g_setMaskBb.XorBit(&m_BB_ByColor_[THEM], to);
 
-			m_hand_[US].PlusOne(hpCaptured);
+			m_hand_models_[US].PlusOne(hpCaptured);
 			const int toListIndex = m_evalList_.m_squareHandToList[to];
 			m_st_->m_cl.m_listindex[1] = toListIndex;
 			m_st_->m_cl.m_clistpair[1].m_oldlist[0] = m_evalList_.m_list0[toListIndex];
@@ -1088,7 +1088,7 @@ void Position::UndoMove(const Move move) {
 		m_piece_[to] = N00_Empty;
 
 		const HandPiece hp = ConvHandPiece::FromPieceType(ptTo);
-		m_hand_[us].PlusOne(hp);
+		m_hand_models_[us].PlusOne(hp);
 
 		const int toListIndex = m_evalList_.m_squareHandToList[to];
 		const int handnum = GetHand(us).NumOf(hp);
@@ -1131,7 +1131,7 @@ void Position::UndoMove(const Move move) {
 			m_evalList_.m_listToSquareHand[toListIndex] = to;
 			m_evalList_.m_squareHandToList[to] = toListIndex;
 
-			m_hand_[us].MinusOne(hpCaptured);
+			m_hand_models_[us].MinusOne(hpCaptured);
 		}
 		else {
 			// 駒を取らないときは、UtilPiece::colorAndPieceTypeToPiece(us, ptCaptured) は 0 または 16 になる。

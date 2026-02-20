@@ -36,7 +36,7 @@ protected:
 	/// <summary>
 	/// 先後対局者別の手駒
 	/// </summary>
-	MuzHandModel m_hand_[g_COLOR_NUM];
+	MuzHandModel m_hand_models_[g_COLOR_NUM];
 
 	/// <summary>
 	/// ゲームエンジン倉庫
@@ -59,7 +59,7 @@ protected:
 	template<Color CLR>
 	MuzHandModel GetHand() const
 	{
-		return this->m_hand_[CLR];
+		return this->m_hand_models_[CLR];
 	}
 	MuzHandModel GetHand(const Color c) const;
 

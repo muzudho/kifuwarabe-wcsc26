@@ -16,7 +16,7 @@
 /// <returns></returns>
 MuzHandModel MuzPositionBaseModel::GetHand(const Color c) const
 {
-	return this->m_hand_[c];
+	return this->m_hand_models_[c];
 }
 
 
@@ -118,7 +118,7 @@ void MuzPositionBaseModel::Set(const std::string& sfen)
 	// 持ち駒
 	for (int digits = 0; ss.get(token) && token != ' '; ) {
 		if (token == '-') {
-			memset(m_hand_, 0, sizeof(m_hand_));
+			memset(m_hand_models_, 0, sizeof(m_hand_models_));
 		}
 		else if (isdigit(token)) {
 			digits = digits * 10 + token - '0';
