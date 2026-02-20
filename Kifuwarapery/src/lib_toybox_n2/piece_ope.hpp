@@ -6,9 +6,7 @@
 
 #pragma once
 
-#include "../lib_toybox_n1/color.hpp"
-#include "../lib_toybox_n1/piece.hpp"
-#include "../lib_toybox_n1/piece_type.hpp"
+#include "../lib_toybox_n1/muz_position_n1_model.hpp"
 
 namespace {
 

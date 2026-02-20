@@ -6,10 +6,7 @@
 
 #pragma once
 
-#include "n1_color.hpp"
-#include "n2_file_ope.hpp"
-#include "n2_rank_ope.hpp"
-#include "n2_squares.hpp"
+#include "../lib_toybox_n2/muz_position_n2_model.hpp"
 #include <string>
 
 /// <summary>
@@ -258,3 +255,4 @@ constexpr Square operator-(Square sq, SquareDelta delta) noexcept {
 constexpr Square& operator-=(Square& sq, SquareDelta delta) noexcept {
     sq = static_cast<Square>(underlying(sq) - underlying(delta));
     return sq;
+}

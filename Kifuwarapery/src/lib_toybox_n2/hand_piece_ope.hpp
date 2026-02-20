@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../lib_toybox_n1/hand_piece.hpp"
+#include "../lib_toybox_n1/muz_position_n1_model.hpp"
 #include "piece_types.hpp"
 #include <string>
 

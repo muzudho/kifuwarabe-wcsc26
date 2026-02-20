@@ -1,6 +1,6 @@
 #pragma once
 
-#include "n1_piece_type.hpp"
+#include "../lib_toybox_n1/muz_position_n1_model.hpp"
 
 //────────────────────────────────────────────────────────────────────────────────
 // 非クラスメンバ 公開 静的グローバル・オブジェクト
