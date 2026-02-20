@@ -40,7 +40,7 @@ public://(^q^)修飾子追加☆m_checkersBBを公開したいんだぜ☆
 	/// <summary>
 	/// 手番側の持ち駒
 	/// </summary>
-	Hand m_hand;
+	MuzHandModel m_hand;
 
 	/// <summary>
 	/// capturedPieceType は move.cap() で取得出来るので必要無い。

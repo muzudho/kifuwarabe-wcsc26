@@ -6,7 +6,7 @@
 /// <summary>
 /// 
 /// </summary>
-const int Hand::m_HandPieceShiftBits[HandPieceNum] = {
+const int MuzHandModel::m_HandPieceShiftBits[HandPieceNum] = {
 	m_HPawnShiftBits,
 	m_HLanceShiftBits,
 	m_HKnightShiftBits,
@@ -19,7 +19,7 @@ const int Hand::m_HandPieceShiftBits[HandPieceNum] = {
 /// <summary>
 /// 手駒のマスク
 /// </summary>
-const u32 Hand::m_HandPieceMask[HandPieceNum] = {
+const u32 MuzHandModel::m_HandPieceMask[HandPieceNum] = {
 	m_HPawnMask,
 	m_HLanceMask,
 	m_HKnightMask,
@@ -33,7 +33,7 @@ const u32 Hand::m_HandPieceMask[HandPieceNum] = {
 /// <summary>
 /// 特定の種類の持ち駒を 1 つ増やしたり減らしたりするときに使用するテーブル
 /// </summary>
-const u32 Hand::m_HandPieceOne[HandPieceNum] = {
+const u32 MuzHandModel::m_HandPieceOne[HandPieceNum] = {
 	1 << m_HPawnShiftBits,
 	1 << m_HLanceShiftBits,
 	1 << m_HKnightShiftBits,
@@ -48,7 +48,7 @@ const u32 Hand::m_HandPieceOne[HandPieceNum] = {
 /// 
 /// </summary>
 /// <returns></returns>
-u32 Hand::Value() const
+u32 MuzHandModel::Value() const
 {
 	return this->m_value_;
 }
@@ -59,7 +59,7 @@ u32 Hand::Value() const
 /// </summary>
 /// <param name="handPiece"></param>
 /// <returns></returns>
-u32 Hand::NumOf(const HandPiece handPiece) const
+u32 MuzHandModel::NumOf(const HandPiece handPiece) const
 {
 	return (Value() & m_HandPieceMask[handPiece]) >> m_HandPieceShiftBits[handPiece];
 }
@@ -70,7 +70,7 @@ u32 Hand::NumOf(const HandPiece handPiece) const
 /// </summary>
 /// <param name="handPiece"></param>
 /// <returns></returns>
-u32 Hand::Exists(const HandPiece handPiece) const
+u32 MuzHandModel::Exists(const HandPiece handPiece) const
 {
 	return Value() & m_HandPieceMask[handPiece];
 }
@@ -81,7 +81,7 @@ u32 Hand::Exists(const HandPiece handPiece) const
 /// </summary>
 /// <param name="hand"></param>
 /// <returns></returns>
-u32 Hand::ExceptPawnExists(const Hand& hand)
+u32 MuzHandModel::ExceptPawnExists(const MuzHandModel& hand)
 {
 	return hand.Value() & m_HandPieceExceptPawnMask;
 }
@@ -92,7 +92,7 @@ u32 Hand::ExceptPawnExists(const Hand& hand)
 /// </summary>
 /// <param name="num"></param>
 /// <param name="handPiece"></param>
-void Hand::OrEqual(const int num, const HandPiece handPiece)
+void MuzHandModel::OrEqual(const int num, const HandPiece handPiece)
 {
 	m_value_ |= num << m_HandPieceShiftBits[handPiece];
 }
@@ -102,7 +102,7 @@ void Hand::OrEqual(const int num, const HandPiece handPiece)
 /// 
 /// </summary>
 /// <param name="handPiece"></param>
-void Hand::PlusOne(const HandPiece handPiece)
+void MuzHandModel::PlusOne(const HandPiece handPiece)
 {
 	m_value_ += m_HandPieceOne[handPiece];
 }
@@ -112,7 +112,7 @@ void Hand::PlusOne(const HandPiece handPiece)
 /// 
 /// </summary>
 /// <param name="handPiece"></param>
-void Hand::MinusOne(const HandPiece handPiece)
+void MuzHandModel::MinusOne(const HandPiece handPiece)
 {
 	m_value_ -= m_HandPieceOne[handPiece];
 }
@@ -123,7 +123,7 @@ void Hand::MinusOne(const HandPiece handPiece)
 /// </summary>
 /// <param name="rhs"></param>
 /// <returns></returns>
-bool Hand::operator==(const Hand rhs) const
+bool MuzHandModel::operator==(const MuzHandModel rhs) const
 {
 	return this->Value() == rhs.Value();
 }
@@ -134,7 +134,7 @@ bool Hand::operator==(const Hand rhs) const
 /// </summary>
 /// <param name="rhs"></param>
 /// <returns></returns>
-bool Hand::operator!=(const Hand rhs) const
+bool MuzHandModel::operator!=(const MuzHandModel rhs) const
 {
 	return this->Value() != rhs.Value();
 }
@@ -145,7 +145,7 @@ bool Hand::operator!=(const Hand rhs) const
 /// </summary>
 /// <param name="ref"></param>
 /// <returns></returns>
-bool Hand::IsEqualOrSuperior(const Hand ref) const
+bool MuzHandModel::IsEqualOrSuperior(const MuzHandModel ref) const
 {
 #if 0
 	// 全ての駒が ref 以上の枚数なので、true

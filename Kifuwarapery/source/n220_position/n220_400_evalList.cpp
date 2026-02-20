@@ -18,11 +18,11 @@ const Square g_HandPieceToSquareHand[g_COLOR_NUM][HandPieceNum] = {
 /// </summary>
 /// <param name="pos"></param>
 void EvalList::Set(const Position& pos) {
-	const Hand handB = pos.GetHand(Black);
-	const Hand handW = pos.GetHand(White);
+	const MuzHandModel handB = pos.GetHand(Black);
+	const MuzHandModel handW = pos.GetHand(White);
 
 	int nlist = 0;
-	auto func = [&nlist, this](const Hand hand, const HandPiece hp, const int list0_index, const int list1_index, const Color c) {
+	auto func = [&nlist, this](const MuzHandModel hand, const HandPiece hp, const int list0_index, const int list1_index, const Color c) {
 		for (u32 i = 1; i <= hand.NumOf(hp); ++i) {
 			m_list0[nlist] = list0_index + i;
 			m_list1[nlist] = list1_index + i;

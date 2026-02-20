@@ -14,7 +14,7 @@
 /// </summary>
 /// <param name="c"></param>
 /// <returns></returns>
-Hand MuzPositionBaseModel::GetHand(const Color c) const
+MuzHandModel MuzPositionBaseModel::GetHand(const Color c) const
 {
 	return this->m_hand_[c];
 }

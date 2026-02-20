@@ -1304,14 +1304,14 @@ Move Position::GetMateMoveIn1Ply() {
 
 	// 駒打ちを調べる。
 	const Bitboard dropTarget = GetNOccupiedBB(); // emptyBB() ではないので注意して使うこと。
-	const Hand ourHand = GetHand(US);
+	const MuzHandModel ourHand = GetHand(US);
 	// 王手する前の状態の dcBB。
 	// 間にある駒は相手側の駒。
 	// 駒打ちのときは、打った後も、打たれる前の状態の dcBB を使用する。
 	const Bitboard dcBB_betweenIsThem = DiscoveredCheckBB<US, THEM, false>();
 
 	// 飛車打ち
-	if (Hand::Exists_HRook(ourHand)) {
+	if (MuzHandModel::Exists_HRook(ourHand)) {
 		// 合駒されるとややこしいので、3手詰み関数の中で調べる。
 		// ここでは離れた位置から王手するのは考えない。
 		Bitboard toBB = dropTarget & g_rookAttackBb.RookStepAttacks(ksq);
@@ -1332,7 +1332,7 @@ Move Position::GetMateMoveIn1Ply() {
 	// 飛車で詰まなければ香車でも詰まないので、else if を使用。
 	// 玉が 9(1) 段目にいれば香車で王手出来無いので、それも省く。
 	else if (
-		Hand::Exists_HLance(ourHand) &&
+		MuzHandModel::Exists_HLance(ourHand) &&
 		ConvSquare::IS_IN_FRONT_OF10(US, Rank1, Rank9, ConvSquare::TO_RANK10(ksq))
 	) {
 		const Square to = ksq + TDeltaS;
@@ -1346,7 +1346,7 @@ Move Position::GetMateMoveIn1Ply() {
 	}
 
 	// 角打ち
-	if (Hand::Exists_HBishop(ourHand)) {
+	if (MuzHandModel::Exists_HBishop(ourHand)) {
 		Bitboard toBB = dropTarget & g_bishopAttackBb.BishopStepAttacks(ksq);
 		while (toBB.Exists1Bit()) {
 			const Square to = toBB.PopFirstOneFromI9();
@@ -1361,9 +1361,9 @@ Move Position::GetMateMoveIn1Ply() {
 	}
 
 	// 金打ち
-	if (Hand::Exists_HGold(ourHand)) {
+	if (MuzHandModel::Exists_HGold(ourHand)) {
 		Bitboard toBB;
-		if (Hand::Exists_HRook(ourHand)) {
+		if (MuzHandModel::Exists_HRook(ourHand)) {
 			// 飛車打ちを先に調べたので、尻金だけは省く。
 			toBB = dropTarget & (g_goldAttackBb.GetControllBb(THEM, ksq) ^ g_pawnAttackBb.GetControllBb(US, ksq));
 		}
@@ -1382,12 +1382,12 @@ Move Position::GetMateMoveIn1Ply() {
 		}
 	}
 
-	if (Hand::Exists_HSilver(ourHand)) {
+	if (MuzHandModel::Exists_HSilver(ourHand)) {
 		Bitboard toBB;
-		if (Hand::Exists_HGold(ourHand)) {
+		if (MuzHandModel::Exists_HGold(ourHand)) {
 			// 金打ちを先に調べたので、斜め後ろから打つ場合だけを調べる。
 
-			if (Hand::Exists_HBishop(ourHand)) {
+			if (MuzHandModel::Exists_HBishop(ourHand)) {
 				// 角打ちを先に調べたので、斜めからの王手も除外できる。銀打ちを調べる必要がない。
 				goto silver_drop_end;
 			}
@@ -1395,7 +1395,7 @@ Move Position::GetMateMoveIn1Ply() {
 			toBB = dropTarget & (g_silverAttackBb.GetControllBb(THEM, ksq) & g_inFrontMaskBb.GetInFrontMask(US, ConvSquare::TO_RANK10(ksq)));
 		}
 		else {
-			if (Hand::Exists_HBishop(ourHand)) {
+			if (MuzHandModel::Exists_HBishop(ourHand)) {
 				// 斜め後ろを除外。前方から打つ場合を調べる必要がある。
 				toBB = dropTarget & g_goldAndSilverAttackBb.GoldAndSilverAttacks(THEM, ksq);
 			}
@@ -1416,7 +1416,7 @@ Move Position::GetMateMoveIn1Ply() {
 	}
 silver_drop_end:
 
-	if (Hand::Exists_HKnight(ourHand)) {
+	if (MuzHandModel::Exists_HKnight(ourHand)) {
 		Bitboard toBB = dropTarget & g_knightAttackBb.GetControllBb(THEM, ksq);
 		while (toBB.Exists1Bit()) {
 			const Square to = toBB.PopFirstOneFromI9();

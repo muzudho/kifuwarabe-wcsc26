@@ -380,14 +380,14 @@ Sweetness Evaluation09::evaluateUnUseDiff(const Position& pos) {
 	int list0[EvalList::m_ListSize];
 	int list1[EvalList::m_ListSize];
 
-	const Hand handB = pos.GetHand(Black);
-	const Hand handW = pos.GetHand(White);
+	const MuzHandModel handB = pos.GetHand(Black);
+	const MuzHandModel handW = pos.GetHand(White);
 
 	const Square sq_bk = pos.GetKingSquare(Black);
 	const Square sq_wk = pos.GetKingSquare(White);
 	int nlist = 0;
 
-	auto func = [&](const Hand hand, const HandPiece hp, const int list0_index, const int list1_index) {
+	auto func = [&](const MuzHandModel hand, const HandPiece hp, const int list0_index, const int list1_index) {
 		for (u32 i = 1; i <= hand.NumOf(hp); ++i) {
 			list0[nlist] = list0_index + i;
 			list1[nlist] = list1_index + i;

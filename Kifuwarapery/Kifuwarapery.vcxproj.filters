@@ -1077,6 +1077,36 @@
     <ClInclude Include="src\lib_cpp\int.hpp">
       <Filter>header</Filter>
     </ClInclude>
+    <ClInclude Include="src\lib_toybox_base\n2_char_to_piece_usi.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_toybox_base\n2_file_ope.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_toybox_base\muz_hand_model.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_toybox_base\n2_piece_ope.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_toybox_base\n2_piece_type_ope.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_toybox_base\n2_piece_types.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_toybox_base\n2_rank_ope.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_toybox_base\n2_squares.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_toybox_base\n3_hand_piece_ope.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_toybox_base\n3_square_ope.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

@@ -224,7 +224,7 @@ bool AdventureContinent::IsNyugyokuWin(const Position& pos) {
 	const Bitboard smallBB = (pos.GetBbOf(N01_Pawn, N02_Lance, N03_Knight, N04_Silver) |
 		pos.GetGoldsBB()) & opponentsField & pos.GetBbOf10(us);
 
-	const Hand hand = pos.GetHand(us);
+	const MuzHandModel hand = pos.GetHand(us);
 
 	const int val = (bigBB.PopCount() + hand.NumOf<HRook>() + hand.NumOf<HBishop>()) * 5
 		+ smallBB.PopCount()

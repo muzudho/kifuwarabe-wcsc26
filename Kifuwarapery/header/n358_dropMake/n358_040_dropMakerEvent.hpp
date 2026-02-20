@@ -43,7 +43,7 @@ public:
 	/// <summary>
 	/// 持ち駒
 	/// </summary>
-	const Hand&		m_hand;
+	const MuzHandModel&		m_hand;
 
 	/// <summary>
 	/// 持ち駒の数
@@ -92,7 +92,7 @@ public:
 		const Color us,
 		const Position& pos,
 		const Bitboard& target,
-		const Hand& hand,
+		const MuzHandModel& hand,
 		const int haveHandNum,
 		const int noKnightIdx,
 		const int noKnightLanceIdx,

@@ -123,7 +123,7 @@ Key Book::GetBookKey(const Position& pos) {
 		const Square sq = bb.PopFirstOneFromI9();
 		key ^= m_ZobPiece[pos.GetPiece(sq)][sq];
 	}
-	const Hand hand = pos.GetHand(pos.GetTurn());
+	const MuzHandModel hand = pos.GetHand(pos.GetTurn());
 	for (HandPiece hp = HPawn; hp < HandPieceNum; ++hp) {
 		key ^= m_ZobHand[hp][hand.NumOf(hp)];
 	}

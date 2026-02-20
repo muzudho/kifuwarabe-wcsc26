@@ -80,10 +80,10 @@ public:
 		const Position& pos,
 		const Bitboard& target
 	) {
-		const Hand hand = pos.GetHand(US);
+		const MuzHandModel hand = pos.GetHand(US);
 
 		// まず、歩に対して指し手を生成
-		if (Hand::Exists_HPawn(hand)) {
+		if (MuzHandModel::Exists_HPawn(hand)) {
 
 			Bitboard toBB = target;
 			// 一段目には打てない
@@ -125,7 +125,7 @@ public:
 
 
 		// 歩 以外の駒を持っているか
-		if (Hand::ExceptPawnExists(hand)) {
+		if (MuzHandModel::ExceptPawnExists(hand)) {
 
 
 			Move haveHandArr[6]; // 歩以外の持ち駒。vector 使いたいけど、速度を求めるので使わない。
@@ -134,14 +134,14 @@ public:
 			int haveHandNum = 0; // 持ち駒の駒の種類の数
 
 								 // 桂馬、香車、それ以外の順番で格納する。(駒を打てる位置が限定的な順)
-			if (Hand::Exists_HKnight(hand)) { haveHandArr[haveHandNum++] = g_PTKNIGHT_DA_AS_MOVE; }//桂打
+			if (MuzHandModel::Exists_HKnight(hand)) { haveHandArr[haveHandNum++] = g_PTKNIGHT_DA_AS_MOVE; }//桂打
 			const int noKnightIdx = haveHandNum; // 桂馬を除く駒でループするときのループの初期値
-			if (Hand::Exists_HLance(hand)) { haveHandArr[haveHandNum++] = g_PTLANCE_DA_AS_MOVE; }//香打
+			if (MuzHandModel::Exists_HLance(hand)) { haveHandArr[haveHandNum++] = g_PTLANCE_DA_AS_MOVE; }//香打
 			const int noKnightLanceIdx = haveHandNum; // 桂馬, 香車を除く駒でループするときのループの初期値
-			if (Hand::Exists_HSilver(hand)) { haveHandArr[haveHandNum++] = g_PTSILVER_DA_AS_MOVE; }//銀打
-			if (Hand::Exists_HGold(hand)) { haveHandArr[haveHandNum++] = g_PTGOLD_DA_AS_MOVE; }//金打
-			if (Hand::Exists_HBishop(hand)) { haveHandArr[haveHandNum++] = g_PTBISHOP_DA_AS_MOVE; }//角打
-			if (Hand::Exists_HRook(hand)) { haveHandArr[haveHandNum++] = g_PTROOK_DA_AS_MOVE; }//飛打
+			if (MuzHandModel::Exists_HSilver(hand)) { haveHandArr[haveHandNum++] = g_PTSILVER_DA_AS_MOVE; }//銀打
+			if (MuzHandModel::Exists_HGold(hand)) { haveHandArr[haveHandNum++] = g_PTGOLD_DA_AS_MOVE; }//金打
+			if (MuzHandModel::Exists_HBishop(hand)) { haveHandArr[haveHandNum++] = g_PTBISHOP_DA_AS_MOVE; }//角打
+			if (MuzHandModel::Exists_HRook(hand)) { haveHandArr[haveHandNum++] = g_PTROOK_DA_AS_MOVE; }//飛打
 
 			const Rank tRank8 = (US == Black ? Rank8 : Rank2);
 			const Rank tRank9 = (US == Black ? Rank9 : Rank1);
