@@ -522,7 +522,7 @@
     <ClCompile Include="source\n220_position\n220_150_checkInfo.cpp" />
     <ClCompile Include="src\lib_toybox_medium\muz_position_medium_model.cpp" />
     <ClCompile Include="source\n220_position\n220_640_utilAttack.cpp" />
-    <ClCompile Include="source\n220_position\n220_750_charToPieceUSI.cpp" />
+    <ClCompile Include="src\lib_toybox_n2\char_to_piece_usi.cpp" />
     <ClCompile Include="source\n220_position\n220_400_evalList.cpp" />
     <ClCompile Include="source\n223_move____\n223_300_moveAndScoreIndex.cpp" />
     <ClCompile Include="source\n350_pieceTyp\n350_030_makePromoteMove.cpp" />

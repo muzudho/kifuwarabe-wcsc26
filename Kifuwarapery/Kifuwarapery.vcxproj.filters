@@ -1196,7 +1196,7 @@
     <ClCompile Include="src\lib_toybox_base\muz_hand_model.cpp">
       <Filter>source\n113_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n220_position\n220_750_charToPieceUSI.cpp">
+    <ClCompile Include="src\lib_toybox_n2\char_to_piece_usi.cpp">
       <Filter>source\n220_position</Filter>
     </ClCompile>
     <ClCompile Include="src\lib_toybox_medium\muz_position_medium_model.cpp">

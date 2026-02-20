@@ -1,4 +1,4 @@
-﻿#include "../../src/lib_toybox_base/char_to_piece_usi.hpp"
+﻿#include "char_to_piece_usi.hpp"
 
 /// <summary>
 /// 文字から駒への変換テーブル☆
