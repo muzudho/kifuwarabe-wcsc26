@@ -42,7 +42,6 @@ public:
     bool IsLegalChar(char c) const { return (this->find(c) != this->end()); }
 };
 
-
 /// <summary>
 /// 
 /// </summary>

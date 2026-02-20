@@ -1,9 +1,10 @@
 ﻿//
 // 📄 駒種類
 //
-#pragma once
-#include "../../src/lib_cpp/overload_enum_operators.hpp"
 
+#pragma once
+
+#include "../../src/lib_cpp/overload_enum_operators.hpp"
 
 /// <summary>
 ///		<pre>
@@ -12,7 +13,8 @@
 ///		- Pro* は 元の 駒の種類に 8 を加算したもの。
 ///		</pre>
 /// </summary>
-enum PieceType {
+enum PieceType
+{
 	PTPromote = 8,
 
 	/// <summary>
@@ -41,8 +43,6 @@ enum PieceType {
 	/// </summary>
 	N16_GoldHorseDragon
 };
-OverloadEnumOperators(PieceType);
-
 
 /// <summary>
 /// TODO: 列挙型のサイズは、列挙型の外に出したいぜ☆（＾ｑ＾）

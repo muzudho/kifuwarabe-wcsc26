@@ -1,6 +1,5 @@
 ﻿#include "../../src/lib_toybox_base/square.hpp"
-#include "../../header/n105_120_square__/n105_120_150_file.hpp"
-
+#include "../../src/lib_toybox_base/file.hpp"
 
 /// <summary>
 /// 

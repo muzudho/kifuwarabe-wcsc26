@@ -1,9 +1,10 @@
 ﻿//
 // 📄 駒
 //
-#pragma once
-#include "../../src/lib_cpp/overload_enum_operators.hpp"
 
+#pragma once
+
+#include "../../src/lib_cpp/overload_enum_operators.hpp"
 
 /// <summary>
 ///		<pre>
@@ -12,7 +13,8 @@
 ///		Promoted を加算することで、成りを表す。
 ///		</pre>
 /// </summary>
-enum Piece {
+enum Piece
+{
 	N00_Empty = 0,
 	UnPromoted = 0,
 	Promoted = 8,
@@ -47,8 +49,6 @@ enum Piece {
 	N30_WDragon,
 	N31_PieceNone // PieceNone = 31  これを 32 にした方が多重配列のときに有利か。
 };
-OverloadEnumOperators(Piece);
-
 
 /// <summary>
 /// 列挙型の主に使う要素の数

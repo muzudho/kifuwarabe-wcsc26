@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include "../n105_120_square__/n105_120_150_file.hpp"
-#include "../n105_120_square__/n105_120_500_convSquare.hpp"
-#include "../n160_board___/n160_100_bitboard.hpp"
+#include "../../src/lib_toybox_base/file.hpp"
+#include "../../source/n105_120_500_convSquare.hpp"
+#include "../../source/n160_100_bitboard.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────

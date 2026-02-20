@@ -1,10 +1,11 @@
 ﻿//
 // 📄 持ち駒
 //
+
 #pragma once
+
 #include "../../src/lib_cpp/int.hpp"
 #include "hand_piece.hpp"
-
 
 /// <summary>
 ///		<pre>
@@ -21,7 +22,8 @@
 ///		xxxxx11x xxxxxxxx xxxxxxxx xxxxxxxx  Rook
 ///		</pre>
 /// </summary>
-class Hand {
+class Hand
+{
 
 
 public:

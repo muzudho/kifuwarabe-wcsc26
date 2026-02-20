@@ -1,14 +1,16 @@
 //
 // 📄 局面の状態を表すクラス
 //
+
 #pragma once
+
 #include "../../src/concept_game_engine/muz_game_engine_storage_model.hpp"
+#include "char_to_piece_usi.hpp"
 #include "color.hpp"
 #include "ply.hpp"
 #include "piece.hpp"
 #include "hand.hpp"
 #include "square.hpp"
-
 
 class MuzPositionBaseModel
 {

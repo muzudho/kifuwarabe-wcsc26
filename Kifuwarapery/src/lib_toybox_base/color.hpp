@@ -1,14 +1,16 @@
 ﻿//
 // 📄 手番の色
 //
-#pragma once
-#include "../../src/lib_cpp/overload_enum_operators.hpp"
 
+#pragma once
+
+#include "../../src/lib_cpp/overload_enum_operators.hpp"
 
 /// <summary>
 /// 手番の色
 /// </summary>
-enum Color {
+enum Color
+{
 	Black,
 	White,
 
@@ -17,8 +19,6 @@ enum Color {
 	/// </summary>
 	Null
 };
-OverloadEnumOperators(Color);
-
 
 /// <summary>
 /// Color 列挙型の要素数

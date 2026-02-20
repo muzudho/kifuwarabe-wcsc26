@@ -3,13 +3,14 @@
 //
 
 #pragma once
+
 #include "../../src/lib_cpp/overload_enum_operators.hpp"
 
 /// <summary>
 /// マスの位置の差分
 /// </summary>
-enum SquareDelta {
-
+enum SquareDelta
+{
 	/// <summary>
 	/// 同一の Square にあるとき
 	/// </summary>
@@ -20,4 +21,3 @@ enum SquareDelta {
 	DeltaSW = DeltaS + DeltaW,
 	DeltaNW = DeltaN + DeltaW
 };
-OverloadEnumOperators(SquareDelta);
