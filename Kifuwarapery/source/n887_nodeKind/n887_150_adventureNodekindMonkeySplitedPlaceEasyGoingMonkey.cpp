@@ -1,14 +1,14 @@
 ﻿#include <iostream>
 #include <algorithm>
 #include "../../header/n119_500_sweetnes/n119_200_PieceSweetness.hpp"
-#include "../../header/n160_board___/n160_106_inFrontMaskBb.hpp"
-#include "../../header/n160_board___/n160_220_queenAttackBb.hpp"
-#include "../../header/n160_board___/n160_230_setMaskBb.hpp"
+#include "../../src/lib_bitboard/n160_106_inFrontMaskBb.hpp"
+#include "../../src/lib_bitboard/n160_220_queenAttackBb.hpp"
+#include "../../src/lib_bitboard/n160_230_setMaskBb.hpp"
 #include "../../header/n220_position/n220_100_repetitionType.hpp"
 #include "../../header/n220_position/n220_640_utilAttack.hpp"
 #include "../../src/lib_toybox_medium/muz_position_medium_model.hpp"
 #include "../../header/n220_position/n220_665_utilMoveStack.hpp"
-#include "../../header/n220_position/n220_750_charToPieceUSI.hpp"
+#include "../../src/lib_toybox_base/char_to_piece_usi.hpp"
 #include "../../header/n223_move____/n223_300_DeliciousBanana.hpp"
 #include "../../header/n223_move____/n223_500_flashlight.hpp"
 #include "../../header/n350_pieceTyp/n350_030_makePromoteMove.hpp"
@@ -22,7 +22,6 @@
 #include "../../header/n640_searcher/n640_500_reductions.hpp"
 #include "../../header/n640_searcher/n640_510_futilityMargins.hpp"
 #include "../../header/n640_searcher/n640_520_futilityMoveCounts.hpp"
-//#include "../../src/lib_gui/engine_option_collection.hpp"
 #include "../../header/n760_thread__/n760_400_monkiesPub.hpp"
 #include "../../header/n800_learn___/n800_100_stopwatch.hpp"
 #include "../../header/n883_nodeKind/n883_070_adventurePlainNodekindAbstract.hpp"
@@ -42,12 +41,9 @@
 #include "../../header/n887_nodeKind/n887_150_adventurePlainNodekindSplitedNodeEasyGoingMonkey.hpp"
 #include "../../header/n887_nodeKind/n887_500_adventurePlainNodekindPrograms.hpp"
 
-
 using namespace std;
 extern const InFrontMaskBb g_inFrontMaskBb;
 extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
-//extern RepetitionTypeModels g_repetitionTypes;
-
 
 // 依存関係の回避
 AdventureNodekindMonkeySplitedPlaceNonPv g_NODEKIND_MONKEYSPLITEDPLACE_EASY_GOING_MONKEY;

@@ -10,7 +10,7 @@
 #include "../src/lib_bitboard/init190_pawnAttackBb.hpp"
 #include "../header/n161_sqDistan/n161_500_squareDistance.hpp"
 #include "../header/n163_sqDistan/n163_600_utilSquareDistance.hpp"
-#include "../header/n220_position/n220_750_charToPieceUSI.hpp"
+#include "../src/lib_toybox_base/char_to_piece_usi.hpp"
 #include "../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
 #include "../header/n600_book____/n600_500_book.hpp"
 #include "../header/n760_thread__/n760_400_monkiesPub.hpp"

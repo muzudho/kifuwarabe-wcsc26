@@ -1,5 +1,5 @@
 ﻿#include "../../header/n220_position/n220_400_evalList.hpp"
-#include "../../header/n220_position/n220_750_charToPieceUSI.hpp"
+#include "../../src/lib_toybox_base/char_to_piece_usi.hpp"
 #include "../../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
 #include "../../header/n520_evaluate/n520_700_evaluation09.hpp"
 

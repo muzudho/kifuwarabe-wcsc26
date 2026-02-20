@@ -241,7 +241,7 @@
     <ClInclude Include="header\n220_position\n220_640_utilAttack.hpp" />
     <ClInclude Include="header\n220_position\n220_660_utilMovePos.hpp" />
     <ClInclude Include="header\n220_position\n220_665_utilMoveStack.hpp" />
-    <ClInclude Include="header\n220_position\n220_750_charToPieceUSI.hpp" />
+    <ClInclude Include="src\lib_toybox_base\char_to_piece_usi.hpp" />
     <ClInclude Include="header\n220_position\n220_400_evalList.hpp" />
     <ClInclude Include="header\n374_genMove_\n374_780_MoveGenerator100.hpp" />
     <ClInclude Include="header\n640_searcher\n640_040_nodeKind.hpp" />

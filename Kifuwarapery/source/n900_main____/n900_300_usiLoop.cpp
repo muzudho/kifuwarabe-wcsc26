@@ -2,7 +2,7 @@
 #include "../../header/n165_movStack/n165_400_move.hpp"
 #include "../../header/n165_movStack/n165_600_convMove.hpp"
 #include "../../src/lib_toybox_medium/muz_position_medium_model.hpp"
-#include "../../header/n220_position/n220_750_charToPieceUSI.hpp"
+#include "../../src/lib_toybox_base/char_to_piece_usi.hpp"
 #include "../../header/n350_pieceTyp/n350_030_makePromoteMove.hpp"
 #include "../../header/n407_moveGen_/n407_800_moveGenerator200.hpp"
 #include "../../header/n407_moveGen_/n407_900_moveList.hpp"
@@ -10,8 +10,6 @@
 #include "../../header/n480_tt______/n480_300_tt.hpp"
 #include "../../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
 #include "../../header/n600_book____/n600_500_book.hpp"
-//#include "../../src/lib_gui/engine_option_collection.hpp"
-//#include "../../src/lib_gui/engine_option.hpp"
 #include "../../header/n720_usi_____/n720_260_usiOperation.hpp"
 #include "../../header/n720_usi_____/n720_300_benchmark.hpp"
 #include "../../header/n800_learn___/n800_500_learner.hpp"
@@ -19,9 +17,7 @@
 #include "..\..\header\n900_main____\n900_300_usiLoop.hpp"
 #include "../../src/lib_shogi/muz_shogi_model.hpp"
 
-
 #if !defined MINIMUL
-
 
 /// <summary>
 ///		<pre>

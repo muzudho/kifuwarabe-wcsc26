@@ -1,15 +1,15 @@
 ﻿#pragma once
 
-#include "../n105_100_color___/n105_100_100_color.hpp"
+#include "../../src/lib_toybox_base/color.hpp"
 #include "../../src/lib_toybox_base/square.hpp"
 #include "../n111_colorSq_/n111_500_ColorFileRank.h"
 #include "../../src/lib_toybox_base/piece_type.hpp"
 #include "../n113_piece___/n113_155_convPiece.hpp"
-#include "../n160_board___/n160_100_bitboard.hpp"
-#include "../n160_board___/n160_230_setMaskBb.hpp"
+#include "../../src/lib_bitboard/n160_100_bitboard.hpp"
+#include "../../src/lib_bitboard/n160_230_setMaskBb.hpp"
 #include "../n161_sqDistan/n161_500_squareDistance.hpp"
 #include "../n220_position/n220_640_utilAttack.hpp"
-#include "../n220_position/n220_750_charToPieceUSI.hpp"
+#include "../../src/lib_toybox_base/char_to_piece_usi.hpp"
 #include "../n520_evaluate/n520_150_kppIndexArray.hpp"
 #include "../n520_evaluate/n520_300_KPPBoardIndexStartToPiece.hpp"
 

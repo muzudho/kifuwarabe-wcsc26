@@ -2,14 +2,12 @@
 #include "../../header/n165_movStack/n165_400_move.hpp"
 #include "../../header/n165_movStack/n165_500_moveStack.hpp"
 #include "../../header/n165_movStack/n165_600_convMove.hpp"
-#include "../../header/n220_position/n220_750_charToPieceUSI.hpp"
+#include "../../src/lib_toybox_base/char_to_piece_usi.hpp"
 #include "../../header/n223_move____/n223_060_stats.hpp"
 #include "../../header/n223_move____/n223_500_flashlight.hpp"
-
 #include "../../header/n350_pieceTyp/n350_030_makePromoteMove.hpp"
 #include "../../header/n407_moveGen_/n407_900_moveList.hpp"
 #include "../../header/n440_movStack/n440_500_nextmoveEvent.hpp"
-
 #include "../../header/n450_movPhase/n450_100_mainSearch.hpp"
 #include "../../header/n450_movPhase/n450_110_phTacticalMoves0.hpp"
 #include "../../header/n450_movPhase/n450_120_phKillers.hpp"
@@ -28,10 +26,7 @@
 #include "../../header/n450_movPhase/n450_250_phQCaptures1.hpp"
 #include "../../header/n450_movPhase/n450_260_phStop.hpp"
 #include "../../header/n450_movPhase/n450_500_movePhaseArray.hpp"
-
-
 #include "../../header/n640_searcher/n640_440_splitedNode.hpp"	// 持ち合いになっているが .cpp だからいいかだぜ☆（＾ｑ＾）
-
 
 /// <summary>
 /// 履歴ヒューリスティクス☆ 

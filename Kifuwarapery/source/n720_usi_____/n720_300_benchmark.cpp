@@ -2,13 +2,12 @@
 #include <fstream>
 #include <sstream>
 #include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"
-#include "../../header/n220_position/n220_750_charToPieceUSI.hpp"
+#include "../../src/lib_toybox_base/char_to_piece_usi.hpp"
 #include "../../src/lib_toybox_medium/muz_position_medium_model.hpp"
 #include "../../header/n560_timeMgr_/n560_100_limitsDuringGo.hpp"
 #include "../../header/n720_usi_____/n720_260_usiOperation.hpp"
 #include "../../header/n720_usi_____/n720_300_benchmark.hpp"
 #include "../../src/concept_game_engine/muz_game_engine_storage_model.hpp"
-
 
 /// <summary>
 /// 今はベンチマークというより、PGO ビルドの自動化の為にある。

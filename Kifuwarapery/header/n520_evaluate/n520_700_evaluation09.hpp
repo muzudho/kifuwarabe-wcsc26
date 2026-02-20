@@ -1,11 +1,12 @@
 ﻿#pragma once
+
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../../src/lib_cpp/overload_enum_operators.hpp"
 #include "../../src/lib_toybox_medium/muz_position_medium_model.hpp"
 #include "../n111_colorSq_/n111_500_ColorFileRank.h"
 #include "../n119_500_sweetnes/n119_200_PieceSweetness.hpp"
 #include "../n119_500_sweetnes/n119_500_EvalSum.hpp"
-#include "../n220_position/n220_750_charToPieceUSI.hpp"
+#include "../../src/lib_toybox_base/char_to_piece_usi.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"
 
 
