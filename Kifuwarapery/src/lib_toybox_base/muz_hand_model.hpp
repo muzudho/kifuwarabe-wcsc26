@@ -6,6 +6,7 @@
 
 #include "n1_hand_piece.hpp"
 #include "../../src/lib_cpp/int.hpp"
+#include "../../src/lib_toybox_n1/muz_hand_n1_model.hpp"
 
 /// <summary>
 ///		<pre>
@@ -22,31 +23,16 @@
 ///		xxxxx11x xxxxxxxx xxxxxxxx xxxxxxxx  Rook
 ///		</pre>
 /// </summary>
-class MuzHandModel
+class MuzHandModel : public MuzHandN1Model
 {
 
 
 public:
 
 
-	/// <summary>
-	/// 
-	/// </summary>
-	MuzHandModel() {}
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="v"></param>
-	explicit MuzHandModel(u32 v) : m_value_(v) {}
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <returns></returns>
-	u32 Value() const;
+	// ========================================
+	// その他のメソッド
+	// ========================================
 
 
 	/// <summary>
@@ -106,14 +92,6 @@ public:
 	/// <returns></returns>
 	static u32 ExceptPawnExists(const MuzHandModel& hand);
 
-
-	/// <summary>
-	/// num が int だけどまあ良いか。
-	/// </summary>
-	/// <param name="num"></param>
-	/// <param name="handPiece"></param>
-	void OrEqual(const int num, const HandPiece handPiece);
-
 	void PlusOne(const HandPiece handPiece);
 
 	void MinusOne(const HandPiece handPiece);
@@ -136,13 +114,6 @@ public:
 private:
 
 
-	static const int m_HPawnShiftBits   =  0;
-	static const int m_HLanceShiftBits  =  6;
-	static const int m_HKnightShiftBits = 10;
-	static const int m_HSilverShiftBits = 14;
-	static const int m_HGoldShiftBits   = 18;
-	static const int m_HBishopShiftBits = 22;
-	static const int m_HRookShiftBits   = 25;
 	static const u32 m_HPawnMask   = 0x1f << m_HPawnShiftBits;
 	static const u32 m_HLanceMask  = 0x7  << m_HLanceShiftBits;
 	static const u32 m_HKnightMask = 0x7  << m_HKnightShiftBits;
@@ -153,7 +124,6 @@ private:
 	static const u32 m_HandPieceExceptPawnMask = (m_HLanceMask  | m_HKnightMask |
 												m_HSilverMask | m_HGoldMask   |
 												m_HBishopMask | m_HRookMask  );
-	static const int m_HandPieceShiftBits[HandPieceNum];
 	static const u32 m_HandPieceMask[HandPieceNum];
 
 
@@ -168,9 +138,4 @@ private:
 								   (m_HGoldMask   + (1 << m_HGoldShiftBits  )) | 
 								   (m_HBishopMask + (1 << m_HBishopShiftBits)) | 
 								   (m_HRookMask   + (1 << m_HRookShiftBits  )));
-
-	/// <summary>
-	/// 
-	/// </summary>
-	u32 m_value_;
 };

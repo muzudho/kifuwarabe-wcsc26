@@ -285,13 +285,7 @@
     <ClInclude Include="header\n220_position\n220_350_stateInfo.hpp">
       <Filter>header\n220_position</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_toybox_base\color.hpp">
-      <Filter>header\n105_color___</Filter>
-    </ClInclude>
     <ClInclude Include="src\lib_toybox_base\square.hpp">
-      <Filter>header\n110_square__</Filter>
-    </ClInclude>
-    <ClInclude Include="src\lib_toybox_base\file.hpp">
       <Filter>header\n110_square__</Filter>
     </ClInclude>
     <ClInclude Include="src\lib_toybox_base\rank.hpp">
@@ -304,9 +298,6 @@
       <Filter>header\n110_square__</Filter>
     </ClInclude>
     <ClInclude Include="src\lib_toybox_base\piece.hpp">
-      <Filter>header\n113_piece___</Filter>
-    </ClInclude>
-    <ClInclude Include="src\lib_toybox_base\hand_piece.hpp">
       <Filter>header\n113_piece___</Filter>
     </ClInclude>
     <ClInclude Include="header\n111_colorSq_\n111_500_ColorFileRank.h">
@@ -341,12 +332,6 @@
     </ClInclude>
     <ClInclude Include="header\n223_move____\n223_060_stats.hpp">
       <Filter>header\n223_move____</Filter>
-    </ClInclude>
-    <ClInclude Include="src\lib_toybox_base\hand.hpp">
-      <Filter>header\n113_piece___</Filter>
-    </ClInclude>
-    <ClInclude Include="src\lib_toybox_base\char_to_piece_usi.hpp">
-      <Filter>header\n220_position</Filter>
     </ClInclude>
     <ClInclude Include="src\lib_toybox_medium\muz_position_medium_model.hpp">
       <Filter>header\n220_position</Filter>
@@ -1181,7 +1166,7 @@
     <ClCompile Include="source\n113_piece___\n113_200_handPiece.cpp">
       <Filter>source\n113_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="source\n113_piece___\n113_500_hand.cpp">
+    <ClCompile Include="src\lib_toybox_base\muz_hand_model.cpp">
       <Filter>source\n113_piece___</Filter>
     </ClCompile>
     <ClCompile Include="source\n220_position\n220_750_charToPieceUSI.cpp">
