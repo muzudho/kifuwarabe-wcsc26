@@ -297,7 +297,7 @@
     <ClInclude Include="header\n105_120_square__\n105_120_200_rank.hpp">
       <Filter>header\n110_square__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n105_120_square__\n105_120_250_squareDelta.hpp">
+    <ClInclude Include="src\lib_toybox_base\square_delta.hpp">
       <Filter>header\n110_square__</Filter>
     </ClInclude>
     <ClInclude Include="header\n105_120_square__\n105_120_300_direction.hpp">

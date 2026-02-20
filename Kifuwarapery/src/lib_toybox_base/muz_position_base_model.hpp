@@ -18,6 +18,37 @@ protected:
 
 
 	// ========================================
+	// フィールド
+	// ========================================
+
+
+	/// <summary>
+	/// 何手目か。時間管理に使用する
+	/// </summary>
+	Ply m_gamePly_;
+
+	/// <summary>
+	/// 手番
+	/// </summary>
+	Color m_turn_;
+
+	/// <summary>
+	/// 各マスの駒
+	/// </summary>
+	Piece m_piece_[SquareNum];
+
+	/// <summary>
+	/// 先後対局者別の手駒
+	/// </summary>
+	Hand m_hand_[g_COLOR_NUM];
+
+	/// <summary>
+	/// ゲームエンジン倉庫
+	/// </summary>
+	MuzGameEngineStorageModel* m_pGameEngineStore_;
+
+
+	// ========================================
 	// アクセッサ
 	// ========================================
 
@@ -86,43 +117,12 @@ protected:
 
 
 	// ========================================
-	// フィールド
-	// ========================================
-
-
-	/// <summary>
-	/// 何手目か。時間管理に使用する
-	/// </summary>
-	Ply m_gamePly_;
-
-	/// <summary>
-	/// 手番
-	/// </summary>
-	Color m_turn_;
-
-	/// <summary>
-	/// 各マスの駒
-	/// </summary>
-	Piece m_piece_[SquareNum];
-
-	/// <summary>
-	/// 先後対局者別の手駒
-	/// </summary>
-	Hand m_hand_[g_COLOR_NUM];
-
-	/// <summary>
-	/// ゲームエンジン倉庫
-	/// </summary>
-	MuzGameEngineStorageModel* m_pGameEngineStore_;
-
-
-	// ========================================
 	// 主要メソッド
 	// ========================================
 
 
 	/// <summary>
-	/// 局面セット
+	/// 局面をセット
 	/// </summary>
 	/// <param name="sfen"></param>
 	void Set(const std::string& sfen);

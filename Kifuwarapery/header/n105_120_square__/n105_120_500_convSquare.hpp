@@ -2,11 +2,11 @@
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../n105_100_color___/n105_100_500_convColor.hpp"
 #include "../../src/lib_toybox_base/square.hpp"
+#include "../../src/lib_toybox_base/square_delta.hpp"
 #include "../n105_120_square__/n105_120_150_file.hpp"
 #include "../n105_120_square__/n105_120_155_convFile.hpp"
 #include "../n105_120_square__/n105_120_200_rank.hpp"
 #include "../n105_120_square__/n105_120_205_convRank.hpp"
-#include "../n105_120_square__/n105_120_250_squareDelta.hpp"
 #include "../n105_120_square__/n105_120_300_direction.hpp"
 
 

@@ -1,10 +1,10 @@
 ﻿#pragma once
 
 #include <cstdlib>	// abs()
-#include "../n105_100_color___/n105_100_100_color.hpp"
+#include "../../src/lib_toybox_base/color.hpp"
 #include "../../src/lib_toybox_base/square.hpp"
-#include "../n105_120_square__/n105_120_250_squareDelta.hpp"
-#include "../n160_board___/n160_150_rookAttackBb.hpp"
+#include "../../src/lib_toybox_base/square_delta.hpp"
+#include "../../src/lib_bitboard/init150_rookAttackBb.hpp"
 #include "../n161_sqDistan/n161_500_squareDistance.hpp"
 #include "../n162_bonaDir_/n162_070_bonaDirAbstract.hpp"
 #include "../../src/lib_toybox_medium/muz_position_medium_model.hpp"
