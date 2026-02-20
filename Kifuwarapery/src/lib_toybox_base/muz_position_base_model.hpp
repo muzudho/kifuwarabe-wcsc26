@@ -4,15 +4,24 @@
 
 #pragma once
 
-#include "../../src/concept_game_engine/muz_game_engine_storage_model.hpp"
-#include "char_to_piece_usi.hpp"
-#include "color.hpp"
-#include "ply.hpp"
-#include "piece.hpp"
-#include "hand.hpp"
-#include "square.hpp"
+#include "../../src/lib_cpp/int.hpp"
+#include "../lib_toybox_v1/muz_position_n1_model.hpp"
+#include "n1_hand_piece.hpp"
+#include "n1_piece_type.hpp"
+#include "n1_square_delta.hpp"
+#include "n2_char_to_piece_usi.hpp"
+#include "n2_hand_ope.hpp"
+#include "n2_piece_ope.hpp"
+#include "n3_hand_piece_ope.hpp"
+#include "n3_square_ope.hpp"
+#include <iostream>
+#include <map>
+#include <optional>
+#include <ranges>         // C++20 ranges
+#include <string>
+#include <string_view>
 
-class MuzPositionBaseModel
+class MuzPositionBaseModel : public MuzPositionN1Model
 {
 
 
@@ -23,21 +32,6 @@ protected:
 	// フィールド
 	// ========================================
 
-
-	/// <summary>
-	/// 何手目か。時間管理に使用する
-	/// </summary>
-	Ply m_gamePly_;
-
-	/// <summary>
-	/// 手番
-	/// </summary>
-	Color m_turn_;
-
-	/// <summary>
-	/// 各マスの駒
-	/// </summary>
-	Piece m_piece_[SquareNum];
 
 	/// <summary>
 	/// 先後対局者別の手駒
@@ -55,34 +49,7 @@ protected:
 	// ========================================
 
 
-	/// <summary>
-	/// 次の手番
-	/// </summary>
-	/// <returns></returns>
-	Color GetTurn() const;
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <returns></returns>
-	Ply GetGamePly() const;
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="ply"></param>
-	void SetStartPosPly(const Ply ply);
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="sq"></param>
-	/// <returns></returns>
-	Piece GetPiece(const Square sq) const;
-
+	void SetPiece(const Piece piece, const Square sq);
 
 	/// <summary>
 	/// 持ち駒

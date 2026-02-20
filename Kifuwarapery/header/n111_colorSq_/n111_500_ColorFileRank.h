@@ -2,7 +2,7 @@
 
 #include "../../src/lib_toybox_base/color.hpp"
 #include "../../src/lib_toybox_base/file.hpp"
-#include "../n105_120_square__/n105_120_200_rank.hpp"
+#include "../../src/lib_toybox_base/rank.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────

@@ -1,6 +1,5 @@
 ﻿#include "../../src/lib_toybox_base/square.hpp"
-#include "../../header/n105_120_square__/n105_120_200_rank.hpp"
-
+#include "../../src/lib_toybox_base/rank.hpp"
 
 /// <summary>
 /// 

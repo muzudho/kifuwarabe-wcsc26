@@ -4,8 +4,8 @@
 
 #pragma once
 
+#include "n1_hand_piece.hpp"
 #include "../../src/lib_cpp/int.hpp"
-#include "hand_piece.hpp"
 
 /// <summary>
 ///		<pre>

@@ -799,26 +799,6 @@ private:
 
 
 	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="piece"></param>
-	/// <param name="sq"></param>
-	void SetPiece(const Piece piece, const Square sq);
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <param name="hp"></param>
-	/// <param name="c"></param>
-	/// <param name="num"></param>
-	void SetHand(const HandPiece hp, const Color c, const int num);
-
-
-	void SetHand(const Piece piece, const int num);
-
-
-	/// <summary>
 	/// turn() 側が
 	/// pin されて(して)いる駒の Bitboard を返す。
 	/// BetweenIsUs == true  : 間の駒が自駒。

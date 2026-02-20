@@ -2552,50 +2552,6 @@ bool Position::IsMoveGivesCheck(const Move move, const CheckInfo& ci) const {
 
 
 /// <summary>
-/// 
-/// </summary>
-/// <param name="piece"></param>
-/// <param name="sq"></param>
-void Position::SetPiece(const Piece piece, const Square sq)
-{
-	const Color c = ConvPiece::TO_COLOR10(piece);
-	const PieceType pt = ConvPiece::TO_PIECE_TYPE10(piece);
-
-	this->m_piece_[sq] = piece;
-
-	g_setMaskBb.AddBit(&this->m_BB_ByPiecetype_[pt], sq);
-	g_setMaskBb.AddBit(&this->m_BB_ByColor_[c], sq);
-	g_setMaskBb.AddBit(&this->m_BB_ByPiecetype_[PieceType::N00_Occupied], sq);
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="hp"></param>
-/// <param name="c"></param>
-/// <param name="num"></param>
-void Position::SetHand(const HandPiece hp, const Color c, const int num)
-{
-	this->m_hand_[c].OrEqual(num, hp);
-}
-
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="piece"></param>
-/// <param name="num"></param>
-void Position::SetHand(const Piece piece, const int num)
-{
-	const Color c = ConvPiece::TO_COLOR10(piece);
-	const PieceType pt = ConvPiece::TO_PIECE_TYPE10(piece);
-	const HandPiece hp = ConvHandPiece::FromPieceType(pt);
-	this->SetHand(hp, c, num);
-}
-
-
-/// <summary>
 /// 先手、後手に関わらず、sq へ移動可能な Bitboard を返す。
 /// </summary>
 /// <param name="sq"></param>

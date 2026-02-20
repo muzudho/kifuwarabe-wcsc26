@@ -1,16 +1,16 @@
-﻿//
-// 📄 マス番号の操作
+//
+// 📄 マスの操作
+// 
+//      - 循環参照を避けるため、マスの操作はここで定義する。
 //
 
 #pragma once
 
-#include "../../src/lib_toybox_base/color.hpp"
-#include "../../src/lib_toybox_base/square.hpp"
-#include "../../src/lib_toybox_base/square_delta.hpp"
-#include "../../src/lib_toybox_base/file.hpp"
-#include "../n105_120_square__/n105_120_155_convFile.hpp"
-#include "../n105_120_square__/n105_120_200_rank.hpp"
-#include "../n105_120_square__/n105_120_205_convRank.hpp"
+#include "n1_color.hpp"
+#include "n2_file_ope.hpp"
+#include "n2_rank_ope.hpp"
+#include "n2_squares.hpp"
+#include <string>
 
 /// <summary>
 /// マス番号の操作
@@ -117,7 +117,7 @@ public:
     /// <param name="s"></param>
     /// <returns></returns>
     static inline Rank TO_RANK10(const Square s) {
-        assert(ConvSquare::CONTAINS_OF10(s));
+        //assert(ConvSquare::CONTAINS_OF10(s));
         // 計算せず、テーブル引き☆（＾ｑ＾）
         return g_squareToRank[s];
     }
@@ -129,7 +129,7 @@ public:
     /// <param name="s"></param>
     /// <returns></returns>
     static inline File TO_FILE10(const Square s) {
-        assert(ConvSquare::CONTAINS_OF10(s));
+        //assert(ConvSquare::CONTAINS_OF10(s));
         return g_squareToFile[s];
     }
 
@@ -233,14 +233,28 @@ public:
     }
 };
 
+template<typename E>
+constexpr auto underlying(E e) noexcept -> std::underlying_type_t<E> {
+    return static_cast<std::underlying_type_t<E>>(e);
+}
 
-/// <summary>
-/// 
-/// </summary>
-/// <param name="lhs"></param>
-/// <param name="rhs"></param>
-/// <returns></returns>
-static inline Square operator + (const Square lhs, const SquareDelta rhs) { return lhs + static_cast<Square>(rhs); }
-static inline void operator += (Square& lhs, const SquareDelta rhs) { lhs = lhs + static_cast<Square>(rhs); }
-static inline Square operator - (const Square lhs, const SquareDelta rhs) { return lhs - static_cast<Square>(rhs); }
-static inline void operator -= (Square& lhs, const SquareDelta rhs) { lhs = lhs - static_cast<Square>(rhs); }
+// sq + delta
+constexpr Square operator+(Square sq, SquareDelta delta) noexcept {
+    return static_cast<Square>(underlying(sq) + underlying(delta));
+}
+
+// sq += delta
+constexpr Square& operator+=(Square& sq, SquareDelta delta) noexcept {
+    sq = static_cast<Square>(underlying(sq) + underlying(delta));
+    return sq;
+}
+
+// sq - delta
+constexpr Square operator-(Square sq, SquareDelta delta) noexcept {
+    return static_cast<Square>(underlying(sq) - underlying(delta));
+}
+
+// sq -= delta
+constexpr Square& operator-=(Square& sq, SquareDelta delta) noexcept {
+    sq = static_cast<Square>(underlying(sq) - underlying(delta));
+    return sq;

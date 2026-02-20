@@ -3,7 +3,7 @@
 #include "../n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../../src/lib_toybox_base/color.hpp"
 #include "../../src/lib_toybox_base/square.hpp"
-#include "../n105_120_square__/n105_120_200_rank.hpp"
+#include "../../src/lib_toybox_base/rank.hpp"
 #include "../../src/lib_toybox_base/square_delta.hpp"
 #include "../../src/lib_toybox_base/piece_type.hpp"
 #include "../../src/lib_toybox_base/piece.hpp"
@@ -19,7 +19,6 @@
 #include "../n372_piece___/n372_500_pieceArray.hpp"
 #include "n374_040_pieceMoveEvent.hpp"
 #include "n374_250_bishopRookMovesGenerator.hpp"
-
 
 /// <summary>
 /// 歩や香の指し手生成など、駒別の指し手生成を行う。

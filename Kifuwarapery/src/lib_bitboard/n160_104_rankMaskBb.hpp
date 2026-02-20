@@ -1,8 +1,8 @@
 ﻿#pragma once
-#include "../n105_120_square__/n105_120_200_rank.hpp"
+
+#include "../../src/lib_toybox_base/rank.hpp"
 #include "../n105_120_square__/n105_120_500_convSquare.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
-
 
 //────────────────────────────────────────────────────────────────────────────────
 // ビットボード　＞　段のマスク

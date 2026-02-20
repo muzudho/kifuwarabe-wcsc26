@@ -294,7 +294,7 @@
     <ClInclude Include="src\lib_toybox_base\file.hpp">
       <Filter>header\n110_square__</Filter>
     </ClInclude>
-    <ClInclude Include="header\n105_120_square__\n105_120_200_rank.hpp">
+    <ClInclude Include="src\lib_toybox_base\rank.hpp">
       <Filter>header\n110_square__</Filter>
     </ClInclude>
     <ClInclude Include="src\lib_toybox_base\square_delta.hpp">
@@ -833,24 +833,6 @@
     </ClInclude>
     <ClInclude Include="header\n165_movStack\n165_600_convMove.hpp">
       <Filter>header\n165_movStack</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n113_piece___\n113_105_convPieceType.hpp">
-      <Filter>header\n113_piece___</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n105_120_square__\n105_120_155_convFile.hpp">
-      <Filter>header\n110_square__</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n105_120_square__\n105_120_205_convRank.hpp">
-      <Filter>header\n110_square__</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n105_120_square__\n105_120_500_convSquare.hpp">
-      <Filter>header\n110_square__</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n113_piece___\n113_205_convHandPiece.hpp">
-      <Filter>header\n113_piece___</Filter>
-    </ClInclude>
-    <ClInclude Include="header\n113_piece___\n113_155_convPiece.hpp">
-      <Filter>header\n113_piece___</Filter>
     </ClInclude>
     <ClInclude Include="header\n119_500_sweetnes\n119_090_Sweetness.hpp">
       <Filter>header\n119_score___</Filter>

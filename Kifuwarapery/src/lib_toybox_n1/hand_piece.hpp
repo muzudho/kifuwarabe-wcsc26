@@ -4,8 +4,6 @@
 
 #pragma once
 
-#include "piece_type.hpp"
-
 /// <summary>
 /// 持ち駒を表すときに使用する。
 /// todo: HGold を HRook の後ろに持っていき、PieceType との変換を簡単に出来るようにする。
@@ -52,8 +50,3 @@ enum HandPiece
 	/// </summary>
 	HandPieceNum
 };
-
-/// <summary>
-/// 
-/// </summary>
-extern const HandPiece g_PIECETYPE_TO_HANDPIECE_TABLE[g_PIECETYPE_NUM];

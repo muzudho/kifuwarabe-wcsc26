@@ -1,6 +1,7 @@
 ﻿#include <iostream>
+
 #include "../../src/lib_toybox_base/file.hpp"
-#include "../../header/n105_120_square__/n105_120_200_rank.hpp"
+#include "../../src/lib_toybox_base/rank.hpp"
 #include "../../header/n105_120_square__/n105_120_500_convSquare.hpp"
 #include "n160_230_setMaskBb.hpp"
 #include "n160_400_printBb.hpp"

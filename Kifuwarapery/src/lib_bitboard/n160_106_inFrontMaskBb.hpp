@@ -1,7 +1,8 @@
 ﻿#pragma once
+
 #include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../../header/n105_100_color___/n105_100_500_convColor.hpp"
-#include "../../header/n105_120_square__/n105_120_200_rank.hpp"
+#include "../../src/lib_toybox_base/rank.hpp"
 #include "../../src/lib_bitboard/n160_100_bitboard.hpp"
 #include "../../src/lib_bitboard/n160_104_RankMaskBb.hpp"
 

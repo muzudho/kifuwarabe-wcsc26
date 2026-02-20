@@ -4,7 +4,10 @@
 
 #pragma once
 
-#include "../../src/lib_cpp/overload_enum_operators.hpp"
+/// <summary>
+/// pc が遠隔駒であるかを調べるのに使います。
+/// </summary>
+static const u32 g_CONV_PIECE_TYPE_SLIDER_VAL = 0x60646064;
 
 /// <summary>
 ///		<pre>

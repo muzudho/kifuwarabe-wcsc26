@@ -1,10 +1,10 @@
 ﻿//
-// 列
+// 筋
+// 
+//		- 列とも。
 //
 
 #pragma once
-
-#include "../../src/lib_toybox_base/square.hpp"
 
 /// <summary>
 /// 筋の定数
@@ -29,8 +29,3 @@ enum File {
 
 	FileNoLeftNum = FileD
 };
-
-/// <summary>
-/// 
-/// </summary>
-extern const File g_squareToFile[SquareNum];

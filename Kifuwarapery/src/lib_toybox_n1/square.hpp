@@ -4,8 +4,6 @@
 
 #pragma once
 
-#include "../../src/lib_cpp/overload_enum_operators.hpp"
-
 /// <summary>
 ///		<pre>
 /// マス番号。
