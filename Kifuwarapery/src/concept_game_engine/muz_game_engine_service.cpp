@@ -276,7 +276,7 @@ void MuzGameEngineService::main_loop_50a(int argc, char* argv[])
     GameStats gameStats{};	// こう書くと関数呼出しと思われてエラー： GameStats gameStats();
     Position pos(g_SFEN_STARTPOS_STR, m_pGameEngineStore.m_pub.GetFirstCaptain(), &m_pGameEngineStore);
 
-    std::string cmd;
+    std::string line;
     std::string token;
 
 #if defined MPI_LEARN
@@ -288,21 +288,22 @@ void MuzGameEngineService::main_loop_50a(int argc, char* argv[])
     }
 #endif
 
-    // コマンドライン引数を結合して１つの文字列として扱う。
+    // コマンドライン引数（があれば）を結合して１つの文字列として扱う。
     for (int i = 1; i < argc; ++i)
     {
-        cmd += std::string(argv[i]) + " ";
+        // 末尾に半角空白が残るけど、まあいいか。
+        line += std::string(argv[i]) + " ";
     }
 
     do {
         if (argc == 1)
         {
-            // コマンドライン引数がないときは、標準入力からコマンドを読み取る。
-            std::getline(std::cin, cmd);
+            // コマンドライン引数がないときは、標準入力からコマンドを１行読み取る。改行は読み取らない。
+            std::getline(std::cin, line);
         }
 
         // コマンドを空白で区切って、最初のトークンを取り出す。
-        std::istringstream ssCmd(cmd);
+        std::istringstream ssCmd(line);
 
         // 最初のトークンを読み取る。
         ssCmd >> std::skipws >> token;
@@ -410,7 +411,7 @@ void MuzGameEngineService::main_loop_50a(int argc, char* argv[])
 #endif
 
         // 上記以外のコマンドは、"unknown command: " と表示する。
-        else { SYNCCOUT << "unknown command: " << cmd << SYNCENDL; }
+        else { SYNCCOUT << "unknown command: " << line << SYNCENDL; }
 
         // コマンドライン引数があるときは、ループせずに１回だけコマンドを処理する。
     } while (token != "quit" && argc == 1);

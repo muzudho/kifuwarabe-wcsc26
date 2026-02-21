@@ -1,7 +1,7 @@
 #pragma once
 
-// MuzPositionN2Model では使ってないヘッダーファイルでも、他のクラスが MuzPositionN2Model をインクルードすれば lib_toybox_n2 のヘッダーファイルが全部付いてくるようにします。
-#include "../lib_toybox_n1/muz_position_n1_model.hpp"
+// MuzPositionN2Model では使ってないヘッダーファイルでも、他のクラスが MuzPositionN2Model をインクルードすれば lib_5a_toybox_n2 のヘッダーファイルが全部付いてくるようにします。
+#include "../lib_5a_toybox_n1/muz_position_n1_model.hpp"
 #include "char_to_piece_usi.hpp"
 #include "file_ope.hpp"
 #include "hand_piece_ope.hpp"
@@ -24,7 +24,7 @@ protected:
 	/// <summary>
 	/// 先後対局者別の手駒
 	/// </summary>
-	MuzHandN1Model m_hand_models_[g_COLOR_NUM];
+	MuzHandStandModel m_hand_stands_[g_COLOR_NUM];
 
 
 	// ========================================
@@ -38,13 +38,13 @@ protected:
 	/// <typeparam name="CLR"></typeparam>
 	/// <returns></returns>
 	template<Color CLR>
-	MuzHandN1Model GetHand() const
+	MuzHandStandModel GetHandStand() const
 	{
-		return this->m_hand_models_[CLR];
+		return this->m_hand_stands_[CLR];
 	}
-	MuzHandN1Model GetHand(const Color c) const;
+	MuzHandStandModel GetHandStand(const Color c) const;
 
-	void SetHand(const Piece piece, const int num);
+	void SetHandPiece(const Piece piece, const int num);
 
-	void SetHand(const HandPiece hp, const Color c, const int num);
+	void SetHandPiece(const Color c, const HandPiece hp, const int num);
 };

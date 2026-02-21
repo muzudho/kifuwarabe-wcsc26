@@ -1,12 +1,14 @@
 #pragma once
 
-// MuzHandN1Model では使ってないが、他のクラスが MuzHandN1Model をインクルードすれば lib_toybox_n1 のクラスが全部付いてくるようにする
-#include "../lib_cpp/int.hpp"
+#include "../lib_1a_cpp/int.hpp"
 #include "hand_piece.hpp"
-#include "square.hpp"
-#include "square_delta.hpp"
 
-class MuzHandN1Model
+/// <summary>
+///		<pre>
+/// 駒台（持ち駒）
+///		</pre>
+/// </summary>
+class MuzHandStandModel
 {
 
 
@@ -21,14 +23,14 @@ public:
 	/// <summary>
 	/// 
 	/// </summary>
-	MuzHandN1Model() {}
+	MuzHandStandModel() {}
 
 
 	/// <summary>
 	/// 
 	/// </summary>
 	/// <param name="v"></param>
-	explicit MuzHandN1Model(u32 v) : m_value_(v) {}
+	explicit MuzHandStandModel(u32 v) : m_value_(v) {}
 
 
 	// ========================================

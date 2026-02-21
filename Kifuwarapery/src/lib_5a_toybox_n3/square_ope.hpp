@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "../lib_toybox_n2/muz_position_n2_model.hpp"
+#include "../lib_5a_toybox_n2/muz_position_n2_model.hpp"
 #include <string>
 
 /// <summary>

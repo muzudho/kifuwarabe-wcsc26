@@ -33,6 +33,8 @@ public:
 
 	/// <summary>
 	///	ゲームエンジン倉庫☆（＾ｑ＾）
+	///
+	///    - ゲームエンジンが１つだけ持つ、局面の探索状態を保存するクラス☆（＾ｑ＾）
 	/// </summary>
 	std::unique_ptr<MuzGameEngineStorageModel> m_pGameEngineStore;
 
@@ -44,5 +46,5 @@ public:
 
 	void initialize_10a();
 	void main_loop_50a(int argc, char* argv[]);
-	void finalize_90000a();
+	void finalize_90a();
 };

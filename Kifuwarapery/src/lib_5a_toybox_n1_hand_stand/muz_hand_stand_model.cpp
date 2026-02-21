@@ -1,4 +1,4 @@
-#include "muz_hand_n1_model.hpp"
+#include "muz_hand_stand_model.hpp"
 
 
 // ========================================
@@ -9,7 +9,7 @@
 /// <summary>
 /// 
 /// </summary>
-const int MuzHandN1Model::m_HandPieceShiftBits[HandPieceNum] = {
+const int MuzHandStandModel::m_HandPieceShiftBits[HandPieceNum] = {
 	m_HPawnShiftBits,
 	m_HLanceShiftBits,
 	m_HKnightShiftBits,
@@ -29,7 +29,7 @@ const int MuzHandN1Model::m_HandPieceShiftBits[HandPieceNum] = {
 /// 
 /// </summary>
 /// <returns></returns>
-u32 MuzHandN1Model::Value() const
+u32 MuzHandStandModel::Value() const
 {
 	return this->m_value_;
 }
@@ -45,7 +45,7 @@ u32 MuzHandN1Model::Value() const
 /// </summary>
 /// <param name="num"></param>
 /// <param name="handPiece"></param>
-void MuzHandN1Model::OrEqual(const int num, const HandPiece handPiece)
+void MuzHandStandModel::OrEqual(const int num, const HandPiece handPiece)
 {
 	m_value_ |= num << m_HandPieceShiftBits[handPiece];
 }
