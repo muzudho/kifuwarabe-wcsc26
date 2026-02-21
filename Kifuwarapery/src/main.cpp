@@ -41,7 +41,7 @@
 	{
 		MuzGameEngineService gameEngine;
 		gameEngine.initialize_10a();
-		gameEngine.body_50a(argc, argv);
+		gameEngine.main_loop_50a(argc, argv);
 		gameEngine.finalize_90000a();
 	}
 

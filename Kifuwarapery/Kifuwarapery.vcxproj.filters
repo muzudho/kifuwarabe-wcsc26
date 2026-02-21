@@ -1035,7 +1035,7 @@
     <ClInclude Include="src\concept_game_engine\muz_game_engine_storage_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\muz_game_engine_service.hpp">
+    <ClInclude Include="src\concept_game_engine\muz_game_engine_service.hpp">
       <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="src\lib_toybox_base\muz_position_base_model.hpp">
@@ -1745,7 +1745,7 @@
     <ClCompile Include="src\lib_gui\muz_engine_settings_initialize_service.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\muz_game_engine_service.cpp">
+    <ClCompile Include="src\concept_game_engine\muz_game_engine_service.cpp">
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="src\concept_game_engine\muz_game_engine_storage_model.cpp">
