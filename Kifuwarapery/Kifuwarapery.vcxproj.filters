@@ -249,7 +249,7 @@
     <ClInclude Include="targetver.h">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_cpp\overload_enum_operators.hpp">
+    <ClInclude Include="src\lib_1a_cpp\overload_enum_operators.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
     <ClInclude Include="header\n080_100_sysWorld\n080_100_500_common.hpp">
@@ -321,7 +321,7 @@
     <ClInclude Include="header\n223_move____\n223_060_stats.hpp">
       <Filter>header\n223_move____</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_toybox_medium\muz_position_medium_model.hpp">
+    <ClInclude Include="src\lib_5a_toybox_medium\muz_position_medium_model.hpp">
       <Filter>header\n220_position</Filter>
     </ClInclude>
     <ClInclude Include="header\n220_position\n220_640_utilAttack.hpp">
@@ -945,91 +945,91 @@
     <ClInclude Include="header\n760_thread__\n760_400_monkiesPub.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_bitboard\n160_108_slideBits.hpp">
+    <ClInclude Include="src\lib_5a_bitboard\n160_108_slideBits.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_bitboard\n160_100_bitboard.hpp">
+    <ClInclude Include="src\lib_5a_bitboard\n160_100_bitboard.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_bitboard\init110_silverAttackBb.hpp">
+    <ClInclude Include="src\lib_5a_bitboard\init110_silverAttackBb.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_bitboard\init120_bishopAttackBb.hpp">
+    <ClInclude Include="src\lib_5a_bitboard\init120_bishopAttackBb.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_bitboard\init130_lanceAttackBb.hpp">
+    <ClInclude Include="src\lib_5a_bitboard\init130_lanceAttackBb.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_bitboard\init140_goldAttackBb.hpp">
+    <ClInclude Include="src\lib_5a_bitboard\init140_goldAttackBb.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_bitboard\init150_rookAttackBb.hpp">
+    <ClInclude Include="src\lib_5a_bitboard\init150_rookAttackBb.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_bitboard\n160_170_goldAndSilverAttackBb.hpp">
+    <ClInclude Include="src\lib_5a_bitboard\n160_170_goldAndSilverAttackBb.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_bitboard\init180_knightAttackBb.hpp">
+    <ClInclude Include="src\lib_5a_bitboard\init180_knightAttackBb.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_bitboard\init190_pawnAttackBb.hpp">
+    <ClInclude Include="src\lib_5a_bitboard\init190_pawnAttackBb.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_bitboard\n160_200_horseAttackBb.hpp">
+    <ClInclude Include="src\lib_5a_bitboard\n160_200_horseAttackBb.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_bitboard\n160_210_dragonAttackBb.hpp">
+    <ClInclude Include="src\lib_5a_bitboard\n160_210_dragonAttackBb.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_bitboard\n160_220_queenAttackBb.hpp">
+    <ClInclude Include="src\lib_5a_bitboard\n160_220_queenAttackBb.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_bitboard\n160_230_setMaskBb.hpp">
+    <ClInclude Include="src\lib_5a_bitboard\n160_230_setMaskBb.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_bitboard\n160_240_betweenBb.hpp">
+    <ClInclude Include="src\lib_5a_bitboard\n160_240_betweenBb.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_bitboard\n160_400_printBb.hpp">
+    <ClInclude Include="src\lib_5a_bitboard\n160_400_printBb.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_bitboard\init160_kingAttackBb.hpp">
+    <ClInclude Include="src\lib_5a_bitboard\init160_kingAttackBb.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_bitboard\n160_102_fileMaskBb.hpp">
+    <ClInclude Include="src\lib_5a_bitboard\n160_102_fileMaskBb.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_bitboard\n160_104_rankMaskBb.hpp">
+    <ClInclude Include="src\lib_5a_bitboard\n160_104_rankMaskBb.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_bitboard\n160_106_inFrontMaskBb.hpp">
+    <ClInclude Include="src\lib_5a_bitboard\n160_106_inFrontMaskBb.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_bitboard\n160_600_bitboardAll.hpp">
+    <ClInclude Include="src\lib_5a_bitboard\n160_600_bitboardAll.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_gui\muz_engine_option_textbox_model.hpp">
+    <ClInclude Include="src\lib_5a_gui\muz_engine_option_textbox_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_gui\muz_engine_option_spinbox_model.hpp">
+    <ClInclude Include="src\lib_5a_gui\muz_engine_option_spinbox_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_gui\muz_engine_option_checkbox_model.hpp">
+    <ClInclude Include="src\lib_5a_gui\muz_engine_option_checkbox_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_gui\muz_engine_option_button_model.hpp">
+    <ClInclude Include="src\lib_5a_gui\muz_engine_option_button_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_gui\muz_engine_option_abstract_model.hpp">
+    <ClInclude Include="src\lib_5a_gui\muz_engine_option_abstract_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_gui\muz_engine_settings_model.hpp">
+    <ClInclude Include="src\lib_5a_gui\muz_engine_settings_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_gui\muz_engine_settings_initialize_service.hpp">
+    <ClInclude Include="src\lib_5a_gui\muz_engine_settings_initialize_service.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_shogi\muz_shogi_model.hpp">
+    <ClInclude Include="src\lib_5a_shogi\muz_shogi_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="src\concept_game_engine\muz_game_engine_storage_model.hpp">
@@ -1038,43 +1038,43 @@
     <ClInclude Include="src\concept_game_engine\muz_game_engine_service.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_toybox_base\muz_position_base_model.hpp">
+    <ClInclude Include="src\lib_5a_toybox_base\muz_position_base_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_cpp\int.hpp">
+    <ClInclude Include="src\lib_1a_cpp\int.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_toybox_base\muz_hand_model.hpp">
+    <ClInclude Include="src\lib_5a_toybox_base\muz_hand_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="src\lib_toybox_base\n3_square_ope.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_toybox_n2\char_to_piece_usi.hpp">
+    <ClInclude Include="src\lib_5a_toybox_n2\char_to_piece_usi.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_toybox_n2\file_ope.hpp">
+    <ClInclude Include="src\lib_5a_toybox_n2\file_ope.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_toybox_n2\hand_piece_ope.hpp">
+    <ClInclude Include="src\lib_5a_toybox_n2\hand_piece_ope.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_toybox_n2\muz_position_n2_model.hpp">
+    <ClInclude Include="src\lib_5a_toybox_n2\muz_position_n2_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_toybox_n2\piece_ope.hpp">
+    <ClInclude Include="src\lib_5a_toybox_n2\piece_ope.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_toybox_n2\piece_type_ope.hpp">
+    <ClInclude Include="src\lib_5a_toybox_n2\piece_type_ope.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_toybox_n2\piece_types.hpp">
+    <ClInclude Include="src\lib_5a_toybox_n2\piece_types.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_toybox_n2\rank_ope.hpp">
+    <ClInclude Include="src\lib_5a_toybox_n2\rank_ope.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_toybox_n2\squares.hpp">
+    <ClInclude Include="src\lib_5a_toybox_n2\squares.hpp">
       <Filter>header</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1145,16 +1145,16 @@
     <ClCompile Include="source\n105_120_square__\n105_120_200_rank.cpp">
       <Filter>source\n110_square___</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_toybox_n2\piece_types.cpp">
+    <ClCompile Include="src\lib_5a_toybox_n2\piece_types.cpp">
       <Filter>source\n113_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_toybox_base\muz_hand_model.cpp">
+    <ClCompile Include="src\lib_5a_toybox_base\muz_hand_model.cpp">
       <Filter>source\n113_piece___</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_toybox_n2\char_to_piece_usi.cpp">
+    <ClCompile Include="src\lib_5a_toybox_n2\char_to_piece_usi.cpp">
       <Filter>source\n220_position</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_toybox_medium\muz_position_medium_model.cpp">
+    <ClCompile Include="src\lib_5a_toybox_medium\muz_position_medium_model.cpp">
       <Filter>source\n220_position</Filter>
     </ClCompile>
     <ClCompile Include="source\n220_position\n220_640_utilAttack.cpp">
@@ -1658,88 +1658,88 @@
     <ClCompile Include="source\n760_thread__\n760_400_monkiePub.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_bitboard\init150_rookAttackBb.cpp">
+    <ClCompile Include="src\lib_5a_bitboard\init150_rookAttackBb.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_bitboard\init160_kingAttackBb.cpp">
+    <ClCompile Include="src\lib_5a_bitboard\init160_kingAttackBb.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_bitboard\init180_knightAttackBb.cpp">
+    <ClCompile Include="src\lib_5a_bitboard\init180_knightAttackBb.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_bitboard\init190_pawnAttackBb.cpp">
+    <ClCompile Include="src\lib_5a_bitboard\init190_pawnAttackBb.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_bitboard\n160_170_goldAndSilverAttackBb.cpp">
+    <ClCompile Include="src\lib_5a_bitboard\n160_170_goldAndSilverAttackBb.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_bitboard\n160_200_horseAttackBb.cpp">
+    <ClCompile Include="src\lib_5a_bitboard\n160_200_horseAttackBb.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_bitboard\n160_210_dragonAttackBb.cpp">
+    <ClCompile Include="src\lib_5a_bitboard\n160_210_dragonAttackBb.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_bitboard\n160_220_queenAttackBb.cpp">
+    <ClCompile Include="src\lib_5a_bitboard\n160_220_queenAttackBb.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_bitboard\n160_230_setMaskBB.cpp">
+    <ClCompile Include="src\lib_5a_bitboard\n160_230_setMaskBB.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_bitboard\n160_240_betweenBb.cpp">
+    <ClCompile Include="src\lib_5a_bitboard\n160_240_betweenBb.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_bitboard\n160_400_printBb.cpp">
+    <ClCompile Include="src\lib_5a_bitboard\n160_400_printBb.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_gui\muz_engine_option_textbox_model.cpp">
+    <ClCompile Include="src\lib_5a_gui\muz_engine_option_textbox_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_gui\muz_engine_option_spinbox_model.cpp">
+    <ClCompile Include="src\lib_5a_gui\muz_engine_option_spinbox_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_gui\muz_engine_option_checkbox_model.cpp">
+    <ClCompile Include="src\lib_5a_gui\muz_engine_option_checkbox_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_gui\muz_engine_option_button_model.cpp">
+    <ClCompile Include="src\lib_5a_gui\muz_engine_option_button_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_shogi\muz_shogi_model.cpp">
+    <ClCompile Include="src\lib_5a_shogi\muz_shogi_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_bitboard\n160_108_slideBits.cpp">
+    <ClCompile Include="src\lib_5a_bitboard\n160_108_slideBits.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_bitboard\n160_100_bitboard.cpp">
+    <ClCompile Include="src\lib_5a_bitboard\n160_100_bitboard.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_bitboard\init110_silverAttackBb.cpp">
+    <ClCompile Include="src\lib_5a_bitboard\init110_silverAttackBb.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_bitboard\init120_bishopAttackBb.cpp">
+    <ClCompile Include="src\lib_5a_bitboard\init120_bishopAttackBb.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_bitboard\init130_lanceAttackBb.cpp">
+    <ClCompile Include="src\lib_5a_bitboard\init130_lanceAttackBb.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_bitboard\init140_goldAttackBb.cpp">
+    <ClCompile Include="src\lib_5a_bitboard\init140_goldAttackBb.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_bitboard\n160_102_fileMaskBb.cpp">
+    <ClCompile Include="src\lib_5a_bitboard\n160_102_fileMaskBb.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_bitboard\n160_104_rankMaskBb.cpp">
+    <ClCompile Include="src\lib_5a_bitboard\n160_104_rankMaskBb.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_bitboard\n160_106_inFrontMaskBb.cpp">
+    <ClCompile Include="src\lib_5a_bitboard\n160_106_inFrontMaskBb.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_gui\muz_engine_option_abstract_model.cpp">
+    <ClCompile Include="src\lib_5a_gui\muz_engine_option_abstract_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_gui\muz_engine_settings_model.cpp">
+    <ClCompile Include="src\lib_5a_gui\muz_engine_settings_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_gui\muz_engine_settings_initialize_service.cpp">
+    <ClCompile Include="src\lib_5a_gui\muz_engine_settings_initialize_service.cpp">
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="src\concept_game_engine\muz_game_engine_service.cpp">
@@ -1748,10 +1748,10 @@
     <ClCompile Include="src\concept_game_engine\muz_game_engine_storage_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_toybox_base\muz_position_base_model.cpp">
+    <ClCompile Include="src\lib_5a_toybox_base\muz_position_base_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\lib_toybox_n2\muz_position_n2_model.cpp">
+    <ClCompile Include="src\lib_5a_toybox_n2\muz_position_n2_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
