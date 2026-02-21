@@ -215,6 +215,7 @@ void MuzGameEngineService::initialize_10a()
 
 #if !defined MINIMUL
 
+/*
 /// <summary>
 ///		<pre>
 /// for debug
@@ -261,6 +262,8 @@ void measureGenerateMoves(const Position& pos) {
     }
     std::cout << std::endl;
 }
+*/
+
 #endif
 
 
@@ -271,6 +274,51 @@ void measureGenerateMoves(const Position& pos) {
 /// <param name="argv"></param>
 void MuzGameEngineService::main_loop_50a(int argc, char* argv[])
 {
+    // ========================================
+    // 新版
+    // ========================================
+
+
+    MuzCliService cliSvc;
+
+    cliSvc.set_process_command([](const std::string& cmd)
+        {
+            // TODO: ここで実際のコマンド処理を書く
+            std::cout << "処理したよ: " << cmd << "\n";
+
+            MuzCliResultModel result;
+
+            // ポンダー（相手の手番に思考すること）してるのを止めるか
+            bool shall_stop_ponder = false;
+
+            // 例: 終了したいなら
+            if (cmd == "quit")
+            {
+                // ここで何かフラグを立てて main_loop から抜けるようにする
+                // または throw とか exit(0) でもいいけど、できれば綺麗に抜けたい
+                result.request_quit();
+                
+                // 終了時にポンダーヒットが来ることがあるので、対処してください。
+                shall_stop_ponder = true;   // ポンダーしてようと、してなかろうと、止めたらいい。
+            }
+
+            if (shall_stop_ponder)
+            {
+                // TODO: ポンダーを止める処理をここに書いてください。
+            }
+
+            return result;
+        });
+
+    // メインループを走らせます。
+    cliSvc.main_loop(argc, argv);
+
+
+    // ========================================
+    // 旧版
+    // ========================================
+
+    
     MuzGameEngineStorageModel& m_pGameEngineStore = *this->m_pGameEngineStore;
 
     GameStats gameStats{};	// こう書くと関数呼出しと思われてエラー： GameStats gameStats();
@@ -309,6 +357,9 @@ void MuzGameEngineService::main_loop_50a(int argc, char* argv[])
         ssCmd >> std::skipws >> token;
 
         UsiOperation usiOperation;
+        
+        // ポンダーしてるのを止めるか
+        bool shall_stop_ponder = false;
 
         if (
             token == "quit" ||
@@ -317,20 +368,18 @@ void MuzGameEngineService::main_loop_50a(int argc, char* argv[])
             token == "gameover"
             ) {
             // 終了時にポンダーヒットが来ることがある。
-            if (token != "ponderhit" ||
-                m_pGameEngineStore.m_signals.m_stopOnPonderHit
-                ) {
-                // 思考停止シグナルを立てる。
-                m_pGameEngineStore.m_signals.m_stop = true;
-
-                // 排他的処理の何か？？
-                m_pGameEngineStore.m_pub.GetFirstCaptain()->NotifyOne();
-            }
-            else {
+            
+            if (token == "ponderhit" &&
+                !m_pGameEngineStore.m_signals.m_stopOnPonderHit)
+            {
                 // 相手の思考時間中に自分も思考するのを止める。
                 m_pGameEngineStore.m_limits.m_canPonder = false;
             }
-
+            else
+            {
+                shall_stop_ponder = true;
+            }
+            
             // ポンダーヒットのときに、ムーブタイムが０でなければ、消費した時間分、加算する。
             if (token == "ponderhit" && m_pGameEngineStore.m_limits.GetMoveTime() != 0) {
                 m_pGameEngineStore.m_limits.IncreaseMoveTime(m_pGameEngineStore.m_stopwatch.GetElapsed());
@@ -412,6 +461,16 @@ void MuzGameEngineService::main_loop_50a(int argc, char* argv[])
 
         // 上記以外のコマンドは、"unknown command: " と表示する。
         else { SYNCCOUT << "unknown command: " << line << SYNCENDL; }
+
+                
+        if (shall_stop_ponder)
+        {
+            // 思考停止シグナルを立てる。
+            m_pGameEngineStore.m_signals.m_stop = true;
+
+            // 排他的処理の何か？？
+            m_pGameEngineStore.m_pub.GetFirstCaptain()->NotifyOne();
+        }
 
         // コマンドライン引数があるときは、ループせずに１回だけコマンドを処理する。
     } while (token != "quit" && argc == 1);
