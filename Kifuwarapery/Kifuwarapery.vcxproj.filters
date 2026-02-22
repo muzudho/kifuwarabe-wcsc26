@@ -1089,6 +1089,9 @@
     <ClInclude Include="src\lib_1a_cpp\muz_string_service.hpp">
       <Filter>header</Filter>
     </ClInclude>
+    <ClInclude Include="src\lib_5a_toybox_1b_hand_stand\muz_hand_stand_collection_service.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -1770,6 +1773,9 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="src\lib_5a_toybox_1b_hand_stand\muz_hand_stand_model.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_5a_toybox_1b_hand_stand\muz_hand_stand_collection_service.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

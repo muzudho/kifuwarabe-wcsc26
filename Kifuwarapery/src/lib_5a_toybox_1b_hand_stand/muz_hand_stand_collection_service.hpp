@@ -7,7 +7,7 @@
 /// <summary>
 /// 駒台２つをまとめて表すぜ（＾～＾） SFEN 形式がそうなってるから（＾～＾）
 /// </summary>
-class MuzHandStandCollectionModel
+class MuzHandStandCollectionService
 {
 public:
 
@@ -23,7 +23,7 @@ public:
 	///		- 例えば "2P1R" なら、▲歩が2、▲飛が1枚あることを表す。
 	///		</pre>
 	/// </summary>
-	bool parse_hand_stand_collection(
+	static bool parse_hand_stand_collection(
 		std::string_view hand_str,
 		MuzHandStandModel& blackHandStand,
 		MuzHandStandModel& whiteHandStand);

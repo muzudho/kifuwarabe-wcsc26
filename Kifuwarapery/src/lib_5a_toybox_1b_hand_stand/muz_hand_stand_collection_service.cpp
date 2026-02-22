@@ -1,4 +1,4 @@
-#include "muz_hand_stand_collection_model.hpp"
+#include "muz_hand_stand_collection_service.hpp"
 #include <cctype>   // ← これ！ std::isdigit が定義されてるヘッダー
 
 
@@ -8,19 +8,17 @@
 
 
 // パース
-bool MuzHandStandCollectionModel::parse_hand_stand_collection(
+bool MuzHandStandCollectionService::parse_hand_stand_collection(
     std::string_view hand_str,
-    MuzHandStandModel& blackHandStand,
-    MuzHandStandModel& whiteHandStand)
+    MuzHandStandModel& b_hs,
+    MuzHandStandModel& w_hs)
 {
+    // 初期化（＾～＾）先手と後手の持ち駒を０に戻すぜ（＾～＾）
+    b_hs = MuzHandStandModel{};
+    w_hs = MuzHandStandModel{};
+
     // 持ち駒がない場合は "-" で表す
-    if (hand_str == "-")
-    {
-        // 先手と後手の持ち駒を０に戻すぜ（＾～＾）
-        blackHandStand = MuzHandStandModel{};
-        whiteHandStand = MuzHandStandModel{};
-        return true;
-    }
+    if (hand_str == "-") return true;
 
     std::size_t count = 0;
 
@@ -58,18 +56,21 @@ bool MuzHandStandCollectionModel::parse_hand_stand_collection(
             continue;
         }
 
-        MuzHandStandModel handStand;
+        // カウントが0のときは1枚とみなす（例: "P" は "1P" と同じ意味）
+        if (count == 0) {
+            count = 1;
+        }
+
         switch (c)
         {
-        case Black: handStand = blackHandStand; break;
-        case White: handStand = whiteHandStand; break;
+        case Black: b_hs.set_count(hp, count); break;
+        case White: w_hs.set_count(hp, count); break;
         default:
             // ここは本来は例外を投げるべきだが、今回はとりあえずスキップする
             continue;
         }
 
-        // カウントが0のときは1枚とみなす（例: "P" は "1P" と同じ意味）
-        handStand.set_count(hp, count == 0 ? 1 : count);
+        // 枚数をリセット        
         count = 0;
     }
 
