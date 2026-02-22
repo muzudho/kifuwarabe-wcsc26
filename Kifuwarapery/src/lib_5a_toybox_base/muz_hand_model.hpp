@@ -138,4 +138,30 @@ private:
 								   (m_HGoldMask   + (1 << m_HGoldShiftBits  )) | 
 								   (m_HBishopMask + (1 << m_HBishopShiftBits)) | 
 								   (m_HRookMask   + (1 << m_HRookShiftBits  )));
+
+	/* XXX: あとでもう不要になったら削除
+	static const int m_HandPieceShiftBits[HandPieceNum];
+	static const int m_HPawnShiftBits = 0;
+	static const int m_HLanceShiftBits = 6;
+	static const int m_HKnightShiftBits = 10;
+	static const int m_HSilverShiftBits = 14;
+	static const int m_HGoldShiftBits = 18;
+	static const int m_HBishopShiftBits = 22;
+	static const int m_HRookShiftBits = 25;
+	/// <summary>
+	///
+	/// </summary>
+	u32 m_value_;
+	/// <summary>
+	///
+	/// </summary>
+	/// <returns></returns>
+	u32 Value() const;
+	/// <summary>
+	/// num が int だけどまあ良いか。
+	/// </summary>
+	/// <param name="num"></param>
+	/// <param name="handPiece"></param>
+	void OrEqual(const int num, const HandPiece handPiece);
+	*/
 };

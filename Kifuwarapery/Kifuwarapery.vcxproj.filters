@@ -1080,6 +1080,15 @@
     <ClInclude Include="src\concept_game_engine\muz_game_engine_service_old.hpp">
       <Filter>header</Filter>
     </ClInclude>
+    <ClInclude Include="src\lib_5a_toybox_1b_hand_stand\hand_piece.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_5a_toybox_1b_hand_stand\muz_hand_stand_model.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib_1a_cpp\muz_string_service.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -1758,6 +1767,9 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="src\concept_game_engine\muz_game_engine_service_old.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib_5a_toybox_1b_hand_stand\muz_hand_stand_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
