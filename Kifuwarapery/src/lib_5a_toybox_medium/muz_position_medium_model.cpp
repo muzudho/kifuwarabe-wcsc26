@@ -2456,7 +2456,7 @@ Position::Position()
 /// </summary>
 /// <param name="s"></param>
 Position::Position(MuzGameEngineStorageModel* gameEngineStore)
-	: m_pGameEngineStore_(gameEngineStore)
+	: gameEngineStore__(gameEngineStore)
 {
 }
 

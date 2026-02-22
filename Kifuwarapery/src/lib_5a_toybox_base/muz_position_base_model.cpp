@@ -26,7 +26,7 @@ MuzHandModel MuzPositionBaseModel::GetHand(const Color c) const
 /// <returns></returns>
 const MuzGameEngineStorageModel* MuzPositionBaseModel::GetConstGameEngineStore() const
 {
-	return this->m_pGameEngineStore_;
+	return this->gameEngineStore__;
 }
 
 
@@ -36,7 +36,7 @@ const MuzGameEngineStorageModel* MuzPositionBaseModel::GetConstGameEngineStore()
 /// <returns></returns>
 MuzGameEngineStorageModel* MuzPositionBaseModel::GetGameEngineStore() const
 {
-	return this->m_pGameEngineStore_;
+	return this->gameEngineStore__;
 }
 
 
@@ -46,7 +46,7 @@ MuzGameEngineStorageModel* MuzPositionBaseModel::GetGameEngineStore() const
 /// <param name="s"></param>
 void MuzPositionBaseModel::SetGameEngineStore(MuzGameEngineStorageModel* pGameEngineStore)
 {
-	this->m_pGameEngineStore_ = pGameEngineStore;
+	this->gameEngineStore__ = pGameEngineStore;
 }
 
 
@@ -71,7 +71,7 @@ void MuzPositionBaseModel::Set(const std::string& sfen)
 	char token;
 	Square sq = A9;
 
-	MuzGameEngineStorageModel* s = std::move(m_pGameEngineStore_);
+	MuzGameEngineStorageModel* s = std::move(gameEngineStore__);
 	this->Clear();
 	this->SetGameEngineStore(s);
 

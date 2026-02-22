@@ -36,10 +36,10 @@
 
 void MuzGameEngineServiceOld::main_loop_50a(int argc, char* argv[])
 {
-    MuzGameEngineStorageModel& m_pGameEngineStore = *this->m_pGameEngineStore;
+    MuzGameEngineStorageModel& gameEngineStore_ = *this->gameEngineStore_;
 
     GameStats gameStats{};	// こう書くと関数呼出しと思われてエラー： GameStats gameStats();
-    Position pos(g_SFEN_STARTPOS_STR, m_pGameEngineStore.m_pub.GetFirstCaptain(), &m_pGameEngineStore);
+    Position pos(g_SFEN_STARTPOS_STR, gameEngineStore_.m_pub.GetFirstCaptain(), &gameEngineStore_);
 
     std::string line;
     std::string token;
@@ -79,7 +79,6 @@ void MuzGameEngineServiceOld::main_loop_50a(int argc, char* argv[])
         bool shall_stop_ponder = false;
 
         if (
-            token == "quit" ||
             token == "stop" ||
             token == "ponderhit" ||
             token == "gameover"
@@ -87,10 +86,10 @@ void MuzGameEngineServiceOld::main_loop_50a(int argc, char* argv[])
             // 終了時にポンダーヒットが来ることがある。
 
             if (token == "ponderhit" &&
-                !m_pGameEngineStore.m_signals.m_stopOnPonderHit)
+                !gameEngineStore_.m_signals.m_stopOnPonderHit)
             {
                 // 相手の思考時間中に自分も思考するのを止める。
-                m_pGameEngineStore.m_limits.m_canPonder = false;
+                gameEngineStore_.m_limits.m_canPonder = false;
             }
             else
             {
@@ -98,14 +97,24 @@ void MuzGameEngineServiceOld::main_loop_50a(int argc, char* argv[])
             }
 
             // ポンダーヒットのときに、ムーブタイムが０でなければ、消費した時間分、加算する。
-            if (token == "ponderhit" && m_pGameEngineStore.m_limits.GetMoveTime() != 0) {
-                m_pGameEngineStore.m_limits.IncreaseMoveTime(m_pGameEngineStore.m_stopwatch.GetElapsed());
+            if (token == "ponderhit" && gameEngineStore_.m_limits.GetMoveTime() != 0) {
+                gameEngineStore_.m_limits.IncreaseMoveTime(gameEngineStore_.m_stopwatch.GetElapsed());
             }
+        }
+        else if (token == "usi")
+        {
+            // USIプロトコルのバージョンを返す。
+            SYNCCOUT << "id name " << MyName << "\nid author (Derivation)Takahashi Satoshi (Base)Hiraoka Takuya\n" << gameEngineStore_.m_engineSettings << "\nusiok" << SYNCENDL;
+        }
+        else if (token == "setoption")
+        {
+            // エンジンのオプションを設定するコマンド。これが来たら、オプションを変更する。
+            gameEngineStore_.SetOption(ssCmd);
         }
         else if (token == "usinewgame")
         {
             // 新しいゲームの開始を知らせるコマンド。これが来たら、前のゲームの情報をクリアする。
-            m_pGameEngineStore.m_tt.Clear();
+            gameEngineStore_.m_tt.Clear();
 
 #if defined INANIWA_SHIFT
             inaniwaFlag = NotInaniwa;
@@ -120,30 +129,15 @@ void MuzGameEngineServiceOld::main_loop_50a(int argc, char* argv[])
                 g_randomTimeSeed();
             }
         }
-        else if (token == "usi")
-        {
-            // USIプロトコルのバージョンを返す。
-            SYNCCOUT << "id name " << MyName << "\nid author (Derivation)Takahashi Satoshi (Base)Hiraoka Takuya\n" << m_pGameEngineStore.m_engineSettings << "\nusiok" << SYNCENDL;
-        }
-        else if (token == "go")
-        {
-            // 思考開始のコマンド。これが来たら、思考を開始する。
-            usiOperation.Go(gameStats, pos, ssCmd);
-        }
-        else if (token == "isready")
-        {
-            // エンジンが準備できたら、"readyok" を返す。
-            SYNCCOUT << "readyok" << SYNCENDL;
-        }
         else if (token == "position")
         {
             // 局面を設定するコマンド。これが来たら、局面を変更する。
             usiOperation.SetPosition(pos, ssCmd);
         }
-        else if (token == "setoption")
+        else if (token == "go")
         {
-            // エンジンのオプションを設定するコマンド。これが来たら、オプションを変更する。
-            m_pGameEngineStore.SetOption(ssCmd);
+            // 思考開始のコマンド。これが来たら、思考を開始する。
+            usiOperation.Go(gameStats, pos, ssCmd);
         }
 
 #if defined LEARN
@@ -183,10 +177,10 @@ void MuzGameEngineServiceOld::main_loop_50a(int argc, char* argv[])
         if (shall_stop_ponder)
         {
             // 思考停止シグナルを立てる。
-            m_pGameEngineStore.m_signals.m_stop = true;
+            gameEngineStore_.m_signals.m_stop = true;
 
             // 排他的処理の何か？？
-            m_pGameEngineStore.m_pub.GetFirstCaptain()->NotifyOne();
+            gameEngineStore_.m_pub.GetFirstCaptain()->NotifyOne();
         }
 
         // コマンドライン引数があるときは、ループせずに１回だけコマンドを処理する。
@@ -195,13 +189,13 @@ void MuzGameEngineServiceOld::main_loop_50a(int argc, char* argv[])
     //────────────────────────────────────────────────────────────────────────────────
 
     // 評価値ファイルを書き出す指定なら
-    if (m_pGameEngineStore.m_engineSettings.GetOptionByKey("Write_Synthesized_Eval"))
+    if (gameEngineStore_.m_engineSettings.GetOptionByKey("Write_Synthesized_Eval"))
     {
         // シンセサイズド評価を書き出します。
-        KkKkpKppStorage1::WriteSynthesized(m_pGameEngineStore.m_engineSettings.GetOptionByKey("Eval_Dir"));
+        KkKkpKppStorage1::WriteSynthesized(gameEngineStore_.m_engineSettings.GetOptionByKey("Eval_Dir"));
     }
 
     //────────────────────────────────────────────────────────────────────────────────
 
-    m_pGameEngineStore.m_pub.WaitForThinkFinished();
+    gameEngineStore_.m_pub.WaitForThinkFinished();
 }

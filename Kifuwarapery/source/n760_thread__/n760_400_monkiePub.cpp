@@ -92,13 +92,13 @@ void MonkiesPub::exit_90a500b() {
 /// <summary>
 /// 
 /// </summary>
-/// <param name="m_pGameEngineStore"></param>
-void MonkiesPub::ReadUSIOptions(MuzGameEngineStorageModel* m_pGameEngineStore) {
+/// <param name="gameEngineStore_"></param>
+void MonkiesPub::ReadUSIOptions(MuzGameEngineStorageModel* gameEngineStore_) {
 
-	this->m_maxThreadsPerMonkeySplitedPlace = m_pGameEngineStore->m_engineSettings.GetOptionByKey("Max_Threads_per_Split_Point");
+	this->m_maxThreadsPerMonkeySplitedPlace = gameEngineStore_->m_engineSettings.GetOptionByKey("Max_Threads_per_Split_Point");
 
 	// スレッドの個数（１以上）
-	const size_t numberOfThreads   = m_pGameEngineStore->m_engineSettings.GetOptionByKey("Threads");
+	const size_t numberOfThreads   = gameEngineStore_->m_engineSettings.GetOptionByKey("Threads");
 
 	this->m_minimumSplitDepth_ = (
 		numberOfThreads < 6 ?
@@ -111,7 +111,7 @@ void MonkiesPub::ReadUSIOptions(MuzGameEngineStorageModel* m_pGameEngineStore) {
 	assert(0 < numberOfThreads);
 
 	while (this->m_monkies.size() < numberOfThreads) {
-		this->m_monkies.push_back(newThread<Monkie>(m_pGameEngineStore));
+		this->m_monkies.push_back(newThread<Monkie>(gameEngineStore_));
 	}
 
 	while (numberOfThreads < this->m_monkies.size()) {

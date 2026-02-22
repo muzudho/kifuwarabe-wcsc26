@@ -41,7 +41,7 @@ protected:
 	/// <summary>
 	/// ゲームエンジン倉庫
 	/// </summary>
-	MuzGameEngineStorageModel* m_pGameEngineStore_;
+	MuzGameEngineStorageModel* gameEngineStore__;
 
 
 	// ========================================

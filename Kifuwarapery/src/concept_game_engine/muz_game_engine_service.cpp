@@ -44,7 +44,7 @@
 /// </summary>
 MuzGameEngineService::MuzGameEngineService()
 {
-    this->m_pGameEngineStore = std::unique_ptr<MuzGameEngineStorageModel>(new MuzGameEngineStorageModel);
+    this->gameEngineStore_ = std::unique_ptr<MuzGameEngineStorageModel>(new MuzGameEngineStorageModel);
 }
 
 
@@ -53,7 +53,7 @@ MuzGameEngineService::MuzGameEngineService()
 /// </summary>
 MuzGameEngineService::~MuzGameEngineService()
 {
-    this->m_pGameEngineStore.reset();
+    this->gameEngineStore_.reset();
 }
 
 
@@ -165,16 +165,16 @@ void MuzGameEngineService::initialize_10a()
         SweetnessInfinite,
         SweetnessMate0Ply,
         g_MaxThreads,
-        &this->m_pGameEngineStore->m_engineSettings,
+        &this->gameEngineStore_->m_engineSettings,
         // onHashSizeChanged:
         [this] (auto opt)
         {
-            this->m_pGameEngineStore.get()->m_tt.setSize(opt);
+            this->gameEngineStore_.get()->m_tt.setSize(opt);
         },
         // onHashCleared:
         [this](auto opt)
         {
-            this->m_pGameEngineStore.get()->m_tt.Clear();
+            this->gameEngineStore_.get()->m_tt.Clear();
         },
         // onEvalDirChanged:
         [this](auto opt)
@@ -184,12 +184,12 @@ void MuzGameEngineService::initialize_10a()
         // onMaxThreadsPerSplitPointChanged:
         [this](auto opt)
         {
-            this->m_pGameEngineStore.get()->m_pub.ReadUSIOptions(this->m_pGameEngineStore.get());
+            this->gameEngineStore_.get()->m_pub.ReadUSIOptions(this->gameEngineStore_.get());
         },
         // onThreadsChanged:
         [this](auto opt)
         {
-            this->m_pGameEngineStore.get()->m_pub.ReadUSIOptions(this->m_pGameEngineStore.get());
+            this->gameEngineStore_.get()->m_pub.ReadUSIOptions(this->gameEngineStore_.get());
         },
         // getCpuCoreCount:
         [this]()
@@ -201,14 +201,14 @@ void MuzGameEngineService::initialize_10a()
         });
 
     SYNCCOUT << "(^q^) 3   . 探索部の初期化！" << SYNCENDL;
-    this->m_pGameEngineStore->initialize_10a520b_search();
+    this->gameEngineStore_->initialize_10a520b_search();
 
 
     // 一時オブジェクトの生成と破棄
 
 
     SYNCCOUT << "(^q^) 4   . 評価関数の初期化！" << SYNCENDL;
-    std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->initialize_10a600b(this->m_pGameEngineStore->m_engineSettings.GetOptionByKey("Eval_Dir"), true);
+    std::unique_ptr<KkKkpKppStorage1>(new KkKkpKppStorage1)->initialize_10a600b(this->gameEngineStore_->m_engineSettings.GetOptionByKey("Eval_Dir"), true);
 
     SYNCCOUT << "(^q^) 次は USIループへ！" << SYNCENDL;
 }
@@ -329,5 +329,5 @@ void MuzGameEngineService::main_loop_50a(int argc, char* argv[])
 void MuzGameEngineService::finalize_90a()
 {
     SYNCCOUT << "(^q^)main(6/6): threads.exit! ----> doUSICommandLoop" << SYNCENDL;
-    this->m_pGameEngineStore->m_pub.exit_90a500b();
+    this->gameEngineStore_->m_pub.exit_90a500b();
 }
