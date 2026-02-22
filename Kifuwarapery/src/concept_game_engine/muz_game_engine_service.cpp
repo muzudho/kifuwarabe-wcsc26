@@ -282,7 +282,7 @@ void MuzGameEngineService::main_loop_50a(int argc, char* argv[])
 
     MuzCliService cliSvc;
 
-    cliSvc.set_process_command([](const std::string& cmd)
+    cliSvc.set_process_command([this](const std::string& cmd)
         {
             // TODO: ここで実際のコマンド処理を書く
             std::cout << "処理したよ: " << cmd << "\n";
@@ -301,6 +301,55 @@ void MuzGameEngineService::main_loop_50a(int argc, char* argv[])
                 
                 // 終了時にポンダーヒットが来ることがあるので、対処してください。
                 shall_stop_ponder = true;   // ポンダーしてようと、してなかろうと、止めたらいい。
+            }
+            else if (cmd == "usi")
+            {
+                this->gameEngineStore_->set_usi();
+
+                // USIプロトコルのバージョンを返す。
+                std::cout << "id name " << my_name_ << "\nid author (Derivation)Takahashi Satoshi (Base)Hiraoka Takuya\nusiok" << "\n";
+
+                // TODO: セット・オプション付けてください： std::cout << "id name " << my_name_ << "\nid author (Derivation)Takahashi Satoshi (Base)Hiraoka Takuya\n" << gameEngineStore_.m_engineSettings << "\nusiok" << "\n";
+            }
+            else if (cmd == "isready")
+            {
+                // エンジンが準備できたら、"readyok" を返す。
+                std::cout << "readyok" << "\n";
+            }
+            else if (cmd == "setoption")
+            {
+                // TODO: エンジンのオプションを設定するコマンド。これが来たら、オプションを変更する。
+                //gameEngineStore_.SetOption(ssCmd);
+            }
+            else if (cmd == "usinewgame")
+            {
+                //                // 新しいゲームの開始を知らせるコマンド。これが来たら、前のゲームの情報をクリアする。
+                //                gameEngineStore_.m_tt.Clear();
+                //
+                //#if defined INANIWA_SHIFT
+                //                inaniwaFlag = NotInaniwa;
+                //#endif
+                //#if defined BISHOP_IN_DANGER
+                //                bishopInDangerFlag = NotBishopInDanger;
+                //#endif
+                //
+                //                // 最初は乱数に偏りがあるかも。少し回しておく。
+                //                for (int i = 0; i < 100; ++i)
+                //                {
+                //                    g_randomTimeSeed();
+                //                }
+            }
+            else if (cmd == "position")
+            {
+                // TODO: 局面を設定するコマンド。これが来たら、局面を変更する。
+                //usiOperation.SetPosition(pos, ssCmd);
+            }
+            else if (cmd == "go")
+            {
+                //// TODO: 思考開始のコマンド。これが来たら、思考を開始する。
+                //usiOperation.Go(gameStats, pos, ssCmd);
+
+                std::cout << "bestmove resign" << "\n";  // とりあえず投了を返すぜ（＾ｑ＾）
             }
 
             if (shall_stop_ponder)
