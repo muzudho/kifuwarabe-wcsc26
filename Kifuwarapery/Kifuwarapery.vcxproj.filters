@@ -1077,6 +1077,9 @@
     <ClInclude Include="src\lib_5a_toybox_n2\squares.hpp">
       <Filter>header</Filter>
     </ClInclude>
+    <ClInclude Include="src\concept_game_engine\muz_game_engine_service_old.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -1752,6 +1755,9 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="src\lib_5a_toybox_n2\muz_position_n2_model.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\concept_game_engine\muz_game_engine_service_old.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
