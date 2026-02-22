@@ -46,6 +46,8 @@ public:
 		const int max,
 		std::function<void(const MuzEngineOptionAbstractModel&)> onChanged = nullptr);
 
+    // デストラクタ
+	virtual ~MuzEngineOptionAbstractModel() = default;
 
 protected:
 

@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../../src/lib_gui/muz_engine_settings_model.hpp"
+#include "muz_engine_settings_model.hpp"
 #include <functional>
 
 

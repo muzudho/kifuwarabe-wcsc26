@@ -1,4 +1,7 @@
-﻿#include "../src/main.hpp"
+﻿// main.cpp :
+//      アプリケーションのエントリ ポイントを定義します。
+//
+#include "main.hpp"
 
 
 #if defined FIND_MAGIC

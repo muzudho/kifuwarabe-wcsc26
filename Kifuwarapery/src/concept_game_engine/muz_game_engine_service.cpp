@@ -275,25 +275,25 @@ void measureGenerateMoves(const Position& pos) {
 /// <param name="argv"></param>
 void MuzGameEngineService::main_loop_50a(int argc, char* argv[])
 {
-    // ========================================
-    // 新版
-    // ========================================
-
 
     MuzCliService cliSvc;
 
-    cliSvc.set_process_command([this](const std::string& cmd)
+    // TODO: ここで実際のコマンド処理を書く
+    cliSvc.set_process_command_line([this](const std::string& line)
         {
-            // TODO: ここで実際のコマンド処理を書く
-            std::cout << "処理したよ: " << cmd << "\n";
+            if (!this->gameEngineStore_->is_usi()) {
+                std::cout << "処理したよ: " << line << "\n";
+            }
+
 
             MuzCliResultModel result;
 
             // ポンダー（相手の手番に思考すること）してるのを止めるか
             bool shall_stop_ponder = false;
 
+            // TODO: 対局中に呼び出される回数が多いものを先にした方がいいかだぜ（＾～＾）？
             // 例: 終了したいなら
-            if (cmd == "quit")
+            if (line == "quit")
             {
                 // ここで何かフラグを立てて main_loop から抜けるようにする
                 // または throw とか exit(0) でもいいけど、できれば綺麗に抜けたい
@@ -302,7 +302,7 @@ void MuzGameEngineService::main_loop_50a(int argc, char* argv[])
                 // 終了時にポンダーヒットが来ることがあるので、対処してください。
                 shall_stop_ponder = true;   // ポンダーしてようと、してなかろうと、止めたらいい。
             }
-            else if (cmd == "usi")
+            else if (line == "usi")
             {
                 this->gameEngineStore_->set_usi();
 
@@ -311,17 +311,17 @@ void MuzGameEngineService::main_loop_50a(int argc, char* argv[])
 
                 // TODO: セット・オプション付けてください： std::cout << "id name " << my_name_ << "\nid author (Derivation)Takahashi Satoshi (Base)Hiraoka Takuya\n" << gameEngineStore_.m_engineSettings << "\nusiok" << "\n";
             }
-            else if (cmd == "isready")
+            else if (line == "isready")
             {
                 // エンジンが準備できたら、"readyok" を返す。
                 std::cout << "readyok" << "\n";
             }
-            else if (cmd == "setoption")
+            else if (line == "setoption")
             {
                 // TODO: エンジンのオプションを設定するコマンド。これが来たら、オプションを変更する。
                 //gameEngineStore_.SetOption(ssCmd);
             }
-            else if (cmd == "usinewgame")
+            else if (line == "usinewgame")
             {
                 //                // 新しいゲームの開始を知らせるコマンド。これが来たら、前のゲームの情報をクリアする。
                 //                gameEngineStore_.m_tt.Clear();
@@ -339,12 +339,12 @@ void MuzGameEngineService::main_loop_50a(int argc, char* argv[])
                 //                    g_randomTimeSeed();
                 //                }
             }
-            else if (cmd == "position")
+            else if (line == "position")
             {
                 // TODO: 局面を設定するコマンド。これが来たら、局面を変更する。
                 //usiOperation.SetPosition(pos, ssCmd);
             }
-            else if (cmd == "go")
+            else if (line == "go")
             {
                 //// TODO: 思考開始のコマンド。これが来たら、思考を開始する。
                 //usiOperation.Go(gameStats, pos, ssCmd);
@@ -362,13 +362,6 @@ void MuzGameEngineService::main_loop_50a(int argc, char* argv[])
 
     // メインループを走らせます。
     cliSvc.main_loop(argc, argv);
-
-
-    // ========================================
-    // 旧版
-    // ========================================
-
-    
 }
 
 

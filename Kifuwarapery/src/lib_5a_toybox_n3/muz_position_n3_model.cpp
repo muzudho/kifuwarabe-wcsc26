@@ -20,7 +20,7 @@
 /// <param name="sfen"></param>
 void MuzPositionN3Model::Set(std::string_view sfen)
 {
-	//MuzGameEngineStorageModel* s = std::move(m_pGameEngineStore_);
+	//MuzGameEngineStorageModel* s = std::move(gameEngineStore__);
 
 	//this->Clear();
 

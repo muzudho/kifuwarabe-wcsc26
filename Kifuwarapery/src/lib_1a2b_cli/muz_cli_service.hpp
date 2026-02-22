@@ -16,7 +16,7 @@ public:
 
 
     // コールバックの型をtypedef（またはusing）でわかりやすく
-    using FnProcessCommand = std::function<MuzCliResultModel(const std::string& cmd)>;
+    using FnProcessCommandLine = std::function<MuzCliResultModel(const std::string& cmd)>;
 
 
     // ========================================
@@ -25,8 +25,8 @@ public:
 
 
     // コンストラクタでハンドラを受け取る（または後でsetしてもOK）
-    explicit MuzCliService(FnProcessCommand on_process_command = nullptr)
-        : process_command_(std::move(on_process_command))
+    explicit MuzCliService(FnProcessCommandLine on_process_command_line = nullptr)
+        : process_command_line_(std::move(on_process_command_line))
     {
     }
 
@@ -38,7 +38,7 @@ private:
     // ========================================
 
 
-    FnProcessCommand process_command_;
+    FnProcessCommandLine process_command_line_;
 
 public:
 
@@ -48,7 +48,7 @@ public:
 
     void main_loop(int argc, char* argv[]);
 
-    void set_process_command(FnProcessCommand h) {
-        process_command_ = std::move(h);
+    void set_process_command_line(FnProcessCommandLine h) {
+        process_command_line_ = std::move(h);
     }
 };
