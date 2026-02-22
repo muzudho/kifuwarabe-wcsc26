@@ -308,7 +308,7 @@ void MuzGameEngineService::main_loop_50a(int argc, char* argv[])
                 // ここで何かフラグを立てて main_loop から抜けるようにする
                 // または throw とか exit(0) でもいいけど、できれば綺麗に抜けたい
                 result.request_quit();
-                
+
                 // 終了時にポンダーヒットが来ることがあるので、対処してください。
                 shall_stop_ponder = true;   // ポンダーしてようと、してなかろうと、止めたらいい。
             }
@@ -364,13 +364,19 @@ void MuzGameEngineService::main_loop_50a(int argc, char* argv[])
             // ----------------------------------------
             // 以下、独自実装
             // ----------------------------------------
+            // 先手駒台の描画
             else if (tokens[0] == "handb")
             {
-                // TODO: 先手駒台の描画
+                MuzHandStandView::print(Color::Black);
             }
+            // 後手駒台の描画
             else if (tokens[0] == "handw")
             {
-                // TODO: 後手駒台の描画
+                MuzHandStandView::print(Color::White);
+            }
+            else
+            {
+                std::cout << "そんなコマンド無い（＾～＾）\n";
             }
 
             if (shall_stop_ponder)
