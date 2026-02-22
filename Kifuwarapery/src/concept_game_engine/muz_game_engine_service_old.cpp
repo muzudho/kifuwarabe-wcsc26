@@ -104,7 +104,7 @@ void MuzGameEngineServiceOld::main_loop_50a(int argc, char* argv[])
         else if (token == "usi")
         {
             // USIプロトコルのバージョンを返す。
-            SYNCCOUT << "id name " << MyName << "\nid author (Derivation)Takahashi Satoshi (Base)Hiraoka Takuya\n" << gameEngineStore_.m_engineSettings << "\nusiok" << SYNCENDL;
+            SYNCCOUT << "id name " << my_name_ << "\nid author (Derivation)Takahashi Satoshi (Base)Hiraoka Takuya\n" << gameEngineStore_.m_engineSettings << "\nusiok" << SYNCENDL;
         }
         else if (token == "setoption")
         {

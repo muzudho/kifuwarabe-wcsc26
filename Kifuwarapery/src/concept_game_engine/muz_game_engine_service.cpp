@@ -64,9 +64,9 @@ MuzGameEngineService::~MuzGameEngineService()
 
 // 将棋エンジン表示名
 #ifdef NDEBUG
-const std::string MyName = "Kifuwarapery(Apery_Twig_SDT3)";
+const std::string my_name_ = "Kifuwarapery(Apery_Twig_SDT3)";
 #else
-const std::string MyName = "Kifuwarapery(Apery) Debug Build";
+const std::string my_name_ = "Kifuwarapery(Apery) Debug Build";
 #endif
 
 
