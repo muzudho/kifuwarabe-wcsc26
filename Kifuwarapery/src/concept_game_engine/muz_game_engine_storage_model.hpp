@@ -38,13 +38,18 @@ class MuzGameEngineStorageModel
 {
 
 
-public:
-
-
 	// ========================================
 	// フィールド
 	// ========================================
 
+
+private:
+	/// <summary>
+	/// USIモードに入ったか。
+	/// </summary>
+	bool is_usi_;
+
+public:
 
 	/// <summary>
 	/// USIエンジン設定
@@ -161,6 +166,18 @@ public:
 	/// checkTime() を呼び出す最大間隔(msec)
 	/// </summary>
 	const int	TimerResolution = 5;
+
+
+	// ========================================
+	// アクセッサー
+	// ========================================
+
+
+	/// <summary>
+	/// USIモードに入ったか。
+	/// </summary>
+	bool is_usi() const;
+	void set_usi();
 
 
 	// ========================================

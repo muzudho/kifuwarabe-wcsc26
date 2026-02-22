@@ -40,6 +40,25 @@ extern const InFrontMaskBb g_inFrontMaskBb;
 extern AdventureNodekindAbstract* g_NODEKIND_PROGRAMS[];
 //extern RepetitionTypeModels g_repetitionTypes;
 
+
+// ========================================
+// アクセッサー
+// ========================================
+
+
+/// <summary>
+/// USIモードに入ったか。
+/// </summary>
+bool MuzGameEngineStorageModel::is_usi() const
+{
+    return this->is_usi_;
+}
+void MuzGameEngineStorageModel::set_usi()
+{
+    this->is_usi_ = true;
+}
+
+
 /// <summary>
 /// 最初の設定（初期化）を行うぜ☆（＾▽＾）
 /// </summary>

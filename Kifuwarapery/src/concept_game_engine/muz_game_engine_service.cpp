@@ -1,3 +1,9 @@
+#include "../lib_5a_gui/muz_engine_settings_initialize_service.hpp"
+#include "../lib_1a2b_cli/muz_cli_service.hpp"
+#include "../lib_1a_cpp/muz_string_service.hpp"
+#include "muz_game_engine_service.hpp"
+
+// 旧版：
 #include "../../header/n080_100_sysWorld/n080_100_500_common.hpp"
 #include "../../header/n105_120_square__/n105_120_400_squareRelation.hpp"
 #include "../../header/n161_sqDistan/n161_500_squareDistance.hpp"
@@ -29,8 +35,6 @@
 #include "../../src/lib_5a_shogi/muz_shogi_model.hpp"
 #include "../../src/lib_5a_toybox_n2/char_to_piece_usi.hpp"
 #include "../../src/lib_5a_toybox_medium/muz_position_medium_model.hpp"
-#include "muz_game_engine_service.hpp"
-#include "../../src/lib_1a2b_cli/muz_cli_service.hpp"
 #include <iostream>
 
 
@@ -282,8 +286,14 @@ void MuzGameEngineService::main_loop_50a(int argc, char* argv[])
     cliSvc.set_process_command_line([this](const std::string& line)
         {
             if (!this->gameEngineStore_->is_usi()) {
-                std::cout << "処理したよ: " << line << "\n";
+                std::cout << "処理するよ: " << line << "\n";
             }
+
+            MuzStringService stringSvc;
+            std::vector<std::string> tokens;
+
+            // 半角スペース ' ' で分割
+            tokens = stringSvc.split_command_line(line);
 
 
             MuzCliResultModel result;
@@ -344,12 +354,23 @@ void MuzGameEngineService::main_loop_50a(int argc, char* argv[])
                 // TODO: 局面を設定するコマンド。これが来たら、局面を変更する。
                 //usiOperation.SetPosition(pos, ssCmd);
             }
-            else if (line == "go")
+            else if (tokens[0] == "go")
             {
                 //// TODO: 思考開始のコマンド。これが来たら、思考を開始する。
                 //usiOperation.Go(gameStats, pos, ssCmd);
 
                 std::cout << "bestmove resign" << "\n";  // とりあえず投了を返すぜ（＾ｑ＾）
+            }
+            // ----------------------------------------
+            // 以下、独自実装
+            // ----------------------------------------
+            else if (tokens[0] == "handb")
+            {
+                // TODO: 先手駒台の描画
+            }
+            else if (tokens[0] == "handw")
+            {
+                // TODO: 後手駒台の描画
             }
 
             if (shall_stop_ponder)
