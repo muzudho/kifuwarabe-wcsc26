@@ -37,7 +37,7 @@ public:
 	/// </summary>
 	/// <param name="sq"></param>
 	/// <returns></returns>
-	Piece get_piece(const Square sq);
+	const Piece get_piece(const Square sq) const;
 
-	void set_piece(const Piece piece, const Square sq);
+	void set_piece(const Square sq, const Piece piece);
 };
