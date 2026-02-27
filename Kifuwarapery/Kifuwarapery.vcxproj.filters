@@ -1098,13 +1098,13 @@
     <ClInclude Include="src\n95a_core_library\n95a95b_infrastructure_94a_cli\muz_cli_service.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n11a_views\n11a55b_toybox\muz_5a1b_hand_stand_view.hpp">
+    <ClInclude Include="src\n11a_views\n11a55b_toybox\n11a55b95c_hand_stand_view.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n11a_views\n11a55b_toybox\muz_5a24b1c_piece_view.hpp">
+    <ClInclude Include="src\n11a_views\n11a55b_toybox\n11a55b100c_piece_view.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n11a_views\n11a55b_toybox\muz_5a25b_board_view.hpp">
+    <ClInclude Include="src\n11a_views\n11a55b_toybox\n11a55b94c_board_view.hpp">
       <Filter>header</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1796,13 +1796,13 @@
     <ClCompile Include="src\n95a_core_library\n95a95b_infrastructure_94a_cli\muz_cli_service.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\n11a_views\n11a55b_toybox\muz_5a1b_hand_stand_view.cpp">
+    <ClCompile Include="src\n11a_views\n11a55b_toybox\n11a55b95c_hand_stand_view.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\n11a_views\n11a55b_toybox\muz_5a24b1c_piece_view.cpp">
+    <ClCompile Include="src\n11a_views\n11a55b_toybox\n11a55b100c_piece_view.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\n11a_views\n11a55b_toybox\muz_5a25b_board_view.cpp">
+    <ClCompile Include="src\n11a_views\n11a55b_toybox\n11a55b94c_board_view.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

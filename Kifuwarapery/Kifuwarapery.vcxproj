@@ -163,9 +163,9 @@
     <ClInclude Include="header\n080_100_sysWorld\n080_100_071_sse.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_072_unreachable.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_074_asmcomment.hpp" />
-    <ClInclude Include="src\n11a_views\n11a55b_toybox\muz_5a1b_hand_stand_view.hpp" />
-    <ClInclude Include="src\n11a_views\n11a55b_toybox\muz_5a24b1c_piece_view.hpp" />
-    <ClInclude Include="src\n11a_views\n11a55b_toybox\muz_5a25b_board_view.hpp" />
+    <ClInclude Include="src\n11a_views\n11a55b_toybox\n11a55b95c_hand_stand_view.hpp" />
+    <ClInclude Include="src\n11a_views\n11a55b_toybox\n11a55b100c_piece_view.hpp" />
+    <ClInclude Include="src\n11a_views\n11a55b_toybox\n11a55b94c_board_view.hpp" />
     <ClInclude Include="src\n55a_game_engine\muz_game_engine_service_old.hpp" />
     <ClInclude Include="src\n95a_core_library\n95a95b_infrastructure_94a_cli\muz_cli_result_model.hpp" />
     <ClInclude Include="src\n95a_core_library\n95a95b_infrastructure_94a_cli\muz_cli_service.hpp" />
@@ -453,9 +453,9 @@
     <ClCompile Include="header\n080_100_sysWorld\n080_100_075_debugcerr.hpp" />
     <ClCompile Include="header\n080_100_sysWorld\n080_100_077_binary.hpp" />
     <ClCompile Include="header\n080_100_sysWorld\n080_100_078_lsbMsb.hpp" />
-    <ClCompile Include="src\n11a_views\n11a55b_toybox\muz_5a1b_hand_stand_view.cpp" />
-    <ClCompile Include="src\n11a_views\n11a55b_toybox\muz_5a24b1c_piece_view.cpp" />
-    <ClCompile Include="src\n11a_views\n11a55b_toybox\muz_5a25b_board_view.cpp" />
+    <ClCompile Include="src\n11a_views\n11a55b_toybox\n11a55b95c_hand_stand_view.cpp" />
+    <ClCompile Include="src\n11a_views\n11a55b_toybox\n11a55b100c_piece_view.cpp" />
+    <ClCompile Include="src\n11a_views\n11a55b_toybox\n11a55b94c_board_view.cpp" />
     <ClCompile Include="src\n55a_game_engine\muz_game_engine_service_old.cpp" />
     <ClCompile Include="src\n95a_core_library\n95a55b_toybox_95c_hand_stand\muz_hand_stand_collection_service.cpp" />
     <ClCompile Include="src\n95a_core_library\n95a55b_toybox_95c_hand_stand\muz_hand_stand_model.cpp" />
