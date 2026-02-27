@@ -6,7 +6,8 @@
 
 #pragma once
 
-#include "../lib_5a_toybox_n1/muz_position_n1_model.hpp"
+//#include "../lib_5a_toybox_n1/muz_position_n1_model.hpp"
+#include "rank.hpp"
 
 /// <summary>
 /// 段の操作

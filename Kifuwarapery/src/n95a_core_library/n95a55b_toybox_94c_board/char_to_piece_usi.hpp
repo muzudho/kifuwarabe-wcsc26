@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../lib_5a_toybox_n1/muz_position_n1_model.hpp"
+#include "piece.hpp"
 #include <map>
 
 /// <summary>
@@ -17,14 +17,14 @@ public:
     /// </summary>
     CharToPieceUSI()
     {
-        (*this)['P'] = N01_BPawn;   (*this)['p'] = N17_WPawn;
-        (*this)['L'] = N02_BLance;  (*this)['l'] = N18_WLance;
-        (*this)['N'] = N03_BKnight; (*this)['n'] = N19_WKnight;
-        (*this)['S'] = N04_BSilver; (*this)['s'] = N20_WSilver;
-        (*this)['B'] = N05_BBishop; (*this)['b'] = N21_WBishop;
-        (*this)['R'] = N06_BRook;   (*this)['r'] = N22_WRook;
-        (*this)['G'] = N07_BGold;   (*this)['g'] = N23_WGold;
-        (*this)['K'] = N08_BKing;   (*this)['k'] = N24_WKing;
+        (*this)['P'] = BPawn;   (*this)['p'] = WPawn;
+        (*this)['L'] = BLance;  (*this)['l'] = WLance;
+        (*this)['N'] = BKnight; (*this)['n'] = WKnight;
+        (*this)['S'] = BSilver; (*this)['s'] = WSilver;
+        (*this)['B'] = BBishop; (*this)['b'] = WBishop;
+        (*this)['R'] = BRook;   (*this)['r'] = WRook;
+        (*this)['G'] = BGold;   (*this)['g'] = WGold;
+        (*this)['K'] = BKing;   (*this)['k'] = WKing;
     }
 
 

@@ -6,7 +6,8 @@
 
 #pragma once
 
-#include "../lib_5a_toybox_n2/muz_position_n2_model.hpp"
+#include "../n95a55b_toybox_95c_hand_stand/color.hpp"
+#include "squares.hpp"
 #include <string>
 
 /// <summary>

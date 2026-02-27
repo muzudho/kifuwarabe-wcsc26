@@ -38,7 +38,7 @@ void MuzPositionN3Model::Set(std::string_view sfen)
 
 	// 1. 盤面部分
 	if (it == parts.end()) goto fail;
-	if (!ParseBoard(*it)) goto fail;
+	if (!this->get_board().from_string(*it)) goto fail;
 	++it;
 
 	// 2. 手番
@@ -47,8 +47,10 @@ void MuzPositionN3Model::Set(std::string_view sfen)
 	++it;
 
 	// 3. 駒台（持ち駒）
+    MuzHandStandModel blackHandStand, whiteHandStand;
+    MuzHandStandCollectionService handStandCollectionSvc;
 	if (it == parts.end()) goto fail;
-	if (!ParseHandStands(*it)) goto fail;
+	if (!handStandCollectionSvc.parse_hand_stand_collection(*it, blackHandStand, whiteHandStand)) goto fail;
 	++it;
 
 	// 4. 手数（オプション）
@@ -67,106 +69,12 @@ fail:
 }
 
 
-// 盤上の駒
-bool MuzPositionN3Model::ParseBoard(std::string_view board_str)
-{
-	Square sq = A9;               // 仮の初期位置
-	Piece promote = Piece::UnPromoted;
-
-	for (char ch : board_str)
-	{
-		if (std::isdigit(ch))
-		{
-			sq = static_cast<Square>(
-				static_cast<int>(sq) +
-				static_cast<int>(SquareDelta::DeltaE) * (ch - '0')
-				);
-		}
-		else if (ch == '/')
-		{
-			sq = static_cast<Square>(
-				static_cast<int>(sq) +
-				static_cast<int>(SquareDelta::DeltaW) * 9 +
-				static_cast<int>(SquareDelta::DeltaS)
-				);
-		}
-		else if (ch == '+')
-		{
-			promote = Piece::Promoted;
-		}
-		else if (g_charToPieceUSI.IsLegalChar(ch))
-		{
-			if (!ConvSquare::CONTAINS_OF10(sq)) return false;
-
-			Piece p = (Piece)(g_charToPieceUSI.GetValue(ch) + promote);
-			SetPiece(p, sq);
-
-			promote = Piece::UnPromoted;
-
-			sq = static_cast<Square>(
-				static_cast<int>(sq) +
-				static_cast<int>(SquareDelta::DeltaE)
-				);
-		}
-		else
-		{
-			return false;
-		}
-	}
-	return true;
-}
-
-
 // 手番
 bool MuzPositionN3Model::ParseTurn(std::string_view turn_str)
 {
 	if (turn_str == "b") { m_turn_ = Color::Black; return true; }
 	if (turn_str == "w") { m_turn_ = Color::White; return true; }
 	return false;
-}
-
-
-// 駒台（持ち駒）
-bool MuzPositionN3Model::ParseHandStands(std::string_view hand_str)
-{
-    // 持ち駒がない場合は "-" で表す
-	if (hand_str == "-")
-	{
-		// 各要素をデフォルト（ゼロ相当）に戻す
-		for (auto& hand : m_hand_stands_)
-		{
-			// FIXME: ここはメンバーをリセットすること
-			hand = MuzHandStandModel{};          // デフォルト構築（ゼロクリア相当）
-			// または hand.Clear(); とか hand.count = 0; とか
-			// MuzHandStandModel に合ったゼロクリア方法を使う
-		}
-		return true;
-	}
-
-	std::size_t count = 0;
-
-	for (char ch : hand_str)
-	{
-        // 数字が続く場合は、次の駒の枚数を表す
-		if (std::isdigit(ch))
-		{
-			count = count * 10 + (ch - '0');
-		}
-        // 駒の種類を表す文字が来たら、枚数をセットして、カウントをリセット
-		else if (g_charToPieceUSI.IsLegalChar(ch))
-		{
-			Piece piece = g_charToPieceUSI.GetValue(ch);
-			SetHandPiece(piece, count == 0 ? 1 : count);
-			count = 0;
-		}
-		else
-		{
-			return false;
-		}
-	}
-
-	// 最後に残った数字は無視しない（エラー扱い可）
-	return count == 0;
 }
 
 

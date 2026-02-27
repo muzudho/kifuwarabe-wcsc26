@@ -1,6 +1,7 @@
 #pragma once
 
-#include "../lib_5a_toybox_n1/muz_position_n1_model.hpp"
+#include "file.hpp"
+#include "rank.hpp"
 
 /// <summary>
 /// 
