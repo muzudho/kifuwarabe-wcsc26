@@ -249,7 +249,7 @@
     <ClInclude Include="targetver.h">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\lib_95a_cpp\overload_enum_operators.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a95b_infrastructure_95c_cpp\overload_enum_operators.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
     <ClInclude Include="header\n080_100_sysWorld\n080_100_500_common.hpp">
@@ -1041,7 +1041,7 @@
     <ClInclude Include="src\n95a_core_library\lib_5a_toybox_base\muz_position_base_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\lib_95a_cpp\muz_int.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a95b_infrastructure_95c_cpp\muz_int.hpp">
       <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="src\n95a_core_library\lib_5a_toybox_base\muz_hand_model.hpp">
@@ -1086,10 +1086,16 @@
     <ClInclude Include="src\n95a_core_library\lib_55a_toybox_95b_hand_stand\muz_hand_stand_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\lib_95a_cpp\muz_string_service.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a95b_infrastructure_95c_cpp\muz_string_service.hpp">
       <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="src\n95a_core_library\lib_55a_toybox_95b_hand_stand\muz_hand_stand_collection_service.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\n95a_core_library\n95a95b_infrastructure_94a_cli\muz_cli_result_model.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\n95a_core_library\n95a95b_infrastructure_94a_cli\muz_cli_service.hpp">
       <Filter>header</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1776,6 +1782,9 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="src\n95a_core_library\lib_55a_toybox_95b_hand_stand\muz_hand_stand_collection_service.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\n95a_core_library\n95a95b_infrastructure_94a_cli\muz_cli_service.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
