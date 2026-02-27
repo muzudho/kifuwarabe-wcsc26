@@ -1,7 +1,7 @@
 #pragma once
 #include "../n119_500_sweetnes/n119_090_Sweetness.hpp"
 #include "../n223_move____/n223_500_flashlight.hpp"// &参照は使えない。*参照は使える。
-#include "../../src/concept_game_engine/muz_game_engine_storage_model.hpp"
+#include "../../src/n55a_game_engine/muz_game_engine_storage_model.hpp"
 
 
 /// <summary>

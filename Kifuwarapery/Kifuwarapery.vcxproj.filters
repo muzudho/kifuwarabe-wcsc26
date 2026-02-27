@@ -1032,10 +1032,10 @@
     <ClInclude Include="src\n95a_core_library\lib_5a_shogi\muz_shogi_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\concept_game_engine\muz_game_engine_storage_model.hpp">
+    <ClInclude Include="src\n55a_game_engine\muz_game_engine_storage_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\concept_game_engine\muz_game_engine_service.hpp">
+    <ClInclude Include="src\n55a_game_engine\muz_game_engine_service.hpp">
       <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="src\n95a_core_library\lib_5a_toybox_base\muz_position_base_model.hpp">
@@ -1077,7 +1077,7 @@
     <ClInclude Include="src\n95a_core_library\lib_5a_toybox_n2\squares.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\concept_game_engine\muz_game_engine_service_old.hpp">
+    <ClInclude Include="src\n55a_game_engine\muz_game_engine_service_old.hpp">
       <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="src\n95a_core_library\lib_55a_toybox_95b_hand_stand\hand_piece.hpp">
@@ -1757,10 +1757,10 @@
     <ClCompile Include="src\n95a_core_library\lib_5a_gui\muz_engine_settings_initialize_service.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\concept_game_engine\muz_game_engine_service.cpp">
+    <ClCompile Include="src\n55a_game_engine\muz_game_engine_service.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\concept_game_engine\muz_game_engine_storage_model.cpp">
+    <ClCompile Include="src\n55a_game_engine\muz_game_engine_storage_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="src\n95a_core_library\lib_5a_toybox_base\muz_position_base_model.cpp">
@@ -1769,7 +1769,7 @@
     <ClCompile Include="src\n95a_core_library\lib_5a_toybox_n2\muz_position_n2_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\concept_game_engine\muz_game_engine_service_old.cpp">
+    <ClCompile Include="src\n55a_game_engine\muz_game_engine_service_old.cpp">
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="src\n95a_core_library\lib_55a_toybox_95b_hand_stand\muz_hand_stand_model.cpp">

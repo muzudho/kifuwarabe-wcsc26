@@ -24,6 +24,6 @@
 #include "../header/n520_evaluate/n520_500_kkKkpKppStorage1.hpp"
 #include "../header/n600_book____/n600_500_book.hpp"
 #include "../header/n900_main____/n900_300_usiLoop.hpp"
-#include "../src/concept_game_engine/muz_game_engine_storage_model.hpp"
+#include "../src/n55a_game_engine/muz_game_engine_storage_model.hpp"
 #include "../src/muz_game_engine_service.hpp"
 // プログラムに必要なヘッダーをここに追加してください。

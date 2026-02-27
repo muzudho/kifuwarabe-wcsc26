@@ -163,7 +163,7 @@
     <ClInclude Include="header\n080_100_sysWorld\n080_100_071_sse.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_072_unreachable.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_074_asmcomment.hpp" />
-    <ClInclude Include="src\concept_game_engine\muz_game_engine_service_old.hpp" />
+    <ClInclude Include="src\n55a_game_engine\muz_game_engine_service_old.hpp" />
     <ClInclude Include="src\n95a_core_library\lib_95a_cpp\muz_int.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_079_count1s.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_080_putb.hpp" />
@@ -402,7 +402,7 @@
     <ClInclude Include="header\n800_learn___\n800_500_learner.hpp" />
     <ClInclude Include="header\n883_nodeKind\n883_070_adventurePlainNodekindAbstract.hpp" />
     <ClInclude Include="src\n95a_core_library\lib_5a_shogi\muz_shogi_model.hpp" />
-    <ClInclude Include="src\concept_game_engine\muz_game_engine_storage_model.hpp" />
+    <ClInclude Include="src\n55a_game_engine\muz_game_engine_storage_model.hpp" />
     <ClInclude Include="header\n885_searcher\n885_310_adventureBattlefieldQsearchAbstract.hpp" />
     <ClInclude Include="header\n885_searcher\n885_320_adventureBattlefieldQsearchPv.hpp" />
     <ClInclude Include="header\n885_searcher\n885_330_adventureBattlefieldQsearchNonPv.hpp" />
@@ -439,7 +439,7 @@
     <ClInclude Include="src\main.hpp" />
     <ClInclude Include="header\n165_movStack\n165_410_moveModels.hpp" />
     <ClInclude Include="header\n220_position\n220_645_gameStats.hpp" />
-    <ClInclude Include="src\concept_game_engine\muz_game_engine_service.hpp" />
+    <ClInclude Include="src\n55a_game_engine\muz_game_engine_service.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -448,7 +448,7 @@
     <ClCompile Include="header\n080_100_sysWorld\n080_100_075_debugcerr.hpp" />
     <ClCompile Include="header\n080_100_sysWorld\n080_100_077_binary.hpp" />
     <ClCompile Include="header\n080_100_sysWorld\n080_100_078_lsbMsb.hpp" />
-    <ClCompile Include="src\concept_game_engine\muz_game_engine_service_old.cpp" />
+    <ClCompile Include="src\n55a_game_engine\muz_game_engine_service_old.cpp" />
     <ClCompile Include="src\n95a_core_library\lib_55a_toybox_95b_hand_stand\muz_hand_stand_collection_service.cpp" />
     <ClCompile Include="src\n95a_core_library\lib_55a_toybox_95b_hand_stand\muz_hand_stand_model.cpp" />
     <ClCompile Include="src\n95a_core_library\lib_5a_toybox_base\muz_position_base_model.cpp" />
@@ -653,8 +653,8 @@
     <ClCompile Include="source\n760_thread__\n760_400_monkiePub.cpp" />
     <ClCompile Include="source\n800_learn___\n800_100_stopwatch.cpp" />
     <ClCompile Include="source\n883_nodeKind\n883_070_adventurePlainNodekindAbstract.cpp" />
-    <ClCompile Include="src\concept_game_engine\muz_game_engine_service.cpp" />
-    <ClCompile Include="src\concept_game_engine\muz_game_engine_storage_model.cpp" />
+    <ClCompile Include="src\n55a_game_engine\muz_game_engine_service.cpp" />
+    <ClCompile Include="src\n55a_game_engine\muz_game_engine_storage_model.cpp" />
     <ClCompile Include="source\n885_searcher\n885_310_hitchhikerQsearchAbstract.cpp" />
     <ClCompile Include="source\n885_searcher\n885_320_adventureBattlefieldQsearchPv.cpp" />
     <ClCompile Include="source\n885_searcher\n885_330_adventureBattlefieldQsearchNonPv.cpp" />
