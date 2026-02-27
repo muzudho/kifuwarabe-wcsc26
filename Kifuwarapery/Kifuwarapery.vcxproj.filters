@@ -249,7 +249,7 @@
     <ClInclude Include="targetver.h">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_1a_cpp\overload_enum_operators.hpp">
+    <ClInclude Include="src\core_library\lib_95a_cpp\overload_enum_operators.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
     <ClInclude Include="header\n080_100_sysWorld\n080_100_500_common.hpp">
@@ -1041,7 +1041,7 @@
     <ClInclude Include="src\lib_5a_toybox_base\muz_position_base_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_1a_cpp\muz_int.hpp">
+    <ClInclude Include="src\core_library\lib_95a_cpp\muz_int.hpp">
       <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="src\lib_5a_toybox_base\muz_hand_model.hpp">
@@ -1086,7 +1086,7 @@
     <ClInclude Include="src\lib_5a_toybox_1b_hand_stand\muz_hand_stand_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\lib_1a_cpp\muz_string_service.hpp">
+    <ClInclude Include="src\core_library\lib_95a_cpp\muz_string_service.hpp">
       <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="src\lib_5a_toybox_1b_hand_stand\muz_hand_stand_collection_service.hpp">

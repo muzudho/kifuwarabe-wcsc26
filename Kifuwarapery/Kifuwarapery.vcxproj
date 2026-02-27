@@ -164,7 +164,7 @@
     <ClInclude Include="header\n080_100_sysWorld\n080_100_072_unreachable.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_074_asmcomment.hpp" />
     <ClInclude Include="src\concept_game_engine\muz_game_engine_service_old.hpp" />
-    <ClInclude Include="src\lib_1a_cpp\muz_int.hpp" />
+    <ClInclude Include="src\core_library\lib_95a_cpp\muz_int.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_079_count1s.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_080_putb.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_081_ioLock.hpp" />
@@ -178,7 +178,7 @@
     <ClInclude Include="header\n080_100_sysWorld\n080_100_089_endian.hpp" />
     <ClInclude Include="header\n080_200_utilProg\n080_200_500_utilProgram.hpp" />
     <ClInclude Include="header\n105_100_color___\n105_100_500_convColor.hpp" />
-    <ClInclude Include="src\lib_1a_cpp\muz_string_service.hpp" />
+    <ClInclude Include="src\core_library\lib_95a_cpp\muz_string_service.hpp" />
     <ClInclude Include="src\lib_5a_toybox_1b_hand_stand\hand_piece.hpp" />
     <ClInclude Include="src\lib_5a_toybox_1b_hand_stand\muz_hand_stand_collection_service.hpp" />
     <ClInclude Include="src\lib_5a_toybox_1b_hand_stand\muz_hand_stand_model.hpp" />
@@ -242,7 +242,7 @@
     <ClInclude Include="header\n225_movPhase\n225_050_generateMovePhase.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_050_ifdef.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_500_common.hpp" />
-    <ClInclude Include="src\lib_1a_cpp\overload_enum_operators.hpp" />
+    <ClInclude Include="src\core_library\lib_95a_cpp\overload_enum_operators.hpp" />
     <ClInclude Include="src\lib_5a_bitboard\n160_600_bitboardAll.hpp" />
     <ClInclude Include="header\n350_pieceTyp\n350_030_makePromoteMove.hpp" />
     <ClInclude Include="header\n350_pieceTyp\n350_040_ptEvent.hpp" />
