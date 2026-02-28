@@ -28,7 +28,7 @@ public:
     static std::optional<MuzPlyModel> from_string(MuzTurnModel turn, std::string_view turn_str);
 
 
-    MuzPlyModel(Ply ply = (Ply)0);
+    MuzPlyModel(RadixHalfPly radix_half_ply = (RadixHalfPly)0);
 
 
     // ========================================
@@ -39,12 +39,14 @@ public:
 private:
     /// <summary>
     ///     <pre>
-    /// チェスの何手目かの数え方から１引いたもの。［ストックフィッシュ］の書き方を残している（＾～＾）
+    /// 将棋式の手数。ストックフィッシュでも実装は同じ。
     /// 
     ///     - 時間管理の役に立つ。
+    ///     - 開始局面では 0。先手番が指したら 1 になり、後手番が指したら 2 になる。以降、同様に 1 ずつ増えていく。
+    ///     - ［ストックフィッシュ］では `gamePly` と呼ばれている。`2 * (ply - 1) + （先手は0、後手は1）` という計算式。
     ///     </pre>
     /// </summary>
-    Ply game_ply_;
+    RadixHalfPly radix_half_ply_;
 
 
     // ========================================
@@ -54,15 +56,15 @@ private:
 
 public:
     /// <summary>
-    /// ストックフィッシュでの［手目］を取得
+    /// ［将棋式の手数、つまり開始局面を０とする］を取得
     /// </summary>
     /// <returns></returns>
-    Ply get_game_ply() const { return this->game_ply_; }
+    RadixHalfPly get_radix_half_ply() const { return this->radix_half_ply_; }
 
 
     /// <summary>
-    /// ストックフィッシュでの［手目］をセット
+    /// ［将棋式の手数、つまり開始局面を０とする］をセット
     /// </summary>
     /// <param name="turn"></param>
-    void set_game_ply(const Ply ply) { this->game_ply_ = ply; }
+    void set_radix_half_ply(const RadixHalfPly radix_half_ply) { this->radix_half_ply_ = radix_half_ply; }
 };

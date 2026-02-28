@@ -65,10 +65,10 @@ void MuzPositionN3Model::Set(std::string_view sfen)
 	{
         MuzTurnModel turn = this->get_turn();	// TODO: これ、仮なんで修正したい（＾～＾）
 		if (auto muz_ply = MuzPlyModel::from_string(turn, *it)) {
-			m_gamePly_ = muz_ply->get_game_ply();
+			m_gamePly_ = muz_ply->get_radix_half_ply();
 		}
 		else {
-			std::cout << "incorrect SFEN string (Ply) : " << sfen << "\n";
+			std::cout << "incorrect SFEN string (RadixHalfPly) : " << sfen << "\n";
 			return;
 		}
 	}
