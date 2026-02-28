@@ -3,6 +3,18 @@
 
 
 // ========================================
+// 生成／破棄
+// ========================================
+
+
+MuzBoardModel::MuzBoardModel()
+{
+	// 盤面をクリアー（＾～＾）
+	this->clear();
+}
+
+
+// ========================================
 // アクセッサ
 // ========================================
 
@@ -32,7 +44,7 @@ void MuzBoardModel::set_piece(const Square sq, const Piece piece)
 // ========================================
 
 
-bool MuzBoardModel::from_string(std::string_view board_str)
+bool MuzBoardModel::update_from_string(std::string_view board_str)
 {
 	// 盤面をクリアーしないといけない（＾～＾）
     this->clear();

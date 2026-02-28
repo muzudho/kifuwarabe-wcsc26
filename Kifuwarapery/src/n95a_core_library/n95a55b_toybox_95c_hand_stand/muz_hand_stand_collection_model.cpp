@@ -1,6 +1,34 @@
 #include "../n95a55b_toybox_105c_turn/color.hpp"
-#include "muz_hand_stand_collection_service.hpp"
+#include "muz_hand_stand_collection_model.hpp"
 #include <cctype>   // ← これ！ std::isdigit が定義されてるヘッダー
+
+
+// ========================================
+// 生成／破棄
+// ========================================
+
+
+MuzHandStandCollectionModel::MuzHandStandCollectionModel()
+{
+    this->hand_stands_[Black] = MuzHandStandModel{};
+    this->hand_stands_[White] = MuzHandStandModel{};
+}
+
+
+// ========================================
+// アクセッサ
+// ========================================
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="c"></param>
+/// <returns></returns>
+MuzHandStandModel MuzHandStandCollectionModel::get_hand_stand(const Color c) const
+{
+    return this->hand_stands_[c];
+}
 
 
 // ========================================
@@ -8,18 +36,34 @@
 // ========================================
 
 
-// パース
-bool MuzHandStandCollectionService::parse_hand_stand_collection(
-    std::string_view hand_str,
-    MuzHandStandModel& b_hs,
-    MuzHandStandModel& w_hs)
+bool MuzHandStandCollectionModel::update_from_string(std::string_view hand_str)
+{
+    auto result = MuzHandStandCollectionModel::parse(hand_str);
+    if (result) {
+        auto [b_hs, w_hs] = result.value();
+        this->hand_stands_[Black] = b_hs;
+        this->hand_stands_[White] = w_hs;
+        return true;
+    }
+
+    return false;
+}
+
+
+// ========================================
+// サブルーチン
+// ========================================
+
+
+std::optional<std::pair<MuzHandStandModel, MuzHandStandModel>> MuzHandStandCollectionModel::parse(
+    std::string_view hand_str)
 {
     // 初期化（＾～＾）先手と後手の持ち駒を０に戻すぜ（＾～＾）
-    b_hs = MuzHandStandModel{};
-    w_hs = MuzHandStandModel{};
+    auto b_hs = MuzHandStandModel{};
+    auto w_hs = MuzHandStandModel{};
 
     // 持ち駒がない場合は "-" で表す
-    if (hand_str == "-") return true;
+    if (hand_str == "-") return std::make_optional(std::make_pair(b_hs, w_hs));
 
     std::size_t count = 0;
 
@@ -76,5 +120,9 @@ bool MuzHandStandCollectionService::parse_hand_stand_collection(
     }
 
     // 最後に残った数字は無視しない（エラー扱い可）
-    return count == 0;
+    if (count != 0) {
+        return std::nullopt;
+    }
+
+    return std::make_optional(std::make_pair(b_hs, w_hs));
 }

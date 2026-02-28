@@ -2,12 +2,31 @@
 
 #include "color.hpp"
 #include <string_view>
+#include <optional>
 
 /// <summary>
 /// 手番
 /// </summary>
 class MuzTurnModel
 {
+
+
+    // ========================================
+    // 生成／破棄
+    // ========================================
+
+
+public:
+    /// <summary>
+    ///     <pre>
+    /// 文字列から手番を取得。
+    /// 
+    ///     - エラーの時はヌル・オプションを返す。
+    ///     </pre>
+    /// </summary>
+    static std::optional<MuzTurnModel> from_string(std::string_view turn_str);
+
+    MuzTurnModel(Color color = Color::Null);
 
 
     // ========================================
@@ -53,8 +72,21 @@ public:
     // ========================================
 
 
+    bool update_from_string(std::string_view turn_str);
+
+
+    // ========================================
+    // サブルーチン
+    // ========================================
+
+
+private:
     /// <summary>
-    ///     - 旧名： `ParseTurn`
+    ///     <pre>
+    /// 文字列から手番を取得。
+    /// 
+    ///     - エラーの時はヌル・オプションを返す。
+    ///     </pre>
     /// </summary>
-    bool from_string(std::string_view turn_str);
+    static std::optional<Color> parse(std::string_view turn_str);
 };

@@ -1,8 +1,34 @@
-#include "muz_position_n3_model.hpp"
-#include "../n95a55b_toybox_103c_ply/muz_ply_model.hpp"
-#include <string_view>
-#include <ranges>	// std::views::split と std::views::transform を使うために必要
+#include "muz_position_model.hpp"
 #include <iostream>	// std::cout を使うために必要
+#include <ranges>	// std::views::split と std::views::transform を使うために必要
+#include <string_view>
+
+
+// ========================================
+// 生成／破棄
+// ========================================
+
+
+MuzPositionModel::MuzPositionModel()
+{
+    //// 盤上を空っぽにするぜ（＾～＾）
+    //this->board_ = MuzBoardModel{};
+}
+
+
+// ========================================
+// アクセッサー
+// ========================================
+
+
+const MuzBoardModel& MuzPositionModel::get_board() const
+{
+    return this->board_;
+}
+MuzBoardModel& MuzPositionModel::get_board()
+{
+    return this->board_;
+}
 
 
 // ========================================
@@ -19,7 +45,7 @@
 ///		</pre>
 /// </summary>
 /// <param name="sfen"></param>
-void MuzPositionN3Model::Set(std::string_view sfen)
+void MuzPositionModel::Set(std::string_view sfen)
 {
 	//MuzGameEngineStorageModel* s = std::move(gameEngineStore__);
 
@@ -38,23 +64,21 @@ void MuzPositionN3Model::Set(std::string_view sfen)
 	auto it = parts.begin();
 
 	// 1. 盤面部分
-	if (it == parts.end() || !this->get_board().from_string(*it)) {
+	if (it == parts.end() || !this->get_board().update_from_string(*it)) {
 		std::cout << "incorrect SFEN string (Board) : " << sfen << "\n";
 		return;
 	}
 	++it;
 
 	// 2. 手番
-	if (it == parts.end() || !this->get_turn().from_string(*it)) {
+	if (it == parts.end() || !this->get_turn().update_from_string(*it)) {
 		std::cout << "incorrect SFEN string (Turn) : " << sfen << "\n";
 		return;
 	}
 	++it;
 
 	// 3. 駒台（持ち駒）
-    MuzHandStandModel blackHandStand, whiteHandStand;	// TODO: これらの変数は、Position クラスのメンバ変数にしたい（＾～＾）
-    MuzHandStandCollectionService handStandCollectionSvc;
-	if (it == parts.end() || !handStandCollectionSvc.parse_hand_stand_collection(*it, blackHandStand, whiteHandStand)) {
+	if (it == parts.end() || !this->get_hand_stand_collection().update_from_string(*it)) {
 		std::cout << "incorrect SFEN string (Hand stand) : " << sfen << "\n";
 		return;
 	}
@@ -63,12 +87,9 @@ void MuzPositionN3Model::Set(std::string_view sfen)
 	// 4. 手数（オプション）
 	if (it != parts.end())
 	{
-        MuzTurnModel turn = this->get_turn();	// TODO: これ、仮なんで修正したい（＾～＾）
-		if (!this->ply_obj_.update_from_string(turn, *it)) {
+		if (!this->get_ply_obj().update_from_string(this->get_turn(), *it)) {
 			std::cout << "incorrect SFEN string (RadixHalfPly) : " << sfen << "\n";
 			return;
 		}
 	}
 }
-
-

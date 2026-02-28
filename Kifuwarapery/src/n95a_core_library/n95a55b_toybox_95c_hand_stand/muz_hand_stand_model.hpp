@@ -19,14 +19,12 @@ class MuzHandStandModel
 {
 
 
-public:
-
-
 	// ========================================
 	// 生成／破棄
 	// ========================================
 
 
+public:
 	MuzHandStandModel();
 
 

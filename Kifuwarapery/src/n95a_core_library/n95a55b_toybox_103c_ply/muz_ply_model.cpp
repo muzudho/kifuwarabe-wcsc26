@@ -1,6 +1,6 @@
 #include "muz_ply_model.hpp"
 #include <string_view>
-#include <charconv>     // ← これが大事！ from_string() で std::from_chars を使ってる
+#include <charconv>     // ← これが大事！ parse() で std::from_chars を使ってる
 
 
 // ========================================
@@ -8,11 +8,10 @@
 // ========================================
 
 
-// 次の手が何手目か。エラーのときは -1 を返す。
 std::optional<MuzPlyModel> MuzPlyModel::from_string(MuzTurnModel _turn, std::string_view half_ply_str)
 {
-    auto radix_half_ply = MuzPlyModel::parse(_turn, half_ply_str);
-	return MuzPlyModel(radix_half_ply.value());
+    auto result = MuzPlyModel::parse(_turn, half_ply_str);
+	return MuzPlyModel(result.value());
 }
 
 
