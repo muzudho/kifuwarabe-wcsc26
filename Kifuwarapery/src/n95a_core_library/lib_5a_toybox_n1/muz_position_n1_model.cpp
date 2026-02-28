@@ -21,30 +21,18 @@ MuzPositionN1Model::MuzPositionN1Model()
 // ========================================
 
 
-/// <summary>
-/// 
-/// </summary>
-/// <param name="ply"></param>
-void MuzPositionN1Model::SetStartPosPly(const Ply ply)
+void MuzPositionN1Model::SetStartPosRadixHalfPly(const RadixHalfPly radix_half_ply)
 {
-	this->m_gamePly_ = ply;
+	this->ply_obj_.set_radix_half_ply(radix_half_ply);
 }
 
 
-/// <summary>
-/// 何手目か
-/// </summary>
-/// <returns></returns>
-Ply MuzPositionN1Model::GetGamePly()
+RadixHalfPly MuzPositionN1Model::GetRadixHalfPly()
 {
-	return this->m_gamePly_;
+	return this->ply_obj_.get_radix_half_ply();
 }
 
 
-/// <summary>
-/// 手番を取得
-/// </summary>
-/// <returns></returns>
 Color MuzPositionN1Model::GetTurn()
 {
 	return this->turn_.get_color();

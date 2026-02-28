@@ -11,6 +11,41 @@
 // 次の手が何手目か。エラーのときは -1 を返す。
 std::optional<MuzPlyModel> MuzPlyModel::from_string(MuzTurnModel _turn, std::string_view half_ply_str)
 {
+    auto radix_half_ply = MuzPlyModel::parse(_turn, half_ply_str);
+	return MuzPlyModel(radix_half_ply.value());
+}
+
+
+MuzPlyModel::MuzPlyModel(RadixHalfPly game_ply)
+{
+    this->radix_half_ply_ = game_ply;
+}
+
+
+// ========================================
+// 主要メソッド
+// ========================================
+
+
+bool MuzPlyModel::update_from_string(MuzTurnModel turn, std::string_view half_ply_str)
+{
+    auto radix_half_ply = MuzPlyModel::parse(turn, half_ply_str);
+	if (radix_half_ply) {
+		this->radix_half_ply_ = radix_half_ply.value();
+		return true;
+	}
+
+	return false;
+}
+
+
+// ========================================
+// サブルーチン
+// ========================================
+
+
+std::optional<RadixHalfPly> MuzPlyModel::parse(MuzTurnModel _turn, std::string_view half_ply_str)
+{
 	// 空 or 空白だけ → 即失敗
 	if (half_ply_str.empty()) return std::nullopt;
 
@@ -59,12 +94,5 @@ std::optional<MuzPlyModel> MuzPlyModel::from_string(MuzTurnModel _turn, std::str
 	// 
 	// 頑固一徹な［きふわらぷりーＲ］は将棋の思考エンジンなので、SFEN には half_ply が記録されてるだろうと勝手に決めつけ、
 	// 「half_ply - 1」という形に変える（＾～＾）
-	auto radix_half_ply = std::max(half_ply - 1, 0);
-	return MuzPlyModel(radix_half_ply);
-}
-
-
-MuzPlyModel::MuzPlyModel(RadixHalfPly game_ply)
-{
-    this->radix_half_ply_ = game_ply;
+	return (RadixHalfPly)std::max(half_ply - 1, 0);
 }

@@ -20,9 +20,9 @@ class MuzPlyModel
 public:
     /// <summary>
     ///     <pre>
-    /// 文字列から何手目かをセット。
+    /// 文字列から手数を取得。
     /// 
-    ///     - エラーの時はヌルを返す。
+    ///     - エラーの時はヌル・オプションを返す。
     ///     </pre>
     /// </summary>
     static std::optional<MuzPlyModel> from_string(MuzTurnModel turn, std::string_view turn_str);
@@ -67,4 +67,28 @@ public:
     /// </summary>
     /// <param name="turn"></param>
     void set_radix_half_ply(const RadixHalfPly radix_half_ply) { this->radix_half_ply_ = radix_half_ply; }
+
+
+    // ========================================
+    // 主要メソッド
+    // ========================================
+
+
+    bool update_from_string(MuzTurnModel turn, std::string_view half_ply_str);
+
+
+    // ========================================
+    // サブルーチン
+    // ========================================
+
+
+private:
+    /// <summary>
+    ///     <pre>
+    /// 文字列から手数を取得。
+    /// 
+    ///     - エラーの時はヌル・オプションを返す。
+    ///     </pre>
+    /// </summary>
+    static std::optional<RadixHalfPly> parse(MuzTurnModel turn, std::string_view half_ply_str);
 };
