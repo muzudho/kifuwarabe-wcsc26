@@ -1,6 +1,6 @@
 ﻿#include "piece_types.hpp"
 #include "../lib_5a_toybox_n1/piece_type.hpp"
-#include "../n95a_core_library/n95a55b_toybox_95c_hand_stand/hand_piece.hpp"
+#include "../n95a55b_toybox_95c_hand_stand/hand_piece.hpp"
 
 /// <summary>
 /// 

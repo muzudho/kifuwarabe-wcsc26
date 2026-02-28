@@ -1,6 +1,5 @@
 #pragma once
 
-#include "color.hpp"
 #include "muz_hand_stand_model.hpp"
 #include <string_view>
 

@@ -47,5 +47,5 @@ Ply MuzPositionN1Model::GetGamePly()
 /// <returns></returns>
 Color MuzPositionN1Model::GetTurn()
 {
-	return this->m_turn_;
+	return this->turn_.get_color();
 }

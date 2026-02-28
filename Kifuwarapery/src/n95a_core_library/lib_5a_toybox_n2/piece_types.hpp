@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../lib_5a_toybox_n1/muz_position_n1_model.hpp"
-#include "../n95a_core_library/n95a55b_toybox_95c_hand_stand/muz_hand_stand_model.hpp"
+#include "../n95a55b_toybox_95c_hand_stand/muz_hand_stand_model.hpp"
 
 /// <summary>
 /// 

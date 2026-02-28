@@ -5,7 +5,6 @@
 #include "../n95a55b_toybox_95c_hand_stand/muz_hand_stand_model.hpp"
 #include "../n95a55b_toybox_95c_hand_stand/muz_hand_stand_collection_service.hpp"
 #include <string_view>
-#include <charconv>     // ← これが大事！ ParsePly() で std::from_chars を使ってる
 
 class MuzPositionN3Model : public MuzPositionN2Model
 {
@@ -21,8 +20,4 @@ protected:
 	/// </summary>
 	/// <param name="sfen"></param>
 	void Set(std::string_view sfen);
-
-	bool ParseTurn(std::string_view turn_str);
-
-	int ParsePly(std::string_view ply_str);
 };
