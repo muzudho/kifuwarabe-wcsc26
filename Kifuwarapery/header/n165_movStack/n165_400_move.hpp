@@ -82,27 +82,6 @@ public:
 
 
 	/// <summary>
-	/// 取った駒の種類
-	/// </summary>
-	/// <returns></returns>
-	PieceType GetCap() const;
-
-
-	/// <summary>
-	/// 移動する駒の種類
-	/// </summary>
-	/// <returns></returns>
-	PieceType GetPieceTypeFrom() const;
-
-
-	/// <summary>
-	/// 移動した後の駒の種類
-	/// </summary>
-	/// <returns></returns>
-	PieceType GetPieceTypeTo() const;
-
-
-	/// <summary>
 	///		<pre>
 	/// 移動前の PieceType を引数に取り、移動後の PieceType を返す。
 	/// 高速化の為、ptFrom が確定しているときに使用する。
@@ -125,13 +104,6 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	bool IsCaptureOrPawnPromotion() const;
-
-
-	/// <summary>
-	/// 打つ駒の種類
-	/// </summary>
-	/// <returns></returns>
-	PieceType GetPieceTypeDropped() const;
 
 
 	/// <summary>

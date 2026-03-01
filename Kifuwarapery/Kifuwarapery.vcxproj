@@ -163,7 +163,17 @@
     <ClInclude Include="header\n080_100_sysWorld\n080_100_071_sse.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_072_unreachable.hpp" />
     <ClInclude Include="header\n080_100_sysWorld\n080_100_074_asmcomment.hpp" />
-    <ClInclude Include="src\n95a_core_library\n95a51b_move_11c_move\muz_move_model.h" />
+    <ClInclude Include="header\n105_140_colorSq_\n105_140_ColorFileRank.h" />
+    <ClInclude Include="header\n105_160_pieceTyp\n105_160_500_pieceType.hpp" />
+    <ClInclude Include="header\n105_180_piece___\n105_180_105_convPieceType.hpp" />
+    <ClInclude Include="header\n105_180_piece___\n105_180_150_Piece.hpp" />
+    <ClInclude Include="header\n105_180_piece___\n105_180_155_convPiece.hpp" />
+    <ClInclude Include="header\n105_180_piece___\n105_180_200_HandPiece.hpp" />
+    <ClInclude Include="header\n105_180_piece___\n105_180_205_convHandPiece.hpp" />
+    <ClInclude Include="header\n105_180_piece___\n105_180_500_hand.hpp" />
+    <ClInclude Include="header\n105_200_sqDistan\n105_200_500_squareDistance.hpp" />
+    <ClInclude Include="header\n105_200_sqDistan\n105_200_600_utilSquareDistance.hpp" />
+    <ClInclude Include="src\n95a_core_library\n95a83b_transpositional_position\muz_move_model.h" />
     <ClInclude Include="src\n11a_views\n11a55b_toybox\n11a55b95c_hand_stand_view.hpp" />
     <ClInclude Include="src\n11a_views\n11a55b_toybox\n11a55b100c_piece_view.hpp" />
     <ClInclude Include="src\n11a_views\n11a55b_toybox\n11a55b94c_board_view.hpp" />
@@ -458,7 +468,7 @@
     <ClCompile Include="header\n080_100_sysWorld\n080_100_075_debugcerr.hpp" />
     <ClCompile Include="header\n080_100_sysWorld\n080_100_077_binary.hpp" />
     <ClCompile Include="header\n080_100_sysWorld\n080_100_078_lsbMsb.hpp" />
-    <ClCompile Include="src\n95a_core_library\n95a51b_move_11c_move\muz_move_model.cpp" />
+    <ClCompile Include="src\n95a_core_library\n95a83b_transpositional_position\muz_move_model.cpp" />
     <ClCompile Include="src\n11a_views\n11a55b_toybox\n11a55b95c_hand_stand_view.cpp" />
     <ClCompile Include="src\n11a_views\n11a55b_toybox\n11a55b100c_piece_view.cpp" />
     <ClCompile Include="src\n11a_views\n11a55b_toybox\n11a55b94c_board_view.cpp" />
@@ -484,7 +494,6 @@
     <ClCompile Include="src\n95a_core_library\lib_5a_gui\muz_engine_option_checkbox_model.cpp" />
     <ClCompile Include="src\n95a_core_library\lib_5a_gui\muz_engine_option_button_model.cpp" />
     <ClCompile Include="src\n95a_core_library\lib_5a_shogi\muz_shogi_model.cpp" />
-    <ClCompile Include="source\n165_movStack\n165_410_moveModels.cpp" />
     <ClCompile Include="source\n220_position\n220_645_gameStats.cpp" />
     <ClCompile Include="source\n080_100_sysWorld\n080_100_500_common.cpp" />
     <ClCompile Include="source\n080_200_utilProg\n080_200_500_utilProgram.cpp" />
@@ -520,7 +529,6 @@
     <ClCompile Include="source\n162_bonaDir_\n162_070_bonaDirAbstract.cpp" />
     <ClCompile Include="source\n163_sqDistan\n163_600_utilSquareDistance.cpp" />
     <ClCompile Include="source\n165_movStack\n165_400_move.cpp" />
-    <ClCompile Include="source\n165_movStack\n165_600_utilMove.cpp" />
     <ClCompile Include="source\n205_repeType\n886_070_rtAbstract.cpp" />
     <ClCompile Include="source\n205_repeType\n886_100_rtNot.cpp" />
     <ClCompile Include="source\n205_repeType\n886_110_rtDraw.cpp" />

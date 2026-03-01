@@ -1119,7 +1119,37 @@
     <ClInclude Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b79c_turn\muz_turn_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\n95a51b_move_11c_move\muz_move_model.h">
+    <ClInclude Include="src\n95a_core_library\n95a83b_transpositional_position\muz_move_model.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n105_140_colorSq_\n105_140_ColorFileRank.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n105_160_pieceTyp\n105_160_500_pieceType.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n105_180_piece___\n105_180_105_convPieceType.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n105_180_piece___\n105_180_150_Piece.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n105_180_piece___\n105_180_155_convPiece.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n105_180_piece___\n105_180_200_HandPiece.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n105_180_piece___\n105_180_205_convHandPiece.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n105_180_piece___\n105_180_500_hand.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n105_200_sqDistan\n105_200_500_squareDistance.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="header\n105_200_sqDistan\n105_200_600_utilSquareDistance.hpp">
       <Filter>header</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1604,9 +1634,6 @@
     <ClCompile Include="source\n885_searcher\n885_580_adventurerSkill.cpp">
       <Filter>source\n885_searcher</Filter>
     </ClCompile>
-    <ClCompile Include="source\n165_movStack\n165_600_utilMove.cpp">
-      <Filter>source\n165_movStack</Filter>
-    </ClCompile>
     <ClCompile Include="source\n165_movStack\n165_400_move.cpp">
       <Filter>source\n165_movStack</Filter>
     </ClCompile>
@@ -1672,9 +1699,6 @@
     </ClCompile>
     <ClCompile Include="source\n883_nodeKind\n883_070_adventurePlainNodekindAbstract.cpp">
       <Filter>source\n883_nodeType</Filter>
-    </ClCompile>
-    <ClCompile Include="source\n165_movStack\n165_410_moveModels.cpp">
-      <Filter>source\n165_movStack</Filter>
     </ClCompile>
     <ClCompile Include="source\n220_position\n220_645_gameStats.cpp">
       <Filter>source</Filter>
@@ -1826,7 +1850,7 @@
     <ClCompile Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b79c_turn\muz_turn_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\n95a_core_library\n95a51b_move_11c_move\muz_move_model.cpp">
+    <ClCompile Include="src\n95a_core_library\n95a83b_transpositional_position\muz_move_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
