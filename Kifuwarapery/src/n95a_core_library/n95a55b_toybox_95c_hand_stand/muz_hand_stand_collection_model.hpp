@@ -57,6 +57,13 @@ public:
 	// ========================================
 
 
+    void clear()
+	{
+		this->hand_stands_[Black] = MuzHandStandModel{};
+		this->hand_stands_[White] = MuzHandStandModel{};
+	}
+
+
 	bool update_from_string(std::string_view hand_str);
 
 

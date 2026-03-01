@@ -2,6 +2,7 @@
 #include <iostream>	// std::cout を使うために必要
 #include <ranges>	// std::views::split と std::views::transform を使うために必要
 #include <string_view>
+#include <vector>
 
 
 // ========================================
@@ -36,60 +37,46 @@ MuzBoardModel& MuzPositionModel::get_board()
 // ========================================
 
 
-/// <summary>
-///		<pre>
-/// 局面をセットします。
-/// sfen 形式の文字列を解析して、盤上の駒の配置、手番、持ち駒、次の手数などを Position クラスのメンバ変数に設定します。
-/// また、ゲームエンジンのストレージモデルもセットします。
-/// 解析に失敗した場合はエラーメッセージを出力します。
-///		</pre>
-/// </summary>
-/// <param name="sfen"></param>
-void MuzPositionModel::Set(std::string_view sfen)
+void MuzPositionModel::Set(std::span<std::string_view> parameter_tokens)
 {
-	//MuzGameEngineStorageModel* s = std::move(gameEngineStore__);
+	auto it = parameter_tokens.begin();
 
-	//this->Clear();
-
-	//this->SetGameEngineStore(s);
-
-	// コマンドをスペースで分割して、std::views::split と std::views::transform を使って、std::string_view の range を作る。
-	auto parts = sfen
-		| std::views::split(' ')
-		| std::views::transform([](auto&& r)
-			{
-				return std::string_view(&*r.begin(), std::ranges::distance(r));
-			});
-
-	auto it = parts.begin();
+	// 初期化（＾～＾）
+    this->get_board().clear();
+    this->get_turn().clear();
+    this->get_hand_stand_collection().clear();
+    this->get_ply_obj().clear();
 
 	// 1. 盤面部分
-	if (it == parts.end() || !this->get_board().update_from_string(*it)) {
-		std::cout << "incorrect SFEN string (Board) : " << sfen << "\n";
+	if (it == parameter_tokens.end() || !this->get_board().update_from_string(*it)) {
+		std::cout << "incorrect SFEN string (Board).\n";
 		return;
 	}
 	++it;
 
 	// 2. 手番
-	if (it == parts.end() || !this->get_turn().update_from_string(*it)) {
-		std::cout << "incorrect SFEN string (Turn) : " << sfen << "\n";
+	if (it == parameter_tokens.end() || !this->get_turn().update_from_string(*it)) {
+        std::cout << "incorrect SFEN string (Turn).\n";	// TODO: 読取終わった board を出力して、どこで失敗したのか分かるようにしたいぜ（＾～＾）
 		return;
 	}
 	++it;
 
 	// 3. 駒台（持ち駒）
-	if (it == parts.end() || !this->get_hand_stand_collection().update_from_string(*it)) {
-		std::cout << "incorrect SFEN string (Hand stand) : " << sfen << "\n";
+	if (it == parameter_tokens.end() || !this->get_hand_stand_collection().update_from_string(*it)) {
+		std::cout << "incorrect SFEN string (Hand stand).\n";
 		return;
 	}
 	++it;
 
 	// 4. 手数（オプション）
-	if (it != parts.end())
+	if (it != parameter_tokens.end())
 	{
-		if (!this->get_ply_obj().update_from_string(this->get_turn(), *it)) {
-			std::cout << "incorrect SFEN string (RadixHalfPly) : " << sfen << "\n";
+        auto turn = this->get_turn();
+		if (!this->get_ply_obj().update_from_string(turn, *it)) {
+			std::cout << "incorrect SFEN string (RadixHalfPly).\n";
 			return;
 		}
 	}
+
+	// TODO: 5. あれば moves
 }

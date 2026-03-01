@@ -74,6 +74,8 @@ public:
     // ========================================
 
 
+    void clear() { this->radix_half_ply_ = (RadixHalfPly)0; }
+
     bool update_from_string(MuzTurnModel turn, std::string_view half_ply_str);
 
 

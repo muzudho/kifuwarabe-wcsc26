@@ -7,6 +7,7 @@
 #include "../n95a55b_toybox_105c_turn/color.hpp"
 #include "../n95a55b_toybox_105c_turn/muz_turn_model.hpp"
 #include <string_view>
+#include <span>     // std::span を使うために必要
 
 class MuzPositionModel
 {
@@ -123,5 +124,5 @@ public:
 	///     </pre>
 	/// </summary>
 	/// <param name="sfen"></param>
-	void Set(std::string_view sfen);
+	void Set(std::span<std::string_view> parameter_tokens);
 };

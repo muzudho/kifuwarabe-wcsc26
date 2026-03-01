@@ -72,6 +72,8 @@ public:
     // ========================================
 
 
+    void clear() { this->color_ = Color::Null; }
+
     bool update_from_string(std::string_view turn_str);
 
 
