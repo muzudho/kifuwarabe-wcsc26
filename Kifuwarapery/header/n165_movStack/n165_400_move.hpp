@@ -68,20 +68,6 @@ public:
 
 
 	/// <summary>
-	/// 移動先
-	/// </summary>
-	/// <returns></returns>
-	Square To() const;
-
-
-	/// <summary>
-	/// 移動元
-	/// </summary>
-	/// <returns></returns>
-	Square From() const;
-
-
-	/// <summary>
 	/// 移動元、移動先
 	/// </summary>
 	/// <returns></returns>
@@ -100,13 +86,6 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	PieceType GetCap() const;
-
-
-	/// <summary>
-	/// 成るかどうか
-	/// </summary>
-	/// <returns></returns>
-	u32 IsPromotion() const;
 
 
 	/// <summary>
@@ -132,20 +111,6 @@ public:
 	/// <param name="ptFrom"></param>
 	/// <returns></returns>
 	PieceType GetPieceTypeTo(const PieceType ptFrom) const;
-
-
-	/// <summary>
-	/// 
-	/// </summary>
-	/// <returns></returns>
-	bool IsDrop() const;
-
-
-	/// <summary>
-	/// 0xf00000 は 取られる駒のマスク
-	/// </summary>
-	/// <returns></returns>
-	bool IsCapture() const;
 
 
 	/// <summary>

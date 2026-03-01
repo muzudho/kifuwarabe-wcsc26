@@ -1,7 +1,8 @@
 #pragma once
 
 #include "../lib_5a_toybox_n1/piece_type.hpp"
-#include "../n95a55b_toybox_95c_hand_stand/muz_hand_stand_model.hpp"
+#include "../n95a87b_stationaly_position/n95a87b71c_hand_stand/muz_hand_stand_model.hpp"
+#include "../n95a83b_moves/piece_type.hpp"
 
 /// <summary>
 /// 
