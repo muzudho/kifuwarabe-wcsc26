@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../n95a95b_infrastructure_95c_cpp/muz_int.hpp"
+#include "../../n95a95b_infrastructure/n95a95b95c_cpp/muz_int.hpp"
 #include "hand_piece.hpp"
 
 /// <summary>

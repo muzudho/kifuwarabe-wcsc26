@@ -1,11 +1,11 @@
 #pragma once
 
-#include "../n95a55b_toybox_94c_board/muz_board_model.hpp"
-#include "../n95a55b_toybox_95c_hand_stand/muz_hand_stand_collection_model.hpp"
-#include "../n95a55b_toybox_103c_ply/muz_ply_model.hpp"
-#include "../n95a55b_toybox_103c_ply/ply.hpp"
-#include "../n95a55b_toybox_105c_turn/color.hpp"
-#include "../n95a55b_toybox_105c_turn/muz_turn_model.hpp"
+#include "../n95a87b67c_board/muz_board_model.hpp"
+#include "../n95a87b71c_hand_stand/muz_hand_stand_collection_model.hpp"
+#include "../n95a87b75c_ply/muz_ply_model.hpp"
+#include "../n95a87b75c_ply/ply.hpp"
+#include "../n95a87b79c_turn/color.hpp"
+#include "../n95a87b79c_turn/muz_turn_model.hpp"
 #include <string_view>
 #include <span>     // std::span を使うために必要
 

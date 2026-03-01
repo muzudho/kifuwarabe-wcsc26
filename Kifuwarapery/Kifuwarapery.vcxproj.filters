@@ -249,7 +249,7 @@
     <ClInclude Include="targetver.h">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\n95a95b_infrastructure_95c_cpp\overload_enum_operators.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a95b_infrastructure\n95a95b95c_cpp\overload_enum_operators.hpp">
       <Filter>header\n080_common__</Filter>
     </ClInclude>
     <ClInclude Include="header\n080_100_sysWorld\n080_100_500_common.hpp">
@@ -1041,7 +1041,7 @@
     <ClInclude Include="src\n95a_core_library\lib_5a_toybox_base\muz_position_base_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\n95a95b_infrastructure_95c_cpp\muz_int.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a95b_infrastructure\n95a95b95c_cpp\muz_int.hpp">
       <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="src\n95a_core_library\lib_5a_toybox_base\muz_hand_model.hpp">
@@ -1080,22 +1080,22 @@
     <ClInclude Include="src\n55a_game_engine\muz_game_engine_service_old.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\n95a55b_toybox_95c_hand_stand\hand_piece.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b71c_hand_stand\hand_piece.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\n95a55b_toybox_95c_hand_stand\muz_hand_stand_model.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b71c_hand_stand\muz_hand_stand_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\n95a95b_infrastructure_95c_cpp\muz_string_service.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a95b_infrastructure\n95a95b95c_cpp\muz_string_service.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\n95a55b_toybox_95c_hand_stand\muz_hand_stand_collection_model.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b71c_hand_stand\muz_hand_stand_collection_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\n95a95b_infrastructure_94a_cli\muz_cli_result_model.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a95b_infrastructure\n95a95b83c_cli\muz_cli_result_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\n95a95b_infrastructure_94a_cli\muz_cli_service.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a95b_infrastructure\n95a95b83c_cli\muz_cli_service.hpp">
       <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="src\n11a_views\n11a55b_toybox\n11a55b95c_hand_stand_view.hpp">
@@ -1107,16 +1107,19 @@
     <ClInclude Include="src\n11a_views\n11a55b_toybox\n11a55b94c_board_view.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\n95a55b_toybox_103c_ply\muz_ply_model.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b75c_ply\muz_ply_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\n95a55b_toybox_103c_ply\ply.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b75c_ply\ply.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\n95a55b_toybox_105c_turn\color.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b79c_turn\color.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\n95a55b_toybox_105c_turn\muz_turn_model.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b79c_turn\muz_turn_model.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\n95a_core_library\n95a51b_move_11c_move\muz_move_model.h">
       <Filter>header</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1799,13 +1802,13 @@
     <ClCompile Include="src\n55a_game_engine\muz_game_engine_service_old.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\n95a_core_library\n95a55b_toybox_95c_hand_stand\muz_hand_stand_model.cpp">
+    <ClCompile Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b71c_hand_stand\muz_hand_stand_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\n95a_core_library\n95a55b_toybox_95c_hand_stand\muz_hand_stand_collection_model.cpp">
+    <ClCompile Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b71c_hand_stand\muz_hand_stand_collection_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\n95a_core_library\n95a95b_infrastructure_94a_cli\muz_cli_service.cpp">
+    <ClCompile Include="src\n95a_core_library\n95a95b_infrastructure\n95a95b83c_cli\muz_cli_service.cpp">
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="src\n11a_views\n11a55b_toybox\n11a55b95c_hand_stand_view.cpp">
@@ -1817,10 +1820,13 @@
     <ClCompile Include="src\n11a_views\n11a55b_toybox\n11a55b94c_board_view.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\n95a_core_library\n95a55b_toybox_103c_ply\muz_ply_model.cpp">
+    <ClCompile Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b75c_ply\muz_ply_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\n95a_core_library\n95a55b_toybox_105c_turn\muz_turn_model.cpp">
+    <ClCompile Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b79c_turn\muz_turn_model.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\n95a_core_library\n95a51b_move_11c_move\muz_move_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
