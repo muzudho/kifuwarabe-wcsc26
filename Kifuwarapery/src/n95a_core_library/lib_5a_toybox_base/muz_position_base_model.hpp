@@ -34,11 +34,6 @@ protected:
 
 
 	/// <summary>
-	/// 先後対局者別の手駒
-	/// </summary>
-	MuzHandModel m_hand_models_[g_COLOR_NUM];
-
-	/// <summary>
 	/// ゲームエンジン倉庫
 	/// </summary>
 	MuzGameEngineStorageModel* gameEngineStore__;
@@ -47,21 +42,6 @@ protected:
 	// ========================================
 	// アクセッサ
 	// ========================================
-
-
-	void SetPiece(const Piece piece, const Square sq);
-
-	/// <summary>
-	/// 持ち駒
-	/// </summary>
-	/// <typeparam name="CLR"></typeparam>
-	/// <returns></returns>
-	template<Color CLR>
-	MuzHandModel GetHand() const
-	{
-		return this->m_hand_models_[CLR];
-	}
-	MuzHandModel GetHand(const Color c) const;
 
 
 	/// <summary>
@@ -84,16 +64,5 @@ protected:
 	/// <param name="s"></param>
 	void SetGameEngineStore(MuzGameEngineStorageModel* pGameEngineStore);
 
-
-	// ========================================
-	// 主要メソッド
-	// ========================================
-
-
-	/// <summary>
-	/// 局面をセット
-	/// </summary>
-	/// <param name="sfen"></param>
-	void Set(const std::string& sfen);
 };
 
