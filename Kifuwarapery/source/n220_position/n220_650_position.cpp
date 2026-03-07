@@ -5,7 +5,7 @@
 #include "../../header/n105_120_square__/n105_120_100_square.hpp"
 #include "../../header/n105_120_square__/n105_120_400_squareRelation.hpp"
 #include "../../header/n105_160_pieceTyp/n105_160_500_pieceType.hpp"
-#include "../../header/n113_piece___/n113_150_piece.hpp"
+#include "../../header/n105_180_piece___/n105_180_150_Piece.hpp"
 #include "../../header/n113_piece___/n113_155_convPiece.hpp"
 #include "../../header/n119_500_sweetnes/n119_090_Sweetness.hpp"
 #include "../../header/n119_500_sweetnes/n119_200_PieceSweetness.hpp"
