@@ -196,7 +196,6 @@
     <ClInclude Include="header\n105_200_sqDistan\n105_200_500_squareDistance.hpp" />
     <ClInclude Include="header\n105_200_sqDistan\n105_200_600_utilSquareDistance.hpp" />
     <ClInclude Include="header\n111_colorSq_\n111_500_ColorFileRank.h" />
-    <ClInclude Include="header\n112_pieceTyp\n112_050_pieceType.hpp" />
     <ClInclude Include="header\n113_piece___\n113_105_convPieceType.hpp" />
     <ClInclude Include="header\n113_piece___\n113_150_piece.hpp" />
     <ClInclude Include="header\n113_piece___\n113_155_convPiece.hpp" />
