@@ -518,7 +518,6 @@
     <ClCompile Include="source\n105_120_square__\n105_120_150_file.cpp" />
     <ClCompile Include="source\n105_120_square__\n105_120_200_rank.cpp" />
     <ClCompile Include="source\n105_120_square__\n110_400_squareRelation.cpp" />
-    <ClCompile Include="source\n111_colorSq_\n111_500_ColorFileRank.cpp" />
     <ClCompile Include="source\n113_piece___\n113_200_handPiece.cpp" />
     <ClCompile Include="source\n113_piece___\n113_500_hand.cpp" />
     <ClCompile Include="source\n119_score___\n119_200_pieceScore.cpp" />
