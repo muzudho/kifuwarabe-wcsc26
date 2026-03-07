@@ -1008,25 +1008,25 @@
     <ClInclude Include="src\n95a_core_library\lib_5a_bitboard\n160_600_bitboardAll.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\lib_5a_gui\muz_engine_option_textbox_model.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a15b_gui\muz_engine_option_textbox_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\lib_5a_gui\muz_engine_option_spinbox_model.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a15b_gui\muz_engine_option_spinbox_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\lib_5a_gui\muz_engine_option_checkbox_model.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a15b_gui\muz_engine_option_checkbox_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\lib_5a_gui\muz_engine_option_button_model.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a15b_gui\muz_engine_option_button_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\lib_5a_gui\muz_engine_option_abstract_model.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a15b_gui\muz_engine_option_abstract_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\lib_5a_gui\muz_engine_settings_model.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a15b_gui\muz_engine_settings_model.hpp">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="src\n95a_core_library\lib_5a_gui\muz_engine_settings_initialize_service.hpp">
+    <ClInclude Include="src\n95a_core_library\n95a15b_gui\muz_engine_settings_initialize_service.hpp">
       <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="src\n95a_core_library\lib_5a_shogi\muz_shogi_model.hpp">
@@ -1796,16 +1796,16 @@
     <ClCompile Include="src\n95a_core_library\lib_5a_bitboard\n160_400_printBb.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\n95a_core_library\lib_5a_gui\muz_engine_option_textbox_model.cpp">
+    <ClCompile Include="src\n95a_core_library\n95a15b_gui\muz_engine_option_textbox_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\n95a_core_library\lib_5a_gui\muz_engine_option_spinbox_model.cpp">
+    <ClCompile Include="src\n95a_core_library\n95a15b_gui\muz_engine_option_spinbox_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\n95a_core_library\lib_5a_gui\muz_engine_option_checkbox_model.cpp">
+    <ClCompile Include="src\n95a_core_library\n95a15b_gui\muz_engine_option_checkbox_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\n95a_core_library\lib_5a_gui\muz_engine_option_button_model.cpp">
+    <ClCompile Include="src\n95a_core_library\n95a15b_gui\muz_engine_option_button_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="src\n95a_core_library\lib_5a_shogi\muz_shogi_model.cpp">
@@ -1838,13 +1838,13 @@
     <ClCompile Include="src\n95a_core_library\lib_5a_bitboard\n160_106_inFrontMaskBb.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\n95a_core_library\lib_5a_gui\muz_engine_option_abstract_model.cpp">
+    <ClCompile Include="src\n95a_core_library\n95a15b_gui\muz_engine_option_abstract_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\n95a_core_library\lib_5a_gui\muz_engine_settings_model.cpp">
+    <ClCompile Include="src\n95a_core_library\n95a15b_gui\muz_engine_settings_model.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="src\n95a_core_library\lib_5a_gui\muz_engine_settings_initialize_service.cpp">
+    <ClCompile Include="src\n95a_core_library\n95a15b_gui\muz_engine_settings_initialize_service.cpp">
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="src\n55a_game_engine\muz_game_engine_service.cpp">
