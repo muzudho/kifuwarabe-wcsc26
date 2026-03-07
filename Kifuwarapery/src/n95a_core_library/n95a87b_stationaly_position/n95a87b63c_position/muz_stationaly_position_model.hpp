@@ -9,7 +9,7 @@
 #include <string_view>
 #include <span>     // std::span を使うために必要
 
-class MuzPositionModel
+class MuzStationalyPositionModel
 {
 
 
@@ -19,7 +19,7 @@ class MuzPositionModel
 
 
 public:
-    MuzPositionModel();
+    MuzStationalyPositionModel();
 
 
 	// ========================================
@@ -121,6 +121,9 @@ public:
 	/// 局面をセット
 	/// 
 	///     - 旧名： `Position::set()`
+    ///		- `moves` の解析は含まないぜ（＾～＾） `moves` の解析は、 `Position::set()` を呼び出した後に、 ループを回しながらやるぜ（＾～＾）
+	///			例えば［大樹の枝］の `usi.cpp/setPosition()` を参考にしてほしいぜ（＾～＾）
+    ///			`usi.cpp/usiToMove` が指し手の解析をしているぜ（＾～＾）
 	///     </pre>
 	/// </summary>
 	/// <param name="sfen"></param>

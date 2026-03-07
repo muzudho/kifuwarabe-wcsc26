@@ -180,7 +180,7 @@
     <ClInclude Include="src\n11a_views\n11a55b_toybox\n11a55b94c_board_view.hpp" />
     <ClInclude Include="src\n55a_game_engine\muz_game_engine_service_old.hpp" />
     <ClInclude Include="src\n95a_core_library\n95a83b_transpositional_position\piece_type.hpp" />
-    <ClInclude Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b63c_position\muz_position_model.hpp" />
+    <ClInclude Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b63c_position\muz_stationaly_position_model.hpp" />
     <ClInclude Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b67c_board\char_to_piece_usi.hpp" />
     <ClInclude Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b67c_board\file.hpp" />
     <ClInclude Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b67c_board\file_ope.hpp" />
@@ -486,7 +486,7 @@
     <ClCompile Include="src\n11a_views\n11a55b_toybox\n11a55b100c_piece_view.cpp" />
     <ClCompile Include="src\n11a_views\n11a55b_toybox\n11a55b94c_board_view.cpp" />
     <ClCompile Include="src\n55a_game_engine\muz_game_engine_service_old.cpp" />
-    <ClCompile Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b63c_position\muz_position_model.cpp" />
+    <ClCompile Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b63c_position\muz_stationaly_position_model.cpp" />
     <ClCompile Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b67c_board\char_to_piece_usi.cpp" />
     <ClCompile Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b67c_board\muz_board_model.cpp" />
     <ClCompile Include="src\n95a_core_library\n95a87b_stationaly_position\n95a87b75c_ply\muz_ply_model.cpp" />
