@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <string>
 #include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
-#include "../n113_piece___/n113_200_handPiece.hpp"
+#include "../n105_180_piece___/n105_180_200_HandPiece.hpp"
 
 
 //────────────────────────────────────────────────────────────────────────────────
