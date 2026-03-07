@@ -223,7 +223,6 @@
     <ClInclude Include="header\n160_board___\n160_102_fileMaskBb.hpp" />
     <ClInclude Include="header\n160_board___\n160_104_rankMaskBb.hpp" />
     <ClInclude Include="header\n160_board___\n160_106_inFrontMaskBb.hpp" />
-    <ClInclude Include="header\n161_sqDistan\n161_500_squareDistance.hpp" />
     <ClInclude Include="header\n162_bonaDir_\n162_070_bonaDirAbstract.hpp" />
     <ClInclude Include="header\n163_sqDistan\n163_600_utilSquareDistance.hpp" />
     <ClInclude Include="header\n165_movStack\n165_300_moveType.hpp" />

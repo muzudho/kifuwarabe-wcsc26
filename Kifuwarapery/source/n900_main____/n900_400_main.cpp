@@ -10,7 +10,7 @@
 #include "../../header/n160_board___/n160_160_kingAttackBb.hpp"
 #include "../../header/n160_board___/n160_180_knightAttackBb.hpp"
 #include "../../header/n160_board___/n160_190_pawnAttackBb.hpp"
-#include "../../header/n161_sqDistan/n161_500_squareDistance.hpp"
+#include "../../header/n105_200_sqDistan/n105_200_500_squareDistance.hpp"
 #include "../../header/n163_sqDistan/n163_600_utilSquareDistance.hpp"
 #include "../../header/n220_position/n220_750_charToPieceUSI.hpp"
 #include "../../header/n480_tt______/n480_300_tt.hpp"

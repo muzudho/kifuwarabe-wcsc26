@@ -1,4 +1,4 @@
-﻿#include "../../header/n161_sqDistan/n161_500_squareDistance.hpp"
+﻿#include "../../header/n105_200_sqDistan/n105_200_500_squareDistance.hpp"
 
 
 /// <summary>
