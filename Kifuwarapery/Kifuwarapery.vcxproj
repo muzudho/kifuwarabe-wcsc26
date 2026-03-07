@@ -510,7 +510,6 @@
     <ClCompile Include="source\n105_200_sqDistan\n105_200_squareDistance.cpp" />
     <ClCompile Include="source\n105_200_sqDistan\n163_600_utilSquareDistance.cpp" />
     <ClCompile Include="source\n165_movStack\n165_410_moveModels.cpp" />
-    <ClCompile Include="source\n210_score___\n119_200_pieceScore.cpp" />
     <ClCompile Include="source\n220_position\n220_645_gameStats.cpp" />
     <ClCompile Include="source\n080_100_sysWorld\n080_100_500_common.cpp" />
     <ClCompile Include="source\n080_200_utilProg\n080_200_500_utilProgram.cpp" />
