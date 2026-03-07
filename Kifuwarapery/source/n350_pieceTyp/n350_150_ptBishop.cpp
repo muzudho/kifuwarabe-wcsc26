@@ -1,7 +1,7 @@
 ﻿#include "../../header/n105_100_color___/n105_100_100_color.hpp"
 #include "../../header/n105_120_square__/n105_120_100_square.hpp"
 #include "../../header/n105_120_square__/n105_120_500_convSquare.hpp"
-#include "../../header/n112_pieceTyp/n112_050_pieceType.hpp"
+#include "../../header/n105_160_pieceTyp/n105_160_500_pieceType.hpp"
 #include "../../header/n160_board___/n160_100_bitboard.hpp"
 #include "../../header/n160_board___/n160_130_lanceAttackBb.hpp"
 #include "../../header/n160_board___/n160_190_pawnAttackBb.hpp"

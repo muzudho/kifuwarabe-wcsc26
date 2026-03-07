@@ -4,7 +4,7 @@
 #include "../n105_100_color___/n105_100_100_color.hpp"
 #include "../n105_120_square__/n105_120_100_square.hpp"
 #include "../n105_120_square__/n105_120_500_convSquare.hpp"
-#include "../n112_pieceTyp/n112_050_pieceType.hpp"
+#include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 #include "../n165_movStack/n165_300_moveType.hpp"
 #include "../n165_movStack/n165_500_moveStack.hpp"

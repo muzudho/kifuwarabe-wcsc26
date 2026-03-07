@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "../n105_120_square__/n105_120_100_square.hpp"
-#include "../n112_pieceTyp/n112_050_pieceType.hpp"
+#include "../n105_160_pieceTyp/n105_160_500_pieceType.hpp"
 #include "../n113_piece___/n113_155_convPiece.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
 #include "../n165_movStack/n165_600_convMove.hpp"
