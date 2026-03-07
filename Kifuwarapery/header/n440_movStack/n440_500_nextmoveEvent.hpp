@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../n113_piece___/n113_155_convPiece.hpp"
+#include "../n105_180_piece___/n105_180_155_convPiece.hpp"
 #include "../n119_500_sweetnes/n119_090_Sweetness.hpp"
 #include "../n160_board___/n160_100_bitboard.hpp"
 #include "../n165_movStack/n165_400_move.hpp"
